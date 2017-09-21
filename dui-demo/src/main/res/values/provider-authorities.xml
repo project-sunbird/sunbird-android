@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="file_provider_authorities">org.sunbird.app.fileprovider</string>
+    <string name="content_provider_authorities">org.sunbird.app.content</string>
+    <string name="partner_provider_authorities">org.sunbird.app.partner</string>
+    <string name="telemetry_provider_authorities">org.sunbird.app.telemetry</string>
+    <string name="profile_provider_authorities">org.sunbird.app.profiles</string>
+</resources>

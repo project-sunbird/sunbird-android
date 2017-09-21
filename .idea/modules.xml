@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dui-demo/dui-demo.iml" filepath="$PROJECT_DIR$/dui-demo/dui-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mystique/mystique.iml" filepath="$PROJECT_DIR$/mystique/mystique.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sunbird-mobile.iml" filepath="$PROJECT_DIR$/sunbird-mobile.iml" />
+    </modules>
+  </component>
+</project>

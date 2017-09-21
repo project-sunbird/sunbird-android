@@ -1,0 +1,11 @@
+dui-demo/gradle.properties
+.gradle
+/local.properties
+.idea/libraries/
+.idea/gradle.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/workspace.xml
+.idea/vcs.xml
+build/
+*.iml
