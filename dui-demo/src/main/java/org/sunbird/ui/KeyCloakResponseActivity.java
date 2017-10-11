@@ -82,6 +82,7 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                                 .edit()
                                 .putString("logged_in", "YES")
                                 .putString("user_token", jo.get("sub").toString())
+                                .putString("user_access_token", jwtToken)
                                 .apply();
 
                         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.LOGIN, TelemetryAction.LOGIN_SUCCESS, jo.get("sub").toString(), null));
