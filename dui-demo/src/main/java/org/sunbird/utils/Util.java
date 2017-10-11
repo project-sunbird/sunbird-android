@@ -10,10 +10,13 @@ import org.sunbird.models.CurrentGame;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.CoRelationType;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by vinay.narayana on 18/08/17.
@@ -195,5 +198,13 @@ public class Util {
 
     public static void setResourcePageAssembleApiResponseMessageId(String responseMessageId) {
         GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.RESOURCE_PAGE, responseMessageId);
+    }
+
+    public static String getCurrentLocalDateTimeStamp() {
+        String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
+        TimeZone tz = TimeZone.getDefault();
+        String timeZone=tz.getDisplayName(false, TimeZone.SHORT);
+        time+=timeZone.substring(3,6)+timeZone.substring(7,9);
+        return time;
     }
 }

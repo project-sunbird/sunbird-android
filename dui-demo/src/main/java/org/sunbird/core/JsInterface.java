@@ -314,7 +314,7 @@ public class JsInterface {
                         .addHeader("Accept", "application/json")
                         .addHeader("Content-Type", "application/json")
                         .addHeader("x-Consumer-Id", userid)
-                        .addHeader("ts", "2017-05-25 10:18:56:578+0530")
+                        .addHeader("ts", Util.getCurrentLocalDateTimeStamp())
                         .addHeader("X-msgid", "8e27cbf5-e299-43b0-bca7-8347f7e5abcf")
                         .addHeader("X-Device-ID", "X-Device-ID")
                         .addHeader("X-Authenticated-User-Token", userid)
