@@ -1867,4 +1867,11 @@ public class JsInterface {
     public void setParams() {
         GlobalApplication.getInstance().setParams();
     }
+
+    @JavascriptInterface
+    public void updateApp() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID));
+        activity.startActivity(intent);
+    }
 }
