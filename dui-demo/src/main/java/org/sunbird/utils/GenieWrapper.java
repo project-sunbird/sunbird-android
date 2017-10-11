@@ -273,12 +273,14 @@ public class GenieWrapper extends Activity {
                 strings[4] = "Worksheet";
             }
 
-            builder.contentTypes(strings).query(query).limit(count);
             String fp;
-            builder.facets(new String[]{"language", "grade", "domain", "contentType", "subject", "medium"});
 
             ContentSearchCriteria filters;
-            if (filterParams.length() > 10 && status.equals("true")) {
+            if (filterParams.length() > 0 && filterParams.equals("userToken")){
+                builder.contentTypes(strings).limit(count);
+                builder.createdBy(query);
+                filters = builder.build();
+            } else if (filterParams.length() > 10 && status.equals("true")) {
                 fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
                 filters = GsonUtil.fromJson(fp, ContentSearchCriteria.class);
 //                Util.setCoRelationIdContext(correlationId);
@@ -286,6 +288,8 @@ public class GenieWrapper extends Activity {
 //                eksMap.put(TelemetryConstant.FILTER_CRITERIA, filters);
 ////                TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH,filter_stageId, TelemetryAction.FILTER_PHRASE,"",eksMap,Util.getCoRelationList()));
             } else {
+                builder.contentTypes(strings).query(query).limit(count);
+                builder.facets(new String[]{"language", "grade", "domain", "contentType", "subject", "medium"});
                 filters = builder.build();
             }
 
