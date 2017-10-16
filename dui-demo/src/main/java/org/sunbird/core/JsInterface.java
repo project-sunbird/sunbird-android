@@ -48,10 +48,13 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.JavascriptInterface;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
@@ -334,32 +337,6 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void replaceListVIewItem(final int position, final String viewValues) {
-
-        try {
-
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        JSONArray jsonArray = new JSONArray(viewValues);
-
-                        ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
-                        ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
-                        ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-                        listViewAdapter.replaceItemsInList(valueArrayList.get(0), viewJSXArrayList.get(0), viewTypeArrayList.get(0), position);
-                    } catch (Exception e) {
-                        Log.d("Exception", e.toString());
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("EXCEPTION :", "GOT ERROR IN REPLACE ITEM REPLACE LIST VIEW");
-        }
-    }
-
-    @JavascriptInterface
     public String getResourceByName(String resName) {
         return getResourceById(activity.getResources().getIdentifier(resName, "string", activity.getPackageName()));
     }
@@ -367,27 +344,6 @@ public class JsInterface {
     @JavascriptInterface
     public String getResourceById(int resId) {
         return activity.getResources().getString(resId);
-    }
-
-    @JavascriptInterface
-    public void listViewAdapterAddItem(String arrayJsx) throws JSONException {
-        final JSONArray jsonArray = new JSONArray(arrayJsx);
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
-                    ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
-                    ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-                    Log.d(TAG, "run: " + viewTypeArrayList.toArray());
-                    if (listViewAdapter != null) {
-                        listViewAdapter.addItemsToList(valueArrayList, viewJSXArrayList, viewTypeArrayList);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @JavascriptInterface
@@ -1919,5 +1875,88 @@ public class JsInterface {
             e.printStackTrace();
         }
         return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    @JavascriptInterface
+    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback,final String buttonId) throws Exception {
+        int listViewId = parseInt(id);
+        final ListView listView = (ListView) activity.findViewById(listViewId);
+        JSONArray jsonArray = new JSONArray(text);
+        ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
+        ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
+        ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
+        final ListViewAdapter listViewAdapter = new ListViewAdapter(context,itemCount, valueArrayList,viewJSXArrayList,viewTypeArrayList,dynamicUI);
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    listView.setAdapter(listViewAdapter);
+                    listView.setDividerHeight(0);
+                }catch (Exception e){
+                    Logger.d(LOG_TAG, "Error in rendering listview");
+                }
+            }
+        });
+        if(btnText!=null){
+            LinearLayout linearLayout = new LinearLayout(activity);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+            Button btn = new Button(activity);
+            linearLayout.setId(parseInt(id));
+            linearLayout.setBackgroundResource(R.drawable.layout_padding);
+            btn.setText(btnText);
+            btn.setLayoutParams(lp);
+            btn.setTextColor(ContextCompat.getColor(activity, R.color.white));
+            btn.setBackgroundResource(R.drawable.corner_radius);
+            linearLayout.addView(btn);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String cb = String.format("window.callJSCallback('%s');", callback);
+                    dynamicUI.addJsToWebView(cb);
+                    Log.e(TAG, "onClick: load more");
+                }
+            });
+            listView.addFooterView(linearLayout);
+        }
+    }
+
+    @JavascriptInterface
+    public void appendToListView(final String id, String text, final int itemCount) throws Exception {
+        int listViewId = parseInt(id);
+        final ListView listView = (ListView) activity.findViewById(listViewId);
+        JSONArray jsonArray = new JSONArray(text);
+        final ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray,"view","String");
+        final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray,"value","String");
+        final ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray,"viewType","Int");
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ListAdapter la = listView.getAdapter();
+                    ListViewAdapter adapter;
+                    if(la instanceof HeaderViewListAdapter){
+                        adapter = ((ListViewAdapter) ((HeaderViewListAdapter)la).getWrappedAdapter());
+                    } else {
+                        adapter = (ListViewAdapter) la;
+                    }
+                    adapter.addItemsToList(itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList);
+                    adapter.notifyDataSetChanged();
+                }catch (Exception e){
+                    Logger.d(LOG_TAG, "Error in adding item to listview");
+                }
+            }
+        });
+    }
+    @JavascriptInterface
+    public void hideFooterView(final String id,final String buttonId){
+        try {
+            int listViewId = parseInt(id);
+            int buttonId1= parseInt(buttonId);
+            final ListView listView = (ListView) activity.findViewById(listViewId);
+            LinearLayout btn = (LinearLayout) activity.findViewById(buttonId1);
+            listView.removeFooterView(btn);
+        }catch(Exception e){
+            Log.e("View!!","Exception in hide footer view + "+e);
+        }
     }
 }
