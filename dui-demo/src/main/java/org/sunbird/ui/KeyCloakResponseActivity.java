@@ -70,7 +70,7 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
 //                    Log.e("response from keycloak", GsonUtil.toJson(response));
                     String jwtToken = response.body().string();
                     JSONObject jResponse = new JSONObject(jwtToken);
-
+                    String refreshToken = jResponse.get("refresh_token").toString();
                     jwtToken = jResponse.get("access_token").toString();
 
                     String value = jwtToken.substring(jwtToken.indexOf("."), jwtToken.lastIndexOf("."));
@@ -83,6 +83,7 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                                 .putString("logged_in", "YES")
                                 .putString("user_token", jo.get("sub").toString())
                                 .putString("user_access_token", jwtToken)
+                                .putString("refresh_token", refreshToken)
                                 .apply();
 
                         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.LOGIN, TelemetryAction.LOGIN_SUCCESS, jo.get("sub").toString(), null));

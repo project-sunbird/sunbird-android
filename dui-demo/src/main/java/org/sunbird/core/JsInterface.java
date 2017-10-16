@@ -62,6 +62,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -1958,5 +1959,41 @@ public class JsInterface {
         }catch(Exception e){
             Log.e("View!!","Exception in hide footer view + "+e);
         }
+    }
+
+    @JavascriptInterface
+    public void refreshAccessToken(final String callback){
+        final OkHttpClient client = new OkHttpClient();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestBody formBody = new FormEncodingBuilder()
+                        .add("client_id", "android")
+                        .add("grant_type", "refresh_token")
+                        .add("refresh_token", getFromSharedPrefs("refresh_token"))
+                        .build();
+                Request request = new Request.Builder()
+                        .url(BuildConfig.REDIRECT_BASE_URL + "/auth/realms/sunbird/protocol/openid-connect/token")
+                        .post(formBody)
+                        .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                        .build();
+                Response response = null;
+                try {
+                    response = client.newCall(request).execute();
+                    String body = response.body().string();
+//                    Log.e(TAG, "run: " + body);
+                    final String javascript;
+                    String base64Data = Base64.encodeToString(body.getBytes(), Base64.NO_WRAP);
+                    if (response.isSuccessful()){
+                        javascript = String.format("window.callUICallback('%s','%s','%s','%s');", callback, "success", base64Data, response.code());
+                    } else {
+                        javascript = String.format("window.callUICallback('%s','%s','%s','%s');", callback, "failure", base64Data, response.code());
+                    }
+                    dynamicUI.addJsToWebView(javascript);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
