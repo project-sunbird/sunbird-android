@@ -24594,7 +24594,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 585
+	            lineNumber: 586
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -24604,7 +24604,7 @@
 	          id: this.idSet.viewPagerContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 592
+	            lineNumber: 593
 	          }
 	        }),
 	        dom(
@@ -24612,7 +24612,7 @@
 	          {
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 598
+	              lineNumber: 599
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -24622,7 +24622,7 @@
 	            id: this.idSet.tabLayoutContainer,
 	            height: "56", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 602
+	              lineNumber: 603
 	            }
 	          })
 	        )
@@ -24783,8 +24783,8 @@
 	    }
 	    console.log("window.__API_Profile_Called", window.__API_Profile_Called);
 	
-	    console.log("JBridge.getFromSharedPrefs('logo')", JBridge.getFromSharedPrefs("logo"));
-	    if (responseData.result.response && responseData.result.response.rootOrg && !window.__API_Profile_Called && (JBridge.getFromSharedPrefs("logo") == "__failed" || JBridge.getFromSharedPrefs("orgName") == "__failed" || JBridge.getFromSharedPrefs("channelId") == "__failed")) {
+	    console.log("JBridge.getFromSharedPrefs('logo_url')", JBridge.getFromSharedPrefs("logo_url"));
+	    if (responseData.result.response && responseData.result.response.rootOrg && !window.__API_Profile_Called && (JBridge.getFromSharedPrefs("logo_url") == "__failed" || JBridge.getFromSharedPrefs("orgName") == "__failed" || JBridge.getFromSharedPrefs("channelId") == "__failed")) {
 	      console.log("slug", responseData.result.response.rootOrg.slug);
 	      window.__orgName = responseData.result.response.rootOrg.orgName;
 	      if (responseData.result.response.rootOrg.hashTagId) {
@@ -24806,8 +24806,9 @@
 	
 	    if (state.responseFor == "API_Tenant") {
 	      console.log("responseFor API_Tenant", responseData);
-	      JBridge.setInSharedPrefs("logo", responseData.result.logo);
+	      JBridge.setInSharedPrefs("logo_url", responseData.result.logo);
 	      JBridge.setInSharedPrefs("orgName", window.__orgName);
+	      JBridge.downloadImage(responseData.result.logo);
 	      return;
 	    }
 	
@@ -24913,7 +24914,7 @@
 	          root: "true",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 348
+	            lineNumber: 349
 	          }
 	        });
 	
@@ -24926,7 +24927,7 @@
 	          width: "match_parent",
 	          response: data, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 365
+	            lineNumber: 366
 	          }
 	        });
 	
@@ -24939,7 +24940,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 375
+	            lineNumber: 376
 	          }
 	        });
 	
@@ -24952,7 +24953,7 @@
 	          width: "match_parent",
 	          response: data, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 385
+	            lineNumber: 386
 	          }
 	        });
 	
@@ -24966,7 +24967,7 @@
 	          response: data,
 	          editable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 397
+	            lineNumber: 398
 	          }
 	        });
 	        break;
@@ -24979,7 +24980,7 @@
 	            root: "true",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 407
+	              lineNumber: 408
 	            }
 	          },
 	          dom(TextView, {
@@ -24990,7 +24991,7 @@
 	            width: "match_parent",
 	            gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 411
+	              lineNumber: 412
 	            }
 	          })
 	        );
@@ -25003,7 +25004,7 @@
 	      root: "true",
 	      contentLayout: contentLayout, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 423
+	        lineNumber: 424
 	      }
 	    });
 	
@@ -25028,7 +25029,7 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 446
+	          lineNumber: 447
 	        }
 	      },
 	      dom(ViewWidget, {
@@ -25037,7 +25038,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 452
+	          lineNumber: 453
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -25140,7 +25141,7 @@
 	      defaultIndex: "3",
 	      _onClick: _this3.handleBottomNavBarAction, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 568
+	        lineNumber: 569
 	      }
 	    });
 	
@@ -25526,29 +25527,30 @@
 	        width: "match_parent",
 	        background: window.__Colors.WHITE_F2, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 105
+	          lineNumber: 106
 	        }
 	      });
 	    };
 	
-	    _this.getTodoProfileCard = function () {
+	    _this.getTodoProfileCard = function (index) {
 	      _this.profileData = JSON.parse(utils.decodeBase64(JBridge.getSavedData("savedProfile")));
 	      _this.profileData = JSON.parse(utils.decodeBase64(_this.profileData.response.status[1]));
 	      var data = _this.profileData.result.response;
 	      if (data.completeness == 100 || data.completeness == undefined) {
+	        _this.profileUpdateCardVisibility = "gone";
 	        return dom(LinearLayout, {
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 117
+	            lineNumber: 119
 	          }
 	        });
 	      }
-	      var temp = "visible";
-	      if (data.hasOwnProperty("missingFields") && data.missingFields[0] != undefined) {
-	        var editButtonText = data.missingFields[0];
+	      _this.profileUpdateCardVisibility = "visible";
+	      if (data.hasOwnProperty("missingFields") && index < data.missingFields.length && data.missingFields[index] != undefined) {
+	        var editButtonText = data.missingFields[index];
 	      } else {
 	        var editButtonText = "";
-	        temp = "gone";
+	        _this.profileUpdateCardVisibility = "gone";
 	      }
 	      if (editButtonText == "address") {
 	        editButtonText = window.__S.TITLE_ADDRESS;
@@ -25569,11 +25571,11 @@
 	      } else if (editButtonText == "subject") {
 	        editButtonText = window.__S.SUBJECTS;
 	      } else if (editButtonText == "avatar") {
-	        editButtonText = "avatar";
+	        return _this.getTodoProfileCard(index + 1);
 	      } else if (editButtonText == "location") {
 	        editButtonText = window.__S.CURRENT_LOCATION;
 	      } else {
-	        temp = "gone";
+	        _this.profileUpdateCardVisibility = "gone";
 	      }
 	
 	      return dom(
@@ -25584,10 +25586,10 @@
 	          margin: "16,0,0,0",
 	          orientation: "vertical",
 	          onClick: function onClick() {
-	            return _this.handleEditProfileClick(data.missingFields[0]);
+	            return _this.handleEditProfileClick(data.missingFields[index]);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 167
+	            lineNumber: 169
 	          }
 	        },
 	        dom(
@@ -25599,7 +25601,7 @@
 	            stroke: "2," + window.__Colors.PRIMARY_BLACK_66,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 173
+	              lineNumber: 175
 	            }
 	          },
 	          dom(HorizontalProgressBar, {
@@ -25610,7 +25612,7 @@
 	            currentProgress: data.completeness,
 	            totalProgress: 100, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 179
+	              lineNumber: 181
 	            }
 	          }),
 	          dom(
@@ -25620,18 +25622,18 @@
 	              height: "match_parent",
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 186
+	                lineNumber: 188
 	              }
 	            },
 	            dom(ImageView, {
 	              width: "74",
 	              height: "74",
 	              margin: "16,16,0,0",
-	              circularImageUrl: "0," + data.avatar,
+	              circularImageUrl: "0," + (data.avatar ? data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc"),
 	              stroke: "2," + "#d8d8d8",
 	              cornerRadius: "37", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 190
+	                lineNumber: 192
 	              }
 	            }),
 	            dom(
@@ -25643,7 +25645,7 @@
 	                margin: "8,20,16,20",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 197
+	                  lineNumber: 199
 	                }
 	              },
 	              dom(TextView, {
@@ -25653,7 +25655,7 @@
 	                text: window.__S.STRENGTHEN_YOUR_PROFILE,
 	                style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 203
+	                  lineNumber: 205
 	                }
 	              }),
 	              dom(TextView, {
@@ -25664,7 +25666,7 @@
 	                text: utils.cropText(window.__S.ADD + " " + editButtonText, 14),
 	                style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 209
+	                  lineNumber: 211
 	                }
 	              })
 	            )
@@ -25677,7 +25679,7 @@
 	            height: "match_parent",
 	            margin: "0,8,0,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 219
+	              lineNumber: 221
 	            }
 	          },
 	          dom(
@@ -25687,7 +25689,7 @@
 	              padding: "0,0,8,0",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 223
+	                lineNumber: 225
 	              }
 	            },
 	            dom(TextView, {
@@ -25696,7 +25698,7 @@
 	              text: window.__S.YOUR_PROFILE_IS.format(data.completeness),
 	              style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 227
+	                lineNumber: 229
 	              }
 	            })
 	          ),
@@ -25706,10 +25708,10 @@
 	            height: "wrap_content",
 	            text: window.__S.UPDATE,
 	            onClick: function onClick() {
-	              return _this.handleEditProfileClick(data.missingFields[0]);
+	              return _this.handleEditProfileClick(data.missingFields[index]);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 233
+	              lineNumber: 235
 	            }
 	          })
 	        )
@@ -25745,6 +25747,7 @@
 	    JBridge.logTabScreenEvent("HOME");
 	    window.setEnrolledCourses = _this.setEnrolledCourses;
 	    _this.profileData = "";
+	    _this.profileUpdateCardVisibility = "gone";
 	    return _this;
 	  }
 	
@@ -25763,7 +25766,7 @@
 	          root: "true",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 254
+	            lineNumber: 256
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -25776,7 +25779,7 @@
 	          menuData: this.menuData,
 	          onMenuItemClick: this.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 261
+	            lineNumber: 263
 	          }
 	        }),
 	        dom(
@@ -25786,7 +25789,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 273
+	              lineNumber: 275
 	            }
 	          },
 	          dom(
@@ -25796,16 +25799,17 @@
 	              width: "match_parent",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 278
+	                lineNumber: 280
 	              }
 	            },
 	            dom(CourseInProgressContainer, {
-	              addCard: this.getTodoProfileCard(),
+	              addCard: this.getTodoProfileCard(0),
+	              addCardVisibility: this.profileUpdateCardVisibility,
 	              transparent: "true",
 	              title: window.__S.TO_DO,
 	              onCourseClick: this.handleUserCoursesClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 283
+	                lineNumber: 285
 	              }
 	            }),
 	            this.getSpaceSeparator(),
@@ -25814,7 +25818,7 @@
 	              onCourseOpenClick: this.handleCourseOpen,
 	              onResourceOpenClick: this.handleResourceOpen, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 292
+	                lineNumber: 295
 	              }
 	            })
 	          )
@@ -25901,42 +25905,31 @@
 	      _this2.data = data;
 	
 	      var layout = "";
+	      var layout1 = "";
 	      var rows = "";
 	
 	      if (isDataEmpty) {
-	        layout = dom(
-	          LinearLayout,
-	          {
-	            root: "true",
-	            gravity: "center",
-	            height: "wrap_content",
-	            width: "match_parent", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 76
-	            }
-	          },
-	          dom(TextView, {
+	        if (_this2.props.addCard == undefined || _this2.props.addCardVisibility == "gone") {
+	          layout1 = dom(TextView, {
 	            width: "match_parent",
 	            height: "50",
 	            gravity: "center",
 	            text: window.__S.ERROR_NO_COURSES_ENROLLED,
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 82
+	              lineNumber: 79
 	            }
-	          })
-	        );
+	          });
+	        } else {
+	          layout1 = _this2.getExtraLayout();
+	        }
 	
 	        var cmd = _this2.set({
 	          id: _this2.idSet.viewAllContainer,
 	          visibility: isDataEmpty ? "gone" : "visible"
 	        });
 	
-	        Android.runInUI(cmd, 0, "97", "homelocalJUSPAYnikithshettysunbirdduicomponentsSunbirdCourseInProgressContainerjs");
-	      } else {
-	        rows = _this2.data.map(function (item, index) {
-	          return _this2.getCardLayout(item, index);
-	        });
+	        Android.runInUI(cmd, 0, "95", "homelocalJUSPAYnikithshettysunbirdduicomponentsSunbirdCourseInProgressContainerjs");
 	
 	        layout = dom(
 	          LinearLayout,
@@ -25945,11 +25938,27 @@
 	            height: "wrap_content",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 106
+	              lineNumber: 98
 	            }
 	          },
-	          _this2.getExtraLayout(),
-	          rows
+	          layout1
+	        );
+	      } else {
+	        rows = _this2.data.map(function (item, index) {
+	          return _this2.getCardLayout(item, index);
+	        });
+	        layout = dom(
+	          LinearLayout,
+	          {
+	            root: "true",
+	            height: "wrap_content",
+	            width: "match_parent", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 110
+	            }
+	          },
+	          rows,
+	          _this2.getExtraLayout()
 	        );
 	      }
 	
@@ -35464,7 +35473,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 923
+	            lineNumber: 924
 	          }
 	        },
 	        dom(
@@ -35475,7 +35484,7 @@
 	            gravity: "center",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 928
+	              lineNumber: 929
 	            }
 	          },
 	          dom(ImageView, {
@@ -35484,7 +35493,7 @@
 	            layout_gravity: "center",
 	            circularImageUrl: "1," + imgUrl, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 933
+	              lineNumber: 934
 	            }
 	          }),
 	          dom(TextView, {
@@ -35493,7 +35502,7 @@
 	            layout_gravity: "center",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 938
+	              lineNumber: 939
 	            }
 	          })
 	        )
@@ -36212,6 +36221,7 @@
 	        width: "match_parent",
 	        orientation: "vertical",
 	        clickable: "true",
+	        visibility: "gone",
 	        gravity: "center_horizontal",
 	        root: "true", __source: {
 	          fileName: _jsxFileName,
@@ -36229,7 +36239,7 @@
 	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.ALREADY_HAVE_ACC + "</a></font>",
 	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 734
+	          lineNumber: 735
 	        }
 	      }),
 	      dom(TextView, {
@@ -36243,7 +36253,7 @@
 	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.NO_ACC_YET + "</a></font>",
 	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 745
+	          lineNumber: 746
 	        }
 	      })
 	    );
@@ -36261,7 +36271,7 @@
 	        background: window.__Colors.WHITE,
 	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 762
+	          lineNumber: 763
 	        }
 	      },
 	      dom(
@@ -36275,7 +36285,7 @@
 	          gravity: "center",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 771
+	            lineNumber: 772
 	          }
 	        },
 	        _this3.getTopLayout(),
@@ -36291,7 +36301,7 @@
 	          padding: "12,12,12,12",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 791
+	            lineNumber: 792
 	          }
 	        },
 	        _this3.getSignUpSection()
