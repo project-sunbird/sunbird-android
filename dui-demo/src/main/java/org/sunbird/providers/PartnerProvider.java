@@ -10,6 +10,6 @@ import org.sunbird.BuildConfig;
 public class PartnerProvider extends AbstractPartnerProvider {
     @Override
     public String getPackageName() {
-        return BuildConfig.APP_QUALIFIER;
+        return BuildConfig.APPLICATION_ID;
     }
 }

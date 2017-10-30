@@ -13,11 +13,14 @@ import org.ekstep.genieservices.commons.IResponseHandler;
 import org.ekstep.genieservices.commons.bean.ChildContentRequest;
 import org.ekstep.genieservices.commons.bean.Content;
 import org.ekstep.genieservices.commons.bean.ContentData;
+import org.ekstep.genieservices.commons.bean.ContentDelete;
 import org.ekstep.genieservices.commons.bean.ContentDeleteRequest;
+import org.ekstep.genieservices.commons.bean.ContentDeleteResponse;
 import org.ekstep.genieservices.commons.bean.ContentDetailsRequest;
 import org.ekstep.genieservices.commons.bean.ContentExportRequest;
 import org.ekstep.genieservices.commons.bean.ContentExportResponse;
 import org.ekstep.genieservices.commons.bean.ContentFilterCriteria;
+import org.ekstep.genieservices.commons.bean.ContentImport;
 import org.ekstep.genieservices.commons.bean.ContentImportRequest;
 import org.ekstep.genieservices.commons.bean.ContentImportResponse;
 import org.ekstep.genieservices.commons.bean.ContentSearchCriteria;
@@ -278,7 +281,7 @@ public class GenieWrapper extends Activity {
             ContentSearchCriteria filters;
             if (filterParams.length() > 0 && filterParams.equals("userToken")){
                 builder.contentTypes(strings).limit(count);
-                builder.createdBy(query);
+                builder.createdBy(new String[] {query});
                 filters = builder.build();
             } else if (filterParams.length() > 10 && status.equals("true")) {
                 fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
@@ -413,17 +416,16 @@ public class GenieWrapper extends Activity {
                 e.printStackTrace();
             }
         }
-
-        List<String> contentIds = new ArrayList<String>();
-        contentIds.add(course_id);
         ContentImportRequest.Builder builder = new ContentImportRequest.Builder();
-        builder.toFolder(String.valueOf(directory))
-                .contentIds(contentIds);
 
+        ContentImport contentImport;
         if (isChild.equals("true")) {
-            builder.childContent();
+            contentImport = new ContentImport(course_id, true, String.valueOf(directory));
+        } else {
+            contentImport = new ContentImport(course_id, String.valueOf(directory));
         }
-        builder.correlationData(Util.getCoRelationList());
+        contentImport.setCorrelationData(Util.getCoRelationList());
+        builder.add(contentImport);
         EventBus.getDefault().unregister(this);
         EventBus.getDefault().register(this);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
@@ -449,16 +451,14 @@ public class GenieWrapper extends Activity {
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
             }
         });
-
-
     }
 
     public void deleteContent(String content_id, final String callback) {
         ContentDeleteRequest.Builder contentDeleteBuilder = new ContentDeleteRequest.Builder();
-        contentDeleteBuilder.contentId(content_id);
-        mGenieAsyncService.getContentService().deleteContent(contentDeleteBuilder.build(), new IResponseHandler<Void>() {
+        contentDeleteBuilder.add(new ContentDelete(content_id));
+        mGenieAsyncService.getContentService().deleteContent(contentDeleteBuilder.build(), new IResponseHandler<List<ContentDeleteResponse>>() {
             @Override
-            public void onSuccess(GenieResponse<Void> genieResponse) {
+            public void onSuccess(GenieResponse<List<ContentDeleteResponse>> genieResponse) {
                 String result = GsonUtil.toJson(genieResponse.getResult());
                 String javascript = String.format("window.callJSCallback('%s','%s');", callback, genieResponse.getMessage());
                 dynamicUI.addJsToWebView(javascript);
@@ -466,7 +466,7 @@ public class GenieWrapper extends Activity {
             }
 
             @Override
-            public void onError(GenieResponse<Void> genieResponse) {
+            public void onError(GenieResponse<List<ContentDeleteResponse>> genieResponse) {
 
             }
         });
