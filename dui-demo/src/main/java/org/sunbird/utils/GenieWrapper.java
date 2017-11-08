@@ -35,6 +35,7 @@ import org.ekstep.genieservices.commons.bean.SyncStat;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
+import org.ekstep.genieservices.commons.utils.CollectionUtil;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.ekstep.genieservices.commons.utils.StringUtil;
 import org.ekstep.genieservices.utils.ContentPlayer;
@@ -121,7 +122,8 @@ public class GenieWrapper extends Activity {
 
             @Override
             public void onError(GenieResponse<Content> genieResponse) {
-
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "__failed");
+                dynamicUI.addJsToWebView(javascript);
             }
         });
     }
@@ -253,13 +255,15 @@ public class GenieWrapper extends Activity {
             if (type.equals("Combined")) {
                 stageId = COURSE_AND_RESOURCE_SEARCH;
                 filter_stageId = TelemetryStageId.COURSE_AND_RESOURSE_LIST;
-                strings = new String[6];
+                strings = new String[8];
                 strings[0] = "Story";
                 strings[1] = "Game";
                 strings[2] = "TextBook";
                 strings[3] = "Collection";
                 strings[4] = "Worksheet";
                 strings[5] = "Course";
+                strings[6] = "Resource";
+                strings[7] = "LessonPlan";
             } else if (type.equals("Course")) {
                 stageId = COURSE_SEARCH;
                 filter_stageId = TelemetryStageId.COURSE_LIST;
@@ -268,12 +272,14 @@ public class GenieWrapper extends Activity {
             } else {
                 stageId = RESOURCE_SEARCH;
                 filter_stageId = TelemetryStageId.RESOURCE_LIST;
-                strings = new String[5];
+                strings = new String[7];
                 strings[0] = "Story";
                 strings[1] = "Game";
                 strings[2] = "TextBook";
                 strings[3] = "Collection";
                 strings[4] = "Worksheet";
+                strings[5] = "Resource";
+                strings[6] = "LessonPlan";
             }
 
             String fp;
@@ -499,12 +505,31 @@ public class GenieWrapper extends Activity {
                 e.printStackTrace();
             }
         }
-        EventBus.getDefault().unregister(this);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().register(this);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                List<ContentImportResponse> result = genieResponse.getResult();
+                if(!CollectionUtil.isNullOrEmpty(result)) {
+                    boolean launchDetail = true;
+                    for (ContentImportResponse contentImportResponse : result) {
+                        switch (contentImportResponse.getStatus()) {
+                            case ALREADY_EXIST:
+                                launchDetail = false;
+                                break;
+                        }
+                    }
+
+                    if(launchDetail) {
+                        String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(result.get(0)));
+                        dynamicUI.addJsToWebView(importResponse);
+                    } else {
+                        String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
+                        dynamicUI.addJsToWebView(importResponse);
+                    }
+                }
             }
 
             @Override

@@ -507,7 +507,7 @@ public class JsInterface {
 
                 };
                 if (currentSelected != null && !currentSelected.isEmpty() && !currentSelected.equals("undefined")) {
-                    myCalendar.setTimeInMillis(Long.valueOf(currentSelected));
+                    myCalendar.setTimeInMillis(Long.valueOf(dateToMillisecond(currentSelected)));
                 }
                 datePicker = new DatePickerDialog(activity, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
@@ -1995,5 +1995,10 @@ public class JsInterface {
                 }
             }
         }).start();
+    }
+
+    @JavascriptInterface
+    public boolean isDebuggable(){
+        return BuildConfig.DEBUG;
     }
 }
