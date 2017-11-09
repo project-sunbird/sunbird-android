@@ -1,8 +1,7 @@
 package org.sunbird.utils;
 
 import android.content.Context;
-
-import org.sunbird.analytics.Logger;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -30,7 +29,7 @@ public class FileUtil {
                 data = getFileFromAssets(context, assetsFolder + "/" + fileName);
             }
         } catch (Exception e) {
-            Logger.e(TAG, "not found in internal storage.", e);
+            Log.e(TAG, "not found in internal storage.", e);
             data = getFileFromAssets(context, assetsFolder + "/" + fileName);
         }
         return data;
@@ -46,7 +45,7 @@ public class FileUtil {
             FileInputStream fileInputStream = new FileInputStream(file);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             bos = readFromInputStream(bos, fileInputStream);
-            Logger.d(TAG, fileName + " found in internal storage.");
+            Log.d(TAG, fileName + " found in internal storage.");
             return bos.toByteArray();
         } else {
             return null;
@@ -61,7 +60,7 @@ public class FileUtil {
         InputStream inputStream = context.getAssets().open(fileName, Context.MODE_PRIVATE);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bos = readFromInputStream(bos, inputStream);
-        Logger.d(TAG, fileName + " found in assets.");
+        Log.d(TAG, fileName + " found in assets.");
         return bos.toByteArray();
     }
 
@@ -99,15 +98,14 @@ public class FileUtil {
             outputStream = new FileOutputStream(new File(context.getDir(INTERNAL_STORAGE_DIR, Context.MODE_PRIVATE), fileName));
             outputStream.write(data);
         } catch (Exception ex) {
-            Logger.e(TAG, "Exception while writing stream", ex);
-            Logger.exception(ex);
+            Log.e(TAG, "Exception while writing stream", ex);
         } finally {
             try {
                 if (outputStream != null) {
                     outputStream.close();
                 }
             } catch (IOException ex) {
-                Logger.e(TAG, "Exception while closing stream", ex);
+                Log.e(TAG, "Exception while closing stream", ex);
             }
 
         }
@@ -121,14 +119,14 @@ public class FileUtil {
             ous = readFromInputStream(ous, ios);
             return ous.toByteArray();
         } catch (FileNotFoundException e) {
-            Logger.e(TAG, "Could not read " + fileName, e);
+            Log.e(TAG, "Could not read " + fileName, e);
             throw new RuntimeException(e);
         } catch (IOException e) {
-            Logger.e(TAG, "Could not read " + fileName, e);
+            Log.e(TAG, "Could not read " + fileName, e);
             deleteFileFromInternalStorage(fileName, context);
             throw new RuntimeException(e);
         } catch (Exception e) {
-            Logger.e(TAG, "Could not read " + fileName, e);
+            Log.e(TAG, "Could not read " + fileName, e);
             deleteFileFromInternalStorage(fileName, context);
             throw new RuntimeException(e);
         }
@@ -137,10 +135,10 @@ public class FileUtil {
     public static boolean deleteFileFromInternalStorage(String fileName, Context context) {
         File corruptedFile = getFileFromInternalStorage(fileName, context);
         if (corruptedFile.exists()) {
-            Logger.e(TAG, "FILE CORRUPTED. DISABLING GODEL");
+            Log.e(TAG, "FILE CORRUPTED. DISABLING GODEL");
             return corruptedFile.delete();
         } else {
-            Logger.d(TAG, fileName + " not found");
+            Log.d(TAG, fileName + " not found");
             return false;
         }
     }

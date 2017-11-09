@@ -9,3 +9,5 @@ dui-demo/gradle.properties
 .idea/vcs.xml
 build/
 *.iml
+/.idea/
+/.gradle/

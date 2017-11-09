@@ -3,8 +3,8 @@ package org.sunbird.utils;
 
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
 
-import org.sunbird.analytics.Logger;
 import org.sunbird.models.ApiResponse;
 
 import java.io.ByteArrayInputStream;
@@ -123,15 +123,15 @@ public class RemoteAssetService {
                     }
 
                 } catch (Exception e) {
-                    Logger.e(TAG, "Exception while checking digital signature of asset", e);
+                    Log.e(TAG, "Exception while checking digital signature of asset", e);
                 } finally {
                     if (keyIn != null) keyIn.close();
                 }
             } catch (OutOfMemoryError e) {
-                Logger.e(TAG, "Got Out of Memory Error", e);
+                Log.e(TAG, "Got Out of Memory Error", e);
                 response = null;
             } catch (Exception e) {
-                Logger.e(TAG, "Exception while checking digital signature of asset", e);
+                Log.e(TAG, "Exception while checking digital signature of asset", e);
             }
         }
         //Completes Handling ZIP files

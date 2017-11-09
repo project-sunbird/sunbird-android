@@ -77,7 +77,6 @@ import org.json.JSONObject;
 import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
-import org.sunbird.analytics.Logger;
 import org.sunbird.models.ApiResponse;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
@@ -393,7 +392,7 @@ public class JsInterface {
                     if (view != null) {
                         view.setBackgroundResource(outValue.resourceId);
                     } else {
-                        Logger.e(LOG_TAG, "Unable to find view with resID - " + res + " : " + resInt);
+                        Log.e(LOG_TAG, "Unable to find view with resID - " + res + " : " + resInt);
                     }
                 } catch (Exception e) {
                     //No op
@@ -1311,7 +1310,7 @@ public class JsInterface {
             @Override
             protected void onPostExecute(Object o) {
                 if (o == null) {
-//                    Logger.e(LOG_TAG,"Please check if HTTP method (GET, POST, ..) is supported");
+//                    Log.e(LOG_TAG,"Please check if HTTP method (GET, POST, ..) is supported");
                 }
                 ApiResponse apiResponse = (ApiResponse) o;
 //                Log.e("callAPI", "Response of API: "+ ((ApiResponse) o).getData());
@@ -1412,7 +1411,7 @@ public class JsInterface {
                     String javascript = String.format("window.callJSCallback('%s','%s');", callbackImage, "" + path[0]);
                     dynamicUI.addJsToWebView(javascript);
                 } catch (Exception e) {
-                    Logger.e(LOG_TAG, "Exception", e);
+                    Log.e(LOG_TAG, "Exception", e);
                 }
             }
         });
@@ -1457,7 +1456,7 @@ public class JsInterface {
             os.close();
             return output;
         } catch (IOException e) {
-            Logger.e(LOG_TAG, "Exception while gunzipping - ", e);
+            Log.e(LOG_TAG, "Exception while gunzipping - ", e);
 
             return null;
         }
@@ -1493,7 +1492,7 @@ public class JsInterface {
             }
             return new String(gunzipContent(encryptedWithoutKey));
         } catch (Exception e) {
-            Logger.e(LOG_TAG, "Exception while decrypting - ", e);
+            Log.e(LOG_TAG, "Exception while decrypting - ", e);
             return null;
         }
     }
@@ -1510,7 +1509,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public String decryptAndloadFile(String fileName) {
-        Logger.d(LOG_TAG, "Processing File - " + fileName);
+        Log.d(LOG_TAG, "Processing File - " + fileName);
         //Converting byte data to string is messing the gunzipping of file
         String data = null;
         byte[] fileData = null;
@@ -1894,7 +1893,7 @@ public class JsInterface {
                     listView.setAdapter(listViewAdapter);
                     listView.setDividerHeight(0);
                 }catch (Exception e){
-                    Logger.d(LOG_TAG, "Error in rendering listview");
+                    Log.d(LOG_TAG, "Error in rendering listview");
                 }
             }
         });
@@ -1943,7 +1942,7 @@ public class JsInterface {
                     adapter.addItemsToList(itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList);
                     adapter.notifyDataSetChanged();
                 }catch (Exception e){
-                    Logger.d(LOG_TAG, "Error in adding item to listview");
+                    Log.d(LOG_TAG, "Error in adding item to listview");
                 }
             }
         });

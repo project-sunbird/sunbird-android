@@ -19,6 +19,7 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
     maven { url "https://platform.ekstep.in/downloads/content/repositories/production" }
     maven { url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2' }
+    maven { url "https://jp-sunbird.s3.ap-south-1.amazonaws.com/dui/" }
 
     flatDir {
         dirs 'libs'
@@ -134,7 +135,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile(name: 'CordovaLib', ext: 'aar')
     compile(name: 'geniecanvas', ext: 'aar')
-    compile project(':mystique')
+
+    compile 'in.juspay:mystique:0.1.0'
 
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
