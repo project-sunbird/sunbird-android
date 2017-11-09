@@ -57,11 +57,11 @@
 	
 	var _container2 = _interopRequireDefault(_container);
 	
-	var _ext = __webpack_require__(485);
+	var _ext = __webpack_require__(486);
 	
 	var _ext2 = _interopRequireDefault(_ext);
 	
-	var _index = __webpack_require__(486);
+	var _index = __webpack_require__(487);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -364,8 +364,9 @@
 	var ProfileActivity = __webpack_require__(482);
 	
 	var ContentPreviewScreen = __webpack_require__(483);
+	var QRActivity = __webpack_require__(484);
 	// ScreenActions
-	var RootScreenActions = __webpack_require__(484);
+	var RootScreenActions = __webpack_require__(485);
 	
 	var determineScreen = function determineScreen(screenName, state) {
 	  var screen;
@@ -435,6 +436,10 @@
 	
 	    case "RootScreen":
 	      screen = new (RootScreen(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	
+	    case "QRActivity":
+	      screen = new (QRActivity(dispatcher, RootScreenActions))(null, null, state);
 	      break;
 	  }
 	
@@ -12376,6 +12381,11 @@
 	    case "UserActivity":
 	      localState.isInit = false;
 	      localState.currScreen = "UserActivity";
+	      break;
+	
+	    case "QRActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "QRActivity";
 	      break;
 	
 	    case "AdditionalInformationActivity":
@@ -24457,7 +24467,7 @@
 	        var whatToSend = [];
 	        var event = { tag: "OPEN_UserActivity", contents: whatToSend };
 	        window.__runDuiCallback(event);
-	      }, 1000);
+	      }, 2000);
 	    };
 	
 	    _this.handleStateChange = function () {
@@ -25546,6 +25556,10 @@
 	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
 	        window.__runDuiCallback(event);
+	      } else if (url == "ic_scanqr") {
+	        var whatToSend = [];
+	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
+	        window.__runDuiCallback(event);
 	      }
 	    };
 	
@@ -25577,7 +25591,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.WHITE_F2, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 106
+	          lineNumber: 111
 	        }
 	      });
 	    };
@@ -25591,7 +25605,7 @@
 	        return dom(LinearLayout, {
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 119
+	            lineNumber: 124
 	          }
 	        });
 	      }
@@ -25639,7 +25653,7 @@
 	            return _this.handleEditProfileClick(data.missingFields[index]);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 169
+	            lineNumber: 174
 	          }
 	        },
 	        dom(
@@ -25651,7 +25665,7 @@
 	            stroke: "2," + window.__Colors.PRIMARY_BLACK_66,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 175
+	              lineNumber: 180
 	            }
 	          },
 	          dom(HorizontalProgressBar, {
@@ -25662,7 +25676,7 @@
 	            currentProgress: data.completeness,
 	            totalProgress: 100, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 181
+	              lineNumber: 186
 	            }
 	          }),
 	          dom(
@@ -25672,7 +25686,7 @@
 	              height: "match_parent",
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 188
+	                lineNumber: 193
 	              }
 	            },
 	            dom(ImageView, {
@@ -25683,7 +25697,7 @@
 	              stroke: "2," + "#d8d8d8",
 	              cornerRadius: "37", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 192
+	                lineNumber: 197
 	              }
 	            }),
 	            dom(
@@ -25695,7 +25709,7 @@
 	                margin: "8,20,16,20",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 199
+	                  lineNumber: 204
 	                }
 	              },
 	              dom(TextView, {
@@ -25705,7 +25719,7 @@
 	                text: window.__S.STRENGTHEN_YOUR_PROFILE,
 	                style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 205
+	                  lineNumber: 210
 	                }
 	              }),
 	              dom(TextView, {
@@ -25716,7 +25730,7 @@
 	                text: utils.cropText(window.__S.ADD + " " + editButtonText, 14),
 	                style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 211
+	                  lineNumber: 216
 	                }
 	              })
 	            )
@@ -25729,7 +25743,7 @@
 	            height: "match_parent",
 	            margin: "0,8,0,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 221
+	              lineNumber: 226
 	            }
 	          },
 	          dom(
@@ -25739,7 +25753,7 @@
 	              padding: "0,0,8,0",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 225
+	                lineNumber: 230
 	              }
 	            },
 	            dom(TextView, {
@@ -25748,7 +25762,7 @@
 	              text: window.__S.YOUR_PROFILE_IS.format(data.completeness),
 	              style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 229
+	                lineNumber: 234
 	              }
 	            })
 	          ),
@@ -25761,7 +25775,7 @@
 	              return _this.handleEditProfileClick(data.missingFields[index]);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 235
+	              lineNumber: 240
 	            }
 	          })
 	        )
@@ -25792,7 +25806,9 @@
 	    };
 	
 	    _this.menuData = {
-	      url: [{ imageUrl: "ic_action_search" }]
+	      url: [
+	      // { imageUrl: "ic_scanqr"}, // hide qr scanner feature
+	      { imageUrl: "ic_action_search" }]
 	    };
 	    JBridge.logTabScreenEvent("HOME");
 	    window.setEnrolledCourses = _this.setEnrolledCourses;
@@ -25816,7 +25832,7 @@
 	          root: "true",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 256
+	            lineNumber: 261
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -25829,7 +25845,7 @@
 	          menuData: this.menuData,
 	          onMenuItemClick: this.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 263
+	            lineNumber: 268
 	          }
 	        }),
 	        dom(
@@ -25839,7 +25855,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 275
+	              lineNumber: 280
 	            }
 	          },
 	          dom(
@@ -25849,7 +25865,7 @@
 	              width: "match_parent",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 280
+	                lineNumber: 285
 	              }
 	            },
 	            dom(CourseInProgressContainer, {
@@ -25859,7 +25875,7 @@
 	              title: window.__S.TO_DO,
 	              onCourseClick: this.handleUserCoursesClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 285
+	                lineNumber: 290
 	              }
 	            }),
 	            this.getSpaceSeparator(),
@@ -25868,7 +25884,7 @@
 	              onCourseOpenClick: this.handleCourseOpen,
 	              onResourceOpenClick: this.handleResourceOpen, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 295
+	                lineNumber: 300
 	              }
 	            })
 	          )
@@ -26007,8 +26023,8 @@
 	              lineNumber: 110
 	            }
 	          },
-	          rows,
-	          _this2.getExtraLayout()
+	          _this2.getExtraLayout(),
+	          rows
 	        );
 	      }
 	
@@ -36356,20 +36372,16 @@
 	        _this3.getForum()
 	      ),
 	      _this3.getOptions(),
-	      dom(
-	        LinearLayout,
-	        {
-	          height: "wrap_content",
-	          width: "match_parent",
-	          gravity: "center_horizontal",
-	          padding: "12,12,12,12",
-	          orientation: "vertical", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 782
-	          }
-	        },
-	        _this3.getSignUpSection()
-	      )
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        gravity: "center_horizontal",
+	        padding: "12,12,12,12",
+	        orientation: "vertical", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 782
+	        }
+	      })
 	    );
 	  };
 	
@@ -50390,6 +50402,435 @@
 
 	"use strict";
 	
+	var _jsxFileName = "/home/local/JUSPAY/nikith.shetty/sunbird-dui/views/QRActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var FrameLayout = __webpack_require__(360);
+	var callbackMapper = __webpack_require__(329);
+	var objectAssign = __webpack_require__(317);
+	var View = __webpack_require__(331);
+	var utils = __webpack_require__(407);
+	var TextView = __webpack_require__(342);
+	var PageOption = __webpack_require__(393);
+	var Button = __webpack_require__(394);
+	var ImageView = __webpack_require__(350);
+	
+	var _this;
+	window.R = __webpack_require__(7);
+	
+	var SimpleToolbar = __webpack_require__(380);
+	
+	var QRActivity = function (_View) {
+	  _inherits(QRActivity, _View);
+	
+	  function QRActivity(props, children, state) {
+	    _classCallCheck(this, QRActivity);
+	
+	    var _this2 = _possibleConstructorReturn(this, (QRActivity.__proto__ || Object.getPrototypeOf(QRActivity)).call(this, props, children, state));
+	
+	    _this2.openFrame = function () {
+	      var callback = callbackMapper.map(function (data) {
+	        console.log("Permission callback", data);
+	        if (data == "android.permission.CAMERA") {
+	          JBridge.setKey("isPermissionSetCamera", "true");
+	          QRScanner.openQRScanner(_this.idSet.frameLayout);
+	        }
+	        if (data == "DeniedPermanently") {
+	          console.log("DENIED DeniedPermanently");
+	          window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.CAMERA);
+	        }
+	        if (data == "ERROR") {
+	          console.log("DENIED");
+	          _this.showErrorPopup("PERMISSION");
+	        }
+	      });
+	      JBridge.setPermissions(callback, "android.permission.CAMERA");
+	    };
+	
+	    _this2.onBackPressed = function () {
+	      QRScanner.closeQRScanner();
+	      var whatToSend = [];
+	      var event = { tag: "BACK_QRActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
+	
+	    _this2.barcodeResult = function (barcode) {
+	      window.__LoaderDialog.show();
+	      QRScanner.closeQRScanner();
+	      console.log("barcode data", atob(barcode));
+	      barcode = atob(barcode);
+	      if (!_this2.isValidBarcode(barcode)) {
+	        _this2.showErrorPopup("WRONGQR");
+	        return;
+	      }
+	      var identifier = barcode.substr(barcode.lastIndexOf("/") + 1, barcode.length);
+	      var callback = callbackMapper.map(function (data) {
+	        console.log("getContentDetails ", data);
+	        if (data[0] == "__failed") {
+	          window.__LoaderDialog.hide();
+	          _this.showErrorPopup("WRONGQR");
+	          return;
+	        }
+	        var item = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
+	        console.log("Callback data in QRActivity", item);
+	        window.__LoaderDialog.hide();
+	        if (item.contentType.toLowerCase() == "course") {
+	          console.log("Content type is course", item.contentData);
+	          var whatToSend = { course: JSON.stringify(item.contentData) };
+	          var event = { tag: "OPEN_CourseInfoActivity_QR", contents: whatToSend };
+	          window.__runDuiCallback(event);
+	        } else if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
+	          var itemDetails = JSON.stringify(item.contentData);
+	          _this.deepLinkCollectionDetails = itemDetails;
+	          console.log("Content type is collecion or TextBook", _this.deepLinkCollectionDetails);
+	
+	          var whatToSend = { course: _this.deepLinkCollectionDetails };
+	          var event = { tag: "OPEN_CourseEnrolledActivity_QR", contents: whatToSend };
+	          window.__runDuiCallback(event);
+	        } else {
+	          var resDetails = {};
+	          var headFooterTitle = item.contentType + (item.hasOwnProperty("size") ? " [" + utils.formatBytes(item.size) + "]" : "");
+	
+	          resDetails['imageUrl'] = item.hasOwnProperty("contentData") ? "file://" + item.basePath + "/" + item.contentData.appIcon : item.appIcon;
+	          resDetails['title'] = item.contentData.name;
+	          resDetails['description'] = item.description;
+	          resDetails['headFooterTitle'] = headFooterTitle;
+	          resDetails['identifier'] = item.identifier;
+	          resDetails['content'] = item;
+	
+	          console.log("resourceDetails IN QRActivity", resDetails);
+	
+	          var whatToSend = { resourceDetails: JSON.stringify(resDetails) };
+	          var event = { tag: "OPEN_ResourceDetailActivity_QR", contents: whatToSend };
+	          window.__runDuiCallback(event);
+	        }
+	      });
+	
+	      if (JBridge.isNetworkAvailable()) JBridge.getContentDetails(identifier, callback);else _this2.showErrorPopup("NOINTERNET");
+	    };
+	
+	    _this2.showErrorPopup = function (type) {
+	      window.__LoaderDialog.hide();
+	      console.log("showErrorPopup", type);
+	      var cmd;
+	      if (type == "PERMISSION") {
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionSettingsMsg,
+	          text: window.__S.CAMERA_PERMISSION_DENIED
+	        });
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionTextHolder,
+	          visibility: "visible",
+	          text: window.__S.CAMERA_PERMISSION_SETTINGS.format(JBridge.getAppName())
+	        });
+	      } else if (type == "WRONGQR") {
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionSettingsMsg,
+	          text: window.__S.UNKNOWN_QR
+	        });
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionTextHolder,
+	          visibility: "gone"
+	        });
+	      } else if (type == "NOINTERNET") {
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionSettingsMsg,
+	          text: window.__S.ERROR_NO_INTERNET_MESSAGE
+	        });
+	        cmd += _this2.set({
+	          id: _this2.idSet.permissionTextHolder,
+	          visibility: "gone"
+	        });
+	      }
+	      _this2.replaceChild(_this2.idSet.footer, _this2.getFooter(type).render(), 0);
+	      cmd += _this2.set({
+	        id: _this2.idSet.errorPopup,
+	        visibility: "visible"
+	      });
+	      Android.runInUI(cmd, null, "167", "homelocalJUSPAYnikithshettysunbirdduiviewsQRActivityjs");
+	    };
+	
+	    _this2.isValidBarcode = function (data) {
+	      var re = new RegExp(JBridge.getApiUrl());
+	      console.log("regex match - " + re.test(data));
+	      if (re.test(data)) {
+	        return true;
+	      }
+	      return false;
+	    };
+	
+	    _this2.handleRetry = function () {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.errorPopup,
+	        visibility: "gone"
+	      });
+	      Android.runInUI(cmd, null, "184", "homelocalJUSPAYnikithshettysunbirdduiviewsQRActivityjs");
+	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
+	    };
+	
+	    _this2.openSettings = function () {
+	      JBridge.showPermissionScreen();
+	    };
+	
+	    _this2.getFooter = function (type) {
+	      if (type == "PERMISSION") {
+	        return dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 195
+	            }
+	          },
+	          dom(Button, {
+	            id: _this2.idSet.openSettingsBtn,
+	            type: "BigButton_Primary_WB",
+	            text: window.__S.OPEN_SETTINGS,
+	            margin: "10,20,10,20",
+	            onClick: _this2.openSettings, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 198
+	            }
+	          })
+	        );
+	      } else if (type == "WRONGQR" || type == "NOINTERNET") {
+	        _this2.goBackBtn = {
+	          text: window.__S.CANCEL,
+	          id: _this2.idSet.goBackBtn,
+	          isClickable: "true",
+	          onClick: _this2.onBackPressed
+	        };
+	
+	        _this2.tryAgainBtn = {
+	          text: window.__S.TRY_AGAIN,
+	          id: _this2.idSet.tryAgainBtn,
+	          isClickable: "false",
+	          onClick: _this2.handleRetry
+	        };
+	        return dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            margin: "0, 16, 0, 0", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 221
+	            }
+	          },
+	          dom(PageOption, {
+	            id: _this2.idSet.pageOption,
+	            visibility: "visible",
+	            width: "match_parent",
+	            buttonItems: [_this2.goBackBtn, _this2.tryAgainBtn],
+	            hideDivider: true,
+	            onButtonClick: _this2.handlePageOption, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 225
+	            }
+	          })
+	        );
+	      }
+	    };
+	
+	    _this2.getErrorPopup = function () {
+	      var popup = dom(
+	        RelativeLayout,
+	        {
+	          width: "match_parent",
+	          height: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 239
+	          }
+	        },
+	        dom(LinearLayout, {
+	          width: "match_parent",
+	          height: "match_parent",
+	          clickable: "true",
+	          background: "#000000",
+	          alpha: "0.5", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 242
+	          }
+	        }),
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            orientation: "vertical",
+	            background: "#ffffff",
+	            gravity: "center_horizontal",
+	            alignParentBottom: "true, -1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 248
+	            }
+	          },
+	          dom(ImageView, {
+	            width: "87",
+	            height: "78",
+	            margin: "0,100,0,0",
+	            gravity: "center_horizontal",
+	            imageUrl: "ic_warning_grey", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 255
+	            }
+	          }),
+	          dom(TextView, {
+	            width: "260",
+	            height: "wrap_content",
+	            margin: "0,20,0,0",
+	            gravity: "center_horizontal",
+	            style: window.__TextStyle.textStyle.HINT.DULL,
+	            id: _this2.idSet.permissionSettingsMsg,
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 261
+	            }
+	          }),
+	          dom(TextView, {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            id: _this2.idSet.permissionTextHolder,
+	            margin: "16,80,16,16",
+	            gravity: "center_horizontal",
+	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 269
+	            }
+	          }),
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            orientation: "vertical",
+	            id: _this2.idSet.footer, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 276
+	            }
+	          })
+	        )
+	      );
+	      return popup;
+	    };
+	
+	    _this2.setIds(["frameLayout", "loading", "errorPopup", "tryAgainBtn", "goBackBtn", "pageOption", "openSettingsBtn", "permissionSettingsMsg", "permissionTextHolder", "footer"]);
+	
+	    _this2.shouldCacheScreen = false;
+	    _this2.menuData = { url: [] };
+	
+	    window.BarcodeResult = _this2.barcodeResult;
+	    _this = _this2;
+	    return _this2;
+	  }
+	
+	  _createClass(QRActivity, [{
+	    key: "render",
+	    value: function render() {
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "match_parent",
+	          root: "true",
+	          clickable: "true",
+	          background: "#FFFFFF",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 288
+	          }
+	        },
+	        dom(
+	          RelativeLayout,
+	          {
+	            width: "match_parent",
+	            height: "match_parent", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 295
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              height: "match_parent",
+	              orientation: "vertical", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 298
+	              }
+	            },
+	            dom(SimpleToolbar, {
+	              title: "Scan QR Code",
+	              width: "match_parent",
+	              showMenu: "true",
+	              invert: "true",
+	              menuData: this.menuData,
+	              onBackPress: this.onBackPressed, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 302
+	              }
+	            }),
+	            dom(ImageView, {
+	              margin: "0,0, 0,0",
+	              width: "match_parent",
+	              background: "#123123",
+	              height: "wrap_content",
+	              adjustViewBounds: "true",
+	              imageUrl: "ic_scanqrdemo", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 309
+	              }
+	            }),
+	            dom(FrameLayout, {
+	              id: this.idSet.frameLayout,
+	              afterRender: this.openFrame,
+	              width: "match_parent",
+	              height: "match_parent",
+	              background: "#FFFFFF", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 316
+	              }
+	            })
+	          ),
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              height: "match_parent",
+	              visibility: "gone",
+	              id: this.idSet.errorPopup, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 323
+	              }
+	            },
+	            this.getErrorPopup()
+	          )
+	        )
+	      );
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return QRActivity;
+	}(View);
+	
+	module.exports = Connector(QRActivity);
+
+/***/ }),
+/* 485 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
 	/*
 	Copyright (c) 2012-2017 "JUSPAY Technologies"
 	JUSPAY Technologies Pvt. Ltd. [https://www.juspay.in]
@@ -50427,7 +50868,7 @@
 	};
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -50457,32 +50898,32 @@
 	};
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Console = __webpack_require__(632);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Data_Foreign_Generic = __webpack_require__(634);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Fragments_CommunityFragment = __webpack_require__(668);
-	var Fragments_CourseFragment = __webpack_require__(689);
-	var Fragments_HomeFragment = __webpack_require__(690);
-	var Fragments_ProfileFragment = __webpack_require__(691);
-	var Fragments_ResourceFragment = __webpack_require__(692);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Console = __webpack_require__(633);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Data_Foreign_Generic = __webpack_require__(635);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Fragments_CommunityFragment = __webpack_require__(669);
+	var Fragments_CourseFragment = __webpack_require__(690);
+	var Fragments_HomeFragment = __webpack_require__(691);
+	var Fragments_ProfileFragment = __webpack_require__(692);
+	var Fragments_ResourceFragment = __webpack_require__(693);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var mainActivity = function mainActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -50822,15 +51263,15 @@
 	};
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Unit = __webpack_require__(495);
+	var Control_Apply = __webpack_require__(489);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Unit = __webpack_require__(496);
 	var Applicative = function Applicative(Apply0, pure) {
 	    this.Apply0 = Apply0;
 	    this.pure = pure;
@@ -50894,16 +51335,16 @@
 	};
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(489);
-	var Control_Category = __webpack_require__(490);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
+	var $foreign = __webpack_require__(490);
+	var Control_Category = __webpack_require__(491);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
 	var Apply = function Apply(Functor0, apply) {
 	    this.Functor0 = Functor0;
 	    this.apply = apply;
@@ -50999,7 +51440,7 @@
 	};
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -51018,13 +51459,13 @@
 	};
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
 	var Category = function Category(Semigroupoid0, id) {
 	    this.Semigroupoid0 = Semigroupoid0;
 	    this.id = id;
@@ -51044,7 +51485,7 @@
 	};
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -51078,13 +51519,13 @@
 	};
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
+	var Control_Category = __webpack_require__(491);
 	var on = function on(f) {
 	    return function (g) {
 	        return function (x) {
@@ -51125,16 +51566,16 @@
 	};
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(494);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(495);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Unit = __webpack_require__(496);
 	var Functor = function Functor(map) {
 	    this.map = map;
 	};
@@ -51187,7 +51628,7 @@
 	};
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -51204,14 +51645,14 @@
 	};
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(496);
-	var Data_Show = __webpack_require__(497);
+	var $foreign = __webpack_require__(497);
+	var Data_Show = __webpack_require__(498);
 	var showUnit = new Data_Show.Show(function (v) {
 	    return "unit";
 	});
@@ -51221,7 +51662,7 @@
 	};
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -51229,13 +51670,13 @@
 	exports.unit = {};
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(498);
+	var $foreign = __webpack_require__(499);
 	var Show = function Show(show) {
 	    this.show = show;
 	};
@@ -51270,7 +51711,7 @@
 	};
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -51348,19 +51789,19 @@
 	};
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(500);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(501);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Unit = __webpack_require__(496);
 	var Bind = function Bind(Apply0, bind) {
 	    this.Apply0 = Apply0;
 	    this.bind = bind;
@@ -51445,7 +51886,7 @@
 	};
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -51461,47 +51902,47 @@
 	};
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(502);
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Aff_Internal = __webpack_require__(513);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Parallel = __webpack_require__(592);
-	var Control_Parallel_Class = __webpack_require__(593);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Function_Uncurried = __webpack_require__(576);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Time_Duration = __webpack_require__(613);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
-	var Unsafe_Coerce = __webpack_require__(611);
+	var $foreign = __webpack_require__(503);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Aff_Internal = __webpack_require__(514);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Parallel = __webpack_require__(593);
+	var Control_Parallel_Class = __webpack_require__(594);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Function_Uncurried = __webpack_require__(577);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Time_Duration = __webpack_require__(614);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
+	var Unsafe_Coerce = __webpack_require__(612);
 	var ParAff = function ParAff(x) {
 	    return x;
 	};
@@ -51840,7 +52281,7 @@
 	};
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/* globals setTimeout, clearTimeout, setImmediate, clearImmediate */
@@ -52176,10 +52617,10 @@
 	    }(a);
 	  };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(503).setImmediate, __webpack_require__(503).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(504).setImmediate, __webpack_require__(504).clearImmediate))
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var apply = Function.prototype.apply;
@@ -52232,13 +52673,13 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(504);
+	__webpack_require__(505);
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -52428,10 +52869,10 @@
 	    attachTo.clearImmediate = clearImmediate;
 	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(505)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(506)))
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -52621,14 +53062,14 @@
 
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(493);
-	var Data_Semigroup = __webpack_require__(507);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Semigroup = __webpack_require__(508);
 	var Alt = function Alt(Functor0, alt) {
 	    this.Functor0 = Functor0;
 	    this.alt = alt;
@@ -52646,15 +53087,15 @@
 	};
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(508);
-	var Data_Unit = __webpack_require__(495);
-	var Data_Void = __webpack_require__(509);
+	var $foreign = __webpack_require__(509);
+	var Data_Unit = __webpack_require__(496);
+	var Data_Void = __webpack_require__(510);
 	var Semigroup = function Semigroup(append) {
 	    this.append = append;
 	};
@@ -52691,7 +53132,7 @@
 	};
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -52711,13 +53152,13 @@
 	};
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Show = __webpack_require__(497);
+	var Data_Show = __webpack_require__(498);
 	var Void = function Void(x) {
 	    return x;
 	};
@@ -52742,17 +53183,17 @@
 	};
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Functor = __webpack_require__(493);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(494);
 	var Alternative = function Alternative(Applicative0, Plus1) {
 	    this.Applicative0 = Applicative0;
 	    this.Plus1 = Plus1;
@@ -52768,14 +53209,14 @@
 	};
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Data_Functor = __webpack_require__(493);
+	var Control_Alt = __webpack_require__(507);
+	var Data_Functor = __webpack_require__(494);
 	var Plus = function Plus(Alt0, empty) {
 	    this.Alt0 = Alt0;
 	    this.empty = empty;
@@ -52793,17 +53234,17 @@
 	};
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Unit = __webpack_require__(495);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Unit = __webpack_require__(496);
 	var Monad = function Monad(Applicative0, Bind1) {
 	    this.Applicative0 = Applicative0;
 	    this.Bind1 = Bind1;
@@ -52867,17 +53308,17 @@
 	};
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(514);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Data_Function_Uncurried = __webpack_require__(576);
-	var Data_Maybe = __webpack_require__(558);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(515);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Data_Function_Uncurried = __webpack_require__(577);
+	var Data_Maybe = __webpack_require__(559);
+	var Prelude = __webpack_require__(531);
 	module.exports = {
 	    _killVar: $foreign._killVar,
 	    _makeVar: $foreign._makeVar,
@@ -52889,7 +53330,7 @@
 	};
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53019,21 +53460,21 @@
 	};
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(516);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(517);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var $$try = function $$try(action) {
 	    return $foreign.catchException(function ($0) {
 	        return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)(Data_Either.Left.create($0));
@@ -53057,7 +53498,7 @@
 	};
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53109,19 +53550,19 @@
 	};
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(519);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Unit = __webpack_require__(496);
 	var monadEff = new Control_Monad.Monad(function () {
 	    return applicativeEff;
 	}, function () {
@@ -53151,7 +53592,7 @@
 	};
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53215,36 +53656,36 @@
 	};
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bifoldable = __webpack_require__(522);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Bitraversable = __webpack_require__(571);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bifoldable = __webpack_require__(523);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Bitraversable = __webpack_require__(572);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Left = function () {
 	    function Left(value0) {
 	        this.value0 = value0;
@@ -53655,16 +54096,16 @@
 	};
 
 /***/ }),
-/* 520 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(521);
-	var Control_Category = __webpack_require__(490);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Semigroup = __webpack_require__(507);
+	var $foreign = __webpack_require__(522);
+	var Control_Category = __webpack_require__(491);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Semigroup = __webpack_require__(508);
 	var Extend = function Extend(Functor0, extend) {
 	    this.Functor0 = Functor0;
 	    this.extend = extend;
@@ -53728,7 +54169,7 @@
 	};
 
 /***/ }),
-/* 521 */
+/* 522 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53742,32 +54183,32 @@
 	};
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifunctor_Clown = __webpack_require__(523);
-	var Data_Bifunctor_Flip = __webpack_require__(552);
-	var Data_Bifunctor_Joker = __webpack_require__(553);
-	var Data_Bifunctor_Product = __webpack_require__(554);
-	var Data_Bifunctor_Wrap = __webpack_require__(555);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Monoid_Conj = __webpack_require__(566);
-	var Data_Monoid_Disj = __webpack_require__(567);
-	var Data_Monoid_Dual = __webpack_require__(568);
-	var Data_Monoid_Endo = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifunctor_Clown = __webpack_require__(524);
+	var Data_Bifunctor_Flip = __webpack_require__(553);
+	var Data_Bifunctor_Joker = __webpack_require__(554);
+	var Data_Bifunctor_Product = __webpack_require__(555);
+	var Data_Bifunctor_Wrap = __webpack_require__(556);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Monoid_Conj = __webpack_require__(567);
+	var Data_Monoid_Disj = __webpack_require__(568);
+	var Data_Monoid_Dual = __webpack_require__(569);
+	var Data_Monoid_Endo = __webpack_require__(570);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Bifoldable = function Bifoldable(bifoldMap, bifoldl, bifoldr) {
 	    this.bifoldMap = bifoldMap;
 	    this.bifoldl = bifoldl;
@@ -54066,24 +54507,24 @@
 	};
 
 /***/ }),
-/* 523 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Clown = function Clown(x) {
 	    return x;
 	};
@@ -54146,13 +54587,13 @@
 	};
 
 /***/ }),
-/* 524 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Biapply = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
 	var Biapplicative = function Biapplicative(Biapply0, bipure) {
 	    this.Biapply0 = Biapply0;
 	    this.bipure = bipure;
@@ -54166,15 +54607,15 @@
 	};
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Function = __webpack_require__(492);
+	var Control_Category = __webpack_require__(491);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Function = __webpack_require__(493);
 	var Biapply = function Biapply(Bifunctor0, biapply) {
 	    this.Bifunctor0 = Bifunctor0;
 	    this.biapply = biapply;
@@ -54230,13 +54671,13 @@
 	};
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
+	var Control_Category = __webpack_require__(491);
 	var Bifunctor = function Bifunctor(bimap) {
 	    this.bimap = bimap;
 	};
@@ -54259,15 +54700,15 @@
 	};
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(528);
-	var Data_Unit = __webpack_require__(495);
-	var Data_Void = __webpack_require__(509);
+	var $foreign = __webpack_require__(529);
+	var Data_Unit = __webpack_require__(496);
+	var Data_Void = __webpack_require__(510);
 	var Eq = function Eq(eq) {
 	    this.eq = eq;
 	};
@@ -54336,7 +54777,7 @@
 	};
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -54366,16 +54807,16 @@
 	};
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Prelude = __webpack_require__(530);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Prelude = __webpack_require__(531);
 	var Newtype = function Newtype(unwrap, wrap) {
 	    this.unwrap = unwrap;
 	    this.wrap = wrap;
@@ -54575,42 +55016,42 @@
 	};
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_DivisionRing = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(527);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Field = __webpack_require__(550);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_NaturalTransformation = __webpack_require__(551);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Data_Void = __webpack_require__(509);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_DivisionRing = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(528);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Field = __webpack_require__(551);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_NaturalTransformation = __webpack_require__(552);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Data_Void = __webpack_require__(510);
 	module.exports = {};
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -54622,14 +55063,14 @@
 	};
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Unit = __webpack_require__(495);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Unit = __webpack_require__(496);
 	var BooleanAlgebra = function BooleanAlgebra(HeytingAlgebra0) {
 	    this.HeytingAlgebra0 = HeytingAlgebra0;
 	};
@@ -54652,14 +55093,14 @@
 	};
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(534);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(535);
+	var Data_Unit = __webpack_require__(496);
 	var HeytingAlgebra = function HeytingAlgebra(conj, disj, ff, implies, not, tt) {
 	    this.conj = conj;
 	    this.disj = disj;
@@ -54749,7 +55190,7 @@
 	};
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -54771,16 +55212,16 @@
 	};
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(536);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(537);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Unit = __webpack_require__(496);
 	var Bounded = function Bounded(Ord0, bottom, top) {
 	    this.Ord0 = Ord0;
 	    this.bottom = bottom;
@@ -54819,7 +55260,7 @@
 	};
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -54831,21 +55272,21 @@
 	exports.bottomChar = String.fromCharCode(0);
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(538);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_Ord_Unsafe = __webpack_require__(539);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Unit = __webpack_require__(495);
-	var Data_Void = __webpack_require__(509);
+	var $foreign = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_Ord_Unsafe = __webpack_require__(540);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Unit = __webpack_require__(496);
+	var Data_Void = __webpack_require__(510);
 	var Ord = function Ord(Eq0, compare) {
 	    this.Eq0 = Eq0;
 	    this.compare = compare;
@@ -55106,7 +55547,7 @@
 	};
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55138,21 +55579,21 @@
 	};
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(540);
-	var Data_Ordering = __webpack_require__(541);
+	var $foreign = __webpack_require__(541);
+	var Data_Ordering = __webpack_require__(542);
 	var unsafeCompare = $foreign.unsafeCompareImpl(Data_Ordering.LT.value)(Data_Ordering.EQ.value)(Data_Ordering.GT.value);
 	module.exports = {
 	    unsafeCompare: unsafeCompare
 	};
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55170,15 +55611,15 @@
 	};
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(527);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
 	var LT = function () {
 	    function LT() {};
 	    LT.value = new LT();
@@ -55257,15 +55698,15 @@
 	};
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(543);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(544);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Unit = __webpack_require__(496);
 	var Ring = function Ring(Semiring0, sub) {
 	    this.Semiring0 = Semiring0;
 	    this.sub = sub;
@@ -55313,7 +55754,7 @@
 	};
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55332,14 +55773,14 @@
 	};
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(545);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(546);
+	var Data_Unit = __webpack_require__(496);
 	var Semiring = function Semiring(add, mul, one, zero) {
 	    this.add = add;
 	    this.mul = mul;
@@ -55401,7 +55842,7 @@
 	};
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55433,15 +55874,15 @@
 	};
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Unit = __webpack_require__(495);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Unit = __webpack_require__(496);
 	var CommutativeRing = function CommutativeRing(Ring0) {
 	    this.Ring0 = Ring0;
 	};
@@ -55468,15 +55909,15 @@
 	};
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semiring = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semiring = __webpack_require__(545);
 	var DivisionRing = function DivisionRing(Ring0, recip) {
 	    this.Ring0 = Ring0;
 	    this.recip = recip;
@@ -55512,19 +55953,19 @@
 	};
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(549);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_Eq = __webpack_require__(527);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semiring = __webpack_require__(544);
+	var $foreign = __webpack_require__(550);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_Eq = __webpack_require__(528);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semiring = __webpack_require__(545);
 	var EuclideanRing = function EuclideanRing(CommutativeRing0, degree, div, mod) {
 	    this.CommutativeRing0 = CommutativeRing0;
 	    this.degree = degree;
@@ -55606,7 +56047,7 @@
 	};
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55635,17 +56076,17 @@
 	};
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_DivisionRing = __webpack_require__(547);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semiring = __webpack_require__(544);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_DivisionRing = __webpack_require__(548);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semiring = __webpack_require__(545);
 	var Field = function Field(EuclideanRing0) {
 	    this.EuclideanRing0 = EuclideanRing0;
 	};
@@ -55658,7 +56099,7 @@
 	};
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -55667,22 +56108,22 @@
 	module.exports = {};
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Flip = function Flip(x) {
 	    return x;
 	};
@@ -55747,24 +56188,24 @@
 	};
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Joker = function Joker(x) {
 	    return x;
 	};
@@ -55829,22 +56270,22 @@
 	};
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Eq = __webpack_require__(527);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Eq = __webpack_require__(528);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Product = function () {
 	    function Product(value0, value1) {
 	        this.value0 = value0;
@@ -55935,22 +56376,22 @@
 	};
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Wrap = function Wrap(x) {
 	    return x;
 	};
@@ -56015,41 +56456,41 @@
 	};
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(557);
-	var Control_Alt = __webpack_require__(506);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Maybe_First = __webpack_require__(562);
-	var Data_Maybe_Last = __webpack_require__(563);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Monoid_Additive = __webpack_require__(564);
-	var Data_Monoid_Conj = __webpack_require__(566);
-	var Data_Monoid_Disj = __webpack_require__(567);
-	var Data_Monoid_Dual = __webpack_require__(568);
-	var Data_Monoid_Endo = __webpack_require__(569);
-	var Data_Monoid_Multiplicative = __webpack_require__(570);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(558);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Maybe_First = __webpack_require__(563);
+	var Data_Maybe_Last = __webpack_require__(564);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Monoid_Additive = __webpack_require__(565);
+	var Data_Monoid_Conj = __webpack_require__(567);
+	var Data_Monoid_Disj = __webpack_require__(568);
+	var Data_Monoid_Dual = __webpack_require__(569);
+	var Data_Monoid_Endo = __webpack_require__(570);
+	var Data_Monoid_Multiplicative = __webpack_require__(571);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Foldable = function Foldable(foldMap, foldl, foldr) {
 	    this.foldMap = foldMap;
 	    this.foldl = foldl;
@@ -56560,7 +57001,7 @@
 	};
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56592,34 +57033,34 @@
 	};
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Nothing = function () {
 	    function Nothing() {};
 	    Nothing.value = new Nothing();
@@ -56870,21 +57311,21 @@
 	};
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Unit = __webpack_require__(495);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Unit = __webpack_require__(496);
 	var MonadZero = function MonadZero(Alternative1, Monad0) {
 	    this.Alternative1 = Alternative1;
 	    this.Monad0 = Monad0;
@@ -56912,13 +57353,13 @@
 	};
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
 	var Invariant = function Invariant(imap) {
 	    this.imap = imap;
 	};
@@ -56943,21 +57384,21 @@
 	};
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Eq = __webpack_require__(527);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Function = __webpack_require__(492);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Eq = __webpack_require__(528);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Function = __webpack_require__(493);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Monoid = function Monoid(Semigroup0, mempty) {
 	    this.Semigroup0 = Semigroup0;
 	    this.mempty = mempty;
@@ -57016,28 +57457,28 @@
 	};
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var First = function First(x) {
 	    return x;
 	};
@@ -57099,28 +57540,28 @@
 	};
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Last = function Last(x) {
 	    return x;
 	};
@@ -57185,29 +57626,29 @@
 	};
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Additive = function Additive(x) {
 	    return x;
 	};
@@ -57304,14 +57745,14 @@
 	};
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Extend = __webpack_require__(520);
-	var Data_Functor = __webpack_require__(493);
+	var Control_Extend = __webpack_require__(521);
+	var Data_Functor = __webpack_require__(494);
 	var Comonad = function Comonad(Extend0, extract) {
 	    this.Extend0 = Extend0;
 	    this.extract = extract;
@@ -57325,30 +57766,30 @@
 	};
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Conj = function Conj(x) {
 	    return x;
 	};
@@ -57457,30 +57898,30 @@
 	};
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Disj = function Disj(x) {
 	    return x;
 	};
@@ -57589,28 +58030,28 @@
 	};
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Dual = function Dual(x) {
 	    return x;
 	};
@@ -57707,19 +58148,19 @@
 	};
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Prelude = __webpack_require__(531);
 	var Endo = function Endo(x) {
 	    return x;
 	};
@@ -57754,29 +58195,29 @@
 	};
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Multiplicative = function Multiplicative(x) {
 	    return x;
 	};
@@ -57873,25 +58314,25 @@
 	};
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Data_Bifoldable = __webpack_require__(522);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Bifunctor_Clown = __webpack_require__(523);
-	var Data_Bifunctor_Flip = __webpack_require__(552);
-	var Data_Bifunctor_Joker = __webpack_require__(553);
-	var Data_Bifunctor_Product = __webpack_require__(554);
-	var Data_Bifunctor_Wrap = __webpack_require__(555);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Data_Bifoldable = __webpack_require__(523);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Bifunctor_Clown = __webpack_require__(524);
+	var Data_Bifunctor_Flip = __webpack_require__(553);
+	var Data_Bifunctor_Joker = __webpack_require__(554);
+	var Data_Bifunctor_Product = __webpack_require__(555);
+	var Data_Bifunctor_Wrap = __webpack_require__(556);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Bitraversable = function Bitraversable(Bifoldable1, Bifunctor0, bisequence, bitraverse) {
 	    this.Bifoldable1 = Bifoldable1;
 	    this.Bifunctor0 = Bifunctor0;
@@ -58077,29 +58518,29 @@
 	};
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(573);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Maybe_First = __webpack_require__(562);
-	var Data_Maybe_Last = __webpack_require__(563);
-	var Data_Monoid_Additive = __webpack_require__(564);
-	var Data_Monoid_Conj = __webpack_require__(566);
-	var Data_Monoid_Disj = __webpack_require__(567);
-	var Data_Monoid_Dual = __webpack_require__(568);
-	var Data_Monoid_Multiplicative = __webpack_require__(570);
-	var Data_Traversable_Accum = __webpack_require__(574);
-	var Data_Traversable_Accum_Internal = __webpack_require__(575);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(574);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Maybe_First = __webpack_require__(563);
+	var Data_Maybe_Last = __webpack_require__(564);
+	var Data_Monoid_Additive = __webpack_require__(565);
+	var Data_Monoid_Conj = __webpack_require__(567);
+	var Data_Monoid_Disj = __webpack_require__(568);
+	var Data_Monoid_Dual = __webpack_require__(569);
+	var Data_Monoid_Multiplicative = __webpack_require__(571);
+	var Data_Traversable_Accum = __webpack_require__(575);
+	var Data_Traversable_Accum_Internal = __webpack_require__(576);
+	var Prelude = __webpack_require__(531);
 	var Traversable = function Traversable(Foldable1, Functor0, sequence, traverse) {
 	    this.Foldable1 = Foldable1;
 	    this.Functor0 = Functor0;
@@ -58359,7 +58800,7 @@
 	};
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58428,7 +58869,7 @@
 	}();
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -58437,17 +58878,17 @@
 	module.exports = {};
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Traversable_Accum = __webpack_require__(574);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Traversable_Accum = __webpack_require__(575);
+	var Prelude = __webpack_require__(531);
 	var StateR = function StateR(x) {
 	    return x;
 	};
@@ -58544,14 +58985,14 @@
 	};
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(577);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(578);
+	var Data_Unit = __webpack_require__(496);
 	var runFn1 = function runFn1(f) {
 	    return f;
 	};
@@ -58584,7 +59025,7 @@
 	};
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58809,15 +59250,15 @@
 	};
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Eff = __webpack_require__(517);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Eff = __webpack_require__(518);
 	var MonadEff = function MonadEff(Monad0, liftEff) {
 	    this.Monad0 = Monad0;
 	    this.liftEff = liftEff;
@@ -58835,21 +59276,21 @@
 	};
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var MonadThrow = function MonadThrow(Monad0, throwError) {
 	    this.Monad0 = Monad0;
 	    this.throwError = throwError;
@@ -58952,27 +59393,27 @@
 	};
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(581);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Either = __webpack_require__(519);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Identity = __webpack_require__(585);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Unit = __webpack_require__(495);
-	var Partial_Unsafe = __webpack_require__(587);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(582);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Either = __webpack_require__(520);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Identity = __webpack_require__(586);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Unit = __webpack_require__(496);
+	var Partial_Unsafe = __webpack_require__(588);
+	var Prelude = __webpack_require__(531);
 	var Loop = function () {
 	    function Loop(value0) {
 	        this.value0 = value0;
@@ -59206,15 +59647,15 @@
 	};
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(582);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Semigroupoid = __webpack_require__(491);
+	var $foreign = __webpack_require__(583);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Semigroupoid = __webpack_require__(492);
 	var unsafePerformEff = function unsafePerformEff($0) {
 	    return Control_Monad_Eff.runPure($foreign.unsafeCoerceEff($0));
 	};
@@ -59224,7 +59665,7 @@
 	};
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59234,14 +59675,14 @@
 	};
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(584);
-	var Control_Monad_Eff = __webpack_require__(517);
+	var $foreign = __webpack_require__(585);
+	var Control_Monad_Eff = __webpack_require__(518);
 	var pureST = function pureST(st) {
 	    return Control_Monad_Eff.runPure($foreign.runST(st));
 	};
@@ -59255,7 +59696,7 @@
 	};
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59293,39 +59734,39 @@
 	};
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_Eq = __webpack_require__(527);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Field = __webpack_require__(550);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_Eq = __webpack_require__(528);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Field = __webpack_require__(551);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Identity = function Identity(x) {
 	    return x;
 	};
@@ -59498,13 +59939,13 @@
 	};
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Unit = __webpack_require__(495);
+	var Data_Unit = __webpack_require__(496);
 	var Lazy = function Lazy(defer) {
 	    this.defer = defer;
 	};
@@ -59535,14 +59976,14 @@
 	};
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(588);
-	var Partial = __webpack_require__(589);
+	var $foreign = __webpack_require__(589);
+	var Partial = __webpack_require__(590);
 	var unsafePartialBecause = function unsafePartialBecause(v) {
 	    return function (x) {
 	        return $foreign.unsafePartial(function (dictPartial) {
@@ -59562,7 +60003,7 @@
 	};
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59574,13 +60015,13 @@
 	};
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(590);
+	var $foreign = __webpack_require__(591);
 	var crash = function crash(dictPartial) {
 	    return $foreign.crashWith(dictPartial)("Partial.crash: partial function");
 	};
@@ -59590,7 +60031,7 @@
 	};
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59604,21 +60045,21 @@
 	};
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Functor = __webpack_require__(493);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(494);
 	var MonadPlus = function MonadPlus(MonadZero0) {
 	    this.MonadZero0 = MonadZero0;
 	};
@@ -59631,18 +60072,18 @@
 	};
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Parallel_Class = __webpack_require__(593);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Control_Parallel_Class = __webpack_require__(594);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var parTraverse_ = function parTraverse_(dictParallel) {
 	    return function (dictFoldable) {
 	        return function (f) {
@@ -59683,37 +60124,37 @@
 	};
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Cont_Trans = __webpack_require__(594);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Ref = __webpack_require__(602);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(581);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Monad_Maybe_Trans = __webpack_require__(606);
-	var Control_Monad_Reader_Trans = __webpack_require__(607);
-	var Control_Monad_Writer_Trans = __webpack_require__(608);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Compose = __webpack_require__(609);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Cont_Trans = __webpack_require__(595);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Ref = __webpack_require__(603);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(582);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Monad_Maybe_Trans = __webpack_require__(607);
+	var Control_Monad_Reader_Trans = __webpack_require__(608);
+	var Control_Monad_Writer_Trans = __webpack_require__(609);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Compose = __webpack_require__(610);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var ParCont = function ParCont(x) {
 	    return x;
 	};
@@ -59898,26 +60339,26 @@
 	};
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Prelude = __webpack_require__(531);
 	var ContT = function ContT(x) {
 	    return x;
 	};
@@ -60074,13 +60515,13 @@
 	};
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Prelude = __webpack_require__(530);
+	var Prelude = __webpack_require__(531);
 	var MonadCont = function MonadCont(Monad0, callCC) {
 	    this.Monad0 = Monad0;
 	    this.callCC = callCC;
@@ -60094,17 +60535,17 @@
 	};
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Functor = __webpack_require__(493);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Functor = __webpack_require__(494);
+	var Prelude = __webpack_require__(531);
 	var MonadAsk = function MonadAsk(Monad0, ask) {
 	    this.Monad0 = Monad0;
 	    this.ask = ask;
@@ -60141,15 +60582,15 @@
 	};
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var MonadState = function MonadState(Monad0, state) {
 	    this.Monad0 = Monad0;
 	    this.state = state;
@@ -60193,49 +60634,49 @@
 	};
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Biapplicative = __webpack_require__(524);
-	var Control_Biapply = __webpack_require__(525);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifoldable = __webpack_require__(522);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Bitraversable = __webpack_require__(571);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_Distributive = __webpack_require__(599);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Maybe_First = __webpack_require__(562);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
-	var Type_Equality = __webpack_require__(600);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Biapplicative = __webpack_require__(525);
+	var Control_Biapply = __webpack_require__(526);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifoldable = __webpack_require__(523);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Bitraversable = __webpack_require__(572);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_Distributive = __webpack_require__(600);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Maybe_First = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
+	var Type_Equality = __webpack_require__(601);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -60619,19 +61060,19 @@
 	};
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Identity = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(529);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Identity = __webpack_require__(586);
+	var Data_Newtype = __webpack_require__(530);
+	var Prelude = __webpack_require__(531);
 	var Distributive = function Distributive(Functor0, collect, distribute) {
 	    this.Functor0 = Functor0;
 	    this.collect = collect;
@@ -60710,7 +61151,7 @@
 	};
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -60739,13 +61180,13 @@
 	};
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Prelude = __webpack_require__(530);
+	var Prelude = __webpack_require__(531);
 	var MonadTrans = function MonadTrans(lift) {
 	    this.lift = lift;
 	};
@@ -60758,16 +61199,16 @@
 	};
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(603);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(604);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var modifyRef = function modifyRef(ref) {
 	    return function (f) {
 	        return $foreign["modifyRef'"](ref)(function (s) {
@@ -60787,7 +61228,7 @@
 	};
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60824,39 +61265,39 @@
 	};
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Tuple = __webpack_require__(598);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Tuple = __webpack_require__(599);
+	var Prelude = __webpack_require__(531);
 	var ExceptT = function ExceptT(x) {
 	    return x;
 	};
@@ -61145,17 +61586,17 @@
 	};
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Data_Function = __webpack_require__(492);
-	var Data_Tuple = __webpack_require__(598);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Data_Function = __webpack_require__(493);
+	var Data_Tuple = __webpack_require__(599);
+	var Prelude = __webpack_require__(531);
 	var MonadTell = function MonadTell(Monad0, tell) {
 	    this.Monad0 = Monad0;
 	    this.tell = tell;
@@ -61203,37 +61644,37 @@
 	};
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Tuple = __webpack_require__(598);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Tuple = __webpack_require__(599);
+	var Prelude = __webpack_require__(531);
 	var MaybeT = function MaybeT(x) {
 	    return x;
 	};
@@ -61478,37 +61919,37 @@
 	};
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Distributive = __webpack_require__(599);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Distributive = __webpack_require__(600);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Prelude = __webpack_require__(531);
 	var ReaderT = function ReaderT(x) {
 	    return x;
 	};
@@ -61768,38 +62209,38 @@
 	};
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var WriterT = function WriterT(x) {
 	    return x;
 	};
@@ -62076,30 +62517,30 @@
 	};
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_App = __webpack_require__(610);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_App = __webpack_require__(611);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Compose = function Compose(x) {
 	    return x;
 	};
@@ -62276,35 +62717,35 @@
 	};
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
-	var Unsafe_Coerce = __webpack_require__(611);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
+	var Unsafe_Coerce = __webpack_require__(612);
 	var App = function App(x) {
 	    return x;
 	};
@@ -62447,19 +62888,19 @@
 	};
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(612);
+	var $foreign = __webpack_require__(613);
 	module.exports = {
 	    unsafeCoerce: $foreign.unsafeCoerce
 	};
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62471,27 +62912,27 @@
 	};
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Seconds = function Seconds(x) {
 	    return x;
 	};
@@ -62733,41 +63174,41 @@
 	};
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(615);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Array = __webpack_require__(616);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_String = __webpack_require__(627);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Data_Void = __webpack_require__(509);
-	var Prelude = __webpack_require__(530);
-	var Type_Proxy = __webpack_require__(631);
+	var $foreign = __webpack_require__(616);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Array = __webpack_require__(617);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_String = __webpack_require__(628);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Data_Void = __webpack_require__(510);
+	var Prelude = __webpack_require__(531);
+	var Type_Proxy = __webpack_require__(632);
 	var SProd = function () {
 	    function SProd(value0, value1) {
 	        this.value0 = value0;
@@ -63779,7 +64220,7 @@
 	};
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63825,44 +64266,44 @@
 	};
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(617);
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Array_ST = __webpack_require__(618);
-	var Data_Array_ST_Iterator = __webpack_require__(620);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Partial_Unsafe = __webpack_require__(587);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(618);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Array_ST = __webpack_require__(619);
+	var Data_Array_ST_Iterator = __webpack_require__(621);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Partial_Unsafe = __webpack_require__(588);
+	var Prelude = __webpack_require__(531);
 	var zipWithA = function zipWithA(dictApplicative) {
 	    return function (f) {
 	        return function (xs) {
@@ -64369,7 +64810,7 @@
 	};
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64678,21 +65119,21 @@
 	};
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(619);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Maybe = __webpack_require__(558);
-	var Prelude = __webpack_require__(530);
-	var Unsafe_Coerce = __webpack_require__(611);
+	var $foreign = __webpack_require__(620);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Maybe = __webpack_require__(559);
+	var Prelude = __webpack_require__(531);
+	var Unsafe_Coerce = __webpack_require__(612);
 	var unsafeFreeze = function unsafeFreeze($7) {
 	    return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)(Unsafe_Coerce.unsafeCoerce($7));
 	};
@@ -64746,7 +65187,7 @@
 	};
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64820,24 +65261,24 @@
 	};
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Array_ST = __webpack_require__(618);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(544);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Array_ST = __webpack_require__(619);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(545);
+	var Prelude = __webpack_require__(531);
 	var Iterator = function () {
 	    function Iterator(value0, value1) {
 	        this.value0 = value0;
@@ -64923,28 +65364,28 @@
 	};
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Control_Plus = __webpack_require__(511);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Control_Plus = __webpack_require__(512);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var NonEmpty = function () {
 	    function NonEmpty(value0, value1) {
 	        this.value0 = value0;
@@ -65112,23 +65553,23 @@
 	};
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(623);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Partial_Unsafe = __webpack_require__(587);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(624);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Partial_Unsafe = __webpack_require__(588);
+	var Prelude = __webpack_require__(531);
 	var Unfoldable = function Unfoldable(unfoldr) {
 	    this.unfoldr = unfoldr;
 	};
@@ -65184,7 +65625,7 @@
 	};
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -65213,44 +65654,44 @@
 	};
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Monad = __webpack_require__(512);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semigroup_Foldable = __webpack_require__(625);
-	var Data_Semigroup_Traversable = __webpack_require__(626);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Monad = __webpack_require__(513);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semigroup_Foldable = __webpack_require__(626);
+	var Data_Semigroup_Traversable = __webpack_require__(627);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Prelude = __webpack_require__(531);
 	var Nil = function () {
 	    function Nil() {};
 	    Nil.value = new Nil();
@@ -65741,23 +66182,23 @@
 	};
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid_Dual = __webpack_require__(568);
-	var Data_Monoid_Multiplicative = __webpack_require__(570);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid_Dual = __webpack_require__(569);
+	var Data_Monoid_Multiplicative = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Act = function Act(x) {
 	    return x;
 	};
@@ -65855,17 +66296,17 @@
 	};
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Semigroup_Foldable = __webpack_require__(625);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Semigroup_Foldable = __webpack_require__(626);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Traversable1 = function Traversable1(Foldable10, _Traversable, sequence1, traverse1) {
 	    this.Foldable10 = Foldable10;
 	    this.Traversable1 = _Traversable;
@@ -65901,26 +66342,26 @@
 	};
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_String_Unsafe = __webpack_require__(629);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(629);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_String_Unsafe = __webpack_require__(630);
+	var Prelude = __webpack_require__(531);
 	var Replacement = function Replacement(x) {
 	    return x;
 	};
@@ -66061,7 +66502,7 @@
 	};
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66245,13 +66686,13 @@
 	};
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(630);
+	var $foreign = __webpack_require__(631);
 	module.exports = {
 	    "char": $foreign["char"],
 	    charAt: $foreign.charAt,
@@ -66259,7 +66700,7 @@
 	};
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66284,29 +66725,29 @@
 	};
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad = __webpack_require__(512);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad = __webpack_require__(513);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Proxy3 = function () {
 	    function Proxy3() {};
 	    Proxy3.value = new Proxy3();
@@ -66585,16 +67026,16 @@
 	};
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(633);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
+	var $foreign = __webpack_require__(634);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
 	var warnShow = function warnShow(dictShow) {
 	    return function (a) {
 	        return $foreign.warn(Data_Show.show(dictShow)(a));
@@ -66627,7 +67068,7 @@
 	};
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66661,26 +67102,26 @@
 	};
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Foreign_Generic_Types = __webpack_require__(657);
-	var Data_Foreign_JSON = __webpack_require__(662);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Identity = __webpack_require__(585);
-	var Global_Unsafe = __webpack_require__(666);
-	var Prelude = __webpack_require__(530);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Foreign_Generic_Types = __webpack_require__(658);
+	var Data_Foreign_JSON = __webpack_require__(663);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Identity = __webpack_require__(586);
+	var Global_Unsafe = __webpack_require__(667);
+	var Prelude = __webpack_require__(531);
 	var genericEncode = function genericEncode(dictGeneric) {
 	    return function (dictGenericEncode) {
 	        return function (opts) {
@@ -66743,33 +67184,33 @@
 	};
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(636);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Identity = __webpack_require__(585);
-	var Data_Int = __webpack_require__(638);
-	var Data_List_NonEmpty = __webpack_require__(646);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_String = __webpack_require__(627);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(637);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Identity = __webpack_require__(586);
+	var Data_Int = __webpack_require__(639);
+	var Data_List_NonEmpty = __webpack_require__(647);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_String = __webpack_require__(628);
+	var Prelude = __webpack_require__(531);
 	var ForeignError = function () {
 	    function ForeignError(value0) {
 	        this.value0 = value0;
@@ -67045,7 +67486,7 @@
 	};
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67081,19 +67522,19 @@
 	};
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Identity = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(529);
-	var Prelude = __webpack_require__(530);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Identity = __webpack_require__(586);
+	var Data_Newtype = __webpack_require__(530);
+	var Prelude = __webpack_require__(531);
 	var withExcept = Control_Monad_Except_Trans.withExceptT(Data_Identity.functorIdentity);
 	var runExcept = function runExcept($0) {
 	    return Data_Newtype.unwrap(Data_Identity.newtypeIdentity)(Control_Monad_Except_Trans.runExceptT($0));
@@ -67110,27 +67551,27 @@
 	};
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(639);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(527);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Int_Bits = __webpack_require__(640);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Show = __webpack_require__(497);
-	var Global = __webpack_require__(642);
-	var $$Math = __webpack_require__(644);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(640);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(528);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Int_Bits = __webpack_require__(641);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Show = __webpack_require__(498);
+	var Global = __webpack_require__(643);
+	var $$Math = __webpack_require__(645);
+	var Prelude = __webpack_require__(531);
 	var Radix = function Radix(x) {
 	    return x;
 	};
@@ -67271,7 +67712,7 @@
 	};
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67331,13 +67772,13 @@
 	};
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(641);
+	var $foreign = __webpack_require__(642);
 	module.exports = {
 	    and: $foreign.and,
 	    complement: $foreign.complement,
@@ -67349,7 +67790,7 @@
 	};
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67404,13 +67845,13 @@
 	};
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(643);
+	var $foreign = __webpack_require__(644);
 	module.exports = {
 	    "decodeURI": $foreign["decodeURI"],
 	    "decodeURIComponent": $foreign["decodeURIComponent"],
@@ -67425,7 +67866,7 @@
 	};
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports) {
 
 	/* globals exports */
@@ -67455,13 +67896,13 @@
 	exports.encodeURIComponent = encodeURIComponent;
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(645);
+	var $foreign = __webpack_require__(646);
 	module.exports = {
 	    abs: $foreign.abs,
 	    acos: $foreign.acos,
@@ -67494,7 +67935,7 @@
 	};
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67580,35 +68021,35 @@
 	exports.sqrt2 = Math.SQRT2;
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_List = __webpack_require__(647);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semigroup_Foldable = __webpack_require__(625);
-	var Data_Semigroup_Traversable = __webpack_require__(626);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Partial_Unsafe = __webpack_require__(587);
-	var Prelude = __webpack_require__(530);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_List = __webpack_require__(648);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semigroup_Foldable = __webpack_require__(626);
+	var Data_Semigroup_Traversable = __webpack_require__(627);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Partial_Unsafe = __webpack_require__(588);
+	var Prelude = __webpack_require__(531);
 	var zipWith = function zipWith(f) {
 	    return function (v) {
 	        return function (v1) {
@@ -67996,43 +68437,43 @@
 	};
 
 /***/ }),
-/* 647 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Pattern = function Pattern(x) {
 	    return x;
 	};
@@ -69121,31 +69562,31 @@
 	};
 
 /***/ }),
-/* 648 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Array = __webpack_require__(616);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Either = __webpack_require__(519);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Internal = __webpack_require__(649);
-	var Data_Foreign_NullOrUndefined = __webpack_require__(654);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_StrMap = __webpack_require__(650);
-	var Data_Traversable = __webpack_require__(572);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Array = __webpack_require__(617);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Either = __webpack_require__(520);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Internal = __webpack_require__(650);
+	var Data_Foreign_NullOrUndefined = __webpack_require__(655);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_StrMap = __webpack_require__(651);
+	var Data_Traversable = __webpack_require__(573);
+	var Prelude = __webpack_require__(531);
 	var Decode = function Decode(decode) {
 	    this.decode = decode;
 	};
@@ -69236,21 +69677,21 @@
 	};
 
 /***/ }),
-/* 649 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Data_Boolean = __webpack_require__(531);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Function = __webpack_require__(492);
-	var Data_Identity = __webpack_require__(585);
-	var Data_StrMap = __webpack_require__(650);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Data_Boolean = __webpack_require__(532);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Function = __webpack_require__(493);
+	var Data_Identity = __webpack_require__(586);
+	var Data_StrMap = __webpack_require__(651);
+	var Prelude = __webpack_require__(531);
 	var isStrMap = function isStrMap(v) {
 	    return Data_Foreign.tagOf(v) === "Object";
 	};
@@ -69269,37 +69710,37 @@
 	};
 
 /***/ }),
-/* 650 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(651);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Array = __webpack_require__(616);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Function = __webpack_require__(492);
-	var Data_Function_Uncurried = __webpack_require__(576);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_StrMap_ST = __webpack_require__(652);
-	var Data_Traversable = __webpack_require__(572);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(652);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Array = __webpack_require__(617);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Function = __webpack_require__(493);
+	var Data_Function_Uncurried = __webpack_require__(577);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_StrMap_ST = __webpack_require__(653);
+	var Data_Traversable = __webpack_require__(573);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Prelude = __webpack_require__(531);
 	var values = $foreign.toArrayWithKey(function (v) {
 	    return function (v1) {
 	        return v1;
@@ -69625,7 +70066,7 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 652 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69756,16 +70197,16 @@
 	});
 
 /***/ }),
-/* 652 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(653);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_ST = __webpack_require__(583);
-	var Data_Maybe = __webpack_require__(558);
+	var $foreign = __webpack_require__(654);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_ST = __webpack_require__(584);
+	var Data_Maybe = __webpack_require__(559);
 	var peek = $foreign.peekImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	module.exports = {
 	    peek: peek,
@@ -69775,7 +70216,7 @@
 	};
 
 /***/ }),
-/* 653 */
+/* 654 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69817,27 +70258,27 @@
 	};
 
 /***/ }),
-/* 654 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(655);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Functor = __webpack_require__(493);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Identity = __webpack_require__(585);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(656);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Functor = __webpack_require__(494);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Identity = __webpack_require__(586);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var NullOrUndefined = function NullOrUndefined(x) {
 	    return x;
 	};
@@ -69890,7 +70331,7 @@
 	};
 
 /***/ }),
-/* 655 */
+/* 656 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -69898,43 +70339,43 @@
 	exports['undefined'] = undefined;
 
 /***/ }),
-/* 656 */
+/* 657 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic_Types = __webpack_require__(657);
-	var Data_Foreign_Index = __webpack_require__(658);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List = __webpack_require__(647);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_StrMap = __webpack_require__(650);
-	var Data_Symbol = __webpack_require__(661);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Prelude = __webpack_require__(530);
-	var Type_Proxy = __webpack_require__(631);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic_Types = __webpack_require__(658);
+	var Data_Foreign_Index = __webpack_require__(659);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List = __webpack_require__(648);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_StrMap = __webpack_require__(651);
+	var Data_Symbol = __webpack_require__(662);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Prelude = __webpack_require__(531);
+	var Type_Proxy = __webpack_require__(632);
 	var GenericDecode = function GenericDecode(decodeOpts) {
 	    this.decodeOpts = decodeOpts;
 	};
@@ -70294,7 +70735,7 @@
 	};
 
 /***/ }),
-/* 657 */
+/* 658 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.6
@@ -70314,24 +70755,24 @@
 	};
 
 /***/ }),
-/* 658 */
+/* 659 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(659);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Function = __webpack_require__(492);
-	var Data_Function_Uncurried = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List_NonEmpty = __webpack_require__(646);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(660);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Function = __webpack_require__(493);
+	var Data_Function_Uncurried = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List_NonEmpty = __webpack_require__(647);
+	var Prelude = __webpack_require__(531);
 	var Index = function Index(errorAt, hasOwnProperty, hasProperty, index) {
 	    this.errorAt = errorAt;
 	    this.hasOwnProperty = hasOwnProperty;
@@ -70420,7 +70861,7 @@
 	};
 
 /***/ }),
-/* 659 */
+/* 660 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70438,13 +70879,13 @@
 	};
 
 /***/ }),
-/* 660 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Maybe = __webpack_require__(558);
+	var Data_Maybe = __webpack_require__(559);
 	var Inl = function () {
 	    function Inl(value0) {
 	        this.value0 = value0;
@@ -70535,15 +70976,15 @@
 	};
 
 /***/ }),
-/* 661 */
+/* 662 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Semigroup = __webpack_require__(507);
-	var Prelude = __webpack_require__(530);
-	var Unsafe_Coerce = __webpack_require__(611);
+	var Data_Semigroup = __webpack_require__(508);
+	var Prelude = __webpack_require__(531);
+	var Unsafe_Coerce = __webpack_require__(612);
 	var SProxy = function () {
 	    function SProxy() {};
 	    SProxy.value = new SProxy();
@@ -70582,27 +71023,27 @@
 	};
 
 /***/ }),
-/* 662 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(663);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Eff_Uncurried = __webpack_require__(664);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Bifunctor = __webpack_require__(526);
-	var Data_Either = __webpack_require__(519);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List_Types = __webpack_require__(624);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(664);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Eff_Uncurried = __webpack_require__(665);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Bifunctor = __webpack_require__(527);
+	var Data_Either = __webpack_require__(520);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List_Types = __webpack_require__(625);
+	var Prelude = __webpack_require__(531);
 	var parseJSON = function parseJSON($0) {
 	    return Control_Monad_Except_Trans.ExceptT(Data_Identity.Identity(Data_Bifunctor.lmap(Data_Either.bifunctorEither)(function ($1) {
 	        return Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.JSONError.create(Control_Monad_Eff_Exception.message($1)));
@@ -70617,7 +71058,7 @@
 	};
 
 /***/ }),
-/* 663 */
+/* 664 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70627,14 +71068,14 @@
 	};
 
 /***/ }),
-/* 664 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(665);
-	var Control_Monad_Eff = __webpack_require__(517);
+	var $foreign = __webpack_require__(666);
+	var Control_Monad_Eff = __webpack_require__(518);
 	module.exports = {
 	    mkEffFn1: $foreign.mkEffFn1,
 	    mkEffFn10: $foreign.mkEffFn10,
@@ -70659,7 +71100,7 @@
 	};
 
 /***/ }),
-/* 665 */
+/* 666 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70895,13 +71336,13 @@
 	};
 
 /***/ }),
-/* 666 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(667);
+	var $foreign = __webpack_require__(668);
 	module.exports = {
 	    unsafeStringify: $foreign.unsafeStringify,
 	    unsafeToExponential: $foreign.unsafeToExponential,
@@ -70910,7 +71351,7 @@
 	};
 
 /***/ }),
-/* 667 */
+/* 668 */
 /***/ (function(module, exports) {
 
 	/* globals exports, JSON */
@@ -70941,20 +71382,20 @@
 	};
 
 /***/ }),
-/* 668 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Data_Function = __webpack_require__(492);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Data_Function = __webpack_require__(493);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var communityViewAllActivity = function communityViewAllActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -71009,26 +71450,26 @@
 	};
 
 /***/ }),
-/* 669 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Api = __webpack_require__(670);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic = __webpack_require__(634);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Function = __webpack_require__(492);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Symbol = __webpack_require__(661);
-	var Prelude = __webpack_require__(530);
-	var Type_Proxy = __webpack_require__(631);
+	var Api = __webpack_require__(671);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic = __webpack_require__(635);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Function = __webpack_require__(493);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Symbol = __webpack_require__(662);
+	var Prelude = __webpack_require__(531);
+	var Type_Proxy = __webpack_require__(632);
 	var RequestOtpResp = function () {
 	    function RequestOtpResp(value0) {
 	        this.value0 = value0;
@@ -71205,34 +71646,34 @@
 	};
 
 /***/ }),
-/* 670 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Either = __webpack_require__(519);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic = __webpack_require__(634);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Function = __webpack_require__(492);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Symbol = __webpack_require__(661);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Either = __webpack_require__(520);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic = __webpack_require__(635);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Function = __webpack_require__(493);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Symbol = __webpack_require__(662);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var GET = function () {
 	    function GET() {};
 	    GET.value = new GET();
@@ -71577,27 +72018,27 @@
 	};
 
 /***/ }),
-/* 671 */
+/* 672 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Console = __webpack_require__(632);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Data_Argonaut_Core = __webpack_require__(672);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Symbol = __webpack_require__(661);
-	var Prelude = __webpack_require__(530);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Console = __webpack_require__(633);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Data_Argonaut_Core = __webpack_require__(673);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Symbol = __webpack_require__(662);
+	var Prelude = __webpack_require__(531);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var DummyViewBatchActivity = function () {
 	    function DummyViewBatchActivity() {};
 	    DummyViewBatchActivity.value = new DummyViewBatchActivity();
@@ -71892,6 +72333,48 @@
 	    };
 	    return ResourceDetailActivity;
 	}();
+	var DummyQRActivity = function () {
+	    function DummyQRActivity() {};
+	    DummyQRActivity.value = new DummyQRActivity();
+	    return DummyQRActivity;
+	}();
+	var BACK_QRActivity = function () {
+	    function BACK_QRActivity() {};
+	    BACK_QRActivity.value = new BACK_QRActivity();
+	    return BACK_QRActivity;
+	}();
+	var OPEN_CourseEnrolledActivity_QR = function () {
+	    function OPEN_CourseEnrolledActivity_QR(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_CourseEnrolledActivity_QR.create = function (value0) {
+	        return new OPEN_CourseEnrolledActivity_QR(value0);
+	    };
+	    return OPEN_CourseEnrolledActivity_QR;
+	}();
+	var OPEN_ResourceDetailActivity_QR = function () {
+	    function OPEN_ResourceDetailActivity_QR(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_ResourceDetailActivity_QR.create = function (value0) {
+	        return new OPEN_ResourceDetailActivity_QR(value0);
+	    };
+	    return OPEN_ResourceDetailActivity_QR;
+	}();
+	var OPEN_CourseInfoActivity_QR = function () {
+	    function OPEN_CourseInfoActivity_QR(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_CourseInfoActivity_QR.create = function (value0) {
+	        return new OPEN_CourseInfoActivity_QR(value0);
+	    };
+	    return OPEN_CourseInfoActivity_QR;
+	}();
+	var QRActivity = function () {
+	    function QRActivity() {};
+	    QRActivity.value = new QRActivity();
+	    return QRActivity;
+	}();
 	var DummyProfileActivity = function () {
 	    function DummyProfileActivity() {};
 	    DummyProfileActivity.value = new DummyProfileActivity();
@@ -72101,6 +72584,11 @@
 	        return new OPEN_CommProfSearchActivity(value0);
 	    };
 	    return OPEN_CommProfSearchActivity;
+	}();
+	var OPEN_QRActivity = function () {
+	    function OPEN_QRActivity() {};
+	    OPEN_QRActivity.value = new OPEN_QRActivity();
+	    return OPEN_QRActivity;
 	}();
 	var API_ResourceFragment = function () {
 	    function API_ResourceFragment(value0) {
@@ -72521,7 +73009,7 @@
 	    if (x instanceof API_EnrolledCoursesList) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 137, column 8 - line 137, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 138, column 8 - line 138, column 86: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_CourseInfoActivity.value;
@@ -72548,7 +73036,7 @@
 	            user_token: x.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 137, column 8 - line 137, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 138, column 8 - line 138, column 86: " + [x.constructor.name]);
 	});
 	var genericViewBatchActivity = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyViewBatchActivity) {
@@ -72569,7 +73057,7 @@
 	    if (x instanceof API_Get_Batch_list) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 315, column 8 - line 315, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 316, column 8 - line 316, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyViewBatchActivity.value;
@@ -72602,7 +73090,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 315, column 8 - line 315, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 316, column 8 - line 316, column 79: " + [x.constructor.name]);
 	});
 	var genericUserActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_MainActivity) {
@@ -72722,7 +73210,7 @@
 	    if (x instanceof OPEN_ResourceFragment_SEARCH) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 253, column 8 - line 253, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummySearchActivity.value;
@@ -72755,7 +73243,7 @@
 	            course: x.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 253, column 8 - line 253, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 79: " + [x.constructor.name]);
 	});
 	var genericResourceViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceViewAllAction) {
@@ -72773,7 +73261,7 @@
 	    if (x instanceof OPEN_ResourceViewAllDetail) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 221, column 8 - line 221, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 222, column 8 - line 222, column 97: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceViewAllAction.value;
@@ -72796,7 +73284,7 @@
 	            resourceDetails: x.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 221, column 8 - line 221, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 222, column 8 - line 222, column 97: " + [x.constructor.name]);
 	});
 	var genericResourceDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceDetailActivityAction) {
@@ -72808,7 +73296,7 @@
 	    if (x instanceof API_FlagContent) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.identifier, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 123, column 8 - line 123, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 124, column 8 - line 124, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceDetailActivityAction.value;
@@ -72824,7 +73312,48 @@
 	            user_token: x.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 123, column 8 - line 123, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 124, column 8 - line 124, column 95: " + [x.constructor.name]);
+	});
+	var genericQRActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    if (x instanceof DummyQRActivity) {
+	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
+	    };
+	    if (x instanceof BACK_QRActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value));
+	    };
+	    if (x instanceof OPEN_CourseEnrolledActivity_QR) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.course)));
+	    };
+	    if (x instanceof OPEN_ResourceDetailActivity_QR) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.resourceDetails))));
+	    };
+	    if (x instanceof OPEN_CourseInfoActivity_QR) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 344, column 8 - line 344, column 71: " + [x.constructor.name]);
+	}, function (x) {
+	    if (x instanceof Data_Generic_Rep.Inl) {
+	        return DummyQRActivity.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
+	        return BACK_QRActivity.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new OPEN_CourseEnrolledActivity_QR({
+	            course: x.value0.value0.value0
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new OPEN_ResourceDetailActivity_QR({
+	            resourceDetails: x.value0.value0.value0.value0
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return new OPEN_CourseInfoActivity_QR({
+	            course: x.value0.value0.value0.value0
+	        });
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 344, column 8 - line 344, column 71: " + [x.constructor.name]);
 	});
 	var genericProfileActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyProfileActivity) {
@@ -72845,7 +73374,7 @@
 	    if (x instanceof OPEN_ResourceDetailActivity_Prof) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 286, column 8 - line 286, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyProfileActivity.value;
@@ -72873,7 +73402,7 @@
 	            resourceDetails: x.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 286, column 8 - line 286, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 81: " + [x.constructor.name]);
 	});
 	var genericNotificationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyNotificationActivityAction) {
@@ -72882,7 +73411,7 @@
 	    if (x instanceof BACK_NotificationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 205, column 8 - line 205, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 206, column 8 - line 206, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyNotificationActivityAction.value;
@@ -72890,7 +73419,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_NotificationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 205, column 8 - line 205, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 206, column 8 - line 206, column 91: " + [x.constructor.name]);
 	});
 	var genericModuleDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyModuleDetailActivityAction) {
@@ -72899,7 +73428,7 @@
 	    if (x instanceof BACK_ModuleDetailActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 167, column 8 - line 167, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 168, column 8 - line 168, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyModuleDetailActivityAction.value;
@@ -72907,7 +73436,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ModuleDetailActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 167, column 8 - line 167, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 168, column 8 - line 168, column 91: " + [x.constructor.name]);
 	});
 	var genericMainActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_HomeFragment) {
@@ -72961,28 +73490,31 @@
 	    if (x instanceof OPEN_CommProfSearchActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails)))))))))))))))));
 	    };
-	    if (x instanceof API_ResourceFragment) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))));
+	    if (x instanceof OPEN_QRActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value))))))))))))))))));
 	    };
-	    if (x instanceof API_CourseFragment) {
+	    if (x instanceof API_ResourceFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))));
 	    };
-	    if (x instanceof API_ProfileFragment) {
+	    if (x instanceof API_CourseFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))));
 	    };
-	    if (x instanceof API_UserEnrolledCourse) {
+	    if (x instanceof API_ProfileFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))));
 	    };
+	    if (x instanceof API_UserEnrolledCourse) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))));
+	    };
 	    if (x instanceof API_FilterPage) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token)))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_CreatedBy) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_Tenant) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token)))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token))))))))))))))))))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 110, column 8 - line 110, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 111, column 8 - line 111, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_HomeFragment.value;
@@ -73054,52 +73586,55 @@
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ResourceFragment({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
-	        });
+	        return OPEN_QRActivity.value;
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CourseFragment({
+	        return new API_ResourceFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ProfileFragment({
+	        return new API_CourseFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_UserEnrolledCourse({
+	        return new API_ProfileFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_FilterPage({
+	        return new API_UserEnrolledCourse({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CreatedBy({
+	        return new API_FilterPage({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
-	        });
-	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
-	        return new API_Tenant({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 110, column 8 - line 110, column 75: " + [x.constructor.name]);
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new API_CreatedBy({
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return new API_Tenant({
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	        });
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 111, column 8 - line 111, column 75: " + [x.constructor.name]);
 	});
 	var genericInitScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof ShowInit) {
@@ -73128,7 +73663,7 @@
 	    if (x instanceof OPEN_SearchActivity_FILTER) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterData));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 299, column 8 - line 299, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 300, column 8 - line 300, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyFilterActivity.value;
@@ -73141,7 +73676,7 @@
 	            filterData: x.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 299, column 8 - line 299, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 300, column 8 - line 300, column 79: " + [x.constructor.name]);
 	});
 	var genericCourseViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseViewAllActivityAction) {
@@ -73156,7 +73691,7 @@
 	    if (x instanceof OPEN_CourseInfoFlowFromCourseViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 235, column 8 - line 235, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 236, column 8 - line 236, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseViewAllActivityAction.value;
@@ -73174,7 +73709,7 @@
 	            course: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 235, column 8 - line 235, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 236, column 8 - line 236, column 92: " + [x.constructor.name]);
 	});
 	var genericCourseEnrolledActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseEnrolledActivityAction) {
@@ -73198,7 +73733,7 @@
 	    if (x instanceof API_Get_Batch_Creator_name) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 154, column 8 - line 154, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 155, column 8 - line 155, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseEnrolledActivityAction.value;
@@ -73240,7 +73775,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 154, column 8 - line 154, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 155, column 8 - line 155, column 95: " + [x.constructor.name]);
 	});
 	var genericCommunityViewAllAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommunityViewAllAction) {
@@ -73249,7 +73784,7 @@
 	    if (x instanceof BACK_CommunityViewAllActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 180, column 8 - line 180, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 181, column 8 - line 181, column 83: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommunityViewAllAction.value;
@@ -73257,7 +73792,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityViewAllActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 180, column 8 - line 180, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 181, column 8 - line 181, column 83: " + [x.constructor.name]);
 	});
 	var genericCommunityInfoActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyInfoAction) {
@@ -73269,7 +73804,7 @@
 	    if (x instanceof BACK_CommunityInfoActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 192, column 8 - line 192, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 193, column 8 - line 193, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyInfoAction.value;
@@ -73280,7 +73815,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityInfoActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 192, column 8 - line 192, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 193, column 8 - line 193, column 92: " + [x.constructor.name]);
 	});
 	var genericCommProfSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommProfSearchActivity) {
@@ -73304,7 +73839,7 @@
 	    if (x instanceof API_CreatedBy_Search) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommProfSearchActivity.value;
@@ -73343,7 +73878,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 95: " + [x.constructor.name]);
 	});
 	var genericAdditionalInformationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAdditionalInformationActivity) {
@@ -73352,7 +73887,7 @@
 	    if (x instanceof BACK_AdditionalInformationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 328, column 8 - line 328, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 329, column 8 - line 329, column 109: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAdditionalInformationActivity.value;
@@ -73360,7 +73895,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_AdditionalInformationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 328, column 8 - line 328, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 329, column 8 - line 329, column 109: " + [x.constructor.name]);
 	});
 	var generiContentPreviewScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof BACK_ContentPreviewScreen) {
@@ -73515,6 +74050,23 @@
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
 	}))(Data_Foreign_Class.stringEncode))))))))));
+	var encodeQRActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericQRActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "DummyQRActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_QRActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_CourseEnrolledActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "course";
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_ResourceDetailActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "resourceDetails";
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_CourseInfoActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "course";
+	}))(Data_Foreign_Class.stringEncode)))))))));
 	var encodeProfileActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericProfileActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyProfileActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -73599,6 +74151,8 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "filterDetails";
 	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_QRActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "API_ResourceFragment";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsProduct(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "api_token";
@@ -73648,7 +74202,7 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringEncode))))))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringEncode)))))))))))))))))))))))))))))));
 	var encodeInitScreenAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericInitScreenAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "ShowInit";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -73994,6 +74548,32 @@
 	        return Utils.genericUI(dictEncode)(decodeResourceDetailActivityAction)(x)(UI.generateMockEvents(resourceDetailActivity)(dictEncode)(x));
 	    };
 	});
+	var decodeQRActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericQRActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "DummyQRActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_QRActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_CourseEnrolledActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "course";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_ResourceDetailActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "resourceDetails";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_CourseInfoActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "course";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec)))))));
+	var qrActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [DummyQRActivity.value, BACK_QRActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeQRActivityAction)(x)(UI.generateMockEvents(qrActivity)(dictEncode)(x));
+	    };
+	});
 	var decodeProfileActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericProfileActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyProfileActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -74105,6 +74685,8 @@
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "filterDetails";
 	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_QRActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "API_ResourceFragment";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsProduct(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "api_token";
@@ -74154,7 +74736,7 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec)))))))))))))))))))))))))));
 	var homeActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [BACK_HomeActivity.value, OPEN_HomeFragment.value, OPEN_CourseFragment.value, OPEN_ResourceFragment.value, OPEN_CommunityFragment.value, OPEN_ProfileFragment.value];
@@ -74474,6 +75056,7 @@
 	    OPEN_EditProfileActivity: OPEN_EditProfileActivity,
 	    OPEN_SearchActivity: OPEN_SearchActivity,
 	    OPEN_CommProfSearchActivity: OPEN_CommProfSearchActivity,
+	    OPEN_QRActivity: OPEN_QRActivity,
 	    API_ResourceFragment: API_ResourceFragment,
 	    API_CourseFragment: API_CourseFragment,
 	    API_ProfileFragment: API_ProfileFragment,
@@ -74494,6 +75077,12 @@
 	    OPEN_EnrolledCourseActivity_Prof: OPEN_EnrolledCourseActivity_Prof,
 	    OPEN_CourseInfoActivity_Prof: OPEN_CourseInfoActivity_Prof,
 	    OPEN_ResourceDetailActivity_Prof: OPEN_ResourceDetailActivity_Prof,
+	    QRActivity: QRActivity,
+	    DummyQRActivity: DummyQRActivity,
+	    BACK_QRActivity: BACK_QRActivity,
+	    OPEN_CourseEnrolledActivity_QR: OPEN_CourseEnrolledActivity_QR,
+	    OPEN_ResourceDetailActivity_QR: OPEN_ResourceDetailActivity_QR,
+	    OPEN_CourseInfoActivity_QR: OPEN_CourseInfoActivity_QR,
 	    ResourceDetailActivity: ResourceDetailActivity,
 	    DummyResourceDetailActivityAction: DummyResourceDetailActivityAction,
 	    BACK_ResourceDetailActivity: BACK_ResourceDetailActivity,
@@ -74611,28 +75200,32 @@
 	    addtionalInsormationActivity: addtionalInsormationActivity,
 	    genericAdditionalInformationActivityAction: genericAdditionalInformationActivityAction,
 	    decodeAdditionalInformationActivityAction: decodeAdditionalInformationActivityAction,
-	    encodeAdditionalInformationActivityAction: encodeAdditionalInformationActivityAction
+	    encodeAdditionalInformationActivityAction: encodeAdditionalInformationActivityAction,
+	    qrActivity: qrActivity,
+	    genericQRActivityAction: genericQRActivityAction,
+	    decodeQRActivityAction: decodeQRActivityAction,
+	    encodeQRActivityAction: encodeQRActivityAction
 	};
 
 /***/ }),
-/* 672 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(673);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Function = __webpack_require__(492);
-	var Data_Function_Uncurried = __webpack_require__(576);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Show = __webpack_require__(497);
-	var Data_StrMap = __webpack_require__(650);
-	var Data_Tuple = __webpack_require__(598);
-	var Prelude = __webpack_require__(530);
-	var Unsafe_Coerce = __webpack_require__(611);
+	var $foreign = __webpack_require__(674);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Function = __webpack_require__(493);
+	var Data_Function_Uncurried = __webpack_require__(577);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Show = __webpack_require__(498);
+	var Data_StrMap = __webpack_require__(651);
+	var Data_Tuple = __webpack_require__(599);
+	var Prelude = __webpack_require__(531);
+	var Unsafe_Coerce = __webpack_require__(612);
 	var verbJsonType = function verbJsonType(def) {
 	    return function (f) {
 	        return function (fold) {
@@ -74800,7 +75393,7 @@
 	};
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74878,28 +75471,28 @@
 	};
 
 /***/ }),
-/* 674 */
+/* 675 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Data_Either = __webpack_require__(519);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic = __webpack_require__(634);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Function = __webpack_require__(492);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Data_Either = __webpack_require__(520);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic = __webpack_require__(635);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Function = __webpack_require__(493);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var UIScreen = function UIScreen(generateMockEvents, ui) {
 	    this.generateMockEvents = generateMockEvents;
 	    this.ui = ui;
@@ -74964,57 +75557,57 @@
 	};
 
 /***/ }),
-/* 675 */
+/* 676 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(676);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Aff_Class = __webpack_require__(677);
-	var Control_Monad_Aff_Console = __webpack_require__(683);
-	var Control_Monad_Eff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Exception = __webpack_require__(515);
-	var Control_Monad_Except = __webpack_require__(637);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Data_Argonaut_Core = __webpack_require__(672);
-	var Data_Array = __webpack_require__(616);
-	var Data_Bifoldable = __webpack_require__(522);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Foreign = __webpack_require__(635);
-	var Data_Foreign_Class = __webpack_require__(648);
-	var Data_Foreign_Generic = __webpack_require__(634);
-	var Data_Foreign_Generic_Class = __webpack_require__(656);
-	var Data_Foreign_Generic_Types = __webpack_require__(657);
-	var Data_Foreign_Index = __webpack_require__(658);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Generic_Rep_Show = __webpack_require__(684);
-	var Data_HTTP_Method = __webpack_require__(685);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Identity = __webpack_require__(585);
-	var Data_List = __webpack_require__(647);
-	var Data_List_NonEmpty = __webpack_require__(646);
-	var Data_List_Types = __webpack_require__(624);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_NonEmpty = __webpack_require__(621);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_StrMap = __webpack_require__(650);
-	var Data_String = __webpack_require__(627);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Network_HTTP_RequestHeader = __webpack_require__(686);
-	var Network_HTTP_StatusCode = __webpack_require__(688);
-	var Partial_Unsafe = __webpack_require__(587);
-	var Prelude = __webpack_require__(530);
-	var UI = __webpack_require__(674);
+	var $foreign = __webpack_require__(677);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Aff_Class = __webpack_require__(678);
+	var Control_Monad_Aff_Console = __webpack_require__(684);
+	var Control_Monad_Eff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Exception = __webpack_require__(516);
+	var Control_Monad_Except = __webpack_require__(638);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Data_Argonaut_Core = __webpack_require__(673);
+	var Data_Array = __webpack_require__(617);
+	var Data_Bifoldable = __webpack_require__(523);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(636);
+	var Data_Foreign_Class = __webpack_require__(649);
+	var Data_Foreign_Generic = __webpack_require__(635);
+	var Data_Foreign_Generic_Class = __webpack_require__(657);
+	var Data_Foreign_Generic_Types = __webpack_require__(658);
+	var Data_Foreign_Index = __webpack_require__(659);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Generic_Rep_Show = __webpack_require__(685);
+	var Data_HTTP_Method = __webpack_require__(686);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Identity = __webpack_require__(586);
+	var Data_List = __webpack_require__(648);
+	var Data_List_NonEmpty = __webpack_require__(647);
+	var Data_List_Types = __webpack_require__(625);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_NonEmpty = __webpack_require__(622);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_StrMap = __webpack_require__(651);
+	var Data_String = __webpack_require__(628);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Network_HTTP_RequestHeader = __webpack_require__(687);
+	var Network_HTTP_StatusCode = __webpack_require__(689);
+	var Partial_Unsafe = __webpack_require__(588);
+	var Prelude = __webpack_require__(531);
+	var UI = __webpack_require__(675);
 	var updateState = function updateState(changes) {
 	    return function (state) {
 	        return Control_Monad_Aff.makeAff(function (error) {
@@ -75300,7 +75893,7 @@
 	};
 
 /***/ }),
-/* 676 */
+/* 677 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -75667,27 +76260,27 @@
 	};
 
 /***/ }),
-/* 677 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Cont_Trans = __webpack_require__(594);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Control_Monad_List_Trans = __webpack_require__(678);
-	var Control_Monad_Maybe_Trans = __webpack_require__(606);
-	var Control_Monad_RWS_Trans = __webpack_require__(681);
-	var Control_Monad_Reader_Trans = __webpack_require__(607);
-	var Control_Monad_State_Trans = __webpack_require__(682);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Trans = __webpack_require__(608);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Monoid = __webpack_require__(561);
-	var Prelude = __webpack_require__(530);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Cont_Trans = __webpack_require__(595);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Control_Monad_List_Trans = __webpack_require__(679);
+	var Control_Monad_Maybe_Trans = __webpack_require__(607);
+	var Control_Monad_RWS_Trans = __webpack_require__(682);
+	var Control_Monad_Reader_Trans = __webpack_require__(608);
+	var Control_Monad_State_Trans = __webpack_require__(683);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Trans = __webpack_require__(609);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Monoid = __webpack_require__(562);
+	var Prelude = __webpack_require__(531);
 	var MonadAff = function MonadAff(MonadEff0, liftAff) {
 	    this.MonadEff0 = MonadEff0;
 	    this.liftAff = liftAff;
@@ -75773,38 +76366,38 @@
 	};
 
 /***/ }),
-/* 678 */
+/* 679 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Category = __webpack_require__(490);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Lazy = __webpack_require__(679);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unfoldable = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Category = __webpack_require__(491);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Lazy = __webpack_require__(680);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unfoldable = __webpack_require__(623);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var Yield = function () {
 	    function Yield(value0, value1) {
 	        this.value0 = value0;
@@ -76444,39 +77037,39 @@
 	};
 
 /***/ }),
-/* 679 */
+/* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var $foreign = __webpack_require__(680);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Comonad = __webpack_require__(565);
-	var Control_Extend = __webpack_require__(520);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_BooleanAlgebra = __webpack_require__(532);
-	var Data_Bounded = __webpack_require__(535);
-	var Data_CommutativeRing = __webpack_require__(546);
-	var Data_Eq = __webpack_require__(527);
-	var Data_EuclideanRing = __webpack_require__(548);
-	var Data_Field = __webpack_require__(550);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Functor_Invariant = __webpack_require__(560);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(542);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Semiring = __webpack_require__(544);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var $foreign = __webpack_require__(681);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Comonad = __webpack_require__(566);
+	var Control_Extend = __webpack_require__(521);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_BooleanAlgebra = __webpack_require__(533);
+	var Data_Bounded = __webpack_require__(536);
+	var Data_CommutativeRing = __webpack_require__(547);
+	var Data_Eq = __webpack_require__(528);
+	var Data_EuclideanRing = __webpack_require__(549);
+	var Data_Field = __webpack_require__(551);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Functor_Invariant = __webpack_require__(561);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ring = __webpack_require__(543);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Semiring = __webpack_require__(545);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var showLazy = function showLazy(dictShow) {
 	    return new Data_Show.Show(function (x) {
 	        return "(defer \\_ -> " + (Data_Show.show(dictShow)($foreign.force(x)) + ")");
@@ -76691,7 +77284,7 @@
 	};
 
 /***/ }),
-/* 680 */
+/* 681 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76724,36 +77317,36 @@
 	};
 
 /***/ }),
-/* 681 */
+/* 682 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var RWSResult = function () {
 	    function RWSResult(value0, value1, value2) {
 	        this.value0 = value0;
@@ -77120,37 +77713,37 @@
 	};
 
 /***/ }),
-/* 682 */
+/* 683 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(506);
-	var Control_Alternative = __webpack_require__(510);
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Apply = __webpack_require__(488);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Lazy = __webpack_require__(586);
-	var Control_Monad = __webpack_require__(512);
-	var Control_Monad_Cont_Class = __webpack_require__(595);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Error_Class = __webpack_require__(579);
-	var Control_Monad_Reader_Class = __webpack_require__(596);
-	var Control_Monad_Rec_Class = __webpack_require__(580);
-	var Control_Monad_State_Class = __webpack_require__(597);
-	var Control_Monad_Trans_Class = __webpack_require__(601);
-	var Control_Monad_Writer_Class = __webpack_require__(605);
-	var Control_MonadPlus = __webpack_require__(591);
-	var Control_MonadZero = __webpack_require__(559);
-	var Control_Plus = __webpack_require__(511);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Data_Function = __webpack_require__(492);
-	var Data_Functor = __webpack_require__(493);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Tuple = __webpack_require__(598);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Alt = __webpack_require__(507);
+	var Control_Alternative = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Apply = __webpack_require__(489);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Lazy = __webpack_require__(587);
+	var Control_Monad = __webpack_require__(513);
+	var Control_Monad_Cont_Class = __webpack_require__(596);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Error_Class = __webpack_require__(580);
+	var Control_Monad_Reader_Class = __webpack_require__(597);
+	var Control_Monad_Rec_Class = __webpack_require__(581);
+	var Control_Monad_State_Class = __webpack_require__(598);
+	var Control_Monad_Trans_Class = __webpack_require__(602);
+	var Control_Monad_Writer_Class = __webpack_require__(606);
+	var Control_MonadPlus = __webpack_require__(592);
+	var Control_MonadZero = __webpack_require__(560);
+	var Control_Plus = __webpack_require__(512);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Data_Function = __webpack_require__(493);
+	var Data_Functor = __webpack_require__(494);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Tuple = __webpack_require__(599);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var StateT = function StateT(x) {
 	    return x;
 	};
@@ -77441,17 +78034,17 @@
 	};
 
 /***/ }),
-/* 683 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Control_Monad_Eff_Console = __webpack_require__(632);
-	var Control_Semigroupoid = __webpack_require__(491);
-	var Prelude = __webpack_require__(530);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Control_Monad_Eff_Console = __webpack_require__(633);
+	var Control_Semigroupoid = __webpack_require__(492);
+	var Prelude = __webpack_require__(531);
 	var warnShow = function warnShow(dictShow) {
 	    return function ($4) {
 	        return Control_Monad_Eff_Class.liftEff(Control_Monad_Aff.monadEffAff)(Control_Monad_Eff_Console.warnShow(dictShow)($4));
@@ -77496,19 +78089,19 @@
 	};
 
 /***/ }),
-/* 684 */
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Foldable = __webpack_require__(556);
-	var Data_Generic_Rep = __webpack_require__(660);
-	var Data_Monoid = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Symbol = __webpack_require__(661);
-	var Prelude = __webpack_require__(530);
+	var Data_Foldable = __webpack_require__(557);
+	var Data_Generic_Rep = __webpack_require__(661);
+	var Data_Monoid = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Symbol = __webpack_require__(662);
+	var Prelude = __webpack_require__(531);
 	var GenericShow = function GenericShow(genericShow$prime) {
 	    this["genericShow'"] = genericShow$prime;
 	};
@@ -77616,24 +78209,24 @@
 	};
 
 /***/ }),
-/* 685 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Data_Either = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Ordering = __webpack_require__(541);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_String = __webpack_require__(627);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(489);
+	var Data_Either = __webpack_require__(520);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Ordering = __webpack_require__(542);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_String = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var OPTIONS = function () {
 	    function OPTIONS() {};
 	    OPTIONS.value = new OPTIONS();
@@ -78233,19 +78826,19 @@
 	};
 
 /***/ }),
-/* 686 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(527);
-	var Data_HeytingAlgebra = __webpack_require__(533);
-	var Data_MediaType = __webpack_require__(687);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Prelude = __webpack_require__(530);
+	var Data_Eq = __webpack_require__(528);
+	var Data_HeytingAlgebra = __webpack_require__(534);
+	var Data_MediaType = __webpack_require__(688);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Prelude = __webpack_require__(531);
 	var Accept = function () {
 	    function Accept(value0) {
 	        this.value0 = value0;
@@ -78337,22 +78930,22 @@
 	};
 
 /***/ }),
-/* 687 */
+/* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Newtype = __webpack_require__(529);
-	var Data_Ord = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(489);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Newtype = __webpack_require__(530);
+	var Data_Ord = __webpack_require__(538);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var MediaType = function MediaType(x) {
 	    return x;
 	};
@@ -78401,20 +78994,20 @@
 	};
 
 /***/ }),
-/* 688 */
+/* 689 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(488);
-	var Data_Eq = __webpack_require__(527);
-	var Data_Generic = __webpack_require__(614);
-	var Data_Maybe = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(507);
-	var Data_Show = __webpack_require__(497);
-	var Data_Unit = __webpack_require__(495);
-	var Prelude = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(489);
+	var Data_Eq = __webpack_require__(528);
+	var Data_Generic = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(508);
+	var Data_Show = __webpack_require__(498);
+	var Data_Unit = __webpack_require__(496);
+	var Prelude = __webpack_require__(531);
 	var StatusCode = function StatusCode(x) {
 	    return x;
 	};
@@ -78451,22 +79044,22 @@
 	};
 
 /***/ }),
-/* 689 */
+/* 690 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Except_Trans = __webpack_require__(604);
-	var Data_Function = __webpack_require__(492);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Except_Trans = __webpack_require__(605);
+	var Data_Function = __webpack_require__(493);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -78770,21 +79363,21 @@
 	};
 
 /***/ }),
-/* 690 */
+/* 691 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Data_Function = __webpack_require__(492);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Data_Function = __webpack_require__(493);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -78884,6 +79477,25 @@
 	        };
 	    };
 	};
+	var qrActivity = function qrActivity(whereFrom) {
+	    return function (whatToSendBack) {
+	        return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.qrActivity)(Types_UITypes.encodeQRActivityAction)(Types_UITypes.QRActivity.value))(function (v) {
+	            if (v instanceof Types_UITypes.OPEN_CourseEnrolledActivity_QR) {
+	                return enrolledCourseActivity(v.value0.course)("HomeFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_ResourceDetailActivity_QR) {
+	                return resourceDetailActivity(v.value0.resourceDetails)("HomeFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_CourseInfoActivity_QR) {
+	                return courseInfoActivity(v.value0.course)("HomeFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.BACK_QRActivity) {
+	                return homeFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	            };
+	            return homeFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	        });
+	    };
+	};
 	var homeSearchActivity = function homeSearchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -78928,6 +79540,9 @@
 	                };
 	                if (v instanceof Types_UITypes.OPEN_EditProfileActivity) {
 	                    return additionalInformationActivity(v.value0.profile)("ProfileFragment")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_QRActivity) {
+	                    return qrActivity("HomeFragment")(input);
 	                };
 	                if (v instanceof Types_UITypes.API_UserEnrolledCourse) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserEnrolledCourses(v.value0.user_token)(v.value0.api_token))(function (v1) {
@@ -79117,27 +79732,28 @@
 	    filterActivity: filterActivity,
 	    homeFragment: homeFragment,
 	    homeSearchActivity: homeSearchActivity,
+	    qrActivity: qrActivity,
 	    resourceDetailActivity: resourceDetailActivity,
 	    subModuleDetailActivity: subModuleDetailActivity,
 	    viewBatchActivity: viewBatchActivity
 	};
 
 /***/ }),
-/* 691 */
+/* 692 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Data_Function = __webpack_require__(492);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Data_Function = __webpack_require__(493);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -79481,23 +80097,23 @@
 	};
 
 /***/ }),
-/* 692 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.6
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(487);
-	var Control_Bind = __webpack_require__(499);
-	var Control_Monad_Aff = __webpack_require__(501);
-	var Control_Monad_Aff_Console = __webpack_require__(683);
-	var Control_Monad_Eff_Class = __webpack_require__(578);
-	var Data_Function = __webpack_require__(492);
-	var Prelude = __webpack_require__(530);
-	var Types_APITypes = __webpack_require__(669);
-	var Types_UITypes = __webpack_require__(671);
-	var UI = __webpack_require__(674);
-	var Utils = __webpack_require__(675);
+	var Control_Applicative = __webpack_require__(488);
+	var Control_Bind = __webpack_require__(500);
+	var Control_Monad_Aff = __webpack_require__(502);
+	var Control_Monad_Aff_Console = __webpack_require__(684);
+	var Control_Monad_Eff_Class = __webpack_require__(579);
+	var Data_Function = __webpack_require__(493);
+	var Prelude = __webpack_require__(531);
+	var Types_APITypes = __webpack_require__(670);
+	var Types_UITypes = __webpack_require__(672);
+	var UI = __webpack_require__(675);
+	var Utils = __webpack_require__(676);
 	var subModuleResourceDetailActivity = function subModuleResourceDetailActivity(mName) {
 	    return function (input) {
 	        return function (whereFrom) {
