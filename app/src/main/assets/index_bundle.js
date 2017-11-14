@@ -18654,7 +18654,7 @@
 	}, {
 	  name: "contentType",
 	  displayName: "Content Type",
-	  values: ["Story", "Worksheet", "Collection", "LessonPlan", "TextBook"]
+	  values: ["Story", "Worksheet", "Resource", "Collection", "LessonPlan", "TextBook"]
 	
 	}, {
 	  name: "subject",
@@ -23999,7 +23999,8 @@
 			YES: "हाँ",
 			NO: "नहीं",
 			CHOOSE_FROM_FOLLOWING: "निम्नलिखित से चुनें",
-			LANGUAGES: "भाषाओं"
+			LANGUAGES: "भाषाओं",
+			LANGUAGE: "भाषा"
 		}, _defineProperty(_hi_IN, "COMING_SOON", "विवरण जल्द ही आ रहे हैं"), _defineProperty(_hi_IN, "TITLE_EDUCATION", "शिक्षा"), _defineProperty(_hi_IN, "TITLE_EXPERIENCES", "अनुभव"), _defineProperty(_hi_IN, "TITLE_ADDRESS", "पता"), _defineProperty(_hi_IN, "LAST_NAME", "कुलनाम "), _defineProperty(_hi_IN, "LAST_NAME_HINT", "अपना कुलनाम दर्ज करें"), _defineProperty(_hi_IN, "NAME", "नाम"), _defineProperty(_hi_IN, "NAME_HINT", "अपना नाम दर्ज करें"), _defineProperty(_hi_IN, "GENDER", "लिंग"), _defineProperty(_hi_IN, "DATE_OF_BIRTH", "जन्म की तारीख"), _defineProperty(_hi_IN, "MODULES", "मॉड्यूल"), _defineProperty(_hi_IN, "BTN_CLICK_TO_OPEN_CONTENT", "पाठ्यक्रम देखने के लिए ऐप स्पर्श करें"), _defineProperty(_hi_IN, "START_COURSE", "प्रारंभ"), _defineProperty(_hi_IN, "ERROR_INVALID_AADHAAR", "आधार संख्या प्रारूप की जांच करें"), _defineProperty(_hi_IN, "ERROR_BATCH_NOT_STARTED", "बैच शुरू नहीं हुआ"), _defineProperty(_hi_IN, "MSG_NO_NEW_NOTIFICATION", "कोई नई सूचना नहीं"), _defineProperty(_hi_IN, "MSG_NO_DETAILS_TO_SHOW", "विवरण अनुपलब्ध"), _defineProperty(_hi_IN, "MSG_IMPORTED_SUCCESSFULLY", "पाठ्यक्रम सफलतापूर्वक आयातित"), _defineProperty(_hi_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "पाठ्यक्रम अनुपलब्ध"), _defineProperty(_hi_IN, "ERROR_NO_BATCHES_FOUND", "बैच भी उपलब्ध नहीं है"), _defineProperty(_hi_IN, "ANSWER", "उत्तर "), _defineProperty(_hi_IN, "BTN_SUBMIT", "प्रस्तुत करें"), _defineProperty(_hi_IN, "TOPIC_YOU_MIGHT_LIKE", "विषय चुनें जो आपकी रुचि है"), _defineProperty(_hi_IN, "OPEN_SETTINGS", "सेटिंग्स खोलें"), _defineProperty(_hi_IN, "LABEL_ADD_A_SKILL", "अपने कौशल बताये"), _defineProperty(_hi_IN, "TYPE_TO_ADD_A_SKILL", "अपने कौशल को बताने के लिए टाइप करें"), _defineProperty(_hi_IN, "ERROR_ALREADY_ADDED", "यह कौशल पहले से ही जोड़ा गया है। अब नए कौशल जोड़ें"), _defineProperty(_hi_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "सभी अनिवार्य विवरण दर्ज करें"), _defineProperty(_hi_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "परिवर्तन करें"), _defineProperty(_hi_IN, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष के लिए चार (yyyy) अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_PERCENTAGE", "प्रतिशत के लिए अंक (0-100) दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_GRADE", "ग्रेड के लिए किसी भी एक वर्णमाला (ए-एफ) का चयन करें"), _defineProperty(_hi_IN, "DEGREE", "पद"), _defineProperty(_hi_IN, "INSTITUTION_NAME", "संस्था का नाम"), _defineProperty(_hi_IN, "IS_THIS_YOUR_CURRENT_JOB", "यह आपकी वर्तमान नौकरी है"), _defineProperty(_hi_IN, "ERROR_MULTIPLE_CURRENT_JOB", "समाप्ति तिथि दर्ज करें"), _defineProperty(_hi_IN, "OPTION_INAPPROPRIATE_CONTENT", "अनुचित पाठ्यक्रम"), _defineProperty(_hi_IN, "OPTION_COPYRIGHT_VIOLATION", "कॉपीराइट उल्लंघन"), _defineProperty(_hi_IN, "OPTION_PRIVACY_VIOLATION", "गोपनीयता उल्लंघन"), _defineProperty(_hi_IN, "OPTION_OTHER", "अन्य"), _defineProperty(_hi_IN, "MODULE_NAME", "मोड्यूल का नाम"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान  लोकेशन"), _defineProperty(_hi_IN, "HOBBIES", "शौक"), _defineProperty(_hi_IN, "EDIT_PROFILE", "प्रोफाइल एडिट करें"), _defineProperty(_hi_IN, "ACTIVE", "सक्रिय"), _defineProperty(_hi_IN, "STORAGE", "संग्रहण अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "PERMISSION_DENIED", "अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_hi_IN, "SELECT_ADDRESS_TYPE", "पता प्रकार का चयन करें (स्थायी/अस्थायी )"), _defineProperty(_hi_IN, "CANCEL", "रद्द "), _defineProperty(_hi_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "पाठ्यक्रम अनुपलब्ध"), _defineProperty(_hi_IN, "SELECT_LANGUAGE", "भाषा चुनिए"), _defineProperty(_hi_IN, "READ_LESS", "कम "), _defineProperty(_hi_IN, "CONFIRM_DEL", "हटाने की पुष्टि करें?"), _defineProperty(_hi_IN, "ADDRESS_LINE1", "पता पंक्ति 1"), _defineProperty(_hi_IN, "ADDRESS_LINE2", "पता पंक्ति 2"), _defineProperty(_hi_IN, "CITY", "शहर"), _defineProperty(_hi_IN, "STATE", "राज्य"), _defineProperty(_hi_IN, "COUNTRY", "देश"), _defineProperty(_hi_IN, "PINCODE", "पिन कोड"), _defineProperty(_hi_IN, "PERMANENT", "स्थायी"), _defineProperty(_hi_IN, "CURRENT", "अस्थायी "), _defineProperty(_hi_IN, "JOB_NAME", "व्यवसाय"), _defineProperty(_hi_IN, "ORGANIZATION", "संगठन"), _defineProperty(_hi_IN, "POSITION", "पद"), _defineProperty(_hi_IN, "CHOOSE_FROM_FOLLOWING", "चयन"), _defineProperty(_hi_IN, "PERMISSION_SETTING_MSG", "उपयुक्त अनुमति के लिए ओपन सेटिंग्स स्पर्श करें"), _defineProperty(_hi_IN, "DOWNLOADING", "डाउनलोड "), _defineProperty(_hi_IN, "CREATED_BY_SMALL", "के द्वारा बनाई गई"), _defineProperty(_hi_IN, "ERROR_OFFLINE_MODE", "कोई इंटरनेट, ऑफ़लाइन मोड नहीं"), _defineProperty(_hi_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त जानकारी"), _defineProperty(_hi_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_hi_IN, "TWITTER", "ट्विटर"), _defineProperty(_hi_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_hi_IN, "SOCIAL", "सोशल"), _defineProperty(_hi_IN, "STRENGTHEN_YOUR_PROFILE", "अपने प्रोफाइल को मजबूत करें"), _defineProperty(_hi_IN, "UPDATE", "नवीनीकरण"), _defineProperty(_hi_IN, "CHANGE_LANGUAGE", "भाषा बदलो"), _defineProperty(_hi_IN, "MEDIUM", "निर्देश का माध्यम"), _defineProperty(_hi_IN, "LAST_LOGIN_TIME", "अंतिम लॉगिन समय : %s"), _defineProperty(_hi_IN, "ANNOUNCEMENT", "घोषणा"), _defineProperty(_hi_IN, "ERROR_NO_ATTACHMENTS", "कुछ भी संलग्न नहीं"), _defineProperty(_hi_IN, "ATTACHMENTS", "संलग्न"), _defineProperty(_hi_IN, "WEBLINKS", "वेब लिंक"), _defineProperty(_hi_IN, "SENT_ON", "पर भेजा गया"), _defineProperty(_hi_IN, "NO_ANNOUNCEMENTS", "कोई नई घोषणा नहीं "), _defineProperty(_hi_IN, "UNKNOWN_QR", "कोई पाठ्यक्रम QR कोड से संबद्ध नहीं हुई"), _defineProperty(_hi_IN, "TRY_AGAIN", "पुनः प्रयास करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_SETTINGS", "अनुमति देने के लिए, सेटिंग खोलें,% s ऐप का चयन करें और अनुमति देने के लिए कैमरे पर क्लिक करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_DENIED", "कैमरा अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "SELECT_STATE_TO_GET_STARTED", "प्रारंभ करने के लिए राज्य चुनें"), _hi_IN),
 		"ta_IN": (_ta_IN = {
 			ALREADY_HAVE_ACC: "முன்னரே அக்கௌன்ட் இருக்கிறதா? சைன் இன் செய்யுங்கள்.",
@@ -24357,7 +24358,8 @@
 			NO: "కాదు",
 			ABOUT_MODULE: "ఈ మాడ్యూల్ గురించి",
 			CHOOSE_FROM_FOLLOWING: "ఈ కిందవాటినుండి ఎంచుకోండి",
-			LANGUAGES: "భాషలు"
+			LANGUAGES: "భాషలు",
+			LANGUAGE: "భాష"
 		}, _defineProperty(_te_IN, "COMING_SOON", "వివరాలు త్వరలో..."), _defineProperty(_te_IN, "TITLE_EDUCATION", "చదువు"), _defineProperty(_te_IN, "TITLE_EXPERIENCES", "అనుభవం"), _defineProperty(_te_IN, "TITLE_ADDRESS", "చిరునామా"), _defineProperty(_te_IN, "LAST_NAME", "ఇంటిపేరు"), _defineProperty(_te_IN, "LAST_NAME_HINT", "మీ ఇంటిపేరు (లాస్ట్ నేమ్) ఇవ్వండి"), _defineProperty(_te_IN, "NAME", "పేరు"), _defineProperty(_te_IN, "NAME_HINT", "మీ పేరు ఇవ్వండి"), _defineProperty(_te_IN, "GENDER", "లింగం"), _defineProperty(_te_IN, "DATE_OF_BIRTH", "పుట్టిన తేదీ"), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HINT_CURRENT_LOCATION", "ఇప్పుడు మీరు నివసిస్తున్న చోటు చిరునామా ఇవ్వండి "), _defineProperty(_te_IN, "MODULES", "మాడ్యూలు "), _defineProperty(_te_IN, "BTN_CLICK_TO_OPEN_CONTENT", "కంటెంట్ చూడ్డానికి నొక్కండి"), _defineProperty(_te_IN, "START_COURSE", "మొదలుపెట్టండి"), _defineProperty(_te_IN, "ERROR_INVALID_AADHAAR", "ఆధార్ నెంబర్ ఫార్మేట్ సరిచూడండి"), _defineProperty(_te_IN, "ERROR_BATCH_NOT_STARTED", "బేచ్ మొదలు కాలేదు"), _defineProperty(_te_IN, "MSG_NO_NEW_NOTIFICATION", "కొత్త ప్రకటనలేం లేవు"), _defineProperty(_te_IN, "MSG_NO_DETAILS_TO_SHOW", "వివరాలు లేవు"), _defineProperty(_te_IN, "MSG_IMPORTED_SUCCESSFULLY", "కంటెంట్ సరిగా ఇంపోర్ట్ అయింది"), _defineProperty(_te_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "ఖాళీ ఫైల్ తెరవబడదు"), _defineProperty(_te_IN, "ERROR_NO_BATCHES_FOUND", "ఈ కోర్సుకు బేచ్‌లు లేవు"), _defineProperty(_te_IN, "ANSWER", "జవాబు"), _defineProperty(_te_IN, "BTN_SUBMIT", "సబ్మిట్ చెయ్యి"), _defineProperty(_te_IN, "TOPIC_YOU_MIGHT_LIKE", "మీకు నచ్చిన విషయాలను చూడండి"), _defineProperty(_te_IN, "OPEN_SETTINGS", "సెట్టింగ్స్ తెరువు"), _defineProperty(_te_IN, "LABEL_ADD_A_SKILL", "నైపుణ్యం జతచేయండి"), _defineProperty(_te_IN, "TYPE_TO_ADD_A_SKILL", "మీ నైపుణ్యాలు జతచేయండి"), _defineProperty(_te_IN, "ERROR_ALREADY_ADDED", "ఈ నైపుణ్యం ఇంతకు ముందే ఇచ్చారు"), _defineProperty(_te_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "తప్పనిసరి వివరాలు ఇవ్వండి"), _defineProperty(_te_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "మార్పులు చెయ్యండి"), _defineProperty(_te_IN, "WARNING_INVALID_YEAR_OF_PASSING", "ఉత్తీర్ణమైన సంవత్సరం తప్పిచ్చారు. నాలుగు (yyyy) అంకెలు ఉండాలి."), _defineProperty(_te_IN, "WARNING_INVALID_PERCENTAGE", "ఉత్తీర్ణతా శాతం తప్పిచ్చారు. 0 - 100 మధ్య సంఖ్యను ఇవ్వండి "), _defineProperty(_te_IN, "WARNING_INVALID_GRADE", "గ్రేడ్ తప్పిచ్చారు. A - F మధ్యనే ఉండాలి."), _defineProperty(_te_IN, "DEGREE", "డిగ్రీ"), _defineProperty(_te_IN, "INSTITUTION_NAME", "సంస్థ పేరు "), _defineProperty(_te_IN, "IS_THIS_YOUR_CURRENT_JOB", "ఇది మీ ప్రస్తుత ఉద్యోగమా?"), _defineProperty(_te_IN, "ERROR_MULTIPLE_CURRENT_JOB", "ప్రస్తుత ఉద్యోగాలు ఒకటికన్నా ఎక్కువ ఉండలేవు."), _defineProperty(_te_IN, "OPTION_INAPPROPRIATE_CONTENT", "కంటెంటు అనుచితమైనది"), _defineProperty(_te_IN, "OPTION_COPYRIGHT_VIOLATION", "కాపీరైట్ ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_PRIVACY_VIOLATION", "డేటా గోప్యత ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_OTHER", "వేరే"), _defineProperty(_te_IN, "MODULE_NAME", "మాడ్యూల్ పేరు "), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HOBBIES", "అభిరుచులు"), _defineProperty(_te_IN, "EDIT_PROFILE", "ప్రొఫైల్ మార్చు"), _defineProperty(_te_IN, "ACTIVE", "ఏక్టివ్"), _defineProperty(_te_IN, "STORAGE", "స్టోరేజి"), _defineProperty(_te_IN, "PERMISSION_DENIED", "అనుమతి లేదు"), _defineProperty(_te_IN, "YEAR_OF_PASSING", "ఉత్తీర్ణులైన సంవత్సరం "), _defineProperty(_te_IN, "SELECT_ADDRESS_TYPE", "ఎలాంటి చిరునామా?"), _defineProperty(_te_IN, "CANCEL", "రద్దు"), _defineProperty(_te_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "తిరిగి మొదలుపెట్టడానికి కంటెంటు లేదు."), _defineProperty(_te_IN, "SELECT_LANGUAGE", "భాషను ఎంచుకోండి"), _defineProperty(_te_IN, "READ_LESS", "తక్కువ చూపించు "), _defineProperty(_te_IN, "CONFIRM_DEL", "తొలగించాలా?"), _defineProperty(_te_IN, "ADDRESS_LINE1", "చిరునామా లైన్ 1"), _defineProperty(_te_IN, "ADDRESS_LINE2", "చిరునామా లైన్ 2"), _defineProperty(_te_IN, "CITY", "నగరం"), _defineProperty(_te_IN, "STATE", "రాష్ట్రం"), _defineProperty(_te_IN, "COUNTRY", "దేశం"), _defineProperty(_te_IN, "PINCODE", "పిన్ కోడ్"), _defineProperty(_te_IN, "PERMANENT", "శాశ్వత చిరునామా"), _defineProperty(_te_IN, "CURRENT", "ప్రస్తుత చిరునామా"), _defineProperty(_te_IN, "JOB_NAME", "ఉద్యోగం"), _defineProperty(_te_IN, "ORGANIZATION", "సంస్థ"), _defineProperty(_te_IN, "POSITION", "స్థానం"), _defineProperty(_te_IN, "CHOOSE_FROM_FOLLOWING", "కిందవాటి నుండి ఎంచుకోండి"), _defineProperty(_te_IN, "PERMISSION_SETTING_MSG", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్ళండి"), _defineProperty(_te_IN, "DOWNLOADING", "దిగుమతి అవుతోంది %s %"), _defineProperty(_te_IN, "CREATED_BY_SMALL", "తయారుచేసినది"), _defineProperty(_te_IN, "ERROR_OFFLINE_MODE", "ఇంటర్నెట్టు లేదు. ఆఫ్లైన్ ఉన్నారు."), _defineProperty(_te_IN, "ADDITIONAL_INFORMATION", "అదనపు సమాచారం"), _defineProperty(_te_IN, "FACEBOOK", "ఫేస్ బుక్"), _defineProperty(_te_IN, "TWITTER", "ట్విట్టర్"), _defineProperty(_te_IN, "LINKEDIN", "లింక్డ్ ఇన్ "), _defineProperty(_te_IN, "SOCIAL", "సోషల్"), _defineProperty(_te_IN, "STRENGTHEN_YOUR_PROFILE", "మీ ప్రొఫైల్‌ను మెరుగు పరచండి"), _defineProperty(_te_IN, "UPDATE", "అప్‌డేట్"), _defineProperty(_te_IN, "CHANGE_LANGUAGE", "భాష మార్చు"), _defineProperty(_te_IN, "MEDIUM", "సూచనల మాధ్యమం"), _defineProperty(_te_IN, "LAST_LOGIN_TIME", "చివర లాగిన్ అయిన సమయం : %s"), _defineProperty(_te_IN, "ANNOUNCEMENT", "ప్రకటన"), _defineProperty(_te_IN, "ERROR_NO_ATTACHMENTS", "ఎటాచ్‌మెంట్ లేదు"), _defineProperty(_te_IN, "ATTACHMENTS", "ఎటాచ్‌మెంట్లు"), _defineProperty(_te_IN, "WEBLINKS", "వెబ్ లింకులు"), _defineProperty(_te_IN, "SENT_ON", "పంపిన తేదీ"), _defineProperty(_te_IN, "NO_ANNOUNCEMENTS", "కొత్త ప్రకటనలేవీ లేవు"), _defineProperty(_te_IN, "UNKNOWN_QR", "ఈ QR కోడ్‌కి సంబంధించి ఏ కంటెంట్ దొరకలేదు "), _defineProperty(_te_IN, "TRY_AGAIN", "మళ్ళీ ప్రయత్నించండి"), _defineProperty(_te_IN, "CAMERA_PERMISSION_SETTINGS", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్లి % ఏప్ సెలెక్ట్ చేసుకొని కెమెరాకి అనుమతిపై క్లిక్ చెయ్యండి."), _defineProperty(_te_IN, "CAMERA_PERMISSION_DENIED", "కెమెరాకు అనుమతి లేదు"), _defineProperty(_te_IN, "SELECT_STATE_TO_GET_STARTED", "మొదలుపెట్టడానికి రాష్ట్రాన్ని ఎంచుకోండి"), _defineProperty(_te_IN, "MSG_ALREADY_IMPORTED", "ఇంతకుముందే ఇంపోర్ట్ అయ్యింది "), _te_IN),
 		"bn_IN": {},
 		"ml_IN": {},
@@ -24506,6 +24508,7 @@
 	          width: "match_parent",
 	          height: "match_parent",
 	          gravity: "center",
+	          background: window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 100
@@ -24517,7 +24520,7 @@
 	          layout_gravity: "center",
 	          circularImageUrl: "1," + imgUrl, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 108
+	            lineNumber: 109
 	          }
 	        }),
 	        dom(TextView, {
@@ -24526,7 +24529,7 @@
 	          layout_gravity: "center",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 113
+	            lineNumber: 114
 	          }
 	        })
 	      );
@@ -40095,7 +40098,7 @@
 	        };
 	
 	        _this2.checkContentType = function (type) {
-	            if (type.toLowerCase() == "story" || type.toLowerCase() == "worksheet" || type.toLowerCase() == "game") return true;else return false;
+	            if (type.toLowerCase() == "story" || type.toLowerCase() == "worksheet" || type.toLowerCase() == "game" || type.toLowerCase() == "resource") return true;else return false;
 	        };
 	
 	        _this2.checkContentLocalStatus = function (module) {
@@ -40124,7 +40127,7 @@
 	                                console.log("module", module
 	                                // this.simpleData.content = module.contentData.size ? "Size : " + utils.formatBytes(module.contentData.size) : "";
 	                                );JBridge.importCourse(module.identifier, "true"
-	                                // _this.simpleData.content =         
+	                                // _this.simpleData.content =
 	                                );
 	                            } else {
 	                                window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
@@ -40344,7 +40347,7 @@
 	        _this2.onSimplePopClick = function (type) {
 	
 	            if (type == "negative") {
-	                //do something 
+	                //do something
 	            } else if (type == "positive") {
 	                //do something
 	
