@@ -124,6 +124,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         String fileFromIntent = "";
 
         if (intent != null) {
+            if (intent.getStringExtra("intentFrom") != null && intent.getStringExtra("intentFrom").equals("fcmNotification")){
+                jsInterface.setInSharedPrefs("intentNotification", intent.getStringExtra("notifData"));
+                Log.d(TAG, "Intent from notification");
+            }
             if (intent.getData() != null) {
 
                 if (intent.getScheme().equals("http") || intent.getScheme().equals("https")) {

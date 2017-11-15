@@ -62,6 +62,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -2014,5 +2015,15 @@ public class JsInterface {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), MainActivity.IMAGE_CHOOSER_ID);
+    }
+
+    @JavascriptInterface
+    public void registerFCM () {
+        FirebaseMessaging.getInstance().subscribeToTopic(activity.getString(R.string.topicName));
+    }
+
+    @JavascriptInterface
+    public void unregisterFCM () {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
 }

@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" tools:node="replace">SUNBIRD</string>
     <string name="title_activity_main">SUNBIRD</string>
-    <string name ="deeplink_scheme_http">http</string>
-    <string name ="deeplink_scheme_https">https</string>
-    <string name ="deeplink_scheme_content">content</string>
+    <string name="deeplink_scheme_http">http</string>
+    <string name="deeplink_scheme_https">https</string>
+    <string name="deeplink_scheme_content">content</string>
+    <string name="topicName">SunbirdNotif</string>
 </resources>

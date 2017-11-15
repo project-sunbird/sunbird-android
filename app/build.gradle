@@ -40,6 +40,7 @@ android {
         versionCode 1
         versionName "1.0.$buildNumber"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -150,6 +151,8 @@ dependencies {
         transitive = true;
     }
     compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.3.0'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.google.android.gms:play-services:10.0.1'
 }
 
 tasks.create(name: 'createJsaFiles') {
@@ -204,3 +207,5 @@ private void writeByteArray(String filePath, byte[] encrypted) {
     encryptedOS.write(encrypted);
     encryptedOS.close();
 }
+
+apply plugin: 'com.google.gms.google-services'
