@@ -2000,4 +2000,19 @@ public class JsInterface {
     public boolean isDebuggable(){
         return BuildConfig.DEBUG;
     }
+
+    @JavascriptInterface
+    public void fileUpload(String filePath, String apiToken, String userAccessToken, String userId, String cb){
+        File file = new File(filePath);
+        Log.e(TAG, "fileUpload: " + file.exists());
+        Log.e(TAG, "fileUpload: response: " + Util.postFile(BuildConfig.REDIRECT_BASE_URL + "/api/content/v1/media/upload", file, apiToken, userAccessToken, userId, cb));
+    }
+
+    @JavascriptInterface
+    public void loadImageForProfileAvatar(String cb){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), MainActivity.IMAGE_CHOOSER_ID);
+    }
 }

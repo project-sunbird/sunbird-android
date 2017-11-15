@@ -21,6 +21,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private static final String TAG = "MainActivity";
     private static final int SEND_SMS_REQUEST = 8;
+    public final static int IMAGE_CHOOSER_ID = 865;
     private static CustomTabsClient mClient;
     private static CustomTabsServiceConnection mConnection;
     public int PERMISSION_CODE = 111;
@@ -269,6 +271,48 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         } else {
             jsInterface.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            if (requestCode == IMAGE_CHOOSER_ID && resultCode == RESULT_OK && null != intent && intent.getData() != null){
+                String picturePath = "";
+                try {
+                    Uri originalUri = intent.getData();
+                    String pathsegment[] = originalUri.getLastPathSegment().split(":");
+                    String id = pathsegment[0];
+                    final String[] imageColumns = { MediaStore.Images.Media.DATA };
+                    final String imageOrderBy = null;
+
+                    Uri uri = getUri();
+                    Cursor imageCursor = getContentResolver().query(uri, imageColumns,
+                            MediaStore.Images.Media._ID + "=" + id, null, null);
+
+                    if (imageCursor.moveToFirst()) {
+                        picturePath = imageCursor.getString(imageCursor.getColumnIndex(MediaStore.Images.Media.DATA));
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(this, "Failed to get image", Toast.LENGTH_LONG).show();
+                }
+                Log.e(TAG, "onActivityResult: " + picturePath);
+                String javascript = String.format("window.onGetImageFromGallery('%s')", picturePath);
+                dynamicUI.addJsToWebView(javascript);
+            }
+        } catch (Exception e) {
+            Log.e("MainActivity", "Exception in onActivity Result", e);
+        }
+        super.onActivityResult(requestCode, resultCode, intent);
+        Log.d(TAG, "Activity Result is " + requestCode);
+    }
+
+    private Uri getUri() {
+        String state = Environment.getExternalStorageState();
+        if(!state.equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+            return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
+
+        return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     }
 
 }

@@ -6,11 +6,13 @@ import android.util.Log;
 import org.ekstep.genieservices.commons.bean.CorrelationData;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.json.JSONObject;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.CoRelationType;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +20,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by vinay.narayana on 18/08/17.
@@ -214,5 +223,38 @@ public class Util {
             time+="+0530";
         }
         return time;
+    }
+
+    public static String postFile(String url, File file, String apiToken, String userAccessToken, String userId, String cb) {
+        OkHttpClient client = new OkHttpClient();
+        final MediaType MEDIA_TYPE = MediaType.parse("image/jpeg");
+        try {
+            RequestBody body = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("file", file.getName(), RequestBody.create(MEDIA_TYPE, file))
+                    .addFormDataPart("container", "user/" + userId)
+                    .build();
+            Request request = new Request.Builder()
+                    .addHeader("Authorization", "Bearer " + apiToken)
+                    .addHeader("x-authenticated-user-token", userAccessToken)
+                    .addHeader("X-Consumer-ID", "33a6ddbe-0c83-4d26-a08d-29138c898825 ")
+                    .addHeader("X-Device-ID", "X-Device-ID ")
+                    .addHeader("X-msgid", "8e27cbf5-e299-43b0-bca7-8347f7e5abcf ")
+                    .addHeader("ts", getCurrentLocalDateTimeStamp())
+                    .addHeader("Accept", "application/json ")
+                    .addHeader("X-Source", "web ")
+                    .url(url)
+                    .post(body)
+                    .build();
+            Log.e("Utils", "postFile: " + request.url());
+            Log.e("Utils", "postFile: " + body.toString());
+            Response response = client.newCall(request).execute();
+            Log.e("Utils", "postFile: " + response.body().string());
+            JSONObject res = new JSONObject(response.body().string());
+            return res.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
