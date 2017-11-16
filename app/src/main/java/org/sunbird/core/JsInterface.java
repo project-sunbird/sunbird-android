@@ -1882,7 +1882,7 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback,final String buttonId) throws Exception {
+    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback,final String buttonId,final int heightOfDivider) throws Exception {
         int listViewId = parseInt(id);
         final ListView listView = (ListView) activity.findViewById(listViewId);
         JSONArray jsonArray = new JSONArray(text);
@@ -1895,7 +1895,7 @@ public class JsInterface {
             public void run() {
                 try{
                     listView.setAdapter(listViewAdapter);
-                    listView.setDividerHeight(0);
+                    listView.setDividerHeight(heightOfDivider);
                 }catch (Exception e){
                     Log.d(LOG_TAG, "Error in rendering listview");
                 }
