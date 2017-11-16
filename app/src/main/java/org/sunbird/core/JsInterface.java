@@ -72,6 +72,8 @@ import com.squareup.okhttp.Response;
 
 import org.apache.cordova.LOG;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
+import org.ekstep.genieservices.commons.utils.Base64Util;
+import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,6 +96,7 @@ import org.sunbird.ui.ViewPagerAdapter;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.FileUtil;
 import org.sunbird.utils.GenieWrapper;
+import org.sunbird.utils.ImagePicker;
 import org.sunbird.utils.KeyValueStore;
 import org.sunbird.utils.SQLBlobStore;
 import org.sunbird.utils.Util;
@@ -2006,15 +2009,22 @@ public class JsInterface {
     public void fileUpload(String filePath, String apiToken, String userAccessToken, String userId, String cb){
         File file = new File(filePath);
         Log.e(TAG, "fileUpload: " + file.exists());
-        Log.e(TAG, "fileUpload: response: " + Util.postFile(BuildConfig.REDIRECT_BASE_URL + "/api/content/v1/media/upload", file, apiToken, userAccessToken, userId, cb));
+        String resData = Util.postFile(BuildConfig.REDIRECT_BASE_URL + "/api/content/v1/media/upload", file, apiToken, userAccessToken, userId, cb);
+        Log.e(TAG, "fileUpload: response: " + (resData == ""));
+        if (resData == null || resData == ""){
+            String javascript = String.format("window.callJSCallback('%s','%s');", cb, "__failed");
+            dynamicUI.addJsToWebView(javascript);
+        } else {
+            String enc = Base64Util.encodeToString(resData.getBytes(), Base64Util.DEFAULT);
+            String javascript = String.format("window.callJSCallback('%s','%s');", cb, enc);
+            dynamicUI.addJsToWebView(javascript);
+        }
     }
 
     @JavascriptInterface
-    public void loadImageForProfileAvatar(String cb){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), MainActivity.IMAGE_CHOOSER_ID);
+    public void loadImageForProfileAvatar(){
+        Intent intent = ImagePicker.getPickImageIntent(activity);
+        activity.startActivityForResult(intent, MainActivity.IMAGE_CHOOSER_ID);
     }
 
     @JavascriptInterface

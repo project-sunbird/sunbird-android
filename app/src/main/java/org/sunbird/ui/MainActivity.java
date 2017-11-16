@@ -3,6 +3,7 @@ package org.sunbird.ui;
 import android.Manifest;
 import android.content.ComponentName;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsClient;
@@ -29,6 +31,7 @@ import org.sunbird.core.JsInterface;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.utils.GenieWrapper;
+import org.sunbird.utils.ImagePicker;
 import org.sunbird.utils.NewLogger;
 import org.sunbird.utils.PreferenceKey;
 import org.sunbird.utils.WebSocket;
@@ -280,26 +283,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            if (requestCode == IMAGE_CHOOSER_ID && resultCode == RESULT_OK && null != intent && intent.getData() != null){
-                String picturePath = "";
-                try {
-                    Uri originalUri = intent.getData();
-                    String pathsegment[] = originalUri.getLastPathSegment().split(":");
-                    String id = pathsegment[0];
-                    final String[] imageColumns = { MediaStore.Images.Media.DATA };
-                    final String imageOrderBy = null;
-
-                    Uri uri = getUri();
-                    Cursor imageCursor = getContentResolver().query(uri, imageColumns,
-                            MediaStore.Images.Media._ID + "=" + id, null, null);
-
-                    if (imageCursor.moveToFirst()) {
-                        picturePath = imageCursor.getString(imageCursor.getColumnIndex(MediaStore.Images.Media.DATA));
-                    }
-
-                } catch (Exception e) {
-                    Toast.makeText(this, "Failed to get image", Toast.LENGTH_LONG).show();
-                }
+            if (requestCode == IMAGE_CHOOSER_ID){
+                String picturePath = getPath(ImagePicker.getImageUriFromResult(this, resultCode, intent));
                 Log.e(TAG, "onActivityResult: " + picturePath);
                 String javascript = String.format("window.onGetImageFromGallery('%s')", picturePath);
                 dynamicUI.addJsToWebView(javascript);
@@ -311,12 +296,72 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         Log.d(TAG, "Activity Result is " + requestCode);
     }
 
-    private Uri getUri() {
-        String state = Environment.getExternalStorageState();
-        if(!state.equalsIgnoreCase(Environment.MEDIA_MOUNTED))
-            return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
 
-        return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isGooglePhotosUri(Uri uri) {
+        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
+    }
+
+    private String getPath(Uri uri) {
+        final boolean needToCheckUri = Build.VERSION.SDK_INT >= 19;
+        String selection = null;
+        String[] selectionArgs = null;
+        // Uri is different in versions after KITKAT (Android 4.4), we need to
+        // deal with different Uris.
+        if (needToCheckUri && DocumentsContract.isDocumentUri(getApplicationContext(), uri)) {
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                return Environment.getExternalStorageDirectory() + "/" + split[1];
+            } else if (isDownloadsDocument(uri)) {
+                final String id = DocumentsContract.getDocumentId(uri);
+                uri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+            } else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+                if ("image".equals(type)) {
+                    uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+                selection = "_id=?";
+                selectionArgs = new String[]{
+                        split[1]
+                };
+            }
+        }
+        if ("content".equalsIgnoreCase(uri.getScheme())) {
+            String[] projection = {
+                    MediaStore.Images.Media.DATA
+            };
+            Cursor cursor;
+            try {
+                cursor = this.getContentResolver()
+                        .query(uri, projection, selection, selectionArgs, null);
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                if (cursor.moveToFirst()) {
+                    return cursor.getString(column_index);
+                }
+            } catch (Exception e) {
+            }
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+        return null;
     }
 
 }

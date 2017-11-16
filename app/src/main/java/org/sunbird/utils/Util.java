@@ -246,12 +246,14 @@ public class Util {
                     .url(url)
                     .post(body)
                     .build();
-            Log.e("Utils", "postFile: " + request.url());
-            Log.e("Utils", "postFile: " + body.toString());
+            Log.e("Utils", "request url: " + request.url());
             Response response = client.newCall(request).execute();
-            Log.e("Utils", "postFile: " + response.body().string());
-            JSONObject res = new JSONObject(response.body().string());
-            return res.toString();
+            JSONObject resData = new JSONObject();
+            resData.put("responseCode", response.code());
+            JSONObject resBody = new JSONObject(response.body().string());
+            resData.put("responseBody", resBody);
+            Log.e("Utils", "postFile: " + resData.toString());
+            return resData.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
