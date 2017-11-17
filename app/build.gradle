@@ -74,7 +74,49 @@ android {
     }
     productFlavors {
         def host = InetAddress.getLocalHost().getHostAddress()
+        dev {
+            resValue 'string', 'local_ip', host
+            resValue 'string', 'api_url', "dev.open-sunbird.org"
+            buildConfigField 'String', 'REDIRECT_BASE_URL', '"https://dev.open-sunbird.org"'
+            buildConfigField 'String', 'TELEMETRY_BASE_URL', '"https://dev.open-sunbird.org/api/data/v1"'
+            buildConfigField 'String', 'TERMS_BASE_URL', '"https://dev.open-sunbird.org/api/domain/v1"'
+            buildConfigField 'String', 'CONFIG_BASE_URL', '"https://dev.open-sunbird.org/api/meta/v1"'
+            buildConfigField 'String', 'SEARCH_BASE_URL', '"https://dev.open-sunbird.org/api/composite/v1"'
+            buildConfigField 'String', 'CONTENT_LISTING_BASE_URL', '"https://dev.open-sunbird.org/api/data/v1"'
+            buildConfigField 'String', 'CONTENT_BASE_URL', '"https://dev.open-sunbird.org/api/content/v1"'
+            buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://dev.open-sunbird.org/api/api-manager/v1"'
+            buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
+            buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
+            buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
+            buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
+            buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
+            buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
+            buildConfigField 'String', 'MOBILE_APP_CONSUMER', '"mobile_device"'
+            buildConfigField 'String', 'MOBILE_APP_KEY', '"$MOBILE_APP_KEY$"'
+            buildConfigField 'String', 'MOBILE_APP_SECRET', '"$MOBILE_APP_SECRET$"'
+        }
         staging {
+            resValue 'string', 'local_ip', host
+            resValue 'string', 'api_url', "staging.open-sunbird.org"
+            buildConfigField 'String', 'REDIRECT_BASE_URL', '"https://staging.open-sunbird.org"'
+            buildConfigField 'String', 'TELEMETRY_BASE_URL', '"https://staging.open-sunbird.org/api/data/v1"'
+            buildConfigField 'String', 'TERMS_BASE_URL', '"https://staging.open-sunbird.org/api/domain/v1"'
+            buildConfigField 'String', 'CONFIG_BASE_URL', '"https://staging.open-sunbird.org/api/meta/v1"'
+            buildConfigField 'String', 'SEARCH_BASE_URL', '"https://staging.open-sunbird.org/api/composite/v1"'
+            buildConfigField 'String', 'CONTENT_LISTING_BASE_URL', '"https://staging.open-sunbird.org/api/data/v1"'
+            buildConfigField 'String', 'CONTENT_BASE_URL', '"https://staging.open-sunbird.org/api/content/v1"'
+            buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://staging.open-sunbird.org/api/api-manager/v1"'
+            buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
+            buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
+            buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
+            buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
+            buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
+            buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
+            buildConfigField 'String', 'MOBILE_APP_CONSUMER', '"mobile_device"'
+            buildConfigField 'String', 'MOBILE_APP_KEY', '"$MOBILE_APP_KEY$"'
+            buildConfigField 'String', 'MOBILE_APP_SECRET', '"$MOBILE_APP_SECRET$"'
+        }
+        production {
             resValue 'string', 'local_ip', host
             resValue 'string', 'api_url', "staging.open-sunbird.org"
             buildConfigField 'String', 'REDIRECT_BASE_URL', '"https://staging.open-sunbird.org"'
@@ -103,7 +145,7 @@ android {
         def flavorName = variant.properties.get('flavorName')
         def versionName = name
 
-        if (!flavorName.equals("staging")) {
+        if (!flavorName.equals("production")) {
             versionName += flavorName;
         }
         if (variant.buildType.isDebuggable()) {
