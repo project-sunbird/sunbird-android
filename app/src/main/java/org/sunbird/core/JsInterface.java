@@ -316,12 +316,7 @@ public class JsInterface {
                         .patch(body)
                         .addHeader("Accept", "application/json")
                         .addHeader("Content-Type", "application/json")
-                        .addHeader("x-Consumer-Id", userid)
-                        .addHeader("ts", Util.getCurrentLocalDateTimeStamp())
-                        .addHeader("X-msgid", "8e27cbf5-e299-43b0-bca7-8347f7e5abcf")
-                        .addHeader("X-Device-ID", "X-Device-ID")
                         .addHeader("X-Authenticated-User-Token", userid)
-                        .addHeader("X-Source", "app")
                         .addHeader("Authorization", "Bearer " + api_key)
                         .build();
                 try {
@@ -2000,4 +1995,10 @@ public class JsInterface {
     public boolean isDebuggable(){
         return BuildConfig.DEBUG;
     }
+
+    @JavascriptInterface
+    public boolean isChannelIdSet() { return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID; }
+
+    @JavascriptInterface
+    public String defaultChannelId() { return BuildConfig.CHANNEL_ID; }
 }

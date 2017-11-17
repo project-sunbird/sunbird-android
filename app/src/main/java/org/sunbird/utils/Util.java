@@ -200,19 +200,4 @@ public class Util {
     public static void setResourcePageAssembleApiResponseMessageId(String responseMessageId) {
         GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.RESOURCE_PAGE, responseMessageId);
     }
-
-    public static String getCurrentLocalDateTimeStamp() {
-        String time ="";
-        try {
-            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
-            TimeZone tz = TimeZone.getDefault();
-            String timeZone = tz.getDisplayName(false, TimeZone.SHORT);
-            time += timeZone.substring(3, 6) + timeZone.substring(7,9);
-        } catch (Exception e) {
-            Log.e("Error", "getCurrentLocalDateTimeStamp erroe: "+e );
-            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
-            time+="+0530";
-        }
-        return time;
-    }
 }
