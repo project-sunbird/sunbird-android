@@ -2,6 +2,7 @@ package org.sunbird.utils;
 
 import android.app.Activity;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sunbird.BuildConfig;
+import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
@@ -282,12 +285,19 @@ public class GenieWrapper extends Activity {
                 strings[6] = "LessonPlan";
             }
 
-            String fp;
+            if (BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID) {
+                String channelId = PreferenceManager.getDefaultSharedPreferences(GlobalApplication.getInstance()).getString("channelId", "__failed");
+                if (StringUtil.isNullOrEmpty(channelId) || channelId.equals("__failed")) {
+                    channelId = BuildConfig.CHANNEL_ID;
+                }
+                builder.channel(new String[]{channelId});
+            }
 
+            String fp;
             ContentSearchCriteria filters;
-            if (filterParams.length() > 0 && filterParams.equals("userToken")){
+            if (filterParams.length() > 0 && filterParams.equals("userToken")) {
                 builder.contentTypes(strings).limit(count);
-                builder.createdBy(new String[] {query});
+                builder.createdBy(new String[]{query});
                 filters = builder.build();
             } else if (filterParams.length() > 10 && status.equals("true")) {
                 fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
@@ -512,7 +522,7 @@ public class GenieWrapper extends Activity {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
                 List<ContentImportResponse> result = genieResponse.getResult();
-                if(!CollectionUtil.isNullOrEmpty(result)) {
+                if (!CollectionUtil.isNullOrEmpty(result)) {
                     boolean launchDetail = true;
                     for (ContentImportResponse contentImportResponse : result) {
                         switch (contentImportResponse.getStatus()) {
@@ -522,7 +532,7 @@ public class GenieWrapper extends Activity {
                         }
                     }
 
-                    if(launchDetail) {
+                    if (launchDetail) {
                         String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(result.get(0)));
                         dynamicUI.addJsToWebView(importResponse);
                     } else {
