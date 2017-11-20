@@ -88,7 +88,7 @@ android {
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
             buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
-            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "true"
+            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
@@ -110,7 +110,7 @@ android {
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
             buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
-            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "true"
+            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
@@ -132,7 +132,7 @@ android {
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
             buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
-            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "true"
+            buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
