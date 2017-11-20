@@ -13,13 +13,10 @@ import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.CoRelationType;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -223,7 +220,7 @@ public class Util {
                     .addHeader("Authorization", "Bearer " + apiToken)
                     .addHeader("x-authenticated-user-token", userAccessToken)
                     .addHeader("Accept", "application/json ")
-                    .addHeader("ContentType", "application/json ")
+                    .addHeader("Content-Type", "application/json ")
                     .url(url)
                     .post(body)
                     .build();

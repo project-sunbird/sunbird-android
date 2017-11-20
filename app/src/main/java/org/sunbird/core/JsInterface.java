@@ -73,7 +73,6 @@ import com.squareup.okhttp.Response;
 import org.apache.cordova.LOG;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
-import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
