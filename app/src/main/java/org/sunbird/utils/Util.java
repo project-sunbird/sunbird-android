@@ -210,21 +210,6 @@ public class Util {
         GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.RESOURCE_PAGE, responseMessageId);
     }
 
-    public static String getCurrentLocalDateTimeStamp() {
-        String time ="";
-        try {
-            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
-            TimeZone tz = TimeZone.getDefault();
-            String timeZone = tz.getDisplayName(false, TimeZone.SHORT);
-            time += timeZone.substring(3, 6) + timeZone.substring(7,9);
-        } catch (Exception e) {
-            Log.e("Error", "getCurrentLocalDateTimeStamp erroe: "+e );
-            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
-            time+="+0530";
-        }
-        return time;
-    }
-
     public static String postFile(String url, File file, String apiToken, String userAccessToken, String userId, String cb) {
         OkHttpClient client = new OkHttpClient();
         final MediaType MEDIA_TYPE = MediaType.parse("image/jpeg");
@@ -237,12 +222,8 @@ public class Util {
             Request request = new Request.Builder()
                     .addHeader("Authorization", "Bearer " + apiToken)
                     .addHeader("x-authenticated-user-token", userAccessToken)
-                    .addHeader("X-Consumer-ID", "33a6ddbe-0c83-4d26-a08d-29138c898825 ")
-                    .addHeader("X-Device-ID", "X-Device-ID ")
-                    .addHeader("X-msgid", "8e27cbf5-e299-43b0-bca7-8347f7e5abcf ")
-                    .addHeader("ts", getCurrentLocalDateTimeStamp())
                     .addHeader("Accept", "application/json ")
-                    .addHeader("X-Source", "web ")
+                    .addHeader("ContentType", "application/json ")
                     .url(url)
                     .post(body)
                     .build();
