@@ -87,7 +87,7 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://dev.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://dev.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
+            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
@@ -109,7 +109,7 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://staging.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://staging.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
+            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
@@ -131,7 +131,7 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://staging.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://staging.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"sunbird"'
+            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
             buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
