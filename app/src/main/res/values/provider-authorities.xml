@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="file_provider_authorities">APPLICATION_ID.fileprovider</string>
-    <string name="content_provider_authorities">APPLICATION_ID.content</string>
-    <string name="partner_provider_authorities">APPLICATION_ID.partner</string>
-    <string name="telemetry_provider_authorities">APPLICATION_ID.telemetry</string>
-    <string name="profile_provider_authorities">APPLICATION_ID.profiles</string>
-</resources>

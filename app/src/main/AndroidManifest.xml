@@ -108,27 +108,27 @@
 
         <provider
             android:name="org.sunbird.providers.UserProvider"
-            android:authorities="@string/profile_provider_authorities"
+            android:authorities="${applicationId}.profiles"
             android:exported="true" />
 
         <provider
             android:name="org.sunbird.providers.TelemetryProvider"
-            android:authorities="@string/telemetry_provider_authorities"
+            android:authorities="${applicationId}.telemetry"
             android:exported="true" />
 
         <provider
             android:name="org.sunbird.providers.PartnerProvider"
-            android:authorities="@string/partner_provider_authorities"
+            android:authorities="${applicationId}.partner"
             android:exported="true" />
 
         <provider
             android:name="org.sunbird.providers.ContentProvider"
-            android:authorities="@string/content_provider_authorities"
+            android:authorities="${applicationId}.content"
             android:exported="true" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="@string/file_provider_authorities"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
