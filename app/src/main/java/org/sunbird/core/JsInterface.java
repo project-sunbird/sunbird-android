@@ -73,7 +73,6 @@ import com.squareup.okhttp.Response;
 import org.apache.cordova.LOG;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
-import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -134,18 +133,19 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static java.lang.Integer.parseInt;
 
 /**
- * Created by stpl on 24/2/17.
+ * Created on 24/2/17.
+ *
+ * @author stpl
  */
 public class JsInterface {
 
     //private KeyValueStore keyValueStore;
     private final static String LOG_TAG = JsInterface.class.getName();
-    private static final int SEND_SMS_REQUEST = 8;
     //TODO : KEYCLOACK REDIRECT URL, change in manifest for deep linking
     private static String REDIRECT_URI = BuildConfig.REDIRECT_BASE_URL + "/oauth2callback";
-    private final int SMS_PERMISSION_CODE = 1, PHONE_STATE_PERMISSION_CODE = 2, STORAGE_PERMISSION_CODE = 3, COARSE_LOCATION_CODE = 4, CAMERA_PERMISSION_CODE = 5;
-    ListViewAdapter listViewAdapter = null;
-    MyRecyclerViewAdapter recylerViewAdapter = null;
+    private final int PHONE_STATE_PERMISSION_CODE = 2, STORAGE_PERMISSION_CODE = 3, COARSE_LOCATION_CODE = 4, CAMERA_PERMISSION_CODE = 5;
+    private ListViewAdapter listViewAdapter = null;
+    private MyRecyclerViewAdapter recylerViewAdapter = null;
     private Context context;
     private MainActivity activity;
     private DynamicUI dynamicUI;
@@ -298,7 +298,6 @@ public class JsInterface {
                 }
             }
         });
-
     }
 
     public String getUrlEncoded(String q) throws UnsupportedEncodingException {
@@ -320,12 +319,7 @@ public class JsInterface {
                         .patch(body)
                         .addHeader("Accept", "application/json")
                         .addHeader("Content-Type", "application/json")
-                        .addHeader("x-Consumer-Id", userid)
-                        .addHeader("ts", Util.getCurrentLocalDateTimeStamp())
-                        .addHeader("X-msgid", "8e27cbf5-e299-43b0-bca7-8347f7e5abcf")
-                        .addHeader("X-Device-ID", "X-Device-ID")
                         .addHeader("X-Authenticated-User-Token", userid)
-                        .addHeader("X-Source", "app")
                         .addHeader("Authorization", "Bearer " + api_key)
                         .build();
                 try {
@@ -378,7 +372,6 @@ public class JsInterface {
                     Log.e("NULL", "RECYLER VIEW");
                 }
             }
-
         });
     }
 
@@ -403,7 +396,6 @@ public class JsInterface {
                 }
             }
         });
-
     }
 
     @JavascriptInterface
@@ -415,7 +407,6 @@ public class JsInterface {
             @Override
             public void run() {
                 try {
-
                     RatingBar newBar = new RatingBar(activity, null, R.attr.ratingBarStyleSmall);
                     newBar.setRating(totalRating);
                     newBar.setScaleX(0.95f);
@@ -429,14 +420,11 @@ public class JsInterface {
                     int index = parent.indexOfChild(ratingBar);
                     parent.removeViewAt(index);
                     parent.addView(newBar, index);
-
-
                 } catch (Exception e) {
                     //No op
                 }
             }
         });
-
     }
 
     @JavascriptInterface
@@ -473,13 +461,11 @@ public class JsInterface {
                 }
             }
         });
-
     }
 
     @JavascriptInterface
     public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -497,7 +483,6 @@ public class JsInterface {
                 final Calendar myCalendar = Calendar.getInstance();
 
                 DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear,
                                           int dayOfMonth) {
@@ -507,30 +492,32 @@ public class JsInterface {
                         String date = String.format("window.callJSCallback('%s','%s');", callback, year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         dynamicUI.addJsToWebView(date);
                     }
-
                 };
+
                 if (currentSelected != null && !currentSelected.isEmpty() && !currentSelected.equals("undefined")) {
-                    myCalendar.setTimeInMillis(Long.valueOf(dateToMillisecond(currentSelected)));
+                    myCalendar.setTimeInMillis(dateToMillisecond(currentSelected));
                 }
                 datePicker = new DatePickerDialog(activity, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
+
                 if (minDate != null && !minDate.isEmpty() && !minDate.equals("undefined")) {
 
-                    datePicker.getDatePicker().setMinDate(Long.valueOf(dateToMillisecond(minDate)));
+                    datePicker.getDatePicker().setMinDate(dateToMillisecond(minDate));
                 }
+
                 if (maxDate != null && !maxDate.isEmpty() && !maxDate.equals("undefined")) {
-                    datePicker.getDatePicker().setMaxDate(Long.valueOf(dateToMillisecond(maxDate)));
+                    datePicker.getDatePicker().setMaxDate(dateToMillisecond(maxDate));
                 } else {
-                    datePicker.getDatePicker().setMaxDate(Long.valueOf(System.currentTimeMillis()));
+                    datePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
                 }
+
                 datePicker.show();
             }
         });
-
     }
 
-    public long dateToMillisecond(String date) {
+    private long dateToMillisecond(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate;
         try {
@@ -596,9 +583,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void getAllLocalContent(String callback) {
-
         genieWrapper.getAllLocalContent(callback);
-
     }
 
     @JavascriptInterface
@@ -611,9 +596,9 @@ public class JsInterface {
         View layout = activity.findViewById(Integer.parseInt(viewId));
         EditText editText = (EditText) layout;
 
-        if (inputType == "password")
+        if ("password".equals(inputType)) {
             editText.setTransformationMethod(new PasswordTransformationMethod());
-
+        }
     }
 
     @JavascriptInterface
@@ -678,7 +663,6 @@ public class JsInterface {
     @JavascriptInterface
     public void patchRequest(String url, String data, String headers) {
         okhttp3.Request.Builder builder = new okhttp3.Request.Builder();
-
     }
 
     @JavascriptInterface
@@ -738,7 +722,6 @@ public class JsInterface {
                 Util.setCoRelationType(CoRelationIdContext.NONE);
                 break;
         }
-
     }
 
     @JavascriptInterface
@@ -755,6 +738,7 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCE_LIST;
                 break;
         }
+
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.SEARCH_RESULTS, count);
         eksMap.put(TelemetryConstant.SEARCH_CRITERIA, criteria);
@@ -775,6 +759,7 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCE_LIST;
                 break;
         }
+
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
         eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
@@ -795,6 +780,7 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCES;
                 break;
         }
+
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
         eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
@@ -822,7 +808,6 @@ public class JsInterface {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, type, TelemetryAction.VIEWALL_CLICKED, null, eksMap));
     }
 
-
     @JavascriptInterface
     public void logTabClickEvent(String type) {
         String stageId = "", subType = "";
@@ -842,8 +827,8 @@ public class JsInterface {
             case "PROFILE":
                 stageId = TelemetryStageId.PROFILE;
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageId, TelemetryAction.TAB_CLICKED, null, null));
 
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageId, TelemetryAction.TAB_CLICKED, null, null));
     }
 
     @JavascriptInterface
@@ -930,23 +915,21 @@ public class JsInterface {
         }
     }
 
-
     @JavascriptInterface
     public void logFlagClickEvent(String identifier, String type) {
         String stageId = "";
-        if (type.equals("COURSES"))
+        if (type.equals("COURSES")) {
             stageId = TelemetryStageId.COURSE_HOME_FLAG;
-        else if (type.equals("RESOURCES"))
+        } else if (type.equals("RESOURCES")) {
             stageId = TelemetryStageId.RESOURCE_HOME_FLAG;
+        }
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, stageId, TelemetryAction.FLAG_SUCCESS, identifier, null));
-
     }
 
     @JavascriptInterface
     public void logPreviewScreenEvent() {
 //        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryStageId.PREVIEW_SCREEN));
     }
-
 
     @JavascriptInterface
     public void logPreviewLoginClickEvent() {
@@ -955,10 +938,11 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logPageFilterScreenEvent(String type) {
-        if (type.equals("COURSES"))
+        if (type.equals("COURSES")) {
             TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryStageId.COURSE_PAGE_FILTER));
-        else if (type.equals("RESOURCES"))
+        } else if (type.equals("RESOURCES")) {
             TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryStageId.RESOURCE_PAGE_FILTER));
+        }
     }
 
     @JavascriptInterface
@@ -1024,7 +1008,6 @@ public class JsInterface {
                     Log.d("INSIDE TRY CATCH", "inside try catch");
                 }
             });
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1147,7 +1130,7 @@ public class JsInterface {
                                     Log.d("APP HANDLED TASK", imageV.getTag().toString());
                                     String contentName = content.substring(content.lastIndexOf("/") + 1);
                                     File file = new File(new File(Environment.getExternalStorageDirectory(), "Ecars/tmp/"), contentName);
-                                    String authorities = GlobalApplication.getInstance().getString(R.string.file_provider_authorities);
+                                    String authorities = BuildConfig.APPLICATION_ID + ".fileprovider";
                                     Uri contentUri = FileProvider.getUriForFile(context, authorities, file);
 
                                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -1155,14 +1138,11 @@ public class JsInterface {
                                     shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
                                     shareIntent.setType("application/zip");
 //                                    logShareClickEvent("FILE");
-
-
                                 } else if (contentType.equals("text")) {
                                     shareIntent.putExtra(Intent.EXTRA_TEXT, content);
                                     shareIntent.setType("text/plain");
 //                                    logShareClickEvent("LINK");
                                 }
-
 
                                 boolean isAppInstalled = appInstalledOrNot((String) imageV.getTag());
 
@@ -1179,7 +1159,6 @@ public class JsInterface {
                                         activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + (String) imageV.getTag())));
                                     }
                                 }
-
 
                             } else {
                                 Log.d("APPLINKSHAREINTENTS", "NOT AN INSTANCE OF IMAGE VIEW");
@@ -1246,10 +1225,7 @@ public class JsInterface {
                         }
 
                         applicationName = (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
-
-
                         Log.d("APP PACKAGE " + contentType, packageName);
-
 
                         imageView[i].setImageDrawable(icon);
                         imageView[i].setLayoutParams(params);
@@ -1269,17 +1245,13 @@ public class JsInterface {
                         linearLayout.addView(container[i]);
 
                         i++;
-
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-
-
     }
-
 
     @JavascriptInterface
     public void closeApp() {
@@ -1298,7 +1270,7 @@ public class JsInterface {
         });
     }
 
-    public String decodeBase64(String data) throws UnsupportedEncodingException {
+    private String decodeBase64(String data) throws UnsupportedEncodingException {
         byte[] dataText = Base64.decode(data, Base64.DEFAULT);
         String text = new String(dataText, "UTF-8");
         return text;
@@ -1393,7 +1365,6 @@ public class JsInterface {
             e.printStackTrace(new PrintWriter(errors));
 //            Log.e("callAPI", "exception", e);
         }
-
     }
 
     @JavascriptInterface
@@ -1424,15 +1395,13 @@ public class JsInterface {
 
     @JavascriptInterface
     public void loadImageForQr() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         this.activity.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
 
     @JavascriptInterface
     public String getFromSharedPrefs(String key) {
-        return PreferenceManager.getDefaultSharedPreferences(activity)
-                .getString(key, "__failed");
+        return PreferenceManager.getDefaultSharedPreferences(activity).getString(key, "__failed");
     }
 
     @JavascriptInterface
@@ -1546,19 +1515,12 @@ public class JsInterface {
     }
 
     private boolean checkSMSPermission() {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        return false;
+        return (ContextCompat.checkSelfPermission(activity, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED);
     }
 
     private boolean checkPhoneStatePermission() {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        return false;
+        return (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED);
     }
-
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         String gotPermission = "";
@@ -1571,21 +1533,18 @@ public class JsInterface {
         } else if (requestCode == COARSE_LOCATION_CODE) {
             gotPermission = Manifest.permission.ACCESS_COARSE_LOCATION;
         }
-        try {
 
+        try {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.d("GRANTED GRANTED ", "");
                 dynamicUI.addJsToWebView("window.callUICallback(\"" + permissionCallback + "\", \"" + gotPermission + "\");");
-
             } else {
-
                 dynamicUI.addJsToWebView("window.callUICallback(\"" + permissionCallback + "\", \"ERROR\");");
             }
         } catch (Exception e) {
             dynamicUI.addJsToWebView("window.callUICallback(\"" + permissionCallback + "\", \"ERROR\");");
         }
     }
-
 
     @android.webkit.JavascriptInterface
     public void setPermissions(final String callback, final String permissionName) {
@@ -1602,7 +1561,6 @@ public class JsInterface {
             REQUEST_CODE_PERMISSION = CAMERA_PERMISSION_CODE;
         }
 
-
         Log.d("SET PERMISSIONS", "PERMISSIONS");
 
         activity.runOnUiThread(new Runnable() {
@@ -1610,11 +1568,7 @@ public class JsInterface {
             public void run() {
                 permissionCallback = callback;
 
-                if (ContextCompat.checkSelfPermission(activity,
-                        permissionName)
-                        != PackageManager.PERMISSION_GRANTED) {
-
-
+                if (ContextCompat.checkSelfPermission(activity, permissionName) != PackageManager.PERMISSION_GRANTED) {
                     Log.d("NO PREVIOUS", "ASK PERMISSION");
 
                     if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permissionName)) {
@@ -1630,19 +1584,14 @@ public class JsInterface {
                     Log.d("ALLOWED", "ALREADY GIVEN");
                     dynamicUI.addJsToWebView("window.callUICallback(\"" + permissionCallback + "\", \"" + permissionName + "\");");
                 }
-
-
             }
         });
     }
 
-
     @JavascriptInterface
     public void showPermissionScreen() {
         activity.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + BuildConfig.APPLICATION_ID)));
-
     }
-
 
     @JavascriptInterface
     public void hideKeyboard() {
@@ -1670,7 +1619,6 @@ public class JsInterface {
                 return "symbol";
         }
     }
-
 
     @android.webkit.JavascriptInterface
     public void startWebSocket(String url) {
@@ -1740,8 +1688,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void downloadImage(final String imgUrl) {
-        String path =
-                Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH;
+        String path = Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH;
         final File dir = new File(path);
 
         if (!(dir.exists() && dir.isDirectory())) {
@@ -1782,7 +1729,6 @@ public class JsInterface {
                 }
             }.execute();
         }
-
     }
 
     @JavascriptInterface
@@ -1798,7 +1744,6 @@ public class JsInterface {
                 }
             }
         });
-
     }
 
     @JavascriptInterface
@@ -1836,25 +1781,21 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void openSocialMedia(String url,String type){
+    public void openSocialMedia(String url, String type) {
         Intent intent;
-        if(type.equals("fb")) {
+        if (type.equals("fb")) {
             intent = newFacebookIntent(activity.getApplicationContext().getPackageManager(), url);
-        }
-        else if(type.equals("twitter")){
-            intent = getOpenTwitterIntent(activity.getApplicationContext().getPackageManager(),url);
-        }
-        else if(type.equals("linkedin")){
+        } else if (type.equals("twitter")) {
+            intent = getOpenTwitterIntent(activity.getApplicationContext().getPackageManager(), url);
+        } else if (type.equals("linkedin")) {
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        }
-        else
-        {
+        } else {
             return;
         }
         activity.startActivity(intent);
     }
 
-    public static Intent newFacebookIntent(PackageManager pm, String url) {
+    private Intent newFacebookIntent(PackageManager pm, String url) {
         Uri uri = Uri.parse(url);
         try {
             ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
@@ -1867,13 +1808,13 @@ public class JsInterface {
         return new Intent(Intent.ACTION_VIEW, uri);
     }
 
-    public static Intent getOpenTwitterIntent(PackageManager pm, String url) {
+    private Intent getOpenTwitterIntent(PackageManager pm, String url) {
         Uri uri = Uri.parse(url);
-        String username =url.substring(20);
+        String username = url.substring(20);
         try {
             ApplicationInfo applicationInfo = pm.getApplicationInfo("com.twitter.android", 0);
             if (applicationInfo.enabled) {
-                uri = Uri.parse("twitter://user?screen_name="+username);
+                uri = Uri.parse("twitter://user?screen_name=" + username);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1882,28 +1823,28 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback,final String buttonId,final int heightOfDivider) throws Exception {
+    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback, final String buttonId, final int heightOfDivider) throws Exception {
         int listViewId = parseInt(id);
         final ListView listView = (ListView) activity.findViewById(listViewId);
         JSONArray jsonArray = new JSONArray(text);
         ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
         ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
         ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-        final ListViewAdapter listViewAdapter = new ListViewAdapter(context,itemCount, valueArrayList,viewJSXArrayList,viewTypeArrayList,dynamicUI);
+        final ListViewAdapter listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                try{
+                try {
                     listView.setAdapter(listViewAdapter);
                     listView.setDividerHeight(heightOfDivider);
-                }catch (Exception e){
+                } catch (Exception e) {
                     Log.d(LOG_TAG, "Error in rendering listview");
                 }
             }
         });
-        if(btnText!=null){
+        if (btnText != null) {
             LinearLayout linearLayout = new LinearLayout(activity);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
             Button btn = new Button(activity);
             linearLayout.setId(parseInt(id));
             linearLayout.setBackgroundResource(R.drawable.layout_padding);
@@ -1929,43 +1870,44 @@ public class JsInterface {
         int listViewId = parseInt(id);
         final ListView listView = (ListView) activity.findViewById(listViewId);
         JSONArray jsonArray = new JSONArray(text);
-        final ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray,"view","String");
-        final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray,"value","String");
-        final ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray,"viewType","Int");
+        final ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
+        final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
+        final ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                try{
+                try {
                     ListAdapter la = listView.getAdapter();
                     ListViewAdapter adapter;
-                    if(la instanceof HeaderViewListAdapter){
-                        adapter = ((ListViewAdapter) ((HeaderViewListAdapter)la).getWrappedAdapter());
+                    if (la instanceof HeaderViewListAdapter) {
+                        adapter = ((ListViewAdapter) ((HeaderViewListAdapter) la).getWrappedAdapter());
                     } else {
                         adapter = (ListViewAdapter) la;
                     }
                     adapter.addItemsToList(itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList);
                     adapter.notifyDataSetChanged();
-                }catch (Exception e){
+                } catch (Exception e) {
                     Log.d(LOG_TAG, "Error in adding item to listview");
                 }
             }
         });
     }
+
     @JavascriptInterface
-    public void hideFooterView(final String id,final String buttonId){
+    public void hideFooterView(final String id, final String buttonId) {
         try {
             int listViewId = parseInt(id);
-            int buttonId1= parseInt(buttonId);
+            int buttonId1 = parseInt(buttonId);
             final ListView listView = (ListView) activity.findViewById(listViewId);
             LinearLayout btn = (LinearLayout) activity.findViewById(buttonId1);
             listView.removeFooterView(btn);
-        }catch(Exception e){
-            Log.e("View!!","Exception in hide footer view + "+e);
+        } catch (Exception e) {
+            Log.e("View!!", "Exception in hide footer view + " + e);
         }
     }
 
     @JavascriptInterface
-    public void refreshAccessToken(final String callback){
+    public void refreshAccessToken(final String callback) {
         final OkHttpClient client = new OkHttpClient();
         new Thread(new Runnable() {
             @Override
@@ -1987,7 +1929,7 @@ public class JsInterface {
 //                    Log.e(TAG, "run: " + body);
                     final String javascript;
                     String base64Data = Base64.encodeToString(body.getBytes(), Base64.NO_WRAP);
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         javascript = String.format("window.callUICallback('%s','%s','%s','%s');", callback, "success", base64Data, response.code());
                     } else {
                         javascript = String.format("window.callUICallback('%s','%s','%s','%s');", callback, "failure", base64Data, response.code());
@@ -2001,8 +1943,18 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public boolean isDebuggable(){
+    public boolean isDebuggable() {
         return BuildConfig.DEBUG;
+    }
+
+    @JavascriptInterface
+    public boolean isChannelIdSet() {
+        return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID;
+    }
+
+    @JavascriptInterface
+    public String defaultChannelId() {
+        return BuildConfig.CHANNEL_ID;
     }
 
     @JavascriptInterface
