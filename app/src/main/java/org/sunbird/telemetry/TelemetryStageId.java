@@ -34,6 +34,8 @@ public interface TelemetryStageId {
     String COURSE_LIST = "CourseList";
     String RESOURCE_LIST = "ResourceList";
     String FILTERS = "Filters";
+
+    String SERVER_NOTIFICATION = "Server-Notification";
 //    String FLAG = "Flag";
 //    String COURSES_VIEW_ALL = "CoursesViewAll";
 //    String MY_COURSES_VIEW_ALL = "MyCoursesViewAll";
