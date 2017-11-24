@@ -1,5 +1,6 @@
 package org.sunbird.utils;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -236,5 +237,9 @@ public class Util {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static Intent getRefreshNotificationsIntent() {
+        return new Intent(Constants.INTENT_ACTION_REFRESH_NOTIFICATION);
     }
 }

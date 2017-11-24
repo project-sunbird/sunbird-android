@@ -15,4 +15,6 @@ public interface TelemetryConstant {
     String COMMENT = "Comment";
     String SECTION_NAME = "SectionName";
     String POSITION_CLICKED = "PositionClicked";
+
+    String NOTIFICATION_DATA = "NotificationData";
 }

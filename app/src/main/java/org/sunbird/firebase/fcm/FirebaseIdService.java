@@ -1,4 +1,4 @@
-package org.sunbird.FCM;
+package org.sunbird.firebase.fcm;
 
 import android.util.Log;
 
@@ -6,10 +6,10 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * Created by JUSPAY\nikith.shetty on 15/11/17.
+ * Created on 15/11/17.
+ *
+ * @author JUSPAY\nikith.shetty
  */
-
-
 public class FirebaseIdService extends FirebaseInstanceIdService {
 
     private static final String TAG = FirebaseIdService.class.getName();

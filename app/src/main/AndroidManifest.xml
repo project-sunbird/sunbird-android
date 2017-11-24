@@ -13,9 +13,9 @@
         android:name="org.sunbird.GlobalApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="singleTop"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:launchMode="singleTop">
+        android:theme="@style/AppTheme">
         <activity
             android:name="org.sunbird.ui.MainActivity"
             android:label="@string/title_activity_main"
@@ -94,8 +94,10 @@
             android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/api_url"
                     android:pathPrefix="/oauth2callback"
@@ -137,18 +139,19 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <service
-            android:name=".FCM.FirebaseIdService">
+        <service android:name=".firebase.fcm.FirebaseIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".FCM.FirebaseMessageService">
+        <service android:name=".firebase.fcm.FirebaseMessageService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <!-- Notification service -->
+        <service android:name=".notification.LocalNotificationService" />
     </application>
 
 </manifest>
