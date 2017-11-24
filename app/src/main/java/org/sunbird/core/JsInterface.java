@@ -1783,43 +1783,9 @@ public class JsInterface {
     @JavascriptInterface
     public void openSocialMedia(String url, String type) {
         Intent intent;
-        if (type.equals("fb")) {
-            intent = newFacebookIntent(activity.getApplicationContext().getPackageManager(), url);
-        } else if (type.equals("twitter")) {
-            intent = getOpenTwitterIntent(activity.getApplicationContext().getPackageManager(), url);
-        } else if (type.equals("linkedin")) {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        } else {
-            return;
-        }
+        if (url != "") intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        else return;
         activity.startActivity(intent);
-    }
-
-    private Intent newFacebookIntent(PackageManager pm, String url) {
-        Uri uri = Uri.parse(url);
-        try {
-            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
-            if (applicationInfo.enabled) {
-                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new Intent(Intent.ACTION_VIEW, uri);
-    }
-
-    private Intent getOpenTwitterIntent(PackageManager pm, String url) {
-        Uri uri = Uri.parse(url);
-        String username = url.substring(20);
-        try {
-            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.twitter.android", 0);
-            if (applicationInfo.enabled) {
-                uri = Uri.parse("twitter://user?screen_name=" + username);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new Intent(Intent.ACTION_VIEW, uri);
     }
 
     @JavascriptInterface
