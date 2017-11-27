@@ -5,9 +5,10 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import org.ekstep.genieservices.commons.bean.Notification;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
+import org.sunbird.models.Notification;
 import org.sunbird.notification.NotificationManagerUtil;
+import org.sunbird.notification.enums.NotificationActionId;
 
 import java.util.Map;
 
@@ -36,8 +37,12 @@ public class FirebaseMessageService extends FirebaseMessagingService {
             if (data.containsKey("notificationpayload")) {
                 String geniepayload = data.get("notificationpayload");
 
+                Notification notification = GsonUtil.fromJson(geniepayload, Notification.class);
+                if (notification != null && (notification.getActionid() == NotificationActionId.ANNOUNCEMENT_LIST || notification.getActionid() == NotificationActionId.ANNOUNCEMENT_DETAIL)) {
+                    getAnnouncement();
+                }
                 NotificationManagerUtil notificationManagerUtil = new NotificationManagerUtil(FirebaseMessageService.this);
-                notificationManagerUtil.handleNotification(GsonUtil.fromJson(geniepayload, Notification.class));
+                notificationManagerUtil.handleNotification(notification);
             }
         }
 
@@ -74,4 +79,8 @@ public class FirebaseMessageService extends FirebaseMessagingService {
 //
 //        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 //    }
+
+    private void getAnnouncement() {
+
+    }
 }

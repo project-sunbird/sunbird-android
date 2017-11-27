@@ -4,9 +4,9 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
-import org.ekstep.genieservices.commons.bean.Notification;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
+import org.sunbird.models.Notification;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;

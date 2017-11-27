@@ -23,13 +23,21 @@ import android.util.Base64;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
+import org.ekstep.genieservices.commons.bean.enums.InteractionType;
+import org.ekstep.genieservices.commons.utils.Base64Util;
+import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
 import org.sunbird.core.JsInterface;
+import org.sunbird.models.Notification;
+import org.sunbird.notification.enums.NotificationActionId;
+import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
+import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
+import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.utils.Constants;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
 import org.sunbird.utils.NewLogger;
@@ -42,15 +50,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import in.juspay.mystique.DynamicUI;
 import in.juspay.mystique.ErrorCallback;
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
+    public final static int IMAGE_CHOOSER_ID = 865;
     private static final String TAG = "MainActivity";
     private static final int SEND_SMS_REQUEST = 8;
-    public final static int IMAGE_CHOOSER_ID = 865;
     private static CustomTabsClient mClient;
     private static CustomTabsServiceConnection mConnection;
     public int PERMISSION_CODE = 111;
@@ -72,6 +82,22 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     public static void showAppUpdateDialog() {
 
+    }
+
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isGooglePhotosUri(Uri uri) {
+        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
 
     @Override
@@ -127,9 +153,27 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         String fileFromIntent = "";
 
         if (intent != null) {
-            if (intent.getStringExtra("intentFrom") != null && intent.getStringExtra("intentFrom").equals("fcmNotification")){
-                jsInterface.setInSharedPrefs("intentNotification", intent.getStringExtra("notifData"));
-                Log.d(TAG, "Intent from notification");
+            if (intent.getExtras() != null && intent.getExtras().containsKey(Constants.BUNDLE_KEY_NOTIFICATION_DATA_MODEL)) {
+                Notification notification = (Notification) intent.getExtras().getSerializable(Constants.BUNDLE_KEY_NOTIFICATION_DATA_MODEL);
+                if (notification != null) {
+                    Map<String, Object> valuesMap = new HashMap<>();
+                    valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryStageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_CLICKED, null, valuesMap));
+                    switch (notification.getActionid()) {
+                        case NotificationActionId.ANNOUNCEMENT_DETAIL:
+                            jsInterface.setInSharedPrefs("screenToOpen", "ANNOUNCEMENT_DETAIL");
+                            break;
+                        case NotificationActionId.ANNOUNCEMENT_LIST:
+                            jsInterface.setInSharedPrefs("screenToOpen", "ANNOUNCEMENT_LIST");
+                            break;
+                        case NotificationActionId.DO_NOTHING:
+                        default:
+                            jsInterface.setInSharedPrefs("screenToOpen", "DO_NOTHING");
+                            break;
+                    }
+                    jsInterface.setInSharedPrefs("intentNotification", Base64Util.encodeToString(GsonUtil.toJson(notification).getBytes(), Base64Util.DEFAULT));
+                    Log.d(TAG, "Intent from notification");
+                }
             }
             if (intent.getData() != null) {
 
@@ -191,12 +235,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
     }
 
-
     @Override
     public void onBackPressed() {
         dynamicUI.addJsToWebView("window.onBackPressed()");
     }
-
 
     protected void onDestroy() {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGenieEndEvent());
@@ -283,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            if (requestCode == IMAGE_CHOOSER_ID){
+            if (requestCode == IMAGE_CHOOSER_ID) {
                 String picturePath = getPath(ImagePicker.getImageUriFromResult(this, resultCode, intent));
                 Log.e(TAG, "onActivityResult: " + picturePath);
                 String javascript = String.format("window.onGetImageFromGallery('%s')", picturePath);
@@ -294,22 +336,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
         super.onActivityResult(requestCode, resultCode, intent);
         Log.d(TAG, "Activity Result is " + requestCode);
-    }
-
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isGooglePhotosUri(Uri uri) {
-        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
 
     private String getPath(Uri uri) {

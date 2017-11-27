@@ -11,12 +11,12 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 
-import org.ekstep.genieservices.commons.bean.Notification;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.DateUtil;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
+import org.sunbird.models.Notification;
 import org.sunbird.notification.enums.NotificationActionId;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
