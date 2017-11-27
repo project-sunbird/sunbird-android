@@ -1,16 +1,26 @@
 package org.sunbird.firebase.fcm;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.ekstep.genieservices.commons.utils.GsonUtil;
+import org.json.JSONObject;
+import org.sunbird.BuildConfig;
 import org.sunbird.models.Notification;
 import org.sunbird.notification.NotificationManagerUtil;
 import org.sunbird.notification.enums.NotificationActionId;
+import org.sunbird.utils.SQLBlobStore;
 
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created  on 15/11/17.
@@ -45,42 +55,48 @@ public class FirebaseMessageService extends FirebaseMessagingService {
                 notificationManagerUtil.handleNotification(notification);
             }
         }
-
-        // Check if message contains a notification payload.
-//        if (remoteMessage.getNotification() != null) {
-//            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-//        }
-
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
     }
 
-//    private void sendNotification(Map<String, String> data) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        intent.putExtra("intentFrom", "fcmNotification");
-//        intent.putExtra("notifData", GsonUtil.toJson(data));
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-//                PendingIntent.FLAG_ONE_SHOT);
-//
-////        String channelId = "2364";
-//        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        NotificationCompat.Builder notificationBuilder =
-//                new NotificationCompat.Builder(this)
-//                        .setSmallIcon(R.drawable.ic_launcher)
-//                        .setContentTitle(data.get("title"))
-//                        .setContentText(data.get("summary"))
-//                        .setAutoCancel(true)
-//                        .setSound(defaultSoundUri)
-//                        .setContentIntent(pendingIntent);
-//
-//        NotificationManager notificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
-//    }
-
     private void getAnnouncement() {
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //make api call to get announcement details
+                OkHttpClient client = new OkHttpClient();
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                String userId = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("user_token", "__failed");
+                String userAccessToken = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("user_access_token", "__failed");
+                String apiToken = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("api_token", "__failed");
+                String url = BuildConfig.REDIRECT_BASE_URL + "/api/announcement/v1/user/inbox";
+                try {
+                    String jsonBody = "{\"request\": {" +
+                            "\"userId\": \"" + userId + "\"" +
+                            "}}";
+                    RequestBody body = RequestBody.create(JSON, jsonBody);
+                    Request request = new Request.Builder()
+                            .addHeader("Authorization", "Bearer " + apiToken)
+                            .addHeader("x-authenticated-user-token", userAccessToken)
+                            .addHeader("Accept", "application/json ")
+                            .addHeader("Content-Type", "application/json ")
+                            .url(url)
+                            .post(body)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    JSONObject resData = new JSONObject();
+                    Log.d(TAG, "announcement list " + resData.toString());
+                    if (response.code() == 200){
+                        JSONObject resBody = new JSONObject(response.body().string());
+                        JSONObject result = new JSONObject(resBody.get("result").toString());
+                        int count = result.getInt("count");
+                        if (count > 0) {
+                            //save to db
+                            SQLBlobStore.setData(getBaseContext(), "savedAnnouncements", result.toString());
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "announcement get api exception");
+                }
+            }
+        }).start();
     }
 }
