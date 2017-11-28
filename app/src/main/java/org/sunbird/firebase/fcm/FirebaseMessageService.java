@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.json.JSONObject;
 import org.sunbird.BuildConfig;
@@ -82,15 +83,13 @@ public class FirebaseMessageService extends FirebaseMessagingService {
                             .post(body)
                             .build();
                     Response response = client.newCall(request).execute();
-                    JSONObject resData = new JSONObject();
-                    Log.d(TAG, "announcement list " + resData.toString());
                     if (response.code() == 200){
                         JSONObject resBody = new JSONObject(response.body().string());
                         JSONObject result = new JSONObject(resBody.get("result").toString());
                         int count = result.getInt("count");
                         if (count > 0) {
                             //save to db
-                            SQLBlobStore.setData(getBaseContext(), "savedAnnouncements", result.toString());
+                            SQLBlobStore.setData(getBaseContext(), "savedAnnouncements", Base64Util.encodeToString(result.toString().getBytes(), Base64Util.DEFAULT));
                         }
                     }
                 } catch (Exception e) {

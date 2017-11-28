@@ -1755,7 +1755,9 @@ public class JsInterface {
     @JavascriptInterface
     public String getSavedData(String tag) {
         Log.d(TAG, "getSavedData: called");
-        return SQLBlobStore.getData(activity.getBaseContext(), tag);
+        String ret = SQLBlobStore.getData(activity.getBaseContext(), tag);
+        if (ret == null || ret == "undefined") ret = "__failed";
+        return ret;
     }
 
     @JavascriptInterface
