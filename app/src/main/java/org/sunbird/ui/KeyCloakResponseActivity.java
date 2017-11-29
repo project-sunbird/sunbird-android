@@ -91,6 +91,8 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
 
                     Intent openMain = new Intent(KeyCloakResponseActivity.this, MainActivity.class);
                     openMain.putExtra("user_id", jo.get("sub").toString());
+                    openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    openMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(openMain);
                     finish();
 
