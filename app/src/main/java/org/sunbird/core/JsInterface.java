@@ -1948,12 +1948,22 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void registerFCM () {
+    public void registerFCM (String[] topics) {
+        int len = topics.length;
+        for (int i = len - 1; i >= 0; i--) {
+            FirebaseMessaging.getInstance().subscribeToTopic(topics[i]);
+        }
+        //for debug
         FirebaseMessaging.getInstance().subscribeToTopic(activity.getString(R.string.topicName));
     }
 
     @JavascriptInterface
-    public void unregisterFCM () {
+    public void unregisterFCM (String[] topics) {
+        int len = topics.length;
+        for (int i = len - 1; i >= 0; i--) {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(topics[i]);
+        }
+        //for debug
         FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
 }
