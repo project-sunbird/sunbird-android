@@ -955,6 +955,23 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void logAnnouncementListShow () {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryStageId.ANNOUNCEMENT_LIST, null, null, null));
+    }
+
+    @JavascriptInterface
+    public void logAnnouncementClicked (String announcementId, String pos) {
+        Map<String, Object> eksMap = new HashMap<>();
+        eksMap.put(TelemetryConstant.POSISTION, pos);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryStageId.ANNOUNCEMENT_LIST, TelemetryAction.ANNOUNCEMENT_CLICKED, announcementId, eksMap));
+    }
+
+    @JavascriptInterface
+    public void logAnnouncementDeatilScreen (String announcementId) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryStageId.ANNOUNCEMENT_DETAIL, null, announcementId, null));
+    }
+
+    @JavascriptInterface
     public void stopEventBus() {
         Log.e("stop event bus", "");
         genieWrapper.stopEventBus();
@@ -1953,7 +1970,7 @@ public class JsInterface {
         for (int i = len - 1; i >= 0; i--) {
             FirebaseMessaging.getInstance().subscribeToTopic(topics[i]);
         }
-        //for debug
+        //Todo - for debug only
         FirebaseMessaging.getInstance().subscribeToTopic(activity.getString(R.string.topicName));
     }
 
@@ -1963,7 +1980,7 @@ public class JsInterface {
         for (int i = len - 1; i >= 0; i--) {
             FirebaseMessaging.getInstance().unsubscribeFromTopic(topics[i]);
         }
-        //for debug
+        //Todo - for debug only
         FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
 }

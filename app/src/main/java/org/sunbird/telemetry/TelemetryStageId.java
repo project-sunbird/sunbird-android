@@ -36,6 +36,9 @@ public interface TelemetryStageId {
     String FILTERS = "Filters";
 
     String SERVER_NOTIFICATION = "Server-Notification";
+
+    String ANNOUNCEMENT_LIST = "Announcement-List";
+    String ANNOUNCEMENT_DETAIL = "Announcement-Detail";
 //    String FLAG = "Flag";
 //    String COURSES_VIEW_ALL = "CoursesViewAll";
 //    String MY_COURSES_VIEW_ALL = "MyCoursesViewAll";

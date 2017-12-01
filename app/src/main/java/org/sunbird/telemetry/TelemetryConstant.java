@@ -17,4 +17,6 @@ public interface TelemetryConstant {
     String POSITION_CLICKED = "PositionClicked";
 
     String NOTIFICATION_DATA = "NotificationData";
+
+    String POSISTION = "Position";
 }

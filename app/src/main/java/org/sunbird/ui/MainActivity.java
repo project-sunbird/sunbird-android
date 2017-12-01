@@ -243,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onDestroy() {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGenieEndEvent());
         dynamicUI.addJsToWebView("window.onDestroy()");
-        System.exit(0);
         try {
             unbindService(mConnection);
         } catch (Exception e) {

@@ -28,4 +28,6 @@ public interface TelemetryAction {
     String NOTIFICATION_RECEIVED = "Notification-Received";
     String NOTIFICATION_DISPLAYED = "Notification-Displayed";
     String NOTIFICATION_CLICKED = "Notification-Clicked";
+
+    String ANNOUNCEMENT_CLICKED = "AnnouncementClicked";
 }
