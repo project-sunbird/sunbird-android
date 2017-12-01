@@ -93,6 +93,7 @@ import org.sunbird.ui.MyRecyclerViewAdapter;
 import org.sunbird.ui.TabLayout;
 import org.sunbird.ui.ViewPagerAdapter;
 import org.sunbird.utils.Constants;
+import org.sunbird.utils.FileDownloader;
 import org.sunbird.utils.FileUtil;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
@@ -100,6 +101,9 @@ import org.sunbird.utils.KeyValueStore;
 import org.sunbird.utils.SQLBlobStore;
 import org.sunbird.utils.Util;
 import org.sunbird.utils.WebSocket;
+
+
+import org.sunbird.utils.FileDownloader.OnFileDownloadProgressChangedListener;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -1983,4 +1987,99 @@ public class JsInterface {
         //Todo - for debug only
         FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
+    private FileDownloader mFileDownloader;
+    private ArrayList<DownloadFileAsync> mDownloadFileAsyncArray=new ArrayList<>();
+
+    @JavascriptInterface
+    public boolean checkIfDownloaded(final String path){
+        File file = new File(path);
+        return file.exists();
+    }
+
+    String downloadCallback="";
+    @JavascriptInterface
+    public void downloadAndOpen(final String url,final String path,final String callback,final int index){
+        downloadCallback=callback;
+        Log.e("download!", "in jsfunction: "+url );
+        File file = new File(path);
+        if(file.exists()){
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            activity.startActivity(intent);
+        }else {
+            mDownloadFileAsyncArray.add(index,new DownloadFileAsync());
+            mDownloadFileAsyncArray.get(index).execute(url, path);
+        }
+    }
+
+    @JavascriptInterface
+    public void cancelDownload(final int index,final String callback){
+        mDownloadFileAsyncArray.get(index).stopDownload();
+        String javascript = String.format("window.callJSCallback('%s');", callback);
+        dynamicUI.addJsToWebView(javascript);
+    }
+
+    class DownloadFileAsync extends AsyncTask<String,Void,Void>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            startDownload(params[0],params[1]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+        }
+
+        public void startDownload(String url,String filePath){
+            mFileDownloader =new FileDownloader(url,mChangedListener,filePath);
+            mFileDownloader.startDownload();
+        }
+        public void stopDownload(){
+            mFileDownloader.stopDownloading();
+        }
+    }
+
+    /**
+     * Get the download progress callbacks here
+     * */
+
+    OnFileDownloadProgressChangedListener mChangedListener=new OnFileDownloadProgressChangedListener() {
+
+        @Override
+        public void onProgressChanged(float currentProgress) {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, String.valueOf(currentProgress));
+            dynamicUI.addJsToWebView(javascript);
+        }
+
+        @Override
+        public void onFileDownloaded(String currentPath) {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "finished");
+            dynamicUI.addJsToWebView(javascript);
+            Log.e("download!", "onFileDownloaded: finished");
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", new File(currentPath)));
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                activity.startActivity(intent);
+        }
+
+        @Override
+        public void onFailure() {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "failure");
+            dynamicUI.addJsToWebView(javascript);
+        }
+
+        @Override
+        public void onDownloadStart() {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "start");
+            dynamicUI.addJsToWebView(javascript);
+        }
+    };
 }
