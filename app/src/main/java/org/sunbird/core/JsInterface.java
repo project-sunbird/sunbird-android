@@ -2084,4 +2084,16 @@ public class JsInterface {
             dynamicUI.addJsToWebView(javascript);
         }
     };
+
+    @JavascriptInterface
+    public void shareAnnouncement(String type, String title, String description) {
+        String announcementString = type + "\n\n"
+                + title + "\n\n"
+                + description;
+        Intent shareIntent = new Intent();
+        shareIntent.setType("text/*");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, type);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, announcementString);
+        activity.startActivity(Intent.createChooser(shareIntent, "Share via.."));
+    }
 }
