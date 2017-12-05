@@ -32,6 +32,8 @@ licenses:
 - google-gdk-license-.+
 before_install:
 - openssl aes-256-cbc -K $encrypted_e3233166a8e8_key -iv $encrypted_e3233166a8e8_iv
+  -in secrets.tar.enc -out .\\secrets.tar -d
+- openssl aes-256-cbc -K $encrypted_e3233166a8e8_key -iv $encrypted_e3233166a8e8_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - mv gk.jks app
