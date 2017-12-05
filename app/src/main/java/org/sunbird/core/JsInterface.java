@@ -964,10 +964,12 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void logAnnouncementClicked (String announcementId, String pos) {
+    public void logAnnouncementClicked (String from, String announcementId, String pos) {
+        String stageid = TelemetryStageId.ANNOUNCEMENT_LIST;
+        if (from.equals("HOME")) stageid = TelemetryStageId.HOME;
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSISTION, pos);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryStageId.ANNOUNCEMENT_LIST, TelemetryAction.ANNOUNCEMENT_CLICKED, announcementId, eksMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageid, TelemetryAction.ANNOUNCEMENT_CLICKED, announcementId, eksMap));
     }
 
     @JavascriptInterface
