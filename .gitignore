@@ -13,3 +13,4 @@ build/
 /.gradle/
 /.idea/copyright/profiles_settings.xml
 /.idea/modules.xml
+/secrets

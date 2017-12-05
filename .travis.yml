@@ -1,0 +1,59 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+env:
+  global:
+  - ANDROID_API=25
+  - EMULATOR_API=21
+  - ANDROID_BUILD_TOOLS=25.0.3
+  - ADB_INSTALL_TIMEOUT=5
+android:
+  components:
+  - tools
+  - platform-tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - android-$EMULATOR_API_LEVEL
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-24
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+licenses:
+- android-sdk-preview-license-.+
+- android-sdk-license-.+
+- google-gdk-license-.+
+before_install:
+- openssl aes-256-cbc -K $encrypted_e3233166a8e8_key -iv $encrypted_e3233166a8e8_iv
+  -in secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
+- mv gk.jks app
+- mv gradle.properties app
+- chmod +x gradlew
+- "./gradlew dependencies || true"
+script:
+- "./gradlew clean assembleRelease -PdisablePreDex --stacktrace"
+before_deploy:
+- cd app/build/outputs/apk/
+deploy:
+  provider: releases
+  file: sunbird-*.apk
+  skip_cleanup: true
+  on:
+    repo: project-sunbird/sunbird-android
+    tags: true
+    jdk: oraclejdk8
+  api_key:
+    secure: "f6IZLByfFFYyF4/FOU6qpQmdVrs3H8aMRfJT0zh/94hipKQyqnXKdeo1MdwGVBiauMsBqA/6v6KV8D3vvZ0ig3fNpl6VNqTW03C33CdWTqKSn
+  c01FVIHAYSySKZ16qX7aHF7gsslhTHbdRnBzaQN4k5MG8GnD0Kia60+ZLhnhPSCZIg5SfvDwPSHyDDgxpP1nPUHsC0/FQAdYFZ7ztpvmQwnwpd8eP24qiv7C
+  61kYFZ7cNuRnniHpVmLwt6+CMRHh/a4m97rIEtZzMQ1nl4k/mvNSjz9JQ2Nps/RHhw/2sbF6/nunmJ+ZtcwUX+LdYc4Js1+xcF8CLxRmhyVOR5As2tKMOI4u
+  vQTDVNSip6Y+YNEBx8IoNhNBHrPhAd2oXu6jHEGHYAfVHsePHnXVFBVqEPjyGj4AuuDT3BtPsZRDEnI00rFnnjdiEuGtRLx3Vq65uhEpXODlUejY/hnFHV+p
+  X2q4yWds5ZdM9xxH11Ioj6q20N/+fDm8QMDXzbG/aHnPhuWtD80I1E9g0KO4OEY0sEJu0a6XptOaDMftsd2KqS7bjj7EMnrgq7iDvpN2ENFZxLD0mMhmfXBs
+  m8W+aFXkeGqo/K100i4J5XRgfKS3zJG7s5ojgmHdMRDLN8dU+cvenpR2zDeT/OPxxaD1A61leaMyGpj2K/5TR/NpJCMI3Q="
