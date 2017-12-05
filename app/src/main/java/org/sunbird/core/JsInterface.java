@@ -198,7 +198,8 @@ public class JsInterface {
         String keyCloackAuthUrl = OAUTH_URL + "?redirect_uri=" + REDIRECT_URI + "&response_type=code&scope=openid&client_id=" + CLIENT_ID + "&scope=openid";
 
         Log.e("URL HITTING:", keyCloackAuthUrl);
-        mIntent.intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        mIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        mIntent.intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         mIntent.launchUrl(context, Uri.parse(keyCloackAuthUrl));
 
@@ -212,7 +213,8 @@ public class JsInterface {
         CustomTabsIntent mIntent = mBuilder.build();
         String keyCloackAuthUrl = OLOGOUT_URL + "?redirect_uri=" + REDIRECT_URI;
         Log.e("URL HITTING:", keyCloackAuthUrl);
-        mIntent.intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mIntent.launchUrl(activity, Uri.parse(keyCloackAuthUrl));
     }
 
