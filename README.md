@@ -15,9 +15,10 @@ Mobile app for sunbird software. Provides the mobile interfaces for all function
 6. You need to generate key and secret for `mobile_app` user using JWT token of `mobile_admin` user.
 Please find the steps here
 [https://github.com/project-sunbird/sunbird-devops/blob/master/Installation.md#step-6-generate-key-and-secrets-for-mobile-app](https://github.com/project-sunbird/sunbird-devops/blob/master/Installation.md#step-6-generate-key-and-secrets-for-mobile-app)
-7. If You want to change the app name go to sunbird-android/app/src/main/res/values/strings.xml and give the required app name.
+7. If You want to `change the app name` go to sunbird-android/app/src/main/res/values/strings.xml and give the required app name.
 8. For app logo changing goto sunbird-android/app/src/main/res folder, here in all mipmap folders and drawable folder replace `ic_launcher.png` image with your logo. Logo name should be `ic_launcher.png`
-10. If you would like to show contents only for the given channelId than change the value of `FILTER_CONTENT_BY_CHANNEL_ID` to true, by default it's false.
+10. If you would like to show contents only for the given channelId than change the value of `FILTER_CONTENT_BY_CHANNEL_ID` to true, by default it's false in `build.gradle`
+11. Give your external path value in `Constants.class EXTERNAL_PATH`
 
 ## Reporting Issues
 We have an open and active [issue tracker](https://github.com/project-sunbird/sunbird-commons/issues). Please report any issues or  you find.
