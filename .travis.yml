@@ -37,7 +37,7 @@ before_install:
 - chmod +x gradlew
 - "./gradlew dependencies || true"
 script:
-- "./gradlew clean assembleRelease -PdisablePreDex --stacktrace"
+- "./gradlew clean assembleRelease -PdisablePreDex" #  --stacktrace
 before_deploy:
 - cd app/build/outputs/apk/
 deploy:

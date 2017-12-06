@@ -1,5 +1,7 @@
 .gradle
 /local.properties
+/gradle.properties
+*.jks
 .idea/libraries/
 .idea/gradle.xml
 .idea/misc.xml
