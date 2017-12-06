@@ -58,6 +58,7 @@ android {
             signingConfig signingConfigs.release
             buildConfigField "boolean", "USE_CRASHLYTICS", "true"
             ext.enableCrashlytics = true
+            manifestPlaceholders = [fabric_api_key: "${release_fabric_api_key}"]
             resValue 'string', 'index_base_url', "file:///android_asset/index.html"
         }
         debug {
@@ -66,6 +67,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "boolean", "USE_CRASHLYTICS", "false"
             ext.enableCrashlytics = false
+            manifestPlaceholders = [fabric_api_key: "${debug_fabric_api_key}"]
             jackOptions {
                 enabled false
             }
