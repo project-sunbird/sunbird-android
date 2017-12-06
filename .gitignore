@@ -14,3 +14,4 @@ build/
 /.idea/copyright/profiles_settings.xml
 /.idea/modules.xml
 /secrets
+/secrets.tar
