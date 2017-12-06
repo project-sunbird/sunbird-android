@@ -38,9 +38,11 @@ before_install:
 - "./gradlew dependencies || true"
 script:
 - "./gradlew clean assembleRelease -PdisablePreDex" #  --stacktrace
+- pwd
 before_deploy:
 #- cd app/build/outputs/apk/
 - ls app/build/outputs/apk/
+- pwd
 deploy:
   provider: releases
   file: "app/build/outputs/apk/sunbird-*.apk"
