@@ -39,10 +39,11 @@ before_install:
 script:
 - "./gradlew clean assembleRelease -PdisablePreDex" #  --stacktrace
 before_deploy:
-- cd app/build/outputs/apk/
+#- cd app/build/outputs/apk/
+- ls app/build/outputs/apk/
 deploy:
   provider: releases
-  file: "sunbird-*.apk"
+  file: "app/build/outputs/apk/sunbird-*.apk"
   skip_cleanup: true
   on:
     repo: project-sunbird/sunbird-android
