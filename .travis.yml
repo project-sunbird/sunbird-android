@@ -42,7 +42,7 @@ before_deploy:
 - cd app/build/outputs/apk/
 deploy:
   provider: releases
-  file: sunbird-*.apk
+  file: "sunbird-*.apk"
   skip_cleanup: true
   on:
     repo: project-sunbird/sunbird-android
