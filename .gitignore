@@ -1,6 +1,7 @@
-dui-demo/gradle.properties
 .gradle
 /local.properties
+/gradle.properties
+*.jks
 .idea/libraries/
 .idea/gradle.xml
 .idea/misc.xml
@@ -13,3 +14,5 @@ build/
 /.gradle/
 /.idea/copyright/profiles_settings.xml
 /.idea/modules.xml
+/secrets
+/secrets.tar

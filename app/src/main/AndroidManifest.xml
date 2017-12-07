@@ -107,7 +107,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="$YOUR_FABRIC_API_KEY$" />
+            android:value="${fabric_api_key}" />
 
         <provider
             android:name="org.sunbird.providers.UserProvider"

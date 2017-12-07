@@ -32,7 +32,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        ext.buildNumber = System.getenv("BUILD_NUMBER") ?: "local"
+        ext.buildNumber = System.getenv("TRAVIS_BUILD_NUMBER") ?: "local"
 
         applicationId "org.sunbird.app"
         minSdkVersion 16
@@ -59,6 +59,7 @@ android {
             signingConfig signingConfigs.release
             buildConfigField "boolean", "USE_CRASHLYTICS", "true"
             ext.enableCrashlytics = true
+            manifestPlaceholders = [fabric_api_key: "${release_fabric_api_key}"]
             resValue 'string', 'index_base_url', "file:///android_asset/index.html"
         }
         debug {
@@ -67,6 +68,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "boolean", "USE_CRASHLYTICS", "false"
             ext.enableCrashlytics = false
+            manifestPlaceholders = [fabric_api_key: "${debug_fabric_api_key}"]
             jackOptions {
                 enabled false
             }
@@ -87,15 +89,15 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://dev.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://dev.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
-            buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
+            buildConfigField 'String', 'PRODUCER_ID', "${dev_producer_id}"
+            buildConfigField 'String', 'CHANNEL_ID', "${dev_channel_id}"
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
             buildConfigField 'String', 'MOBILE_APP_CONSUMER', '"mobile_device"'
-            buildConfigField 'String', 'MOBILE_APP_KEY', '"$MOBILE_APP_KEY$"'
-            buildConfigField 'String', 'MOBILE_APP_SECRET', '"$MOBILE_APP_SECRET$"'
+            buildConfigField 'String', 'MOBILE_APP_KEY', "${dev_mobile_app_key}"
+            buildConfigField 'String', 'MOBILE_APP_SECRET', "${dev_mobile_app_secret}"
         }
         staging {
             resValue 'string', 'local_ip', host
@@ -109,15 +111,15 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://staging.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://staging.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
-            buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
+            buildConfigField 'String', 'PRODUCER_ID', "${staging_producer_id}"
+            buildConfigField 'String', 'CHANNEL_ID', "${staging_channel_id}"
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
             buildConfigField 'String', 'MOBILE_APP_CONSUMER', '"mobile_device"'
-            buildConfigField 'String', 'MOBILE_APP_KEY', '"$MOBILE_APP_KEY$"'
-            buildConfigField 'String', 'MOBILE_APP_SECRET', '"$MOBILE_APP_SECRET$"'
+            buildConfigField 'String', 'MOBILE_APP_KEY', "${staging_mobile_app_key}"
+            buildConfigField 'String', 'MOBILE_APP_SECRET', "${staging_mobile_app_secret}"
         }
         production {
             resValue 'string', 'local_ip', host
@@ -131,15 +133,15 @@ android {
             buildConfigField 'String', 'CONTENT_BASE_URL', '"https://staging.open-sunbird.org/api/content/v1"'
             buildConfigField 'String', 'APIGATEWAY_BASE_URL', '"https://staging.open-sunbird.org/api/api-manager/v1"'
             buildConfigField 'String', 'PLAYER_CONFIG', '"org.sunbird.utils.PlayerConfig"'
-            buildConfigField 'String', 'PRODUCER_ID', '"$PRODUCER_ID$"'
-            buildConfigField 'String', 'CHANNEL_ID', '"$CHANNEL_ID$"'
+            buildConfigField 'String', 'PRODUCER_ID', "${production_producer_id}"
+            buildConfigField 'String', 'CHANNEL_ID', "${production_channel_id}"
             buildConfigField 'boolean', 'FILTER_CONTENT_BY_CHANNEL_ID', "false"
             buildConfigField 'int', 'MIN_COMPATIBILITY_LEVEL', "1"
             buildConfigField 'int', 'MAX_COMPATIBILITY_LEVEL', "4"
             buildConfigField 'String', 'LOG_LEVEL', '"INFO"'
             buildConfigField 'String', 'MOBILE_APP_CONSUMER', '"mobile_device"'
-            buildConfigField 'String', 'MOBILE_APP_KEY', '"$MOBILE_APP_KEY$"'
-            buildConfigField 'String', 'MOBILE_APP_SECRET', '"$MOBILE_APP_SECRET$"'
+            buildConfigField 'String', 'MOBILE_APP_KEY', "${production_mobile_app_key}"
+            buildConfigField 'String', 'MOBILE_APP_SECRET', "${production_mobile_app_secret}"
         }
     }
 
