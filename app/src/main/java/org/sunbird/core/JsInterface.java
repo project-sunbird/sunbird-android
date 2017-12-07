@@ -137,19 +137,18 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static java.lang.Integer.parseInt;
 
 /**
- * Created on 24/2/17.
- *
- * @author stpl
+ * Created by stpl on 24/2/17.
  */
 public class JsInterface {
 
     //private KeyValueStore keyValueStore;
     private final static String LOG_TAG = JsInterface.class.getName();
+    private static final int SEND_SMS_REQUEST = 8;
     //TODO : KEYCLOACK REDIRECT URL, change in manifest for deep linking
     private static String REDIRECT_URI = BuildConfig.REDIRECT_BASE_URL + "/oauth2callback";
-    private final int PHONE_STATE_PERMISSION_CODE = 2, STORAGE_PERMISSION_CODE = 3, COARSE_LOCATION_CODE = 4, CAMERA_PERMISSION_CODE = 5;
-    private ListViewAdapter listViewAdapter = null;
-    private MyRecyclerViewAdapter recylerViewAdapter = null;
+    private final int SMS_PERMISSION_CODE = 1, PHONE_STATE_PERMISSION_CODE = 2, STORAGE_PERMISSION_CODE = 3, COARSE_LOCATION_CODE = 4, CAMERA_PERMISSION_CODE = 5;
+    ListViewAdapter listViewAdapter = null;
+    MyRecyclerViewAdapter recylerViewAdapter = null;
     private Context context;
     private MainActivity activity;
     private DynamicUI dynamicUI;
@@ -192,15 +191,12 @@ public class JsInterface {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryStageId.LOGIN, TelemetryAction.LOGIN_INITIATE, null, null));
 
         CustomTabsIntent.Builder mBuilder = new CustomTabsIntent.Builder(getSession());
-        //mBuilder.setToolbarColor(.getColor(activity, R.color.colorPrimary));
         CustomTabsIntent mIntent = mBuilder.build();
 
-        String keyCloackAuthUrl = OAUTH_URL + "?redirect_uri=" + REDIRECT_URI + "&response_type=code&scope=openid&client_id=" + CLIENT_ID + "&scope=openid";
-
+        String keyCloackAuthUrl = OAUTH_URL + "?redirect_uri=" + REDIRECT_URI + "&response_type=code&scope=offline_access&client_id=" + CLIENT_ID;
         Log.e("URL HITTING:", keyCloackAuthUrl);
         mIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        mIntent.intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         mIntent.launchUrl(context, Uri.parse(keyCloackAuthUrl));
 
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryStageId.LOGIN));
@@ -471,7 +467,8 @@ public class JsInterface {
 
     @JavascriptInterface
     public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -506,18 +503,15 @@ public class JsInterface {
                 datePicker = new DatePickerDialog(activity, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
-
                 if (minDate != null && !minDate.isEmpty() && !minDate.equals("undefined")) {
 
                     datePicker.getDatePicker().setMinDate(dateToMillisecond(minDate));
                 }
-
                 if (maxDate != null && !maxDate.isEmpty() && !maxDate.equals("undefined")) {
                     datePicker.getDatePicker().setMaxDate(dateToMillisecond(maxDate));
                 } else {
                     datePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
                 }
-
                 datePicker.show();
             }
         });
@@ -744,7 +738,6 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCE_LIST;
                 break;
         }
-
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.SEARCH_RESULTS, count);
         eksMap.put(TelemetryConstant.SEARCH_CRITERIA, criteria);
@@ -765,7 +758,6 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCE_LIST;
                 break;
         }
-
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
         eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
@@ -786,7 +778,6 @@ public class JsInterface {
                 stageId = TelemetryStageId.RESOURCES;
                 break;
         }
-
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
         eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
@@ -833,7 +824,6 @@ public class JsInterface {
             case "PROFILE":
                 stageId = TelemetryStageId.PROFILE;
         }
-
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageId, TelemetryAction.TAB_CLICKED, null, null));
     }
 
@@ -1558,7 +1548,6 @@ public class JsInterface {
         } else if (requestCode == COARSE_LOCATION_CODE) {
             gotPermission = Manifest.permission.ACCESS_COARSE_LOCATION;
         }
-
         try {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.d("GRANTED GRANTED ", "");
@@ -1885,7 +1874,6 @@ public class JsInterface {
             }
         });
     }
-
     @JavascriptInterface
     public void hideFooterView(final String id, final String buttonId) {
         try {
@@ -1919,7 +1907,7 @@ public class JsInterface {
                 try {
                     response = client.newCall(request).execute();
                     String body = response.body().string();
-//                    Log.e(TAG, "run: " + body);
+                    Log.e(TAG, "refreshToken body: " + body);
                     final String javascript;
                     String base64Data = Base64.encodeToString(body.getBytes(), Base64.NO_WRAP);
                     if (response.isSuccessful()) {
@@ -1936,19 +1924,34 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void getFocus(final String id){
+        int editTextViewId = parseInt(id);
+        final EditText editText = (EditText) activity.findViewById(editTextViewId);
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    editText.setFocusable(true);
+                    editText.setFocusableInTouchMode(true);
+                    editText.requestFocus();
+                    showKeyboard();
+                } catch (Exception e) {
+                    Log.e("Error", " " + e);
+                }
+            }
+        });
+    }
+
+    @JavascriptInterface
     public boolean isDebuggable() {
         return BuildConfig.DEBUG;
     }
 
     @JavascriptInterface
-    public boolean isChannelIdSet() {
-        return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID;
-    }
+    public boolean isChannelIdSet() { return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID; }
 
     @JavascriptInterface
-    public String defaultChannelId() {
-        return BuildConfig.CHANNEL_ID;
-    }
+    public String defaultChannelId() { return BuildConfig.CHANNEL_ID; }
 
     @JavascriptInterface
     public void fileUpload(String filePath, String apiToken, String userAccessToken, String userId, String cb){
