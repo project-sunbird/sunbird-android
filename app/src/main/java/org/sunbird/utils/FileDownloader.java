@@ -49,6 +49,8 @@ public class FileDownloader {
     }
     public void stopDownloading(){
         this.mStopDownload=true;
+        File file = new File(localStoreFilePath);
+        file.delete();  //delete the file which was being downloaded
     }
 
     int downloadFile(){
