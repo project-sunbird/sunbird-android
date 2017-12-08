@@ -13,7 +13,7 @@ public class Notification implements Serializable {
     private Date receivedAt;
     private String notificationJson;
     private String status;
-    private int msgid;
+    private String msgid;
     private String title;
     private String msg;
     private int relativetime;
@@ -44,11 +44,11 @@ public class Notification implements Serializable {
         this.notificationJson = notificationJson;
     }
 
-    public int getMsgid() {
+    public String getMsgid() {
         return this.msgid;
     }
 
-    public void setMsgid(int msgid) {
+    public void setMsgid(String msgid) {
         this.msgid = msgid;
     }
 

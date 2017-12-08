@@ -80,7 +80,8 @@ public class NotificationManagerUtil {
             Bundle extras = new Bundle();
             extras.putByteArray(Constants.BUNDLE_KEY_NOTIFICATION_DATA_MODEL, SerializableUtil.serialize(notification));
             intent.putExtras(extras);
-            alarmManagerUtil.scheduleAlarm(intent, notification.getMsgid(), triggerAtMillis);
+            //TODO send proper requestCode
+            alarmManagerUtil.scheduleAlarm(intent, 1234 /* notification.getMsgid() */, triggerAtMillis);
         }
     }
 
@@ -115,7 +116,8 @@ public class NotificationManagerUtil {
 //        notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(genieNotification.getMsgid() /* ID of notification */, notification);
+        // TODO change msgID to valid int
+        notificationManager.notify( 1234/* genieNotification.getMsgid() /* ID of notification */, notification);
     }
 
     private PendingIntent getPendingIntent(Notification genieNotification) {
