@@ -1995,7 +1995,7 @@ public class JsInterface {
         FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
     private FileDownloader mFileDownloader;
-    private ArrayList<DownloadFileAsync> mDownloadFileAsyncArray=new ArrayList<>();
+    private DownloadFileAsync[] mDownloadFileAsyncArray = new DownloadFileAsync[100];
 
     @JavascriptInterface
     public boolean checkIfDownloaded(final String path){
@@ -2015,14 +2015,14 @@ public class JsInterface {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             activity.startActivity(intent);
         }else {
-            mDownloadFileAsyncArray.add(index,new DownloadFileAsync());
-            mDownloadFileAsyncArray.get(index).execute(url, path);
+            mDownloadFileAsyncArray[index] = new DownloadFileAsync();
+            mDownloadFileAsyncArray[index].execute(url, path);
         }
     }
 
     @JavascriptInterface
     public void cancelDownload(final int index,final String callback){
-        mDownloadFileAsyncArray.get(index).stopDownload();
+        mDownloadFileAsyncArray[index].stopDownload();
         String javascript = String.format("window.callJSCallback('%s');", callback);
         dynamicUI.addJsToWebView(javascript);
     }
@@ -2091,14 +2091,39 @@ public class JsInterface {
     };
 
     @JavascriptInterface
-    public void shareAnnouncement(String type, String title, String description) {
-        String announcementString = type + "\n\n"
-                + title + "\n\n"
-                + description;
-        Intent shareIntent = new Intent();
-        shareIntent.setType("text/*");
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, type);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, announcementString);
-        activity.startActivity(Intent.createChooser(shareIntent, "Share via.."));
+    public void shareAnnouncement(String announcement) {
+        try {
+            JSONObject announcementData;
+            announcementData = new JSONObject(announcement);
+            String textToSend= "attachments";
+        try{
+            textToSend = "Type:"+ announcementData.getString("type")
+                    +"\n"+"Title:"+announcementData.getString("title")
+                    +"\n"+"Description:"+announcementData.getString("description");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+            Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+            shareIntent.setType("*/*");
+            shareIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Announcement");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, textToSend);
+            JSONArray attachments = new JSONArray(announcementData.getString("attachments"));
+            String path = "/storage/emulated/0/announcements/" + announcementData.getString("id")+"/";
+            ArrayList<Uri> Uris = new ArrayList<>();
+            for (int i = 0; i < attachments.length(); i++) {
+                JSONObject dummy = attachments.getJSONObject(i);
+                File file = new File(path + dummy.getString("name"));
+                if (file.exists()) {
+                    Uris.add(Uri.parse(file.getAbsolutePath()));
+                }
+            }
+            if (!Uris.isEmpty()) {
+                shareIntent.putExtra(Intent.EXTRA_STREAM, Uris);
+            }
+            activity.startActivity(Intent.createChooser(shareIntent, "Share via.."));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
