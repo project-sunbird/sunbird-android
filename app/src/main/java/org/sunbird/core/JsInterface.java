@@ -1946,7 +1946,6 @@ public class JsInterface {
     public boolean isDebuggable() {
         return BuildConfig.DEBUG;
     }
-
     @JavascriptInterface
     public boolean isChannelIdSet() { return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID; }
 
@@ -2103,9 +2102,11 @@ public class JsInterface {
         }catch (JSONException e){
             e.printStackTrace();
         }
+            String authorities = BuildConfig.APPLICATION_ID + ".fileprovider";
             Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            shareIntent.setType("*/*");
-            shareIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            shareIntent.setType("text/*");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Announcement");
             shareIntent.putExtra(Intent.EXTRA_TEXT, textToSend);
             JSONArray attachments = new JSONArray(announcementData.getString("attachments"));
@@ -2115,10 +2116,12 @@ public class JsInterface {
                 JSONObject dummy = attachments.getJSONObject(i);
                 File file = new File(path + dummy.getString("name"));
                 if (file.exists()) {
-                    Uris.add(Uri.parse(file.getAbsolutePath()));
+                    Uris.add(FileProvider.getUriForFile(context, authorities, file));
                 }
             }
             if (!Uris.isEmpty()) {
+                shareIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                shareIntent.setType("*/*");
                 shareIntent.putExtra(Intent.EXTRA_STREAM, Uris);
             }
             activity.startActivity(Intent.createChooser(shareIntent, "Share via.."));
