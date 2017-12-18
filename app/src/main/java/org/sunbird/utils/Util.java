@@ -242,4 +242,16 @@ public class Util {
     public static Intent getRefreshNotificationsIntent() {
         return new Intent(Constants.INTENT_ACTION_REFRESH_NOTIFICATION);
     }
+
+
+    public static int aton(String input) { //alphanumeric to integer
+        int out= 0;
+        int len = input.length();
+        String pools = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-";
+        for(int i =0;i <len;i++){
+            char c = input.charAt(len-(i+1));
+            out += (pools.indexOf(c) * ((int)Math.pow(63,i)));
+        }
+        return out;
+    }
 }

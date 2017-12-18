@@ -65,7 +65,7 @@ public class NotificationManagerUtil {
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();
-        if (currentTime < triggerAtMillis + (notification.getValidity() * _1_MIN)) {
+        if (notification.getValidity() == -1 || currentTime < triggerAtMillis + (notification.getValidity() * _1_MIN)) {
             isSchedule = true;
         }
 
@@ -75,13 +75,11 @@ public class NotificationManagerUtil {
 
         Intent intent = new Intent(mContext, LocalNotificationService.class);
         intent.setAction("" + Math.random());
-
         if (isSchedule) {
             Bundle extras = new Bundle();
             extras.putByteArray(Constants.BUNDLE_KEY_NOTIFICATION_DATA_MODEL, SerializableUtil.serialize(notification));
             intent.putExtras(extras);
-            //TODO send proper requestCode
-            alarmManagerUtil.scheduleAlarm(intent, 1234 /* notification.getMsgid() */, triggerAtMillis);
+            alarmManagerUtil.scheduleAlarm(intent, Util.aton(notification.getMsgid()), triggerAtMillis);
         }
     }
 
@@ -116,8 +114,7 @@ public class NotificationManagerUtil {
 //        notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        // TODO change msgID to valid int
-        notificationManager.notify( 1234/* genieNotification.getMsgid() /* ID of notification */, notification);
+        notificationManager.notify( Util.aton(genieNotification.getMsgid()), notification);
     }
 
     private PendingIntent getPendingIntent(Notification genieNotification) {
