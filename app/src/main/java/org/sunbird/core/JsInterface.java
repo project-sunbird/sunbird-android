@@ -1824,11 +1824,11 @@ public class JsInterface {
                 }
             }
         });
-        if (btnText != null) {
+        if (btnText != null && !btnText.equals("")) {
             LinearLayout linearLayout = new LinearLayout(activity);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
             Button btn = new Button(activity);
-            linearLayout.setId(parseInt(id));
+            linearLayout.setId(parseInt(buttonId));
             linearLayout.setBackgroundResource(R.drawable.layout_padding);
             btn.setText(btnText);
             btn.setLayoutParams(lp);
@@ -1878,10 +1878,15 @@ public class JsInterface {
     public void hideFooterView(final String id, final String buttonId) {
         try {
             int listViewId = parseInt(id);
-            int buttonId1 = parseInt(buttonId);
+            final int buttonId1 = parseInt(buttonId);
             final ListView listView = (ListView) activity.findViewById(listViewId);
-            LinearLayout btn = (LinearLayout) activity.findViewById(buttonId1);
-            listView.removeFooterView(btn);
+            final LinearLayout btn = (LinearLayout) activity.findViewById(buttonId1);
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    listView.removeFooterView(btn);
+                }
+            });
         } catch (Exception e) {
             Log.e("View!!", "Exception in hide footer view + " + e);
         }
