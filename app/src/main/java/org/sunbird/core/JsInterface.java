@@ -2134,4 +2134,13 @@ public class JsInterface {
             e.printStackTrace();
         }
     }
+
+    @JavascriptInterface
+    public void openLink(String url){
+        if (!url.startsWith("http://") && !url.startsWith("https://"))
+            url = "http://" + url;
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        activity.startActivity(browserIntent);
+    }
 }
