@@ -94,6 +94,7 @@ import org.sunbird.ui.TabLayout;
 import org.sunbird.ui.ViewPagerAdapter;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.FileDownloader;
+import org.sunbird.utils.FileDownloader.OnFileDownloadProgressChangedListener;
 import org.sunbird.utils.FileUtil;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
@@ -101,9 +102,6 @@ import org.sunbird.utils.KeyValueStore;
 import org.sunbird.utils.SQLBlobStore;
 import org.sunbird.utils.Util;
 import org.sunbird.utils.WebSocket;
-
-
-import org.sunbird.utils.FileDownloader.OnFileDownloadProgressChangedListener;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -2099,23 +2097,33 @@ public class JsInterface {
         try {
             JSONObject announcementData;
             announcementData = new JSONObject(announcement);
-            String textToSend= "attachments";
-        try{
-            textToSend = "Type:"+ announcementData.getString("type")
-                    +"\n"+"Title:"+announcementData.getString("title")
-                    +"\n"+"Description:"+announcementData.getString("description");
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+            String textToSend = "";
+            try {
+                textToSend = "Type: " + announcementData.getString("type")
+                        + "\n" + "Title: " + announcementData.getString("title")
+                        + "\n" + "Description: " + announcementData.getString("description");
+                if(announcementData.has("links")) {
+                    JSONArray links = announcementData.getJSONArray("links");
+                    if (links.length() > 0){
+                        textToSend += "\nLinks: ";
+                        for (int i=0; i<links.length(); i++) {
+                            textToSend += "" + links.getString(i) + ",";
+                        }
+                    }
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             String authorities = BuildConfig.APPLICATION_ID + ".fileprovider";
             Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             shareIntent.setType("text/*");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Announcement");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Announcement");
             shareIntent.putExtra(Intent.EXTRA_TEXT, textToSend);
             JSONArray attachments = new JSONArray(announcementData.getString("attachments"));
-            String path = "/storage/emulated/0/announcements/" + announcementData.getString("id")+"/";
+            String path = "/storage/emulated/0/announcements/" + announcementData.getString("id") + "/";
             ArrayList<Uri> Uris = new ArrayList<>();
             for (int i = 0; i < attachments.length(); i++) {
                 JSONObject dummy = attachments.getJSONObject(i);
@@ -2130,7 +2138,7 @@ public class JsInterface {
                 shareIntent.putExtra(Intent.EXTRA_STREAM, Uris);
             }
             activity.startActivity(Intent.createChooser(shareIntent, "Share via.."));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
