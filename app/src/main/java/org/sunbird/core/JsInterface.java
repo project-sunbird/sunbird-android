@@ -195,7 +195,7 @@ public class JsInterface {
         Log.e("URL HITTING:", keyCloackAuthUrl);
         mIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        mIntent.launchUrl(context, Uri.parse(keyCloackAuthUrl));
+        mIntent.launchUrl(activity, Uri.parse(keyCloackAuthUrl));
 
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryStageId.LOGIN));
     }
