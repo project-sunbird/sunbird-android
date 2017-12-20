@@ -97,14 +97,14 @@ public class GenieWrapper extends Activity {
         mGenieAsyncService.getAuthService().getMobileDeviceBearerToken(new IResponseHandler<String>() {
             @Override
             public void onSuccess(GenieResponse<String> genieResponse) {
-
                 String javascript = String.format("window.callJSCallback('%s','%s');", callback, genieResponse.getResult());
-                dynamicUI.addJsToWebView(javascript);
                 dynamicUI.addJsToWebView(javascript);
             }
 
             @Override
             public void onError(GenieResponse<String> genieResponse) {
+                String javascript = String.format("window.callJSCallback('%s','%s','%s);", callback, "error", genieResponse.getResult());
+                dynamicUI.addJsToWebView(javascript);
             }
         });
 
