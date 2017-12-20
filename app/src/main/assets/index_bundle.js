@@ -23439,7 +23439,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 624
+	            lineNumber: 625
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -23450,14 +23450,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 631
+	            lineNumber: 632
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 638
+	              lineNumber: 639
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -23468,7 +23468,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 639
+	              lineNumber: 640
 	            }
 	          })
 	        )
@@ -23942,6 +23942,7 @@
 	        whatToSend = [];
 	        event = { tag: "OPEN_HomeFragment", contents: whatToSend };
 	        window.__Check = 1;
+	        window.__LoaderDialog.hide();
 	        break;
 	      case 1:
 	        if (!JBridge.isNetworkAvailable()) {
@@ -24022,7 +24023,7 @@
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 596
+	        lineNumber: 597
 	      }
 	    });
 	
@@ -25054,10 +25055,10 @@
 	
 	    _this2.getCardLayout = function (item, index) {
 	      console.log("item in progress container", item);
-	      var pDone = item.progress == undefined || isNaN(item.progress) ? 0 : item.progress;
-	      var pTotal = item.leafNodesCount == undefined || isNaN(item.leafNodesCount) ? 0 : item.leafNodesCount;
-	      var progressCount = item.leafNodesCount == null ? 0 : item.progress / item.leafNodesCount * 100;
-	      progressCount = parseInt(progressCount);
+	      var pDone = item.progress == undefined || !Number.isInteger(item.progress) ? 0 : item.progress;
+	      var pTotal = item.leafNodesCount == undefined || !Number.isInteger(item.leafNodesCount) ? 0 : item.leafNodesCount;
+	      var progressCount = pDone / pTotal * 100;
+	      progressCount = isNaN(progressCount) ? 0 : parseInt(progressCount);
 	
 	      console.log("GET CARD LAYOUT", item);
 	
@@ -31041,7 +31042,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 138
+	              lineNumber: 141
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -31055,7 +31056,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 150
+	              lineNumber: 153
 	            }
 	          })
 	        );
@@ -31065,7 +31066,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 164
+	            lineNumber: 167
 	          }
 	        });
 	      }
@@ -31220,17 +31221,20 @@
 	    key: "afterRender",
 	    value: function afterRender() {
 	      var callback = callbackMapper.map(function (data) {
-	        console.log("createdBy data", JSON.parse(utils.decodeBase64(data[0])));
-	        _this.createdBy = JSON.parse(utils.decodeBase64(data[0]));
-	        var layout = dom(ProfileCreations, {
-	          data: _this.createdBy,
-	          editable: _this.editable,
-	          onCardClick: _this.handleCreatedCardClick, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 113
-	          }
-	        });
-	        _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
+	        console.log("searchContent data ", data);
+	        if (data[0] != "error") {
+	          console.log("createdBy data", JSON.parse(utils.decodeBase64(data[0])));
+	          _this.createdBy = JSON.parse(utils.decodeBase64(data[0]));
+	          var layout = dom(ProfileCreations, {
+	            data: _this.createdBy,
+	            editable: _this.editable,
+	            onCardClick: _this.handleCreatedCardClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 115
+	            }
+	          });
+	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
+	        }
 	      });
 	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", "true", 10);else console.log("JBridge.searchContent failed, no internet");
 	      window.__ContentLoadingComponent.hideLoader();
@@ -31254,7 +31258,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 302
+	            lineNumber: 305
 	          }
 	        },
 	        dom(
@@ -31266,7 +31270,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 305
+	              lineNumber: 308
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -31279,7 +31283,7 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 313
+	              lineNumber: 316
 	            }
 	          }),
 	          dom(
@@ -31289,7 +31293,7 @@
 	              weight: "1",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 324
+	                lineNumber: 327
 	              }
 	            },
 	            dom(
@@ -31301,7 +31305,7 @@
 	                orientation: "vertical",
 	                layoutTransition: "true", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 329
+	                  lineNumber: 332
 	                }
 	              },
 	              dom(ProfileHeader, {
@@ -31309,14 +31313,14 @@
 	                data: this.details,
 	                textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 336
+	                  lineNumber: 339
 	                }
 	              }),
 	              dom(ProfileProgress, {
 	                editable: this.isEditable,
 	                data: this.details, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 340
+	                  lineNumber: 343
 	                }
 	              }),
 	              this.getDescription(),
@@ -31328,7 +31332,7 @@
 	                privacyStatus: this.checkPrivacy("education"),
 	                handleLock: this.handleLockClick, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 346
+	                  lineNumber: 349
 	                }
 	              }),
 	              dom(ProfileExperiences, {
@@ -31339,7 +31343,7 @@
 	                privacyStatus: this.checkPrivacy("jobProfile"),
 	                handleLock: this.handleLockClick, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 354
+	                  lineNumber: 357
 	                }
 	              }),
 	              dom(ProfileExperiences, {
@@ -31350,7 +31354,7 @@
 	                privacyStatus: this.checkPrivacy("address"),
 	                handleLock: this.handleLockClick, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 363
+	                  lineNumber: 366
 	                }
 	              }),
 	              dom(
@@ -31360,7 +31364,7 @@
 	                  width: "wrap_content",
 	                  id: this.idSet.skillTagComponent, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 370
+	                    lineNumber: 373
 	                  }
 	                },
 	                dom(ProfileSkillTags, {
@@ -31371,7 +31375,7 @@
 	                  privacyStatus: this.checkPrivacy("skills"),
 	                  handleLock: this.handleLockClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 374
+	                    lineNumber: 377
 	                  }
 	                })
 	              ),
@@ -31381,7 +31385,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.createdByHolder, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 383
+	                    lineNumber: 386
 	                  }
 	                },
 	                dom(ProfileCreations, {
@@ -31389,7 +31393,7 @@
 	                  editable: _this.editable,
 	                  onCardClick: _this.handleCreatedCardClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 387
+	                    lineNumber: 390
 	                  }
 	                })
 	              ),
@@ -31397,7 +31401,7 @@
 	                data: this.details,
 	                editable: this.isEditable, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 394
+	                  lineNumber: 397
 	                }
 	              })
 	            )
@@ -51510,7 +51514,7 @@
 	      width: "match_parent",
 	      text: item,
 	      onClick: function onClick() {
-	        return _this4.openLink(_this4.data.details);
+	        return _this4.openLink(item);
 	      },
 	      style: window.__TextStyle.textStyle.CLICKABLE.BLUE_SEMI, __source: {
 	        fileName: _jsxFileName,
