@@ -44637,10 +44637,10 @@
 	      _this2.jsonArray = [];
 	      list.map(function (item, i) {
 	        var progressCount = 0;
-	        if (item.leafNodesCount >= item.progress) {
-	          var progressCount = item.leafNodesCount == null ? 0 : item.progress / item.leafNodesCount * 100;
-	          progressCount = parseInt(progressCount);
-	        }
+	        var pDone = item.progress == undefined || !Number.isInteger(item.progress) ? 0 : item.progress;
+	        var pTotal = item.leafNodesCount == undefined || !Number.isInteger(item.leafNodesCount) ? 0 : item.leafNodesCount;
+	        var progressCount = pDone / pTotal * 100;
+	        progressCount = isNaN(progressCount) ? 0 : parseInt(progressCount);
 	        var appIcon, name, isProgress, size, actionText, type;
 	        if (item.courseId) {
 	          appIcon = item.courseLogoUrl ? item.courseLogoUrl : "ic_action_course";
