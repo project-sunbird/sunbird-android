@@ -145,11 +145,46 @@ public class JsInterface {
     //TODO : KEYCLOACK REDIRECT URL, change in manifest for deep linking
     private static String REDIRECT_URI = BuildConfig.REDIRECT_BASE_URL + "/oauth2callback";
     private final int SMS_PERMISSION_CODE = 1, PHONE_STATE_PERMISSION_CODE = 2, STORAGE_PERMISSION_CODE = 3, COARSE_LOCATION_CODE = 4, CAMERA_PERMISSION_CODE = 5;
-    ListViewAdapter listViewAdapter = null;
-    MyRecyclerViewAdapter recylerViewAdapter = null;
+    private ListViewAdapter listViewAdapter = null;
+    private MyRecyclerViewAdapter recylerViewAdapter = null;
+    private String downloadCallback = "";
     private Context context;
     private MainActivity activity;
     private DynamicUI dynamicUI;
+    /**
+     * Get the download progress callbacks here
+     */
+    private OnFileDownloadProgressChangedListener mChangedListener = new OnFileDownloadProgressChangedListener() {
+
+        @Override
+        public void onProgressChanged(float currentProgress) {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, String.valueOf(currentProgress));
+            dynamicUI.addJsToWebView(javascript);
+        }
+
+        @Override
+        public void onFileDownloaded(String currentPath) {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "finished");
+            dynamicUI.addJsToWebView(javascript);
+            Log.e("download!", "onFileDownloaded: finished");
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", new File(currentPath)));
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            activity.startActivity(intent);
+        }
+
+        @Override
+        public void onFailure() {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "failure");
+            dynamicUI.addJsToWebView(javascript);
+        }
+
+        @Override
+        public void onDownloadStart() {
+            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "start");
+            dynamicUI.addJsToWebView(javascript);
+        }
+    };
     private WebSocket ws;
     private int RESULT_LOAD_IMG = 88;
     private int REQUEST_CODE_PERMISSION = 0;
@@ -160,6 +195,8 @@ public class JsInterface {
     private Executor pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager viewPager;
+    private FileDownloader mFileDownloader;
+    private DownloadFileAsync[] mDownloadFileAsyncArray = new DownloadFileAsync[100];
 
     public JsInterface(MainActivity activity, DynamicUI dynamicUI, WebSocket ws) {
         this.context = activity.getApplicationContext();
@@ -782,7 +819,6 @@ public class JsInterface {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCoRelationList()));
     }
 
-
     @JavascriptInterface
     public void logViewAllClickEvent(String type, String sectionName) {
         String stageId = "", subType = "";
@@ -949,12 +985,12 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void logAnnouncementListShow () {
+    public void logAnnouncementListShow() {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryStageId.ANNOUNCEMENT_LIST, null, null, null));
     }
 
     @JavascriptInterface
-    public void logAnnouncementClicked (String from, String announcementId, String pos) {
+    public void logAnnouncementClicked(String from, String announcementId, String pos) {
         String stageid = TelemetryStageId.ANNOUNCEMENT_LIST;
         if (from.equals("HOME")) stageid = TelemetryStageId.HOME;
         Map<String, Object> eksMap = new HashMap<>();
@@ -963,7 +999,7 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void logAnnouncementDeatilScreen (String announcementId) {
+    public void logAnnouncementDeatilScreen(String announcementId) {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryStageId.ANNOUNCEMENT_DETAIL, null, announcementId, null));
     }
 
@@ -1514,7 +1550,6 @@ public class JsInterface {
         return data;
     }
 
-
     @android.webkit.JavascriptInterface
     public void checkPermission(String callback) {
         try {
@@ -1872,6 +1907,7 @@ public class JsInterface {
             }
         });
     }
+
     @JavascriptInterface
     public void hideFooterView(final String id, final String buttonId) {
         try {
@@ -1927,7 +1963,7 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void getFocus(final String id){
+    public void getFocus(final String id) {
         int editTextViewId = parseInt(id);
         final EditText editText = (EditText) activity.findViewById(editTextViewId);
         activity.runOnUiThread(new Runnable() {
@@ -1949,19 +1985,24 @@ public class JsInterface {
     public boolean isDebuggable() {
         return BuildConfig.DEBUG;
     }
-    @JavascriptInterface
-    public boolean isChannelIdSet() { return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID; }
 
     @JavascriptInterface
-    public String defaultChannelId() { return BuildConfig.CHANNEL_ID; }
+    public boolean isChannelIdSet() {
+        return BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID;
+    }
 
     @JavascriptInterface
-    public void fileUpload(String filePath, String apiToken, String userAccessToken, String userId, String cb){
+    public String defaultChannelId() {
+        return BuildConfig.CHANNEL_ID;
+    }
+
+    @JavascriptInterface
+    public void fileUpload(String filePath, String apiToken, String userAccessToken, String userId, String cb) {
         File file = new File(filePath);
         Log.e(TAG, "fileUpload: " + file.exists());
         String resData = Util.postFile(BuildConfig.REDIRECT_BASE_URL + "/api/content/v1/media/upload", file, apiToken, userAccessToken, userId, cb);
         Log.e(TAG, "fileUpload: response: " + (resData == ""));
-        if (resData == null || resData == ""){
+        if (resData == null || resData == "") {
             String javascript = String.format("window.callJSCallback('%s','%s');", cb, "__failed");
             dynamicUI.addJsToWebView(javascript);
         } else {
@@ -1972,125 +2013,55 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void loadImageForProfileAvatar(){
+    public void loadImageForProfileAvatar() {
         Intent intent = ImagePicker.getPickImageIntent(activity);
         activity.startActivityForResult(intent, MainActivity.IMAGE_CHOOSER_ID);
     }
 
     @JavascriptInterface
-    public void registerFCM (String[] topics) {
+    public void registerFCM(String[] topics) {
         int len = topics.length;
         for (int i = len - 1; i >= 0; i--) {
             FirebaseMessaging.getInstance().subscribeToTopic(topics[i]);
         }
-        //Todo - for debug only
-        FirebaseMessaging.getInstance().subscribeToTopic(activity.getString(R.string.topicName));
     }
 
     @JavascriptInterface
-    public void unregisterFCM (String[] topics) {
+    public void unregisterFCM(String[] topics) {
         int len = topics.length;
         for (int i = len - 1; i >= 0; i--) {
             FirebaseMessaging.getInstance().unsubscribeFromTopic(topics[i]);
         }
-        //Todo - for debug only
-        FirebaseMessaging.getInstance().unsubscribeFromTopic(activity.getString(R.string.topicName));
     }
-    private FileDownloader mFileDownloader;
-    private DownloadFileAsync[] mDownloadFileAsyncArray = new DownloadFileAsync[100];
 
     @JavascriptInterface
-    public boolean checkIfDownloaded(final String path){
+    public boolean checkIfDownloaded(final String path) {
         File file = new File(path);
         return file.exists();
     }
 
-    String downloadCallback="";
     @JavascriptInterface
-    public void downloadAndOpen(final String url,final String path,final String callback,final int index){
-        downloadCallback=callback;
-        Log.e("download!", "in jsfunction: "+url );
+    public void downloadAndOpen(final String url, final String path, final String callback, final int index) {
+        downloadCallback = callback;
+        Log.e("download!", "in jsfunction: " + url);
         File file = new File(path);
-        if(file.exists()){
+        if (file.exists()) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             activity.startActivity(intent);
-        }else {
+        } else {
             mDownloadFileAsyncArray[index] = new DownloadFileAsync();
             mDownloadFileAsyncArray[index].execute(url, path);
         }
     }
 
     @JavascriptInterface
-    public void cancelDownload(final int index,final String callback){
+    public void cancelDownload(final int index, final String callback) {
         mDownloadFileAsyncArray[index].stopDownload();
         String javascript = String.format("window.callJSCallback('%s');", callback);
         dynamicUI.addJsToWebView(javascript);
     }
-
-    class DownloadFileAsync extends AsyncTask<String,Void,Void>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(String... params) {
-            startDownload(params[0],params[1]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-        }
-
-        public void startDownload(String url,String filePath){
-            mFileDownloader =new FileDownloader(url,mChangedListener,filePath);
-            mFileDownloader.startDownload();
-        }
-        public void stopDownload(){
-            mFileDownloader.stopDownloading();
-        }
-    }
-
-    /**
-     * Get the download progress callbacks here
-     * */
-
-    OnFileDownloadProgressChangedListener mChangedListener=new OnFileDownloadProgressChangedListener() {
-
-        @Override
-        public void onProgressChanged(float currentProgress) {
-            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, String.valueOf(currentProgress));
-            dynamicUI.addJsToWebView(javascript);
-        }
-
-        @Override
-        public void onFileDownloaded(String currentPath) {
-            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "finished");
-            dynamicUI.addJsToWebView(javascript);
-            Log.e("download!", "onFileDownloaded: finished");
-                Intent intent = new Intent(Intent.ACTION_VIEW,
-                        FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", new File(currentPath)));
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                activity.startActivity(intent);
-        }
-
-        @Override
-        public void onFailure() {
-            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "failure");
-            dynamicUI.addJsToWebView(javascript);
-        }
-
-        @Override
-        public void onDownloadStart() {
-            String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "start");
-            dynamicUI.addJsToWebView(javascript);
-        }
-    };
 
     @JavascriptInterface
     public void shareAnnouncement(String announcement) {
@@ -2102,11 +2073,11 @@ public class JsInterface {
                 textToSend = "Type: " + announcementData.getString("type")
                         + "\n" + "Title: " + announcementData.getString("title")
                         + "\n" + "Description: " + announcementData.getString("description");
-                if(announcementData.has("links")) {
+                if (announcementData.has("links")) {
                     JSONArray links = announcementData.getJSONArray("links");
-                    if (links.length() > 0){
+                    if (links.length() > 0) {
                         textToSend += "\nLinks: ";
-                        for (int i=0; i<links.length(); i++) {
+                        for (int i = 0; i < links.length(); i++) {
                             textToSend += "" + links.getString(i) + ",";
                         }
                     }
@@ -2144,11 +2115,39 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void openLink(String url){
+    public void openLink(String url) {
         if (!url.startsWith("http://") && !url.startsWith("https://"))
             url = "http://" + url;
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(browserIntent);
+    }
+
+    class DownloadFileAsync extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            startDownload(params[0], params[1]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+        }
+
+        public void startDownload(String url, String filePath) {
+            mFileDownloader = new FileDownloader(url, mChangedListener, filePath);
+            mFileDownloader.startDownload();
+        }
+
+        public void stopDownload() {
+            mFileDownloader.stopDownloading();
+        }
     }
 }

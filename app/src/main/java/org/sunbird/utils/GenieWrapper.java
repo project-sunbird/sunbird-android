@@ -167,7 +167,8 @@ public class GenieWrapper extends Activity {
 
             @Override
             public void onError(GenieResponse<Content> genieResponse) {
-
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "__failed");
+                dynamicUI.addJsToWebView(javascript);
             }
         });
     }
@@ -226,7 +227,7 @@ public class GenieWrapper extends Activity {
 
         ContentFilterCriteria contentFilterCriteria = new ContentFilterCriteria.Builder().build();
         ContentFilterCriteria.Builder builder = new ContentFilterCriteria.Builder();
-        builder.contentTypes(new String[]{"Story", "Worksheet", "Collection", "Game", "TextBook", "Course"});
+        builder.contentTypes(new String[]{"Story", "Worksheet", "Collection", "Game", "TextBook", "Course", "Resource", "LessonPlan"});
 
         mGenieAsyncService.getContentService().getAllLocalContent(builder.build(), new IResponseHandler<List<Content>>() {
             @Override
@@ -522,8 +523,8 @@ public class GenieWrapper extends Activity {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
                 List<ContentImportResponse> result = genieResponse.getResult();
+                boolean launchDetail = true;
                 if (!CollectionUtil.isNullOrEmpty(result)) {
-                    boolean launchDetail = true;
                     for (ContentImportResponse contentImportResponse : result) {
                         switch (contentImportResponse.getStatus()) {
                             case ALREADY_EXIST:
@@ -531,14 +532,19 @@ public class GenieWrapper extends Activity {
                                 break;
                         }
                     }
+                }
 
-                    if (launchDetail) {
-                        String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(result.get(0)));
+                if (launchDetail) {
+                    if (result.size() == 0) {
+                        String importResponse = String.format("window.__onContentImportResponse('%s');", "{}");
                         dynamicUI.addJsToWebView(importResponse);
                     } else {
-                        String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
+                        String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(result.get(0)));
                         dynamicUI.addJsToWebView(importResponse);
                     }
+                } else {
+                    String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
+                    dynamicUI.addJsToWebView(importResponse);
                 }
             }
 

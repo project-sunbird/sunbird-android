@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -23,6 +24,10 @@ import android.util.Base64;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
@@ -101,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     @Override
+    public void finishAffinity() {
+        super.finishAffinity();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         genieWrapper = new GenieWrapper(MainActivity.this, dynamicUI);
@@ -115,6 +125,21 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         setContentView(R.layout.activity_main);
 
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGenieStartEvent(MainActivity.this));
+
+        String appName = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("orgName", "__failed");
+        if (appName.equals("__failed")) {
+            appName = getString(R.string.app_name);
+        }
+        TextView tv = (TextView) findViewById(R.id.textView);
+        tv.setText(appName);
+
+        String url = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("logo_url", "__failed");
+        if (!url.equals("__failed")) {
+            ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+            Glide.with(MainActivity.this)
+                    .load(url)
+                    .into(imageView);
+        }
 
         FrameLayout container = (FrameLayout) findViewById(R.id.dui_container);
         dynamicUI = new DynamicUI(this, container, null, new ErrorCallback() {
