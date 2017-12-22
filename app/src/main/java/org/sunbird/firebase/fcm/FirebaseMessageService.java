@@ -8,6 +8,8 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.sunbird.BuildConfig;
 import org.sunbird.models.Notification;
@@ -50,7 +52,7 @@ public class FirebaseMessageService extends FirebaseMessagingService {
 
                 Notification notification = GsonUtil.fromJson(geniepayload, Notification.class);
                 if (notification != null && (notification.getActionid() == NotificationActionId.ANNOUNCEMENT_LIST || notification.getActionid() == NotificationActionId.ANNOUNCEMENT_DETAIL)) {
-                    getAnnouncement();
+                    getAnnouncement(notification.getActiondata().getAnnouncementId());
                 }
                 NotificationManagerUtil notificationManagerUtil = new NotificationManagerUtil(FirebaseMessageService.this);
                 notificationManagerUtil.handleNotification(notification);
@@ -58,7 +60,7 @@ public class FirebaseMessageService extends FirebaseMessagingService {
         }
     }
 
-    private void getAnnouncement() {
+    private void getAnnouncement(final String announcementId) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -68,34 +70,46 @@ public class FirebaseMessageService extends FirebaseMessagingService {
                 String userId = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("user_token", "__failed");
                 String userAccessToken = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("user_access_token", "__failed");
                 String apiToken = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("api_token", "__failed");
-                String url = BuildConfig.REDIRECT_BASE_URL + "/api/announcement/v1/user/inbox";
+                String url = BuildConfig.REDIRECT_BASE_URL + "/api/announcement/v1/get/" + announcementId;
                 try {
-                    String jsonBody = "{\"request\": {" +
-                            "\"userId\": \"" + userId + "\"" +
-                            "}}";
-                    RequestBody body = RequestBody.create(JSON, jsonBody);
                     Request request = new Request.Builder()
                             .addHeader("Authorization", "Bearer " + apiToken)
                             .addHeader("x-authenticated-user-token", userAccessToken)
                             .addHeader("Accept", "application/json ")
                             .addHeader("Content-Type", "application/json ")
                             .url(url)
-                            .post(body)
                             .build();
                     Response response = client.newCall(request).execute();
                     if (response.code() == 200){
                         JSONObject resBody = new JSONObject(response.body().string());
                         JSONObject result = new JSONObject(resBody.get("result").toString());
-                        int count = result.getInt("count");
-                        if (count > 0) {
-                            //save to db
-                            SQLBlobStore.setData(getBaseContext(), "savedAnnouncements", Base64Util.encodeToString(result.toString().getBytes(), Base64Util.DEFAULT));
-                        }
+                        JSONObject announcement = new JSONObject(result.get("announcement").toString());
+                        appendToSavedList(announcement);
                     }
                 } catch (Exception e) {
-                    Log.e(TAG, "announcement get api exception");
+                    Log.e(TAG, "announcement get api exception" + e);
                 }
             }
         }).start();
+    }
+
+    private void appendToSavedList(JSONObject announcement) {
+        String ret = SQLBlobStore.getData(getBaseContext(), "savedAnnouncements");
+        JSONObject announcementJSON;
+        try {
+            if (ret == null || ret == "undefined") {
+                announcementJSON = new JSONObject();
+                announcementJSON.put("count", 1);
+                announcementJSON.put("announcements", new JSONArray(announcement));
+            } else {
+                announcementJSON = new JSONObject(new String(Base64Util.decode(ret, Base64Util.DEFAULT)));
+                announcementJSON.put("count", announcementJSON.getInt("count") + 1);
+                JSONArray announcementList = announcementJSON.getJSONArray("announcements");
+                announcementList.put(announcement);
+            }
+            SQLBlobStore.setData(getBaseContext(), "savedAnnouncements", Base64Util.encodeToString(announcementJSON.toString().getBytes(), Base64Util.DEFAULT));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
