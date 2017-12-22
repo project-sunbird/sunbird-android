@@ -20969,13 +20969,13 @@
 	      "हिंदी": "hi_IN",
 	      // "ಕನ್ನಡ" : "kn_IN",
 	      "తెలుగు": "te_IN",
-	      "தமிழ்": "ta_IN"
+	      "தமிழ்": "ta_IN",
 	      // "বাঙালি" : "bn_IN",
 	      // "മലയാളം" : "ml_IN",
 	      // "Oriya" : "or_IN",
 	      // "ગુજરાતી" : "gu_IN",
 	      // "Assamese" : "as_IN",
-	      // "मराठी" : "mr_IN",
+	      "मराठी": "mr_IN"
 	      // "ਪੰਜਾਬੀ" : "pa_IN"
 	    };
 	    console.log("this.languageMap", _this2.languageMap);
@@ -21806,7 +21806,7 @@
 			ERROR_EMPTY_PASSWORD: "Enter password",
 			ERROR_EMPTY_USERNAME: "Enter user name",
 			ERROR_FETCHING_DATA: "Unable to fetch data ",
-			ERROR_NO_COURSES_ENROLLED: "Not enrolled course",
+			ERROR_NO_COURSES_ENROLLED: "Not enrolled in course",
 			ERROR_NO_INTERNET_MESSAGE: "No internet access",
 			ERROR_NO_OFFLINE_RESOURCE: "No resources stored ",
 			ERROR_SERVER_CONNECTION: "Unable to connect to server",
@@ -21933,8 +21933,8 @@
 			NO: "No",
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
-			LANGUAGES: "Languages"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "Language"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birthdate"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current location"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Weblinks"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _en_US),
+			LANGUAGES: "LANGUAGES"
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birthdate"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current location"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Weblinks"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -22018,6 +22018,8 @@
 			PROFILE_LW: "प्रोफ़ाइल",
 			PUBLISHED_DATE: "प्रकाशन की तारीख",
 			QUIZ: "प्रश्नोत्तरी",
+			LIBRARY_BNAV: "पुस्तकालय संग्रह",
+			LIBRARY_LW: "पुस्तकालय संग्रह",
 			RESUME: "पुनः आरंभ करें",
 			RETRY_ACTION: "पुनः प्रयास करें",
 			SAVED_ON: "सेव्ड",
@@ -22099,7 +22101,7 @@
 			ABOUT_MODULE: "मॉड्यूल के बारे में",
 			CHOOSE_FROM_FOLLOWING: "निम्नलिखित से चुनें",
 			LANGUAGES: "भाषाओं"
-		}, _defineProperty(_hi_IN, "COMING_SOON", "विवरण जल्द ही आ रहे हैं"), _defineProperty(_hi_IN, "LANGUAGE", "भाषा"), _defineProperty(_hi_IN, "TITLE_EDUCATION", "शिक्षा"), _defineProperty(_hi_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_hi_IN, "TITLE_ADDRESS", "पता"), _defineProperty(_hi_IN, "LAST_NAME", "कुलनाम "), _defineProperty(_hi_IN, "LAST_NAME_HINT", "अपना कुलनाम दर्ज करें"), _defineProperty(_hi_IN, "NAME", "नाम"), _defineProperty(_hi_IN, "NAME_HINT", "अपना नाम दर्ज करें"), _defineProperty(_hi_IN, "GENDER", "लिंग"), _defineProperty(_hi_IN, "DATE_OF_BIRTH", "जन्म की तारीख"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान स्थान"), _defineProperty(_hi_IN, "HINT_CURRENT_LOCATION", "अपना स्थान दर्ज करें"), _defineProperty(_hi_IN, "MODULES", "मॉड्यूल"), _defineProperty(_hi_IN, "BTN_CLICK_TO_OPEN_CONTENT", "पाठ्यक्रम देखने के लिए ऐप स्पर्श करें"), _defineProperty(_hi_IN, "START_COURSE", "प्रारंभ"), _defineProperty(_hi_IN, "ERROR_INVALID_AADHAAR", "आधार संख्या प्रारूप की जांच करें"), _defineProperty(_hi_IN, "ERROR_BATCH_NOT_STARTED", "बैच शुरू नहीं हुआ"), _defineProperty(_hi_IN, "MSG_NO_NEW_NOTIFICATION", "कोई नई सूचना नहीं"), _defineProperty(_hi_IN, "MSG_NO_DETAILS_TO_SHOW", "विवरण अनुपलब्ध"), _defineProperty(_hi_IN, "MSG_IMPORTED_SUCCESSFULLY", "पाठ्यक्रम सफलतापूर्वक आयातित"), _defineProperty(_hi_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "खाली फाइल नहीं खोल सकते "), _defineProperty(_hi_IN, "ERROR_NO_BATCHES_FOUND", "इस पाठ्यक्रम के लिए कोई बैच नहीं है"), _defineProperty(_hi_IN, "ANSWER", "उत्तर "), _defineProperty(_hi_IN, "BTN_SUBMIT", "सबमिट करें"), _defineProperty(_hi_IN, "TOPIC_YOU_MIGHT_LIKE", "विषय चुनें जो आपकी रुचि है"), _defineProperty(_hi_IN, "OPEN_SETTINGS", "सेटिंग्स खोलें"), _defineProperty(_hi_IN, "LABEL_ADD_A_SKILL", "अपने कौशल बताये"), _defineProperty(_hi_IN, "TYPE_TO_ADD_A_SKILL", "अपने कौशल को बताने के लिए टाइप करें"), _defineProperty(_hi_IN, "ERROR_ALREADY_ADDED", "यह कौशल पहले से ही जोड़ा गया है। अब नए कौशल जोड़ें"), _defineProperty(_hi_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "सभी अनिवार्य विवरण दर्ज करें"), _defineProperty(_hi_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "परिवर्तन करें"), _defineProperty(_hi_IN, "WARNING_INVALID_YEAR_OF_PASSING", "अवैध पासिंग वर्ष | उत्तीर्ण वर्ष के लिए चार (yyyy) अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_PERCENTAGE", "अमान्य प्रतिशत | 0-100 के बीच अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_GRADE", "अमान्य ग्रेड| ग्रेड के लिए किसी भी एक वर्णमाला (ए-एफ) का चयन करें"), _defineProperty(_hi_IN, "DEGREE", "पद"), _defineProperty(_hi_IN, "INSTITUTION_NAME", "संस्था का नाम"), _defineProperty(_hi_IN, "IS_THIS_YOUR_CURRENT_JOB", "यह आपकी वर्तमान नौकरी है"), _defineProperty(_hi_IN, "ERROR_MULTIPLE_CURRENT_JOB", "आपकी 'वर्तमान नौकरी' में एकाधिक प्रविष्टियां नहीं हो सकतीं"), _defineProperty(_hi_IN, "OPTION_INAPPROPRIATE_CONTENT", "अनुचित पाठ्यक्रम"), _defineProperty(_hi_IN, "OPTION_COPYRIGHT_VIOLATION", "कॉपीराइट उल्लंघन"), _defineProperty(_hi_IN, "OPTION_PRIVACY_VIOLATION", "गोपनीयता उल्लंघन"), _defineProperty(_hi_IN, "OPTION_OTHER", "अन्य"), _defineProperty(_hi_IN, "MODULE_NAME", "मोड्यूल का नाम"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान  स्थान "), _defineProperty(_hi_IN, "HOBBIES", "शौक"), _defineProperty(_hi_IN, "EDIT_PROFILE", "प्रोफाइल एडिट करें"), _defineProperty(_hi_IN, "ACTIVE", "सक्रिय"), _defineProperty(_hi_IN, "STORAGE", "स्टोरेज "), _defineProperty(_hi_IN, "PERMISSION_DENIED", "अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_hi_IN, "SELECT_ADDRESS_TYPE", "पता प्रकार का चयन करें "), _defineProperty(_hi_IN, "CANCEL", "रद्द "), _defineProperty(_hi_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटि! कोई शुरू पाठ्यक्रम उपलब्ध नहीं"), _defineProperty(_hi_IN, "SELECT_LANGUAGE", "भाषा चुनिए"), _defineProperty(_hi_IN, "READ_LESS", "कम पढ़ें"), _defineProperty(_hi_IN, "CONFIRM_DEL", "हटाने की पुष्टि करें?"), _defineProperty(_hi_IN, "ADDRESS_LINE1", "पता पंक्ति 1"), _defineProperty(_hi_IN, "ADDRESS_LINE2", "पता पंक्ति 2"), _defineProperty(_hi_IN, "CITY", "शहर"), _defineProperty(_hi_IN, "STATE", "राज्य"), _defineProperty(_hi_IN, "COUNTRY", "देश"), _defineProperty(_hi_IN, "PINCODE", "पिन कोड"), _defineProperty(_hi_IN, "PERMANENT", "स्थायी पता "), _defineProperty(_hi_IN, "CURRENT", "अस्थायी पता "), _defineProperty(_hi_IN, "JOB_NAME", "व्यवसाय"), _defineProperty(_hi_IN, "ORGANIZATION", "संगठन"), _defineProperty(_hi_IN, "POSITION", "पद"), _defineProperty(_hi_IN, "CHOOSE_FROM_FOLLOWING", "निम्नलिखित से चुनें"), _defineProperty(_hi_IN, "PERMISSION_SETTING_MSG", "उपयुक्त अनुमति के लिए ओपन सेटिंग्स स्पर्श करें"), _defineProperty(_hi_IN, "DOWNLOADING", "डौन्लोडिंग %s %"), _defineProperty(_hi_IN, "CREATED_BY_SMALL", "के द्वारा बनाई गई"), _defineProperty(_hi_IN, "ERROR_OFFLINE_MODE", "कोई इंटरनेट नहीं, ऑफ़लाइन मोड "), _defineProperty(_hi_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त जानकारी"), _defineProperty(_hi_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_hi_IN, "TWITTER", "ट्विटर"), _defineProperty(_hi_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_hi_IN, "SOCIAL", "सोशल"), _defineProperty(_hi_IN, "STRENGTHEN_YOUR_PROFILE", "अपने प्रोफाइल को मजबूत करें"), _defineProperty(_hi_IN, "UPDATE", "नवीनीकरण"), _defineProperty(_hi_IN, "CHANGE_LANGUAGE", "भाषा बदलो"), _defineProperty(_hi_IN, "MEDIUM", "निर्देश का माध्यम"), _defineProperty(_hi_IN, "LAST_LOGIN_TIME", "अंतिम लॉगिन समय: %s"), _defineProperty(_hi_IN, "ANNOUNCEMENT", "घोषणा"), _defineProperty(_hi_IN, "ERROR_NO_ATTACHMENTS", "कुछ भी संलग्न नहीं"), _defineProperty(_hi_IN, "ATTACHMENTS", "संलग्न"), _defineProperty(_hi_IN, "WEBLINKS", "वेब लिंक"), _defineProperty(_hi_IN, "SENT_ON", "पर भेजा गया"), _defineProperty(_hi_IN, "NO_ANNOUNCEMENTS", "कोई नई घोषणा नहीं "), _defineProperty(_hi_IN, "UNKNOWN_QR", "कोई पाठ्यक्रम QR कोड से संबद्ध नहीं मिली"), _defineProperty(_hi_IN, "TRY_AGAIN", "पुनः प्रयास करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_SETTINGS", "अनुमति देने के लिए, सेटिंग खोलें,%s ऐप का चयन करें और अनुमति देने के लिए कैमरे पर क्लिक करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_DENIED", "कैमरा अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "SELECT_STATE_TO_GET_STARTED", "प्रारंभ करने के लिए राज्य चुनें"), _defineProperty(_hi_IN, "MSG_ALREADY_IMPORTED", "पहले से आयातित"), _defineProperty(_hi_IN, "SCAN_QR_CODE", "QR कोड स्कैन करें"), _defineProperty(_hi_IN, "SCAN_QR_INSTRUCTION", "अपने फोन कैमरे के QR कोड स्कैन करें"), _defineProperty(_hi_IN, "PRIVATE", "निजी"), _defineProperty(_hi_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_hi_IN, "ERROR_UPLOADING_IMG", "चित्र अपलोड करते समय त्रुटि हुई"), _defineProperty(_hi_IN, "CHANGE", "परिवर्तन"), _defineProperty(_hi_IN, "REMOVE", "हटा दें"), _defineProperty(_hi_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल सफलतापूर्वक जोड़े"), _defineProperty(_hi_IN, "SKILL_ENDORSED", "कौशल का समर्थन किया"), _defineProperty(_hi_IN, "SKILL_NOT_ADDED", "अप्रशिक्षित, कौशल जोड़ नहीं सके"), _defineProperty(_hi_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल समर्थन असफल"), _defineProperty(_hi_IN, "SKILL_ALREADY_ENDORSED", "कौशल पहले से ही अनुमोदित है"), _defineProperty(_hi_IN, "ERROR_GETTING_SKILLS", "कौशल प्राप्त करने में त्रुटि"), _defineProperty(_hi_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह खाली है"), _defineProperty(_hi_IN, "SKILL_ALREADY_ADDED", "कौशल पहले से ही जोड़ा है"), _defineProperty(_hi_IN, "BLOG", "ब्लॉग"), _hi_IN),
+		}, _defineProperty(_hi_IN, "COMING_SOON", "विवरण जल्द ही आ रहे हैं"), _defineProperty(_hi_IN, "LANGUAGE", "भाषा"), _defineProperty(_hi_IN, "STAR_RATINGS", "रेटिंग"), _defineProperty(_hi_IN, "TITLE_EDUCATION", "शिक्षा"), _defineProperty(_hi_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_hi_IN, "TITLE_ADDRESS", "पता"), _defineProperty(_hi_IN, "LAST_NAME", "कुलनाम "), _defineProperty(_hi_IN, "LAST_NAME_HINT", "अपना कुलनाम दर्ज करें"), _defineProperty(_hi_IN, "NAME", "नाम"), _defineProperty(_hi_IN, "NAME_HINT", "अपना नाम दर्ज करें"), _defineProperty(_hi_IN, "GENDER", "लिंग"), _defineProperty(_hi_IN, "DATE_OF_BIRTH", "जन्म की तारीख"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान स्थान"), _defineProperty(_hi_IN, "HINT_CURRENT_LOCATION", "अपना स्थान दर्ज करें"), _defineProperty(_hi_IN, "MODULES", "मॉड्यूल"), _defineProperty(_hi_IN, "BTN_CLICK_TO_OPEN_CONTENT", "पाठ्यक्रम देखने के लिए ऐप स्पर्श करें"), _defineProperty(_hi_IN, "START_COURSE", "प्रारंभ"), _defineProperty(_hi_IN, "ERROR_INVALID_AADHAAR", "आधार संख्या प्रारूप की जांच करें"), _defineProperty(_hi_IN, "ERROR_BATCH_NOT_STARTED", "बैच शुरू नहीं हुआ"), _defineProperty(_hi_IN, "MSG_NO_NEW_NOTIFICATION", "कोई नई सूचना नहीं"), _defineProperty(_hi_IN, "MSG_NO_DETAILS_TO_SHOW", "विवरण अनुपलब्ध"), _defineProperty(_hi_IN, "MSG_IMPORTED_SUCCESSFULLY", "पाठ्यक्रम सफलतापूर्वक आयातित"), _defineProperty(_hi_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "खाली फाइल नहीं खोल सकते "), _defineProperty(_hi_IN, "ERROR_NO_BATCHES_FOUND", "इस पाठ्यक्रम के लिए कोई बैच नहीं है"), _defineProperty(_hi_IN, "ANSWER", "उत्तर "), _defineProperty(_hi_IN, "BTN_SUBMIT", "सबमिट करें"), _defineProperty(_hi_IN, "TOPIC_YOU_MIGHT_LIKE", "विषय चुनें जो आपकी रुचि है"), _defineProperty(_hi_IN, "OPEN_SETTINGS", "सेटिंग्स खोलें"), _defineProperty(_hi_IN, "LABEL_ADD_A_SKILL", "अपने कौशल बताये"), _defineProperty(_hi_IN, "TYPE_TO_ADD_A_SKILL", "अपने कौशल को बताने के लिए टाइप करें"), _defineProperty(_hi_IN, "ERROR_ALREADY_ADDED", "यह कौशल पहले से ही जोड़ा गया है। अब नए कौशल जोड़ें"), _defineProperty(_hi_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "सभी अनिवार्य विवरण दर्ज करें"), _defineProperty(_hi_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "परिवर्तन करें"), _defineProperty(_hi_IN, "WARNING_INVALID_YEAR_OF_PASSING", "अवैध पासिंग वर्ष | उत्तीर्ण वर्ष के लिए चार (yyyy) अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_PERCENTAGE", "अमान्य प्रतिशत | 0-100 के बीच अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_GRADE", "अमान्य ग्रेड| ग्रेड के लिए किसी भी एक वर्णमाला (ए-एफ) का चयन करें"), _defineProperty(_hi_IN, "DEGREE", "पद"), _defineProperty(_hi_IN, "INSTITUTION_NAME", "संस्था का नाम"), _defineProperty(_hi_IN, "IS_THIS_YOUR_CURRENT_JOB", "यह आपकी वर्तमान नौकरी है"), _defineProperty(_hi_IN, "ERROR_MULTIPLE_CURRENT_JOB", "आपकी 'वर्तमान नौकरी' में एकाधिक प्रविष्टियां नहीं हो सकतीं"), _defineProperty(_hi_IN, "OPTION_INAPPROPRIATE_CONTENT", "अनुचित पाठ्यक्रम"), _defineProperty(_hi_IN, "OPTION_COPYRIGHT_VIOLATION", "कॉपीराइट उल्लंघन"), _defineProperty(_hi_IN, "OPTION_PRIVACY_VIOLATION", "गोपनीयता उल्लंघन"), _defineProperty(_hi_IN, "OPTION_OTHER", "अन्य"), _defineProperty(_hi_IN, "MODULE_NAME", "मोड्यूल का नाम"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान  स्थान "), _defineProperty(_hi_IN, "HOBBIES", "शौक"), _defineProperty(_hi_IN, "EDIT_PROFILE", "प्रोफाइल एडिट करें"), _defineProperty(_hi_IN, "ACTIVE", "सक्रिय"), _defineProperty(_hi_IN, "STORAGE", "स्टोरेज "), _defineProperty(_hi_IN, "PERMISSION_DENIED", "अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_hi_IN, "SELECT_ADDRESS_TYPE", "पता प्रकार का चयन करें "), _defineProperty(_hi_IN, "CANCEL", "रद्द "), _defineProperty(_hi_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटि! कोई शुरू पाठ्यक्रम उपलब्ध नहीं"), _defineProperty(_hi_IN, "SELECT_LANGUAGE", "भाषा चुनिए"), _defineProperty(_hi_IN, "READ_LESS", "कम पढ़ें"), _defineProperty(_hi_IN, "CONFIRM_DEL", "हटाने की पुष्टि करें?"), _defineProperty(_hi_IN, "ADDRESS_LINE1", "पता पंक्ति 1"), _defineProperty(_hi_IN, "ADDRESS_LINE2", "पता पंक्ति 2"), _defineProperty(_hi_IN, "CITY", "शहर"), _defineProperty(_hi_IN, "STATE", "राज्य"), _defineProperty(_hi_IN, "COUNTRY", "देश"), _defineProperty(_hi_IN, "PINCODE", "पिन कोड"), _defineProperty(_hi_IN, "PERMANENT", "स्थायी पता "), _defineProperty(_hi_IN, "CURRENT", "अस्थायी पता "), _defineProperty(_hi_IN, "JOB_NAME", "व्यवसाय"), _defineProperty(_hi_IN, "ORGANIZATION", "संगठन"), _defineProperty(_hi_IN, "POSITION", "पद"), _defineProperty(_hi_IN, "CHOOSE_FROM_FOLLOWING", "निम्नलिखित से चुनें"), _defineProperty(_hi_IN, "PERMISSION_SETTING_MSG", "उपयुक्त अनुमति के लिए ओपन सेटिंग्स स्पर्श करें"), _defineProperty(_hi_IN, "DOWNLOADING", "डौन्लोडिंग %s %"), _defineProperty(_hi_IN, "CREATED_BY_SMALL", "के द्वारा बनाई गई"), _defineProperty(_hi_IN, "ERROR_OFFLINE_MODE", "कोई इंटरनेट नहीं, ऑफ़लाइन मोड "), _defineProperty(_hi_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त जानकारी"), _defineProperty(_hi_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_hi_IN, "TWITTER", "ट्विटर"), _defineProperty(_hi_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_hi_IN, "SOCIAL", "सोशल"), _defineProperty(_hi_IN, "STRENGTHEN_YOUR_PROFILE", "अपने प्रोफाइल को मजबूत करें"), _defineProperty(_hi_IN, "UPDATE", "नवीनीकरण"), _defineProperty(_hi_IN, "CHANGE_LANGUAGE", "भाषा बदलो"), _defineProperty(_hi_IN, "MEDIUM", "निर्देश का माध्यम"), _defineProperty(_hi_IN, "LAST_LOGIN_TIME", "अंतिम लॉगिन समय: %s"), _defineProperty(_hi_IN, "ANNOUNCEMENT", "घोषणा"), _defineProperty(_hi_IN, "ERROR_NO_ATTACHMENTS", "कुछ भी संलग्न नहीं"), _defineProperty(_hi_IN, "ATTACHMENTS", "संलग्न"), _defineProperty(_hi_IN, "WEBLINKS", "वेब लिंक"), _defineProperty(_hi_IN, "SENT_ON", "पर भेजा गया"), _defineProperty(_hi_IN, "NO_ANNOUNCEMENTS", "कोई नई घोषणा नहीं "), _defineProperty(_hi_IN, "UNKNOWN_QR", "कोई पाठ्यक्रम QR कोड से संबद्ध नहीं मिली"), _defineProperty(_hi_IN, "TRY_AGAIN", "पुनः प्रयास करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_SETTINGS", "अनुमति देने के लिए, सेटिंग खोलें,%s ऐप का चयन करें और अनुमति देने के लिए कैमरे पर क्लिक करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_DENIED", "कैमरा अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "SELECT_STATE_TO_GET_STARTED", "प्रारंभ करने के लिए राज्य चुनें"), _defineProperty(_hi_IN, "MSG_ALREADY_IMPORTED", "पहले से आयातित"), _defineProperty(_hi_IN, "SCAN_QR_CODE", "QR कोड स्कैन करें"), _defineProperty(_hi_IN, "SCAN_QR_INSTRUCTION", "अपने फोन कैमरे के QR कोड स्कैन करें"), _defineProperty(_hi_IN, "PRIVATE", "निजी"), _defineProperty(_hi_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_hi_IN, "ERROR_UPLOADING_IMG", "चित्र अपलोड करते समय त्रुटि हुई"), _defineProperty(_hi_IN, "CHANGE", "परिवर्तन"), _defineProperty(_hi_IN, "REMOVE", "हटा दें"), _defineProperty(_hi_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल सफलतापूर्वक जोड़े"), _defineProperty(_hi_IN, "SKILL_ENDORSED", "कौशल का समर्थन किया"), _defineProperty(_hi_IN, "SKILL_NOT_ADDED", "अप्रशिक्षित, कौशल जोड़ नहीं सके"), _defineProperty(_hi_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल समर्थन असफल"), _defineProperty(_hi_IN, "SKILL_ALREADY_ENDORSED", "कौशल पहले से ही अनुमोदित है"), _defineProperty(_hi_IN, "ERROR_GETTING_SKILLS", "कौशल प्राप्त करने में त्रुटि"), _defineProperty(_hi_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह खाली है"), _defineProperty(_hi_IN, "SKILL_ALREADY_ADDED", "कौशल पहले से ही जोड़ा है"), _defineProperty(_hi_IN, "BLOG", "ब्लॉग"), _hi_IN),
 		"ta_IN": (_ta_IN = {
 			ALREADY_HAVE_ACC: "முன்னரே அக்கௌன்ட் இருக்கிறதா? சைன் இன் செய்யுங்கள்.",
 			APPLY_FILTER: "பில்ட்டர் செய்க",
@@ -22460,7 +22462,7 @@
 			ABOUT_MODULE: "ఈ మాడ్యూల్ గురించి",
 			CHOOSE_FROM_FOLLOWING: "ఈ కిందవాటినుండి ఎంచుకోండి",
 			LANGUAGES: "భాషలు"
-		}, _defineProperty(_te_IN, "COMING_SOON", "వివరాలు త్వరలో..."), _defineProperty(_te_IN, "LANGUAGE", "భాష"), _defineProperty(_te_IN, "TITLE_EDUCATION", "చదువు"), _defineProperty(_te_IN, "TITLE_EXPERIENCE", "అనుభవం"), _defineProperty(_te_IN, "TITLE_ADDRESS", "చిరునామా"), _defineProperty(_te_IN, "LAST_NAME", "ఇంటిపేరు"), _defineProperty(_te_IN, "LAST_NAME_HINT", "మీ ఇంటిపేరు (లాస్ట్ నేమ్) ఇవ్వండి"), _defineProperty(_te_IN, "NAME", "పేరు"), _defineProperty(_te_IN, "NAME_HINT", "మీ పేరు ఇవ్వండి"), _defineProperty(_te_IN, "GENDER", "లింగం"), _defineProperty(_te_IN, "DATE_OF_BIRTH", "పుట్టిన తేదీ"), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HINT_CURRENT_LOCATION", "ఇప్పుడు మీరు నివసిస్తున్న చోటు చిరునామా ఇవ్వండి "), _defineProperty(_te_IN, "MODULES", "మాడ్యూలు "), _defineProperty(_te_IN, "BTN_CLICK_TO_OPEN_CONTENT", "కంటెంట్ చూడ్డానికి నొక్కండి"), _defineProperty(_te_IN, "START_COURSE", "మొదలుపెట్టండి"), _defineProperty(_te_IN, "ERROR_INVALID_AADHAAR", "ఆధార్ నెంబర్ ఫార్మేట్ సరిచూడండి"), _defineProperty(_te_IN, "ERROR_BATCH_NOT_STARTED", "బేచ్ మొదలు కాలేదు"), _defineProperty(_te_IN, "MSG_NO_NEW_NOTIFICATION", "కొత్త ప్రకటనలేం లేవు"), _defineProperty(_te_IN, "MSG_NO_DETAILS_TO_SHOW", "వివరాలు లేవు"), _defineProperty(_te_IN, "MSG_IMPORTED_SUCCESSFULLY", "కంటెంట్ సరిగా ఇంపోర్ట్ అయింది"), _defineProperty(_te_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "ఖాళీ ఫైల్ తెరవబడదు"), _defineProperty(_te_IN, "ERROR_NO_BATCHES_FOUND", "ఈ కోర్సుకు బేచ్‌లు లేవు"), _defineProperty(_te_IN, "ANSWER", "జవాబు"), _defineProperty(_te_IN, "BTN_SUBMIT", "సబ్మిట్ చెయ్యి"), _defineProperty(_te_IN, "TOPIC_YOU_MIGHT_LIKE", "మీకు నచ్చిన విషయాలను చూడండి"), _defineProperty(_te_IN, "OPEN_SETTINGS", "సెట్టింగ్స్ తెరువు"), _defineProperty(_te_IN, "LABEL_ADD_A_SKILL", "నైపుణ్యం జతచేయండి"), _defineProperty(_te_IN, "TYPE_TO_ADD_A_SKILL", "మీ నైపుణ్యాలు జతచేయండి"), _defineProperty(_te_IN, "ERROR_ALREADY_ADDED", "ఈ నైపుణ్యం ఇంతకు ముందే ఇచ్చారు"), _defineProperty(_te_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "తప్పనిసరి వివరాలు ఇవ్వండి"), _defineProperty(_te_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "మార్పులు చెయ్యండి"), _defineProperty(_te_IN, "WARNING_INVALID_YEAR_OF_PASSING", "ఉత్తీర్ణమైన సంవత్సరం తప్పిచ్చారు. నాలుగు (yyyy) అంకెలు ఉండాలి."), _defineProperty(_te_IN, "WARNING_INVALID_PERCENTAGE", "ఉత్తీర్ణతా శాతం తప్పిచ్చారు. 0 - 100 మధ్య సంఖ్యను ఇవ్వండి "), _defineProperty(_te_IN, "WARNING_INVALID_GRADE", "గ్రేడ్ తప్పిచ్చారు. A - F మధ్యనే ఉండాలి."), _defineProperty(_te_IN, "DEGREE", "డిగ్రీ"), _defineProperty(_te_IN, "INSTITUTION_NAME", "సంస్థ పేరు "), _defineProperty(_te_IN, "IS_THIS_YOUR_CURRENT_JOB", "ఇది మీ ప్రస్తుత ఉద్యోగమా?"), _defineProperty(_te_IN, "ERROR_MULTIPLE_CURRENT_JOB", "ప్రస్తుత ఉద్యోగాలు ఒకటికన్నా ఎక్కువ ఉండలేవు."), _defineProperty(_te_IN, "OPTION_INAPPROPRIATE_CONTENT", "కంటెంటు అనుచితమైనది"), _defineProperty(_te_IN, "OPTION_COPYRIGHT_VIOLATION", "కాపీరైట్ ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_PRIVACY_VIOLATION", "డేటా గోప్యత ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_OTHER", "వేరే"), _defineProperty(_te_IN, "MODULE_NAME", "మాడ్యూల్ పేరు "), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HOBBIES", "అభిరుచులు"), _defineProperty(_te_IN, "EDIT_PROFILE", "ప్రొఫైల్ మార్చు"), _defineProperty(_te_IN, "ACTIVE", "ఏక్టివ్"), _defineProperty(_te_IN, "STORAGE", "స్టోరేజి"), _defineProperty(_te_IN, "PERMISSION_DENIED", "అనుమతి లేదు"), _defineProperty(_te_IN, "YEAR_OF_PASSING", "ఉత్తీర్ణులైన సంవత్సరం "), _defineProperty(_te_IN, "SELECT_ADDRESS_TYPE", "ఎలాంటి చిరునామా?"), _defineProperty(_te_IN, "CANCEL", "రద్దు"), _defineProperty(_te_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "తిరిగి మొదలుపెట్టడానికి కంటెంటు లేదు."), _defineProperty(_te_IN, "SELECT_LANGUAGE", "భాషను ఎంచుకోండి"), _defineProperty(_te_IN, "READ_LESS", "తక్కువ చూపించు "), _defineProperty(_te_IN, "CONFIRM_DEL", "తొలగించాలా?"), _defineProperty(_te_IN, "ADDRESS_LINE1", "చిరునామా లైన్ 1"), _defineProperty(_te_IN, "ADDRESS_LINE2", "చిరునామా లైన్ 2"), _defineProperty(_te_IN, "CITY", "నగరం"), _defineProperty(_te_IN, "STATE", "రాష్ట్రం"), _defineProperty(_te_IN, "COUNTRY", "దేశం"), _defineProperty(_te_IN, "PINCODE", "పిన్ కోడ్"), _defineProperty(_te_IN, "PERMANENT", "శాశ్వత చిరునామా"), _defineProperty(_te_IN, "CURRENT", "ప్రస్తుత చిరునామా"), _defineProperty(_te_IN, "JOB_NAME", "ఉద్యోగం"), _defineProperty(_te_IN, "ORGANIZATION", "సంస్థ"), _defineProperty(_te_IN, "POSITION", "స్థానం"), _defineProperty(_te_IN, "CHOOSE_FROM_FOLLOWING", "కిందవాటి నుండి ఎంచుకోండి"), _defineProperty(_te_IN, "PERMISSION_SETTING_MSG", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్ళండి"), _defineProperty(_te_IN, "DOWNLOADING", "దిగుమతి అవుతోంది %s %"), _defineProperty(_te_IN, "CREATED_BY_SMALL", "తయారుచేసినది"), _defineProperty(_te_IN, "ERROR_OFFLINE_MODE", "ఇంటర్నెట్టు లేదు. ఆఫ్లైన్ ఉన్నారు."), _defineProperty(_te_IN, "ADDITIONAL_INFORMATION", "అదనపు సమాచారం"), _defineProperty(_te_IN, "FACEBOOK", "ఫేస్ బుక్"), _defineProperty(_te_IN, "TWITTER", "ట్విట్టర్"), _defineProperty(_te_IN, "LINKEDIN", "లింక్డ్ ఇన్ "), _defineProperty(_te_IN, "SOCIAL", "సోషల్"), _defineProperty(_te_IN, "STRENGTHEN_YOUR_PROFILE", "మీ ప్రొఫైల్‌ను మెరుగు పరచండి"), _defineProperty(_te_IN, "UPDATE", "అప్‌డేట్"), _defineProperty(_te_IN, "CHANGE_LANGUAGE", "భాష మార్చు"), _defineProperty(_te_IN, "MEDIUM", "సూచనల మాధ్యమం"), _defineProperty(_te_IN, "LAST_LOGIN_TIME", "చివర లాగిన్ అయిన సమయం: %s"), _defineProperty(_te_IN, "ANNOUNCEMENT", "ప్రకటన"), _defineProperty(_te_IN, "ERROR_NO_ATTACHMENTS", "ఎటాచ్‌మెంట్ లేదు"), _defineProperty(_te_IN, "ATTACHMENTS", "ఎటాచ్‌మెంట్లు"), _defineProperty(_te_IN, "WEBLINKS", "వెబ్ లింకులు"), _defineProperty(_te_IN, "SENT_ON", "పంపిన తేదీ"), _defineProperty(_te_IN, "NO_ANNOUNCEMENTS", "కొత్త ప్రకటనలేవీ లేవు"), _defineProperty(_te_IN, "UNKNOWN_QR", "ఈ QR కోడ్‌కి సంబంధించి ఏ కంటెంట్ దొరకలేదు "), _defineProperty(_te_IN, "TRY_AGAIN", "మళ్ళీ ప్రయత్నించండి"), _defineProperty(_te_IN, "CAMERA_PERMISSION_SETTINGS", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్లి % ఏప్ సెలెక్ట్ చేసుకొని కెమెరాకి అనుమతిపై క్లిక్ చెయ్యండి."), _defineProperty(_te_IN, "CAMERA_PERMISSION_DENIED", "కెమెరాకు అనుమతి లేదు"), _defineProperty(_te_IN, "SELECT_STATE_TO_GET_STARTED", "మొదలుపెట్టడానికి రాష్ట్రాన్ని ఎంచుకోండి"), _defineProperty(_te_IN, "MSG_ALREADY_IMPORTED", "ఇంతకుముందే ఇంపోర్ట్ అయ్యింది "), _defineProperty(_te_IN, "SCAN_QR_CODE", "కోడ్‌ను స్కాన్ చేయండి"), _defineProperty(_te_IN, "SCAN_QR_INSTRUCTION", "మీ పరికరాన్ని ఉపయోగించి దయచేసి QR కోడ్‌ను స్కాన్ చేయండి"), _te_IN),
+		}, _defineProperty(_te_IN, "COMING_SOON", "వివరాలు త్వరలో..."), _defineProperty(_te_IN, "LANGUAGE", "భాష"), _defineProperty(_te_IN, "STAR_RATINGS", "రేటింగులు"), _defineProperty(_te_IN, "TITLE_EDUCATION", "చదువు"), _defineProperty(_te_IN, "TITLE_EXPERIENCE", "అనుభవం"), _defineProperty(_te_IN, "TITLE_ADDRESS", "చిరునామా"), _defineProperty(_te_IN, "LAST_NAME", "ఇంటిపేరు"), _defineProperty(_te_IN, "LAST_NAME_HINT", "మీ ఇంటిపేరు (లాస్ట్ నేమ్) ఇవ్వండి"), _defineProperty(_te_IN, "NAME", "పేరు"), _defineProperty(_te_IN, "NAME_HINT", "మీ పేరు ఇవ్వండి"), _defineProperty(_te_IN, "GENDER", "లింగం"), _defineProperty(_te_IN, "DATE_OF_BIRTH", "పుట్టిన తేదీ"), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HINT_CURRENT_LOCATION", "ఇప్పుడు మీరు నివసిస్తున్న చోటు చిరునామా ఇవ్వండి "), _defineProperty(_te_IN, "MODULES", "మాడ్యూలు "), _defineProperty(_te_IN, "BTN_CLICK_TO_OPEN_CONTENT", "కంటెంట్ చూడ్డానికి నొక్కండి"), _defineProperty(_te_IN, "START_COURSE", "మొదలుపెట్టండి"), _defineProperty(_te_IN, "ERROR_INVALID_AADHAAR", "ఆధార్ నెంబర్ ఫార్మేట్ సరిచూడండి"), _defineProperty(_te_IN, "ERROR_BATCH_NOT_STARTED", "బేచ్ మొదలు కాలేదు"), _defineProperty(_te_IN, "MSG_NO_NEW_NOTIFICATION", "కొత్త ప్రకటనలేం లేవు"), _defineProperty(_te_IN, "MSG_NO_DETAILS_TO_SHOW", "వివరాలు లేవు"), _defineProperty(_te_IN, "MSG_IMPORTED_SUCCESSFULLY", "కంటెంట్ సరిగా ఇంపోర్ట్ అయింది"), _defineProperty(_te_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "ఖాళీ ఫైల్ తెరవబడదు"), _defineProperty(_te_IN, "ERROR_NO_BATCHES_FOUND", "ఈ కోర్సుకు బేచ్‌లు లేవు"), _defineProperty(_te_IN, "ANSWER", "జవాబు"), _defineProperty(_te_IN, "BTN_SUBMIT", "సబ్మిట్ చెయ్యి"), _defineProperty(_te_IN, "TOPIC_YOU_MIGHT_LIKE", "మీకు నచ్చిన విషయాలను చూడండి"), _defineProperty(_te_IN, "OPEN_SETTINGS", "సెట్టింగ్స్ తెరువు"), _defineProperty(_te_IN, "LABEL_ADD_A_SKILL", "నైపుణ్యం జతచేయండి"), _defineProperty(_te_IN, "TYPE_TO_ADD_A_SKILL", "మీ నైపుణ్యాలు జతచేయండి"), _defineProperty(_te_IN, "ERROR_ALREADY_ADDED", "ఈ నైపుణ్యం ఇంతకు ముందే ఇచ్చారు"), _defineProperty(_te_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "తప్పనిసరి వివరాలు ఇవ్వండి"), _defineProperty(_te_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "మార్పులు చెయ్యండి"), _defineProperty(_te_IN, "WARNING_INVALID_YEAR_OF_PASSING", "ఉత్తీర్ణమైన సంవత్సరం తప్పిచ్చారు. నాలుగు (yyyy) అంకెలు ఉండాలి."), _defineProperty(_te_IN, "WARNING_INVALID_PERCENTAGE", "ఉత్తీర్ణతా శాతం తప్పిచ్చారు. 0 - 100 మధ్య సంఖ్యను ఇవ్వండి "), _defineProperty(_te_IN, "WARNING_INVALID_GRADE", "గ్రేడ్ తప్పిచ్చారు. A - F మధ్యనే ఉండాలి."), _defineProperty(_te_IN, "DEGREE", "డిగ్రీ"), _defineProperty(_te_IN, "INSTITUTION_NAME", "సంస్థ పేరు "), _defineProperty(_te_IN, "IS_THIS_YOUR_CURRENT_JOB", "ఇది మీ ప్రస్తుత ఉద్యోగమా?"), _defineProperty(_te_IN, "ERROR_MULTIPLE_CURRENT_JOB", "ప్రస్తుత ఉద్యోగాలు ఒకటికన్నా ఎక్కువ ఉండలేవు."), _defineProperty(_te_IN, "OPTION_INAPPROPRIATE_CONTENT", "కంటెంటు అనుచితమైనది"), _defineProperty(_te_IN, "OPTION_COPYRIGHT_VIOLATION", "కాపీరైట్ ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_PRIVACY_VIOLATION", "డేటా గోప్యత ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_OTHER", "వేరే"), _defineProperty(_te_IN, "MODULE_NAME", "మాడ్యూల్ పేరు "), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HOBBIES", "అభిరుచులు"), _defineProperty(_te_IN, "EDIT_PROFILE", "ప్రొఫైల్ మార్చు"), _defineProperty(_te_IN, "ACTIVE", "ఏక్టివ్"), _defineProperty(_te_IN, "STORAGE", "స్టోరేజి"), _defineProperty(_te_IN, "PERMISSION_DENIED", "అనుమతి లేదు"), _defineProperty(_te_IN, "YEAR_OF_PASSING", "ఉత్తీర్ణులైన సంవత్సరం "), _defineProperty(_te_IN, "SELECT_ADDRESS_TYPE", "ఎలాంటి చిరునామా?"), _defineProperty(_te_IN, "CANCEL", "రద్దు"), _defineProperty(_te_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "తిరిగి మొదలుపెట్టడానికి కంటెంటు లేదు."), _defineProperty(_te_IN, "SELECT_LANGUAGE", "భాషను ఎంచుకోండి"), _defineProperty(_te_IN, "READ_LESS", "తక్కువ చూపించు "), _defineProperty(_te_IN, "CONFIRM_DEL", "తొలగించాలా?"), _defineProperty(_te_IN, "ADDRESS_LINE1", "చిరునామా లైన్ 1"), _defineProperty(_te_IN, "ADDRESS_LINE2", "చిరునామా లైన్ 2"), _defineProperty(_te_IN, "CITY", "నగరం"), _defineProperty(_te_IN, "STATE", "రాష్ట్రం"), _defineProperty(_te_IN, "COUNTRY", "దేశం"), _defineProperty(_te_IN, "PINCODE", "పిన్ కోడ్"), _defineProperty(_te_IN, "PERMANENT", "శాశ్వత చిరునామా"), _defineProperty(_te_IN, "CURRENT", "ప్రస్తుత చిరునామా"), _defineProperty(_te_IN, "JOB_NAME", "ఉద్యోగం"), _defineProperty(_te_IN, "ORGANIZATION", "సంస్థ"), _defineProperty(_te_IN, "POSITION", "స్థానం"), _defineProperty(_te_IN, "CHOOSE_FROM_FOLLOWING", "కిందవాటి నుండి ఎంచుకోండి"), _defineProperty(_te_IN, "PERMISSION_SETTING_MSG", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్ళండి"), _defineProperty(_te_IN, "DOWNLOADING", "దిగుమతి అవుతోంది %s %"), _defineProperty(_te_IN, "CREATED_BY_SMALL", "తయారుచేసినది"), _defineProperty(_te_IN, "ERROR_OFFLINE_MODE", "ఇంటర్నెట్టు లేదు. ఆఫ్లైన్ ఉన్నారు."), _defineProperty(_te_IN, "ADDITIONAL_INFORMATION", "అదనపు సమాచారం"), _defineProperty(_te_IN, "FACEBOOK", "ఫేస్ బుక్"), _defineProperty(_te_IN, "TWITTER", "ట్విట్టర్"), _defineProperty(_te_IN, "LINKEDIN", "లింక్డ్ ఇన్ "), _defineProperty(_te_IN, "SOCIAL", "సోషల్"), _defineProperty(_te_IN, "STRENGTHEN_YOUR_PROFILE", "మీ ప్రొఫైల్‌ను మెరుగు పరచండి"), _defineProperty(_te_IN, "UPDATE", "అప్‌డేట్"), _defineProperty(_te_IN, "CHANGE_LANGUAGE", "భాష మార్చు"), _defineProperty(_te_IN, "MEDIUM", "సూచనల మాధ్యమం"), _defineProperty(_te_IN, "LAST_LOGIN_TIME", "చివర లాగిన్ అయిన సమయం: %s"), _defineProperty(_te_IN, "ANNOUNCEMENT", "ప్రకటన"), _defineProperty(_te_IN, "ERROR_NO_ATTACHMENTS", "ఎటాచ్‌మెంట్ లేదు"), _defineProperty(_te_IN, "ATTACHMENTS", "ఎటాచ్‌మెంట్లు"), _defineProperty(_te_IN, "WEBLINKS", "వెబ్ లింకులు"), _defineProperty(_te_IN, "SENT_ON", "పంపిన తేదీ"), _defineProperty(_te_IN, "NO_ANNOUNCEMENTS", "కొత్త ప్రకటనలేవీ లేవు"), _defineProperty(_te_IN, "UNKNOWN_QR", "ఈ QR కోడ్‌కి సంబంధించి ఏ కంటెంట్ దొరకలేదు "), _defineProperty(_te_IN, "TRY_AGAIN", "మళ్ళీ ప్రయత్నించండి"), _defineProperty(_te_IN, "CAMERA_PERMISSION_SETTINGS", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్లి % ఏప్ సెలెక్ట్ చేసుకొని కెమెరాకి అనుమతిపై క్లిక్ చెయ్యండి."), _defineProperty(_te_IN, "CAMERA_PERMISSION_DENIED", "కెమెరాకు అనుమతి లేదు"), _defineProperty(_te_IN, "SELECT_STATE_TO_GET_STARTED", "మొదలుపెట్టడానికి రాష్ట్రాన్ని ఎంచుకోండి"), _defineProperty(_te_IN, "MSG_ALREADY_IMPORTED", "ఇంతకుముందే ఇంపోర్ట్ అయ్యింది "), _defineProperty(_te_IN, "SCAN_QR_CODE", "కోడ్‌ను స్కాన్ చేయండి"), _defineProperty(_te_IN, "SCAN_QR_INSTRUCTION", "మీ పరికరాన్ని ఉపయోగించి దయచేసి QR కోడ్‌ను స్కాన్ చేయండి"), _te_IN),
 		"mr_IN": (_mr_IN = {
 			ALREADY_HAVE_ACC: "विद्यमान वापरकर्ता? साइन इन करा",
 			APPLY_FILTER: "फिल्टर लागू करा",
@@ -22625,7 +22627,7 @@
 			ABOUT_MODULE: "घटकाबद्दल अधिक माहिती ",
 			CHOOSE_FROM_FOLLOWING: "पुढीलपैकी निवडा",
 			LANGUAGES: "भाषा"
-		}, _defineProperty(_mr_IN, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN, "NAME", "नाव"), _defineProperty(_mr_IN, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN, "GENDER", "लिंग"), _defineProperty(_mr_IN, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN, "MODULES", "घटक"), _defineProperty(_mr_IN, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN, "ANSWER", "उत्तर "), _defineProperty(_mr_IN, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "बदल करा"), _defineProperty(_mr_IN, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष (yyyy) असे लिहा "), _defineProperty(_mr_IN, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN, "DEGREE", "पदवी"), _defineProperty(_mr_IN, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HOBBIES", "छंद"), _defineProperty(_mr_IN, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN, "CANCEL", "रद्द "), _defineProperty(_mr_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN, "CITY", "शहर"), _defineProperty(_mr_IN, "STATE", "राज्य"), _defineProperty(_mr_IN, "COUNTRY", "देश"), _defineProperty(_mr_IN, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN, "POSITION", "पद "), _defineProperty(_mr_IN, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN, "DOWNLOADING", "डाऊनलोड करीत आहे %s %"), _defineProperty(_mr_IN, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN, "SOCIAL", "सोशल "), _defineProperty(_mr_IN, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN, "CHANGE_LANGUAGE", "भाषा बदला"), _defineProperty(_mr_IN, "MEDIUM", "शिक्षण मध्यम"), _defineProperty(_mr_IN, "LAST_LOGIN_TIME", "शेवटी लॉगीन केलीली वेळ: %s"), _defineProperty(_mr_IN, "ANNOUNCEMENT", "सूचना"), _defineProperty(_mr_IN, "ERROR_NO_ATTACHMENTS", "अटैच्मन्ट नाही"), _defineProperty(_mr_IN, "ATTACHMENTS", "अटैच्मन्ट"), _defineProperty(_mr_IN, "WEBLINKS", "वेब्लिंक"), _defineProperty(_mr_IN, "SENT_ON", "पाठवलेली तारीख"), _defineProperty(_mr_IN, "NO_ANNOUNCEMENTS", "नवीन सूचना नाहीत"), _defineProperty(_mr_IN, "UNKNOWN_QR", "QR कोडशी जुळलेले विषय सापडले नाहीत"), _defineProperty(_mr_IN, "TRY_AGAIN", "पुनः प्रयत्न करा"), _defineProperty(_mr_IN, "CAMERA_PERMISSION_DENIED", "कॅमेराला परवानगी नाही"), _defineProperty(_mr_IN, "SELECT_STATE_TO_GET_STARTED", "सुरुवात करायला राज्याची निवडकरा"), _defineProperty(_mr_IN, "MSG_ALREADY_IMPORTED", "इम्पोर्ट केलेले आहे"), _defineProperty(_mr_IN, "SCAN_QR_CODE", "QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "SCAN_QR_INSTRUCTION", "तुमच्या फोनेच्या कॅमेराने QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "PRIVATE", "खाजगी"), _defineProperty(_mr_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_mr_IN, "ERROR_UPLOADING_IMG", "प्रतिमा उपलोड करताना चूक झाली"), _defineProperty(_mr_IN, "CHANGE", "बदला"), _defineProperty(_mr_IN, "REMOVE", "काढून टाका"), _defineProperty(_mr_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल्ये यशस्वीरीत्या जोडली गेलीत"), _defineProperty(_mr_IN, "SKILL_ENDORSED", "कौशल्ये समर्थित केली "), _defineProperty(_mr_IN, "SKILL_NOT_ADDED", "कौशल्ये जोडण्यात अयशस्वी"), _defineProperty(_mr_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल्ये समर्थित केली नाही"), _defineProperty(_mr_IN, "SKILL_ALREADY_ENDORSED", "कौशल्ये आधीच समर्थित केली आहेत"), _defineProperty(_mr_IN, "ERROR_GETTING_SKILLS", "कौशल्ये आणण्यात चूक "), _defineProperty(_mr_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह रिकामा आहे"), _defineProperty(_mr_IN, "SKILL_ALREADY_ADDED", "कौशल्ये आधीच जोडलेली आहेत"), _defineProperty(_mr_IN, "BLOG", "ब्लोग"), _mr_IN),
+		}, _defineProperty(_mr_IN, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN, "STAR_RATINGS", "रेटिंग"), _defineProperty(_mr_IN, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN, "NAME", "नाव"), _defineProperty(_mr_IN, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN, "GENDER", "लिंग"), _defineProperty(_mr_IN, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN, "MODULES", "घटक"), _defineProperty(_mr_IN, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN, "ANSWER", "उत्तर "), _defineProperty(_mr_IN, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "बदल करा"), _defineProperty(_mr_IN, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष (yyyy) असे लिहा "), _defineProperty(_mr_IN, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN, "DEGREE", "पदवी"), _defineProperty(_mr_IN, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HOBBIES", "छंद"), _defineProperty(_mr_IN, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN, "CANCEL", "रद्द "), _defineProperty(_mr_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN, "CITY", "शहर"), _defineProperty(_mr_IN, "STATE", "राज्य"), _defineProperty(_mr_IN, "COUNTRY", "देश"), _defineProperty(_mr_IN, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN, "POSITION", "पद "), _defineProperty(_mr_IN, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN, "DOWNLOADING", "डाऊनलोड करीत आहे %s %"), _defineProperty(_mr_IN, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN, "SOCIAL", "सोशल "), _defineProperty(_mr_IN, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN, "CHANGE_LANGUAGE", "भाषा बदला"), _defineProperty(_mr_IN, "MEDIUM", "शिक्षण मध्यम"), _defineProperty(_mr_IN, "LAST_LOGIN_TIME", "शेवटी लॉगीन केलीली वेळ: %s"), _defineProperty(_mr_IN, "ANNOUNCEMENT", "सूचना"), _defineProperty(_mr_IN, "ERROR_NO_ATTACHMENTS", "अटैच्मन्ट नाही"), _defineProperty(_mr_IN, "ATTACHMENTS", "अटैच्मन्ट"), _defineProperty(_mr_IN, "WEBLINKS", "वेब्लिंक"), _defineProperty(_mr_IN, "SENT_ON", "पाठवलेली तारीख"), _defineProperty(_mr_IN, "NO_ANNOUNCEMENTS", "नवीन सूचना नाहीत"), _defineProperty(_mr_IN, "UNKNOWN_QR", "QR कोडशी जुळलेले विषय सापडले नाहीत"), _defineProperty(_mr_IN, "TRY_AGAIN", "पुनः प्रयत्न करा"), _defineProperty(_mr_IN, "CAMERA_PERMISSION_DENIED", "कॅमेराला परवानगी नाही"), _defineProperty(_mr_IN, "SELECT_STATE_TO_GET_STARTED", "सुरुवात करायला राज्याची निवडकरा"), _defineProperty(_mr_IN, "MSG_ALREADY_IMPORTED", "इम्पोर्ट केलेले आहे"), _defineProperty(_mr_IN, "SCAN_QR_CODE", "QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "SCAN_QR_INSTRUCTION", "तुमच्या फोनेच्या कॅमेराने QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "PRIVATE", "खाजगी"), _defineProperty(_mr_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_mr_IN, "ERROR_UPLOADING_IMG", "प्रतिमा उपलोड करताना चूक झाली"), _defineProperty(_mr_IN, "CHANGE", "बदला"), _defineProperty(_mr_IN, "REMOVE", "काढून टाका"), _defineProperty(_mr_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल्ये यशस्वीरीत्या जोडली गेलीत"), _defineProperty(_mr_IN, "SKILL_ENDORSED", "कौशल्ये समर्थित केली "), _defineProperty(_mr_IN, "SKILL_NOT_ADDED", "कौशल्ये जोडण्यात अयशस्वी"), _defineProperty(_mr_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल्ये समर्थित केली नाही"), _defineProperty(_mr_IN, "SKILL_ALREADY_ENDORSED", "कौशल्ये आधीच समर्थित केली आहेत"), _defineProperty(_mr_IN, "ERROR_GETTING_SKILLS", "कौशल्ये आणण्यात चूक "), _defineProperty(_mr_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह रिकामा आहे"), _defineProperty(_mr_IN, "SKILL_ALREADY_ADDED", "कौशल्ये आधीच जोडलेली आहेत"), _defineProperty(_mr_IN, "BLOG", "ब्लोग"), _mr_IN),
 		"bn_IN": {},
 		"ml_IN": {},
 		"or_IN": {},
@@ -22796,7 +22798,7 @@
 		ABOUT_MODULE: "घटकाबद्दल अधिक माहिती ",
 		CHOOSE_FROM_FOLLOWING: "पुढीलपैकी निवडा",
 		LANGUAGES: "भाषा"
-	}, _defineProperty(_mr_IN2, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN2, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN2, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN2, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN2, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN2, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN2, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN2, "NAME", "नाव"), _defineProperty(_mr_IN2, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN2, "GENDER", "लिंग"), _defineProperty(_mr_IN2, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN2, "MODULES", "घटक"), _defineProperty(_mr_IN2, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN2, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN2, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN2, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN2, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN2, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN2, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN2, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN2, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN2, "ANSWER", "उत्तर "), _defineProperty(_mr_IN2, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN2, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN2, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN2, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN2, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN2, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN2, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष yyyy असे लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN2, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN2, "DEGREE", "पदवी"), _defineProperty(_mr_IN2, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN2, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN2, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN2, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN2, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN2, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HOBBIES", "छंद"), _defineProperty(_mr_IN2, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN2, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN2, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN2, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN2, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN2, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN2, "CANCEL", "रद्द "), _defineProperty(_mr_IN2, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN2, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN2, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN2, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN2, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN2, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN2, "CITY", "शहर"), _defineProperty(_mr_IN2, "STATE", "राज्य"), _defineProperty(_mr_IN2, "COUNTRY", "देश"), _defineProperty(_mr_IN2, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN2, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN2, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN2, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN2, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN2, "POSITION", "पद "), _defineProperty(_mr_IN2, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN2, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN2, "DOWNLOADING", "डाऊनलोड करीत आहे "), _defineProperty(_mr_IN2, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN2, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN2, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN2, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN2, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN2, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN2, "SOCIAL", "सोशल "), _defineProperty(_mr_IN2, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN2, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN2, "CHANGE_LANGUAGE", "भाषा बदला"), _mr_IN2)), _defineProperty(_stringsRes, "pa_IN", {}), _stringsRes);
+	}, _defineProperty(_mr_IN2, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN2, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN2, "STAR_RATINGS", "रेटिंग"), _defineProperty(_mr_IN2, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN2, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN2, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN2, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN2, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN2, "NAME", "नाव"), _defineProperty(_mr_IN2, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN2, "GENDER", "लिंग"), _defineProperty(_mr_IN2, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN2, "MODULES", "घटक"), _defineProperty(_mr_IN2, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN2, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN2, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN2, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN2, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN2, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN2, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN2, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN2, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN2, "ANSWER", "उत्तर "), _defineProperty(_mr_IN2, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN2, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN2, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN2, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN2, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN2, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN2, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष yyyy असे लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN2, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN2, "DEGREE", "पदवी"), _defineProperty(_mr_IN2, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN2, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN2, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN2, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN2, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN2, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HOBBIES", "छंद"), _defineProperty(_mr_IN2, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN2, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN2, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN2, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN2, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN2, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN2, "CANCEL", "रद्द "), _defineProperty(_mr_IN2, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN2, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN2, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN2, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN2, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN2, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN2, "CITY", "शहर"), _defineProperty(_mr_IN2, "STATE", "राज्य"), _defineProperty(_mr_IN2, "COUNTRY", "देश"), _defineProperty(_mr_IN2, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN2, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN2, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN2, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN2, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN2, "POSITION", "पद "), _defineProperty(_mr_IN2, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN2, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN2, "DOWNLOADING", "डाऊनलोड करीत आहे "), _defineProperty(_mr_IN2, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN2, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN2, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN2, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN2, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN2, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN2, "SOCIAL", "सोशल "), _defineProperty(_mr_IN2, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN2, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN2, "CHANGE_LANGUAGE", "भाषा बदला"), _mr_IN2)), _defineProperty(_stringsRes, "pa_IN", {}), _stringsRes);
 	
 	var decideString = function decideString() {
 		var val = window.__CurrentLanguage;
@@ -37518,19 +37520,6 @@
 	      );
 	    };
 	
-	    _this.updateProgress = function (pStatus) {
-	      _this.competedCount = pStatus;
-	      var cmd = _this.set({
-	        id: _this.idSet.completedTextView,
-	        text: window.__S.YOUR_PROGRESS.format(pStatus)
-	      });
-	      Android.runInUI(cmd, 0, "55", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseProgressjs");
-	    };
-	
-	    _this.handleResumeClick = function () {
-	      _this.props.onResumeClick();
-	    };
-	
 	    _this.getResumeButton = function () {
 	      return dom(
 	        LinearLayout,
@@ -37541,7 +37530,7 @@
 	          cornerRadius: "2",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 65
+	            lineNumber: 50
 	          }
 	        },
 	        dom(TextView, {
@@ -37549,10 +37538,12 @@
 	          height: "wrap_content",
 	          text: window.__S.RESUME,
 	          gravity: "center",
-	          onClick: _this.handleResumeClick,
+	          onClick: function onClick() {
+	            return _this.props.onResumeClick();
+	          },
 	          style: window.__TextStyle.textStyle.TABBAR.WHITE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 72
+	            lineNumber: 57
 	          }
 	        })
 	      );
@@ -37583,7 +37574,7 @@
 	          gravity: "center",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 89
+	            lineNumber: 74
 	          }
 	        },
 	        dom(
@@ -37594,7 +37585,7 @@
 	            height: "match_parent",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 94
+	              lineNumber: 79
 	            }
 	          },
 	          dom(TextView, {
@@ -37602,7 +37593,7 @@
 	            style: window.__TextStyle.textStyle.HEADING.DARK,
 	            margin: "0,0,0,8", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 99
+	              lineNumber: 84
 	            }
 	          }),
 	          this.getProgressStatus()
@@ -37613,7 +37604,7 @@
 	          window: "wrap_content",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 109
+	            lineNumber: 94
 	          }
 	        })
 	      );
@@ -38443,7 +38434,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "featureButton", "simpleToolBarOverFlow", "batchDetailsContainer"]);
+	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "featureButton1", "featureButton2", "simpleToolBarOverFlow", "batchDetailsContainer"]);
 	    _this2.state = state;
 	    _this2.screenName = "CourseEnrolledActivity";
 	
@@ -38528,7 +38519,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 621
+	            lineNumber: 629
 	          }
 	        },
 	        dom(
@@ -38541,7 +38532,7 @@
 	            orientation: "vertical",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 627
+	              lineNumber: 635
 	            }
 	          },
 	          dom(
@@ -38552,7 +38543,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 634
+	                lineNumber: 642
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -38566,7 +38557,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 639
+	                lineNumber: 647
 	              }
 	            })
 	          ),
@@ -38576,7 +38567,7 @@
 	            totalProgress: this.data.totalProgress,
 	            visibility: this.showProgress, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 651
+	              lineNumber: 659
 	            }
 	          }),
 	          dom(
@@ -38585,7 +38576,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 657
+	                lineNumber: 665
 	              }
 	            },
 	            dom(
@@ -38595,7 +38586,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 661
+	                  lineNumber: 669
 	                }
 	              },
 	              dom(
@@ -38606,7 +38597,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 666
+	                    lineNumber: 674
 	                  }
 	                },
 	                dom(
@@ -38618,7 +38609,7 @@
 	                    padding: "16,24,16,16",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 671
+	                      lineNumber: 679
 	                    }
 	                  },
 	                  dom(CourseProgress, {
@@ -38629,7 +38620,7 @@
 	                    onResumeClick: this.handleCourseResume,
 	                    visibility: this.showProgress, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 678
+	                      lineNumber: 686
 	                    }
 	                  }),
 	                  dom(LinearLayout, {
@@ -38638,7 +38629,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 686
+	                      lineNumber: 694
 	                    }
 	                  }),
 	                  dom(TextView, {
@@ -38648,7 +38639,7 @@
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                    text: window.__S.STRUCTURE, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 694
+	                      lineNumber: 702
 	                    }
 	                  }),
 	                  dom(
@@ -38661,7 +38652,7 @@
 	                      root: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 703
+	                        lineNumber: 711
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -38671,7 +38662,7 @@
 	                      gravity: "center",
 	                      text: window.__S.LOADING_CONTENT, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 711
+	                        lineNumber: 719
 	                      }
 	                    }),
 	                    dom(ProgressBar, {
@@ -38680,26 +38671,52 @@
 	                      width: "20",
 	                      height: "20", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 718
+	                        lineNumber: 726
 	                      }
 	                    })
 	                  )
 	                )
 	              ),
-	              dom(FeatureButton, {
-	                clickable: "true",
-	                margin: "16,16,16,16",
-	                width: "match_parent",
-	                height: "56",
-	                id: this.idSet.featureButton,
-	                background: window.__Colors.PRIMARY_ACCENT,
-	                text: window.__S.RESUME + " " + window.__S.COURSE,
-	                style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
-	                buttonClick: this.handleResumeClick, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 727
-	                }
-	              })
+	              dom(
+	                RelativeLayout,
+	                {
+	                  height: "wrap_content",
+	                  width: "match_parent", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 735
+	                  }
+	                },
+	                dom(FeatureButton, {
+	                  clickable: "true",
+	                  margin: "16,16,16,16",
+	                  width: "match_parent",
+	                  height: "56",
+	                  id: this.idSet.featureButton1,
+	                  visibility: "visible",
+	                  background: window.__Colors.PRIMARY_ACCENT,
+	                  text: window.__S.START_COURSE,
+	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+	                  buttonClick: this.handleResumeClick, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 738
+	                  }
+	                }),
+	                dom(FeatureButton, {
+	                  clickable: "true",
+	                  margin: "16,16,16,16",
+	                  width: "match_parent",
+	                  height: "56",
+	                  visibility: "gone",
+	                  id: this.idSet.featureButton2,
+	                  background: window.__Colors.PRIMARY_ACCENT,
+	                  text: window.__S.RESUME + " " + window.__S.COURSE,
+	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+	                  buttonClick: this.handleResumeClick, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 749
+	                  }
+	                })
+	              )
 	            ),
 	            dom(
 	              LinearLayout,
@@ -38712,7 +38729,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 740
+	                  lineNumber: 764
 	                }
 	              },
 	              dom(TextView, {
@@ -38722,7 +38739,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 749
+	                  lineNumber: 773
 	                }
 	              })
 	            )
@@ -38732,7 +38749,7 @@
 	          onConfirm: this.flagContent,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 764
+	            lineNumber: 788
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -38740,7 +38757,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 768
+	            lineNumber: 792
 	          }
 	        })
 	      );
@@ -38757,7 +38774,7 @@
 	
 	  this.onPop = function () {
 	    window.__getDownloadStatus = _this3.getSpineStatus;
-	    Android.runInUI(_this3.animateView(), null, "127", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "128", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	  };
 	
 	  this.onStop = function () {
@@ -38887,7 +38904,7 @@
 	        padding: "0,8,0,8",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 264
+	          lineNumber: 265
 	        }
 	      },
 	      dom(TextView, {
@@ -38896,7 +38913,7 @@
 	        text: utils.firstLeterCapital(name),
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 271
+	          lineNumber: 272
 	        }
 	      }),
 	      dom(TextView, {
@@ -38905,7 +38922,7 @@
 	        text: description,
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 277
+	          lineNumber: 278
 	        }
 	      }),
 	      dom(
@@ -38915,7 +38932,7 @@
 	          height: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 283
+	            lineNumber: 284
 	          }
 	        },
 	        dom(TextView, {
@@ -38924,7 +38941,7 @@
 	          text: window.__S.CREATED_BY_SMALL + "  ",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 287
+	            lineNumber: 288
 	          }
 	        }),
 	        dom(TextView, {
@@ -38933,7 +38950,7 @@
 	          text: createdBy,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 292
+	            lineNumber: 293
 	          }
 	        })
 	      )
@@ -38970,7 +38987,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "330", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "331", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -39028,7 +39045,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 389
+	          lineNumber: 390
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -39036,7 +39053,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "400", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "401", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -39048,7 +39065,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 403
+	          lineNumber: 404
 	        }
 	      });
 	    }
@@ -39076,28 +39093,29 @@
 	
 	    if (_this3.details.hasOwnProperty("mimeType") && _this3.details.mimeType.toLocaleLowerCase() == "application/vnd.ekstep.content-collection") {
 	      var cmd = _this3.set({
-	        id: _this3.idSet.featureButton,
+	        id: _this3.idSet.featureButton1,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "442", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	
+	      cmd += _this3.set({
+	        id: _this3.idSet.featureButton2,
+	        visibility: "gone"
+	      });
+	      Android.runInUI(cmd, 0, "448", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
-	    if (!_this3.enrolledCourses.hasOwnProperty("lastReadContentId") || _this3.enrolledCourses.lastReadContentId == null) {
-	      var btn = dom(FeatureButton, {
-	        clickable: "true",
-	        margin: "16,16,16,16",
-	        width: "match_parent",
-	        height: "56",
-	        id: _this3.idSet.featureButton,
-	        background: window.__Colors.PRIMARY_ACCENT,
-	        text: window.__S.START_COURSE,
-	        style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
-	        buttonClick: _this3.handleResumeClick, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 445
-	        }
+	    if (_this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
+	
+	      var cmd = _this3.set({
+	        id: _this3.idSet.featureButton1,
+	        visibility: "gone"
 	      });
 	
-	      _this3.replaceChild(_this3.idSet.featureButton, btn.render(), 0);
+	      cmd += _this3.set({
+	        id: _this3.idSet.featureButton2,
+	        visibility: "visible"
+	      });
+	
+	      Android.runInUI(cmd, 0, "463", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -39171,7 +39189,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 536
+	            lineNumber: 544
 	          }
 	        });
 	
@@ -39234,7 +39252,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 604
+	        lineNumber: 612
 	      }
 	    });
 	
@@ -44158,11 +44176,7 @@
 	      var index_click = _this2.start_index < 1 ? index + 1 : index + _this2.start_index * 10 + 1;
 	      JBridge.logContentClickEvent("RESOURCES", index_click, "", item.identifier);
 	      console.log(item);
-	      if (item.contentType.toLowerCase() == "course") {
-	        var whatToSend = { resourceDetails: JSON.stringify(item) };
-	        var event = { tag: "OPEN_ResourceViewAllDetail", contents: whatToSend };
-	        window.__runDuiCallback(event);
-	      } else if (item.contentType.toLowerCase() == "collection" || item.contentType.toLowerCase() == "textbook") {
+	      if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
 	        var whatToSend = { course: JSON.stringify(item) };
 	        var event = { tag: "OPEN_CourseEnrolled", contents: whatToSend };
 	        window.__runDuiCallback(event);
@@ -44262,7 +44276,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 206
+	            lineNumber: 202
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -44272,7 +44286,7 @@
 	          showMenu: "true",
 	          title: this.appbarTitle, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 213
+	            lineNumber: 209
 	          }
 	        }),
 	        dom(ListView, {
@@ -44280,7 +44294,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 219
+	            lineNumber: 215
 	          }
 	        })
 	      );
@@ -51147,13 +51161,15 @@
 	    _this = _this2;
 	    _this2.data = JSON.parse(state.data.value0.announcementData); //data Recieved from intent
 	    console.log("Recieved data in AnnouncementDetailActivity ", _this2.data);
+	    _this2.makeReadApiCall = false;
+	    _this2.announcementData = _this2.fetchFromLocal(_this2.data.announcementId);
+	    if (_this2.announcementData == "{}") _this2.announcementData = _this2.data.announcementData;
 	
-	    if (_this2.data.announcementData) _this2.announcementData = _this2.data.announcementData;else _this2.announcementData = _this2.fetchFromLocal(_this2.data.announcementId);
-	
+	    if (!_this2.announcementData.read) _this2.makeReadApiCall = true; //this check is made for announcement that was not saved locally
 	    //TODO handle no announcement data in this.announcementData
 	
 	    console.log("current announcement details: ", _this2.announcementData);
-	    console.log("Info State", _this2.data);
+	    console.log("Info State 123", _this2.data);
 	    _this2.screenName = "AnnouncementDetailActivity";
 	    _this2.shouldCacheScreen = false;
 	    return _this2;
@@ -51173,7 +51189,7 @@
 	          gravity: "bottom",
 	          margin: "0,5,0,10", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 95
+	            lineNumber: 108
 	          }
 	        },
 	        dom(TextView, {
@@ -51182,7 +51198,7 @@
 	          text: footerText,
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 100
+	            lineNumber: 113
 	          }
 	        }),
 	        dom(ImageView, {
@@ -51192,7 +51208,7 @@
 	          imageUrl: "ic_action_share_black",
 	          onClick: this.shareAction, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 105
+	            lineNumber: 118
 	          }
 	        })
 	      );
@@ -51206,7 +51222,7 @@
 	        margin: "0,10,0,5",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 120
+	          lineNumber: 133
 	        }
 	      });
 	    }
@@ -51221,7 +51237,7 @@
 	            width: "match_parent",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 153
+	              lineNumber: 166
 	            }
 	          },
 	          dom(TextView, {
@@ -51231,7 +51247,7 @@
 	            margin: "0,0,0,6",
 	            style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 157
+	              lineNumber: 170
 	            }
 	          }),
 	          this.populateAttachments()
@@ -51240,7 +51256,7 @@
 	      return dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 167
+	          lineNumber: 180
 	        }
 	      });
 	    }
@@ -51254,7 +51270,7 @@
 	          return dom(LinearLayout, {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 184
+	              lineNumber: 197
 	            }
 	          });
 	        }
@@ -51274,7 +51290,7 @@
 	            orientation: "vertical",
 	            margin: "0,0,0,16", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 194
+	              lineNumber: 207
 	            }
 	          },
 	          dom(TextView, {
@@ -51284,7 +51300,7 @@
 	            margin: "0,0,0,6",
 	            style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 199
+	              lineNumber: 212
 	            }
 	          }),
 	          this.getLinks()
@@ -51293,7 +51309,7 @@
 	      return dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 209
+	          lineNumber: 222
 	        }
 	      });
 	    }
@@ -51309,7 +51325,7 @@
 	        margin: "0,0,0,18",
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 215
+	          lineNumber: 228
 	        }
 	      });
 	    }
@@ -51325,7 +51341,7 @@
 	        text: from,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 228
+	          lineNumber: 241
 	        }
 	      });
 	    }
@@ -51341,7 +51357,7 @@
 	        margin: "0,0,0,6",
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 241
+	          lineNumber: 254
 	        }
 	      });
 	    }
@@ -51360,7 +51376,7 @@
 	        background: window.__Colors.PRIMARY_BLACK_66,
 	        style: window.__TextStyle.textStyle.SYMBOL.STATUSBAR.LABEL, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 253
+	          lineNumber: 266
 	        }
 	      });
 	    }
@@ -51376,7 +51392,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 273
+	            lineNumber: 286
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -51384,7 +51400,7 @@
 	          onBackPress: this.onBackPressed,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 279
+	            lineNumber: 292
 	          }
 	        }),
 	        dom(
@@ -51393,7 +51409,7 @@
 	            height: "match_parent",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 283
+	              lineNumber: 296
 	            }
 	          },
 	          dom(
@@ -51404,7 +51420,7 @@
 	              orientation: "vertical",
 	              padding: "12,0,16,0", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 286
+	                lineNumber: 299
 	              }
 	            },
 	            this.getAnnouncementInfo(),
@@ -51429,19 +51445,34 @@
 	  var _this4 = this;
 	
 	  this.fetchFromLocal = function (id) {
+	    console.log("fetching from local");
+	    var announcementJSON = {};
 	    var announcementList = []; //list of announcementData in local storage
 	    try {
-	      announcementList = JSON.parse(utils.decodeBase64(JBridge.getSavedData("savedAnnouncements"))).announcements;
+	      announcementJSON = JSON.parse(utils.decodeBase64(JBridge.getSavedData("savedAnnouncements")));
+	      announcementList = announcementJSON.announcements;
 	    } catch (e) {
 	      console.log("Failed to get announcement Data from shared preferences :", e);
 	    }
 	
-	    var announcementData = {};
-	    announcementList.map(function (item) {
+	    var announcementData = "{}";
+	    announcementList.map(function (item, i) {
 	      if (item.id == id) {
+	        console.log("item in array " + i, item);
 	        announcementData = item; //setting current announcement details
+	        if (!item.read) {
+	          _this4.makeReadApiCall = true;
+	          announcementList[i].read = true;
+	          setTimeout(function () {
+	            //using setTimeout to execute the code asynchronouly
+	            announcementJSON.announcements = announcementList;
+	            console.log("updating saved data ", announcementJSON);
+	            JBridge.saveData("savedAnnouncements", utils.encodeBase64(JSON.stringify(announcementJSON)));
+	          }, 100);
+	        }
 	      }
 	    });
+	    console.log("fetchFromLocal data", announcementData);
 	    return announcementData;
 	  };
 	
@@ -51456,7 +51487,7 @@
 	
 	  this.afterRender = function () {
 	    JBridge.logAnnouncementDeatilScreen(_this4.data.announcementId);
-	    if (!(_this4.announcementData.hasOwnProperty("read") && _this4.announcementData.read)) {
+	    if (_this4.makeReadApiCall) {
 	      if (JBridge.isNetworkAvailable()) {
 	        var request = {
 	          announcementId: _this4.data.announcementId,
@@ -51494,7 +51525,7 @@
 	        index: index,
 	        open: check && JSON.stringify(_this4.data.details) == JSON.stringify(item), __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 132
+	          lineNumber: 145
 	        }
 	      });
 	    });
@@ -51518,7 +51549,7 @@
 	      },
 	      style: window.__TextStyle.textStyle.CLICKABLE.BLUE_SEMI, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 172
+	        lineNumber: 185
 	      }
 	    });
 	  };
@@ -52552,6 +52583,7 @@
 	    };
 	
 	    _this2.onBackPressed = function () {
+	      JBridge.logQRScanCancelled();
 	      QRScanner.closeQRScanner();
 	      var whatToSend = [];
 	      var event = { tag: "BACK_QRActivity", contents: whatToSend };
@@ -52564,6 +52596,7 @@
 	      console.log("barcode data", atob(barcode));
 	      barcode = atob(barcode);
 	      if (!_this2.isValidBarcode(barcode)) {
+	        JBridge.logQRScanSuccess(barcode, "Unknown");
 	        _this2.showErrorPopup("WRONGQR");
 	        return;
 	      }
@@ -52571,10 +52604,18 @@
 	      var callback = callbackMapper.map(function (data) {
 	        console.log("getContentDetails ", data);
 	        if (data[0] == "__failed") {
-	          window.__LoaderDialog.hide();
-	          _this.showErrorPopup("WRONGQR");
+	          if (JBridge.isNetworkAvailable()) {
+	            JBridge.logQRScanSuccess(barcode, "Unknown");
+	            window.__LoaderDialog.hide();
+	            _this.showErrorPopup("WRONGQR");
+	          } else {
+	            JBridge.logQRScanSuccess(barcode, "Unknown");
+	            window.__LoaderDialog.hide();
+	            _this.showErrorPopup("NOINTERNET");
+	          }
 	          return;
 	        }
+	        JBridge.logQRScanSuccess(barcode, "ContentDetail");
 	        var item = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
 	        console.log("Callback data in QRActivity", item);
 	        window.__LoaderDialog.hide();
@@ -52610,7 +52651,8 @@
 	        }
 	      });
 	
-	      if (JBridge.isNetworkAvailable()) JBridge.getContentDetails(identifier, callback);else _this2.showErrorPopup("NOINTERNET");
+	      //TODO implement proper error callback
+	      JBridge.getContentDetails(identifier, callback);
 	    };
 	
 	    _this2.showErrorPopup = function (type) {
@@ -52651,7 +52693,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, null, "167", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "176", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
 	    };
 	
 	    _this2.isValidBarcode = function (data) {
@@ -52668,7 +52710,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, null, "184", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "193", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
 	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
 	    };
 	
@@ -52684,7 +52726,7 @@
 	            width: "match_parent",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 195
+	              lineNumber: 204
 	            }
 	          },
 	          dom(Button, {
@@ -52694,7 +52736,7 @@
 	            margin: "10,20,10,20",
 	            onClick: _this2.openSettings, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 198
+	              lineNumber: 207
 	            }
 	          })
 	        );
@@ -52719,7 +52761,7 @@
 	            height: "wrap_content",
 	            margin: "0, 16, 0, 0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 221
+	              lineNumber: 230
 	            }
 	          },
 	          dom(PageOption, {
@@ -52730,7 +52772,7 @@
 	            hideDivider: true,
 	            onButtonClick: _this2.handlePageOption, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 225
+	              lineNumber: 234
 	            }
 	          })
 	        );
@@ -52744,7 +52786,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 239
+	            lineNumber: 248
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -52754,7 +52796,7 @@
 	          background: "#000000",
 	          alpha: "0.5", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 242
+	            lineNumber: 251
 	          }
 	        }),
 	        dom(
@@ -52767,7 +52809,7 @@
 	            gravity: "center_horizontal",
 	            alignParentBottom: "true, -1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 248
+	              lineNumber: 257
 	            }
 	          },
 	          dom(ImageView, {
@@ -52777,7 +52819,7 @@
 	            gravity: "center_horizontal",
 	            imageUrl: "ic_warning_grey", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 255
+	              lineNumber: 264
 	            }
 	          }),
 	          dom(TextView, {
@@ -52789,7 +52831,7 @@
 	            id: _this2.idSet.permissionSettingsMsg,
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 261
+	              lineNumber: 270
 	            }
 	          }),
 	          dom(TextView, {
@@ -52800,7 +52842,7 @@
 	            gravity: "center_horizontal",
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 269
+	              lineNumber: 278
 	            }
 	          }),
 	          dom(LinearLayout, {
@@ -52808,7 +52850,7 @@
 	            orientation: "vertical",
 	            id: _this2.idSet.footer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 276
+	              lineNumber: 285
 	            }
 	          })
 	        )
@@ -52823,6 +52865,7 @@
 	
 	    window.BarcodeResult = _this2.barcodeResult;
 	    _this = _this2;
+	    JBridge.logQRScanInitiated();
 	    return _this2;
 	  }
 	
@@ -52839,7 +52882,7 @@
 	          background: "#FFFFFF",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 288
+	            lineNumber: 297
 	          }
 	        },
 	        dom(
@@ -52848,7 +52891,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 295
+	              lineNumber: 304
 	            }
 	          },
 	          dom(
@@ -52859,7 +52902,7 @@
 	              orientation: "vertical",
 	              background: "#F5F5F7", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 298
+	                lineNumber: 307
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -52869,7 +52912,7 @@
 	              menuData: this.menuData,
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 303
+	                lineNumber: 312
 	              }
 	            }),
 	            dom(TextView, {
@@ -52880,7 +52923,7 @@
 	              text: window.__S.SCAN_QR_INSTRUCTION,
 	              textStyle: window.__TextStyle.textStyle.CARD.ACTION.BLUE, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 309
+	                lineNumber: 318
 	              }
 	            }),
 	            dom(ImageView, {
@@ -52891,7 +52934,7 @@
 	              adjustViewBounds: "true",
 	              imageUrl: "ic_scanqrdemo", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 316
+	                lineNumber: 325
 	              }
 	            }),
 	            dom(FrameLayout, {
@@ -52901,7 +52944,7 @@
 	              height: "match_parent",
 	              background: "#FFFFFF", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 323
+	                lineNumber: 332
 	              }
 	            })
 	          ),
@@ -52913,7 +52956,7 @@
 	              visibility: "gone",
 	              id: this.idSet.errorPopup, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 330
+	                lineNumber: 339
 	              }
 	            },
 	            this.getErrorPopup()
