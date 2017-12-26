@@ -38464,7 +38464,7 @@
 	    //to get geneie callback for download of spine
 	    window.__getDownloadStatus = _this2.getSpineStatus;
 	    console.log("details in CEA", _this2.details);
-	    _this2.showProgress = _this2.details.hasOwnProperty("contentType") && _this2.details.contentType == "Collection" || _this2.details.contentType == "collection" || _this2.details.contentType == "textbook" || _this2.details.contentType == "TextBook" ? "gone" : "visible";
+	    _this2.showProgress = _this2.details.hasOwnProperty("mimeType") && _this2.details.contentType == "application/vnd.ekstep.content-collection" ? "gone" : "visible";
 	
 	    if (_this2.details.hasOwnProperty("courseId")) {
 	      _this2.baseIdentifier = _this2.details.courseId;
@@ -39770,7 +39770,7 @@
 	
 	        _this2.onPop = function () {
 	            window.__getDownloadStatus = _this2.getSpineStatus;
-	            Android.runInUI(_this2.animateView(), null, "110", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	            Android.runInUI(_this2.animateView(), null, "111", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	        };
 	
 	        _this2.getSpineStatus = function (pValue) {
@@ -39794,7 +39794,7 @@
 	                    id: _this2.idSet.downloadProgressText,
 	                    text: "Fetching Contents: " + downloadedPercent + "%"
 	                });
-	                Android.runInUI(cmd, 0, "140", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "141", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	            }
 	        };
 	
@@ -39869,13 +39869,14 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 219
+	                        lineNumber: 220
 	                    }
 	                },
 	                _this2.getHeader(),
 	                _this2.getBody()
 	            );
 	            _this2.replaceChild(_this2.idSet.renderPage, layout.render(), 0);
+	            _this2.replaceChild(_this2.idSet.progressButtonContainer, _this2.getProgressButton().render(), 0);
 	            _this2.checkContentLocalStatus(module);
 	        };
 	
@@ -39894,7 +39895,7 @@
 	                        onClick: _this2.handleModuleClick,
 	                        content: module.children, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 239
+	                            lineNumber: 241
 	                        }
 	                    });
 	                } else {
@@ -39905,7 +39906,7 @@
 	                        gravity: "center",
 	                        text: window.__S.ERROR_CONTENT_NOT_AVAILABLE, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 251
+	                            lineNumber: 253
 	                        }
 	                    });
 	                }
@@ -39920,7 +39921,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    visibility: "gone"
 	                });
-	                Android.runInUI(cmd, 0, "270", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "272", "homelocalJUSPAYnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	                window.__ProgressButton.setButtonFor(module.identifier);
 	                window.__ProgressButton.setVisibility("visible");
 	            }
@@ -39939,7 +39940,7 @@
 	                margin: "0,16,0,0",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 285
+	                    lineNumber: 287
 	                }
 	            });
 	        };
@@ -39952,7 +39953,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 294
+	                        lineNumber: 296
 	                    }
 	                },
 	                dom(
@@ -39963,7 +39964,7 @@
 	                        margin: "0,12,0,12",
 	                        width: "match_parent", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 299
+	                            lineNumber: 301
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -39973,7 +39974,7 @@
 	                        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                        text: _this2.moduleName, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 305
+	                            lineNumber: 307
 	                        }
 	                    })
 	                ),
@@ -39983,7 +39984,7 @@
 	                    width: "match_parent",
 	                    text: _this2.module.contentData.hasOwnProperty("size") ? window.__S.MODULE_SIZE.format(_this2.formatBytes(_this2.module.contentData.size)) : window.__S.MODULE_SIZE_UNAVAILABLE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 314
+	                        lineNumber: 316
 	                    }
 	                }),
 	                dom(CropParagraph, {
@@ -39993,7 +39994,7 @@
 	                    headText: _this2.module.contentData.description ? window.__S.DESCRIPTION : undefined,
 	                    contentText: _this2.module.contentData.description, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 320
+	                        lineNumber: 322
 	                    }
 	                })
 	            );
@@ -40011,7 +40012,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 334
+	                        lineNumber: 336
 	                    }
 	                },
 	                dom(TextView, {
@@ -40021,7 +40022,7 @@
 	                    gravity: "center",
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 341
+	                        lineNumber: 343
 	                    }
 	                })
 	            );
@@ -40051,7 +40052,7 @@
 	                overFlowCallback: _this2.overFlowCallback,
 	                showMenu: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 368
+	                    lineNumber: 370
 	                }
 	            });
 	
@@ -40073,7 +40074,25 @@
 	            console.log("overflow");
 	        };
 	
-	        _this2.setIds(['ratingBar', "downloadProgressText", "descriptionContainer", "playButtonContainer", "simpleToolBarOverFlow", "renderPage"]);
+	        _this2.getProgressButton = function () {
+	            return dom(ProgressButton, {
+	                id: _this2.idSet.playButtonContainer,
+	                width: "match_parent",
+	                visibility: "gone",
+	                isCourse: "true",
+	                playContent: _this2.props.localContent,
+	                contentDetails: _this2.module,
+	                changeOverFlowMenu: _this2.handleOverFlowClick,
+	                buttonText: window.__S.DOWNLOAD,
+	                localStatus: _this2.localStatus,
+	                identifier: _this2.module.identifier, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 396
+	                }
+	            });
+	        };
+	
+	        _this2.setIds(['ratingBar', "downloadProgressText", "descriptionContainer", "playButtonContainer", "simpleToolBarOverFlow", "renderPage", "progressButtonContainer"]);
 	        _this2.state = state;
 	        _this2.screenName = "ModuleDetailActivity";
 	        _this2.menuData = {
@@ -40117,7 +40136,7 @@
 	                    clickable: "true",
 	                    root: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 395
+	                        lineNumber: 413
 	                    }
 	                },
 	                dom(
@@ -40130,7 +40149,7 @@
 	                        clickable: "true",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 400
+	                            lineNumber: 418
 	                        }
 	                    },
 	                    dom(
@@ -40141,7 +40160,7 @@
 	                            height: "wrap_content",
 	                            id: this.idSet.simpleToolBarOverFlow, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 407
+	                                lineNumber: 425
 	                            }
 	                        },
 	                        dom(SimpleToolbar, {
@@ -40152,7 +40171,7 @@
 	                            overFlowCallback: this.overFlowCallback,
 	                            showMenu: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 412
+	                                lineNumber: 430
 	                            }
 	                        })
 	                    ),
@@ -40164,7 +40183,7 @@
 	                            width: "match_parent",
 	                            fillViewport: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 421
+	                                lineNumber: 439
 	                            }
 	                        },
 	                        dom(
@@ -40175,35 +40194,31 @@
 	                                orientation: "vertical",
 	                                id: this.idSet.renderPage, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 427
+	                                    lineNumber: 445
 	                                }
 	                            },
 	                            this.getHeader(),
 	                            this.getBody()
 	                        )
 	                    ),
-	                    dom(ProgressButton, {
-	                        id: this.idSet.playButtonContainer,
-	                        width: "match_parent",
-	                        visibility: "gone",
-	                        isCourse: "true",
-	                        playContent: this.props.localContent,
-	                        contentDetails: this.module,
-	                        changeOverFlowMenu: this.handleOverFlowClick,
-	                        buttonText: window.__S.DOWNLOAD,
-	                        localStatus: this.localStatus,
-	                        identifier: this.module.identifier, __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 440
-	                        }
-	                    })
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            id: this.idSet.progressButtonContainer,
+	                            width: "match_parent", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 458
+	                            }
+	                        },
+	                        this.getProgressButton()
+	                    )
 	                ),
 	                dom(SimplePopup, {
 	                    buttonClick: this.onSimplePopClick,
 	                    data: this.simpleData,
 	                    __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 453
+	                        lineNumber: 464
 	                    }
 	                })
 	            );
@@ -46993,7 +47008,7 @@
 	          width: "wrap_content",
 	          height: "wrap_content",
 	          alignParentRight: "true,-1",
-	          padding: "0,8,0,0", __source: {
+	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 342
 	          }
@@ -47175,7 +47190,7 @@
 	                {
 	                  width: "wrap_content",
 	                  height: "wrap_content",
-	                  padding: "0,5,0,0", __source: {
+	                  padding: "0,0,0,0", __source: {
 	                    fileName: _jsxFileName,
 	                    lineNumber: 453
 	                  }
