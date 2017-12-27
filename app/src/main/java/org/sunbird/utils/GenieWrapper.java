@@ -421,6 +421,20 @@ public class GenieWrapper extends Activity {
         });
     }
 
+    public void setAnonymousProfile() {
+        mGenieAsyncService.getUserService().setAnonymousUser(new IResponseHandler<String>() {
+            @Override
+            public void onSuccess(GenieResponse<String> genieResponse) {
+
+            }
+
+            @Override
+            public void onError(GenieResponse<String> genieResponse) {
+
+            }
+        });
+    }
+
     public void importCourse(final String course_id, String isChild) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();

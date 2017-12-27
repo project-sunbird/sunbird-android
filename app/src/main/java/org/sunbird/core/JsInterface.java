@@ -1026,6 +1026,11 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void setAnonymousProfile() {
+        genieWrapper.setAnonymousProfile();
+    }
+
+    @JavascriptInterface
     public void replaceViewPagerItem(final int position, final String viewValues) {
         activity.runOnUiThread(new Runnable() {
             @Override
