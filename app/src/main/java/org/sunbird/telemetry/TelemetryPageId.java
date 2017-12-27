@@ -5,7 +5,7 @@ package org.sunbird.telemetry;
  *
  * @author anil
  */
-public interface TelemetryStageId {
+public interface TelemetryPageId {
 
     String SPLASH_SCREEN = "SplashScreen";
 

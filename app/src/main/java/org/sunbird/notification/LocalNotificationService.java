@@ -11,7 +11,7 @@ import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.SerializableUtil;
 
@@ -51,10 +51,10 @@ public class LocalNotificationService extends IntentService {
                 eksMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.toJson(genieNotification));
                 if (genieNotification.getRelativetime() > 0) { // Do nothing.
 //                    PreferenceUtil.setOnBoardingNotificationState(genieNotification.getRelativetime());
-//                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.LOCAL_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
+//                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOCAL_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
 //                    LocalBroadcastManager.getInstance(this).sendBroadcast(Util.getRefreshNotificationsIntent());
                 } else {
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
                 }
 
                 NotificationManagerUtil notificationManagerUtil = new NotificationManagerUtil(LocalNotificationService.this);

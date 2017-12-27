@@ -41,7 +41,7 @@ import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 if (notification != null) {
                     Map<String, Object> valuesMap = new HashMap<>();
                     valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryStageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_CLICKED, null, valuesMap));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_CLICKED, null, valuesMap));
                     switch (notification.getActionid()) {
                         case NotificationActionId.ANNOUNCEMENT_DETAIL:
                             jsInterface.setInSharedPrefs("screenToOpen", "ANNOUNCEMENT_DETAIL");

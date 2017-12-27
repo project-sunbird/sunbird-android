@@ -16,7 +16,7 @@ import org.sunbird.R;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.telemetry.TelemetryPageId;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -86,7 +86,7 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                                 .putString("refresh_token", refreshToken)
                                 .apply();
 
-                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.LOGIN, TelemetryAction.LOGIN_SUCCESS, jo.get("sub").toString(), null));
+                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOGIN, TelemetryAction.LOGIN_SUCCESS, jo.get("sub").toString(), null));
                     }
 
                     Intent openMain = new Intent(KeyCloakResponseActivity.this, MainActivity.class);

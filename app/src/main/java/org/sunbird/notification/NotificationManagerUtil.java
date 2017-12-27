@@ -22,7 +22,7 @@ import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.utils.AlarmManagerUtil;
 import org.sunbird.utils.Constants;
@@ -61,7 +61,7 @@ public class NotificationManagerUtil {
         //Generate GE_INTERACT event for Server notification received.
         Map<String, Object> valuesMap = new HashMap<>();
         valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryStageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_RECEIVED, null, valuesMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_RECEIVED, null, valuesMap));
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();

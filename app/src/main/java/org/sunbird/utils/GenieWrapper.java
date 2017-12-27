@@ -52,7 +52,7 @@ import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryStageId;
+import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.TelemetryUtil;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.EntityType;
@@ -258,7 +258,7 @@ public class GenieWrapper extends Activity {
             String filter_stageId, correlationId;
             if (type.equals("Combined")) {
                 stageId = COURSE_AND_RESOURCE_SEARCH;
-                filter_stageId = TelemetryStageId.COURSE_AND_RESOURSE_LIST;
+                filter_stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
                 strings = new String[8];
                 strings[0] = "Story";
                 strings[1] = "Game";
@@ -270,12 +270,12 @@ public class GenieWrapper extends Activity {
                 strings[7] = "LessonPlan";
             } else if (type.equals("Course")) {
                 stageId = COURSE_SEARCH;
-                filter_stageId = TelemetryStageId.COURSE_LIST;
+                filter_stageId = TelemetryPageId.COURSE_LIST;
                 strings = new String[1];
                 strings[0] = "Course";
             } else {
                 stageId = RESOURCE_SEARCH;
-                filter_stageId = TelemetryStageId.RESOURCE_LIST;
+                filter_stageId = TelemetryPageId.RESOURCE_LIST;
                 strings = new String[7];
                 strings[0] = "Story";
                 strings[1] = "Game";
@@ -334,19 +334,19 @@ public class GenieWrapper extends Activity {
                         case COURSE_AND_RESOURCE_SEARCH:
                             Util.setCoRelationIdContext(CoRelationIdContext.COURSE_AND_RESOURCE_SEARCH);
                             Util.setCourseandResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryStageId.COURSE_AND_RESOURCE_SEARCH;
+                            stageIdValue = TelemetryPageId.COURSE_AND_RESOURCE_SEARCH;
                             break;
 
                         case COURSE_SEARCH:
                             Util.setCoRelationIdContext(CoRelationIdContext.COURSE_SEARCH);
                             Util.setCourseSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryStageId.COURSE_SEARCH;
+                            stageIdValue = TelemetryPageId.COURSE_SEARCH;
                             break;
 
                         case RESOURCE_SEARCH:
                             Util.setCoRelationIdContext(CoRelationIdContext.RESOURCE_SEARCH);
                             Util.setResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryStageId.RESOURCE_SEARCH;
+                            stageIdValue = TelemetryPageId.RESOURCE_SEARCH;
                             break;
                     }
 
@@ -597,7 +597,7 @@ public class GenieWrapper extends Activity {
         CurrentGame currentGame = new CurrentGame(content.getIdentifier(), String.valueOf(System.currentTimeMillis()), content.getContentType());
         currentGame.setcData(cdata);
         TelemetryUtil.addCurrentGame(currentGame);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryStageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCoRelationList()));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCoRelationList()));
         String mimeType = content.getMimeType();
         if (mimeType.equals("video/x-youtube")) {
             ContentPlayer.play(activity, content, null);

@@ -98,7 +98,7 @@ public class TelemetryBuilder {
         Start start = new Start.Builder()
                 .deviceSpecification(deviceSpec)
                 .loc(locationInfo.getLocation())
-//                .pageId(TelemetryStageId.SPLASH)
+//                .pageId(TelemetryPageId.SPLASH)
                 .type(TelemetryConstant.APP)
                 .build();
 
@@ -116,7 +116,7 @@ public class TelemetryBuilder {
 
         End end = new End.Builder()
                 .duration(timeInSeconds)
-//                .pageId(TelemetryStageId.GENIE_HOME)
+//                .pageId(TelemetryPageId.GENIE_HOME)
                 .type(TelemetryConstant.APP)
                 .build();
 
