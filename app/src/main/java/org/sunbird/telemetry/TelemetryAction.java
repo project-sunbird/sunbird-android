@@ -2,6 +2,9 @@ package org.sunbird.telemetry;
 
 public interface TelemetryAction {
 
+    String BACKGROUND = "background";
+    String RESUME = "resume";
+
     String LOGIN_INITIATE = "Login-Initiate";
     String LOGIN_SUCCESS = "Login-Success";
     String SIGNUP_INITIATE = "Signup-Initiate";

@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         setContentView(R.layout.activity_main);
 
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGenieStartEvent(MainActivity.this));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(MainActivity.this));
 
         String appName = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("orgName", "__failed");
         if (appName.equals("__failed")) {
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     protected void onDestroy() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGenieEndEvent());
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent());
         dynamicUI.addJsToWebView("window.onDestroy()");
         try {
             unbindService(mConnection);

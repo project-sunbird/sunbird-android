@@ -8,6 +8,7 @@ import com.crashlytics.android.Crashlytics;
 import org.ekstep.genieservices.GenieService;
 import org.ekstep.genieservices.commons.db.cache.PreferenceWrapper;
 import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.utils.ForegroundService;
@@ -71,11 +72,11 @@ public class GlobalApplication extends Application implements ForegroundService.
 
     @Override
     public void onSwitchForeground() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildResumeEvent());
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.RESUME));
     }
 
     @Override
     public void onSwitchBackground() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent());
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.BACKGROUND));
     }
 }
