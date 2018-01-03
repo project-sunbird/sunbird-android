@@ -31,6 +31,7 @@ import java.util.Map;
  * All the events related to interaction.
  */
 public class TelemetryBuilder {
+    private static String TAG = "TelemetryBuilder";
 
 //    private static GEInteract buildGEInteract(InteractionType interactionType, String stageId, String subType, String id, List<Map<String, Object>> values, List<CorrelationData> coRelationList) {
 //        GEInteract geInteract = new GEInteract.Builder()
@@ -124,32 +125,48 @@ public class TelemetryBuilder {
     }
 
     //////////////  IMPRESSION EVENT    ////////////////////////
-    public static Impression buildImpressionEvent(String pageId, String type) {
+    public static Impression buildImpressionEvent(String type, String pageId) {
         Impression impression = new Impression.Builder().pageId(pageId).type(type).build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
 
-    public static Impression buildImpressionEvent(String pageId, String type, String subType) {
+    public static Impression buildImpressionEvent(String type, String subType, String pageId) {
         Impression impression = new Impression.Builder().pageId(pageId).type(type).subType(subType).build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
 
-    public static Impression buildImpressionEvent(String pageId, String type, String subType, List<CorrelationData> cdata) {
+    public static Impression buildImpressionEvent(String type, String subType, String pageId, List<CorrelationData> cdata) {
         Impression impression = new Impression.Builder().pageId(pageId).type(type).subType(subType).correlationData(cdata).build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
 
-    public static Impression buildImpressionEvent(String pageId, String type, String subType, String id, String objType, String objVer) {
-        Visit visit = new Visit(id, objType);
-        visit.setObjver(objVer);
-        Impression impression = new Impression.Builder().pageId(pageId).type(type).subType(subType).addVisit(visit).build();
+    public static Impression buildImpressionEvent(String type, String subType, String pageId, String objId, String objType, String objVersion) {
+        Impression impression = new Impression.Builder()
+                .pageId(pageId)
+                .type(type)
+                .subType(subType)
+                .objectId(objId)
+                .objectType(objType)
+                .objectVersion(objVersion)
+                .build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
 
-    public static Impression buildImpressionEvent(String pageId, String type, String subType, String id, String objType, String objVersion, List<CorrelationData> cdata) {
-        Visit visit = new Visit(id, objType);
-        visit.setObjver(objVersion);
-        Impression impression = new Impression.Builder().pageId(pageId).type(type).subType(subType).addVisit(visit).correlationData(cdata).build();
+    public static Impression buildImpressionEvent(String type, String subType, String pageId, String objId, String objType, String objVersion, List<CorrelationData> cdata) {
+        Impression impression = new Impression.Builder()
+                .pageId(pageId)
+                .type(type)
+                .subType(subType)
+                .objectId(objId)
+                .objectType(objType)
+                .objectVersion(objVersion)
+                .correlationData(cdata)
+                .build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
 
@@ -164,7 +181,11 @@ public class TelemetryBuilder {
     public static Log buildLogEvent(String pageId, String type, String message, Map<String, Object> params) {
         Log.Builder log = new Log.Builder();
         for (Map.Entry<String, Object> entry : params.entrySet()) {
-            log.addParam(entry.getKey(), entry.getValue()).pageId(pageId).type(type).level(Log.Level.INFO).message(message);
+            log.addParam(entry.getKey(), entry.getValue())
+                    .pageId(pageId)
+                    .type(type)
+                    .level(Log.Level.INFO)
+                    .message(message);
         }
         return log.build();
     }
@@ -180,41 +201,92 @@ public class TelemetryBuilder {
      * @return
      */
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId) {
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).resourceId(pageId).build();
+        Interact interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .resourceId(pageId).build();
+        android.util.Log.d(TAG, "buildInteractEvent: " + interact.toString());
         return interact;
     }
 
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values) {
-        List<Map<String, Object>> valuesList = new ArrayList<>();
-        valuesList.add(values);
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).values(valuesList).resourceId(pageId).build();
-        return interact;
+        Interact.Builder interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .resourceId(pageId);
+
+        for (Map.Entry<String, Object> entry : values.entrySet()) {
+            interact.addValue(entry.getKey(), entry.getValue());
+        }
+
+        Interact i = interact.build();
+        android.util.Log.d(TAG, "buildInteractEvent: " + i.toString());
+        return i;
     }
 
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, List<CorrelationData> cdata) {
-        List<Map<String, Object>> valuesList = new ArrayList<>();
-        valuesList.add(values);
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).values(valuesList).correlationData(cdata).resourceId(pageId).build();
-        return interact;
+        Interact.Builder interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .correlationData(cdata)
+                .resourceId(pageId);
+
+        for (Map.Entry<String, Object> entry : values.entrySet()) {
+            interact.addValue(entry.getKey(), entry.getValue());
+        }
+        android.util.Log.d(TAG, "buildInteractEvent: " + interact.build().toString());
+        return interact.build();
     }
 
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, String id, String objType, String objVersion) {
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).objectId(id).objectType(objType).objectVersion(objVersion).resourceId(pageId).build();
+        Interact interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .objectId(id)
+                .objectType(objType)
+                .objectVersion(objVersion)
+                .resourceId(pageId).build();
+        android.util.Log.d(TAG, "buildInteractEvent: " + interact.toString());
         return interact;
     }
 
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String id, String objType, String objVersion) {
-        List<Map<String, Object>> valuesList = new ArrayList<>();
-        valuesList.add(values);
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).values(valuesList).objectId(id).objectType(objType).objectVersion(objVersion).resourceId(pageId).build();
-        return interact;
+        Interact.Builder interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .objectId(id)
+                .objectType(objType)
+                .objectVersion(objVersion)
+                .resourceId(pageId);
+
+        for (Map.Entry<String, Object> entry : values.entrySet()) {
+            interact.addValue(entry.getKey(), entry.getValue());
+        }
+        android.util.Log.d(TAG, "buildInteractEvent: " + interact.build().toString());
+        return interact.build();
     }
 
     public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String id, String objType, String objVersion, List<CorrelationData> cdata) {
-        List<Map<String, Object>> valuesList = new ArrayList<>();
-        valuesList.add(values);
-        Interact interact = new Interact.Builder().interactionType(type).subType(subType).pageId(pageId).values(valuesList).objectId(id).objectType(objType).objectVersion(objVersion).resourceId(pageId).correlationData(cdata).build();
-        return interact;
+        Interact.Builder interact = new Interact.Builder()
+                .interactionType(type)
+                .subType(subType)
+                .pageId(pageId)
+                .objectId(id)
+                .objectType(objType)
+                .objectVersion(objVersion)
+                .resourceId(pageId)
+                .correlationData(cdata);
+
+        for (Map.Entry<String, Object> entry : values.entrySet()) {
+            interact.addValue(entry.getKey(), entry.getValue());
+        }
+        android.util.Log.d(TAG, "buildInteractEvent: " + interact.build().toString());
+        return interact.build();
     }
 
     private static List<Map<String, Object>> buildValueList(Map<String, Object> values) {

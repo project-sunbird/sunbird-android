@@ -15,11 +15,14 @@ import org.sunbird.BuildConfig;
 import org.sunbird.R;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
+import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -85,8 +88,9 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                                 .putString("user_access_token", jwtToken)
                                 .putString("refresh_token", refreshToken)
                                 .apply();
-
-                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOGIN, TelemetryAction.LOGIN_SUCCESS, jo.get("sub").toString(), null));
+                        Map<String, Object> vals = new HashMap<>();
+                        vals.put(TelemetryConstant.UID, jo.get("sub").toString());
+                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.LOGIN_SUCCESS, TelemetryPageId.LOGIN, vals));
                     }
 
                     Intent openMain = new Intent(KeyCloakResponseActivity.this, MainActivity.class);

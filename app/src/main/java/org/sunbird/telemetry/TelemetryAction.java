@@ -23,6 +23,7 @@ public interface TelemetryAction {
     String PREVIEW_LOGIN = "Preview-Login";
     String FLAG_INITIATE = "Flag-Initiate";
     String FLAG_SUCCESS = "Flag-Success";
+    String FLAG_FAILED = "Flag-Failed";
     String CONTENT_PLAY = "ContentPlay";
     String CONTENT_CLICKED = "ContentClicked";
     String SEARCH_PHRASE = "SearchPhrase";
@@ -32,5 +33,5 @@ public interface TelemetryAction {
     String NOTIFICATION_DISPLAYED = "Notification-Displayed";
     String NOTIFICATION_CLICKED = "Notification-Clicked";
 
-    String ANNOUNCEMENT_CLICKED = "AnnouncementClicked";
+    String ANNOUNCEMENT_CLICKED = "Announcement-Clicked";
 }

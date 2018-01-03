@@ -353,8 +353,8 @@ public class GenieWrapper extends Activity {
                     Map<String, Object> values = new HashMap<>();
                     values.put(TelemetryConstant.SEARCH_RESULTS, list.size());
                     values.put(TelemetryConstant.SEARCH_CRITERIA, contentSearchResult.getRequest());
-
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageIdValue, EntityType.SEARCH_PHRASE, query, values, Util.getCoRelationList()));
+                    //TODO Telemetry
+//                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageIdValue, EntityType.SEARCH_PHRASE, query, values, Util.getCoRelationList()));
                 }
 
                 @Override
@@ -597,7 +597,8 @@ public class GenieWrapper extends Activity {
         CurrentGame currentGame = new CurrentGame(content.getIdentifier(), String.valueOf(System.currentTimeMillis()), content.getContentType());
         currentGame.setcData(cdata);
         TelemetryUtil.addCurrentGame(currentGame);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCoRelationList()));
+        //TODO Telemetry
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCoRelationList()));
         String mimeType = content.getMimeType();
         if (mimeType.equals("video/x-youtube")) {
             ContentPlayer.play(activity, content, null);

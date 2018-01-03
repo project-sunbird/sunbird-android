@@ -87,6 +87,8 @@ import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.EntityType;
+import org.sunbird.telemetry.enums.ImpressionType;
+import org.sunbird.telemetry.enums.ObjectType;
 import org.sunbird.ui.ListViewAdapter;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.ui.MyRecyclerViewAdapter;
@@ -223,7 +225,7 @@ public class JsInterface {
     @JavascriptInterface
     public void keyCloakLogin(final String OAUTH_URL, final String CLIENT_ID) {
 
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.LOGIN, TelemetryAction.LOGIN_INITIATE, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.LOGIN_INITIATE, TelemetryPageId.LOGIN));
 
         CustomTabsIntent.Builder mBuilder = new CustomTabsIntent.Builder(getSession());
         CustomTabsIntent mIntent = mBuilder.build();
@@ -234,7 +236,7 @@ public class JsInterface {
         mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         mIntent.launchUrl(activity, Uri.parse(keyCloackAuthUrl));
 
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.LOGIN));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryPageId.LOGIN));
     }
 
     @JavascriptInterface
@@ -702,7 +704,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logSignUpInitiation() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SIGNUP, TelemetryAction.SIGNUP_INITIATE, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryPageId.SIGNUP, TelemetryAction.SIGNUP_INITIATE, null, null));
     }
 
     @JavascriptInterface
@@ -712,27 +714,31 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logLogoutInitiate(String user_token) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.LOGOUT, TelemetryAction.LOGOUT_INITIATE, user_token, null));
+        Map<String, Object> vals = new HashMap<>();
+        vals.put(TelemetryConstant.UID, user_token);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.LOGOUT_INITIATE, TelemetryPageId.LOGOUT, vals));
     }
 
     @JavascriptInterface
     public void logLogoutSuccess(String user_token) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOGOUT, TelemetryAction.LOGOUT_SUCCESS, user_token, null));
+        Map<String, Object> vals = new HashMap<>();
+        vals.put(TelemetryConstant.UID, user_token);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.LOGOUT_SUCCESS, TelemetryPageId.LOGOUT, vals));
     }
 
     @JavascriptInterface
-    public void logResourceDetailScreenEvent(String identifier) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryPageId.RESOURCE_HOME, null, identifier, null));
+    public void logResourceDetailScreenEvent(String identifier, String pkgVersion) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.DETAIL, null, TelemetryPageId.RESOURCE_HOME, identifier, ObjectType.CONTENT, pkgVersion, null));
     }
 
     @JavascriptInterface
-    public void logCourseDetailScreenEvent(String identifier) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryPageId.COURSE_HOME, null, identifier, null));
+    public void logCourseDetailScreenEvent(String identifier, String pkgVersion) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.DETAIL, null, TelemetryPageId.COURSE_HOME, identifier, ObjectType.CONTENT, pkgVersion, null));
     }
 
     @JavascriptInterface
-    public void logContentDetailScreenEvent(String identifier) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryPageId.CONTENT_DETAIL, null, identifier, null));
+    public void logContentDetailScreenEvent(String identifier, String pkgVersion) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.DETAIL, null, TelemetryPageId.CONTENT_DETAIL, identifier, ObjectType.CONTENT, pkgVersion, null));
     }
 
     @JavascriptInterface
@@ -748,7 +754,7 @@ public class JsInterface {
                 Util.setCoRelationType(CoRelationIdContext.COURSE_PAGE);
                 Util.setCoursePageAssembleApiResponseMessageId(id);
                 break;
-            case "RESOURCES":
+            case "LIBRARY":
                 Util.setCoRelationType(ctype);
                 Util.setCoRelationType(CoRelationIdContext.RESOURCE_PAGE);
                 Util.setResourcePageAssembleApiResponseMessageId(id);
@@ -761,109 +767,109 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logListViewScreenEvent(String type, int count, String criteria) {
-        String stageId = "";
-        switch (type) {
-            case "HOME":
-                stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
-                break;
-            case "COURSES":
-                stageId = TelemetryPageId.COURSE_LIST;
-                break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCE_LIST;
-                break;
-        }
-        Map<String, Object> eksMap = new HashMap<>();
-        eksMap.put(TelemetryConstant.SEARCH_RESULTS, count);
-        eksMap.put(TelemetryConstant.SEARCH_CRITERIA, criteria);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.SHOW, stageId, EntityType.SEARCH_PHRASE, "", eksMap, Util.getCoRelationList()));
+//        String stageId = "";
+//        switch (type) {
+//            case "HOME":
+//                stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
+//                break;
+//            case "COURSES":
+//                stageId = TelemetryPageId.COURSE_LIST;
+//                break;
+//            case "LIBRARY":
+//                stageId = TelemetryPageId.RESOURCE_LIST;
+//                break;
+//        }
+//        Map<String, Object> eksMap = new HashMap<>();
+//        eksMap.put(TelemetryConstant.SEARCH_RESULTS, count);
+//        eksMap.put(TelemetryConstant.SEARCH_CRITERIA, criteria);
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.SHOW, stageId, EntityType.SEARCH_PHRASE, "", eksMap, Util.getCoRelationList()));
     }
 
     @JavascriptInterface
     public void logContentClickEvent(String type, int position, String phrase, String contentId) {
-        String stageId = "";
-        switch (type) {
-            case "HOME":
-                stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
-                break;
-            case "COURSES":
-                stageId = TelemetryPageId.COURSE_LIST;
-                break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCE_LIST;
-                break;
-        }
-        Map<String, Object> eksMap = new HashMap<>();
-        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
-        eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCoRelationList()));
+//        String stageId = "";
+//        switch (type) {
+//            case "HOME":
+//                stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
+//                break;
+//            case "COURSES":
+//                stageId = TelemetryPageId.COURSE_LIST;
+//                break;
+//            case "LIBRARY":
+//                stageId = TelemetryPageId.RESOURCE_LIST;
+//                break;
+//        }
+//        Map<String, Object> eksMap = new HashMap<>();
+//        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
+//        eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCoRelationList()));
     }
 
     @JavascriptInterface
     public void logCardClickEvent(String type, int position, String sectionName, String contentId) {
-        String stageId = "";
-        switch (type) {
-            case "HOME":
-                stageId = TelemetryPageId.HOME;
-                break;
-            case "COURSES":
-                stageId = TelemetryPageId.COURSES;
-                break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCES;
-                break;
-        }
-        Map<String, Object> eksMap = new HashMap<>();
-        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
-        eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCoRelationList()));
+//        String stageId = "";
+//        switch (type) {
+//            case "HOME":
+//                stageId = TelemetryPageId.HOME;
+//                break;
+//            case "COURSES":
+//                stageId = TelemetryPageId.COURSES;
+//                break;
+//            case "LIBRARY":
+//                stageId = TelemetryPageId.LIBRARY;
+//                break;
+//        }
+//        Map<String, Object> eksMap = new HashMap<>();
+//        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
+//        eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCoRelationList()));
     }
 
     @JavascriptInterface
     public void logViewAllClickEvent(String type, String sectionName) {
-        String stageId = "", subType = "";
+        String pageId = TelemetryPageId.HOME, subType = "";
         switch (type) {
             case "HOME":
-                stageId = TelemetryPageId.HOME;
+                pageId = TelemetryPageId.HOME;
                 break;
             case "COURSES":
-                stageId = TelemetryPageId.COURSES;
+                pageId = TelemetryPageId.COURSES;
                 break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCES;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
                 break;
 
         }
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.SECTION_NAME, sectionName);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, type, TelemetryAction.VIEWALL_CLICKED, null, eksMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.VIEWALL_CLICKED, pageId, eksMap));
     }
 
     @JavascriptInterface
     public void logTabClickEvent(String type) {
-        String stageId = "", subType = "";
+        String pageId = TelemetryPageId.HOME, subType = "";
         switch (type) {
             case "HOME":
-                stageId = TelemetryPageId.HOME;
+                pageId = TelemetryPageId.HOME;
                 break;
             case "COURSES":
-                stageId = TelemetryPageId.COURSES;
+                pageId = TelemetryPageId.COURSES;
                 break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCES;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
                 break;
             case "GROUPS":
-                stageId = TelemetryPageId.GROUPS;
+                pageId = TelemetryPageId.GROUPS;
                 break;
             case "PROFILE":
-                stageId = TelemetryPageId.PROFILE;
+                pageId = TelemetryPageId.PROFILE;
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageId, TelemetryAction.TAB_CLICKED, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.TAB_CLICKED, pageId));
     }
 
     @JavascriptInterface
     public void logTabScreenEvent(String type) {
-        String stageId = "";
+        String stageId = TelemetryPageId.HOME;
         switch (type) {
             case "HOME":
                 stageId = TelemetryPageId.HOME;
@@ -871,8 +877,8 @@ public class JsInterface {
             case "COURSES":
                 stageId = TelemetryPageId.COURSES;
                 break;
-            case "RESOURCES":
-                stageId = TelemetryPageId.RESOURCES;
+            case "LIBRARY":
+                stageId = TelemetryPageId.LIBRARY;
                 break;
             case "GROUPS":
                 stageId = TelemetryPageId.GROUPS;
@@ -880,80 +886,92 @@ public class JsInterface {
             case "PROFILE":
                 stageId = TelemetryPageId.PROFILE;
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(stageId));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, stageId));
     }
 
-    @JavascriptInterface
-    public void logShareClickEvent(String type) {
-        String subType = "";
-        if (type.equals("LINK")) {
-//            subType = TelemetryAction.SHARE_LINK;
-        } else {
-//            subType = TelemetryAction.SHARE_FILE;
-        }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SHARE, subType, null, null));
-    }
+//    @JavascriptInterface
+//    public void logShareClickEvent(String type) {
+//        String subType = "";
+//        if (type.equals("LINK")) {
+////            subType = TelemetryAction.SHARE_LINK;
+//        } else {
+////            subType = TelemetryAction.SHARE_FILE;
+//        }
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SHARE, subType, null, null));
+//    }
 
     @JavascriptInterface
-    public void logShareContentSuccessEvent(String type, String identifier) {
+    public void logShareContentSuccessEvent(String type, String contentType, String identifier) {
+        Map<String, Object> vals = new HashMap<>();
+        vals.put(TelemetryConstant.CONTENT_TYPE, contentType);
+        vals.put(TelemetryConstant.CONTENT_ID, identifier);
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.COURSE_HOME, TelemetryAction.SHARE_COURSE_SUCCESS, identifier, null));
-        } else if (type.equals("RESOURCES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.RESOURCE_HOME, TelemetryAction.SHARE_RESOURCE_SUCCESS, identifier, null));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_SUCCESS, TelemetryPageId.COURSE_HOME, vals));
+        } else if (type.equals("LIBRARY")) {
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_RESOURCE_SUCCESS, TelemetryPageId.RESOURCE_HOME, vals));
         }
     }
 
     @JavascriptInterface
-    public void logShareContentInitiateEvent(String type, String identifier) {
+    public void logShareContentInitiateEvent(String type, String contentType, String identifier, String pkgVersion) {
+        Map<String, Object> vals = new HashMap<>();
+        vals.put(TelemetryConstant.CONTENT_TYPE, contentType);
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.COURSE_HOME, TelemetryAction.SHARE_COURSE_INITIATED, identifier, null));
-        } else if (type.equals("RESOURCES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.RESOURCE_HOME, TelemetryAction.SHARE_RESOURCE_INITIATED, identifier, null));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_INITIATED, TelemetryPageId.COURSE_HOME, vals, identifier, ObjectType.CONTENT, pkgVersion));
+        } else if (type.equals("LIBRARY")) {
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_RESOURCE_INITIATED, TelemetryPageId.RESOURCE_HOME, vals, identifier, ObjectType.CONTENT, pkgVersion));
         }
     }
 
     @JavascriptInterface
-    public void logshareScreenEvent() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.SHARE));
+    public void logshareScreenEvent(String contentId, String pkgVersion) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.SHARE, contentId, ObjectType.CONTENT, pkgVersion, null));
     }
 
     @JavascriptInterface
     public void logsplashScreenEvent() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.SPLASH_SCREEN));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryPageId.SPLASH_SCREEN));
     }
 
     @JavascriptInterface
-    public void logFlagClickInitiateEvent(String type, String reason, String comment, String contentId) {
+        public void logFlagClickInitiateEvent(String type, String reason, String comment, String contentId, String contentType, String pkgVersion) {
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.REASON, reason);
         eksMap.put(TelemetryConstant.COMMENT, comment);
-        String stageId = "";
+        eksMap.put(TelemetryConstant.CONTENT_TYPE, contentType);
+        String pageId = "";
         if (type.equals("COURSES")) {
-            stageId = TelemetryPageId.COURSE_HOME;
-        } else if (type.equals("RESOURCES")) {
-            stageId = TelemetryPageId.RESOURCE_HOME;
+            pageId = TelemetryPageId.COURSE_HOME;
+        } else if (type.equals("LIBRARY")) {
+            pageId = TelemetryPageId.RESOURCE_HOME;
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageId, TelemetryAction.FLAG_INITIATE, contentId, eksMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.FLAG_INITIATE, pageId, eksMap, contentId, ObjectType.CONTENT, pkgVersion));
     }
 
     @JavascriptInterface
-    public void logFlagScreenEvent(String type) {
+    public void logFlagScreenEvent(String type, String contentId, String pkgVersion) {
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.COURSE_HOME_FLAG));
-        } else if (type.equals("RESOURCES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.RESOURCE_HOME_FLAG));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.COURSE_HOME_FLAG, contentId, ObjectType.CONTENT, pkgVersion));
+        } else if (type.equals("LIBRARY")) {
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.RESOURCE_HOME_FLAG, contentId, ObjectType.CONTENT, pkgVersion));
         }
     }
 
     @JavascriptInterface
-    public void logFlagClickEvent(String identifier, String type) {
-        String stageId = "";
+    public void logFlagStatusEvent(String identifier, String type, Boolean status, String pkgVersion) {
+        String pageId = "", subType;
         if (type.equals("COURSES")) {
-            stageId = TelemetryPageId.COURSE_HOME_FLAG;
-        } else if (type.equals("RESOURCES")) {
-            stageId = TelemetryPageId.RESOURCE_HOME_FLAG;
+            pageId = TelemetryPageId.COURSE_HOME_FLAG;
+        } else if (type.equals("LIBRARY")) {
+            pageId = TelemetryPageId.RESOURCE_HOME_FLAG;
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, stageId, TelemetryAction.FLAG_SUCCESS, identifier, null));
+        if (status)
+            subType = TelemetryAction.FLAG_SUCCESS;
+        else
+            subType = TelemetryAction.FLAG_FAILED;
+        Map<String, Object> eksMap = new HashMap<>();
+        eksMap.put(TelemetryConstant.CONTENT_TYPE, type);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, pageId, subType, eksMap, identifier, ObjectType.CONTENT, pkgVersion));
     }
 
     @JavascriptInterface
@@ -969,38 +987,38 @@ public class JsInterface {
     @JavascriptInterface
     public void logPageFilterScreenEvent(String type) {
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.COURSE_PAGE_FILTER));
-        } else if (type.equals("RESOURCES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(TelemetryPageId.RESOURCE_PAGE_FILTER));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryPageId.COURSE_PAGE_FILTER));
+        } else if (type.equals("LIBRARY")) {
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryPageId.RESOURCE_PAGE_FILTER));
         }
     }
 
     @JavascriptInterface
     public void logPageFilterClickEvent(String type) {
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.COURSE_PAGE_FILTER, TelemetryAction.CANCEL, null, null));
-        } else if (type.equals("RESOURCES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.RESOURCE_PAGE_FILTER, TelemetryAction.CANCEL, null, null));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.CANCEL, TelemetryPageId.COURSE_PAGE_FILTER));
+        } else if (type.equals("LIBRARY")) {
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.CANCEL, TelemetryPageId.RESOURCE_PAGE_FILTER));
         }
     }
 
     @JavascriptInterface
     public void logAnnouncementListShow() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryPageId.ANNOUNCEMENT_LIST, null, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryPageId.ANNOUNCEMENT_LIST));
     }
 
     @JavascriptInterface
     public void logAnnouncementClicked(String from, String announcementId, String pos) {
-        String stageid = TelemetryPageId.ANNOUNCEMENT_LIST;
-        if (from.equals("HOME")) stageid = TelemetryPageId.HOME;
+        String pageId = TelemetryPageId.ANNOUNCEMENT_LIST;
+        if (from.equals("HOME")) pageId = TelemetryPageId.HOME;
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.POSISTION, pos);
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, stageid, TelemetryAction.ANNOUNCEMENT_CLICKED, announcementId, eksMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.ANNOUNCEMENT_CLICKED, pageId, eksMap, announcementId, ObjectType.ANNOUNCEMENT, null));
     }
 
     @JavascriptInterface
     public void logAnnouncementDeatilScreen(String announcementId) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.SHOW, TelemetryPageId.ANNOUNCEMENT_DETAIL, null, announcementId, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.ANNOUNCEMENT_DETAIL, announcementId, ObjectType.ANNOUNCEMENT, null, null));
     }
 
     @JavascriptInterface
@@ -1175,7 +1193,7 @@ public class JsInterface {
                     View.OnClickListener onclickListener = new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            logShareContentSuccessEvent(type, identifier);
+                            logShareContentSuccessEvent(type, contentType, identifier);
                             if (view instanceof ImageView) {
                                 ImageView imageV = (ImageView) view;
                                 Intent shareIntent = new Intent();

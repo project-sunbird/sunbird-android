@@ -17,7 +17,7 @@ public interface TelemetryPageId {
     String RESOURCE_SEARCH = "ResourceSearch";
     String HOME = "Home";
     String COURSES = "Courses";
-    String RESOURCES = "Resources";
+    String LIBRARY = "Library";
     String GROUPS = "Groups";
     String PROFILE = "Profile";
     String COURSE_PAGE_FILTER = "CoursePageFilter";
@@ -35,10 +35,10 @@ public interface TelemetryPageId {
     String RESOURCE_LIST = "ResourceList";
     String FILTERS = "Filters";
 
-    String SERVER_NOTIFICATION = "Server-Notification";
+    String SERVER_NOTIFICATION = "ServerNotification";
 
-    String ANNOUNCEMENT_LIST = "Announcement-List";
-    String ANNOUNCEMENT_DETAIL = "Announcement-Detail";
+    String ANNOUNCEMENT_LIST = "AnnouncementList";
+    String ANNOUNCEMENT_DETAIL = "AnnouncementDetail";
 //    String FLAG = "Flag";
 //    String COURSES_VIEW_ALL = "CoursesViewAll";
 //    String MY_COURSES_VIEW_ALL = "MyCoursesViewAll";

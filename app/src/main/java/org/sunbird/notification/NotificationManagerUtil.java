@@ -61,7 +61,7 @@ public class NotificationManagerUtil {
         //Generate GE_INTERACT event for Server notification received.
         Map<String, Object> valuesMap = new HashMap<>();
         valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_RECEIVED, null, valuesMap));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_RECEIVED, TelemetryPageId.SERVER_NOTIFICATION, valuesMap));
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();

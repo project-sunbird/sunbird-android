@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 if (notification != null) {
                     Map<String, Object> valuesMap = new HashMap<>();
                     valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION_CLICKED, null, valuesMap));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.NOTIFICATION_CLICKED, TelemetryPageId.SERVER_NOTIFICATION, valuesMap));
                     switch (notification.getActionid()) {
                         case NotificationActionId.ANNOUNCEMENT_DETAIL:
                             jsInterface.setInSharedPrefs("screenToOpen", "ANNOUNCEMENT_DETAIL");

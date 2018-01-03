@@ -20,4 +20,10 @@ public interface TelemetryConstant {
     String NOTIFICATION_DATA = "NotificationData";
 
     String POSISTION = "Position";
+
+    String UID = "UID";
+    String CONTENT_TYPE = "contentType";
+    String CONTENT_ID = "contentId";
+
+    String ANNOUNCEMENT_ID = "AnnouncementId";
 }

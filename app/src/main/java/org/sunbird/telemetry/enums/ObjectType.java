@@ -11,8 +11,9 @@ import java.lang.annotation.RetentionPolicy;
  * @author anil
  */
 @Retention(RetentionPolicy.SOURCE)
-@StringDef({ObjectType.CONTENT, ObjectType.USER})
+@StringDef({ObjectType.CONTENT, ObjectType.USER, ObjectType.ANNOUNCEMENT})
 public @interface ObjectType {
     String CONTENT = "Content";
     String USER = "User";
+    String ANNOUNCEMENT = "Announcement";
 }
