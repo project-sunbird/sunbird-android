@@ -33,7 +33,6 @@ import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.HierarchyInfo;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
-import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.CollectionUtil;
@@ -48,14 +47,10 @@ import org.json.JSONObject;
 import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
-import org.sunbird.telemetry.TelemetryAction;
-import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
-import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.TelemetryUtil;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
-import org.sunbird.telemetry.enums.EntityType;
 import org.sunbird.ui.MainActivity;
 
 import java.io.File;
@@ -258,7 +253,7 @@ public class GenieWrapper extends Activity {
             String filter_stageId, correlationId;
             if (type.equals("Combined")) {
                 stageId = COURSE_AND_RESOURCE_SEARCH;
-                filter_stageId = TelemetryPageId.COURSE_AND_RESOURSE_LIST;
+                filter_stageId = TelemetryPageId.COURSE_AND_LIBRARY_LIST;
                 strings = new String[8];
                 strings[0] = "Story";
                 strings[1] = "Game";
@@ -275,7 +270,7 @@ public class GenieWrapper extends Activity {
                 strings[0] = "Course";
             } else {
                 stageId = RESOURCE_SEARCH;
-                filter_stageId = TelemetryPageId.RESOURCE_LIST;
+                filter_stageId = TelemetryPageId.LIBRARY_LIST;
                 strings = new String[7];
                 strings[0] = "Story";
                 strings[1] = "Game";
@@ -334,7 +329,7 @@ public class GenieWrapper extends Activity {
                         case COURSE_AND_RESOURCE_SEARCH:
                             Util.setCoRelationIdContext(CoRelationIdContext.COURSE_AND_RESOURCE_SEARCH);
                             Util.setCourseandResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryPageId.COURSE_AND_RESOURCE_SEARCH;
+                            stageIdValue = TelemetryPageId.COURSE_AND_LIBRARY_SEARCH;
                             break;
 
                         case COURSE_SEARCH:
@@ -346,7 +341,7 @@ public class GenieWrapper extends Activity {
                         case RESOURCE_SEARCH:
                             Util.setCoRelationIdContext(CoRelationIdContext.RESOURCE_SEARCH);
                             Util.setResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryPageId.RESOURCE_SEARCH;
+                            stageIdValue = TelemetryPageId.LIBRARY_SEARCH;
                             break;
                     }
 

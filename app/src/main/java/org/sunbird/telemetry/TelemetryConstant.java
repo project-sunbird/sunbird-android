@@ -24,6 +24,6 @@ public interface TelemetryConstant {
     String UID = "UID";
     String CONTENT_TYPE = "contentType";
     String CONTENT_ID = "contentId";
-
+    String PRESENT_ON_DEVICE = "presentOnDevice";
     String ANNOUNCEMENT_ID = "AnnouncementId";
 }

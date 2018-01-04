@@ -254,12 +254,12 @@ public class TelemetryBuilder {
         return interact;
     }
 
-    public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String id, String objType, String objVersion) {
+    public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String objId, String objType, String objVersion) {
         Interact.Builder interact = new Interact.Builder()
                 .interactionType(type)
                 .subType(subType)
                 .pageId(pageId)
-                .objectId(id)
+                .objectId(objId)
                 .objectType(objType)
                 .objectVersion(objVersion)
                 .resourceId(pageId);
