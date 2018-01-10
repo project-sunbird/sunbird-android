@@ -42,6 +42,8 @@ import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
+import org.sunbird.telemetry.enums.ContextEnvironment;
+import org.sunbird.telemetry.enums.Workflow;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         setContentView(R.layout.activity_main);
 
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(MainActivity.this));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(MainActivity.this, Workflow.APP, null, ContextEnvironment.HOME, null, null, null, null));
 
         String appName = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("orgName", "__failed");
         if (appName.equals("__failed")) {
@@ -266,7 +268,14 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     protected void onDestroy() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent());
+        long timeInSeconds = 0;
+        long startTime = GlobalApplication.getPreferenceWrapper().getLong(PreferenceKey.APPLICATION_START_TIME, 0);
+
+        if (startTime > 0) {
+            long timeDifference = System.currentTimeMillis() - startTime;
+            timeInSeconds = (timeDifference / 1000);
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(timeInSeconds, Workflow.APP, null, ContextEnvironment.HOME, null, null, null, null));
         dynamicUI.addJsToWebView("window.onDestroy()");
         try {
             unbindService(mConnection);

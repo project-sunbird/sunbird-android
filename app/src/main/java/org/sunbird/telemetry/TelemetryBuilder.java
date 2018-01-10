@@ -108,16 +108,8 @@ public class TelemetryBuilder {
 
     public static End buildEndEvent(long duration, String type, String mode, String env, String pageId, String objId, String objType, String objVersion) {
         // TODO: 1/10/2018  - Handle all the parameter
-        long timeInSeconds = 0;
-        long startTime = GlobalApplication.getPreferenceWrapper().getLong(PreferenceKey.APPLICATION_START_TIME, 0);
-
-        if (startTime > 0) {
-            long timeDifference = System.currentTimeMillis() - startTime;
-            timeInSeconds = (timeDifference / 1000);
-        }
-
         End end = new End.Builder()
-                .duration(timeInSeconds)
+                .duration(duration)
 //                .pageId(TelemetryPageId.GENIE_HOME)
                 .type(TelemetryConstant.APP)
                 .build();
