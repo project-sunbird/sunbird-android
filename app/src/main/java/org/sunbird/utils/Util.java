@@ -102,20 +102,20 @@ public class Util {
     public static List<CorrelationData> getCoRelationList() {
         List<CorrelationData> cdata = null;
         String coRelationContext = getCoRelationIdContext();
-        String coRelationId = null;
+        String coRelationId;
         if (!StringUtil.isNullOrEmpty(coRelationContext)) {
             coRelationId = getCoRelationId();
             if (!StringUtil.isNullOrEmpty(coRelationId)) {
                 String coRelationType = CoRelationType.API + "-" + getCoRelationType();
-                CorrelationData corelationData = new CorrelationData(coRelationId, coRelationType);
-                cdata = getCdata(corelationData);
+                CorrelationData correlationData = new CorrelationData(coRelationId, coRelationType);
+                cdata = getCdata(correlationData);
             }
         }
 
         return cdata;
     }
 
-    public static List<CorrelationData> getCdata(CorrelationData... correlationData) {
+    private static List<CorrelationData> getCdata(CorrelationData... correlationData) {
         List<CorrelationData> cdata = new ArrayList<>();
 
         for (CorrelationData data : correlationData) {
@@ -126,7 +126,7 @@ public class Util {
     }
 
     /**
-     * Get cuurent game.
+     * Get current game.
      *
      * @return
      */

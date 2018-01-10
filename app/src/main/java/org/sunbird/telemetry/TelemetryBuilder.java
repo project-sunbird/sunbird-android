@@ -14,7 +14,6 @@ import org.ekstep.genieservices.commons.bean.telemetry.Interact;
 import org.ekstep.genieservices.commons.bean.telemetry.Interrupt;
 import org.ekstep.genieservices.commons.bean.telemetry.Log;
 import org.ekstep.genieservices.commons.bean.telemetry.Start;
-import org.ekstep.genieservices.commons.bean.telemetry.Visit;
 import org.ekstep.genieservices.utils.DeviceSpec;
 import org.sunbird.GlobalApplication;
 import org.sunbird.utils.PreferenceKey;
@@ -63,7 +62,8 @@ public class TelemetryBuilder {
         return interrupt;
     }
 
-    public static Start buildStartEvent(Context context) {
+    public static Start buildStartEvent(Context context, String type, String mode, String env, String pageId, String objId, String objType, String objVersion) {
+        // TODO: 1/10/2018  - Handle all the parameter
         DeviceSpecification deviceSpec = new DeviceSpecification();
         deviceSpec.setOs("Android " + DeviceSpec.getOSVersion());
         deviceSpec.setMake(DeviceSpec.getDeviceName());
@@ -106,7 +106,8 @@ public class TelemetryBuilder {
         return start;
     }
 
-    public static End buildEndEvent() {
+    public static End buildEndEvent(String type, String mode, String env, String pageId, String objId, String objType, String objVersion) {
+        // TODO: 1/10/2018  - Handle all the parameter
         long timeInSeconds = 0;
         long startTime = GlobalApplication.getPreferenceWrapper().getLong(PreferenceKey.APPLICATION_START_TIME, 0);
 
