@@ -86,8 +86,11 @@ import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.enums.CoRelationIdContext;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.telemetry.enums.ImpressionType;
+import org.sunbird.telemetry.enums.Mode;
 import org.sunbird.telemetry.enums.ObjectType;
+import org.sunbird.telemetry.enums.Workflow;
 import org.sunbird.ui.ListViewAdapter;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.ui.MyRecyclerViewAdapter;
@@ -638,9 +641,10 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void searchContent(String callback, String filterParams, String query, String type, String status, int count) {
+    public void searchContent(String callback, String filterParams, String query, String type, int count) {
         Log.e("ser!", query);
-        genieWrapper.searchContent(callback, filterParams, query, type, status, count);
+        //TODO change status value after Genie wrapper update
+        genieWrapper.searchContent(callback, filterParams, query, type, "false", count);
 //        genieWrapper.filterSearch(callback,query);
     }
 
@@ -967,17 +971,20 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void logFlagStatusEvent(String identifier, String type, Boolean status, String pkgVersion) {
+    public void logFlagStatusEvent(String identifier, String type, boolean status, String pkgVersion) {
         String pageId = "", subType;
         if (type.equals("COURSES")) {
             pageId = TelemetryPageId.COURSE_HOME_FLAG;
         } else if (type.equals("LIBRARY")) {
             pageId = TelemetryPageId.LIBRARY_HOME_FLAG;
         }
-        if (status)
+
+        if (status) {
             subType = TelemetryAction.FLAG_SUCCESS;
-        else
+        }else {
             subType = TelemetryAction.FLAG_FAILED;
+        }
+
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.CONTENT_TYPE, type);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, pageId, subType, eksMap, identifier, ObjectType.CONTENT, pkgVersion));
@@ -1033,6 +1040,30 @@ public class JsInterface {
     @JavascriptInterface
     public void logContentPlayClicked(String id, String pkgVersion) {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.CONTENT_PLAY, TelemetryPageId.CONTENT_DETAIL, null, id, ObjectType.CONTENT, pkgVersion));
+    }
+
+    @JavascriptInterface
+    public void startEventLog(String type, String objId, String pkgVersion) {
+        String eType = Workflow.CONTENT;
+        switch (type.toLowerCase()) {
+            case "course": eType = Workflow.COURSE; break;
+            case "textbook": eType = Workflow.TEXTBOOK; break;
+            case "content": eType = Workflow.CONTENT; break;
+            case "collection": eType = Workflow.COLLECTION; break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(context, eType, Mode.PLAY, ContextEnvironment.HOME, null, objId, ObjectType.CONTENT, pkgVersion));
+    }
+
+    @JavascriptInterface
+    public void endEventLog(String type, String objId, String pkgVersion) {
+        String eType = Workflow.CONTENT;
+        switch (type.toLowerCase()) {
+            case "course": eType = Workflow.COURSE; break;
+            case "textbook": eType = Workflow.TEXTBOOK; break;
+            case "content": eType = Workflow.CONTENT; break;
+            case "collection": eType = Workflow.COLLECTION; break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(0, eType, Mode.PLAY, ContextEnvironment.HOME, null, objId, ObjectType.CONTENT, pkgVersion));
     }
 
     @JavascriptInterface

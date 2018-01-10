@@ -104,7 +104,7 @@ public class TelemetryBuilder {
             ILocationInfo locationInfo = GenieService.getService().getLocationInfo();
             start.loc(locationInfo.getLocation());
         }
-
+        android.util.Log.d(TAG, "buildStartEvent: " + start.build().toString());
         return start.build();
     }
 
@@ -115,7 +115,7 @@ public class TelemetryBuilder {
                 .mode(mode)
                 .duration(duration)
                 .pageId(pageId);
-
+        android.util.Log.d(TAG, "buildEndEvent: " + end.build().toString());
         return end.build();
     }
 
