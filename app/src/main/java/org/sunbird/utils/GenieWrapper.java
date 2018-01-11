@@ -31,6 +31,7 @@ import org.ekstep.genieservices.commons.bean.DownloadProgress;
 import org.ekstep.genieservices.commons.bean.EcarImportRequest;
 import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.HierarchyInfo;
+import org.ekstep.genieservices.commons.bean.ImportContentProgress;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
@@ -47,10 +48,13 @@ import org.json.JSONObject;
 import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
+import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
+import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.TelemetryUtil;
-import org.sunbird.telemetry.enums.CoRelationIdContext;
+import org.sunbird.telemetry.enums.CorrelationContext;
+import org.sunbird.telemetry.enums.ImpressionType;
 import org.sunbird.ui.MainActivity;
 
 import java.io.File;
@@ -168,6 +172,9 @@ public class GenieWrapper extends Activity {
         });
     }
 
+
+
+
     public void getLocalContentStatus(final String contentId, final String callback) {
         ContentDetailsRequest.Builder contentDetailBuilder = new ContentDetailsRequest.Builder();
         contentDetailBuilder.forContent(contentId);
@@ -245,40 +252,40 @@ public class GenieWrapper extends Activity {
     }
 
 
-    public void searchContent(final String callback, final String filterParams, final String query, final String type, final String status, final int count) {
+    public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count) {
         try {
             ContentSearchCriteria.SearchBuilder builder = new ContentSearchCriteria.SearchBuilder();
-            String[] strings;
-            int stageId = -1;
-            String filter_stageId, correlationId;
-            if (type.equals("Combined")) {
-                stageId = COURSE_AND_RESOURCE_SEARCH;
-                filter_stageId = TelemetryPageId.COURSE_AND_LIBRARY_LIST;
-                strings = new String[8];
-                strings[0] = "Story";
-                strings[1] = "Game";
-                strings[2] = "TextBook";
-                strings[3] = "Collection";
-                strings[4] = "Worksheet";
-                strings[5] = "Course";
-                strings[6] = "Resource";
-                strings[7] = "LessonPlan";
-            } else if (type.equals("Course")) {
-                stageId = COURSE_SEARCH;
-                filter_stageId = TelemetryPageId.COURSE_LIST;
-                strings = new String[1];
-                strings[0] = "Course";
-            } else {
-                stageId = RESOURCE_SEARCH;
-                filter_stageId = TelemetryPageId.LIBRARY_LIST;
-                strings = new String[7];
-                strings[0] = "Story";
-                strings[1] = "Game";
-                strings[2] = "TextBook";
-                strings[3] = "Collection";
-                strings[4] = "Worksheet";
-                strings[5] = "Resource";
-                strings[6] = "LessonPlan";
+            String[] contentTypes;
+
+            switch (type) {
+                case "Course":
+                    contentTypes = new String[1];
+                    contentTypes[0] = "Course";
+                    break;
+
+                case "Library":
+                    contentTypes = new String[7];
+                    contentTypes[0] = "Story";
+                    contentTypes[1] = "Game";
+                    contentTypes[2] = "TextBook";
+                    contentTypes[3] = "Collection";
+                    contentTypes[4] = "Worksheet";
+                    contentTypes[5] = "Resource";
+                    contentTypes[6] = "LessonPlan";
+                    break;
+
+                case "Combined":
+                default:
+                    contentTypes = new String[8];
+                    contentTypes[0] = "Story";
+                    contentTypes[1] = "Game";
+                    contentTypes[2] = "TextBook";
+                    contentTypes[3] = "Collection";
+                    contentTypes[4] = "Worksheet";
+                    contentTypes[5] = "Course";
+                    contentTypes[6] = "Resource";
+                    contentTypes[7] = "LessonPlan";
+                    break;
             }
 
             if (BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID) {
@@ -289,32 +296,30 @@ public class GenieWrapper extends Activity {
                 builder.channel(new String[]{channelId});
             }
 
+            boolean isProfileContent = false;
             String fp;
             ContentSearchCriteria filters;
-            if (filterParams.length() > 0 && filterParams.equals("userToken")) {
-                builder.contentTypes(strings).limit(count);
-                builder.createdBy(new String[]{query});
-                filters = builder.build();
-            } else if (filterParams.length() > 10 && status.equals("true")) {
-                fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
-                filters = GsonUtil.fromJson(fp, ContentSearchCriteria.class);
-//                Util.setCoRelationIdContext(correlationId);
-//                Map<String, Object> eksMap = new HashMap<>();
-//                eksMap.put(TelemetryConstant.FILTER_CRITERIA, filters);
-////                TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH,filter_stageId, TelemetryAction.FILTER_PHRASE,"",eksMap,Util.getCoRelationList()));
+            if (!StringUtil.isNullOrEmpty(filterParams)) {
+                if (filterParams.equals("userToken")) {     // Get content created by user.
+                    isProfileContent = true;
+                    builder.contentTypes(contentTypes).limit(count);
+                    builder.createdBy(new String[]{query});
+                    filters = builder.build();
+                } else {        // Filter applied
+                    fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
+                    filters = GsonUtil.fromJson(fp, ContentSearchCriteria.class);
+                }
             } else {
-                builder.contentTypes(strings).query(query).limit(count);
+                builder.contentTypes(contentTypes).query(query).limit(count);
                 builder.facets(new String[]{"language", "grade", "domain", "contentType", "subject", "medium"});
                 filters = builder.build();
             }
 
-            final int finalStageId = stageId;
+            final boolean finalIsProfileContent = isProfileContent;
             mGenieAsyncService.getContentService().searchContent(filters, new IResponseHandler<ContentSearchResult>() {
                 @Override
                 public void onSuccess(GenieResponse<ContentSearchResult> genieResponse) {
-
                     contentSearchResult = genieResponse.getResult();
-                    Util.setCoRelationType(contentSearchResult.getId());
 
                     List<ContentData> list = contentSearchResult.getContentDataList();
                     String jsonInString = GsonUtil.toJson(list);
@@ -324,32 +329,45 @@ public class GenieWrapper extends Activity {
                     String javascript = String.format("window.callJSCallback('%s','%s','%s');", callback, enc, filterCriteria);
                     dynamicUI.addJsToWebView(javascript);
 
-                    String stageIdValue = null;
-                    switch (finalStageId) {
-                        case COURSE_AND_RESOURCE_SEARCH:
-                            Util.setCoRelationIdContext(CoRelationIdContext.COURSE_AND_RESOURCE_SEARCH);
-                            Util.setCourseandResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryPageId.COURSE_AND_LIBRARY_SEARCH;
+                    String pageId = TelemetryPageId.HOME;
+                    switch (type) {
+                        case "Course":
+                            Util.setCorrelationContext(CorrelationContext.COURSE_SEARCH);
+                            pageId = TelemetryPageId.COURSES;
                             break;
 
-                        case COURSE_SEARCH:
-                            Util.setCoRelationIdContext(CoRelationIdContext.COURSE_SEARCH);
-                            Util.setCourseSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryPageId.COURSE_SEARCH;
+                        case "Library":
+                            Util.setCorrelationContext(CorrelationContext.LIBRARY_SEARCH);
+                            pageId = TelemetryPageId.LIBRARY;
                             break;
 
-                        case RESOURCE_SEARCH:
-                            Util.setCoRelationIdContext(CoRelationIdContext.RESOURCE_SEARCH);
-                            Util.setResourceSearchApiResponseMessageId(contentSearchResult.getResponseMessageId());
-                            stageIdValue = TelemetryPageId.LIBRARY_SEARCH;
+                        case "Combined":
+                            if (finalIsProfileContent) {
+                                Util.setCorrelationContext(CorrelationContext.CONTENT_PROFILE_SEARCH);
+                                pageId = TelemetryPageId.PROFILE;
+                            } else {
+                                Util.setCorrelationContext(CorrelationContext.ALL_CONTENT_SEARCH);
+                                pageId = TelemetryPageId.HOME;
+                            }
+                            break;
+
+                        default:
+                            Util.setCorrelationContext(CorrelationContext.NONE);
                             break;
                     }
 
-                    Map<String, Object> values = new HashMap<>();
-                    values.put(TelemetryConstant.SEARCH_RESULTS, list.size());
-                    values.put(TelemetryConstant.SEARCH_CRITERIA, contentSearchResult.getRequest());
-                    //TODO Telemetry
-//                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageIdValue, EntityType.SEARCH_PHRASE, query, values, Util.getCoRelationList()));
+                    Util.setCorrelationId(contentSearchResult.getResponseMessageId());
+                    Util.setCorrelationType(contentSearchResult.getId());
+
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.SEARCH, null, pageId, Util.getCorrelationList()));
+
+                    Map<String, Object> params = new HashMap<>();
+                    if (!StringUtil.isNullOrEmpty(query)) {
+                        params.put(TelemetryConstant.SEARCH_QUERY, query);
+                    }
+                    params.put(TelemetryConstant.SEARCH_RESULTS, list.size());
+                    params.put(TelemetryConstant.SEARCH_CRITERIA, contentSearchResult.getRequest());
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(pageId, ImpressionType.SEARCH, pageId, params));
                 }
 
                 @Override
@@ -361,7 +379,6 @@ public class GenieWrapper extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void setUserProfile(String user_id) {
@@ -450,13 +467,15 @@ public class GenieWrapper extends Activity {
         } else {
             contentImport = new ContentImport(course_id, String.valueOf(directory));
         }
-        contentImport.setCorrelationData(Util.getCoRelationList());
+        contentImport.setCorrelationData(Util.getCorrelationList());
         builder.add(contentImport);
         EventBus.getDefault().unregister(this);
         EventBus.getDefault().register(this);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
                 List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
                 for (ContentImportResponse contentImportResponse : contentImportResponseList) {
                     JSONObject jb = new JSONObject();
@@ -475,9 +494,59 @@ public class GenieWrapper extends Activity {
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
             }
         });
     }
+
+    public void handleDownloadAllClick(String[] mIdentifierList) {
+        File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
+        directory.mkdirs();
+
+        File noMediaFile = new File(directory.getAbsolutePath() + "/" + ".nomedia");
+        if (!noMediaFile.exists()) {
+            try {
+                noMediaFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ContentImportRequest.Builder builder = new ContentImportRequest.Builder();
+        for (String identifier : mIdentifierList) {
+            ContentImport contentImport = new ContentImport(identifier, true, String.valueOf(directory));
+            contentImport.setCorrelationData(Util.getCorrelationList());
+            builder.add(contentImport);
+        }
+        mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
+            @Override
+            public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+
+                List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
+                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
+                    JSONObject jb = new JSONObject();
+                    try {
+                        jb.put("status", contentImportResponse.getStatus().toString());
+                        jb.put("identifier", contentImportResponse.getIdentifier() );
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("download all status", jb.toString());
+
+
+                }
+            }
+
+            @Override
+            public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+
+            }
+        });
+
+
+    }
+
 
     public void deleteContent(String content_id, final String callback) {
         ContentDeleteRequest.Builder contentDeleteBuilder = new ContentDeleteRequest.Builder();
@@ -503,6 +572,7 @@ public class GenieWrapper extends Activity {
     }
 
     public void syncTelemetry() {
+        Log.d("telemetry auto","synced");
         mGenieAsyncService.getSyncService().sync(new IResponseHandler<SyncStat>() {
             @Override
             public void onSuccess(GenieResponse<SyncStat> genieResponse) {
@@ -525,12 +595,14 @@ public class GenieWrapper extends Activity {
                 e.printStackTrace();
             }
         }
-//        EventBus.getDefault().unregister(this);
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().register(this);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
                 List<ContentImportResponse> result = genieResponse.getResult();
                 boolean launchDetail = true;
                 if (!CollectionUtil.isNullOrEmpty(result)) {
@@ -555,10 +627,12 @@ public class GenieWrapper extends Activity {
                     String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
                     dynamicUI.addJsToWebView(importResponse);
                 }
+
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
                 String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
                 dynamicUI.addJsToWebView(importResponse);
             }
@@ -593,7 +667,7 @@ public class GenieWrapper extends Activity {
         currentGame.setcData(cdata);
         TelemetryUtil.addCurrentGame(currentGame);
         //TODO Telemetry
-//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCoRelationList()));
+//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCorrelationList()));
         String mimeType = content.getMimeType();
         if (mimeType.equals("video/x-youtube")) {
             ContentPlayer.play(activity, content, null);
@@ -654,6 +728,15 @@ public class GenieWrapper extends Activity {
                 break;
         }
         // mPresenter.manageImportSuccess(contentImportResponse);
+
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onContentImport(ImportContentProgress importContentProgress) throws InterruptedException {
+
+        String msg =" (" + importContentProgress.getCurrentCount() + "/" + importContentProgress.getTotalCount() + ") ";
+        String importProgress = String.format("window.__onContentImportProgress('%s');", msg);
+        dynamicUI.addJsToWebView(importProgress);
 
     }
 

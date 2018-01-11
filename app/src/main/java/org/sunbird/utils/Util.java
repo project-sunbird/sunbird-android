@@ -10,7 +10,6 @@ import org.ekstep.genieservices.commons.utils.StringUtil;
 import org.json.JSONObject;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
-import org.sunbird.telemetry.enums.CoRelationIdContext;
 import org.sunbird.telemetry.enums.CoRelationType;
 
 import java.io.File;
@@ -27,7 +26,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by vinay.narayana on 18/08/17.
+ * Created on 18/08/17.
+ *
+ * @author anil
  */
 public class Util {
 
@@ -54,59 +55,57 @@ public class Util {
         return String.format(Locale.US, "%.2f", size);
     }
 
-
     /**
-     * Get Corelation Context
+     * Get Correlation Context
      *
      * @return
      */
-    public static String getCoRelationIdContext() {
+    public static String getCorrelationContext() {
         return GlobalApplication.getPreferenceWrapper().getString(PreferenceKey.METADATA_CORELATION_ID, null);
     }
 
     /**
-     * Set Corelation Id Context
+     * Set Correlation Id Context
      *
-     * @param coRelationIdContext
+     * @param coRelationContext
      */
-    public static void setCoRelationIdContext(String coRelationIdContext) {
-        if (!StringUtil.isNullOrEmpty(coRelationIdContext)) {
-            GlobalApplication.getPreferenceWrapper().putString(PreferenceKey.METADATA_CORELATION_ID, coRelationIdContext);
+    public static void setCorrelationContext(String coRelationContext) {
+        if (!StringUtil.isNullOrEmpty(coRelationContext)) {
+            GlobalApplication.getPreferenceWrapper().putString(PreferenceKey.METADATA_CORELATION_ID, coRelationContext);
         } else {
             GlobalApplication.getPreferenceWrapper().putString(PreferenceKey.METADATA_CORELATION_ID, null);
         }
     }
 
-    public static String getCoRelationType() {
-        return GlobalApplication.getPreferenceWrapper().getString("type_" + getCoRelationIdContext(), null);
+    private static String getCorrelationId() {
+        return GlobalApplication.getPreferenceWrapper().getString("id_" + getCorrelationContext(), null);
     }
 
-    public static void setCoRelationType(String id) {
-        GlobalApplication.getPreferenceWrapper().putString("type_" + getCoRelationIdContext(), id);
+    public static void setCorrelationId(String id) {
+        GlobalApplication.getPreferenceWrapper().putString("id_" + getCorrelationContext(), id);
+    }
+
+    private static String getCorrelationType() {
+        return GlobalApplication.getPreferenceWrapper().getString("type_" + getCorrelationContext(), null);
+    }
+
+    public static void setCorrelationType(String id) {
+        GlobalApplication.getPreferenceWrapper().putString("type_" + getCorrelationContext(), id);
     }
 
     /**
-     * Get Corelation Context
+     * Returns Correlation data
      *
      * @return
      */
-    public static String getCoRelationId() {
-        return GlobalApplication.getPreferenceWrapper().getString(getCoRelationIdContext(), null);
-    }
-
-    /**
-     * Returns CoRelationId
-     *
-     * @return
-     */
-    public static List<CorrelationData> getCoRelationList() {
+    public static List<CorrelationData> getCorrelationList() {
         List<CorrelationData> cdata = null;
-        String coRelationContext = getCoRelationIdContext();
+        String coRelationContext = getCorrelationContext();
         String coRelationId;
         if (!StringUtil.isNullOrEmpty(coRelationContext)) {
-            coRelationId = getCoRelationId();
+            coRelationId = getCorrelationId();
             if (!StringUtil.isNullOrEmpty(coRelationId)) {
-                String coRelationType = CoRelationType.API + "-" + getCoRelationType();
+                String coRelationType = CoRelationType.API + "-" + getCorrelationType();
                 CorrelationData correlationData = new CorrelationData(coRelationId, coRelationType);
                 cdata = getCdata(correlationData);
             }
@@ -174,40 +173,6 @@ public class Util {
         GlobalApplication.getPreferenceWrapper().putBoolean(PreferenceKey.DONT_SEND_CDATA, status);
     }
 
-    /**
-     * Set response message id value.
-     *
-     * @param responseMessageId
-     */
-    public static void setCourseandResourceSearchApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.COURSE_AND_RESOURCE_SEARCH, responseMessageId);
-    }
-
-    public static void setCourseSearchApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.COURSE_SEARCH, responseMessageId);
-    }
-
-    public static void setResourceSearchApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.RESOURCE_SEARCH, responseMessageId);
-    }
-
-    /**
-     * Set response message id value.
-     *
-     * @param responseMessageId
-     */
-    public static void setHomePageAssembleApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.HOME_PAGE, responseMessageId);
-    }
-
-    public static void setCoursePageAssembleApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.COURSE_PAGE, responseMessageId);
-    }
-
-    public static void setResourcePageAssembleApiResponseMessageId(String responseMessageId) {
-        GlobalApplication.getPreferenceWrapper().putString(CoRelationIdContext.RESOURCE_PAGE, responseMessageId);
-    }
-
     public static String postFile(String url, File file, String apiToken, String userAccessToken, String userId, String cb) {
         OkHttpClient client = new OkHttpClient();
         final MediaType MEDIA_TYPE = MediaType.parse("image/jpeg");
@@ -243,14 +208,13 @@ public class Util {
         return new Intent(Constants.INTENT_ACTION_REFRESH_NOTIFICATION);
     }
 
-
     public static int aton(String input) { //alphanumeric to integer
-        int out= 0;
+        int out = 0;
         int len = input.length();
         String pools = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-";
-        for(int i =0;i <len;i++){
-            char c = input.charAt(len-(i+1));
-            out += (pools.indexOf(c) * ((int)Math.pow(63,i)));
+        for (int i = 0; i < len; i++) {
+            char c = input.charAt(len - (i + 1));
+            out += (pools.indexOf(c) * ((int) Math.pow(63, i)));
         }
         return out;
     }
