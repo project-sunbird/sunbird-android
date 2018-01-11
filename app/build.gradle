@@ -72,7 +72,7 @@ android {
             jackOptions {
                 enabled false
             }
-            resValue 'string', 'index_base_url', "file:///android_asset/index.html"
+            resValue 'string', 'index_base_url', "http://0.0.0.0:8080/dist/"
         }
     }
     productFlavors {

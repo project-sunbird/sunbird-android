@@ -71,6 +71,11 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.apache.cordova.LOG;
+import org.ekstep.genieservices.commons.IResponseHandler;
+import org.ekstep.genieservices.commons.bean.ContentImport;
+import org.ekstep.genieservices.commons.bean.ContentImportRequest;
+import org.ekstep.genieservices.commons.bean.ContentImportResponse;
+import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.json.JSONArray;
@@ -126,6 +131,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.zip.GZIPInputStream;
@@ -688,8 +695,19 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void syncTelemetry() {
-        genieWrapper.syncTelemetry();
+    public void syncTelemetry(int delay) {
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(new TimerTask() {
+
+                                  @Override
+                                  public void run() {
+                                      genieWrapper.syncTelemetry();
+
+                                  }
+
+                              },
+                0, delay);
+
     }
 
     @JavascriptInterface
@@ -2145,6 +2163,36 @@ public class JsInterface {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(browserIntent);
     }
+
+    @JavascriptInterface
+    public long epochTime(){
+        PackageManager pm = context.getPackageManager();
+        ApplicationInfo appInfo = null;
+        try {
+            appInfo = pm.getApplicationInfo(activity.getApplicationContext().getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String appFile = appInfo.sourceDir;
+        long installed = new File(appFile).lastModified();
+        return installed;
+    }
+
+    @JavascriptInterface
+    public String checkConnectionType(){
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if(activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+            return "wifi";
+        else
+            return "mobile network";
+    }
+
+    @JavascriptInterface
+    public void downloadAllContent(String[] indetifierList){
+        genieWrapper.handleDownloadAllClick(indetifierList);
+    }
+
 
     class DownloadFileAsync extends AsyncTask<String, Void, Void> {
 

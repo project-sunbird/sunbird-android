@@ -31,6 +31,7 @@ import org.ekstep.genieservices.commons.bean.DownloadProgress;
 import org.ekstep.genieservices.commons.bean.EcarImportRequest;
 import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.HierarchyInfo;
+import org.ekstep.genieservices.commons.bean.ImportContentProgress;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
@@ -172,6 +173,9 @@ public class GenieWrapper extends Activity {
             }
         });
     }
+
+
+
 
     public void getLocalContentStatus(final String contentId, final String callback) {
         ContentDetailsRequest.Builder contentDetailBuilder = new ContentDetailsRequest.Builder();
@@ -462,6 +466,8 @@ public class GenieWrapper extends Activity {
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
                 List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
                 for (ContentImportResponse contentImportResponse : contentImportResponseList) {
                     JSONObject jb = new JSONObject();
@@ -480,9 +486,59 @@ public class GenieWrapper extends Activity {
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
             }
         });
     }
+
+    public void handleDownloadAllClick(String[] mIdentifierList) {
+        File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
+        directory.mkdirs();
+
+        File noMediaFile = new File(directory.getAbsolutePath() + "/" + ".nomedia");
+        if (!noMediaFile.exists()) {
+            try {
+                noMediaFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ContentImportRequest.Builder builder = new ContentImportRequest.Builder();
+        for (String identifier : mIdentifierList) {
+            ContentImport contentImport = new ContentImport(identifier, true, String.valueOf(directory));
+            contentImport.setCorrelationData(Util.getCoRelationList());
+            builder.add(contentImport);
+        }
+        mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
+            @Override
+            public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+
+                List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
+                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
+                    JSONObject jb = new JSONObject();
+                    try {
+                        jb.put("status", contentImportResponse.getStatus().toString());
+                        jb.put("identifier", contentImportResponse.getIdentifier() );
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("download all status", jb.toString());
+
+
+                }
+            }
+
+            @Override
+            public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+
+            }
+        });
+
+
+    }
+
 
     public void deleteContent(String content_id, final String callback) {
         ContentDeleteRequest.Builder contentDeleteBuilder = new ContentDeleteRequest.Builder();
@@ -508,6 +564,7 @@ public class GenieWrapper extends Activity {
     }
 
     public void syncTelemetry() {
+        Log.d("telemetry auto","synced");
         mGenieAsyncService.getSyncService().sync(new IResponseHandler<SyncStat>() {
             @Override
             public void onSuccess(GenieResponse<SyncStat> genieResponse) {
@@ -530,12 +587,14 @@ public class GenieWrapper extends Activity {
                 e.printStackTrace();
             }
         }
-//        EventBus.getDefault().unregister(this);
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().register(this);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
+
                 List<ContentImportResponse> result = genieResponse.getResult();
                 boolean launchDetail = true;
                 if (!CollectionUtil.isNullOrEmpty(result)) {
@@ -560,10 +619,12 @@ public class GenieWrapper extends Activity {
                     String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
                     dynamicUI.addJsToWebView(importResponse);
                 }
+
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
+                EventBus.getDefault().unregister(this);
                 String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
                 dynamicUI.addJsToWebView(importResponse);
             }
@@ -659,6 +720,15 @@ public class GenieWrapper extends Activity {
                 break;
         }
         // mPresenter.manageImportSuccess(contentImportResponse);
+
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onContentImport(ImportContentProgress importContentProgress) throws InterruptedException {
+
+        String msg =" (" + importContentProgress.getCurrentCount() + "/" + importContentProgress.getTotalCount() + ") ";
+        String importProgress = String.format("window.__onContentImportProgress('%s');", msg);
+        dynamicUI.addJsToWebView(importProgress);
 
     }
 
