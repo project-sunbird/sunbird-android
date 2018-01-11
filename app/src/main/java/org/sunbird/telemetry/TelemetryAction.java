@@ -28,7 +28,8 @@ public interface TelemetryAction {
     String CONTENT_CLICKED = "ContentClicked";
     String SEARCH_PHRASE = "SearchPhrase";
     String FILTER_PHRASE = "FilterPhrase";
-
+    String SEARCH_BUTTON_CLICKED = "SearchButtonClicked";
+    String FILTER_BUTTON_CLICKED = "FilterButtonClicked";
     String NOTIFICATION_RECEIVED = "Notification-Received";
     String NOTIFICATION_DISPLAYED = "Notification-Displayed";
     String NOTIFICATION_CLICKED = "Notification-Clicked";

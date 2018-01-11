@@ -1078,6 +1078,21 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void explicitSearch(String page, String type) {
+        String pageId = TelemetryPageId.HOME, subType = TelemetryAction.SEARCH_BUTTON_CLICKED;
+        switch (page) {
+            case "COMBINED": pageId = TelemetryPageId.HOME; break;
+            case "COURSE": pageId = TelemetryPageId.COURSES; break;
+            case "LIBRARY": pageId = TelemetryPageId.LIBRARY; break;
+        }
+        switch (type) {
+            case "SEARCH": subType = TelemetryAction.SEARCH_BUTTON_CLICKED; break;
+            case "FILTER": subType = TelemetryAction.FILTER_BUTTON_CLICKED; break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, subType, pageId));
+    }
+
+    @JavascriptInterface
     public void stopEventBus() {
         Log.e("stop event bus", "");
         genieWrapper.stopEventBus();
