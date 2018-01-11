@@ -29,7 +29,7 @@ public class TelemetryUtil {
 
                 cdata.add(new CorrelationData(TextUtils.join("/", idList), contentInfoList.get(0).getContentType()));
             } else {
-                cdata = Util.getCoRelationList();
+                cdata = Util.getCorrelationList();
             }
         } else {
             Util.setCdataStatus(false);

@@ -12,9 +12,6 @@ public interface TelemetryPageId {
     String LOGIN = "Login";
     String LOGOUT = "Logout";
     String SIGNUP = "Signup";
-    String COURSE_AND_LIBRARY_SEARCH = "CourseAndLibrarySearch";
-    String COURSE_SEARCH = "CourseSearch";
-    String LIBRARY_SEARCH = "LibrarySearch";
     String HOME = "Home";
     String COURSES = "Courses";
     String LIBRARY = "Library";
@@ -30,9 +27,6 @@ public interface TelemetryPageId {
     String COURSE_HOME_FLAG = "CourseHomeFlag";
     String LIBRARY_HOME_FLAG = "LibraryHomeFlag";
     String SHARE = "Share";
-    String COURSE_AND_LIBRARY_LIST = "CourseAndLibraryList";
-    String COURSE_LIST = "CourseList";
-    String LIBRARY_LIST = "LibraryList";
     String FILTERS = "Filters";
 
     String SERVER_NOTIFICATION = "ServerNotification";
