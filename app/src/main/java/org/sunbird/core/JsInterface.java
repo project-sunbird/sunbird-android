@@ -242,6 +242,7 @@ public class JsInterface {
 
         String keyCloackAuthUrl = OAUTH_URL + "?redirect_uri=" + REDIRECT_URI + "&response_type=code&scope=offline_access&client_id=" + CLIENT_ID;
         Log.e("URL HITTING:", keyCloackAuthUrl);
+        mIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         mIntent.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         mIntent.launchUrl(activity, Uri.parse(keyCloackAuthUrl));
 
