@@ -14,10 +14,8 @@ import org.ekstep.genieservices.commons.bean.telemetry.Interact;
 import org.ekstep.genieservices.commons.bean.telemetry.Interrupt;
 import org.ekstep.genieservices.commons.bean.telemetry.Log;
 import org.ekstep.genieservices.commons.bean.telemetry.Start;
-import org.ekstep.genieservices.commons.bean.telemetry.Visit;
 import org.ekstep.genieservices.utils.DeviceSpec;
-import org.sunbird.GlobalApplication;
-import org.sunbird.utils.PreferenceKey;
+import org.sunbird.telemetry.enums.Workflow;
 import org.sunbird.utils.Util;
 
 import java.util.ArrayList;
@@ -59,69 +57,66 @@ public class TelemetryBuilder {
 //    }
 
     public static Interrupt buildInterruptEvent(String type) {
-        Interrupt interrupt = new Interrupt.Builder().type(type).build();
-        return interrupt;
+        Interrupt.Builder interrupt = new Interrupt.Builder()
+                .type(type);
+        return interrupt.build();
     }
 
-    public static Start buildStartEvent(Context context) {
-        DeviceSpecification deviceSpec = new DeviceSpecification();
-        deviceSpec.setOs("Android " + DeviceSpec.getOSVersion());
-        deviceSpec.setMake(DeviceSpec.getDeviceName());
-        deviceSpec.setId(DeviceSpec.getAndroidId(context));
+    public static Start buildStartEvent(Context context, String type, String mode, String env, String pageId, String objId, String objType, String objVersion) {
+        // TODO: 1/10/2018  - Handle all the parameter
+        Start.Builder start = new Start.Builder()
+                .type(type)
+                .mode(mode)
+                .pageId(pageId);
 
-        String internalMemory = Util.bytesToHuman(DeviceSpec.getTotalInternalMemorySize());
-        if (!TextUtils.isEmpty(internalMemory)) {
-            deviceSpec.setIdisk(Double.valueOf(internalMemory));
+        if (Workflow.APP.equals(type)) {
+            DeviceSpecification deviceSpec = new DeviceSpecification();
+            deviceSpec.setOs("Android " + DeviceSpec.getOSVersion());
+            deviceSpec.setMake(DeviceSpec.getDeviceName());
+            deviceSpec.setId(DeviceSpec.getAndroidId(context));
+
+            String internalMemory = Util.bytesToHuman(DeviceSpec.getTotalInternalMemorySize());
+            if (!TextUtils.isEmpty(internalMemory)) {
+                deviceSpec.setIdisk(Double.valueOf(internalMemory));
+            }
+
+            String externalMemory = Util.bytesToHuman(DeviceSpec.getTotalExternalMemorySize());
+            if (!TextUtils.isEmpty(externalMemory)) {
+                deviceSpec.setEdisk(Double.valueOf(externalMemory));
+            }
+
+            String screenSize = DeviceSpec.getScreenInfoinInch(context);
+            if (!TextUtils.isEmpty(screenSize)) {
+                deviceSpec.setScrn(Double.valueOf(screenSize));
+            }
+
+            String[] cameraInfo = DeviceSpec.getCameraInfo(context);
+            String camera = "";
+            if (cameraInfo != null) {
+                camera = TextUtils.join(",", cameraInfo);
+            }
+            deviceSpec.setCamera(camera);
+
+            deviceSpec.setCpu(DeviceSpec.getCpuInfo());
+            deviceSpec.setSims(-1);
+            start.deviceSpecification(deviceSpec);
+
+            ILocationInfo locationInfo = GenieService.getService().getLocationInfo();
+            start.loc(locationInfo.getLocation());
         }
-
-        String externalMemory = Util.bytesToHuman(DeviceSpec.getTotalExternalMemorySize());
-        if (!TextUtils.isEmpty(externalMemory)) {
-            deviceSpec.setEdisk(Double.valueOf(externalMemory));
-        }
-
-        String screenSize = DeviceSpec.getScreenInfoinInch(context);
-        if (!TextUtils.isEmpty(screenSize)) {
-            deviceSpec.setScrn(Double.valueOf(screenSize));
-        }
-
-        String[] cameraInfo = DeviceSpec.getCameraInfo(context);
-        String camera = "";
-        if (cameraInfo != null) {
-            camera = TextUtils.join(",", cameraInfo);
-        }
-        deviceSpec.setCamera(camera);
-
-        deviceSpec.setCpu(DeviceSpec.getCpuInfo());
-        deviceSpec.setSims(-1);
-
-        ILocationInfo locationInfo = GenieService.getService().getLocationInfo();
-
-        Start start = new Start.Builder()
-                .deviceSpecification(deviceSpec)
-                .loc(locationInfo.getLocation())
-//                .pageId(TelemetryPageId.SPLASH)
-                .type(TelemetryConstant.APP)
-                .build();
-
-        return start;
+        android.util.Log.d(TAG, "buildStartEvent: " + start.build().toString());
+        return start.build();
     }
 
-    public static End buildEndEvent() {
-        long timeInSeconds = 0;
-        long startTime = GlobalApplication.getPreferenceWrapper().getLong(PreferenceKey.APPLICATION_START_TIME, 0);
-
-        if (startTime > 0) {
-            long timeDifference = System.currentTimeMillis() - startTime;
-            timeInSeconds = (timeDifference / 1000);
-        }
-
-        End end = new End.Builder()
-                .duration(timeInSeconds)
-//                .pageId(TelemetryPageId.GENIE_HOME)
-                .type(TelemetryConstant.APP)
-                .build();
-
-        return end;
+    public static End buildEndEvent(long duration, String type, String mode, String env, String pageId, String objId, String objType, String objVersion) {
+        // TODO: 1/10/2018  - Handle all the parameter
+        End.Builder end = new End.Builder()
+                .type(type)
+                .mode(mode)
+                .duration(duration)
+                .pageId(pageId);
+        android.util.Log.d(TAG, "buildEndEvent: " + end.build().toString());
+        return end.build();
     }
 
     //////////////  IMPRESSION EVENT    ////////////////////////
@@ -254,12 +249,12 @@ public class TelemetryBuilder {
         return interact;
     }
 
-    public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String id, String objType, String objVersion) {
+    public static Interact buildInteractEvent(InteractionType type, String subType, String pageId, Map<String, Object> values, String objId, String objType, String objVersion) {
         Interact.Builder interact = new Interact.Builder()
                 .interactionType(type)
                 .subType(subType)
                 .pageId(pageId)
-                .objectId(id)
+                .objectId(objId)
                 .objectType(objType)
                 .objectVersion(objVersion)
                 .resourceId(pageId);

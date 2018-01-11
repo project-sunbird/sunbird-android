@@ -17,9 +17,9 @@ public interface TelemetryAction {
     String TAB_CLICKED = "Tab-Clicked";
     String SHARE_CONTENT_LINK = "ShareContent-Link";
     String SHARE_COURSE_INITIATED = "ShareCourse-Initiated";
-    String SHARE_RESOURCE_INITIATED = "ShareResource-Initiated";
+    String SHARE_LIBRARY_INITIATED = "ShareLibrary-Initiated";
     String SHARE_COURSE_SUCCESS = "ShareCourse-Success";
-    String SHARE_RESOURCE_SUCCESS = "ShareResource-Success";
+    String SHARE_LIBRARY_SUCCESS = "ShareLibrary-Success";
     String PREVIEW_LOGIN = "Preview-Login";
     String FLAG_INITIATE = "Flag-Initiate";
     String FLAG_SUCCESS = "Flag-Success";

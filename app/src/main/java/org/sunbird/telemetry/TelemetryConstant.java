@@ -7,7 +7,7 @@ package org.sunbird.telemetry;
  */
 public interface TelemetryConstant {
 
-    String APP = "app";
+    String SEARCH_QUERY = "SearchQuery";
     String SEARCH_CRITERIA = "SearchCriteria";
     String SEARCH_RESULTS = "SearchResults";
     String FILTER_CRITERIA = "FilterCriteria";
@@ -24,6 +24,6 @@ public interface TelemetryConstant {
     String UID = "UID";
     String CONTENT_TYPE = "contentType";
     String CONTENT_ID = "contentId";
-
+    String PRESENT_ON_DEVICE = "presentOnDevice";
     String ANNOUNCEMENT_ID = "AnnouncementId";
 }
