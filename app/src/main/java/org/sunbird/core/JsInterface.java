@@ -71,11 +71,6 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.apache.cordova.LOG;
-import org.ekstep.genieservices.commons.IResponseHandler;
-import org.ekstep.genieservices.commons.bean.ContentImport;
-import org.ekstep.genieservices.commons.bean.ContentImportRequest;
-import org.ekstep.genieservices.commons.bean.ContentImportResponse;
-import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.json.JSONArray;
@@ -774,86 +769,63 @@ public class JsInterface {
         switch (type) {
             case "HOME":
                 Util.setCorrelationContext(CorrelationContext.HOME_PAGE);
-                Util.setCorrelationType(ctype);
-                Util.setCorrelationId(id);
                 break;
 
             case "COURSES":
                 Util.setCorrelationContext(CorrelationContext.COURSE_PAGE);
-                Util.setCorrelationType(ctype);
-                Util.setCorrelationId(id);
                 break;
 
             case "LIBRARY":
                 Util.setCorrelationContext(CorrelationContext.RESOURCE_PAGE);
-                Util.setCorrelationType(ctype);
-                Util.setCorrelationId(id);
                 break;
 
             case "SPLASHSCREEN":
                 Util.setCorrelationContext(CorrelationContext.NONE);
                 break;
         }
-    }
 
-    @JavascriptInterface
-    public void logListViewScreenEvent(String type, int count, String criteria) {
-//        String stageId = "";
-//        switch (type) {
-//            case "HOME":
-//                stageId = TelemetryPageId.COURSE_AND_LIBRARY_LIST;
-//                break;
-//            case "COURSES":
-//                stageId = TelemetryPageId.COURSE_LIST;
-//                break;
-//            case "LIBRARY":
-//                stageId = TelemetryPageId.LIBRARY_LIST;
-//                break;
-//        }
-//        Map<String, Object> eksMap = new HashMap<>();
-//        eksMap.put(TelemetryConstant.SEARCH_RESULTS, count);
-//        eksMap.put(TelemetryConstant.SEARCH_CRITERIA, criteria);
-//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.SHOW, stageId, EntityType.SEARCH_PHRASE, "", eksMap, Util.getCorrelationList()));
+        Util.setCorrelationType(ctype);
+        Util.setCorrelationId(id);
     }
 
     @JavascriptInterface
     public void logContentClickEvent(String type, int position, String phrase, String contentId) {
-//        String stageId = "";
-//        switch (type) {
-//            case "HOME":
-//                stageId = TelemetryPageId.COURSE_AND_LIBRARY_LIST;
-//                break;
-//            case "COURSES":
-//                stageId = TelemetryPageId.COURSE_LIST;
-//                break;
-//            case "LIBRARY":
-//                stageId = TelemetryPageId.LIBRARY_LIST;
-//                break;
-//        }
-//        Map<String, Object> eksMap = new HashMap<>();
-//        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
-//        eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
-//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCorrelationList()));
+        String stageId = "";
+        switch (type) {
+            case "HOME":
+                stageId = TelemetryPageId.HOME;
+                break;
+            case "COURSES":
+                stageId = TelemetryPageId.COURSES;
+                break;
+            case "LIBRARY":
+                stageId = TelemetryPageId.LIBRARY;
+                break;
+        }
+        Map<String, Object> eksMap = new HashMap<>();
+        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
+        eksMap.put(TelemetryConstant.SEARCH_PHRASE, phrase);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCorrelationList()));
     }
 
     @JavascriptInterface
     public void logCardClickEvent(String type, int position, String sectionName, String contentId) {
-//        String stageId = "";
-//        switch (type) {
-//            case "HOME":
-//                stageId = TelemetryPageId.HOME;
-//                break;
-//            case "COURSES":
-//                stageId = TelemetryPageId.COURSES;
-//                break;
-//            case "LIBRARY":
-//                stageId = TelemetryPageId.LIBRARY;
-//                break;
-//        }
-//        Map<String, Object> eksMap = new HashMap<>();
-//        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
-//        eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
-//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCorrelationList()));
+        String stageId = "";
+        switch (type) {
+            case "HOME":
+                stageId = TelemetryPageId.HOME;
+                break;
+            case "COURSES":
+                stageId = TelemetryPageId.COURSES;
+                break;
+            case "LIBRARY":
+                stageId = TelemetryPageId.LIBRARY;
+                break;
+        }
+        Map<String, Object> eksMap = new HashMap<>();
+        eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
+        eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, stageId, TelemetryAction.CONTENT_CLICKED, contentId, eksMap, Util.getCorrelationList()));
     }
 
     @JavascriptInterface
@@ -863,14 +835,16 @@ public class JsInterface {
             case "HOME":
                 pageId = TelemetryPageId.HOME;
                 break;
+
             case "COURSES":
                 pageId = TelemetryPageId.COURSES;
                 break;
+
             case "LIBRARY":
                 pageId = TelemetryPageId.LIBRARY;
                 break;
-
         }
+
         Map<String, Object> eksMap = new HashMap<>();
         eksMap.put(TelemetryConstant.SECTION_NAME, sectionName);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.VIEWALL_CLICKED, pageId, eksMap));
@@ -898,16 +872,16 @@ public class JsInterface {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.TAB_CLICKED, pageId));
     }
 
-//    @JavascriptInterface
-//    public void logShareClickEvent(String type) {
-//        String subType = "";
-//        if (type.equals("LINK")) {
-////            subType = TelemetryAction.SHARE_LINK;
-//        } else {
-////            subType = TelemetryAction.SHARE_FILE;
-//        }
-//        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SHARE, subType, null, null));
-//    }
+    @JavascriptInterface
+    public void logShareClickEvent(String type) {
+        String subType;
+        if (type.equals("LINK")) {
+            subType = TelemetryAction.SHARE_LINK;
+        } else {
+            subType = TelemetryAction.SHARE_FILE;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.TOUCH, TelemetryPageId.SHARE, subType, null, null));
+    }
 
     @JavascriptInterface
     public void logTabScreenEvent(String type) {
@@ -2226,7 +2200,7 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public long epochTime(){
+    public long epochTime() {
         PackageManager pm = context.getPackageManager();
         ApplicationInfo appInfo = null;
         try {
@@ -2240,17 +2214,17 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public String checkConnectionType(){
-        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    public String checkConnectionType() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if(activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+        if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
             return "wifi";
         else
             return "mobile network";
     }
 
     @JavascriptInterface
-    public void downloadAllContent(String[] indetifierList){
+    public void downloadAllContent(String[] indetifierList) {
         genieWrapper.handleDownloadAllClick(indetifierList);
     }
 
