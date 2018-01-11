@@ -175,13 +175,15 @@ public class TelemetryBuilder {
      */
     public static Log buildLogEvent(String pageId, String type, String message, Map<String, Object> params) {
         Log.Builder log = new Log.Builder();
-        for (Map.Entry<String, Object> entry : params.entrySet()) {
-            log.addParam(entry.getKey(), entry.getValue())
-                    .pageId(pageId)
-                    .type(type)
-                    .level(Log.Level.INFO)
-                    .message(message);
+        if (params != null) {
+            for (Map.Entry<String, Object> entry : params.entrySet()) {
+                log.addParam(entry.getKey(), entry.getValue());
+            }
         }
+        log.pageId(pageId)
+            .type(type)
+            .level(Log.Level.INFO)
+            .message(message);
         return log.build();
     }
 
