@@ -1084,6 +1084,7 @@ public class JsInterface {
             case "COMBINED": pageId = TelemetryPageId.HOME; break;
             case "COURSE": pageId = TelemetryPageId.COURSES; break;
             case "LIBRARY": pageId = TelemetryPageId.LIBRARY; break;
+            case "PROFILE": pageId = TelemetryPageId.PROFILE; break;
         }
         switch (type) {
             case "SEARCH": subType = TelemetryAction.SEARCH_BUTTON_CLICKED; break;
