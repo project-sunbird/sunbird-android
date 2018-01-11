@@ -516,7 +516,7 @@ public class GenieWrapper extends Activity {
         ContentImportRequest.Builder builder = new ContentImportRequest.Builder();
         for (String identifier : mIdentifierList) {
             ContentImport contentImport = new ContentImport(identifier, true, String.valueOf(directory));
-            contentImport.setCorrelationData(Util.getCoRelationList());
+            contentImport.setCorrelationData(Util.getCorrelationList());
             builder.add(contentImport);
         }
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
