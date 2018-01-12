@@ -706,7 +706,7 @@
 			}
 	
 			if (ui.runInUI) {
-				Android.runInUI(ui.runInUI, null, "15", "Usersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
+				Android.runInUI(ui.runInUI, null, "15", "UsersslkiranDocumentsgithubsunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
 			}
 			if (ui.addViewToParent) {
 				Android.addViewToParent(ui.addViewToParent.parentId, JSON.stringify(ui.addViewToParent.jsx), ui.addViewToParent.index, null);
@@ -12859,7 +12859,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/RootScreen.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/RootScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -13020,7 +13020,7 @@
 	    value: function setStatusBarColor(color) {
 	      var _color = "set_color=android.graphics.Color->parseColor:s_" + color + ";";
 	
-	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "73", "UsersnikithshettysunbirdgithubsunbirdduiviewsRootScreenjs");
+	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "73", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsRootScreenjs");
 	    }
 	  }, {
 	    key: "render",
@@ -14480,7 +14480,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (AndroidBaseView.__proto__ || Object.getPrototypeOf(AndroidBaseView)).call(this, props, children));
 	
 	    window.__SETFN = function (config) {
-	      Android.runInUI(this.set(config), null, '10', 'UsersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
+	      Android.runInUI(this.set(config), null, '10', 'UsersslkiranDocumentsgithubsunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
 	    }.bind(_this2);
 	    return _this2;
 	  }
@@ -14650,7 +14650,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14806,7 +14806,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14865,7 +14865,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SnackBar.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/SnackBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14902,7 +14902,7 @@
 	          a_translationY: "0",
 	          a_duration: "360"
 	        });
-	        Android.runInUI(cmd, null, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "44", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.totalTime);
 	
 	      setTimeout(function () {
@@ -14918,14 +14918,14 @@
 	        a_translationY: "360",
 	        a_duration: "360"
 	      });
-	      Android.runInUI(cmd, null, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, null, "61", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      cmd = _this.set({
 	        id: _this.idSet.container,
 	        visibility: "gone"
 	      });
 	
 	      setTimeout(function () {
-	        Android.runInUI(cmd, null, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "67", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.fadeTime);
 	
 	      _this.totalTime -= _this.showTime; //After rendering one Snackbar, its time is removed from totalTime
@@ -14957,7 +14957,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "98", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, 0, "98", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	    };
 	
 	    _this.displayName = "CustomSnackBar";
@@ -15040,7 +15040,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15642,7 +15642,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15685,7 +15685,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "41", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
+	      Android.runInUI(cmd, 0, "41", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -15761,7 +15761,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15820,7 +15820,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16004,7 +16004,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16063,7 +16063,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16122,7 +16122,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16174,7 +16174,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16233,7 +16233,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16285,7 +16285,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16337,7 +16337,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16393,7 +16393,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16452,7 +16452,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16511,7 +16511,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16569,7 +16569,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16621,7 +16621,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16680,7 +16680,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16739,7 +16739,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16798,7 +16798,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16851,7 +16851,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16903,7 +16903,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
+	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16971,7 +16971,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterPopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PageFilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17039,7 +17039,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "86", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterPopupjs");
+	      Android.runInUI(cmd, 0, "86", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPageFilterPopupjs");
 	    };
 	
 	    _this.setValues = function (item, values) {
@@ -17323,7 +17323,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeatureButton.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FeatureButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17353,7 +17353,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.buttonText,
 	        text: text
-	      }), null, "19", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFeatureButtonjs");
+	      }), null, "19", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFeatureButtonjs");
 	    };
 	
 	    _this.buttonFunction = function () {
@@ -17433,7 +17433,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterChooser.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PageFilterChooser.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17488,7 +17488,7 @@
 	        id: _this.idSet.parentContainer,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "53", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterChooserjs");
+	      Android.runInUI(cmd, 0, "53", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPageFilterChooserjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -17798,7 +17798,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PageOption.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/PageOption.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17954,7 +17954,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Button.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/Button.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18120,7 +18120,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterItem.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18185,7 +18185,7 @@
 	          text: newList.length > 0 ? newList.length + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "75", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterItemjs");
 	      } else {
 	        console.log("seected Length", _this2.getSelectedCount(newList));
 	        window.__FilterPopup.hide();
@@ -18197,7 +18197,7 @@
 	          text: _this2.getSelectedCount(_this2.filterList) != 0 ? _this2.getSelectedCount(_this2.filterList) + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "88", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "88", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterItemjs");
 	      }
 	    };
 	
@@ -18314,7 +18314,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18543,7 +18543,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChooseItem.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChooseItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18809,7 +18809,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RadioListItem.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/RadioListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18856,7 +18856,7 @@
 	      }
 	      _this2.props.onItemClick(_this2.props.title, _this2.isSelected);
 	
-	      Android.runInUI(cmd, 0, "45", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRadioListItemjs");
+	      Android.runInUI(cmd, 0, "45", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdRadioListItemjs");
 	    };
 	
 	    _this2.setIds(['image']);
@@ -19433,7 +19433,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CustomPopUp.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CustomPopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -19481,7 +19481,7 @@
 	        id: _this.idSet.addSkillEditText,
 	        text: ""
 	      });
-	      Android.runInUI(cmd, 0, "63", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "63", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	      window.__LoaderDialog.hide();
 	    };
 	
@@ -19511,7 +19511,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "93", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "93", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.setVisibility = function (data) {
@@ -19520,7 +19520,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "102", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "102", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.getOptions = function () {
@@ -20022,7 +20022,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -20070,7 +20070,7 @@
 	                visibility: data
 	            });
 	
-	            Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPreviewImagePopupjs");
+	            Android.runInUI(cmd, 0, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPreviewImagePopupjs");
 	        };
 	
 	        _this.getImage = function (imageUrl) {
@@ -20158,7 +20158,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20190,7 +20190,7 @@
 	    _this.show = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "visible" }), null, "31", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "visible" }), null, "31", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.updateProgressBar(0);
 	      _this.isVisible = true;
 	    };
@@ -20198,7 +20198,7 @@
 	    _this.hide = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "gone" }), null, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "gone" }), null, "42", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.isVisible = false;
 	      if (_this.handleClickCallback) _this.handleClickCallback = null;
 	    };
@@ -20219,7 +20219,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "visible"
-	          }), 0, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "67", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      } else {
 	        if (_this.isButtonVisible) {
@@ -20227,7 +20227,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "gone"
-	          }), 0, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "75", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      }
 	    };
@@ -20390,7 +20390,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20449,7 +20449,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      Android.runInUI(cmd, 0, "83", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -20598,17 +20598,17 @@
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionIconHolder,
 	        imageUrl: icon
-	      }), 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "44", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionTextHolder,
 	        text: data + " " + window.__S.PERMISSION_DENIED
-	      }), 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionSettingsMsg,
 	        text: window.__S.PERMISSION_SETTING_MSG
-	      }), 0, "54", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "54", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    }
 	  }, {
 	    key: "render",
@@ -20666,7 +20666,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20723,7 +20723,7 @@
 	        id: _this2.parentId,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "71", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
+	      Android.runInUI(cmd, 0, "71", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -21030,7 +21030,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/Spinner.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/Spinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21084,7 +21084,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21120,14 +21120,14 @@
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "visible"
-	      }), null, "27", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "27", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.hide = function () {
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "gone"
-	      }), null, "34", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "34", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.onUpgrade = function () {
@@ -21225,7 +21225,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21370,7 +21370,7 @@
 	        id: _this2.idSet.popUpParent,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "141", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileImagePopUpjs");
+	      Android.runInUI(cmd, 0, "141", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdProfileImagePopUpjs");
 	    };
 	
 	    _this2.loadImage = function () {
@@ -22823,7 +22823,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SplashScreenActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/SplashScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22840,6 +22840,7 @@
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
 	var ImageView = __webpack_require__(350);
+	var utils = __webpack_require__(397);
 	window.R = __webpack_require__(7);
 	
 	var SplashScreenActivity = function (_View) {
@@ -22849,6 +22850,10 @@
 	    _classCallCheck(this, SplashScreenActivity);
 	
 	    var _this = _possibleConstructorReturn(this, (SplashScreenActivity.__proto__ || Object.getPrototypeOf(SplashScreenActivity)).call(this, props, children, state));
+	
+	    _this.dummyFunction = function (response) {
+	      console.log("response genie events", JSON.parse(utils.decodeBase64(response)));
+	    };
 	
 	    _this.getTextToDisplay = function () {
 	      var textToDisplay = JBridge.getFromSharedPrefs("orgName");
@@ -22867,7 +22872,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "42", "UsersnikithshettysunbirdgithubsunbirdduiviewsSplashScreenActivityjs");
+	      Android.runInUI(_this.animateView(), null, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSplashScreenActivityjs");
 	    };
 	
 	    _this.getApiUrl = function () {
@@ -22891,7 +22896,12 @@
 	    };
 	
 	    _this.afterRender = function () {
-	      JBridge.syncTelemetry();
+	
+	      var epoch = JBridge.epochTime();
+	      var connectionType = JBridge.checkConnectionType();
+	      if (epoch < 26979 || connectionType == "wifi") JBridge.syncTelemetry(15000); // 15 seconds delay if its first day of installation or device is connected to wifi
+	      else JBridge.syncTelemetry(30000); // 30 seconds delay otherwise
+	
 	      JBridge.logsplashScreenEvent();
 	      JBridge.logCorrelationPageEvent("SPLASHSCREEN", "", "");
 	
@@ -22912,6 +22922,7 @@
 	    _this.getIcon();
 	    _this.getTextToDisplay();
 	    window.__pressedLoggedOut = false;
+	    //  window.__getGenieEvents = this.dummyFunction;
 	    return _this;
 	  }
 	
@@ -22928,7 +22939,7 @@
 	          background: window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 86
+	            lineNumber: 99
 	          }
 	        },
 	        dom(ImageView, {
@@ -22937,7 +22948,7 @@
 	          layout_gravity: "center",
 	          circularImageUrl: "1," + this.icon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 94
+	            lineNumber: 107
 	          }
 	        }),
 	        dom(TextView, {
@@ -22947,7 +22958,7 @@
 	          textSize: "18",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 99
+	            lineNumber: 112
 	          }
 	        })
 	      );
@@ -22967,7 +22978,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/WelcomeScreenActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/WelcomeScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23175,7 +23186,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/StateSelectActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/StateSelectActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23348,7 +23359,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/MainActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/MainActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23490,7 +23501,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function () {
-	    Android.runInUI(_this3.animateView(), null, "72", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "72", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -23732,7 +23743,7 @@
 	        break;
 	      case 2:
 	        shouldBeModified = true;
-	        _this3.logCorrelationPageEvent("RESOURCES");
+	        _this3.logCorrelationPageEvent("LIBRARY");
 	        // JBridge.logCorrelationPageEvent("RESOURCES",responseData.params.msgid,responseData.id)
 	        window.__runDuiCallback({ tag: "OPEN_ResourceFragment", contents: [] });
 	        break;
@@ -24065,7 +24076,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24232,7 +24243,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "159", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
+	      Android.runInUI(cmd, 0, "159", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
 	
 	      _this3.props._onClick(index);
 	    };
@@ -24329,7 +24340,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/HomeFragment.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/HomeFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24934,7 +24945,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25023,7 +25034,7 @@
 	          visibility: isDataEmpty ? "gone" : "visible"
 	        });
 	
-	        Android.runInUI(cmd, 0, "95", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
+	        Android.runInUI(cmd, 0, "95", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
 	
 	        layout = dom(
 	          LinearLayout,
@@ -25253,7 +25264,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CardComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/CardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25493,7 +25504,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25625,7 +25636,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnnouncementCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/AnnouncementCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26051,7 +26062,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26130,7 +26141,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "96", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleCloseClick = function () {
@@ -26177,7 +26188,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "144", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "144", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleItemClick = function (itemNo, logoNo) {
@@ -26385,7 +26396,7 @@
 	        text: "",
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "161", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "161", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    }
 	  }, {
 	    key: "getSearchList",
@@ -26560,7 +26571,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ClassListItem.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ClassListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26803,7 +26814,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SearchResult.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/SearchResult.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26987,9 +26998,10 @@
 	    };
 	
 	    _this.handleItemClick = function (item, index) {
+	      console.log("itemClicked ", item);
 	
 	      var itemDetails = JSON.stringify(item);
-	      if (_this.props.type.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, _this.props.searchText, item.identifier);else if (_this.props.type.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, _this.props.searchText, item.identifier);else if (_this.props.type.toLowerCase() == "resource") JBridge.logContentClickEvent("RESOURCES", index + 1, _this.props.searchText, item.identifier);
+	      if (_this.props.type.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "resource") JBridge.logContentClickEvent("RESOURCES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);
 	
 	      if (item.hasOwnProperty("data") && item.data.hasOwnProperty("education")) {
 	        console.log("item data", item);
@@ -27066,7 +27078,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 211
 	          }
 	        },
 	        this.getData()
@@ -27086,7 +27098,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27297,7 +27309,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27511,7 +27523,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/StarComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/StarComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27601,7 +27613,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadedCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/DownloadedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27803,7 +27815,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28002,7 +28014,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgressCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseProgressCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28254,7 +28266,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CourseFragment.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/CourseFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28341,7 +28353,7 @@
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.fetchingHolder,
 	        visibility: "gone"
-	      }), 0, "128", "UsersnikithshettysunbirdgithubsunbirdduiviewsFragmentsCourseFragmentjs");
+	      }), 0, "128", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsFragmentsCourseFragmentjs");
 	      var emptyBody = dom(LinearLayout, {
 	        layoutTransition: "true",
 	        height: "match_parent",
@@ -28492,7 +28504,9 @@
 	    };
 	
 	    _this2.handleCourseClick = function (content, type, index) {
-	      JBridge.logCardClickEvent("COURSES", index + 1, "COURSES", content.identifier);
+	      console.log("handleCourseClick ", content);
+	
+	      JBridge.logCardClickEvent("COURSES", index + 1, "COURSES", content.identifier, content.pkgVersion);
 	      var tmp = JSON.stringify(content);
 	      var whatToSend = [];
 	      var event = {};
@@ -28508,7 +28522,8 @@
 	    };
 	
 	    _this2.handleUserCoursesClick = function (content, type, index) {
-	      JBridge.logCardClickEvent("COURSES", index + 1, "COURSES_IN_PROGRESS", content.identifier);
+	      console.log("handleUserCourseClick ", content);
+	      JBridge.logCardClickEvent("COURSES", index + 1, "COURSES_IN_PROGRESS", content.identifier, null);
 	      var whatToSend = { "course": JSON.stringify(content) };
 	      var event = { tag: 'OPEN_EnrolledCourseActivity', contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -28532,7 +28547,7 @@
 	          afterRender: _this2.addSwipeFunction,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 297
+	            lineNumber: 300
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -28543,7 +28558,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 303
+	            lineNumber: 306
 	          }
 	        }),
 	        dom(
@@ -28554,7 +28569,7 @@
 	            id: _this2.idSet.scrollViewContainerCourse,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 312
+	              lineNumber: 315
 	            }
 	          },
 	          dom(
@@ -28565,7 +28580,7 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 318
+	                lineNumber: 321
 	              }
 	            },
 	            dom(CourseInProgressContainer, {
@@ -28575,7 +28590,7 @@
 	              showViewMore: "gone",
 	              onCourseClick: _this2.handleUserCoursesClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 325
+	                lineNumber: 328
 	              }
 	            }),
 	            _this2.handleResponse()
@@ -28595,6 +28610,7 @@
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_filter" || url == "ic_action_filter_applied") {
+	        JBridge.explicitSearch("COURSE", "FILTER");
 	        window.__PageFilterPopup.resetPopup("Cource", _this2.props.response);
 	        window.__PageFilterPopup.show();
 	      }
@@ -28607,7 +28623,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.WHITE_F2, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 363
+	          lineNumber: 366
 	        }
 	      });
 	    };
@@ -28659,7 +28675,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 373
+	            lineNumber: 376
 	          }
 	        },
 	        this.getBody()
@@ -28680,7 +28696,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28933,7 +28949,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ResourceFragment.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/ResourceFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29205,6 +29221,7 @@
 	    _this2.handleMenuClick = function (url) {
 	      console.log("url clicked", url);
 	      if (url == "ic_action_filter" || url == "ic_action_filter_applied") {
+	        JBridge.explicitSearch("LIBRARY", "FILTER");
 	        window.__PageFilterPopup.resetPopup("Resource", _this2.props.response);
 	        window.__PageFilterPopup.show();
 	      } else if (url == "ic_notification_red") {
@@ -29213,7 +29230,7 @@
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_search") {
 	
-	        var searchDetails = { filterDetails: "", searchType: "Resource" };
+	        var searchDetails = { filterDetails: "", searchType: "Library" };
 	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
 	        window.__runDuiCallback(event);
@@ -29233,7 +29250,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.WHITE_F2, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 305
+	          lineNumber: 306
 	        }
 	      });
 	    };
@@ -29262,7 +29279,7 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 331
+	              lineNumber: 332
 	            }
 	          },
 	          dom(OfflineResourceContainer, {
@@ -29271,7 +29288,7 @@
 	            title: window.__S.SAVED_RESOURCES,
 	            onViewAllClick: _this.handleResourceViewAllClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 337
+	              lineNumber: 338
 	            }
 	          }),
 	          dom(LinearLayout, {
@@ -29279,7 +29296,7 @@
 	            height: "10",
 	            background: window.__Colors.WHITE_F2, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 343
+	              lineNumber: 344
 	            }
 	          }),
 	          _this.getNoInternetLayout()
@@ -29336,7 +29353,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 369
+	            lineNumber: 370
 	          }
 	        },
 	        this.getBody()
@@ -29357,7 +29374,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ResourceContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29440,8 +29457,8 @@
 	    };
 	
 	    _this2.handleCardClick = function (item, type, index) {
-	      console.log("index clicked", index);
-	      JBridge.logCardClickEvent("RESOURCES", index + 1, "RESOURCES", item.identifier);
+	      console.log("index clicked", item);
+	      JBridge.logCardClickEvent("LIBRARY", index + 1, "RESOURCES", item.identifier, item.pkgVersion);
 	      if (item.contentType.toLowerCase() == "course" || item.contentType.toLowerCase() == "collection" || item.contentType.toLowerCase() == "textbook") {
 	        var whatToSend = { course: JSON.stringify(item) };
 	        var event = { tag: "OPEN_EnrolledCourseActivity", contents: whatToSend };
@@ -29580,7 +29597,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29620,7 +29637,7 @@
 	        visibility: _this2.offlineCount == 0 ? "gone" : "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "35", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
+	      Android.runInUI(cmd, 0, "35", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
 	    };
 	
 	    _this2.getRows = function () {
@@ -29704,8 +29721,8 @@
 	    };
 	
 	    _this2.handleCardClick = function (item, type, index) {
-	      console.log(index);
-	      JBridge.logCardClickEvent("RESOURCES", index + 1, "SAVED_RESOURCES", item.identifier);
+	      console.log("handleCardClick : ", item);
+	      JBridge.logCardClickEvent("LIBRARY", index + 1, "SAVED_RESOURCES", item.identifier, item.contentData.pkgVerison);
 	      if (item.contentType.toLowerCase() == "course" || item.contentType.toLowerCase() == "collection" || item.contentType.toLowerCase() == "textbook") {
 	        var whatToSend = { course: JSON.stringify(item) };
 	        var event = { tag: "OPEN_CourseInfoActivity", contents: whatToSend };
@@ -29840,7 +29857,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CommunityFragment.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/CommunityFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29964,7 +29981,7 @@
 	        id: _this.idSet.viewallContainer,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "111", "UsersnikithshettysunbirdgithubsunbirdduiviewsFragmentsCommunityFragmentjs");
+	      Android.runInUI(cmd, 0, "111", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsFragmentsCommunityFragmentjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {};
@@ -30114,7 +30131,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MyCommunities.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/MyCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30414,7 +30431,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PopularCommunities.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PopularCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30685,7 +30702,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30957,7 +30974,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ProfileFragment.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/ProfileFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31250,7 +31267,7 @@
 	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	        }
 	      });
-	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", "true", 10);else console.log("JBridge.searchContent failed, no internet");
+	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10);else console.log("JBridge.searchContent failed, no internet");
 	      window.__ContentLoadingComponent.hideLoader();
 	      if (!JBridge.isNetworkAvailable()) {
 	        window.__LoaderDialog.hide();
@@ -31438,7 +31455,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileHeader.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileHeader.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31678,7 +31695,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31756,7 +31773,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PersonalDetails.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PersonalDetails.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31917,7 +31934,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileExperiences.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileExperiences.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -32449,7 +32466,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CropParagraph.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CropParagraph.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -32487,7 +32504,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.props.contentText
 	        });
-	        Android.runInUI(cmd, 0, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "42", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
 	      } else {
 	        var cmd = _this.set({
 	          id: _this.idSet.showMoreButton,
@@ -32497,7 +32514,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.str
 	        });
-	        Android.runInUI(cmd, 0, "52", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "52", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
 	      }
 	      _this.max = !_this.max;
 	    };
@@ -32663,7 +32680,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33006,7 +33023,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33195,7 +33212,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileCreations.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileCreations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33440,7 +33457,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileBadges.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileBadges.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33542,7 +33559,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "104", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileBadgesjs");
+	      Android.runInUI(cmd, 0, "104", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdProfileBadgesjs");
 	    };
 	
 	    _this.getViewAll = function () {
@@ -33681,7 +33698,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileProgress.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34115,7 +34132,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34571,7 +34588,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34773,7 +34790,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34827,7 +34844,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.loaderComponent,
 	        visibility: "gone"
-	      }), 0, "40", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdContentLoadingComponentjs");
+	      }), 0, "40", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdContentLoadingComponentjs");
 	    };
 	
 	    _this.startRendering = function () {
@@ -35039,7 +35056,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/UserActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/UserActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35063,6 +35080,7 @@
 	var ScrollView = __webpack_require__(358);
 	var ViewWidget = __webpack_require__(349);
 	var TextInputView = __webpack_require__(446);
+	var ProgressBar = __webpack_require__(359);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	
@@ -35084,7 +35102,7 @@
 	
 	    _this2.screenName = "UserActivity";
 	
-	    _this2.setIds(["userForumContainer", "tabLayoutContainer", "firstNameHolder", "languageHolder", "alreadyHaveAccHolder", "userNameHolder", "passwordHolder", "needAccHolder", "forgotPasswordHolder", "signInHolder", "signUpHolder", "mobileNumberHolder", "emailHolder", "parentContainer"]);
+	    _this2.setIds(["userForumContainer", "tabLayoutContainer", "firstNameHolder", "languageHolder", "alreadyHaveAccHolder", "userNameHolder", "passwordHolder", "needAccHolder", "forgotPasswordHolder", "signInHolder", "signUpHolder", "mobileNumberHolder", "emailHolder", "parentContainer", "importEcarLayout", "importEcarText"]);
 	    _this2.backPressCount = 0;
 	    _this2.shouldCacheScreen = false;
 	
@@ -35102,6 +35120,7 @@
 	    }
 	
 	    window.__onContentImportResponse = _this2.getImportStatus;
+	    window.__onContentImportProgress = _this2.setImportProgress;
 	    window.__LoaderDialog.hide();
 	    return _this2;
 	  }
@@ -35124,9 +35143,10 @@
 	          background: window.__Colors.WHITE,
 	          id: this.idSet.parentContainer,
 	          width: "match_parent",
-	          height: "match_parent", __source: {
+	          height: "match_parent",
+	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 944
+	            lineNumber: 967
 	          }
 	        },
 	        dom(
@@ -35134,10 +35154,11 @@
 	          {
 	            height: "match_parent",
 	            width: "match_parent",
+	            orientation: "vertical",
 	            gravity: "center",
-	            orientation: "vertical", __source: {
+	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 950
+	              lineNumber: 974
 	            }
 	          },
 	          dom(ImageView, {
@@ -35146,7 +35167,7 @@
 	            layout_gravity: "center",
 	            circularImageUrl: "1," + imgUrl, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 955
+	              lineNumber: 980
 	            }
 	          }),
 	          dom(TextView, {
@@ -35156,7 +35177,43 @@
 	            height: "wrap_content",
 	            textSize: "18", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 960
+	              lineNumber: 985
+	            }
+	          })
+	        ),
+	        dom(
+	          LinearLayout,
+	          {
+	            height: "match_parent",
+	            width: "match_parent",
+	            weight: "5",
+	            orientation: "horizontal",
+	            gravity: "center",
+	            id: this.idSet.importEcarLayout,
+	            visibility: "gone", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 993
+	            }
+	          },
+	          dom(ProgressBar, {
+	            height: "40",
+	            width: "40",
+	            margin: "0,0,15,0",
+	            layout_gravity: "center",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 1001
+	            }
+	          }),
+	          dom(TextView, {
+	            id: this.idSet.importEcarText,
+	            height: "wrap_content",
+	            width: "wrap_content",
+	            text: "(1/2)",
+	            layout_gravity: "center",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 1007
 	            }
 	          })
 	        )
@@ -35203,6 +35260,21 @@
 	      var event = { tag: "OPEN_MainActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
 	    }
+	  };
+	
+	  this.setImportProgress = function (progress) {
+	    console.log("import ecar progress", progress);
+	    var cmd = _this3.set({
+	      id: _this3.idSet.importEcarLayout,
+	      visibility: "visible"
+	    });
+	
+	    cmd += _this3.set({
+	      id: _this3.idSet.importEcarText,
+	      text: progress
+	    });
+	
+	    Android.runInUI(cmd, 0, "112", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleDeepLinkAction = function (identifier) {
@@ -35298,7 +35370,7 @@
 	    _this3.backPressCount = 0;
 	    _this3.language = "English";
 	    _this3.userName = _this3.userPass = _this3.firstName = "";
-	    Android.runInUI(_this3.animateView(), null, "203", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "220", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.getLoginCallback = function (response) {
@@ -35353,6 +35425,12 @@
 	    var whatToSend = [];
 	    var event = { tag: "OPEN_MainActivity", contents: whatToSend };
 	    window.__runDuiCallback(event);
+	
+	    // setTimeout(() => {
+	    //   var whatToSend = [];
+	    //   var event = { tag: "OPEN_MainActivity", contents: whatToSend };
+	    //   window.__runDuiCallback(event);
+	    // }, 4000);
 	  };
 	
 	  this.onBackPressed = function () {
@@ -35498,7 +35576,7 @@
 	      id: _this3.idSet.alreadyHaveAccHolder,
 	      visibility: visibilityVal
 	    });
-	    Android.runInUI(cmd, 0, "423", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(cmd, 0, "446", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleNotificationAction = function () {
@@ -35621,7 +35699,7 @@
 	        gravity: "center",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 546
+	          lineNumber: 569
 	        }
 	      },
 	      dom(ImageView, {
@@ -35629,7 +35707,7 @@
 	        width: "60",
 	        imageUrl: "ic_launcher", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 553
+	          lineNumber: 576
 	        }
 	      }),
 	      dom(TextView, {
@@ -35639,7 +35717,7 @@
 	        margin: "0,12,0,6",
 	        style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 558
+	          lineNumber: 581
 	        }
 	      }),
 	      dom(TextView, {
@@ -35648,7 +35726,7 @@
 	        text: window.__S.WELCOME_M2,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 565
+	          lineNumber: 588
 	        }
 	      })
 	    );
@@ -35664,7 +35742,7 @@
 	        margin: "24,0,24,0",
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 576
+	          lineNumber: 599
 	        }
 	      },
 	      dom(
@@ -35676,7 +35754,7 @@
 	          stroke: "5," + window.__Colors.THICK_BLUE,
 	          cornerRadius: "5", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 584
+	            lineNumber: 607
 	          }
 	        },
 	        dom(
@@ -35690,14 +35768,14 @@
 	            visibility: _this3.isLoginMode ? "visible" : "gone",
 	            onClick: _this3.handleLoginClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 590
+	              lineNumber: 613
 	            }
 	          },
 	          dom(TextView, {
 	            style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	            text: window.__S.SIGN_IN, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 599
+	              lineNumber: 622
 	            }
 	          })
 	        ),
@@ -35712,14 +35790,14 @@
 	            visibility: _this3.isLoginMode ? "gone" : "visible",
 	            onClick: _this3.handleSignUpClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 603
+	              lineNumber: 626
 	            }
 	          },
 	          dom(TextView, {
 	            text: window.__S.SIGN_UP,
 	            style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 612
+	              lineNumber: 635
 	            }
 	          })
 	        )
@@ -35741,7 +35819,7 @@
 	        visibility: _this3.isLoginMode ? "gone" : "visible",
 	        root: "true", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 629
+	          lineNumber: 652
 	        }
 	      },
 	      dom(
@@ -35754,7 +35832,7 @@
 	          gravity: "center",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 637
+	            lineNumber: 660
 	          }
 	        },
 	        dom(
@@ -35767,7 +35845,7 @@
 	            gravity: "center",
 	            root: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 644
+	              lineNumber: 667
 	            }
 	          },
 	          dom(
@@ -35777,7 +35855,7 @@
 	              width: "match_parent",
 	              id: _this3.idSet.firstNameHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 652
+	                lineNumber: 675
 	              }
 	            },
 	            dom(TextInputView, {
@@ -35788,7 +35866,7 @@
 	              margin: "20,0,24,12",
 	              _onChange: _this3.updateFirstName, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 657
+	                lineNumber: 680
 	              }
 	            })
 	          ),
@@ -35799,7 +35877,7 @@
 	              width: "match_parent",
 	              id: _this3.idSet.userNameHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 667
+	                lineNumber: 690
 	              }
 	            },
 	            dom(TextInputView, {
@@ -35810,7 +35888,7 @@
 	              margin: "20,0,24,12",
 	              _onChange: _this3.updateUserName, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 672
+	                lineNumber: 695
 	              }
 	            })
 	          ),
@@ -35822,7 +35900,7 @@
 	              id: _this3.idSet.emailHolder,
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 682
+	                lineNumber: 705
 	              }
 	            },
 	            dom(TextInputView, {
@@ -35833,7 +35911,7 @@
 	              margin: "20,0,24,12",
 	              _onChange: _this3.updateEmail, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 689
+	                lineNumber: 712
 	              }
 	            })
 	          ),
@@ -35844,7 +35922,7 @@
 	              width: "match_parent",
 	              id: _this3.idSet.passwordHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 699
+	                lineNumber: 722
 	              }
 	            },
 	            dom(TextInputView, {
@@ -35856,7 +35934,7 @@
 	              margin: "20,0,24,12",
 	              _onChange: _this3.updateUserPassword, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 705
+	                lineNumber: 728
 	              }
 	            })
 	          ),
@@ -35867,7 +35945,7 @@
 	              width: "match_parent",
 	              id: _this3.idSet.mobileNumberHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 716
+	                lineNumber: 739
 	              }
 	            },
 	            dom(TextInputView, {
@@ -35877,7 +35955,7 @@
 	              inputType: "numeric",
 	              _onChange: _this3.updateMobileNumber, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 721
+	                lineNumber: 744
 	              }
 	            })
 	          ),
@@ -35886,7 +35964,7 @@
 	            width: "match_parent",
 	            id: _this3.idSet.languageHolder, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 730
+	              lineNumber: 753
 	            }
 	          })
 	        )
@@ -35905,7 +35983,7 @@
 	        gravity: "center_horizontal",
 	        root: "true", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 747
+	          lineNumber: 770
 	        }
 	      },
 	      dom(TextView, {
@@ -35919,7 +35997,7 @@
 	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.ALREADY_HAVE_ACC + "</a></font>",
 	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 754
+	          lineNumber: 777
 	        }
 	      }),
 	      dom(TextView, {
@@ -35933,7 +36011,7 @@
 	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.NO_ACC_YET + "</a></font>",
 	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 765
+	          lineNumber: 788
 	        }
 	      })
 	    );
@@ -35951,7 +36029,7 @@
 	        background: window.__Colors.WHITE,
 	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 782
+	          lineNumber: 805
 	        }
 	      },
 	      dom(
@@ -35965,7 +36043,7 @@
 	          gravity: "center",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 791
+	            lineNumber: 814
 	          }
 	        },
 	        _this3.getTopLayout(),
@@ -35979,7 +36057,7 @@
 	        padding: "12,12,12,12",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 811
+	          lineNumber: 834
 	        }
 	      })
 	    );
@@ -36039,7 +36117,6 @@
 	
 	        console.log("SHARED PREFERENCES ARE THERE STILL");
 	        if (whereFrom == "SplashScreenActivity") {
-	
 	          console.log("FROM SPLASH SCREEN ACTIVITY");
 	
 	          if ("YES" == JBridge.getFromSharedPrefs("logged_in")) {
@@ -36075,6 +36152,7 @@
 	      } else {
 	
 	        if ("YES" == JBridge.getFromSharedPrefs("logged_in")) {
+	
 	          _this3.performLogin();
 	        } else {
 	          _this3.replaceChild(_this3.idSet.parentContainer, _this3.getBody().render(), 0);
@@ -36091,7 +36169,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/TextInputView.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/TextInputView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36217,7 +36295,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseInfoActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36285,14 +36363,11 @@
 	    console.log("data in CIA", _this2.details);
 	
 	    _this2.localContent = null;
-	    _this2.checkContentLocalStatus(_this2.details.identifier);
 	    _this2.data = {
 	      courseName: _this2.details ? _this2.details.name : "",
 	      courseDesc: _this2.details ? _this2.details.description : "",
 	      competedCount: _this2.details && _this2.details.footerTitle ? _this2.details.footerTitle.split('%')[0] : "10"
 	    };
-	
-	    _this2.logTelelmetry(_this2.details.identifier);
 	    return _this2;
 	  }
 	
@@ -36307,7 +36382,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 555
+	            lineNumber: 520
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -36317,7 +36392,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 561
+	            lineNumber: 526
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -36325,7 +36400,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 569
+	            lineNumber: 534
 	          }
 	        })
 	      );
@@ -36339,17 +36414,6 @@
 	
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
-	
-	  this.logTelelmetry = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CIA", data);
-	        JBridge.logCourseDetailScreenEvent(id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
 	
 	  this.getSpineStatus = function (pValue) {
 	    var cmd;
@@ -36369,31 +36433,39 @@
 	    downloadedPercent = downloadedPercent < 0 ? 0 : downloadedPercent;
 	
 	    if (downloadedPercent == 100) {
-	      _this3.checkContentLocalStatus(_this3.details.identifier);
+	      _this3.renderChildren(_this3.details.identifier);
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.downloadProgressText,
 	        text: window.__S.FETCHING_CONTENTS.format(downloadedPercent)
 	      });
-	      Android.runInUI(cmd, 0, "110", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "96", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
+	  this.renderChildren = function (identifier) {
+	    var callback1 = callbackMapper.map(function (data) {
+	      if (data == "__failed") {
+	        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
+	        _this.onBackPressed();
+	      }
+	      data[0] = utils.jsonifyData(utils.decodeBase64(data[0]));
+	      _this.courseContent = JSON.parse(data[0]);
+	      _this.renderCourseChildren(identifier);
+	    });
+	    JBridge.getChildContent(identifier, callback1);
+	  };
+	
 	  this.checkContentLocalStatus = function (identifier) {
+	    console.log("contentType: ", _this3.details.contentType);
+	    JBridge.startEventLog(_this3.details.contentType, identifier, _this3.details.pkgVersion);
 	    var callback = callbackMapper.map(function (data) {
 	      _this.localContent = JSON.parse(utils.decodeBase64(data[0]));
 	      if (_this.localContent.isAvailableLocally == true) {
-	        var callback1 = callbackMapper.map(function (data) {
-	          if (data == "__failed") {
-	            window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
-	            this.onBackPressed();
-	          }
-	          data[0] = utils.jsonifyData(utils.decodeBase64(data[0]));
-	          _this.courseContent = JSON.parse(data[0]);
-	          _this.renderCourseChildren();
-	        });
-	        JBridge.getChildContent(identifier, callback1);
+	        JBridge.logCourseDetailScreenEvent(_this.details.identifier, _this.details.pkgVersion, true);
+	        _this.renderChildren();
 	      } else {
+	        JBridge.logCourseDetailScreenEvent(_this.details.identifier, _this.details.pkgVersion, false);
 	        var callback22 = callbackMapper.map(function (data) {
 	          data = JSON.parse(data);
 	          if (data.status === "NOT_FOUND") {
@@ -36412,6 +36484,24 @@
 	    console.log("ON STOP IN ResourceDetailActivity");
 	  };
 	
+	  this.checkWhetherEnrolledCourse = function () {
+	    var enrolledIds = window.__enrolledCourses;
+	    var courseEnrollCheckCount = 0;
+	    enrolledIds.map(function (item) {
+	      if (item.courseId == _this3.details.identifier) {
+	        var whatToSend = { "course": JSON.stringify(_this3.details) };
+	        var event = { tag: 'OPEN_EnrolledActivity', contents: whatToSend };
+	        window.__runDuiCallback(event);
+	        courseEnrollCheckCount = courseEnrollCheckCount + 1;
+	        return;
+	      }
+	    });
+	    if (courseEnrollCheckCount == 0) {
+	      _this3.replaceChild(_this3.idSet.totalContainer, _this3.getBody().render(), 0);
+	      _this3.checkContentLocalStatus(_this3.details.identifier);
+	    }
+	  };
+	
 	  this.renderCourseChildren = function () {
 	    console.log("RENDRING BREKAUP", _this3.courseContent);
 	    var child;
@@ -36423,7 +36513,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 161
+	          lineNumber: 170
 	        }
 	      });
 	    } else {
@@ -36436,7 +36526,7 @@
 	        shouldGoForward: "gone",
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 169
+	          lineNumber: 178
 	        }
 	      });
 	      var isVisible = "gone";
@@ -36444,7 +36534,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: isVisible
-	      }), 0, "180", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "189", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	
 	    var layout = dom(
@@ -36454,7 +36544,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 187
+	          lineNumber: 196
 	        }
 	      },
 	      child
@@ -36464,7 +36554,7 @@
 	
 	  this.onPop = function () {
 	
-	    Android.runInUI(_this3.animateView(), null, "202", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "211", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
 	  };
 	
 	  this.afterRender = function () {
@@ -36475,16 +36565,7 @@
 	      var event = { "tag": "API_EnrolledCoursesList", contents: whatToSend };
 	      window.__runDuiCallback(event);
 	    } else {
-	
-	      _this3.replaceChild(_this3.idSet.totalContainer, _this3.getBody().render(), 0);
-	      var enrolledIds = window.__enrolledCourses;
-	      enrolledIds.map(function (item) {
-	        if (item.courseId == _this3.details.identifier && !_this3.details.isCreator) {
-	          var whatToSend = { "course": _this3.state.data.value0.courseDetails };
-	          var event = { tag: 'OPEN_EnrolledActivity', contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        }
-	      });
+	      _this3.checkWhetherEnrolledCourse();
 	    }
 	
 	    if (_this3.details.isCreator) {
@@ -36492,7 +36573,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: "gone"
-	      }), 0, "236", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "230", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
@@ -36526,27 +36607,10 @@
 	
 	    switch (state.responseFor + "") {
 	      case "API_EnrolledCoursesList":
-	
 	        window.__enrolledCourses = response.result.courses;
-	
 	        console.log("ENROLLED COURSES", window.__enrolledCourses);
 	        window.__LoaderDialog.hide();
-	
-	        var enrolledIds = window.__enrolledCourses;
-	        var courseEnrollCheckCount = 0;
-	        enrolledIds.map(function (item) {
-	          if (item.courseId == _this3.details.identifier) {
-	            var whatToSend = { "course": _this3.state.data.value0.courseDetails };
-	            var event = { tag: 'OPEN_EnrolledActivity', contents: whatToSend };
-	            window.__runDuiCallback(event);
-	            courseEnrollCheckCount = courseEnrollCheckCount + 1;
-	          }
-	        });
-	        if (courseEnrollCheckCount == 0) {
-	          _this3.replaceChild(_this3.idSet.totalContainer, _this3.getBody().render(), 0);
-	          _this3.checkContentLocalStatus(_this3.details.identifier);
-	        }
-	
+	        _this3.checkWhetherEnrolledCourse();
 	        break;
 	
 	      default:
@@ -36556,21 +36620,10 @@
 	    }
 	  };
 	
-	  this.logShareContent = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data SharePopUp", data);
-	        JBridge.logShareContentInitiateEvent("COURSES", "course", id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.shareContent = function () {
 	
 	    console.log("SHARE POP UP CALLED");
-	    _this3.logShareContent(_this3.details.identifier);
+	    JBridge.logShareContentInitiateEvent("COURSES", "course", _this3.details.identifier, _this3.details.contentData.pkgVersion);
 	
 	    var shareCallback = callbackMapper.map(function (data) {
 	
@@ -36588,7 +36641,7 @@
 	          type: "COURSES",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 342
+	            lineNumber: 307
 	          }
 	        });
 	
@@ -36615,9 +36668,9 @@
 	  };
 	
 	  this.onBackPressed = function () {
+	    JBridge.endEventLog(_this3.details.contentType, _this3.details.identifier, _this3.details.pkgVersion);
 	    var whatToSend = [];
 	    var event = { tag: 'BACK_CourseInfoActivity', contents: whatToSend };
-	
 	    window.__runDuiCallback(event);
 	  };
 	
@@ -36646,7 +36699,7 @@
 	        style: window.__TextStyle.textStyle.HINT.REGULAR,
 	        text: (i == 0 ? "" : " | ") + item.count + " " + item.type, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 405
+	          lineNumber: 370
 	        }
 	      });
 	    });
@@ -36657,7 +36710,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 411
+	          lineNumber: 376
 	        }
 	      },
 	      dom(
@@ -36667,7 +36720,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 414
+	            lineNumber: 379
 	          }
 	        },
 	        items
@@ -36697,7 +36750,7 @@
 	        background: window.__Colors.WHITE,
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 440
+	          lineNumber: 405
 	        }
 	      },
 	      dom(SimpleToolbar, {
@@ -36709,7 +36762,7 @@
 	        showMenu: "true",
 	        onBackPress: _this3.onBackPressed, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 447
+	          lineNumber: 412
 	        }
 	      }),
 	      dom(
@@ -36720,7 +36773,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 456
+	            lineNumber: 421
 	          }
 	        },
 	        dom(
@@ -36731,7 +36784,7 @@
 	            width: "match_parent",
 	            fillViewPort: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 461
+	              lineNumber: 426
 	            }
 	          },
 	          dom(
@@ -36742,7 +36795,7 @@
 	              padding: "16,24,16,16",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 467
+	                lineNumber: 432
 	              }
 	            },
 	            dom(TextView, {
@@ -36752,7 +36805,7 @@
 	              text: utils.firstLeterCapital(_this3.data.courseName),
 	              style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 473
+	                lineNumber: 438
 	              }
 	            }),
 	            dom(TextView, {
@@ -36761,7 +36814,7 @@
 	              margin: "0,0,0,12",
 	              text: _this3.data.courseDesc, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 481
+	                lineNumber: 446
 	              }
 	            }),
 	            dom(TextView, {
@@ -36769,7 +36822,7 @@
 	              text: window.__S.STRUCTURE,
 	              style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 488
+	                lineNumber: 453
 	              }
 	            }),
 	            _this3.getCurriculumnBrief(),
@@ -36783,7 +36836,7 @@
 	                root: "true",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 497
+	                  lineNumber: 462
 	                }
 	              },
 	              dom(ProgressBar, {
@@ -36791,7 +36844,7 @@
 	                width: "30",
 	                margin: "20,20,20,20", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 504
+	                  lineNumber: 469
 	                }
 	              }),
 	              dom(TextView, {
@@ -36801,7 +36854,7 @@
 	                gravity: "center",
 	                width: "match_parent", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 508
+	                  lineNumber: 473
 	                }
 	              })
 	            )
@@ -36815,14 +36868,14 @@
 	            visibility: "gone",
 	            id: _this3.idSet.enrollButtonId, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 520
+	              lineNumber: 485
 	            }
 	          },
 	          dom(PageOption, {
 	            width: "match_parent",
 	            buttonItems: buttonList, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 525
+	              lineNumber: 490
 	            }
 	          })
 	        )
@@ -36853,7 +36906,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCurriculum.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseCurriculum.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37015,7 +37068,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterList.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChapterList.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37249,7 +37302,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnswerView.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/AnswerView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37294,7 +37347,7 @@
 	        });
 	        content = _this.getSelectedImage();
 	      }
-	      Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAnswerViewjs");
+	      Android.runInUI(cmd, 0, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAnswerViewjs");
 	
 	      _this.replaceChild(_this.idSet.selectorContainer, content.render(), 0);
 	    };
@@ -37413,7 +37466,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterOverView.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChapterOverView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37508,7 +37561,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgress.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37664,7 +37717,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ProgressButton.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/ProgressButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37686,6 +37739,12 @@
 	
 	var _this;
 	
+	/*
+	# This component handles downloading and playing of content.
+	# If the content is not available locally, it shows the DOWNLOAD option, handles download.
+	# After the content is dowloaded or available locally, PLAY option is displayed and plays the content.
+	*/
+	
 	var ProgressButton = function (_View) {
 	  _inherits(ProgressButton, _View);
 	
@@ -37703,7 +37762,7 @@
 	        id: _this2.idSet.cancelDownloadHolder,
 	        visibility: value
 	      });
-	      Android.runInUI(cmd, 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.handleCancelDownload = function () {
@@ -37719,28 +37778,25 @@
 	    };
 	
 	    _this2.checkContentLocalStatus = function (status) {
-	
 	      var callback = callbackMapper.map(function (data) {
 	        var data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
 	        console.log("data in progress local", data);
 	        if (data.isAvailableLocally == true) {
 	          _this.isDownloaded = true;
 	          console.log("status local", status);
-	          _this.props.playContent = JSON.stringify(data
-	          // this.props.playContent = JSON.stringify(data)
-	          );_this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons("100", window.__S.PLAY).render(), 0);
+	          _this.props.playContent = JSON.stringify(data);
+	          _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons("100", window.__S.PLAY).render(), 0);
 	        } else {
 	          _this.isDownloaded = false;
 	          console.log("status not local", status);
 	          _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons("0", window.__S.DOWNLOAD).render(), 0);
 	        }
-	      });
+	      }); //end of callback
 	      JBridge.getContentDetails(_this2.props.identifier, callback);
 	    };
 	
 	    _this2.updateProgress = function (pValue) {
 	      var cmd;
-	
 	      var data = JSON.parse(pValue);
 	
 	      if (data.identifier != _this.props.identifier) {
@@ -37751,7 +37807,7 @@
 	      var textToShow = "";
 	
 	      data.downloadProgress = data.downloadProgress == undefined || data.downloadProgress < 0 ? 0 : data.downloadProgress;
-	      console.log("--->\t\t\t\n\n\n", data);
+	      console.log("--->\t\t\t\n", data);
 	      console.log(data.downloadProgress);
 	      if (data.status == "NOT_FOUND") {
 	        _this2.setCancelButtonVisibility("gone");
@@ -37775,7 +37831,6 @@
 	        _this2.setCancelButtonVisibility("visible");
 	        _this2.isCancelVisible = true;
 	      }
-	
 	      _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(data.downloadProgress, textToShow).render(), 0);
 	    };
 	
@@ -37785,7 +37840,7 @@
 	        visibility: value
 	
 	      });
-	      Android.runInUI(cmd, 0, "138", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "131", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.setButtonFor = function (identifier) {
@@ -37812,19 +37867,13 @@
 	        console.log(_this2.isDownloaded, _this2.props);
 	        if (_this2.isDownloaded) {
 	          window.__getGenieEvents = _this2.checkTelemetry;
-	          // if(this.props.playContent!=null && this.props.playContent!=undefined){
-	          //   console.log("play local content")
-	          //   JBridge.playContent(btoa(JSON.stringify(this.props.playContent)));
-	          // }
-	          // else{
 	          var callback = callbackMapper.map(function (data) {
 	            data = utils.decodeBase64(data[0]);
-	            parsedData = JSON.parse(utils.jsonifyData(data));
+	            var parsedData = JSON.parse(utils.jsonifyData(data));
 	            console.log("data from progress", parsedData);
 	            JBridge.playContent(data, data.identifier, parsedData.contentData.pkgVersion);
 	          });
 	          JBridge.getContentDetails(_this.props.identifier, callback);
-	          // }
 	        } else if (JBridge.isNetworkAvailable()) {
 	
 	          if (!_this2.startedDownloading) {
@@ -37938,7 +37987,7 @@
 	          root: "true",
 	          height: "48", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 303
+	            lineNumber: 287
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -37947,7 +37996,7 @@
 	          weight: pLeft,
 	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 309
+	            lineNumber: 293
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -37956,7 +38005,7 @@
 	          weight: pRight,
 	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 315
+	            lineNumber: 299
 	          }
 	        })
 	      );
@@ -37971,7 +38020,7 @@
 	          height: "48",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 330
+	            lineNumber: 314
 	          }
 	        },
 	        _this2.getDownloadBackground(value),
@@ -37983,7 +38032,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: text, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 339
+	            lineNumber: 323
 	          }
 	        })
 	      );
@@ -38005,7 +38054,7 @@
 	          background: window.__Colors.WHITE,
 	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 357
+	            lineNumber: 341
 	          }
 	        },
 	        dom(TextView, {
@@ -38016,7 +38065,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.BLUE,
 	          text: window.__S.CANCEL_DOWNLOAD, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 368
+	            lineNumber: 352
 	          }
 	        })
 	      );
@@ -38055,7 +38104,7 @@
 	          id: this.idSet.downloadBar,
 	          layoutTransition: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 390
+	            lineNumber: 374
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -38064,7 +38113,7 @@
 	          width: "match_parent",
 	          background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 400
+	            lineNumber: 384
 	          }
 	        }),
 	        this.getCancelButton(),
@@ -38077,7 +38126,7 @@
 	            root: "true",
 	            id: this.idSet.downloadBarContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 408
+	              lineNumber: 392
 	            }
 	          },
 	          this.getButtons(0, this.props.buttonText)
@@ -38099,7 +38148,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SharePopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SharePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38168,7 +38217,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "73", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSharePopupjs");
+	      Android.runInUI(cmd, 0, "73", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSharePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -38444,7 +38493,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseEnrolledActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseEnrolledActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38501,14 +38550,14 @@
 	    };
 	
 	    _this = _this2;
-	    _this2.shouldCacheScreen = false;
+	    _this2.shouldCacheScreen = true; //set to true so that the screen does not reinitialize and send startEventLog telemetry
 	    _this2.courseContent = "";
 	
 	    _this2.enrolledCourses = window.__enrolledCourses;
 	
-	    _this2.details = JSON.parse(state.data.value0.courseDetails);
+	    _this2.details = JSON.parse(state.data.value0.courseDetails); //Content details fetched from API
 	
-	    _this2.courseDetails = "";
+	    _this2.courseDetails = {}; //Content details fetched from Genie SDK
 	    _this2.batchName = "";
 	    _this2.batchDescription = "";
 	
@@ -38567,7 +38616,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 677
+	            lineNumber: 624
 	          }
 	        },
 	        dom(
@@ -38580,7 +38629,7 @@
 	            orientation: "vertical",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 683
+	              lineNumber: 630
 	            }
 	          },
 	          dom(
@@ -38591,7 +38640,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 690
+	                lineNumber: 637
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -38605,7 +38654,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 695
+	                lineNumber: 642
 	              }
 	            })
 	          ),
@@ -38615,7 +38664,7 @@
 	            totalProgress: this.data.totalProgress,
 	            visibility: this.showProgress, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 707
+	              lineNumber: 654
 	            }
 	          }),
 	          dom(
@@ -38624,7 +38673,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 713
+	                lineNumber: 660
 	              }
 	            },
 	            dom(
@@ -38634,7 +38683,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 717
+	                  lineNumber: 664
 	                }
 	              },
 	              dom(
@@ -38645,7 +38694,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 722
+	                    lineNumber: 669
 	                  }
 	                },
 	                dom(
@@ -38657,7 +38706,7 @@
 	                    padding: "16,24,16,16",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 727
+	                      lineNumber: 674
 	                    }
 	                  },
 	                  dom(CourseProgress, {
@@ -38668,7 +38717,7 @@
 	                    onResumeClick: this.handleCourseResume,
 	                    visibility: this.showProgress, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 734
+	                      lineNumber: 681
 	                    }
 	                  }),
 	                  dom(LinearLayout, {
@@ -38677,7 +38726,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 742
+	                      lineNumber: 689
 	                    }
 	                  }),
 	                  dom(TextView, {
@@ -38687,7 +38736,7 @@
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                    text: window.__S.STRUCTURE, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 750
+	                      lineNumber: 697
 	                    }
 	                  }),
 	                  dom(
@@ -38700,7 +38749,7 @@
 	                      root: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 759
+	                        lineNumber: 706
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -38710,7 +38759,7 @@
 	                      gravity: "center",
 	                      text: window.__S.LOADING_CONTENT, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 767
+	                        lineNumber: 714
 	                      }
 	                    }),
 	                    dom(ProgressBar, {
@@ -38719,7 +38768,7 @@
 	                      width: "20",
 	                      height: "20", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 774
+	                        lineNumber: 721
 	                      }
 	                    })
 	                  )
@@ -38731,7 +38780,7 @@
 	                  height: "wrap_content",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 783
+	                    lineNumber: 730
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -38746,7 +38795,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 786
+	                    lineNumber: 733
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -38761,7 +38810,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 797
+	                    lineNumber: 744
 	                  }
 	                })
 	              )
@@ -38777,7 +38826,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 812
+	                  lineNumber: 759
 	                }
 	              },
 	              dom(TextView, {
@@ -38787,7 +38836,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 821
+	                  lineNumber: 768
 	                }
 	              })
 	            )
@@ -38797,7 +38846,7 @@
 	          onConfirm: this.flagContent,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 836
+	            lineNumber: 783
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -38805,7 +38854,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 840
+	            lineNumber: 787
 	          }
 	        })
 	      );
@@ -38822,7 +38871,7 @@
 	
 	  this.onPop = function () {
 	    window.__getDownloadStatus = _this3.getSpineStatus;
-	    Android.runInUI(_this3.animateView(), null, "120", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "120", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	  };
 	
 	  this.onStop = function () {
@@ -38857,19 +38906,8 @@
 	      "identifier": _this3.baseIdentifier
 	    };
 	    var event = { "tag": "API_FlagCourse", contents: whatToSend };
-	    _this3.logFlagContent(_this3.baseIdentifier, selectedList.toString(), comment);
+	    JBridge.logFlagClickInitiateEvent("COURSES", selectedList.toString(), comment, _this3.baseIdentifier, "course", _this3.courseDetails.contentData.pkgVersion);
 	    window.__runDuiCallback(event);
-	  };
-	
-	  this.logFlagContent = function (id, reason, comment) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CEA", data);
-	        JBridge.logFlagClickInitiateEvent("COURSES", reason, comment, id, "course", data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
 	  };
 	
 	  this.getSpineStatus = function (pValue) {
@@ -38894,7 +38932,7 @@
 	    if (downloadedPercent == 100) {
 	      window.__ContentLoaderDialog.updateProgressBar(100);
 	      window.__ContentLoaderDialog.hide();
-	      _this3.checkContentLocalStatus(_this3.baseIdentifier);
+	      _this3.renderChildren(_this3.baseIdentifier);
 	    } else if (downloadedPercent < 100) {
 	      window.__ContentLoaderDialog.show();
 	      window.__ContentLoaderDialog.setClickCallback(_this3.handleContentLoaderCancelClick);
@@ -38910,55 +38948,60 @@
 	    }, 500);
 	  };
 	
+	  this.renderChildren = function (identifier) {
+	    window.__ContentLoaderDialog.hide();
+	    var callback1 = callbackMapper.map(function (data) {
+	      data[0] = utils.jsonifyData(utils.decodeBase64(data[0]));
+	      _this.courseContent = JSON.parse(data[0]);
+	      console.log("childrenContent: ", _this.courseContent);
+	
+	      window.__ContentLoaderDialog.hide();
+	      _this.renderCourseChildren();
+	      _this.changeOverFlow();
+	    });
+	    JBridge.getChildContent(identifier, callback1);
+	  };
+	
 	  this.checkContentLocalStatus = function (identifier) {
-	    console.log("local status");
 	    var callback = callbackMapper.map(function (data) {
 	      if (data == "__failed") {
 	        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
+	        _this.logTelelmetry(identifier, null, false);
 	        this.onBackPressed();
+	        return;
 	      }
-	
 	      data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
+	      console.log("this.courseDetails ", data);
+	
 	      _this.courseDetails = data;
 	      console.log("data", data);
 	      if (data.isAvailableLocally == true) {
-	        window.__ContentLoaderDialog.hide();
-	        var callback1 = callbackMapper.map(function (data) {
-	          data[0] = utils.jsonifyData(utils.decodeBase64(data[0]));
-	          _this.courseContent = JSON.parse(data[0]);
-	          window.__ContentLoaderDialog.hide();
-	          _this.renderCourseChildren();
-	          _this.changeOverFlow();
-	        });
-	        JBridge.getChildContent(identifier, callback1);
+	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
+	        _this.renderChildren(identifier);
 	      } else {
+	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
 	        if (JBridge.isNetworkAvailable()) {
 	          JBridge.importCourse(identifier, "true");
 	          _this.changeOverFlow();
-	        } else window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        } else {
+	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        }
 	      }
 	    });
 	    window.__getDownloadStatus = _this3.getSpineStatus;
 	    JBridge.getContentDetails(identifier, callback);
 	  };
 	
-	  this.logTelelmetry = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CEA", data);
-	        if (_this.showProgress == "gone") {
-	          JBridge.logResourceDetailScreenEvent(id, data.contentData.pkgVersion, data.isAvailableLocally);
-	        } else {
-	          JBridge.logCourseDetailScreenEvent(id, data.contentData.pkgVersion, data.isAvailableLocally);
-	        }
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
+	  this.logTelelmetry = function (id, pkgVersion, isAvailableLocally) {
+	    if (_this.showProgress == "gone") {
+	      JBridge.logResourceDetailScreenEvent(id, pkgVersion, isAvailableLocally);
+	    } else {
+	      JBridge.logCourseDetailScreenEvent(id, pkgVersion, isAvailableLocally);
+	    }
+	    JBridge.startEventLog(_this3.courseDetails.contentType, id, pkgVersion);
 	  };
 	
 	  this.handleModuleClick = function (moduleName, module) {
-	
 	    var whatToSend = {
 	      "moduleName": moduleName,
 	      "moduleDetails": JSON.stringify(module)
@@ -38968,7 +39011,6 @@
 	  };
 	
 	  this.getBatchDetailSection = function (name, description, createdBy) {
-	
 	    return dom(
 	      LinearLayout,
 	      {
@@ -38978,7 +39020,7 @@
 	        padding: "0,8,0,8",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 282
+	          lineNumber: 267
 	        }
 	      },
 	      dom(TextView, {
@@ -38987,7 +39029,7 @@
 	        text: utils.firstLeterCapital(name),
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 289
+	          lineNumber: 274
 	        }
 	      }),
 	      dom(TextView, {
@@ -38996,7 +39038,7 @@
 	        text: description,
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 295
+	          lineNumber: 280
 	        }
 	      }),
 	      dom(
@@ -39006,7 +39048,7 @@
 	          height: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 301
+	            lineNumber: 286
 	          }
 	        },
 	        dom(TextView, {
@@ -39015,7 +39057,7 @@
 	          text: window.__S.CREATED_BY_SMALL + "  ",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 305
+	            lineNumber: 290
 	          }
 	        }),
 	        dom(TextView, {
@@ -39024,7 +39066,7 @@
 	          text: createdBy,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 310
+	            lineNumber: 295
 	          }
 	        })
 	      )
@@ -39061,7 +39103,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "348", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "333", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -39083,7 +39125,7 @@
 	      } else if (state.responseFor == "API_FlagCourse") {
 	        if (responseCode == 200) {
 	          if (response[0] == "successful") {
-	            _this3.logFlagStatus(_this3.baseIdentifier, true);
+	            JBridge.logFlagStatusEvent(_this3.baseIdentifier, "COURSES", true, _this3.courseDetails.contentData.pkgVersion);
 	            setTimeout(function () {
 	              window.__Snackbar.show(window.__S.CONTENT_FLAGGED_MSG);
 	              window.__BNavFlowRestart();
@@ -39092,7 +39134,7 @@
 	            }, 2000);
 	          }
 	        } else {
-	          _this3.logFlagStatus(_this3.baseIdentifier, true);
+	          JBridge.logFlagStatusEvent(_this3.baseIdentifier, "COURSES", false, _this3.courseDetails.contentData.pkgVersion);
 	          window.__LoaderDialog.hide();
 	          window.__Snackbar.show(window.__S.CONTENT_FLAG_FAIL);
 	          _this.onBackPressed();
@@ -39110,17 +39152,6 @@
 	    }
 	  };
 	
-	  this.logFlagStatus = function (id, status) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CEA", data);
-	        JBridge.logFlagStatusEvent(id, "COURSES", status, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.renderCourseChildren = function () {
 	    var layout;
 	
@@ -39132,7 +39163,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 419
+	          lineNumber: 393
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -39140,7 +39171,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "430", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "404", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -39152,7 +39183,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 433
+	          lineNumber: 407
 	        }
 	      });
 	    }
@@ -39170,7 +39201,7 @@
 	      window.__ContentLoaderDialog.hide();
 	      return;
 	    }
-	
+	    JBridge.endEventLog(_this3.courseDetails.contentType, _this3.courseDetails.identifier, _this3.courseDetails.contentData.pkgVersion);
 	    var event = { tag: 'BACK_CourseEnrolledActivity', contents: [] };
 	    window.__runDuiCallback(event);
 	  };
@@ -39188,7 +39219,7 @@
 	        id: _this3.idSet.featureButton2,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "477", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "451", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	
@@ -39202,11 +39233,10 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "492", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "466", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
-	    _this3.logTelelmetry(_this3.baseIdentifier);
 	    if (_this3.details.batchId || _this3.enrolledCourses.batchId) {
 	      var batchId = _this3.details.batchId ? _this3.details.batchId : _this3.enrolledCourses.batchId;
 	      var whatToSend = {
@@ -39233,37 +39263,15 @@
 	      JBridge.deleteContent(_this3.baseIdentifier, callback);
 	    } else if (params == 1) {
 	      console.log("in flag rda");
-	      _this3.logFlagScreenEvent(_this3.baseIdentifier);
+	      JBridge.logFlagScreenEvent("COURSES", _this3.baseIdentifier, _this3.courseDetails.contentData.pkgVersion);
 	      window.__LoaderDialog.hide();
 	      window.__FlagPopup.show();
 	    }
 	  };
 	
-	  this.logFlagScreenEvent = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data SharePopUp", data);
-	        JBridge.logFlagScreenEvent("COURSES", id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
-	  this.logShareContent = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data SharePopUp", data);
-	        if (_this.showProgress == "gone") JBridge.logShareContentInitiateEvent("LIBRARY", contentType, id, data.contentData.pkgVersion);else JBridge.logShareContentInitiateEvent("COURSES", contentType, id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.handleMenuClick = function (url) {
 	    console.log("menu item clicked", url);
-	    _this3.logShareContent(_this3.baseIdentifier);
+	    JBridge.logShareContentInitiateEvent("LIBRARY", _this.showProgress == "gone" ? "content" : "course", _this3.baseIdentifier, _this3.courseDetails.contentData.pkgVersion);
 	
 	    if (url == "ic_action_share_black") {
 	
@@ -39297,7 +39305,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 592
+	            lineNumber: 540
 	          }
 	        });
 	
@@ -39360,7 +39368,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 660
+	        lineNumber: 607
 	      }
 	    });
 	
@@ -39376,7 +39384,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FlagPopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FlagPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39431,7 +39439,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "59", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "59", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.showBodyWithOptions = function () {
@@ -39440,7 +39448,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "69", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "69", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.hideBodyWithOptions = function () {
@@ -39449,7 +39457,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "78", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "78", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -39803,7 +39811,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ModuleDetailActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ModuleDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39841,6 +39849,7 @@
 	        var _this2 = _possibleConstructorReturn(this, (ModuleDetailActivity.__proto__ || Object.getPrototypeOf(ModuleDetailActivity)).call(this, props, children, state));
 	
 	        _this2.stackPush = function (moduleName, module) {
+	            _this2.isPoped = false;
 	            _this2.stack.push({
 	                moduleName: moduleName,
 	                module: module
@@ -39848,6 +39857,7 @@
 	        };
 	
 	        _this2.stackPop = function () {
+	            _this2.isPoped = true;
 	            if (_this2.stack.length > 0) {
 	                var top = _this2.stack[0];
 	                if (_this2.stack.length == 1) _this2.stack.splice(0, 1);else _this2.stack.splice(_this2.stack.length - 1, 1);
@@ -39878,7 +39888,7 @@
 	
 	        _this2.onPop = function () {
 	            window.__getDownloadStatus = _this2.getSpineStatus;
-	            Android.runInUI(_this2.animateView(), null, "111", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	            Android.runInUI(_this2.animateView(), null, "114", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
 	        };
 	
 	        _this2.getSpineStatus = function (pValue) {
@@ -39896,60 +39906,61 @@
 	            var downloadedPercent = data.downloadProgress;
 	            downloadedPercent = downloadedPercent < 0 ? 0 : downloadedPercent;
 	            if (downloadedPercent == 100) {
-	                _this2.checkContentLocalStatus(_this2.module);
+	                _this2.renderChildren(_this2.module.identifier);
 	            } else {
 	                var cmd = _this2.set({
 	                    id: _this2.idSet.downloadProgressText,
 	                    text: "Fetching Contents: " + downloadedPercent + "%"
 	                });
-	                Android.runInUI(cmd, 0, "141", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "142", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
 	            }
 	        };
 	
-	        _this2.checkContentType = function (mimeType) {
-	            if (mimeType.toLowerCase() != "application/vnd.ekstep.content-collection") return true;else return false;
+	        _this2.hasChildren = function (mimeType) {
+	            if (mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") return true;else return false;
 	        };
 	
 	        _this2.checkContentLocalStatus = function (module) {
 	            _this = _this2;
 	            console.log('module', module);
-	            if (_this2.checkContentType(module.mimeType)) {
+	            if (!_this2.hasChildren(module.mimeType)) {
+	                //if the current content is the leaf node content, display the button which checks whether the content is locally available,
+	                //display 'PLAY' or 'DOWNLOAD', and handle download or play.
+	                var _ = _this2.isPoped ? "" : JBridge.startEventLog(module.contentType, module.identifier, module.contentData.pkgVersion);
 	                _this2.localStatus = false;
 	                window.__ProgressButton.setLocalStatus(false);
-	                console.log("content", module);
 	                window.__ProgressButton.setVisibility("visible");
 	                window.__ProgressButton.setContentDetails(module);
 	                window.__ProgressButton.checkContentLocalStatus(_this2.localStatus);
 	            } else {
+	                //if the current content had children, get the children data and render the children
+	                var _ = _this2.isPoped ? "" : JBridge.startEventLog(module.contentType, module.identifier, module.contentData.pkgVersion);
 	                var callback = callbackMapper.map(function (data) {
 	                    if (data == "__failed") {
 	                        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
 	                        this.onBackPressed();
+	                        return;
 	                    }
 	                    _this.localContent = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
 	                    if (_this.localContent.isAvailableLocally == true) {
-	                        var callback1 = callbackMapper.map(function (data) {
-	                            _this.module = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	                            _this.renderModuleChildren(_this.module);
-	                        });
-	                        JBridge.getChildContent(module.identifier, callback1);
+	                        this.renderChildren(module.identifier);
 	                    } else {
 	                        if (JBridge.isNetworkAvailable()) {
 	                            if (_this.downloadList.indexOf(module.identifier) == -1) {
 	                                _this.downloadList.push(module.identifier);
-	                                console.log("module", module
-	                                // this.simpleData.content = module.contentData.size ? "Size : " + utils.formatBytes(module.contentData.size) : "";
-	                                );JBridge.importCourse(module.identifier, "true"
-	                                // _this.simpleData.content =
-	                                );
+	                                console.log("module", module);
+	                                JBridge.importCourse(module.identifier, "true");
 	                            } else {
 	                                window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
 	                                _this.onBackPressed();
 	                                return;
 	                            }
-	                        } else window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	                        } else {
+	                            window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	                        }
 	                    }
-	                });
+	                }); // end of callback
+	
 	                if (!module.isAvailableLocally || module.isUpdateAvailable) {
 	                    window.__getDownloadStatus = _this2.getSpineStatus;
 	                    JBridge.getContentDetails(module.identifier, callback);
@@ -39959,8 +39970,18 @@
 	            }
 	        };
 	
+	        _this2.renderChildren = function (identifier) {
+	            var callback1 = callbackMapper.map(function (data) {
+	                _this.module = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
+	                _this.renderModuleChildren(_this.module);
+	            });
+	            JBridge.getChildContent(identifier, callback1);
+	        };
+	
 	        _this2.handleModuleClick = function (moduleName, module) {
-	            window.__ProgressButton.setButtonFor(module.identifier);
+	            console.log("handleModuleClick -> moduleName: " + moduleName + ", module: ", module);
+	            console.log("this.details", _this2.details);
+	            console.log("this.courseDetails", _this2.courseDetails);
 	            _this2.stackPush(moduleName, module);
 	            _this2.reRender(moduleName, module);
 	        };
@@ -39977,7 +39998,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 220
+	                        lineNumber: 225
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -40003,7 +40024,7 @@
 	                        onClick: _this2.handleModuleClick,
 	                        content: module.children, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 241
+	                            lineNumber: 246
 	                        }
 	                    });
 	                } else {
@@ -40014,7 +40035,7 @@
 	                        gravity: "center",
 	                        text: window.__S.ERROR_CONTENT_NOT_AVAILABLE, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 253
+	                            lineNumber: 258
 	                        }
 	                    });
 	                }
@@ -40029,7 +40050,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    visibility: "gone"
 	                });
-	                Android.runInUI(cmd, 0, "272", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "277", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
 	                window.__ProgressButton.setButtonFor(module.identifier);
 	                window.__ProgressButton.setVisibility("visible");
 	            }
@@ -40038,19 +40059,8 @@
 	        _this2.afterRender = function () {
 	            window.__SimplePopup.hide();
 	            window.__ProgressButton.setButtonFor(_this2.module.identifier);
-	            _this2.logTelelmetry(_this2.module.identifier);
+	            JBridge.logContentDetailScreenEvent(_this2.module.identifier, _this2.module.contentData.pkgVersion);
 	            _this2.checkContentLocalStatus(_this2.module);
-	        };
-	
-	        _this2.logTelelmetry = function (id) {
-	            var callback = callbackMapper.map(function (data) {
-	                if (data != "__failed") {
-	                    data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	                    console.log("telemetry data MDA", data);
-	                    JBridge.logContentDetailScreenEvent(id, data.contentData.pkgVersion);
-	                }
-	            });
-	            JBridge.getContentDetails(id, callback);
 	        };
 	
 	        _this2.getLineSeperator = function () {
@@ -40059,7 +40069,7 @@
 	                margin: "0,16,0,0",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 297
+	                    lineNumber: 291
 	                }
 	            });
 	        };
@@ -40072,7 +40082,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 306
+	                        lineNumber: 300
 	                    }
 	                },
 	                dom(
@@ -40083,7 +40093,7 @@
 	                        margin: "0,12,0,12",
 	                        width: "match_parent", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 311
+	                            lineNumber: 305
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -40093,7 +40103,7 @@
 	                        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                        text: _this2.moduleName, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 317
+	                            lineNumber: 311
 	                        }
 	                    })
 	                ),
@@ -40103,7 +40113,7 @@
 	                    width: "match_parent",
 	                    text: _this2.module.contentData.hasOwnProperty("size") ? window.__S.MODULE_SIZE.format(_this2.formatBytes(_this2.module.contentData.size)) : window.__S.MODULE_SIZE_UNAVAILABLE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 326
+	                        lineNumber: 320
 	                    }
 	                }),
 	                dom(CropParagraph, {
@@ -40113,7 +40123,7 @@
 	                    headText: _this2.module.contentData.description ? window.__S.DESCRIPTION : undefined,
 	                    contentText: _this2.module.contentData.description, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 332
+	                        lineNumber: 326
 	                    }
 	                })
 	            );
@@ -40131,7 +40141,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 346
+	                        lineNumber: 340
 	                    }
 	                },
 	                dom(TextView, {
@@ -40141,7 +40151,7 @@
 	                    gravity: "center",
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 353
+	                        lineNumber: 347
 	                    }
 	                })
 	            );
@@ -40150,6 +40160,7 @@
 	        };
 	
 	        _this2.onBackPressed = function () {
+	            JBridge.endEventLog(_this2.module.contentType, _this2.module.identifier, _this2.module.contentData.pkgVersion);
 	            _this2.stackPop();
 	            var top = _this2.stackTop();
 	            if (!_this2.stack.length < 1 || top) {
@@ -40171,7 +40182,7 @@
 	                overFlowCallback: _this2.overFlowCallback,
 	                showMenu: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 380
+	                    lineNumber: 375
 	                }
 	            });
 	
@@ -40206,7 +40217,7 @@
 	                localStatus: _this2.localStatus,
 	                identifier: _this2.module.identifier, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 406
+	                    lineNumber: 401
 	                }
 	            });
 	        };
@@ -40231,17 +40242,21 @@
 	
 	        _this2.moduleName = state.data.value0.moduleName;
 	        _this2.module = state.data.value0.moduleDetails;
-	        _this2.module = JSON.parse(_this2.module);
+	        _this2.module = JSON.parse(_this2.module); //global content details for the current module being shown
 	        _this2.localStatus = _this2.module.isAvailableLocally;
 	        _this2.localContent = null;
 	        _this = _this2;
 	        _this2.downloadList = [];
 	
 	        //stack to maintain child traversal
+	        _this2.isPoped = false;
 	        _this2.stack = [];
-	        _this2.stackPush(_this2.moduleName, _this2.module);
+	        _this2.stackPush(_this2.moduleName, _this2.module); //the current content is always on the top of the stack
 	        return _this2;
 	    }
+	
+	    //check whether the current content has any children
+	
 	
 	    _createClass(ModuleDetailActivity, [{
 	        key: "render",
@@ -40255,7 +40270,7 @@
 	                    clickable: "true",
 	                    root: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 423
+	                        lineNumber: 418
 	                    }
 	                },
 	                dom(
@@ -40268,7 +40283,7 @@
 	                        clickable: "true",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 428
+	                            lineNumber: 423
 	                        }
 	                    },
 	                    dom(
@@ -40279,7 +40294,7 @@
 	                            height: "wrap_content",
 	                            id: this.idSet.simpleToolBarOverFlow, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 435
+	                                lineNumber: 430
 	                            }
 	                        },
 	                        dom(SimpleToolbar, {
@@ -40290,7 +40305,7 @@
 	                            overFlowCallback: this.overFlowCallback,
 	                            showMenu: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 440
+	                                lineNumber: 435
 	                            }
 	                        })
 	                    ),
@@ -40302,7 +40317,7 @@
 	                            width: "match_parent",
 	                            fillViewport: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 449
+	                                lineNumber: 444
 	                            }
 	                        },
 	                        dom(
@@ -40313,7 +40328,7 @@
 	                                orientation: "vertical",
 	                                id: this.idSet.renderPage, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 455
+	                                    lineNumber: 450
 	                                }
 	                            },
 	                            this.getHeader(),
@@ -40326,7 +40341,7 @@
 	                            id: this.idSet.progressButtonContainer,
 	                            width: "match_parent", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 468
+	                                lineNumber: 463
 	                            }
 	                        },
 	                        this.getProgressButton()
@@ -40337,7 +40352,7 @@
 	                    data: this.simpleData,
 	                    __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 474
+	                        lineNumber: 469
 	                    }
 	                })
 	            );
@@ -40374,7 +40389,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimplePopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SimplePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40430,7 +40445,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSimplePopupjs");
+	      Android.runInUI(cmd, 0, "61", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSimplePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -40687,7 +40702,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ViewBatchActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ViewBatchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40746,7 +40761,7 @@
 	    _this2.showChooser = false;
 	
 	    setTimeout(function () {
-	      Android.runInUI(_this.animateView(), null, "46", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "46", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
 	    });
 	
 	    _this2.handleTypeChange = debounce(_this2.handleTypeChange, 100);
@@ -40814,7 +40829,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function (type) {
-	    Android.runInUI(_this.animateView(), null, "58", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "58", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.onBackPressed = function () {
@@ -40828,7 +40843,7 @@
 	    Android.runInUI(_this3.set({
 	      id: _this3.idSet.chooserPopup,
 	      visibility: _this3.showChooser ? "visible" : "gone"
-	    }), 0, "72", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    }), 0, "72", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.handleTypeChange = function (type) {
@@ -40846,7 +40861,7 @@
 	      visibility: type === window.__S.VIEW_ONGOING_BATCHES ? "visible" : "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "95", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(cmd, 0, "95", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
 	
 	    if (type === window.__S.VIEW_ONGOING_BATCHES) {
 	      _this3.replaceChild(_this.idSet.batchListContainer, _this.getBatchesList(_this3.ongoingList, "1").render(), 0);
@@ -41246,7 +41261,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/BatchCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/BatchCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41449,7 +41464,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityInfoActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommunityInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41490,7 +41505,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "57", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(_this.animateView(), null, "57", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -41711,7 +41726,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, null, "227", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(cmd, null, "227", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {
@@ -41845,7 +41860,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDescription.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityDescription.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42058,7 +42073,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDefault.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityDefault.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42316,7 +42331,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeedComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FeedComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42442,7 +42457,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FeedCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/FeedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42893,7 +42908,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "227", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "227", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerClose",
@@ -42908,7 +42923,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "241", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "241", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerSubmit",
@@ -42951,7 +42966,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43056,7 +43071,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityViewAllActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommunityViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43234,7 +43249,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "152", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityViewAllActivityjs");
+	      Android.runInUI(_this.animateView(), null, "152", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityViewAllActivityjs");
 	    };
 	
 	    _this.setIds(['filterCount']);
@@ -43316,7 +43331,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/NotificationActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/NotificationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43351,7 +43366,7 @@
 	    var _this = _possibleConstructorReturn(this, (NotificationActivity.__proto__ || Object.getPrototypeOf(NotificationActivity)).call(this, props, children, state));
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "59", "UsersnikithshettysunbirdgithubsunbirdduiviewsNotificationActivityjs");
+	      Android.runInUI(_this.animateView(), null, "59", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsNotificationActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -43571,7 +43586,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceDetailActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ResourceDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43622,18 +43637,18 @@
 	      url: [{ imageUrl: "ic_action_share_black" }, { imageUrl: 'ic_action_overflow' }]
 	    };
 	    _this2.popupMenu = window.__S.DELETE + "," + window.__S.FLAG;
+	    _this = _this2;
 	
 	    _this2.shouldCacheScreen = false;
 	
 	    _this2.details = state.data.value0.resourceDetails;
 	    _this2.details = JSON.parse(_this2.details);
-	    _this2.playContent = "";
 	    console.log("RDA", _this2.details);
+	    JBridge.logResourceDetailScreenEvent(_this.details.content.identifier, _this.details.content.pkgVersion, _this.details.isAvailableLocally);
+	    JBridge.startEventLog(_this.details.content.contentType, _this.details.content.identifier, _this.details.content.pkgVersion);
 	
 	    _this2.localStatus = false;
-	    _this2.logTelelmetry(_this2.details.identifier);
 	
-	    _this = _this2;
 	    return _this2;
 	  }
 	
@@ -43648,7 +43663,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 463
+	            lineNumber: 415
 	          }
 	        },
 	        dom(
@@ -43659,7 +43674,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 468
+	              lineNumber: 420
 	            }
 	          },
 	          dom(
@@ -43670,7 +43685,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 473
+	                lineNumber: 425
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -43682,7 +43697,7 @@
 	              overFlowCallback: this.overFlowCallback,
 	              showMenu: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 478
+	                lineNumber: 430
 	              }
 	            })
 	          ),
@@ -43693,7 +43708,7 @@
 	              width: "match_parent",
 	              fillViewport: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 487
+	                lineNumber: 439
 	              }
 	            },
 	            dom(
@@ -43704,7 +43719,7 @@
 	                padding: "16,0,16,0",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 491
+	                  lineNumber: 443
 	                }
 	              },
 	              this.getHeader(),
@@ -43718,14 +43733,14 @@
 	            id: this.idSet.progressButtonContainer,
 	            root: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 501
+	              lineNumber: 453
 	            }
 	          })
 	        ),
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 507
+	            lineNumber: 459
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -43733,7 +43748,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 509
+	            lineNumber: 461
 	          }
 	        })
 	      );
@@ -43747,33 +43762,27 @@
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
 	
-	  this.logTelelmetry = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data RDA", data);
-	        JBridge.logResourceDetailScreenEvent(id, data.contentData.pkgVersion, data.isAvailableLocally);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.checkLocalStatus = function (data) {
 	    var callback = callbackMapper.map(function (data) {
-	      _this.playContent = JSON.parse(utils.decodeBase64(data[0]));
-	      if (_this.playContent.isAvailableLocally == true) {
+	      if (data == "__failed") {
+	        _this.onBackPressed();
+	        return;
+	      }
+	      _this.contentData = JSON.parse(utils.decodeBase64(data[0]));
+	      console.log("this.contentData: ", _this.contentData);
+	      if (_this.contentData.isAvailableLocally == true) {
 	        _this.localStatus = true;
 	        var pButonLayout = dom(ProgressButton, {
 	          width: "match_parent",
 	          isCourse: "false",
-	          playContent: _this.playContent,
-	          contentDetail: _this.details.content,
+	          playContent: _this.contentData,
+	          contentDetail: _this.contentData.content,
 	          buttonText: window.__S.PLAY,
 	          localStatus: _this.localStatus,
-	          identifier: _this.details.identifier,
+	          identifier: _this.contentData.identifier,
 	          changeOverFlowMenu: _this.changeOverFlow, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 76
+	            lineNumber: 71
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.progressButtonContainer, pButonLayout.render(), 0);
@@ -43782,14 +43791,14 @@
 	        var pButonLayout = dom(ProgressButton, {
 	          width: "match_parent",
 	          isCourse: "false",
-	          contentDetail: _this.details.content,
+	          contentDetail: _this.contentData.content,
 	          buttonText: window.__S.DOWNLOAD,
 	          playContent: null,
 	          localStatus: _this.localStatus,
-	          identifier: _this.details.identifier,
+	          identifier: _this.contentData.identifier,
 	          changeOverFlowMenu: _this.changeOverFlow, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 89
+	            lineNumber: 84
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.progressButtonContainer, pButonLayout.render(), 0);
@@ -43838,7 +43847,7 @@
 	        identifier: _this.details.identifier,
 	        type: "LIBRARY", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 140
+	          lineNumber: 135
 	        }
 	      });
 	      _this.replaceChild(_this.idSet.sharePopupContainer, sharePopUp.render(), 0);
@@ -43858,17 +43867,6 @@
 	    }
 	  };
 	
-	  this.logFlagContent = function (id, reason, comment) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CEA", data);
-	        JBridge.logFlagClickInitiateEvent("LIBRARY", reason, comment, id, "content", data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.flagContent = function (comment, selectedList) {
 	    window.__LoaderDialog.show();
 	    console.log("flag request", _this3.details);
@@ -43879,7 +43877,7 @@
 	    } else if (_this3.details.content.hasOwnProperty("contentData") && _this3.details.content.contentData.hasOwnProperty("versionKey")) {
 	      versionKey = _this3.details.content.contentData.versionKey;
 	    }
-	    _this3.logFlagContent(_this3.details.content.identifier, selectedList.toString(), comment);
+	    JBridge.logFlagClickInitiateEvent("LIBRARY", selectedList.toString(), comment, _this3.details.content.identifier, "content", _this3.details.content.pkgVersion);
 	
 	    var request = {
 	      "flagReasons": selectedList,
@@ -43904,7 +43902,7 @@
 	      margin: "0,16,0,0",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 203
+	        lineNumber: 187
 	      }
 	    });
 	  };
@@ -43921,7 +43919,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 221
+	          lineNumber: 205
 	        }
 	      },
 	      dom(TextView, {
@@ -43931,7 +43929,7 @@
 	        text: window.__S.ABOUT_MODULE,
 	        style: window.__TextStyle.textStyle.HINT.BOLD, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 225
+	          lineNumber: 209
 	        }
 	      }),
 	      dom(TextView, {
@@ -43941,7 +43939,7 @@
 	        textFromHtml: description,
 	        style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 231
+	          lineNumber: 215
 	        }
 	      }),
 	      dom(TextView, {
@@ -43951,7 +43949,7 @@
 	        text: window.__S.CREATED_BY,
 	        style: window.__TextStyle.textStyle.HINT.BOLD, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 237
+	          lineNumber: 221
 	        }
 	      }),
 	      dom(
@@ -43960,7 +43958,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 243
+	            lineNumber: 227
 	          }
 	        },
 	        dom(TextView, {
@@ -43970,13 +43968,13 @@
 	          text: _this3.details.content.creator || window.__S.CREATOR_NAME_NOT_AVAILABLE,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 246
+	            lineNumber: 230
 	          }
 	        }),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 252
+	            lineNumber: 236
 	          }
 	        }),
 	        dom(ImageView, {
@@ -43984,7 +43982,7 @@
 	          height: "12",
 	          imageUrl: "ic_chat", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 254
+	            lineNumber: 238
 	          }
 	        })
 	      )
@@ -44000,7 +43998,7 @@
 	        margin: "0,16,0,0",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 265
+	          lineNumber: 249
 	        }
 	      },
 	      dom(
@@ -44011,7 +44009,7 @@
 	          cornerRadius: "4",
 	          background: window.__Colors.PRIMARY_BLACK_66, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 270
+	            lineNumber: 254
 	          }
 	        },
 	        dom(ImageView, {
@@ -44019,7 +44017,7 @@
 	          height: "50",
 	          circularImageUrl: "4," + (_this3.details.imageUrl ? _this3.details.imageUrl : "ic_launcher"), __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 275
+	            lineNumber: 259
 	          }
 	        })
 	      ),
@@ -44030,7 +44028,7 @@
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	        text: _this3.details.title, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 280
+	          lineNumber: 264
 	        }
 	      }),
 	      dom(
@@ -44040,7 +44038,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 286
+	            lineNumber: 270
 	          }
 	        },
 	        dom(TextView, {
@@ -44049,13 +44047,13 @@
 	          text: _this3.details.headFooterTitle,
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 290
+	            lineNumber: 274
 	          }
 	        }),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 295
+	            lineNumber: 279
 	          }
 	        }),
 	        dom(TextView, {
@@ -44065,7 +44063,7 @@
 	          text: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? parseInt(_this3.details.content.me_totalDownloads) : "0",
 	          style: window.__TextStyle.textStyle.HINT.DULL, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 297
+	            lineNumber: 281
 	          }
 	        })
 	      ),
@@ -44076,7 +44074,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 304
+	            lineNumber: 288
 	          }
 	        },
 	        dom(RatingBar, {
@@ -44084,13 +44082,13 @@
 	          width: "wrap_content",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 308
+	            lineNumber: 292
 	          }
 	        }),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 312
+	            lineNumber: 296
 	          }
 	        }),
 	        dom(TextView, {
@@ -44100,7 +44098,7 @@
 	          visibility: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? "visible" : "gone",
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 314
+	            lineNumber: 298
 	          }
 	        })
 	      )
@@ -44116,7 +44114,7 @@
 	
 	        var callback = callbackMapper.map(function (response) {
 	          if (state.responseFor == "API_FlagContent" && response[0] == "successful") {
-	            this.logFlagStatus(_this.details.identifier, true);
+	            JBridge.logFlagStatusEvent(_this.details.identifier, "LIBRARY", true, _this.details.content.pkgVersion);
 	            setTimeout(function () {
 	              window.__Snackbar.show(window.__S.CONTENT_FLAGGED_MSG);
 	              window.__BNavFlowRestart();
@@ -44127,7 +44125,7 @@
 	        });
 	        JBridge.deleteContent(_this3.details.identifier, callback);
 	      } else {
-	        _this3.logFlagStatus(_this.details.identifier, false);
+	        JBridge.logFlagStatusEvent(_this.details.content.identifier, "LIBRARY", false, _this.details.content.pkgVersion);
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.CONTENT_FLAG_FAIL);
 	        _this.onBackPressed();
@@ -44138,17 +44136,6 @@
 	      window.__Snackbar.show(window.__S.TIME_OUT);
 	      _this.onBackPressed();
 	    }
-	  };
-	
-	  this.logFlagStatus = function (id, status) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data CEA", data);
-	        JBridge.logFlagStatusEvent(id, "RESOURCES", status, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
 	  };
 	
 	  this.overFlowCallback = function (params) {
@@ -44163,21 +44150,10 @@
 	      });
 	      JBridge.deleteContent(_this3.details.identifier, callback);
 	    } else if (params == 1) {
-	      _this3.logFlagScreenEvent(_this3.details.identifier);
+	      JBridge.logFlagScreenEvent("LIBRARY", _this3.details.content.identifier, _this3.details.content.pkgVersion);
 	      window.__LoaderDialog.hide();
 	      window.__FlagPopup.show();
 	    }
-	  };
-	
-	  this.logFlagScreenEvent = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data SharePopUp " + id, data);
-	        JBridge.logFlagScreenEvent("LIBRARY", id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
 	  };
 	
 	  this.onBackPressed = function () {
@@ -44186,6 +44162,7 @@
 	    } else if (window.__PreviewImagePopup.getVisibility()) {
 	      window.__PreviewImagePopup.hide();
 	    } else {
+	      JBridge.endEventLog(_this.details.content.contentType, _this.details.content.identifier, _this.details.content.pkgVersion);
 	      var event = { "tag": "BACK_ResourceDetailActivity", contents: [] };
 	      window.__runDuiCallback(event);
 	    }
@@ -44201,7 +44178,7 @@
 	      overFlowCallback: _this3.overFlowCallback,
 	      showMenu: "true", __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 412
+	        lineNumber: 375
 	      }
 	    });
 	
@@ -44209,22 +44186,11 @@
 	    _this3.localStatus = true;
 	  };
 	
-	  this.logShareContent = function (id) {
-	    var callback = callbackMapper.map(function (data) {
-	      if (data != "__failed") {
-	        data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	        console.log("telemetry data SharePopUp click", data);
-	        JBridge.logShareContentInitiateEvent("LIBRARY", "content", id, data.contentData.pkgVersion);
-	      }
-	    });
-	    JBridge.getContentDetails(id, callback);
-	  };
-	
 	  this.handleMenuClick = function (url) {
 	    if (url == "ic_action_share_black") {
 	      if (JBridge.getKey("isPermissionSetWriteExternalStorage", "false") == "true") {
 	        _this3.shareContent(_this3.localStatus);
-	        _this3.logShareContent(_this3.details.identifier);
+	        JBridge.logShareContentInitiateEvent("LIBRARY", "content", _this3.details.content.identifier, _this3.details.content.pkgVersion);
 	      } else {
 	        _this3.setPermissions();
 	      }
@@ -44254,7 +44220,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceViewAllActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ResourceViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44364,7 +44330,7 @@
 	
 	    _this2.handleResourceClick = function (item, index) {
 	      var index_click = _this2.start_index < 1 ? index + 1 : index + _this2.start_index * 10 + 1;
-	      JBridge.logContentClickEvent("RESOURCES", index_click, "", item.identifier);
+	      JBridge.logContentClickEvent("RESOURCES", index_click, "", item.identifier, item.pkgVersion);
 	      console.log(item);
 	      if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
 	        var whatToSend = { course: JSON.stringify(item) };
@@ -44420,7 +44386,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Resource", false, (_this.start_index + 2) * 10);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Library", (_this.start_index + 2) * 10);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -44444,7 +44410,7 @@
 	    console.log("data in view all", _this2.totalDetails);
 	    _this2.appbarTitle = _this2.totalDetails.title;
 	    _this2.displayContent = [];
-	    JBridge.logListViewScreenEvent("RESOURCES", _this2.details.length, _this2.totalDetails.searchQuery);
+	    // JBridge.logListViewScreenEvent("LIBRARY",this.details.length,this.totalDetails.searchQuery)
 	    return _this2;
 	  }
 	
@@ -44503,7 +44469,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44795,7 +44761,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseViewAllActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44925,9 +44891,11 @@
 	
 	    _this2.performCourseAction = function (content, index) {
 	      var tmp = JSON.stringify(content);
+	      console.log("content: ", content);
+	
 	      var index_click = _this2.start_index < 1 ? index + 1 : index + _this2.start_index * 10 + 1;
 	      var contentId = content.courseId ? content.courseId : content.identifier;
-	      JBridge.logContentClickEvent("COURSES", index_click, "", contentId);
+	      JBridge.logContentClickEvent("COURSES", index_click, "", contentId, content.pkgVersion);
 	      var whatToSend = {
 	        "course": tmp
 	      };
@@ -44971,7 +44939,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", false, (_this.start_index + 2) * 10);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", (_this.start_index + 2) * 10);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -45001,9 +44969,8 @@
 	    _this2.totalDetails = _this2.totalDetails.courseListDetails;
 	    _this2.menuData = {
 	      url: []
-	    };
-	    JBridge.logListViewScreenEvent("COURSES", _this2.totalDetails.length, _this2.searchQuery);
-	    return _this2;
+	      // JBridge.logListViewScreenEvent("COURSES",this.totalDetails.length,this.searchQuery)
+	    };return _this2;
 	  }
 	
 	  _createClass(CourseViewAllActivity, [{
@@ -45019,7 +44986,7 @@
 	          background: window.__Colors.PRIMARY_LIGHT,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 214
+	            lineNumber: 216
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -45030,7 +44997,7 @@
 	          showMenu: "true",
 	          title: this.appbarTitle, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 221
+	            lineNumber: 223
 	          }
 	        }),
 	        dom(ListView, {
@@ -45038,7 +45005,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 228
+	            lineNumber: 230
 	          }
 	        })
 	      );
@@ -45057,7 +45024,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementViewAllActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AnnouncementViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45263,9 +45230,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SearchActivity.js";
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/SearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45332,41 +45297,28 @@
 	          _this2.filterIcon = "ic_action_filter";
 	        }
 	
-	        var cmd = "";
-	        cmd += _this.set({
+	        var cmd = _this.set({
 	          id: _this.idSet.filterHolder,
 	          visibility: "visible",
 	          imageUrl: _this2.filterIcon
 	        });
-	        Android.runInUI(cmd, 0, "95", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
-	
-	        var searchData;
-	        if (_typeof(_this2.filterData) == 'object') {
-	          searchData = _this2.filterData;
-	        } else {
-	          searchData = JSON.parse(_this2.filter);
-	        }
-	        _this2.getSearchList(_this2.searchText, "true");
+	        Android.runInUI(cmd, 0, "89", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	        _this2.getSearchList(_this2.searchText);
 	        window.__LoaderDialog.show();
 	      } else if (window.search && window.search.type == _this2.searchType && window.search.res != undefined && window.search.res != "" && window.search.text != undefined && window.search.text != "") {
 	        _this.renderResult(JSON.parse(window.search.res), window.search.text);
-	        // window.__LoaderDialog.show();
 	      }
 	
 	      var callback = callbackMapper.map(function (data) {
 	        window.searchText = data[0];
 	        _this.handleSearchClick(data);
 	      });
-	
-	      console.log("VISIBILITY IN AFTERRENDER", window.__LoaderDialog.visibility);
-	
 	      JBridge.handleImeAction(_this2.idSet.searchHolder, callback);
 	      JBridge.getFocus(_this2.idSet.searchHolder);
 	    };
 	
 	    _this2.onPop = function () {
-	
-	      Android.runInUI(_this.animateView(), null, "127", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "106", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.getBack = function () {
@@ -45376,7 +45328,7 @@
 	        onClick: _this2.onBackPressed,
 	        imageUrl: "ic_action_arrow_left", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 138
+	          lineNumber: 114
 	        }
 	      });
 	    };
@@ -45391,7 +45343,7 @@
 	          gravity: "center_vertical",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 146
+	            lineNumber: 122
 	          }
 	        },
 	        dom(EditText, {
@@ -45406,7 +45358,7 @@
 	          id: _this2.idSet.searchHolder,
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 153
+	            lineNumber: 129
 	          }
 	        })
 	      );
@@ -45419,7 +45371,7 @@
 	          width: "wrap_content",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 171
+	            lineNumber: 147
 	          }
 	        },
 	        dom(ImageView, {
@@ -45428,7 +45380,7 @@
 	          style: IconStyle,
 	          imageUrl: "ic_action_close", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 175
+	            lineNumber: 151
 	          }
 	        }),
 	        dom(ImageView, {
@@ -45438,7 +45390,7 @@
 	          visibility: "gone",
 	          imageUrl: _this2.filterIcon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 181
+	            lineNumber: 157
 	          }
 	        })
 	      );
@@ -45451,7 +45403,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "199", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "175", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -45463,7 +45415,7 @@
 	          gravity: "center_horizontal",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 201
+	            lineNumber: 177
 	          }
 	        },
 	        dom(TextView, {
@@ -45475,7 +45427,7 @@
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING,
 	          text: window.__S.EMPTY_SEARCH_RESULTS, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 209
+	            lineNumber: 185
 	          }
 	        })
 	      );
@@ -45495,7 +45447,7 @@
 	          background: "#ffffff",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 228
+	            lineNumber: 204
 	          }
 	        },
 	        dom(SearchResult, {
@@ -45504,7 +45456,7 @@
 	          searchText: searchText,
 	          data: data, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 234
+	            lineNumber: 210
 	          }
 	        })
 	      );
@@ -45521,14 +45473,12 @@
 	      console.log("data from search", data);
 	    };
 	
-	    _this2.getSearchList = function (searchText, flag) {
-	
+	    _this2.getSearchList = function (searchText) {
+	      JBridge.hideKeyboard();
 	      if (searchText == "") {
-	        console.log("empty text" + window.__LoaderDialog.visibility);
 	        _this2.renderNoResult();
 	        window.__LoaderDialog.hide();
 	      } else {
-	
 	        var callback = callbackMapper.map(function (data) {
 	          console.log("callback data", data);
 	          if (data[0] == "error") {
@@ -45554,7 +45504,7 @@
 	              window.__LoaderDialog.hide();
 	            }
 	          }
-	        });
+	        }); //end of callback
 	
 	        if (_this2.filterData != undefined && _this2.filterData.length == 0) {
 	          status = "false";
@@ -45562,10 +45512,13 @@
 	          status = "true";
 	        }
 	
-	        var s = "";
 	        if (JBridge.isNetworkAvailable()) {
 	          console.log(_this2.filterData, " filterData ");
-	          JBridge.searchContent(callback, JSON.stringify(_this2.filterData), searchText, _this2.searchType, flag, 100);
+	          var filterParams = null;
+	          if (_this2.filterData != "") {
+	            filterParams = JSON.stringify(_this2.filterData);
+	          }
+	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100);
 	        } else {
 	          window.__LoaderDialog.hide();
 	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -45591,17 +45544,21 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "338", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "307", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleSearchClick = function (searchText) {
 	      JBridge.hideKeyboard();
 	      _this2.filterData = "";
+	      console.log("handlesearchClick: ", _this2.searchType.toUpperCase());
+	      JBridge.explicitSearch(_this2.searchType.toUpperCase(), "SEARCH");
 	
 	      if (JBridge.isNetworkAvailable()) {
 	        window.__LoaderDialog.show();
-	        _this2.getSearchList(searchText[0], "false");
-	      } else window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        _this2.getSearchList(searchText[0]);
+	      } else {
+	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	      }
 	    };
 	
 	    _this2.handleClearClick = function () {
@@ -45619,12 +45576,12 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "371", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "341", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
 	      JBridge.hideKeyboard();
-	
+	      JBridge.explicitSearch(_this2.searchType.toUpperCase(), "FILTER");
 	      var filteredData = { filterDetails: _this2.filterData,
 	        filterType: _this2.searchType,
 	        filterFor: _this2.searchTextValue };
@@ -45647,7 +45604,7 @@
 	          background: window.__Colors.PRIMARY_BLACK_22,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 393
+	            lineNumber: 360
 	          }
 	        },
 	        dom(
@@ -45660,7 +45617,7 @@
 	            background: window.__Colors.WHITE,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 399
+	              lineNumber: 366
 	            }
 	          },
 	          _this2.getBack(),
@@ -45678,13 +45635,13 @@
 	    _this2.screenName = "SearchActivity";
 	
 	    _this2.tempData = JSON.parse(state.data.value0.filterDetails);
+	    console.log("SA filterDetails: ", _this2.tempData);
+	
 	    _this2.filterIcon = "ic_action_filter";
 	
 	    _this2.filter = [];
 	    _this2.filterData = _this2.tempData.filterDetails;
 	    _this2.searchText = _this2.tempData.filterDetails.query;
-	    _this2.searchType = _this2.tempData.filterType;
-	    _this2.temp = state.data;
 	    _this2.searchType = _this2.tempData.searchType;
 	    window.searchData = _this2.logSearch;
 	
@@ -45696,9 +45653,7 @@
 	  _createClass(SearchActivity, [{
 	    key: "render",
 	    value: function render() {
-	
 	      var spinnerData = "tty,hbhb";
-	
 	      this.layout = dom(
 	        RelativeLayout,
 	        {
@@ -45707,7 +45662,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 424
+	            lineNumber: 386
 	          }
 	        },
 	        dom(
@@ -45718,7 +45673,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 430
+	              lineNumber: 392
 	            }
 	          },
 	          this.getToolbar(),
@@ -45729,12 +45684,11 @@
 	            id: this.idSet.searchListContainer,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 438
+	              lineNumber: 400
 	            }
 	          })
 	        )
 	      );
-	
 	      return this.layout.render();
 	    }
 	  }]);
@@ -45750,7 +45704,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FilterDialog.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/FilterDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45949,7 +45903,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/FilterActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/FilterActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46248,7 +46202,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterCard.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46383,7 +46337,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterPopup.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46434,7 +46388,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "51", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterPopupjs");
+	      Android.runInUI(cmd, 0, "51", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterPopupjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -46746,7 +46700,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AdditionalInformationActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AdditionalInformationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -47647,7 +47601,7 @@
 	        text: data[0],
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	      });
-	      Android.runInUI(cmd, 0, "675", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "675", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAdditionalInformationActivityjs");
 	      _this.updateSaveButtonStatus(_this.checkCompleteStatus());
 	    });
 	
@@ -47944,7 +47898,7 @@
 	        alpha: alphaVal
 	      });
 	
-	      Android.runInUI(cmd, 0, "1039", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "1039", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAdditionalInformationActivityjs");
 	    }
 	  };
 	
@@ -48012,7 +47966,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48268,7 +48222,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AddressActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AddressActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48418,7 +48372,7 @@
 	          clickable: "false",
 	          alpha: "0.5" });
 	      }
-	      Android.runInUI(cmd, 0, "197", "UsersnikithshettysunbirdgithubsunbirdduiviewsAddressActivityjs");
+	      Android.runInUI(cmd, 0, "197", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAddressActivityjs");
 	    };
 	
 	    _this2.getButtons = function () {
@@ -48842,7 +48796,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/RadioButton.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/RadioButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49014,7 +48968,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "154", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreRadioButtonjs");
+	      Android.runInUI(cmd, 0, "154", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreRadioButtonjs");
 	
 	      _this.onClickCallback();
 	    };
@@ -49089,7 +49043,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/EducationActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/EducationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49216,7 +49170,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "178", "UsersnikithshettysunbirdgithubsunbirdduiviewsEducationActivityjs");
+	      Android.runInUI(cmd, 0, "178", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsEducationActivityjs");
 	    };
 	
 	    _this2.checkPassingYear = function (data) {
@@ -49572,7 +49526,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ExperienceActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ExperienceActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49702,7 +49656,7 @@
 	          text: data[0],
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	        });
-	        Android.runInUI(cmd, 0, "169", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "169", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
 	        _this.changeSaveButtonState(_this.checkCompleteStatus());
 	      });
 	
@@ -49728,7 +49682,7 @@
 	            id: _this2.idSet.closingDateText,
 	            text: "Select Date"
 	          });
-	          Android.runInUI(cmd, 0, "198", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	          Android.runInUI(cmd, 0, "198", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
 	          _this2.endDate = null;
 	          _this2.isCurrentJob = true;
 	          _this2.changeSaveButtonState(_this2.checkCompleteStatus());
@@ -49742,7 +49696,7 @@
 	          id: _this2.idSet.closingDateLayout,
 	          visibility: "visible"
 	        });
-	        Android.runInUI(cmd, 0, "216", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "216", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
 	        _this2.isCurrentJob = false;
 	        _this2.changeSaveButtonState(_this2.checkCompleteStatus());
 	      }
@@ -49868,7 +49822,7 @@
 	        clickable: clickable,
 	        alpha: alpha
 	      });
-	      Android.runInUI(cmd, 0, "356", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	      Android.runInUI(cmd, 0, "356", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
 	      _this2.canSave = data;
 	    };
 	
@@ -50325,7 +50279,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommProfSearchActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommProfSearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50374,15 +50328,7 @@
 	    _this2.screenName = "CommProfSearchActivity";
 	
 	    _this2.tempData = JSON.parse(state.data.value0.filterDetails);
-	
-	    // this.filter=[]
-	    // this.filterData = this.tempData.filterDetails;
-	    // this.searchText = this.tempData.filterDetails.query
-	    // this.searchType = this.tempData.filterType
-	    // this.temp = state.data;
-	    // this.searchType = this.tempData.searchType;
 	    window.searchData = _this2.logSearch;
-	    // window.searchProf = "";
 	    _this = _this2;
 	    return _this2;
 	  }
@@ -50398,7 +50344,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 348
+	            lineNumber: 341
 	          }
 	        },
 	        dom(
@@ -50409,7 +50355,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 354
+	              lineNumber: 347
 	            }
 	          },
 	          this.getToolbar(),
@@ -50420,7 +50366,7 @@
 	              width: "match_parent",
 	              fillViewport: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 362
+	                lineNumber: 355
 	              }
 	            },
 	            dom(LinearLayout, {
@@ -50430,7 +50376,7 @@
 	              id: this.idSet.searchListContainer,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 367
+	                lineNumber: 360
 	              }
 	            })
 	          )
@@ -50445,7 +50391,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 378
+	              lineNumber: 371
 	            }
 	          },
 	          dom(
@@ -50455,13 +50401,13 @@
 	              height: "match_parent",
 	              gravity: "center", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 386
+	                lineNumber: 379
 	              }
 	            },
 	            dom(FilterDialog, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 391
+	                lineNumber: 384
 	              }
 	            })
 	          )
@@ -50523,7 +50469,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "97", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	      Android.runInUI(cmd, 0, "89", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	
 	      var searchData;
 	      if (_typeof(_this3.filterData) == 'object') {
@@ -50549,7 +50495,7 @@
 	
 	  this.onPop = function () {
 	    console.log("Inside onPop - CommProfSearchActivity");
-	    Android.runInUI(_this.animateView(), null, "125", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "117", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getBack = function () {
@@ -50559,7 +50505,7 @@
 	      onClick: _this3.onBackPressed,
 	      imageUrl: "ic_action_arrow_left", __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 133
+	        lineNumber: 125
 	      }
 	    });
 	  };
@@ -50574,7 +50520,7 @@
 	        gravity: "center_vertical",
 	        weight: "1", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 142
+	          lineNumber: 134
 	        }
 	      },
 	      dom(EditText, {
@@ -50589,7 +50535,7 @@
 	        id: _this3.idSet.searchEditHolder,
 	        style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 149
+	          lineNumber: 141
 	        }
 	      })
 	    );
@@ -50602,7 +50548,7 @@
 	        width: "wrap_content",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 167
+	          lineNumber: 159
 	        }
 	      },
 	      dom(ImageView, {
@@ -50611,7 +50557,7 @@
 	        style: IconStyle,
 	        imageUrl: "ic_action_close", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 171
+	          lineNumber: 163
 	        }
 	      }),
 	      dom(ImageView, {
@@ -50621,7 +50567,7 @@
 	        visibility: "gone",
 	        imageUrl: "ic_action_filter", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 177
+	          lineNumber: 169
 	        }
 	      })
 	    );
@@ -50638,7 +50584,7 @@
 	        background: window.__Colors.PRIMARY_BLACK_22,
 	        width: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 191
+	          lineNumber: 183
 	        }
 	      },
 	      dom(
@@ -50651,7 +50597,7 @@
 	          background: window.__Colors.WHITE,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 197
+	            lineNumber: 189
 	          }
 	        },
 	        _this3.getBack(),
@@ -50667,7 +50613,7 @@
 	      id: _this.idSet.filterHolder,
 	      visibility: "gone"
 	    });
-	    Android.runInUI(cmd, 0, "220", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "212", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	
 	    var layout = dom(
 	      LinearLayout,
@@ -50679,7 +50625,7 @@
 	        gravity: "center_horizontal",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 222
+	          lineNumber: 214
 	        }
 	      },
 	      dom(TextView, {
@@ -50691,7 +50637,7 @@
 	        style: window.__TextStyle.textStyle.TOOLBAR.HEADING,
 	        text: window.__S.EMPTY_SEARCH_RESULTS, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 230
+	          lineNumber: 222
 	        }
 	      })
 	    );
@@ -50705,7 +50651,7 @@
 	      data: data,
 	      type: "Profile", __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 248
+	        lineNumber: 240
 	      }
 	    });
 	
@@ -50734,7 +50680,7 @@
 	      visibility: "visible"
 	    });
 	
-	    Android.runInUI(cmd, 0, "278", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "270", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getSearchList = function (searchText, flag) {
@@ -50762,6 +50708,7 @@
 	
 	  this.handleSearchClick = function (searchText) {
 	    JBridge.hideKeyboard();
+	    JBridge.explicitSearch("PROFILE", "SEARCH");
 	    if (JBridge.isNetworkAvailable()) {
 	      window.__LoaderDialog.show();
 	      _this3.getSearchList(searchText[0], "false");
@@ -50785,7 +50732,7 @@
 	      visibility: "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "332", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "325", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.handleFilterClick = function () {
@@ -50808,7 +50755,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ProfileActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ProfileActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51157,7 +51104,7 @@
 	        _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	      }
 	    });
-	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", "true", 10);else {
+	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", 10);else {
 	      _this3.getEmptyLayout();
 	    }
 	    window.__LoaderDialog.hide();
@@ -51313,7 +51260,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementDetailActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AnnouncementDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51758,7 +51705,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Attachments.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/Attachments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51814,7 +51761,7 @@
 	            id: _this.idSet.viewButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        } else if (data[0] == "failure") {
 	          JBridge.showToast(window.__S.ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT, "short");
 	        } else if (data[0] == "finished") {
@@ -51834,7 +51781,7 @@
 	            id: _this.idSet.cancelButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "64", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "64", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        }
 	      });
 	      JBridge.downloadAndOpen(url, path, callback, _this2.props.index);
@@ -51858,7 +51805,7 @@
 	          id: _this.idSet.cancelButton,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	        Android.runInUI(cmd, 0, "83", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        JBridge.showToast(window.__S.DOWNLOAD_CANCELED, "short");
 	      });
 	      JBridge.cancelDownload(_this2.props.index, callback1);
@@ -52026,7 +51973,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ContentPreviewScreen.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ContentPreviewScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -52066,7 +52013,7 @@
 	
 	    _this2.onPop = function () {
 	      window.__getDownloadStatus = _this2.getSpineStatus;
-	      Android.runInUI(_this2.animateView(), null, "70", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
+	      Android.runInUI(_this2.animateView(), null, "70", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsContentPreviewScreenjs");
 	    };
 	
 	    _this2.onStop = function () {
@@ -52156,7 +52103,7 @@
 	          id: _this2.idSet.descriptionContainer,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "168", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
+	        Android.runInUI(cmd, 0, "168", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsContentPreviewScreenjs");
 	        layout = dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
@@ -52716,7 +52663,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/QRActivity.js";
+	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/QRActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -52883,7 +52830,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, null, "176", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "176", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsQRActivityjs");
 	    };
 	
 	    _this2.isValidBarcode = function (data) {
@@ -52900,7 +52847,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, null, "193", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "193", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsQRActivityjs");
 	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
 	    };
 	
@@ -53246,10 +53193,10 @@
 	var Control_Monad_Aff = __webpack_require__(509);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(644);
+	var Control_Monad_Eff_Console = __webpack_require__(640);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var DOM_HTML_HTMLElement = __webpack_require__(646);
-	var Data_Foreign_Generic = __webpack_require__(671);
+	var DOM_HTML_HTMLElement = __webpack_require__(642);
+	var Data_Foreign_Generic = __webpack_require__(667);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
 	var Fragments_CommunityFragment = __webpack_require__(692);
@@ -53822,14 +53769,11 @@
 	
 	exports.arrayApply = function (fs) {
 	  return function (xs) {
-	    var l = fs.length;
-	    var k = xs.length;
-	    var result = new Array(l * k);
+	    var result = [];
 	    var n = 0;
-	    for (var i = 0; i < l; i++) {
-	      var f = fs[i];
-	      for (var j = 0; j < k; j++) {
-	        result[n++] = f(xs[j]);
+	    for (var i = 0, l = fs.length; i < l; i++) {
+	      for (var j = 0, k = xs.length; j < k; j++) {
+	        result[n++] = fs[i](xs[j]);
 	      }
 	    }
 	    return result;
@@ -57166,6 +57110,12 @@
 	  };
 	};
 	
+	exports.refIneq = function (r1) {
+	  return function (r2) {
+	    return r1 !== r2;
+	  };
+	};
+	
 	exports.eqArrayImpl = function (f) {
 	  return function (xs) {
 	    return function (ys) {
@@ -59822,29 +59772,15 @@
 	                var x$prime = go(p / 2 | 0);
 	                return Data_Semigroup.append(dictMonoid.Semigroup0())(x$prime)(Data_Semigroup.append(dictMonoid.Semigroup0())(x$prime)(x));
 	            };
-	            throw new Error("Failed pattern match at Data.Monoid line 52, column 3 - line 52, column 17: " + [p.constructor.name]);
+	            throw new Error("Failed pattern match at Data.Monoid line 51, column 3 - line 51, column 17: " + [p.constructor.name]);
 	        };
 	        return go;
-	    };
-	};
-	var guard = function guard(dictMonoid) {
-	    return function (v) {
-	        return function (v1) {
-	            if (v) {
-	                return v1;
-	            };
-	            if (!v) {
-	                return mempty(dictMonoid);
-	            };
-	            throw new Error("Failed pattern match at Data.Monoid line 60, column 1 - line 60, column 49: " + [v.constructor.name, v1.constructor.name]);
-	        };
 	    };
 	};
 	module.exports = {
 	    Monoid: Monoid,
 	    mempty: mempty,
 	    power: power,
-	    guard: guard,
 	    monoidUnit: monoidUnit,
 	    monoidOrdering: monoidOrdering,
 	    monoidFn: monoidFn,
@@ -62678,7 +62614,7 @@
 	                                if (v4 instanceof Data_Maybe.Just) {
 	                                    return k(a(v4.value0));
 	                                };
-	                                throw new Error("Failed pattern match at Control.Parallel.Class line 80, column 7 - line 82, column 26: " + [v4.constructor.name]);
+	                                throw new Error("Failed pattern match at Control.Parallel.Class line 81, column 7 - line 83, column 26: " + [v4.constructor.name]);
 	                            });
 	                        }))(function () {
 	                            return Control_Monad_Cont_Trans.runContT(v1)(function (b) {
@@ -62689,7 +62625,7 @@
 	                                    if (v4 instanceof Data_Maybe.Just) {
 	                                        return k(v4.value0(b));
 	                                    };
-	                                    throw new Error("Failed pattern match at Control.Parallel.Class line 86, column 7 - line 88, column 26: " + [v4.constructor.name]);
+	                                    throw new Error("Failed pattern match at Control.Parallel.Class line 87, column 7 - line 89, column 26: " + [v4.constructor.name]);
 	                                });
 	                            });
 	                        });
@@ -65627,7 +65563,7 @@
 	var Data_Functor = __webpack_require__(501);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Monoid = __webpack_require__(569);
 	var Data_NonEmpty = __webpack_require__(629);
@@ -65636,13 +65572,13 @@
 	var Data_Ring = __webpack_require__(550);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(639);
+	var Data_String = __webpack_require__(635);
 	var Data_Traversable = __webpack_require__(580);
 	var Data_Tuple = __webpack_require__(606);
 	var Data_Unit = __webpack_require__(503);
 	var Data_Void = __webpack_require__(517);
 	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(643);
+	var Type_Proxy = __webpack_require__(639);
 	var SProd = function () {
 	    function SProd(value0, value1) {
 	        this.value0 = value0;
@@ -66735,7 +66671,7 @@
 	var Data_Semiring = __webpack_require__(552);
 	var Data_Traversable = __webpack_require__(580);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Partial_Unsafe = __webpack_require__(595);
 	var Prelude = __webpack_require__(538);
 	var zipWithA = function zipWithA(dictApplicative) {
@@ -66808,7 +66744,7 @@
 	                if (v instanceof Data_Ordering.LT) {
 	                    return -1 | 0;
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 698, column 15 - line 703, column 1: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 477, column 15 - line 482, column 1: " + [v.constructor.name]);
 	            };
 	        };
 	        return $foreign.sortImpl(comp$prime)(xs);
@@ -66841,7 +66777,7 @@
 	        if (v instanceof Data_Maybe.Nothing) {
 	            return [];
 	        };
-	        throw new Error("Failed pattern match at Data.Array line 888, column 3 - line 890, column 18: " + [v.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Array line 594, column 3 - line 596, column 18: " + [v.constructor.name]);
 	    };
 	};
 	var nub = function nub(dictEq) {
@@ -66889,7 +66825,7 @@
 	    if (Data_Boolean.otherwise) {
 	        return new Data_Maybe.Just($foreign.slice(0)($foreign.length(xs) - 1 | 0)(xs));
 	    };
-	    throw new Error("Failed pattern match at Data.Array line 319, column 1 - line 319, column 45: " + [xs.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Array line 251, column 1 - line 251, column 45: " + [xs.constructor.name]);
 	};
 	var index = $foreign.indexImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	var last = function last(xs) {
@@ -66935,7 +66871,7 @@
 	                    $tco_done = true;
 	                    return Data_Maybe.Nothing.value;
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 830, column 5 - line 832, column 25: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 552, column 5 - line 554, column 25: " + [v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($copy_i);
@@ -66961,7 +66897,7 @@
 	                rest: []
 	            };
 	        };
-	        throw new Error("Failed pattern match at Data.Array line 817, column 3 - line 823, column 30: " + [breakIndex.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Array line 539, column 3 - line 545, column 30: " + [breakIndex.constructor.name]);
 	    };
 	};
 	var takeWhile = function takeWhile(p) {
@@ -67039,7 +66975,7 @@
 	                                }));
 	                            });
 	                        };
-	                        throw new Error("Failed pattern match at Data.Array line 1057, column 3 - line 1061, column 42: " + [res.constructor.name, i.constructor.name]);
+	                        throw new Error("Failed pattern match at Data.Array line 704, column 3 - line 708, column 42: " + [res.constructor.name, i.constructor.name]);
 	                    };
 	                };
 	                return Control_Monad_Rec_Class.tailRecM2(dictMonadRec)(go)(a)(0);
@@ -67176,7 +67112,7 @@
 	                if (v instanceof Data_Maybe.Just) {
 	                    return updateAt(i)(v.value0)(xs);
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 540, column 10 - line 542, column 32: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 392, column 10 - line 394, column 32: " + [v.constructor.name]);
 	            };
 	            return Data_Maybe.maybe(Data_Maybe.Nothing.value)(go)(index(xs)(i));
 	        };
@@ -67268,7 +67204,7 @@
 	exports.range = function (start) {
 	  return function (end) {
 	    var step = start > end ? -1 : 1;
-	    var result = new Array(step * (end - start) + 1);
+	    var result = [];
 	    var i = start,
 	        n = 0;
 	    while (i !== end) {
@@ -67822,20 +67758,15 @@
 	var Control_Apply = __webpack_require__(496);
 	var Control_Category = __webpack_require__(498);
 	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Foldable = __webpack_require__(564);
-	var Data_FoldableWithIndex = __webpack_require__(630);
 	var Data_Functor = __webpack_require__(501);
-	var Data_FunctorWithIndex = __webpack_require__(631);
 	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ordering = __webpack_require__(549);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
 	var Data_Traversable = __webpack_require__(580);
-	var Data_TraversableWithIndex = __webpack_require__(633);
 	var Prelude = __webpack_require__(538);
 	var NonEmpty = function () {
 	    function NonEmpty(value0, value1) {
@@ -67879,17 +67810,6 @@
 	        };
 	    });
 	};
-	var functorWithIndex = function functorWithIndex(dictFunctorWithIndex) {
-	    return new Data_FunctorWithIndex.FunctorWithIndex(function () {
-	        return functorNonEmpty(dictFunctorWithIndex.Functor0());
-	    }, function (f) {
-	        return function (v) {
-	            return new NonEmpty(f(Data_Maybe.Nothing.value)(v.value0), Data_FunctorWithIndex.mapWithIndex(dictFunctorWithIndex)(function ($136) {
-	                return f(Data_Maybe.Just.create($136));
-	            })(v.value1));
-	        };
-	    });
-	};
 	var fromNonEmpty = function fromNonEmpty(f) {
 	    return function (v) {
 	        return f(v.value0)(v.value1);
@@ -67923,35 +67843,6 @@
 	        };
 	    });
 	};
-	var foldableWithIndexNonEmpty = function foldableWithIndexNonEmpty(dictFoldableWithIndex) {
-	    return new Data_FoldableWithIndex.FoldableWithIndex(function () {
-	        return foldableNonEmpty(dictFoldableWithIndex.Foldable0());
-	    }, function (dictMonoid) {
-	        return function (f) {
-	            return function (v) {
-	                return Data_Semigroup.append(dictMonoid.Semigroup0())(f(Data_Maybe.Nothing.value)(v.value0))(Data_FoldableWithIndex.foldMapWithIndex(dictFoldableWithIndex)(dictMonoid)(function ($137) {
-	                    return f(Data_Maybe.Just.create($137));
-	                })(v.value1));
-	            };
-	        };
-	    }, function (f) {
-	        return function (b) {
-	            return function (v) {
-	                return Data_FoldableWithIndex.foldlWithIndex(dictFoldableWithIndex)(function ($138) {
-	                    return f(Data_Maybe.Just.create($138));
-	                })(f(Data_Maybe.Nothing.value)(b)(v.value0))(v.value1);
-	            };
-	        };
-	    }, function (f) {
-	        return function (b) {
-	            return function (v) {
-	                return f(Data_Maybe.Nothing.value)(v.value0)(Data_FoldableWithIndex.foldrWithIndex(dictFoldableWithIndex)(function ($139) {
-	                    return f(Data_Maybe.Just.create($139));
-	                })(b)(v.value1));
-	            };
-	        };
-	    });
-	};
 	var traversableNonEmpty = function traversableNonEmpty(dictTraversable) {
 	    return new Data_Traversable.Traversable(function () {
 	        return foldableNonEmpty(dictTraversable.Foldable1());
@@ -67965,23 +67856,6 @@
 	        return function (f) {
 	            return function (v) {
 	                return Control_Apply.apply(dictApplicative.Apply0())(Data_Functor.map(dictApplicative.Apply0().Functor0())(NonEmpty.create)(f(v.value0)))(Data_Traversable.traverse(dictTraversable)(dictApplicative)(f)(v.value1));
-	            };
-	        };
-	    });
-	};
-	var traversableWithIndexNonEmpty = function traversableWithIndexNonEmpty(dictTraversableWithIndex) {
-	    return new Data_TraversableWithIndex.TraversableWithIndex(function () {
-	        return foldableWithIndexNonEmpty(dictTraversableWithIndex.FoldableWithIndex1());
-	    }, function () {
-	        return functorWithIndex(dictTraversableWithIndex.FunctorWithIndex0());
-	    }, function () {
-	        return traversableNonEmpty(dictTraversableWithIndex.Traversable2());
-	    }, function (dictApplicative) {
-	        return function (f) {
-	            return function (v) {
-	                return Control_Apply.apply(dictApplicative.Apply0())(Data_Functor.map(dictApplicative.Apply0().Functor0())(NonEmpty.create)(f(Data_Maybe.Nothing.value)(v.value0)))(Data_TraversableWithIndex.traverseWithIndex(dictTraversableWithIndex)(dictApplicative)(function ($140) {
-	                    return f(Data_Maybe.Just.create($140));
-	                })(v.value1));
 	            };
 	        };
 	    });
@@ -68056,11 +67930,8 @@
 	    ordNonEmpty: ordNonEmpty,
 	    ord1NonEmpty: ord1NonEmpty,
 	    functorNonEmpty: functorNonEmpty,
-	    functorWithIndex: functorWithIndex,
 	    foldableNonEmpty: foldableNonEmpty,
-	    foldableWithIndexNonEmpty: foldableWithIndexNonEmpty,
-	    traversableNonEmpty: traversableNonEmpty,
-	    traversableWithIndexNonEmpty: traversableWithIndexNonEmpty
+	    traversableNonEmpty: traversableNonEmpty
 	};
 
 /***/ }),
@@ -68070,683 +67941,12 @@
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_FunctorWithIndex = __webpack_require__(631);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Endo = __webpack_require__(577);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var Tuple = function () {
-	    function Tuple(value0, value1) {
-	        this.value0 = value0;
-	        this.value1 = value1;
-	    };
-	    Tuple.create = function (value0) {
-	        return function (value1) {
-	            return new Tuple(value0, value1);
-	        };
-	    };
-	    return Tuple;
-	}();
-	var FoldableWithIndex = function FoldableWithIndex(Foldable0, foldMapWithIndex, foldlWithIndex, foldrWithIndex) {
-	    this.Foldable0 = Foldable0;
-	    this.foldMapWithIndex = foldMapWithIndex;
-	    this.foldlWithIndex = foldlWithIndex;
-	    this.foldrWithIndex = foldrWithIndex;
-	};
-	var foldrWithIndex = function foldrWithIndex(dict) {
-	    return dict.foldrWithIndex;
-	};
-	var traverseWithIndex_ = function traverseWithIndex_(dictApplicative) {
-	    return function (dictFoldableWithIndex) {
-	        return function (f) {
-	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function ($41) {
-	                    return Control_Apply.applySecond(dictApplicative.Apply0())(f(i)($41));
-	                };
-	            })(Control_Applicative.pure(dictApplicative)(Data_Unit.unit));
-	        };
-	    };
-	};
-	var forWithIndex_ = function forWithIndex_(dictApplicative) {
-	    return function (dictFoldableWithIndex) {
-	        return Data_Function.flip(traverseWithIndex_(dictApplicative)(dictFoldableWithIndex));
-	    };
-	};
-	var foldlWithIndex = function foldlWithIndex(dict) {
-	    return dict.foldlWithIndex;
-	};
-	var foldableWithIndexMultiplicative = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableMultiplicative;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableMultiplicative)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexMaybe = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableMaybe;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableMaybe)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexLast = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableLast;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableLast)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableLast)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableLast)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexFirst = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableFirst;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableFirst)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexDual = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableDual;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableDual)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableDual)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableDual)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexDisj = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableDisj;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableDisj)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexConj = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableConj;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableConj)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableConj)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableConj)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexAdditive = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableAdditive;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableAdditive)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
-	});
-	var foldWithIndexM = function foldWithIndexM(dictFoldableWithIndex) {
-	    return function (dictMonad) {
-	        return function (f) {
-	            return function (a0) {
-	                return foldlWithIndex(dictFoldableWithIndex)(function (i) {
-	                    return function (ma) {
-	                        return function (b) {
-	                            return Control_Bind.bind(dictMonad.Bind1())(ma)(Data_Function.flip(f(i))(b));
-	                        };
-	                    };
-	                })(Control_Applicative.pure(dictMonad.Applicative0())(a0));
-	            };
-	        };
-	    };
-	};
-	var foldMapWithIndexDefaultR = function foldMapWithIndexDefaultR(dictFoldableWithIndex) {
-	    return function (dictMonoid) {
-	        return function (f) {
-	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function (x) {
-	                    return function (acc) {
-	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(f(i)(x))(acc);
-	                    };
-	                };
-	            })(Data_Monoid.mempty(dictMonoid));
-	        };
-	    };
-	};
-	var foldableWithIndexArray = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableArray;
-	}, function (dictMonoid) {
-	    return foldMapWithIndexDefaultR(foldableWithIndexArray)(dictMonoid);
-	}, function (f) {
-	    return function (z) {
-	        return function ($42) {
-	            return Data_Foldable.foldl(Data_Foldable.foldableArray)(function (y) {
-	                return function (v) {
-	                    return f(v.value0)(y)(v.value1);
-	                };
-	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($42));
-	        };
-	    };
-	}, function (f) {
-	    return function (z) {
-	        return function ($43) {
-	            return Data_Foldable.foldr(Data_Foldable.foldableArray)(function (v) {
-	                return function (y) {
-	                    return f(v.value0)(v.value1)(y);
-	                };
-	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($43));
-	        };
-	    };
-	});
-	var foldMapWithIndexDefaultL = function foldMapWithIndexDefaultL(dictFoldableWithIndex) {
-	    return function (dictMonoid) {
-	        return function (f) {
-	            return foldlWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function (acc) {
-	                    return function (x) {
-	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)(x));
-	                    };
-	                };
-	            })(Data_Monoid.mempty(dictMonoid));
-	        };
-	    };
-	};
-	var foldMapWithIndex = function foldMapWithIndex(dict) {
-	    return dict.foldMapWithIndex;
-	};
-	var foldlWithIndexDefault = function foldlWithIndexDefault(dictFoldableWithIndex) {
-	    return function (c) {
-	        return function (u) {
-	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function (i) {
-	                    return function ($44) {
-	                        return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c(i))($44)));
-	                    };
-	                })(xs)))(u);
-	            };
-	        };
-	    };
-	};
-	var foldrWithIndexDefault = function foldrWithIndexDefault(dictFoldableWithIndex) {
-	    return function (c) {
-	        return function (u) {
-	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(function (i) {
-	                    return function ($45) {
-	                        return Data_Monoid_Endo.Endo(c(i)($45));
-	                    };
-	                })(xs))(u);
-	            };
-	        };
-	    };
-	};
-	var surroundMapWithIndex = function surroundMapWithIndex(dictFoldableWithIndex) {
-	    return function (dictSemigroup) {
-	        return function (d) {
-	            return function (t) {
-	                return function (f) {
-	                    var joined = function joined(i) {
-	                        return function (a) {
-	                            return function (m) {
-	                                return Data_Semigroup.append(dictSemigroup)(d)(Data_Semigroup.append(dictSemigroup)(t(i)(a))(m));
-	                            };
-	                        };
-	                    };
-	                    return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(joined)(f))(d);
-	                };
-	            };
-	        };
-	    };
-	};
-	var findWithIndex = function findWithIndex(dictFoldableWithIndex) {
-	    return function (p) {
-	        var go = function go(i) {
-	            return function (v) {
-	                return function (v1) {
-	                    if (v instanceof Data_Maybe.Nothing && p(i)(v1)) {
-	                        return new Data_Maybe.Just(v1);
-	                    };
-	                    return v;
-	                };
-	            };
-	        };
-	        return foldlWithIndex(dictFoldableWithIndex)(go)(Data_Maybe.Nothing.value);
-	    };
-	};
-	var anyWithIndex = function anyWithIndex(dictFoldableWithIndex) {
-	    return function (dictHeytingAlgebra) {
-	        return function (t) {
-	            return function ($46) {
-	                return Data_Newtype.unwrap(Data_Monoid_Disj.newtypeDisj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Disj.monoidDisj(dictHeytingAlgebra))(function (i) {
-	                    return function ($47) {
-	                        return Data_Monoid_Disj.Disj(t(i)($47));
-	                    };
-	                })($46));
-	            };
-	        };
-	    };
-	};
-	var allWithIndex = function allWithIndex(dictFoldableWithIndex) {
-	    return function (dictHeytingAlgebra) {
-	        return function (t) {
-	            return function ($48) {
-	                return Data_Newtype.unwrap(Data_Monoid_Conj.newtypeConj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Conj.monoidConj(dictHeytingAlgebra))(function (i) {
-	                    return function ($49) {
-	                        return Data_Monoid_Conj.Conj(t(i)($49));
-	                    };
-	                })($48));
-	            };
-	        };
-	    };
-	};
-	module.exports = {
-	    FoldableWithIndex: FoldableWithIndex,
-	    foldrWithIndex: foldrWithIndex,
-	    foldlWithIndex: foldlWithIndex,
-	    foldMapWithIndex: foldMapWithIndex,
-	    foldrWithIndexDefault: foldrWithIndexDefault,
-	    foldlWithIndexDefault: foldlWithIndexDefault,
-	    foldMapWithIndexDefaultR: foldMapWithIndexDefaultR,
-	    foldMapWithIndexDefaultL: foldMapWithIndexDefaultL,
-	    foldWithIndexM: foldWithIndexM,
-	    traverseWithIndex_: traverseWithIndex_,
-	    forWithIndex_: forWithIndex_,
-	    surroundMapWithIndex: surroundMapWithIndex,
-	    allWithIndex: allWithIndex,
-	    anyWithIndex: anyWithIndex,
-	    findWithIndex: findWithIndex,
-	    foldableWithIndexArray: foldableWithIndexArray,
-	    foldableWithIndexMaybe: foldableWithIndexMaybe,
-	    foldableWithIndexFirst: foldableWithIndexFirst,
-	    foldableWithIndexLast: foldableWithIndexLast,
-	    foldableWithIndexAdditive: foldableWithIndexAdditive,
-	    foldableWithIndexDual: foldableWithIndexDual,
-	    foldableWithIndexDisj: foldableWithIndexDisj,
-	    foldableWithIndexConj: foldableWithIndexConj,
-	    foldableWithIndexMultiplicative: foldableWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 631 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var $foreign = __webpack_require__(632);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
-	    this.Functor0 = Functor0;
-	    this.mapWithIndex = mapWithIndex;
-	};
-	var mapWithIndex = function mapWithIndex(dict) {
-	    return dict.mapWithIndex;
-	};
-	var functorWithIndexMultiplicative = new FunctorWithIndex(function () {
-	    return Data_Monoid_Multiplicative.functorMultiplicative;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Multiplicative.functorMultiplicative)(f(Data_Unit.unit));
-	});
-	var functorWithIndexMaybe = new FunctorWithIndex(function () {
-	    return Data_Maybe.functorMaybe;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe.functorMaybe)(f(Data_Unit.unit));
-	});
-	var functorWithIndexLast = new FunctorWithIndex(function () {
-	    return Data_Maybe_Last.functorLast;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe_Last.functorLast)(f(Data_Unit.unit));
-	});
-	var functorWithIndexFirst = new FunctorWithIndex(function () {
-	    return Data_Maybe_First.functorFirst;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe_First.functorFirst)(f(Data_Unit.unit));
-	});
-	var functorWithIndexDual = new FunctorWithIndex(function () {
-	    return Data_Monoid_Dual.functorDual;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Dual.functorDual)(f(Data_Unit.unit));
-	});
-	var functorWithIndexDisj = new FunctorWithIndex(function () {
-	    return Data_Monoid_Disj.functorDisj;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Disj.functorDisj)(f(Data_Unit.unit));
-	});
-	var functorWithIndexConj = new FunctorWithIndex(function () {
-	    return Data_Monoid_Conj.functorConj;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Conj.functorConj)(f(Data_Unit.unit));
-	});
-	var functorWithIndexArray = new FunctorWithIndex(function () {
-	    return Data_Functor.functorArray;
-	}, $foreign.mapWithIndexArray);
-	var functorWithIndexAdditive = new FunctorWithIndex(function () {
-	    return Data_Monoid_Additive.functorAdditive;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Additive.functorAdditive)(f(Data_Unit.unit));
-	});
-	module.exports = {
-	    FunctorWithIndex: FunctorWithIndex,
-	    mapWithIndex: mapWithIndex,
-	    functorWithIndexArray: functorWithIndexArray,
-	    functorWithIndexMaybe: functorWithIndexMaybe,
-	    functorWithIndexFirst: functorWithIndexFirst,
-	    functorWithIndexLast: functorWithIndexLast,
-	    functorWithIndexAdditive: functorWithIndexAdditive,
-	    functorWithIndexDual: functorWithIndexDual,
-	    functorWithIndexConj: functorWithIndexConj,
-	    functorWithIndexDisj: functorWithIndexDisj,
-	    functorWithIndexMultiplicative: functorWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 632 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	exports.mapWithIndexArray = function (f) {
-	  return function (xs) {
-	    var l = xs.length;
-	    var result = Array(l);
-	    for (var i = 0; i < l; i++) {
-	      result[i] = f(i)(xs[i]);
-	    }
-	    return result;
-	  };
-	};
-
-/***/ }),
-/* 633 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_FoldableWithIndex = __webpack_require__(630);
-	var Data_Function = __webpack_require__(500);
-	var Data_FunctorWithIndex = __webpack_require__(631);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Traversable_Accum = __webpack_require__(582);
-	var Data_Traversable_Accum_Internal = __webpack_require__(583);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
-	    this.FoldableWithIndex1 = FoldableWithIndex1;
-	    this.FunctorWithIndex0 = FunctorWithIndex0;
-	    this.Traversable2 = Traversable2;
-	    this.traverseWithIndex = traverseWithIndex;
-	};
-	var traverseWithIndexDefault = function traverseWithIndexDefault(dictTraversableWithIndex) {
-	    return function (dictApplicative) {
-	        return function (f) {
-	            return function ($17) {
-	                return Data_Traversable.sequence(dictTraversableWithIndex.Traversable2())(dictApplicative)(Data_FunctorWithIndex.mapWithIndex(dictTraversableWithIndex.FunctorWithIndex0())(f)($17));
-	            };
-	        };
-	    };
-	};
-	var traverseWithIndex = function traverseWithIndex(dict) {
-	    return dict.traverseWithIndex;
-	};
-	var traversableWithIndexMultiplicative = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexMultiplicative;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexMultiplicative;
-	}, function () {
-	    return Data_Traversable.traversableMultiplicative;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableMultiplicative)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexMaybe = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexMaybe;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexMaybe;
-	}, function () {
-	    return Data_Traversable.traversableMaybe;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableMaybe)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexLast = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexLast;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexLast;
-	}, function () {
-	    return Data_Traversable.traversableLast;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableLast)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexFirst = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexFirst;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexFirst;
-	}, function () {
-	    return Data_Traversable.traversableFirst;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableFirst)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexDual = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexDual;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexDual;
-	}, function () {
-	    return Data_Traversable.traversableDual;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableDual)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexDisj = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexDisj;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexDisj;
-	}, function () {
-	    return Data_Traversable.traversableDisj;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableDisj)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexConj = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexConj;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexConj;
-	}, function () {
-	    return Data_Traversable.traversableConj;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableConj)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexArray = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexArray;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexArray;
-	}, function () {
-	    return Data_Traversable.traversableArray;
-	}, function (dictApplicative) {
-	    return traverseWithIndexDefault(traversableWithIndexArray)(dictApplicative);
-	});
-	var traversableWithIndexAdditive = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexAdditive;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexAdditive;
-	}, function () {
-	    return Data_Traversable.traversableAdditive;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableAdditive)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var mapAccumRWithIndex = function mapAccumRWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (s0) {
-	            return function (xs) {
-	                return Data_Traversable_Accum_Internal.stateR(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateR)(function (i) {
-	                    return function (a) {
-	                        return function (s) {
-	                            return f(i)(s)(a);
-	                        };
-	                    };
-	                })(xs))(s0);
-	            };
-	        };
-	    };
-	};
-	var scanrWithIndex = function scanrWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (b0) {
-	            return function (xs) {
-	                return mapAccumRWithIndex(dictTraversableWithIndex)(function (i) {
-	                    return function (b) {
-	                        return function (a) {
-	                            var b$prime = f(i)(a)(b);
-	                            return {
-	                                accum: b$prime,
-	                                value: b$prime
-	                            };
-	                        };
-	                    };
-	                })(b0)(xs).value;
-	            };
-	        };
-	    };
-	};
-	var mapAccumLWithIndex = function mapAccumLWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (s0) {
-	            return function (xs) {
-	                return Data_Traversable_Accum_Internal.stateL(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateL)(function (i) {
-	                    return function (a) {
-	                        return function (s) {
-	                            return f(i)(s)(a);
-	                        };
-	                    };
-	                })(xs))(s0);
-	            };
-	        };
-	    };
-	};
-	var scanlWithIndex = function scanlWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (b0) {
-	            return function (xs) {
-	                return mapAccumLWithIndex(dictTraversableWithIndex)(function (i) {
-	                    return function (b) {
-	                        return function (a) {
-	                            var b$prime = f(i)(b)(a);
-	                            return {
-	                                accum: b$prime,
-	                                value: b$prime
-	                            };
-	                        };
-	                    };
-	                })(b0)(xs).value;
-	            };
-	        };
-	    };
-	};
-	var forWithIndex = function forWithIndex(dictApplicative) {
-	    return function (dictTraversableWithIndex) {
-	        return Data_Function.flip(traverseWithIndex(dictTraversableWithIndex)(dictApplicative));
-	    };
-	};
-	module.exports = {
-	    TraversableWithIndex: TraversableWithIndex,
-	    traverseWithIndex: traverseWithIndex,
-	    traverseWithIndexDefault: traverseWithIndexDefault,
-	    forWithIndex: forWithIndex,
-	    scanlWithIndex: scanlWithIndex,
-	    mapAccumLWithIndex: mapAccumLWithIndex,
-	    scanrWithIndex: scanrWithIndex,
-	    mapAccumRWithIndex: mapAccumRWithIndex,
-	    traversableWithIndexArray: traversableWithIndexArray,
-	    traversableWithIndexMaybe: traversableWithIndexMaybe,
-	    traversableWithIndexFirst: traversableWithIndexFirst,
-	    traversableWithIndexLast: traversableWithIndexLast,
-	    traversableWithIndexAdditive: traversableWithIndexAdditive,
-	    traversableWithIndexDual: traversableWithIndexDual,
-	    traversableWithIndexConj: traversableWithIndexConj,
-	    traversableWithIndexDisj: traversableWithIndexDisj,
-	    traversableWithIndexMultiplicative: traversableWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 634 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var $foreign = __webpack_require__(635);
+	var $foreign = __webpack_require__(631);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
 	var Data_Traversable = __webpack_require__(580);
 	var Data_Tuple = __webpack_require__(606);
 	var Data_Unit = __webpack_require__(503);
@@ -68763,8 +67963,8 @@
 	    return function (n) {
 	        return function (v) {
 	            var step = function step(i) {
-	                var $9 = i <= 0;
-	                if ($9) {
+	                var $8 = i <= 0;
+	                if ($8) {
 	                    return Data_Maybe.Nothing.value;
 	                };
 	                return new Data_Maybe.Just(new Data_Tuple.Tuple(v, i - 1 | 0));
@@ -68787,19 +67987,6 @@
 	var singleton = function singleton(dictUnfoldable) {
 	    return replicate(dictUnfoldable)(1);
 	};
-	var range = function range(dictUnfoldable) {
-	    return function (start) {
-	        return function (end) {
-	            return unfoldr(dictUnfoldable)(function (i) {
-	                var $10 = i <= end;
-	                if ($10) {
-	                    return new Data_Maybe.Just(Data_Tuple.Tuple.create(i)(i + 1 | 0));
-	                };
-	                return Data_Maybe.Nothing.value;
-	            })(start);
-	        };
-	    };
-	};
 	var none = function none(dictUnfoldable) {
 	    return unfoldr(dictUnfoldable)(Data_Function["const"](Data_Maybe.Nothing.value))(Data_Unit.unit);
 	};
@@ -68815,13 +68002,12 @@
 	    replicateA: replicateA,
 	    none: none,
 	    singleton: singleton,
-	    range: range,
 	    fromMaybe: fromMaybe,
 	    unfoldableArray: unfoldableArray
 	};
 
 /***/ }),
-/* 635 */
+/* 631 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68850,7 +68036,7 @@
 	};
 
 /***/ }),
-/* 636 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -68871,10 +68057,8 @@
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Foldable = __webpack_require__(564);
-	var Data_FoldableWithIndex = __webpack_require__(630);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
-	var Data_FunctorWithIndex = __webpack_require__(631);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Monoid = __webpack_require__(569);
@@ -68882,16 +68066,13 @@
 	var Data_NonEmpty = __webpack_require__(629);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
 	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semigroup_Foldable = __webpack_require__(637);
-	var Data_Semigroup_Traversable = __webpack_require__(638);
-	var Data_Semiring = __webpack_require__(552);
+	var Data_Semigroup_Foldable = __webpack_require__(633);
+	var Data_Semigroup_Traversable = __webpack_require__(634);
 	var Data_Show = __webpack_require__(505);
 	var Data_Traversable = __webpack_require__(580);
-	var Data_TraversableWithIndex = __webpack_require__(633);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Prelude = __webpack_require__(538);
 	var Nil = function () {
 	    function Nil() {};
@@ -68927,8 +68108,8 @@
 	var foldableList = new Data_Foldable.Foldable(function (dictMonoid) {
 	    return function (f) {
 	        return Data_Foldable.foldl(foldableList)(function (acc) {
-	            return function ($158) {
-	                return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f($158));
+	            return function ($143) {
+	                return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f($143));
 	            };
 	        })(Data_Monoid.mempty(dictMonoid));
 	    };
@@ -68948,7 +68129,7 @@
 	                    $copy_v = v.value1;
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List.Types line 81, column 12 - line 83, column 30: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List.Types line 78, column 12 - line 80, column 30: " + [v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_b, $copy_v);
@@ -68959,54 +68140,35 @@
 	    return go;
 	}, function (f) {
 	    return function (b) {
-	        var rev = Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value);
-	        return function ($159) {
-	            return Data_Foldable.foldl(foldableList)(Data_Function.flip(f))(b)(rev($159));
+	        var rev = function rev($copy_acc) {
+	            return function ($copy_v) {
+	                var $tco_var_acc = $copy_acc;
+	                var $tco_done = false;
+	                var $tco_result;
+	                function $tco_loop(acc, v) {
+	                    if (v instanceof Nil) {
+	                        $tco_done = true;
+	                        return acc;
+	                    };
+	                    if (v instanceof Cons) {
+	                        $tco_var_acc = new Cons(v.value0, acc);
+	                        $copy_v = v.value1;
+	                        return;
+	                    };
+	                    throw new Error("Failed pattern match at Data.List.Types line 73, column 15 - line 75, column 33: " + [v.constructor.name]);
+	                };
+	                while (!$tco_done) {
+	                    $tco_result = $tco_loop($tco_var_acc, $copy_v);
+	                };
+	                return $tco_result;
+	            };
+	        };
+	        return function ($144) {
+	            return Data_Foldable.foldl(foldableList)(Data_Function.flip(f))(b)(rev(Nil.value)($144));
 	        };
 	    };
 	});
 	var foldableNonEmptyList = Data_NonEmpty.foldableNonEmpty(foldableList);
-	var foldableWithIndexList = new Data_FoldableWithIndex.FoldableWithIndex(function () {
-	    return foldableList;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_FoldableWithIndex.foldlWithIndex(foldableWithIndexList)(function (i) {
-	            return function (acc) {
-	                return function ($160) {
-	                    return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)($160));
-	                };
-	            };
-	        })(Data_Monoid.mempty(dictMonoid));
-	    };
-	}, function (f) {
-	    return function (acc) {
-	        return function ($161) {
-	            return Data_Tuple.snd(Data_Foldable.foldl(foldableList)(function (v) {
-	                return function (a) {
-	                    return new Data_Tuple.Tuple(v.value0 + 1 | 0, f(v.value0)(v.value1)(a));
-	                };
-	            })(new Data_Tuple.Tuple(0, acc))($161));
-	        };
-	    };
-	}, function (f) {
-	    return function (b) {
-	        return function (xs) {
-	            var v = function () {
-	                var rev = Data_Foldable.foldl(foldableList)(function (v1) {
-	                    return function (a) {
-	                        return new Data_Tuple.Tuple(v1.value0 + 1 | 0, new Cons(a, v1.value1));
-	                    };
-	                });
-	                return rev(new Data_Tuple.Tuple(0, Nil.value))(xs);
-	            }();
-	            return Data_Tuple.snd(Data_Foldable.foldl(foldableList)(function (v1) {
-	                return function (a) {
-	                    return new Data_Tuple.Tuple(v1.value0 - 1 | 0, f(v1.value0 - 1 | 0)(a)(v1.value1));
-	                };
-	            })(new Data_Tuple.Tuple(v.value0, b))(v.value1));
-	        };
-	    };
-	});
 	var functorList = new Data_Functor.Functor(function (f) {
 	    return Data_Foldable.foldr(foldableList)(function (x) {
 	        return function (acc) {
@@ -69015,17 +68177,6 @@
 	    })(Nil.value);
 	});
 	var functorNonEmptyList = Data_NonEmpty.functorNonEmpty(functorList);
-	var functorWithIndexList = new Data_FunctorWithIndex.FunctorWithIndex(function () {
-	    return functorList;
-	}, function (f) {
-	    return Data_FoldableWithIndex.foldrWithIndex(foldableWithIndexList)(function (i) {
-	        return function (x) {
-	            return function (acc) {
-	                return new Cons(f(i)(x), acc);
-	            };
-	        };
-	    })(Nil.value);
-	});
 	var semigroupList = new Data_Semigroup.Semigroup(function (xs) {
 	    return function (ys) {
 	        return Data_Foldable.foldr(foldableList)(Cons.create)(ys)(xs);
@@ -69060,36 +68211,16 @@
 	    return Data_Traversable.traverse(traversableList)(dictApplicative)(Control_Category.id(Control_Category.categoryFn));
 	}, function (dictApplicative) {
 	    return function (f) {
-	        return function ($162) {
+	        return function ($145) {
 	            return Data_Functor.map(dictApplicative.Apply0().Functor0())(Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value))(Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($163) {
-	                    return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f($163));
+	                return function ($146) {
+	                    return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f($146));
 	                };
-	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($162));
+	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($145));
 	        };
 	    };
 	});
 	var traversableNonEmptyList = Data_NonEmpty.traversableNonEmpty(traversableList);
-	var traversableWithIndexList = new Data_TraversableWithIndex.TraversableWithIndex(function () {
-	    return foldableWithIndexList;
-	}, function () {
-	    return functorWithIndexList;
-	}, function () {
-	    return traversableList;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        var rev = Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value);
-	        return function ($164) {
-	            return Data_Functor.map(dictApplicative.Apply0().Functor0())(rev)(Data_FoldableWithIndex.foldlWithIndex(foldableWithIndexList)(function (i) {
-	                return function (acc) {
-	                    return function ($165) {
-	                        return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f(i)($165));
-	                    };
-	                };
-	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($164));
-	        };
-	    };
-	});
 	var unfoldableList = new Data_Unfoldable.Unfoldable(function (f) {
 	    return function (b) {
 	        var go = function go($copy_source) {
@@ -69108,7 +68239,7 @@
 	                        $copy_memo = new Cons(v.value0.value0, memo);
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List.Types line 105, column 22 - line 107, column 52: " + [v.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List.Types line 86, column 22 - line 88, column 52: " + [v.constructor.name]);
 	                };
 	                while (!$tco_done) {
 	                    $tco_result = $tco_loop($tco_var_source, $copy_memo);
@@ -69129,8 +68260,8 @@
 	    return function (f) {
 	        return function (v) {
 	            return Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($166) {
-	                    return Data_Semigroup.append(dictSemigroup)(acc)(f($166));
+	                return function ($147) {
+	                    return Data_Semigroup.append(dictSemigroup)(acc)(f($147));
 	                };
 	            })(f(v.value0))(v.value1);
 	        };
@@ -69176,7 +68307,7 @@
 	                acc: Nil.value
 	            })(v.value1).val);
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 145, column 1 - line 145, column 35: " + [f.constructor.name, v.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 119, column 1 - line 119, column 35: " + [f.constructor.name, v.constructor.name]);
 	    };
 	});
 	var eq1List = new Data_Eq.Eq1(function (dictEq) {
@@ -69257,7 +68388,7 @@
 	                            $tco_done = true;
 	                            return v2;
 	                        };
-	                        throw new Error("Failed pattern match at Data.List.Types line 55, column 5 - line 55, column 20: " + [v.constructor.name, v1.constructor.name]);
+	                        throw new Error("Failed pattern match at Data.List.Types line 53, column 5 - line 53, column 20: " + [v.constructor.name, v1.constructor.name]);
 	                    };
 	                    while (!$tco_done) {
 	                        $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -69292,7 +68423,7 @@
 	        if (v instanceof Cons) {
 	            return Data_Semigroup.append(semigroupList)(Data_Functor.map(functorList)(v.value0)(v1))(Control_Apply.apply(applyList)(v.value1)(v1));
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 120, column 1 - line 120, column 33: " + [v.constructor.name, v1.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 94, column 1 - line 94, column 33: " + [v.constructor.name, v1.constructor.name]);
 	    };
 	});
 	var applyNonEmptyList = new Control_Apply.Apply(function () {
@@ -69312,7 +68443,7 @@
 	        if (v instanceof Cons) {
 	            return Data_Semigroup.append(semigroupList)(v1(v.value0))(Control_Bind.bind(bindList)(v.value1)(v1));
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 127, column 1 - line 127, column 31: " + [v.constructor.name, v1.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 101, column 1 - line 101, column 31: " + [v.constructor.name, v1.constructor.name]);
 	    };
 	});
 	var bindNonEmptyList = new Control_Bind.Bind(function () {
@@ -69320,8 +68451,8 @@
 	}, function (v) {
 	    return function (f) {
 	        var v1 = f(v.value0);
-	        return new Data_NonEmpty.NonEmpty(v1.value0, Data_Semigroup.append(semigroupList)(v1.value1)(Control_Bind.bind(bindList)(v.value1)(function ($167) {
-	            return toList(f($167));
+	        return new Data_NonEmpty.NonEmpty(v1.value0, Data_Semigroup.append(semigroupList)(v1.value1)(Control_Bind.bind(bindList)(v.value1)(function ($148) {
+	            return toList(f($148));
 	        })));
 	    };
 	});
@@ -69359,8 +68490,8 @@
 	});
 	var applicativeNonEmptyList = new Control_Applicative.Applicative(function () {
 	    return applyNonEmptyList;
-	}, function ($168) {
-	    return NonEmptyList(Data_NonEmpty.singleton(plusList)($168));
+	}, function ($149) {
+	    return NonEmptyList(Data_NonEmpty.singleton(plusList)($149));
 	});
 	var monadNonEmptyList = new Control_Monad.Monad(function () {
 	    return applicativeNonEmptyList;
@@ -69377,8 +68508,8 @@
 	    return function (f) {
 	        return function (v) {
 	            return Data_Functor.mapFlipped(dictApply.Functor0())(Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($169) {
-	                    return Control_Apply.lift2(dictApply)(Data_Function.flip(nelCons))(acc)(f($169));
+	                return function ($150) {
+	                    return Control_Apply.lift2(dictApply)(Data_Function.flip(nelCons))(acc)(f($150));
 	                };
 	            })(Data_Functor.map(dictApply.Functor0())(Control_Applicative.pure(applicativeNonEmptyList))(f(v.value0)))(v.value1))(function (v1) {
 	                return Data_Foldable.foldl(foldableList)(Data_Function.flip(nelCons))(Control_Applicative.pure(applicativeNonEmptyList)(v1.value0))(v1.value1);
@@ -69400,12 +68531,9 @@
 	    semigroupList: semigroupList,
 	    monoidList: monoidList,
 	    functorList: functorList,
-	    functorWithIndexList: functorWithIndexList,
 	    foldableList: foldableList,
-	    foldableWithIndexList: foldableWithIndexList,
 	    unfoldableList: unfoldableList,
 	    traversableList: traversableList,
-	    traversableWithIndexList: traversableWithIndexList,
 	    applyList: applyList,
 	    applicativeList: applicativeList,
 	    bindList: bindList,
@@ -69436,7 +68564,7 @@
 	};
 
 /***/ }),
-/* 637 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -69550,7 +68678,7 @@
 	};
 
 /***/ }),
-/* 638 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -69558,7 +68686,7 @@
 	
 	var Control_Category = __webpack_require__(498);
 	var Data_Functor = __webpack_require__(501);
-	var Data_Semigroup_Foldable = __webpack_require__(637);
+	var Data_Semigroup_Foldable = __webpack_require__(633);
 	var Data_Traversable = __webpack_require__(580);
 	var Prelude = __webpack_require__(538);
 	var Traversable1 = function Traversable1(Foldable10, _Traversable, sequence1, traverse1) {
@@ -69596,13 +68724,13 @@
 	};
 
 /***/ }),
-/* 639 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(640);
+	var $foreign = __webpack_require__(636);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Function = __webpack_require__(500);
@@ -69614,7 +68742,7 @@
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Semiring = __webpack_require__(552);
 	var Data_Show = __webpack_require__(505);
-	var Data_String_Unsafe = __webpack_require__(641);
+	var Data_String_Unsafe = __webpack_require__(637);
 	var Prelude = __webpack_require__(538);
 	var Replacement = function Replacement(x) {
 	    return x;
@@ -69756,7 +68884,7 @@
 	};
 
 /***/ }),
-/* 640 */
+/* 636 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69940,13 +69068,13 @@
 	};
 
 /***/ }),
-/* 641 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(642);
+	var $foreign = __webpack_require__(638);
 	module.exports = {
 	    "char": $foreign["char"],
 	    charAt: $foreign.charAt,
@@ -69954,7 +69082,7 @@
 	};
 
 /***/ }),
-/* 642 */
+/* 638 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69979,7 +69107,7 @@
 	};
 
 /***/ }),
-/* 643 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -70280,13 +69408,13 @@
 	};
 
 /***/ }),
-/* 644 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(645);
+	var $foreign = __webpack_require__(641);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Data_Show = __webpack_require__(505);
 	var Data_Unit = __webpack_require__(503);
@@ -70322,7 +69450,7 @@
 	};
 
 /***/ }),
-/* 645 */
+/* 641 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70356,21 +69484,21 @@
 	};
 
 /***/ }),
-/* 646 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(647);
+	var $foreign = __webpack_require__(643);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Semigroupoid = __webpack_require__(499);
-	var DOM = __webpack_require__(648);
-	var DOM_HTML_Types = __webpack_require__(649);
-	var DOM_Node_Types = __webpack_require__(666);
+	var DOM = __webpack_require__(644);
+	var DOM_HTML_Types = __webpack_require__(645);
+	var DOM_Node_Types = __webpack_require__(662);
 	var Data_Functor = __webpack_require__(501);
 	var Data_Maybe = __webpack_require__(566);
-	var Data_Nullable = __webpack_require__(669);
+	var Data_Nullable = __webpack_require__(665);
 	var Prelude = __webpack_require__(538);
 	var offsetParent = function offsetParent($0) {
 	    return Data_Functor.map(Control_Monad_Eff.functorEff)(Data_Nullable.toMaybe)($foreign._offsetParent($0));
@@ -70408,7 +69536,7 @@
 	};
 
 /***/ }),
-/* 647 */
+/* 643 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70645,7 +69773,7 @@
 	};
 
 /***/ }),
-/* 648 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -70655,23 +69783,23 @@
 	module.exports = {};
 
 /***/ }),
-/* 649 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(650);
+	var $foreign = __webpack_require__(646);
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
-	var DOM_Event_Types = __webpack_require__(651);
-	var DOM_Node_Types = __webpack_require__(666);
+	var DOM_Event_Types = __webpack_require__(647);
+	var DOM_Node_Types = __webpack_require__(662);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Prelude = __webpack_require__(538);
 	var Unsafe_Coerce = __webpack_require__(619);
 	var windowToEventTarget = Unsafe_Coerce.unsafeCoerce;
@@ -70956,7 +70084,7 @@
 	};
 
 /***/ }),
-/* 650 */
+/* 646 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70975,22 +70103,22 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(652);
+	var $foreign = __webpack_require__(648);
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Bifunctor = __webpack_require__(534);
 	var Data_Either = __webpack_require__(527);
 	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Newtype = __webpack_require__(537);
 	var Data_Ord = __webpack_require__(545);
 	var Prelude = __webpack_require__(538);
@@ -71005,7 +70133,6 @@
 	var readUIEvent = Data_Foreign.unsafeReadTagged("UIEvent");
 	var readTouchEvent = Data_Foreign.unsafeReadTagged("TouchEvent");
 	var readProgressEvent = Data_Foreign.unsafeReadTagged("ProgressEvent");
-	var readPopStateEvent = Data_Foreign.unsafeReadTagged("PopStateEvent");
 	var readMouseEvent = Data_Foreign.unsafeReadTagged("MouseEvent");
 	var readKeyboardEvent = Data_Foreign.unsafeReadTagged("KeyboardEvent");
 	var readInputEvent = Data_Foreign.unsafeReadTagged("InputEvent");
@@ -71019,7 +70146,6 @@
 	var readCompositionEvent = Data_Foreign.unsafeReadTagged("CompositionEvent");
 	var readClipboardEvent = Data_Foreign.unsafeReadTagged("ClipboardEvent");
 	var progressEventToEvent = Unsafe_Coerce.unsafeCoerce;
-	var popStateEventToEvent = Unsafe_Coerce.unsafeCoerce;
 	var ordEventType = Data_Ord.ordString;
 	var newtypeEventType = new Data_Newtype.Newtype(function (n) {
 	    return n;
@@ -71053,8 +70179,6 @@
 	    readKeyboardEvent: readKeyboardEvent,
 	    compositionEventToEvent: compositionEventToEvent,
 	    readCompositionEvent: readCompositionEvent,
-	    popStateEventToEvent: popStateEventToEvent,
-	    readPopStateEvent: readPopStateEvent,
 	    progressEventToEvent: progressEventToEvent,
 	    readProgressEvent: readProgressEvent,
 	    clipboardEventToEvent: clipboardEventToEvent,
@@ -71065,7 +70189,7 @@
 	};
 
 /***/ }),
-/* 652 */
+/* 648 */
 /***/ (function(module, exports) {
 
 	/* global EventTarget */
@@ -71080,16 +70204,16 @@
 	};
 
 /***/ }),
-/* 653 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(654);
+	var $foreign = __webpack_require__(650);
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Boolean = __webpack_require__(539);
@@ -71098,14 +70222,14 @@
 	var Data_Function = __webpack_require__(500);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Identity = __webpack_require__(593);
-	var Data_Int = __webpack_require__(656);
-	var Data_List_NonEmpty = __webpack_require__(664);
+	var Data_Int = __webpack_require__(652);
+	var Data_List_NonEmpty = __webpack_require__(660);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ordering = __webpack_require__(549);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(639);
+	var Data_String = __webpack_require__(635);
 	var Prelude = __webpack_require__(538);
 	var ForeignError = function () {
 	    function ForeignError(value0) {
@@ -71382,7 +70506,7 @@
 	};
 
 /***/ }),
-/* 654 */
+/* 650 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71418,7 +70542,7 @@
 	};
 
 /***/ }),
-/* 655 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -71447,32 +70571,26 @@
 	};
 
 /***/ }),
-/* 656 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(657);
-	var Control_Category = __webpack_require__(498);
+	var $foreign = __webpack_require__(653);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Boolean = __webpack_require__(539);
 	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_DivisionRing = __webpack_require__(555);
 	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Field = __webpack_require__(558);
 	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Int_Bits = __webpack_require__(658);
+	var Data_Int_Bits = __webpack_require__(654);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ordering = __webpack_require__(549);
 	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
 	var Data_Show = __webpack_require__(505);
-	var Global = __webpack_require__(660);
-	var $$Math = __webpack_require__(662);
+	var Global = __webpack_require__(656);
+	var $$Math = __webpack_require__(658);
 	var Prelude = __webpack_require__(538);
 	var Radix = function Radix(x) {
 	    return x;
@@ -71494,7 +70612,7 @@
 	    if (v instanceof Odd) {
 	        return "Odd";
 	    };
-	    throw new Error("Failed pattern match at Data.Int line 110, column 1 - line 110, column 35: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Int line 88, column 1 - line 88, column 35: " + [v.constructor.name]);
 	});
 	var radix = function radix(n) {
 	    if (n >= 2 && n <= 36) {
@@ -71503,7 +70621,7 @@
 	    if (Data_Boolean.otherwise) {
 	        return Data_Maybe.Nothing.value;
 	    };
-	    throw new Error("Failed pattern match at Data.Int line 193, column 1 - line 193, column 28: " + [n.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Int line 148, column 1 - line 148, column 28: " + [n.constructor.name]);
 	};
 	var odd = function odd(x) {
 	    return (x & 1) !== 0;
@@ -71531,18 +70649,18 @@
 	    };
 	    throw new Error("Failed pattern match at Data.Int line 64, column 1 - line 64, column 29: " + [x.constructor.name]);
 	};
-	var round = function round($23) {
-	    return unsafeClamp($$Math.round($23));
+	var round = function round($13) {
+	    return unsafeClamp($$Math.round($13));
 	};
-	var floor = function floor($24) {
-	    return unsafeClamp($$Math.floor($24));
+	var floor = function floor($14) {
+	    return unsafeClamp($$Math.floor($14));
 	};
 	var even = function even(x) {
 	    return (x & 1) === 0;
 	};
 	var parity = function parity(n) {
-	    var $14 = even(n);
-	    if ($14) {
+	    var $8 = even(n);
+	    if ($8) {
 	        return Even.value;
 	    };
 	    return Odd.value;
@@ -71574,59 +70692,12 @@
 	        if (x instanceof Odd && y instanceof Odd) {
 	            return Data_Ordering.EQ.value;
 	        };
-	        throw new Error("Failed pattern match at Data.Int line 108, column 8 - line 108, column 40: " + [x.constructor.name, y.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Int line 86, column 8 - line 86, column 40: " + [x.constructor.name, y.constructor.name]);
 	    };
 	});
-	var semiringParity = new Data_Semiring.Semiring(function (x) {
-	    return function (y) {
-	        var $19 = Data_Eq.eq(eqParity)(x)(y);
-	        if ($19) {
-	            return Even.value;
-	        };
-	        return Odd.value;
-	    };
-	}, function (v) {
-	    return function (v1) {
-	        if (v instanceof Odd && v1 instanceof Odd) {
-	            return Odd.value;
-	        };
-	        return Even.value;
-	    };
-	}, Odd.value, Even.value);
-	var ringParity = new Data_Ring.Ring(function () {
-	    return semiringParity;
-	}, Data_Semiring.add(semiringParity));
-	var divisionRingParity = new Data_DivisionRing.DivisionRing(function () {
-	    return ringParity;
-	}, Control_Category.id(Control_Category.categoryFn));
 	var decimal = 10;
-	var commutativeRingParity = new Data_CommutativeRing.CommutativeRing(function () {
-	    return ringParity;
-	});
-	var euclideanRingParity = new Data_EuclideanRing.EuclideanRing(function () {
-	    return commutativeRingParity;
-	}, function (v) {
-	    if (v instanceof Even) {
-	        return 0;
-	    };
-	    if (v instanceof Odd) {
-	        return 1;
-	    };
-	    throw new Error("Failed pattern match at Data.Int line 130, column 1 - line 130, column 53: " + [v.constructor.name]);
-	}, function (x) {
-	    return function (v) {
-	        return x;
-	    };
-	}, function (v) {
-	    return function (v1) {
-	        return Even.value;
-	    };
-	});
-	var fieldParity = new Data_Field.Field(function () {
-	    return euclideanRingParity;
-	});
-	var ceil = function ceil($25) {
-	    return unsafeClamp($$Math.ceil($25));
+	var ceil = function ceil($15) {
+	    return unsafeClamp($$Math.ceil($15));
 	};
 	var boundedParity = new Data_Bounded.Bounded(function () {
 	    return ordParity;
@@ -71655,19 +70726,13 @@
 	    ordParity: ordParity,
 	    showParity: showParity,
 	    boundedParity: boundedParity,
-	    semiringParity: semiringParity,
-	    ringParity: ringParity,
-	    commutativeRingParity: commutativeRingParity,
-	    euclideanRingParity: euclideanRingParity,
-	    divisionRingParity: divisionRingParity,
-	    fieldParity: fieldParity,
 	    toNumber: $foreign.toNumber,
 	    toStringAs: $foreign.toStringAs,
 	    pow: $foreign.pow
 	};
 
 /***/ }),
-/* 657 */
+/* 653 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71727,13 +70792,13 @@
 	};
 
 /***/ }),
-/* 658 */
+/* 654 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(659);
+	var $foreign = __webpack_require__(655);
 	module.exports = {
 	    and: $foreign.and,
 	    or: $foreign.or,
@@ -71745,7 +70810,7 @@
 	};
 
 /***/ }),
-/* 659 */
+/* 655 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71800,13 +70865,13 @@
 	};
 
 /***/ }),
-/* 660 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(661);
+	var $foreign = __webpack_require__(657);
 	module.exports = {
 	    nan: $foreign.nan,
 	    "isNaN": $foreign["isNaN"],
@@ -71821,7 +70886,7 @@
 	};
 
 /***/ }),
-/* 661 */
+/* 657 */
 /***/ (function(module, exports) {
 
 	/* globals exports */
@@ -71851,13 +70916,13 @@
 	exports.encodeURIComponent = encodeURIComponent;
 
 /***/ }),
-/* 662 */
+/* 658 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(663);
+	var $foreign = __webpack_require__(659);
 	module.exports = {
 	    abs: $foreign.abs,
 	    acos: $foreign.acos,
@@ -71890,7 +70955,7 @@
 	};
 
 /***/ }),
-/* 663 */
+/* 659 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71976,7 +71041,7 @@
 	exports.sqrt2 = Math.SQRT2;
 
 /***/ }),
-/* 664 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -71990,19 +71055,19 @@
 	var Data_Foldable = __webpack_require__(564);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
-	var Data_List = __webpack_require__(665);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List = __webpack_require__(661);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_NonEmpty = __webpack_require__(629);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ring = __webpack_require__(550);
 	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semigroup_Foldable = __webpack_require__(637);
-	var Data_Semigroup_Traversable = __webpack_require__(638);
+	var Data_Semigroup_Foldable = __webpack_require__(633);
+	var Data_Semigroup_Traversable = __webpack_require__(634);
 	var Data_Semiring = __webpack_require__(552);
 	var Data_Traversable = __webpack_require__(580);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Partial_Unsafe = __webpack_require__(595);
 	var Prelude = __webpack_require__(538);
 	var zipWith = function zipWith(f) {
@@ -72392,7 +71457,7 @@
 	};
 
 /***/ }),
-/* 665 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -72413,9 +71478,8 @@
 	var Data_Foldable = __webpack_require__(564);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
-	var Data_FunctorWithIndex = __webpack_require__(631);
 	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Newtype = __webpack_require__(537);
 	var Data_NonEmpty = __webpack_require__(629);
@@ -72427,7 +71491,7 @@
 	var Data_Show = __webpack_require__(505);
 	var Data_Traversable = __webpack_require__(580);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Data_Unit = __webpack_require__(503);
 	var Prelude = __webpack_require__(538);
 	var Pattern = function Pattern(x) {
@@ -72463,7 +71527,7 @@
 	            tail: v.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Data.List line 259, column 1 - line 259, column 66: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 258, column 1 - line 258, column 66: " + [v.constructor.name]);
 	};
 	var toUnfoldable = function toUnfoldable(dictUnfoldable) {
 	    return Data_Unfoldable.unfoldr(dictUnfoldable)(function (xs) {
@@ -72479,7 +71543,7 @@
 	    if (v instanceof Data_List_Types.Cons) {
 	        return new Data_Maybe.Just(v.value1);
 	    };
-	    throw new Error("Failed pattern match at Data.List line 245, column 1 - line 245, column 43: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 244, column 1 - line 244, column 43: " + [v.constructor.name]);
 	};
 	var stripPrefix = function stripPrefix(dictEq) {
 	    return function (v) {
@@ -72630,8 +71694,8 @@
 	            };
 	        };
 	    };
-	    return function ($333) {
-	        return mergeAll(sequences($333));
+	    return function ($340) {
+	        return mergeAll(sequences($340));
 	    };
 	};
 	var sort = function sort(dictOrd) {
@@ -72660,7 +71724,7 @@
 	                    $copy_v = v.value1;
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 368, column 3 - line 368, column 19: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 367, column 3 - line 367, column 19: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -72679,7 +71743,7 @@
 	                var $tco_done = false;
 	                var $tco_result;
 	                function $tco_loop(acc, v, v1) {
-	                    if (v < 1) {
+	                    if (v === 0) {
 	                        $tco_done = true;
 	                        return reverse(acc);
 	                    };
@@ -72693,7 +71757,7 @@
 	                        $copy_v1 = v1.value1;
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 520, column 3 - line 520, column 35: " + [acc.constructor.name, v.constructor.name, v1.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 520, column 3 - line 520, column 27: " + [acc.constructor.name, v.constructor.name, v1.constructor.name]);
 	                };
 	                while (!$tco_done) {
 	                    $tco_result = $tco_loop($tco_var_acc, $tco_var_v, $copy_v1);
@@ -72750,7 +71814,7 @@
 	                    $copy_acc = new Data_List_Types.Cons(v.value0, acc);
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 270, column 3 - line 270, column 23: " + [v.constructor.name, acc.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 269, column 3 - line 269, column 23: " + [v.constructor.name, acc.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_v, $copy_acc);
@@ -72840,7 +71904,7 @@
 	                                    $copy_rest = new Data_List_Types.Cons(s, rest);
 	                                    return;
 	                                };
-	                                throw new Error("Failed pattern match at Data.List line 148, column 3 - line 149, column 65: " + [s.constructor.name, e.constructor.name, step.constructor.name, rest.constructor.name]);
+	                                throw new Error("Failed pattern match at Data.List line 147, column 3 - line 148, column 65: " + [s.constructor.name, e.constructor.name, step.constructor.name, rest.constructor.name]);
 	                            };
 	                            while (!$tco_done) {
 	                                $tco_result = $tco_loop($tco_var_s, $tco_var_e, $tco_var_step, $copy_rest);
@@ -72851,22 +71915,22 @@
 	                };
 	            };
 	            return go(end)(start)(function () {
-	                var $219 = start > end;
-	                if ($219) {
+	                var $221 = start > end;
+	                if ($221) {
 	                    return 1;
 	                };
 	                return -1 | 0;
 	            }())(Data_List_Types.Nil.value);
 	        };
-	        throw new Error("Failed pattern match at Data.List line 144, column 1 - line 144, column 32: " + [start.constructor.name, end.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List line 143, column 1 - line 143, column 32: " + [start.constructor.name, end.constructor.name]);
 	    };
 	};
 	var partition = function partition(p) {
 	    return function (xs) {
 	        var select = function select(x) {
 	            return function (v) {
-	                var $222 = p(x);
-	                if ($222) {
+	                var $224 = p(x);
+	                if ($224) {
 	                    return {
 	                        no: v.no,
 	                        yes: new Data_List_Types.Cons(x, v.yes)
@@ -72893,7 +71957,38 @@
 	var newtypePattern = new Data_Newtype.Newtype(function (n) {
 	    return n;
 	}, Pattern);
-	var mapWithIndex = Data_FunctorWithIndex.mapWithIndex(Data_List_Types.functorWithIndexList);
+	var mapWithIndex = function mapWithIndex(f) {
+	    return function (lst) {
+	        var go = function go($copy_v) {
+	            return function ($copy_v1) {
+	                return function ($copy_acc) {
+	                    var $tco_var_v = $copy_v;
+	                    var $tco_var_v1 = $copy_v1;
+	                    var $tco_done = false;
+	                    var $tco_result;
+	                    function $tco_loop(v, v1, acc) {
+	                        if (v1 instanceof Data_List_Types.Nil) {
+	                            $tco_done = true;
+	                            return acc;
+	                        };
+	                        if (v1 instanceof Data_List_Types.Cons) {
+	                            $tco_var_v = v + 1 | 0;
+	                            $tco_var_v1 = v1.value1;
+	                            $copy_acc = new Data_List_Types.Cons(f(v)(v1.value0), acc);
+	                            return;
+	                        };
+	                        throw new Error("Failed pattern match at Data.List line 432, column 3 - line 432, column 21: " + [v.constructor.name, v1.constructor.name, acc.constructor.name]);
+	                    };
+	                    while (!$tco_done) {
+	                        $tco_result = $tco_loop($tco_var_v, $tco_var_v1, $copy_acc);
+	                    };
+	                    return $tco_result;
+	                };
+	            };
+	        };
+	        return reverse(go(0)(lst)(Data_List_Types.Nil.value));
+	    };
+	};
 	var mapMaybe = function mapMaybe(f) {
 	    var go = function go($copy_acc) {
 	        return function ($copy_v) {
@@ -72917,9 +72012,9 @@
 	                        $copy_v = v.value1;
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 419, column 5 - line 421, column 32: " + [v1.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 418, column 5 - line 420, column 32: " + [v1.constructor.name]);
 	                };
-	                throw new Error("Failed pattern match at Data.List line 417, column 3 - line 417, column 27: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 416, column 3 - line 416, column 27: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -73006,7 +72101,7 @@
 	                };
 	                return new Data_List_Types.Cons(x, v1);
 	            };
-	            throw new Error("Failed pattern match at Data.List line 216, column 1 - line 216, column 68: " + [v.constructor.name, x.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 215, column 1 - line 215, column 68: " + [v.constructor.name, x.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	};
@@ -73052,7 +72147,7 @@
 	                $copy_v1 = v1 - 1 | 0;
 	                return;
 	            };
-	            throw new Error("Failed pattern match at Data.List line 281, column 1 - line 281, column 44: " + [v.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 280, column 1 - line 280, column 44: " + [v.constructor.name, v1.constructor.name]);
 	        };
 	        while (!$tco_done) {
 	            $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -73067,7 +72162,7 @@
 	    if (v instanceof Data_List_Types.Cons) {
 	        return new Data_Maybe.Just(v.value0);
 	    };
-	    throw new Error("Failed pattern match at Data.List line 230, column 1 - line 230, column 22: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 229, column 1 - line 229, column 22: " + [v.constructor.name]);
 	};
 	var transpose = function transpose(v) {
 	    if (v instanceof Data_List_Types.Nil) {
@@ -73097,8 +72192,8 @@
 	    return groupBy(Data_Eq.eq(dictEq));
 	};
 	var group$prime = function group$prime(dictOrd) {
-	    return function ($334) {
-	        return group(dictOrd.Eq0())(sort(dictOrd)($334));
+	    return function ($341) {
+	        return group(dictOrd.Eq0())(sort(dictOrd)($341));
 	    };
 	};
 	var fromFoldable = function fromFoldable(dictFoldable) {
@@ -73143,7 +72238,7 @@
 	                    $tco_done = true;
 	                    return Data_Maybe.Nothing.value;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 301, column 3 - line 301, column 35: " + [v.constructor.name, v1.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 300, column 3 - line 300, column 35: " + [v.constructor.name, v1.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -73178,7 +72273,7 @@
 	                    });
 	                });
 	            };
-	            throw new Error("Failed pattern match at Data.List line 403, column 1 - line 403, column 75: " + [v.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 402, column 1 - line 402, column 75: " + [v.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	};
@@ -73205,7 +72300,7 @@
 	                        return;
 	                    };
 	                };
-	                throw new Error("Failed pattern match at Data.List line 390, column 3 - line 390, column 27: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 389, column 3 - line 389, column 27: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -73309,7 +72404,7 @@
 	        var $tco_done = false;
 	        var $tco_result;
 	        function $tco_loop(v, v1) {
-	            if (v < 1) {
+	            if (v === 0) {
 	                $tco_done = true;
 	                return v1;
 	            };
@@ -73404,7 +72499,7 @@
 	                    if (v3 instanceof Data_Maybe.Just) {
 	                        return new Data_List_Types.Cons(v3.value0, v2.value1);
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 352, column 3 - line 354, column 23: " + [v3.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 351, column 3 - line 353, column 23: " + [v3.constructor.name]);
 	                }());
 	            };
 	            if (v2 instanceof Data_List_Types.Cons) {
@@ -73418,8 +72513,8 @@
 	};
 	var modifyAt = function modifyAt(n) {
 	    return function (f) {
-	        return alterAt(n)(function ($335) {
-	            return Data_Maybe.Just.create(f($335));
+	        return alterAt(n)(function ($342) {
+	            return Data_Maybe.Just.create(f($342));
 	        });
 	    };
 	};
@@ -73499,16 +72594,16 @@
 	};
 
 /***/ }),
-/* 666 */
+/* 662 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var DOM_Event_Types = __webpack_require__(651);
-	var DOM_Util_FFI = __webpack_require__(667);
+	var DOM_Event_Types = __webpack_require__(647);
+	var DOM_Util_FFI = __webpack_require__(663);
 	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Newtype = __webpack_require__(537);
 	var Data_Ord = __webpack_require__(545);
 	var Prelude = __webpack_require__(538);
@@ -73567,21 +72662,21 @@
 	};
 
 /***/ }),
-/* 667 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(668);
+	var $foreign = __webpack_require__(664);
 	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Prelude = __webpack_require__(538);
 	var unsafeReadProtoTagged = function unsafeReadProtoTagged(name) {
 	    return $foreign._unsafeReadProtoTagged(name)(function ($0) {
@@ -73595,7 +72690,7 @@
 	};
 
 /***/ }),
-/* 668 */
+/* 664 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73622,13 +72717,13 @@
 	};
 
 /***/ }),
-/* 669 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(670);
+	var $foreign = __webpack_require__(666);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Function = __webpack_require__(500);
@@ -73673,7 +72768,7 @@
 	};
 
 /***/ }),
-/* 670 */
+/* 666 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73689,7 +72784,7 @@
 	};
 
 /***/ }),
-/* 671 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -73699,8 +72794,8 @@
 	var Control_Category = __webpack_require__(498);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Class = __webpack_require__(672);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Class = __webpack_require__(668);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Foreign_Generic_Types = __webpack_require__(681);
 	var Data_Foreign_JSON = __webpack_require__(686);
@@ -73771,7 +72866,7 @@
 	};
 
 /***/ }),
-/* 672 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -73780,20 +72875,20 @@
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Bind = __webpack_require__(507);
 	var Control_Category = __webpack_require__(498);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Array = __webpack_require__(624);
 	var Data_Bifunctor = __webpack_require__(534);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Internal = __webpack_require__(673);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Internal = __webpack_require__(669);
 	var Data_Foreign_NullOrUndefined = __webpack_require__(678);
 	var Data_Functor = __webpack_require__(501);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
-	var Data_StrMap = __webpack_require__(674);
+	var Data_StrMap = __webpack_require__(670);
 	var Data_Traversable = __webpack_require__(580);
 	var Prelude = __webpack_require__(538);
 	var Decode = function Decode(decode) {
@@ -73886,7 +72981,7 @@
 	};
 
 /***/ }),
-/* 673 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
@@ -73896,10 +72991,10 @@
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Data_Boolean = __webpack_require__(539);
 	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Function = __webpack_require__(500);
 	var Data_Identity = __webpack_require__(593);
-	var Data_StrMap = __webpack_require__(674);
+	var Data_StrMap = __webpack_require__(670);
 	var Prelude = __webpack_require__(538);
 	var isStrMap = function isStrMap(v) {
 	    return Data_Foreign.tagOf(v) === "Object";
@@ -73919,13 +73014,13 @@
 	};
 
 /***/ }),
-/* 674 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(675);
+	var $foreign = __webpack_require__(671);
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Apply = __webpack_require__(496);
 	var Control_Bind = __webpack_require__(507);
@@ -73936,22 +73031,22 @@
 	var Data_Array = __webpack_require__(624);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Foldable = __webpack_require__(564);
-	var Data_FoldableWithIndex = __webpack_require__(630);
+	var Data_FoldableWithIndex = __webpack_require__(672);
 	var Data_Function = __webpack_require__(500);
 	var Data_Function_Uncurried = __webpack_require__(584);
 	var Data_Functor = __webpack_require__(501);
-	var Data_FunctorWithIndex = __webpack_require__(631);
+	var Data_FunctorWithIndex = __webpack_require__(673);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Monoid = __webpack_require__(569);
 	var Data_Ord = __webpack_require__(545);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
-	var Data_StrMap_ST = __webpack_require__(676);
+	var Data_StrMap_ST = __webpack_require__(675);
 	var Data_Traversable = __webpack_require__(580);
-	var Data_TraversableWithIndex = __webpack_require__(633);
+	var Data_TraversableWithIndex = __webpack_require__(677);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Prelude = __webpack_require__(538);
 	var values = $foreign.toArrayWithKey(function (v) {
 	    return function (v1) {
@@ -74308,7 +73403,7 @@
 	};
 
 /***/ }),
-/* 675 */
+/* 671 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74439,13 +73534,451 @@
 	});
 
 /***/ }),
-/* 676 */
+/* 672 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(677);
+	var Control_Applicative = __webpack_require__(495);
+	var Control_Apply = __webpack_require__(496);
+	var Control_Bind = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(499);
+	var Data_Foldable = __webpack_require__(564);
+	var Data_Function = __webpack_require__(500);
+	var Data_FunctorWithIndex = __webpack_require__(673);
+	var Data_Maybe = __webpack_require__(566);
+	var Data_Maybe_First = __webpack_require__(570);
+	var Data_Maybe_Last = __webpack_require__(571);
+	var Data_Monoid = __webpack_require__(569);
+	var Data_Monoid_Additive = __webpack_require__(572);
+	var Data_Monoid_Conj = __webpack_require__(574);
+	var Data_Monoid_Disj = __webpack_require__(575);
+	var Data_Monoid_Dual = __webpack_require__(576);
+	var Data_Monoid_Endo = __webpack_require__(577);
+	var Data_Monoid_Multiplicative = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(537);
+	var Data_Semigroup = __webpack_require__(515);
+	var Data_Unit = __webpack_require__(503);
+	var Prelude = __webpack_require__(538);
+	var Tuple = function () {
+	    function Tuple(value0, value1) {
+	        this.value0 = value0;
+	        this.value1 = value1;
+	    };
+	    Tuple.create = function (value0) {
+	        return function (value1) {
+	            return new Tuple(value0, value1);
+	        };
+	    };
+	    return Tuple;
+	}();
+	var FoldableWithIndex = function FoldableWithIndex(Foldable0, foldMapWithIndex, foldlWithIndex, foldrWithIndex) {
+	    this.Foldable0 = Foldable0;
+	    this.foldMapWithIndex = foldMapWithIndex;
+	    this.foldlWithIndex = foldlWithIndex;
+	    this.foldrWithIndex = foldrWithIndex;
+	};
+	var foldrWithIndex = function foldrWithIndex(dict) {
+	    return dict.foldrWithIndex;
+	};
+	var traverseWithIndex_ = function traverseWithIndex_(dictApplicative) {
+	    return function (dictFoldableWithIndex) {
+	        return function (f) {
+	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function ($41) {
+	                    return Control_Apply.applySecond(dictApplicative.Apply0())(f(i)($41));
+	                };
+	            })(Control_Applicative.pure(dictApplicative)(Data_Unit.unit));
+	        };
+	    };
+	};
+	var forWithIndex_ = function forWithIndex_(dictApplicative) {
+	    return function (dictFoldableWithIndex) {
+	        return Data_Function.flip(traverseWithIndex_(dictApplicative)(dictFoldableWithIndex));
+	    };
+	};
+	var foldlWithIndex = function foldlWithIndex(dict) {
+	    return dict.foldlWithIndex;
+	};
+	var foldableWithIndexMultiplicative = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableMultiplicative;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableMultiplicative)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexMaybe = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableMaybe;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableMaybe)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexLast = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableLast;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableLast)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableLast)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableLast)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexFirst = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableFirst;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableFirst)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexDual = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableDual;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableDual)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableDual)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableDual)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexDisj = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableDisj;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableDisj)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexConj = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableConj;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableConj)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableConj)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableConj)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexAdditive = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableAdditive;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableAdditive)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
+	});
+	var foldWithIndexM = function foldWithIndexM(dictFoldableWithIndex) {
+	    return function (dictMonad) {
+	        return function (f) {
+	            return function (a0) {
+	                return foldlWithIndex(dictFoldableWithIndex)(function (i) {
+	                    return function (ma) {
+	                        return function (b) {
+	                            return Control_Bind.bind(dictMonad.Bind1())(ma)(Data_Function.flip(f(i))(b));
+	                        };
+	                    };
+	                })(Control_Applicative.pure(dictMonad.Applicative0())(a0));
+	            };
+	        };
+	    };
+	};
+	var foldMapWithIndexDefaultR = function foldMapWithIndexDefaultR(dictFoldableWithIndex) {
+	    return function (dictMonoid) {
+	        return function (f) {
+	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function (x) {
+	                    return function (acc) {
+	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(f(i)(x))(acc);
+	                    };
+	                };
+	            })(Data_Monoid.mempty(dictMonoid));
+	        };
+	    };
+	};
+	var foldableWithIndexArray = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableArray;
+	}, function (dictMonoid) {
+	    return foldMapWithIndexDefaultR(foldableWithIndexArray)(dictMonoid);
+	}, function (f) {
+	    return function (z) {
+	        return function ($42) {
+	            return Data_Foldable.foldl(Data_Foldable.foldableArray)(function (y) {
+	                return function (v) {
+	                    return f(v.value0)(y)(v.value1);
+	                };
+	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($42));
+	        };
+	    };
+	}, function (f) {
+	    return function (z) {
+	        return function ($43) {
+	            return Data_Foldable.foldr(Data_Foldable.foldableArray)(function (v) {
+	                return function (y) {
+	                    return f(v.value0)(v.value1)(y);
+	                };
+	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($43));
+	        };
+	    };
+	});
+	var foldMapWithIndexDefaultL = function foldMapWithIndexDefaultL(dictFoldableWithIndex) {
+	    return function (dictMonoid) {
+	        return function (f) {
+	            return foldlWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function (acc) {
+	                    return function (x) {
+	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)(x));
+	                    };
+	                };
+	            })(Data_Monoid.mempty(dictMonoid));
+	        };
+	    };
+	};
+	var foldMapWithIndex = function foldMapWithIndex(dict) {
+	    return dict.foldMapWithIndex;
+	};
+	var foldlWithIndexDefault = function foldlWithIndexDefault(dictFoldableWithIndex) {
+	    return function (c) {
+	        return function (u) {
+	            return function (xs) {
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function (i) {
+	                    return function ($44) {
+	                        return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c(i))($44)));
+	                    };
+	                })(xs)))(u);
+	            };
+	        };
+	    };
+	};
+	var foldrWithIndexDefault = function foldrWithIndexDefault(dictFoldableWithIndex) {
+	    return function (c) {
+	        return function (u) {
+	            return function (xs) {
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(function (i) {
+	                    return function ($45) {
+	                        return Data_Monoid_Endo.Endo(c(i)($45));
+	                    };
+	                })(xs))(u);
+	            };
+	        };
+	    };
+	};
+	var surroundMapWithIndex = function surroundMapWithIndex(dictFoldableWithIndex) {
+	    return function (dictSemigroup) {
+	        return function (d) {
+	            return function (t) {
+	                return function (f) {
+	                    var joined = function joined(i) {
+	                        return function (a) {
+	                            return function (m) {
+	                                return Data_Semigroup.append(dictSemigroup)(d)(Data_Semigroup.append(dictSemigroup)(t(i)(a))(m));
+	                            };
+	                        };
+	                    };
+	                    return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(joined)(f))(d);
+	                };
+	            };
+	        };
+	    };
+	};
+	var findWithIndex = function findWithIndex(dictFoldableWithIndex) {
+	    return function (p) {
+	        var go = function go(i) {
+	            return function (v) {
+	                return function (v1) {
+	                    if (v instanceof Data_Maybe.Nothing && p(i)(v1)) {
+	                        return new Data_Maybe.Just(v1);
+	                    };
+	                    return v;
+	                };
+	            };
+	        };
+	        return foldlWithIndex(dictFoldableWithIndex)(go)(Data_Maybe.Nothing.value);
+	    };
+	};
+	var anyWithIndex = function anyWithIndex(dictFoldableWithIndex) {
+	    return function (dictHeytingAlgebra) {
+	        return function (t) {
+	            return function ($46) {
+	                return Data_Newtype.unwrap(Data_Monoid_Disj.newtypeDisj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Disj.monoidDisj(dictHeytingAlgebra))(function (i) {
+	                    return function ($47) {
+	                        return Data_Monoid_Disj.Disj(t(i)($47));
+	                    };
+	                })($46));
+	            };
+	        };
+	    };
+	};
+	var allWithIndex = function allWithIndex(dictFoldableWithIndex) {
+	    return function (dictHeytingAlgebra) {
+	        return function (t) {
+	            return function ($48) {
+	                return Data_Newtype.unwrap(Data_Monoid_Conj.newtypeConj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Conj.monoidConj(dictHeytingAlgebra))(function (i) {
+	                    return function ($49) {
+	                        return Data_Monoid_Conj.Conj(t(i)($49));
+	                    };
+	                })($48));
+	            };
+	        };
+	    };
+	};
+	module.exports = {
+	    FoldableWithIndex: FoldableWithIndex,
+	    foldrWithIndex: foldrWithIndex,
+	    foldlWithIndex: foldlWithIndex,
+	    foldMapWithIndex: foldMapWithIndex,
+	    foldrWithIndexDefault: foldrWithIndexDefault,
+	    foldlWithIndexDefault: foldlWithIndexDefault,
+	    foldMapWithIndexDefaultR: foldMapWithIndexDefaultR,
+	    foldMapWithIndexDefaultL: foldMapWithIndexDefaultL,
+	    foldWithIndexM: foldWithIndexM,
+	    traverseWithIndex_: traverseWithIndex_,
+	    forWithIndex_: forWithIndex_,
+	    surroundMapWithIndex: surroundMapWithIndex,
+	    allWithIndex: allWithIndex,
+	    anyWithIndex: anyWithIndex,
+	    findWithIndex: findWithIndex,
+	    foldableWithIndexArray: foldableWithIndexArray,
+	    foldableWithIndexMaybe: foldableWithIndexMaybe,
+	    foldableWithIndexFirst: foldableWithIndexFirst,
+	    foldableWithIndexLast: foldableWithIndexLast,
+	    foldableWithIndexAdditive: foldableWithIndexAdditive,
+	    foldableWithIndexDual: foldableWithIndexDual,
+	    foldableWithIndexDisj: foldableWithIndexDisj,
+	    foldableWithIndexConj: foldableWithIndexConj,
+	    foldableWithIndexMultiplicative: foldableWithIndexMultiplicative
+	};
+
+/***/ }),
+/* 673 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var $foreign = __webpack_require__(674);
+	var Data_Function = __webpack_require__(500);
+	var Data_Functor = __webpack_require__(501);
+	var Data_Maybe = __webpack_require__(566);
+	var Data_Maybe_First = __webpack_require__(570);
+	var Data_Maybe_Last = __webpack_require__(571);
+	var Data_Monoid_Additive = __webpack_require__(572);
+	var Data_Monoid_Conj = __webpack_require__(574);
+	var Data_Monoid_Disj = __webpack_require__(575);
+	var Data_Monoid_Dual = __webpack_require__(576);
+	var Data_Monoid_Multiplicative = __webpack_require__(578);
+	var Data_Unit = __webpack_require__(503);
+	var Prelude = __webpack_require__(538);
+	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
+	    this.Functor0 = Functor0;
+	    this.mapWithIndex = mapWithIndex;
+	};
+	var mapWithIndex = function mapWithIndex(dict) {
+	    return dict.mapWithIndex;
+	};
+	var functorWithIndexMultiplicative = new FunctorWithIndex(function () {
+	    return Data_Monoid_Multiplicative.functorMultiplicative;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Multiplicative.functorMultiplicative)(f(Data_Unit.unit));
+	});
+	var functorWithIndexMaybe = new FunctorWithIndex(function () {
+	    return Data_Maybe.functorMaybe;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe.functorMaybe)(f(Data_Unit.unit));
+	});
+	var functorWithIndexLast = new FunctorWithIndex(function () {
+	    return Data_Maybe_Last.functorLast;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe_Last.functorLast)(f(Data_Unit.unit));
+	});
+	var functorWithIndexFirst = new FunctorWithIndex(function () {
+	    return Data_Maybe_First.functorFirst;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe_First.functorFirst)(f(Data_Unit.unit));
+	});
+	var functorWithIndexDual = new FunctorWithIndex(function () {
+	    return Data_Monoid_Dual.functorDual;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Dual.functorDual)(f(Data_Unit.unit));
+	});
+	var functorWithIndexDisj = new FunctorWithIndex(function () {
+	    return Data_Monoid_Disj.functorDisj;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Disj.functorDisj)(f(Data_Unit.unit));
+	});
+	var functorWithIndexConj = new FunctorWithIndex(function () {
+	    return Data_Monoid_Conj.functorConj;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Conj.functorConj)(f(Data_Unit.unit));
+	});
+	var functorWithIndexArray = new FunctorWithIndex(function () {
+	    return Data_Functor.functorArray;
+	}, $foreign.mapWithIndexArray);
+	var functorWithIndexAdditive = new FunctorWithIndex(function () {
+	    return Data_Monoid_Additive.functorAdditive;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Additive.functorAdditive)(f(Data_Unit.unit));
+	});
+	module.exports = {
+	    FunctorWithIndex: FunctorWithIndex,
+	    mapWithIndex: mapWithIndex,
+	    functorWithIndexArray: functorWithIndexArray,
+	    functorWithIndexMaybe: functorWithIndexMaybe,
+	    functorWithIndexFirst: functorWithIndexFirst,
+	    functorWithIndexLast: functorWithIndexLast,
+	    functorWithIndexAdditive: functorWithIndexAdditive,
+	    functorWithIndexDual: functorWithIndexDual,
+	    functorWithIndexConj: functorWithIndexConj,
+	    functorWithIndexDisj: functorWithIndexDisj,
+	    functorWithIndexMultiplicative: functorWithIndexMultiplicative
+	};
+
+/***/ }),
+/* 674 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	exports.mapWithIndexArray = function (f) {
+	  return function (xs) {
+	    var l = xs.length;
+	    var result = Array(l);
+	    for (var i = 0; i < l; i++) {
+	      result[i] = f(i)(xs[i]);
+	    }
+	    return result;
+	  };
+	};
+
+/***/ }),
+/* 675 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var $foreign = __webpack_require__(676);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_ST = __webpack_require__(591);
 	var Data_Maybe = __webpack_require__(566);
@@ -74458,7 +73991,7 @@
 	};
 
 /***/ }),
-/* 677 */
+/* 676 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74500,6 +74033,238 @@
 	};
 
 /***/ }),
+/* 677 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var Control_Semigroupoid = __webpack_require__(499);
+	var Data_FoldableWithIndex = __webpack_require__(672);
+	var Data_Function = __webpack_require__(500);
+	var Data_FunctorWithIndex = __webpack_require__(673);
+	var Data_Maybe = __webpack_require__(566);
+	var Data_Maybe_First = __webpack_require__(570);
+	var Data_Maybe_Last = __webpack_require__(571);
+	var Data_Monoid_Additive = __webpack_require__(572);
+	var Data_Monoid_Conj = __webpack_require__(574);
+	var Data_Monoid_Disj = __webpack_require__(575);
+	var Data_Monoid_Dual = __webpack_require__(576);
+	var Data_Monoid_Multiplicative = __webpack_require__(578);
+	var Data_Traversable = __webpack_require__(580);
+	var Data_Traversable_Accum = __webpack_require__(582);
+	var Data_Traversable_Accum_Internal = __webpack_require__(583);
+	var Data_Unit = __webpack_require__(503);
+	var Prelude = __webpack_require__(538);
+	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
+	    this.FoldableWithIndex1 = FoldableWithIndex1;
+	    this.FunctorWithIndex0 = FunctorWithIndex0;
+	    this.Traversable2 = Traversable2;
+	    this.traverseWithIndex = traverseWithIndex;
+	};
+	var traverseWithIndexDefault = function traverseWithIndexDefault(dictTraversableWithIndex) {
+	    return function (dictApplicative) {
+	        return function (f) {
+	            return function ($17) {
+	                return Data_Traversable.sequence(dictTraversableWithIndex.Traversable2())(dictApplicative)(Data_FunctorWithIndex.mapWithIndex(dictTraversableWithIndex.FunctorWithIndex0())(f)($17));
+	            };
+	        };
+	    };
+	};
+	var traverseWithIndex = function traverseWithIndex(dict) {
+	    return dict.traverseWithIndex;
+	};
+	var traversableWithIndexMultiplicative = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexMultiplicative;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexMultiplicative;
+	}, function () {
+	    return Data_Traversable.traversableMultiplicative;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableMultiplicative)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexMaybe = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexMaybe;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexMaybe;
+	}, function () {
+	    return Data_Traversable.traversableMaybe;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableMaybe)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexLast = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexLast;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexLast;
+	}, function () {
+	    return Data_Traversable.traversableLast;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableLast)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexFirst = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexFirst;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexFirst;
+	}, function () {
+	    return Data_Traversable.traversableFirst;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableFirst)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexDual = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexDual;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexDual;
+	}, function () {
+	    return Data_Traversable.traversableDual;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableDual)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexDisj = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexDisj;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexDisj;
+	}, function () {
+	    return Data_Traversable.traversableDisj;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableDisj)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexConj = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexConj;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexConj;
+	}, function () {
+	    return Data_Traversable.traversableConj;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableConj)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexArray = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexArray;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexArray;
+	}, function () {
+	    return Data_Traversable.traversableArray;
+	}, function (dictApplicative) {
+	    return traverseWithIndexDefault(traversableWithIndexArray)(dictApplicative);
+	});
+	var traversableWithIndexAdditive = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexAdditive;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexAdditive;
+	}, function () {
+	    return Data_Traversable.traversableAdditive;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableAdditive)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var mapAccumRWithIndex = function mapAccumRWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (s0) {
+	            return function (xs) {
+	                return Data_Traversable_Accum_Internal.stateR(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateR)(function (i) {
+	                    return function (a) {
+	                        return function (s) {
+	                            return f(i)(s)(a);
+	                        };
+	                    };
+	                })(xs))(s0);
+	            };
+	        };
+	    };
+	};
+	var scanrWithIndex = function scanrWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (b0) {
+	            return function (xs) {
+	                return mapAccumRWithIndex(dictTraversableWithIndex)(function (i) {
+	                    return function (b) {
+	                        return function (a) {
+	                            var b$prime = f(i)(a)(b);
+	                            return {
+	                                accum: b$prime,
+	                                value: b$prime
+	                            };
+	                        };
+	                    };
+	                })(b0)(xs).value;
+	            };
+	        };
+	    };
+	};
+	var mapAccumLWithIndex = function mapAccumLWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (s0) {
+	            return function (xs) {
+	                return Data_Traversable_Accum_Internal.stateL(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateL)(function (i) {
+	                    return function (a) {
+	                        return function (s) {
+	                            return f(i)(s)(a);
+	                        };
+	                    };
+	                })(xs))(s0);
+	            };
+	        };
+	    };
+	};
+	var scanlWithIndex = function scanlWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (b0) {
+	            return function (xs) {
+	                return mapAccumLWithIndex(dictTraversableWithIndex)(function (i) {
+	                    return function (b) {
+	                        return function (a) {
+	                            var b$prime = f(i)(b)(a);
+	                            return {
+	                                accum: b$prime,
+	                                value: b$prime
+	                            };
+	                        };
+	                    };
+	                })(b0)(xs).value;
+	            };
+	        };
+	    };
+	};
+	var forWithIndex = function forWithIndex(dictApplicative) {
+	    return function (dictTraversableWithIndex) {
+	        return Data_Function.flip(traverseWithIndex(dictTraversableWithIndex)(dictApplicative));
+	    };
+	};
+	module.exports = {
+	    TraversableWithIndex: TraversableWithIndex,
+	    traverseWithIndex: traverseWithIndex,
+	    traverseWithIndexDefault: traverseWithIndexDefault,
+	    forWithIndex: forWithIndex,
+	    scanlWithIndex: scanlWithIndex,
+	    mapAccumLWithIndex: mapAccumLWithIndex,
+	    scanrWithIndex: scanrWithIndex,
+	    mapAccumRWithIndex: mapAccumRWithIndex,
+	    traversableWithIndexArray: traversableWithIndexArray,
+	    traversableWithIndexMaybe: traversableWithIndexMaybe,
+	    traversableWithIndexFirst: traversableWithIndexFirst,
+	    traversableWithIndexLast: traversableWithIndexLast,
+	    traversableWithIndexAdditive: traversableWithIndexAdditive,
+	    traversableWithIndexDual: traversableWithIndexDual,
+	    traversableWithIndexConj: traversableWithIndexConj,
+	    traversableWithIndexDisj: traversableWithIndexDisj,
+	    traversableWithIndexMultiplicative: traversableWithIndexMultiplicative
+	};
+
+/***/ }),
 /* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74511,7 +74276,7 @@
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Functor = __webpack_require__(501);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Identity = __webpack_require__(593);
@@ -74591,33 +74356,33 @@
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Apply = __webpack_require__(496);
 	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Bifunctor = __webpack_require__(534);
 	var Data_Either = __webpack_require__(527);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Foldable = __webpack_require__(564);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Class = __webpack_require__(672);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Class = __webpack_require__(668);
 	var Data_Foreign_Generic_Types = __webpack_require__(681);
 	var Data_Foreign_Index = __webpack_require__(682);
 	var Data_Function = __webpack_require__(500);
 	var Data_Functor = __webpack_require__(501);
 	var Data_Generic_Rep = __webpack_require__(684);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List = __webpack_require__(665);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List = __webpack_require__(661);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Monoid = __webpack_require__(569);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Semiring = __webpack_require__(552);
 	var Data_Show = __webpack_require__(505);
-	var Data_StrMap = __webpack_require__(674);
+	var Data_StrMap = __webpack_require__(670);
 	var Data_Symbol = __webpack_require__(685);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(643);
+	var Type_Proxy = __webpack_require__(639);
 	var GenericDecode = function GenericDecode(decodeOpts) {
 	    this.decodeOpts = decodeOpts;
 	};
@@ -75008,12 +74773,12 @@
 	var Control_Bind = __webpack_require__(507);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Function = __webpack_require__(500);
 	var Data_Function_Uncurried = __webpack_require__(584);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_NonEmpty = __webpack_require__(664);
+	var Data_List_NonEmpty = __webpack_require__(660);
 	var Prelude = __webpack_require__(538);
 	var Index = function Index(errorAt, hasOwnProperty, hasProperty, index) {
 	    this.errorAt = errorAt;
@@ -75277,14 +75042,14 @@
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
 	var Control_Monad_Eff_Uncurried = __webpack_require__(688);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Bifunctor = __webpack_require__(534);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
+	var Data_Foreign = __webpack_require__(649);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Prelude = __webpack_require__(538);
 	var parseJSON = function parseJSON($0) {
 	    return Control_Monad_Except_Trans.ExceptT(Data_Identity.Identity(Data_Bifunctor.lmap(Data_Either.bifunctorEither)(function ($1) {
@@ -75702,8 +75467,8 @@
 	var Control_Applicative = __webpack_require__(495);
 	var Control_Bind = __webpack_require__(507);
 	var Control_Monad_Aff = __webpack_require__(509);
-	var Data_Foreign_Class = __webpack_require__(672);
-	var Data_Foreign_Generic = __webpack_require__(671);
+	var Data_Foreign_Class = __webpack_require__(668);
+	var Data_Foreign_Generic = __webpack_require__(667);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Function = __webpack_require__(500);
 	var Data_Generic = __webpack_require__(622);
@@ -75711,7 +75476,7 @@
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Symbol = __webpack_require__(685);
 	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(643);
+	var Type_Proxy = __webpack_require__(639);
 	var RequestOtpResp = function () {
 	    function RequestOtpResp(value0) {
 	        this.value0 = value0;
@@ -75899,17 +75664,17 @@
 	var Control_Monad_Aff = __webpack_require__(509);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
 	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Class = __webpack_require__(672);
-	var Data_Foreign_Generic = __webpack_require__(671);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Class = __webpack_require__(668);
+	var Data_Foreign_Generic = __webpack_require__(667);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Function = __webpack_require__(500);
 	var Data_Generic = __webpack_require__(622);
 	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
@@ -76269,11 +76034,11 @@
 	var Control_Monad_Aff = __webpack_require__(509);
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(644);
+	var Control_Monad_Eff_Console = __webpack_require__(640);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Data_Argonaut_Core = __webpack_require__(696);
-	var Data_Foreign_Class = __webpack_require__(672);
+	var Data_Foreign_Class = __webpack_require__(668);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Functor = __webpack_require__(501);
 	var Data_Generic_Rep = __webpack_require__(684);
@@ -80439,7 +80204,7 @@
 	var Data_Ord = __webpack_require__(545);
 	var Data_Ordering = __webpack_require__(549);
 	var Data_Show = __webpack_require__(505);
-	var Data_StrMap = __webpack_require__(674);
+	var Data_StrMap = __webpack_require__(670);
 	var Data_Tuple = __webpack_require__(606);
 	var Prelude = __webpack_require__(538);
 	var Unsafe_Coerce = __webpack_require__(619);
@@ -80699,15 +80464,15 @@
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
 	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Class = __webpack_require__(672);
-	var Data_Foreign_Generic = __webpack_require__(671);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Class = __webpack_require__(668);
+	var Data_Foreign_Generic = __webpack_require__(667);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Function = __webpack_require__(500);
 	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Show = __webpack_require__(505);
 	var Prelude = __webpack_require__(538);
 	var UIScreen = function UIScreen(generateMockEvents, ui) {
@@ -80789,7 +80554,7 @@
 	var Control_Monad_Eff = __webpack_require__(525);
 	var Control_Monad_Eff_Class = __webpack_require__(586);
 	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Except = __webpack_require__(655);
+	var Control_Monad_Except = __webpack_require__(651);
 	var Control_Monad_Except_Trans = __webpack_require__(612);
 	var Data_Argonaut_Core = __webpack_require__(696);
 	var Data_Array = __webpack_require__(624);
@@ -80797,9 +80562,9 @@
 	var Data_Either = __webpack_require__(527);
 	var Data_Eq = __webpack_require__(535);
 	var Data_Foldable = __webpack_require__(564);
-	var Data_Foreign = __webpack_require__(653);
-	var Data_Foreign_Class = __webpack_require__(672);
-	var Data_Foreign_Generic = __webpack_require__(671);
+	var Data_Foreign = __webpack_require__(649);
+	var Data_Foreign_Class = __webpack_require__(668);
+	var Data_Foreign_Generic = __webpack_require__(667);
 	var Data_Foreign_Generic_Class = __webpack_require__(680);
 	var Data_Foreign_Generic_Types = __webpack_require__(681);
 	var Data_Foreign_Index = __webpack_require__(682);
@@ -80810,14 +80575,14 @@
 	var Data_HTTP_Method = __webpack_require__(709);
 	var Data_HeytingAlgebra = __webpack_require__(541);
 	var Data_Identity = __webpack_require__(593);
-	var Data_List = __webpack_require__(665);
-	var Data_List_NonEmpty = __webpack_require__(664);
-	var Data_List_Types = __webpack_require__(636);
+	var Data_List = __webpack_require__(661);
+	var Data_List_NonEmpty = __webpack_require__(660);
+	var Data_List_Types = __webpack_require__(632);
 	var Data_Maybe = __webpack_require__(566);
 	var Data_NonEmpty = __webpack_require__(629);
 	var Data_Semigroup = __webpack_require__(515);
-	var Data_StrMap = __webpack_require__(674);
-	var Data_String = __webpack_require__(639);
+	var Data_StrMap = __webpack_require__(670);
+	var Data_String = __webpack_require__(635);
 	var Data_Tuple = __webpack_require__(606);
 	var Data_Unit = __webpack_require__(503);
 	var Network_HTTP_RequestHeader = __webpack_require__(710);
@@ -81678,7 +81443,7 @@
 	var Data_Ring = __webpack_require__(550);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(634);
+	var Data_Unfoldable = __webpack_require__(630);
 	var Data_Unit = __webpack_require__(503);
 	var Prelude = __webpack_require__(538);
 	var Yield = function () {
@@ -83325,7 +83090,7 @@
 	
 	var Control_Monad_Aff = __webpack_require__(509);
 	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(644);
+	var Control_Monad_Eff_Console = __webpack_require__(640);
 	var Control_Semigroupoid = __webpack_require__(499);
 	var Prelude = __webpack_require__(538);
 	var warnShow = function warnShow(dictShow) {
@@ -83394,9 +83159,6 @@
 	var GenericShowFields = function GenericShowFields(genericShowFields) {
 	    this.genericShowFields = genericShowFields;
 	};
-	var genericShowFieldsNoArguments = new GenericShowFields(function (v) {
-	    return [];
-	});
 	var genericShowFieldsField = function genericShowFieldsField(dictShow) {
 	    return function (dictIsSymbol) {
 	        return new GenericShowFields(function (v) {
@@ -83491,8 +83253,7 @@
 	    genericShowConstructor: genericShowConstructor,
 	    genericShowArgsArgument: genericShowArgsArgument,
 	    genericShowArgsRec: genericShowArgsRec,
-	    genericShowFieldsField: genericShowFieldsField,
-	    genericShowFieldsNoArguments: genericShowFieldsNoArguments
+	    genericShowFieldsField: genericShowFieldsField
 	};
 
 /***/ }),
@@ -83511,7 +83272,7 @@
 	var Data_Ordering = __webpack_require__(549);
 	var Data_Semigroup = __webpack_require__(515);
 	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(639);
+	var Data_String = __webpack_require__(635);
 	var Data_Unit = __webpack_require__(503);
 	var Prelude = __webpack_require__(538);
 	var OPTIONS = function () {
