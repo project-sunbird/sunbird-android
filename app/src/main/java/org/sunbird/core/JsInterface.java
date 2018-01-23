@@ -283,26 +283,26 @@ public class JsInterface {
         });
     }
 
-    @JavascriptInterface
-    public void listViewAdapter(final String id, String text, int itemCount) throws Exception {
-        int listViewId = parseInt(id);
-        final ListView listView = (ListView) activity.findViewById(listViewId);
-        JSONArray jsonArray = new JSONArray(text);
-        ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
-        ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
-        ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-        listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    listView.setAdapter(listViewAdapter);
-                } catch (Exception e) {
-                    Log.d("Exception", e.toString());
-                }
-            }
-        });
-    }
+//    @JavascriptInterface
+//    public void listViewAdapter(final String id, String text, int itemCount) throws Exception {
+//        int listViewId = parseInt(id);
+//        final ListView listView = (ListView) activity.findViewById(listViewId);
+//        JSONArray jsonArray = new JSONArray(text);
+//        ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
+//        ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
+//        ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
+//        listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
+//        activity.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    listView.setAdapter(listViewAdapter);
+//                } catch (Exception e) {
+//                    Log.d("Exception", e.toString());
+//                }
+//            }
+//        });
+//    }
 
     @JavascriptInterface
     public void setUpCollapsingToolbar(final String id) {
@@ -1933,46 +1933,49 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void listViewAdapter(final String id, String text, int itemCount, String btnText, final String callback, final String buttonId, final int heightOfDivider) throws Exception {
-        int listViewId = parseInt(id);
-        final ListView listView = (ListView) activity.findViewById(listViewId);
-        JSONArray jsonArray = new JSONArray(text);
-        ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
-        ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
-        ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-        final ListViewAdapter listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
+    public void listViewAdapter(final String id, final String text, final int itemCount, final String btnText, final String callback, final String buttonId, final int heightOfDivider) throws Exception {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    int listViewId = parseInt(id);
+                    final ListView listView = (ListView) activity.findViewById(listViewId);
+                    JSONArray jsonArray = new JSONArray(text);
+                    ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
+                    ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
+                    ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
+                    Log.e(TAG, "listViewAdapter: isNull " + listViewAdapter);
+                    ListViewAdapter listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
                     listView.setAdapter(listViewAdapter);
                     listView.setDividerHeight(heightOfDivider);
+
+                    if (btnText != null && !btnText.equals("")) {
+                        LinearLayout linearLayout = new LinearLayout(activity);
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                        Button btn = new Button(activity);
+                        linearLayout.setId(parseInt(buttonId));
+                        linearLayout.setBackgroundResource(R.drawable.layout_padding);
+                        btn.setText(btnText);
+                        btn.setLayoutParams(lp);
+                        btn.setTextColor(ContextCompat.getColor(activity, R.color.white));
+                        btn.setBackgroundResource(R.drawable.corner_radius);
+                        linearLayout.addView(btn);
+                        btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String cb = String.format("window.callJSCallback('%s');", callback);
+                                dynamicUI.addJsToWebView(cb);
+                                Log.e(TAG, "onClick: load more");
+                            }
+                        });
+                        listView.addFooterView(linearLayout);
+                    }
                 } catch (Exception e) {
-                    Log.d(LOG_TAG, "Error in rendering listview");
+                    Log.d(LOG_TAG, "Error in rendering listview, err -> ");
+                    e.printStackTrace();
                 }
             }
         });
-        if (btnText != null && !btnText.equals("")) {
-            LinearLayout linearLayout = new LinearLayout(activity);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-            Button btn = new Button(activity);
-            linearLayout.setId(parseInt(buttonId));
-            linearLayout.setBackgroundResource(R.drawable.layout_padding);
-            btn.setText(btnText);
-            btn.setLayoutParams(lp);
-            btn.setTextColor(ContextCompat.getColor(activity, R.color.white));
-            btn.setBackgroundResource(R.drawable.corner_radius);
-            linearLayout.addView(btn);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String cb = String.format("window.callJSCallback('%s');", callback);
-                    dynamicUI.addJsToWebView(cb);
-                    Log.e(TAG, "onClick: load more");
-                }
-            });
-            listView.addFooterView(linearLayout);
-        }
     }
 
     @JavascriptInterface
