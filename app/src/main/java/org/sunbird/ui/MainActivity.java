@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         setContentView(R.layout.activity_main);
 
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(MainActivity.this, Workflow.APP, null, ContextEnvironment.HOME, null, null, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(MainActivity.this, Workflow.APP, null, null, ContextEnvironment.HOME, null, null, null));
 
         String appName = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("orgName", "__failed");
         if (appName.equals("__failed")) {
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 if (notification != null) {
                     Map<String, Object> valuesMap = new HashMap<>();
                     valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.NOTIFICATION_CLICKED, TelemetryPageId.SERVER_NOTIFICATION, valuesMap));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.NOTIFICATION_CLICKED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, valuesMap));
                     switch (notification.getActionid()) {
                         case NotificationActionId.ANNOUNCEMENT_DETAIL:
                             jsInterface.setInSharedPrefs("screenToOpen", "ANNOUNCEMENT_DETAIL");
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             long timeDifference = System.currentTimeMillis() - startTime;
             timeInSeconds = (timeDifference / 1000);
         }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(timeInSeconds, Workflow.APP, null, ContextEnvironment.HOME, null, null, null, null));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(timeInSeconds, Workflow.APP, null, null, ContextEnvironment.HOME,null, null, null));
         dynamicUI.addJsToWebView("window.onDestroy()");
         try {
             unbindService(mConnection);

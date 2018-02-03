@@ -53,6 +53,7 @@ import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.TelemetryUtil;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.telemetry.enums.CorrelationContext;
 import org.sunbird.telemetry.enums.ImpressionType;
 import org.sunbird.ui.MainActivity;
@@ -92,7 +93,6 @@ public class GenieWrapper extends Activity {
 
     public void getMobileDeviceBearerToken(final String callback) {
         Log.e(TAG, "in token class");
-
         mGenieAsyncService.getAuthService().getMobileDeviceBearerToken(new IResponseHandler<String>() {
             @Override
             public void onSuccess(GenieResponse<String> genieResponse) {
@@ -359,7 +359,7 @@ public class GenieWrapper extends Activity {
                     Util.setCorrelationId(contentSearchResult.getResponseMessageId());
                     Util.setCorrelationType(contentSearchResult.getId());
 
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.SEARCH, null, pageId, Util.getCorrelationList()));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.SEARCH, null, pageId, ContextEnvironment.USER, Util.getCorrelationList()));
 
                     Map<String, Object> params = new HashMap<>();
                     if (!StringUtil.isNullOrEmpty(query)) {
@@ -367,7 +367,7 @@ public class GenieWrapper extends Activity {
                     }
                     params.put(TelemetryConstant.SEARCH_RESULTS, list.size());
                     params.put(TelemetryConstant.SEARCH_CRITERIA, contentSearchResult.getRequest());
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(pageId, ImpressionType.SEARCH, pageId, params));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(pageId, ImpressionType.SEARCH, pageId, ContextEnvironment.USER, params));
                 }
 
                 @Override

@@ -18,6 +18,7 @@ import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -90,7 +91,7 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                                 .apply();
                         Map<String, Object> vals = new HashMap<>();
                         vals.put(TelemetryConstant.UID, jo.get("sub").toString());
-                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.LOGIN_SUCCESS, TelemetryPageId.LOGIN, vals));
+                        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.LOGIN_SUCCESS, TelemetryPageId.LOGIN, ContextEnvironment.HOME, vals));
                     }
 
                     Intent openMain = new Intent(KeyCloakResponseActivity.this, MainActivity.class);

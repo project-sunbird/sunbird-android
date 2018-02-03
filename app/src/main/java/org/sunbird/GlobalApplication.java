@@ -11,6 +11,7 @@ import org.ekstep.genieservices.commons.utils.StringUtil;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryHandler;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.utils.ForegroundService;
 import org.sunbird.utils.SDKParams;
 
@@ -72,11 +73,11 @@ public class GlobalApplication extends Application implements ForegroundService.
 
     @Override
     public void onSwitchForeground() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.RESUME));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.RESUME, ContextEnvironment.HOME));
     }
 
     @Override
     public void onSwitchBackground() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.BACKGROUND));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInterruptEvent(TelemetryAction.BACKGROUND, ContextEnvironment.HOME));
     }
 }

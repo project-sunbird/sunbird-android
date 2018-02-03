@@ -12,6 +12,7 @@ import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.SerializableUtil;
 
@@ -55,7 +56,7 @@ public class LocalNotificationService extends IntentService {
 //                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOCAL_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
 //                    LocalBroadcastManager.getInstance(this).sendBroadcast(Util.getRefreshNotificationsIntent());
                 } else {
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_DISPLAYED, TelemetryPageId.SERVER_NOTIFICATION, eksMap));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_DISPLAYED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, eksMap));
                 }
 
                 NotificationManagerUtil notificationManagerUtil = new NotificationManagerUtil(LocalNotificationService.this);
