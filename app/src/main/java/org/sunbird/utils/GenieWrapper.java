@@ -32,8 +32,11 @@ import org.ekstep.genieservices.commons.bean.EcarImportRequest;
 import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.HierarchyInfo;
 import org.ekstep.genieservices.commons.bean.ImportContentProgress;
+import org.ekstep.genieservices.commons.bean.MasterData;
+import org.ekstep.genieservices.commons.bean.MasterDataValues;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
+import org.ekstep.genieservices.commons.bean.enums.MasterDataType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.CollectionUtil;
@@ -393,14 +396,24 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void createUserProfile(final String uid) {
-        Profile profile = new Profile(uid, "avatar", "en");
-        profile.setUid(uid);
+    public void createUserProfile(final String uid, final boolean isGuestMode) {
+        Profile profile;
+        if(!isGuestMode) {
+            profile = new Profile(uid, "avatar", "en");
+            profile.setUid(uid);
+        } else {
+            profile = new Profile("Annonymous", "avatar", "en");
+        }
 
         mGenieAsyncService.getUserService().createUserProfile(profile, new IResponseHandler<Profile>() {
             @Override
             public void onSuccess(GenieResponse<Profile> genieResponse) {
-                setUserProfile(uid);
+                if(isGuestMode) {
+                    setUserProfile(genieResponse.getResult().getUid());
+                } else {
+                    setUserProfile(uid);
+                }
+//                genieResponse.getResult().getUid();
             }
 
             @Override
@@ -409,28 +422,31 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void getAllUserProfiles(final String uid) {
-
-        mGenieAsyncService.getUserService().getAllUserProfile(new IResponseHandler<List<Profile>>() {
-            @Override
-            public void onSuccess(GenieResponse<List<Profile>> genieResponse) {
-                Boolean status = true;
-                List<Profile> profileList = genieResponse.getResult();
-                for (Profile profile : profileList) {
-                    if (uid.equals(profile.getUid())) {
-                        setUserProfile(uid);
-                        status = false;
+    public void getAllUserProfiles(final String uid, final boolean guestMode) {
+        if (guestMode) {
+            createUserProfile(uid, guestMode);
+        } else {
+            mGenieAsyncService.getUserService().getAllUserProfile(new IResponseHandler<List<Profile>>() {
+                @Override
+                public void onSuccess(GenieResponse<List<Profile>> genieResponse) {
+                    Boolean status = true;
+                    List<Profile> profileList = genieResponse.getResult();
+                    for (Profile profile : profileList) {
+                        if (uid.equals(profile.getUid())) {
+                            setUserProfile(uid);
+                            status = false;
+                        }
+                    }
+                    if (status) {
+                        createUserProfile(uid, guestMode);
                     }
                 }
-                if (status) {
-                    createUserProfile(uid);
-                }
-            }
 
-            @Override
-            public void onError(GenieResponse<List<Profile>> genieResponse) {
-            }
-        });
+                @Override
+                public void onError(GenieResponse<List<Profile>> genieResponse) {
+                }
+            });
+        }
     }
 
     public void setAnonymousProfile() {
@@ -771,4 +787,37 @@ public class GenieWrapper extends Activity {
         });
     }
 
+    public String[] getBoard() {
+        GenieResponse<MasterData> boardData = mGenieService.getConfigService().getMasterData(MasterDataType.BOARD);
+        List<MasterDataValues> vals = boardData.getResult().getValues();
+        String[] boards = new String[vals.size()];
+        for (int i = 0; i < vals.size(); i++) {
+            boards[i] = vals.get(i).getLabel();
+        }
+        return boards;
+    }
+
+    public String[] getMedium() {
+        GenieResponse<MasterData> mediumData = mGenieService.getConfigService().getMasterData(MasterDataType.MEDIUM);
+        List<MasterDataValues> vals = mediumData.getResult().getValues();
+        String[] mediums = new String[vals.size()];
+        for (int i = 0; i < vals.size(); i++) {
+            mediums[i] = vals.get(i).getLabel();
+        }
+        return mediums;
+    }
+
+    public String[] getGrade() {
+        GenieResponse<MasterData> gradeData = mGenieService.getConfigService().getMasterData(MasterDataType.GRADELEVEL);
+        List<MasterDataValues> vals = gradeData.getResult().getValues();
+        String[] grades = new String[vals.size()];
+        for (int i = 0; i < vals.size(); i++) {
+            grades[i] = vals.get(i).getLabel();
+        }
+        return grades;
+    }
+
+//    public String getHandle() {
+//        GenieResponse<MasterData> gradeData = mGenieService.getConfigService().
+//    }
 }
