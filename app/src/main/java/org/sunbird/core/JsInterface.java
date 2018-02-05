@@ -127,6 +127,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -1111,8 +1112,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void setProfile(String uid) {
-        genieWrapper.getAllUserProfiles(uid);
+    public void setProfile(String uid, boolean isGuestMode) {
+        genieWrapper.getAllUserProfiles(uid, isGuestMode);
     }
 
     @JavascriptInterface
@@ -2277,5 +2278,10 @@ public class JsInterface {
         public void stopDownload() {
             mFileDownloader.stopDownloading();
         }
+    }
+
+    @JavascriptInterface
+    public String getLocalLang() {
+        return Locale.getDefault().toString();
     }
 }

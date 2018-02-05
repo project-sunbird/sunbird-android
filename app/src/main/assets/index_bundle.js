@@ -57,11 +57,11 @@
 	
 	var _container2 = _interopRequireDefault(_container);
 	
-	var _ext = __webpack_require__(493);
+	var _ext = __webpack_require__(502);
 	
 	var _ext2 = _interopRequireDefault(_ext);
 	
-	var _index = __webpack_require__(494);
+	var _index = __webpack_require__(503);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -280,16 +280,17 @@
 	var logoutUser = function logoutUser() {
 	  if (JBridge.isNetworkAvailable()) {
 	    JBridge.logLogoutSuccess(window.__userToken);
-	    window.__Snackbar.show("Logged out");
+	    window.__Snackbar.show(window.__S.LOGGED_OUT);
 	    if (JBridge.getFromSharedPrefs("topics") != "__failed") {
 	      console.log("unsetting topics", JBridge.getFromSharedPrefs("topics"));
 	      JBridge.unregisterFCM(JSON.parse(JBridge.getFromSharedPrefs("topics")));
 	    }
 	    JBridge.setInSharedPrefs("intentNotification", "__failed");
-	    JBridge.setInSharedPrefs("logged_in", "NO");
+	    JBridge.setInSharedPrefs("logged_in", "__failed");
 	    JBridge.setInSharedPrefs("user_id", "__failed");
 	    JBridge.setInSharedPrefs("user_name", "__failed");
 	    JBridge.setInSharedPrefs("user_token", "__failed");
+	    JBridge.setInSharedPrefs("user_access_token", "__failed");
 	    JBridge.setInSharedPrefs("refresh_token", "__failed");
 	    JBridge.setInSharedPrefs("logo_url", "__failed");
 	    JBridge.setInSharedPrefs("logo_file_path", "__failed");
@@ -298,6 +299,9 @@
 	    JBridge.setInSharedPrefs("api_token", "__failed");
 	    JBridge.setParams();
 	    JBridge.setAnonymousProfile();
+	    JBridge.saveData("savedCourse", "__failed");
+	    JBridge.saveData("savedAnnouncements", "__failed");
+	    JBridge.saveData("savedProfile", "__failed");
 	    window.__pressedLoggedOut = true;
 	    JBridge.keyCloakLogout(window.__apiUrl + "/auth/realms/sunbird/protocol/openid-connect/logout");
 	    purescriptUserActivityFlow();
@@ -343,44 +347,46 @@
 	
 	// Screens
 	var RootScreen = __webpack_require__(323);
-	var SplashScreenActivity = __webpack_require__(399);
-	var WelcomeScreenActivity = __webpack_require__(400);
-	var StateSelectActivity = __webpack_require__(402);
+	var SplashScreenActivity = __webpack_require__(400);
+	var LanguageSelectActivity = __webpack_require__(401);
+	var WelcomeScreenActivity = __webpack_require__(402);
+	var StateSelectActivity = __webpack_require__(404);
 	
 	//Home
-	var MainActivity = __webpack_require__(403);
-	var UserActivity = __webpack_require__(445);
+	var MainActivity = __webpack_require__(405);
+	var UserActivity = __webpack_require__(452);
 	//Course or Learn
-	var CourseInfoActivity = __webpack_require__(447);
-	var CourseEnrolledActivity = __webpack_require__(455);
-	var ModuleDetailActivity = __webpack_require__(457);
-	var ViewBatchActivity = __webpack_require__(460);
+	var CourseInfoActivity = __webpack_require__(454);
+	var CourseEnrolledActivity = __webpack_require__(462);
+	var ModuleDetailActivity = __webpack_require__(465);
+	var ViewBatchActivity = __webpack_require__(468);
 	
 	//Resource
 	
 	//Comunity
-	var CommunityInfoActivity = __webpack_require__(462);
-	var CommunityViewAllActivity = __webpack_require__(468);
+	var CommunityInfoActivity = __webpack_require__(470);
+	var CommunityViewAllActivity = __webpack_require__(476);
 	//Profile
-	var NotificationActivity = __webpack_require__(469);
-	var ResourceDetailActivity = __webpack_require__(470);
-	var ResourceViewAllActivity = __webpack_require__(471);
-	var CourseViewAllActivity = __webpack_require__(473);
-	var AnnouncementViewAllActivity = __webpack_require__(474);
-	var SearchActivity = __webpack_require__(475);
-	var FilterActivity = __webpack_require__(477);
-	var AdditionalInformationActivity = __webpack_require__(480);
-	var AddressActivity = __webpack_require__(482);
-	var EducationActivity = __webpack_require__(484);
-	var ExperienceActivity = __webpack_require__(485);
-	var CommProfSearchActivity = __webpack_require__(486);
-	var ProfileActivity = __webpack_require__(487);
-	var AnnouncementDetailActivity = __webpack_require__(488);
+	var NotificationActivity = __webpack_require__(477);
+	var ResourceDetailActivity = __webpack_require__(478);
+	var ResourceViewAllActivity = __webpack_require__(479);
+	var CourseViewAllActivity = __webpack_require__(481);
+	var AnnouncementViewAllActivity = __webpack_require__(482);
+	var SearchActivity = __webpack_require__(483);
+	var FilterActivity = __webpack_require__(485);
+	var AdditionalInformationActivity = __webpack_require__(488);
+	var GuestInformationActivity = __webpack_require__(490);
+	var AddressActivity = __webpack_require__(491);
+	var EducationActivity = __webpack_require__(493);
+	var ExperienceActivity = __webpack_require__(494);
+	var CommProfSearchActivity = __webpack_require__(495);
+	var ProfileActivity = __webpack_require__(496);
+	var AnnouncementDetailActivity = __webpack_require__(497);
 	
-	var ContentPreviewScreen = __webpack_require__(490);
-	var QRActivity = __webpack_require__(491);
+	var ContentPreviewScreen = __webpack_require__(499);
+	var QRActivity = __webpack_require__(500);
 	// ScreenActions
-	var RootScreenActions = __webpack_require__(492);
+	var RootScreenActions = __webpack_require__(501);
 	
 	var determineScreen = function determineScreen(screenName, state) {
 	  var screen;
@@ -393,6 +399,9 @@
 	      break;
 	    case "SplashScreenActivity":
 	      screen = new (SplashScreenActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "LanguageSelectActivity":
+	      screen = new (LanguageSelectActivity(dispatcher, RootScreenActions))(null, null, state);
 	      break;
 	    case "WelcomeScreenActivity":
 	      screen = new (WelcomeScreenActivity(dispatcher, RootScreenActions))(null, null, state);
@@ -411,6 +420,9 @@
 	      break;
 	    case "AdditionalInformationActivity":
 	      screen = new (AdditionalInformationActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "GuestInformationActivity":
+	      screen = new (GuestInformationActivity(dispatcher, RootScreenActions))(null, null, state);
 	      break;
 	    case "ModuleDetailActivity":
 	      screen = new (ModuleDetailActivity(dispatcher, RootScreenActions))(null, null, state);
@@ -706,7 +718,7 @@
 			}
 	
 			if (ui.runInUI) {
-				Android.runInUI(ui.runInUI, null, "15", "UsersslkiranDocumentsgithubsunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
+				Android.runInUI(ui.runInUI, null, "15", "Usersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
 			}
 			if (ui.addViewToParent) {
 				Android.addViewToParent(ui.addViewToParent.parentId, JSON.stringify(ui.addViewToParent.jsx), ui.addViewToParent.index, null);
@@ -12325,14 +12337,21 @@
 	  localState = payload;
 	
 	  switch (action) {
+	    case "GuestInformationActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "GuestInformationActivity";
+	      break;
 	    case "InitScreen":
 	      localState.isInit = true;
 	      localState.currScreen = "SplashScreenActivity";
 	      break;
-	
 	    case "SplashScreenActivity":
 	      localState.isInit = false;
 	      localState.currScreen = "SplashScreenActivity";
+	      break;
+	    case "LanguageSelectActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "LanguageSelectActivity";
 	      break;
 	    case "WelcomeScreenActivity":
 	      localState.isInit = false;
@@ -12859,7 +12878,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/RootScreen.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/RootScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -12893,8 +12912,9 @@
 	var LanguagePopup = __webpack_require__(393);
 	var ForceUpgradePopup = __webpack_require__(395);
 	var ProfileImagePopUp = __webpack_require__(396);
+	var DownloadAllPopUp = __webpack_require__(398);
 	
-	var Str = __webpack_require__(398);
+	var Str = __webpack_require__(399);
 	
 	var RootScreen = function (_View) {
 	  _inherits(RootScreen, _View);
@@ -12903,6 +12923,16 @@
 	    _classCallCheck(this, RootScreen);
 	
 	    var _this = _possibleConstructorReturn(this, (RootScreen.__proto__ || Object.getPrototypeOf(RootScreen)).call(this, props, children));
+	
+	    _this.handleChangeLang = function (lang) {
+	      window.__LoaderDialog.show();
+	      window.setLanguage(lang);
+	      window.__S = Str.strings();
+	      window.__renderBNavBar ? window.__renderBNavBar(0) : ""; //rerendering navbar along with fragment
+	      // window.__LanguagePopup.hide();
+	      window.__reRender(); //rerendering 'Please wait' loader
+	      // window.__BNavFlowRestart();
+	    };
 	
 	    _this.handleStateChange = function () {
 	      return true;
@@ -12921,68 +12951,75 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 88
+	            lineNumber: 113
 	          }
 	        },
 	        dom(ForceUpgradePopup, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 89
+	            lineNumber: 114
 	          }
 	        }),
 	        dom(LoaderDialog, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 90
+	            lineNumber: 115
 	          }
 	        }),
 	        dom(PageFilterPopup, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 91
+	            lineNumber: 116
 	          }
 	        }),
 	        dom(ContentLoaderDialog, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 92
+	            lineNumber: 117
 	          }
 	        }),
 	        dom(PermissionDeniedDialog, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 93
+	            lineNumber: 118
 	          }
 	        }),
 	        dom(CustomPopUp, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 94
+	            lineNumber: 119
 	          }
 	        }),
 	        dom(PreviewImagePopup, {
 	          defaultImage: "https://pbs.twimg.com/media/CRafzhtWIAEQ2c9.png", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 95
+	            lineNumber: 120
 	          }
 	        }),
 	        dom(LanguagePopup, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 97
+	            lineNumber: 122
 	          }
 	        }),
 	        dom(ProfileImagePopUp, {
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 98
+	            lineNumber: 123
 	          }
 	        }),
 	        dom(Snackbar, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 101
+	            lineNumber: 126
+	          }
+	        }),
+	        dom(DownloadAllPopUp, {
+	          height: "wrap_content",
+	          width: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 127
 	          }
 	        })
 	      );
@@ -13011,6 +13048,20 @@
 	    _this.setStatusBarColor(window.__Colors.BLACK);
 	
 	    window.__reRender = _this.reRenderRoot;
+	    _this.languageMap = {
+	      "English": "en_US",
+	      "हिंदी": "hi_IN",
+	      // "ಕನ್ನಡ" : "kn_IN",
+	      "తెలుగు": "te_IN",
+	      "தமிழ்": "ta_IN",
+	      // "বাঙালি" : "bn_IN",
+	      // "മലയാളം" : "ml_IN",
+	      // "Oriya" : "or_IN",
+	      // "ગુજરાતી" : "gu_IN",
+	      // "Assamese" : "as_IN",
+	      "मराठी": "mr_IN"
+	      // "ਪੰਜਾਬੀ" : "pa_IN"
+	    };
 	
 	    return _this;
 	  }
@@ -13020,7 +13071,7 @@
 	    value: function setStatusBarColor(color) {
 	      var _color = "set_color=android.graphics.Color->parseColor:s_" + color + ";";
 	
-	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "73", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsRootScreenjs");
+	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "98", "UsersnikithshettysunbirdgithubsunbirdduiviewsRootScreenjs");
 	    }
 	  }, {
 	    key: "render",
@@ -13032,7 +13083,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 109
+	            lineNumber: 136
 	          }
 	        },
 	        dom(
@@ -13042,7 +13093,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 114
+	              lineNumber: 141
 	            }
 	          },
 	          dom(RelativeLayout, {
@@ -13050,7 +13101,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 119
+	              lineNumber: 146
 	            }
 	          })
 	        ),
@@ -13059,7 +13110,7 @@
 	          {
 	            id: this.idSet.popupContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 127
+	              lineNumber: 154
 	            }
 	          },
 	          this.getBody()
@@ -14480,7 +14531,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (AndroidBaseView.__proto__ || Object.getPrototypeOf(AndroidBaseView)).call(this, props, children));
 	
 	    window.__SETFN = function (config) {
-	      Android.runInUI(this.set(config), null, '10', 'UsersslkiranDocumentsgithubsunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
+	      Android.runInUI(this.set(config), null, '10', 'UsersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
 	    }.bind(_this2);
 	    return _this2;
 	  }
@@ -14650,7 +14701,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14806,7 +14857,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14865,7 +14916,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/SnackBar.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SnackBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14902,7 +14953,7 @@
 	          a_translationY: "0",
 	          a_duration: "360"
 	        });
-	        Android.runInUI(cmd, null, "44", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.totalTime);
 	
 	      setTimeout(function () {
@@ -14918,14 +14969,14 @@
 	        a_translationY: "360",
 	        a_duration: "360"
 	      });
-	      Android.runInUI(cmd, null, "61", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, null, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
 	      cmd = _this.set({
 	        id: _this.idSet.container,
 	        visibility: "gone"
 	      });
 	
 	      setTimeout(function () {
-	        Android.runInUI(cmd, null, "67", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.fadeTime);
 	
 	      _this.totalTime -= _this.showTime; //After rendering one Snackbar, its time is removed from totalTime
@@ -14957,7 +15008,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "98", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, 0, "98", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
 	    };
 	
 	    _this.displayName = "CustomSnackBar";
@@ -15040,7 +15091,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15642,7 +15693,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15685,7 +15736,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "41", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
+	      Android.runInUI(cmd, 0, "41", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -15761,7 +15812,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15820,7 +15871,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16004,7 +16055,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16063,7 +16114,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16122,7 +16173,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16174,7 +16225,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16233,7 +16284,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16285,7 +16336,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16337,7 +16388,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16393,7 +16444,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16452,7 +16503,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16511,7 +16562,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16569,7 +16620,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16621,7 +16672,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16680,7 +16731,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16739,7 +16790,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16798,7 +16849,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16851,7 +16902,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16903,7 +16954,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/slkiran/Documents/github-sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
+	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16971,7 +17022,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PageFilterPopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17039,7 +17090,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "86", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPageFilterPopupjs");
+	      Android.runInUI(cmd, 0, "86", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterPopupjs");
 	    };
 	
 	    _this.setValues = function (item, values) {
@@ -17323,7 +17374,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FeatureButton.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeatureButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17353,7 +17404,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.buttonText,
 	        text: text
-	      }), null, "19", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFeatureButtonjs");
+	      }), null, "19", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFeatureButtonjs");
 	    };
 	
 	    _this.buttonFunction = function () {
@@ -17433,7 +17484,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PageFilterChooser.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterChooser.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17488,7 +17539,7 @@
 	        id: _this.idSet.parentContainer,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "53", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPageFilterChooserjs");
+	      Android.runInUI(cmd, 0, "53", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterChooserjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -17798,7 +17849,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/PageOption.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PageOption.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17954,7 +18005,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/Button.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Button.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18120,7 +18171,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterItem.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18185,7 +18236,7 @@
 	          text: newList.length > 0 ? newList.length + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "75", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
 	      } else {
 	        console.log("seected Length", _this2.getSelectedCount(newList));
 	        window.__FilterPopup.hide();
@@ -18197,7 +18248,7 @@
 	          text: _this2.getSelectedCount(_this2.filterList) != 0 ? _this2.getSelectedCount(_this2.filterList) + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "88", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "88", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
 	      }
 	    };
 	
@@ -18314,7 +18365,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18543,7 +18594,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChooseItem.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChooseItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18809,7 +18860,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/RadioListItem.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RadioListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18856,7 +18907,7 @@
 	      }
 	      _this2.props.onItemClick(_this2.props.title, _this2.isSelected);
 	
-	      Android.runInUI(cmd, 0, "45", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdRadioListItemjs");
+	      Android.runInUI(cmd, 0, "45", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRadioListItemjs");
 	    };
 	
 	    _this2.setIds(['image']);
@@ -19433,7 +19484,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CustomPopUp.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CustomPopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -19481,7 +19532,7 @@
 	        id: _this.idSet.addSkillEditText,
 	        text: ""
 	      });
-	      Android.runInUI(cmd, 0, "63", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "63", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
 	      window.__LoaderDialog.hide();
 	    };
 	
@@ -19511,7 +19562,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "93", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "93", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.setVisibility = function (data) {
@@ -19520,7 +19571,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "102", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "102", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.getOptions = function () {
@@ -20022,7 +20073,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -20070,7 +20121,7 @@
 	                visibility: data
 	            });
 	
-	            Android.runInUI(cmd, 0, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdPreviewImagePopupjs");
+	            Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPreviewImagePopupjs");
 	        };
 	
 	        _this.getImage = function (imageUrl) {
@@ -20158,7 +20209,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20190,7 +20241,7 @@
 	    _this.show = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "visible" }), null, "31", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "visible" }), null, "31", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.updateProgressBar(0);
 	      _this.isVisible = true;
 	    };
@@ -20198,7 +20249,7 @@
 	    _this.hide = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "gone" }), null, "42", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "gone" }), null, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.isVisible = false;
 	      if (_this.handleClickCallback) _this.handleClickCallback = null;
 	    };
@@ -20219,7 +20270,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "visible"
-	          }), 0, "67", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      } else {
 	        if (_this.isButtonVisible) {
@@ -20227,7 +20278,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "gone"
-	          }), 0, "75", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      }
 	    };
@@ -20390,7 +20441,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20449,7 +20500,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "83", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -20598,17 +20649,17 @@
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionIconHolder,
 	        imageUrl: icon
-	      }), 0, "44", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionTextHolder,
 	        text: data + " " + window.__S.PERMISSION_DENIED
-	      }), 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionSettingsMsg,
 	        text: window.__S.PERMISSION_SETTING_MSG
-	      }), 0, "54", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "54", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    }
 	  }, {
 	    key: "render",
@@ -20666,7 +20717,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20723,7 +20774,7 @@
 	        id: _this2.parentId,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "71", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
+	      Android.runInUI(cmd, 0, "58", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -20732,7 +20783,7 @@
 	        height: "1",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 77
+	          lineNumber: 64
 	        }
 	      });
 	    };
@@ -20747,7 +20798,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 88
+	            lineNumber: 75
 	          }
 	        },
 	        dom(
@@ -20760,7 +20811,7 @@
 	            margin: "4,0,4,4",
 	            cornerRadius: "4,4,4,4", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 94
+	              lineNumber: 81
 	            }
 	          },
 	          dom(Spinner, {
@@ -20772,7 +20823,7 @@
 	            onItemClick: _this2.handleLanguageSpinnerItemClick,
 	            values: Object.keys(_this2.languageMap).join(","), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 102
+	              lineNumber: 89
 	            }
 	          })
 	        )
@@ -20805,7 +20856,7 @@
 	          height: "wrap_content",
 	          margin: "0,8,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 142
+	            lineNumber: 129
 	          }
 	        },
 	        dom(
@@ -20817,7 +20868,7 @@
 	            cornerRadius: "4",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 147
+	              lineNumber: 134
 	            }
 	          },
 	          dom(
@@ -20829,7 +20880,7 @@
 	              width: "match_parent",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 153
+	                lineNumber: 140
 	              }
 	            },
 	            dom(TextView, {
@@ -20839,7 +20890,7 @@
 	              style: window.__TextStyle.textStyle.CARD.ACTION.DARK,
 	              text: window.__S.CANCEL /*"Cancel"*/, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 158
+	                lineNumber: 145
 	              }
 	            })
 	          )
@@ -20853,7 +20904,7 @@
 	            width: "0",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 169
+	              lineNumber: 156
 	            }
 	          },
 	          dom(
@@ -20865,7 +20916,7 @@
 	              width: "match_parent",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 176
+	                lineNumber: 163
 	              }
 	            },
 	            dom(TextView, {
@@ -20875,7 +20926,7 @@
 	              style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	              text: window.__S.CONFIRM /*"Change"*/, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 181
+	                lineNumber: 168
 	              }
 	            })
 	          )
@@ -20892,7 +20943,7 @@
 	          gravity: "center_vertical",
 	          margin: "0,0,0,8", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 200
+	            lineNumber: 187
 	          }
 	        },
 	        dom(TextView, {
@@ -20902,7 +20953,7 @@
 	          text: window.__S.SELECT_LANGUAGE /*"Select a Language"*/,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 206
+	            lineNumber: 193
 	          }
 	        }),
 	        dom(ViewWidget, {
@@ -20910,7 +20961,7 @@
 	          weight: "1",
 	          height: "0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 213
+	            lineNumber: 200
 	          }
 	        }),
 	        dom(ImageView, {
@@ -20920,7 +20971,7 @@
 	          gravity: "center_vertical",
 	          imageUrl: "ic_action_close", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 218
+	            lineNumber: 205
 	          }
 	        })
 	      );
@@ -20940,7 +20991,7 @@
 	          padding: "16,18,16,16",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 230
+	            lineNumber: 217
 	          }
 	        },
 	        _this2.getHeader(),
@@ -20965,20 +21016,7 @@
 	    window.__LanguagePopup = _this2;
 	    _this2.isVisible = false;
 	    // "اردو Urdu" : "ur_IN",
-	    _this2.languageMap = {
-	      "English": "en_US",
-	      "हिंदी": "hi_IN",
-	      // "ಕನ್ನಡ" : "kn_IN",
-	      "తెలుగు": "te_IN",
-	      "தமிழ்": "ta_IN",
-	      // "বাঙালি" : "bn_IN",
-	      // "മലയാളം" : "ml_IN",
-	      // "Oriya" : "or_IN",
-	      // "ગુજરાતી" : "gu_IN",
-	      // "Assamese" : "as_IN",
-	      "मराठी": "mr_IN"
-	      // "ਪੰਜਾਬੀ" : "pa_IN"
-	    };
+	    _this2.languageMap = window.__RootScreen.languageMap;
 	    console.log("this.languageMap", _this2.languageMap);
 	    _this2.selectedLang = window.__CurrentLanguage;
 	    return _this2;
@@ -21000,7 +21038,7 @@
 	          background: window.__Colors.PRIMARY_BLACK_44,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 269
+	            lineNumber: 256
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -21009,7 +21047,7 @@
 	          onClick: this.handleDismissClick,
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 278
+	            lineNumber: 265
 	          }
 	        }),
 	        this.getBody()
@@ -21030,7 +21068,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/Spinner.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/Spinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21084,7 +21122,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21120,14 +21158,14 @@
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "visible"
-	      }), null, "27", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "27", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.hide = function () {
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "gone"
-	      }), null, "34", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "34", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.onUpgrade = function () {
@@ -21225,7 +21263,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21370,7 +21408,7 @@
 	        id: _this2.idSet.popUpParent,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "141", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdProfileImagePopUpjs");
+	      Android.runInUI(cmd, 0, "141", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileImagePopUpjs");
 	    };
 	
 	    _this2.loadImage = function () {
@@ -21647,8 +21685,6 @@
 	exports.clearDeeplinkPreferences = function () {
 		JBridge.setInSharedPrefs("intentLinkPath", "__failed");
 		JBridge.setInSharedPrefs("intentFilePath", "__failed");
-		JBridge.setInSharedPrefs("deeplinkMode", "__failed");
-		JBridge.setInSharedPrefs("whereFromInUserActivity", "__failed");
 	};
 	
 	exports.checkEnrolledCourse = function (identifier) {
@@ -21680,6 +21716,14 @@
 		return text;
 	};
 	
+	exports.addSwipeFunction = function (id) {
+		console.log("addSwipeFunction");
+		var callbackRefresh = callbackMapper.map(function (params) {
+			window.__BNavFlowRestart();
+		});
+		JBridge.addSwipeRefreshScrollView(id, callbackRefresh);
+	};
+	
 	exports.processResponse = function (state) {
 		console.log("processing response, state:", state);
 		var response = {};
@@ -21703,7 +21747,7 @@
 			response.data = decoded;
 			response.err = "Parsing error";
 		}
-		if (response.code == "401") {
+		if (response.code == "401" && window.__loggedInState != "GUEST") {
 			console.log("401 response data ", response.data);
 			if (response.data.hasOwnProperty("message")) {
 				//api token expired
@@ -21738,6 +21782,7 @@
 						window.__refreshToken = response.refresh_token;
 						window.__user_accessToken = response.access_token;
 						JBridge.setInSharedPrefs("user_token", response.access_token);
+						JBridge.setInSharedPrefs("refresh_token", response.refresh_token);
 						var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
 						var event = { "tag": state.responseFor, contents: whatToSend };
 						window.__runDuiCallback(event);
@@ -21760,6 +21805,283 @@
 
 /***/ }),
 /* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadAllPopUp.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var FrameLayout = __webpack_require__(351).androidViews.FrameLayout;
+	var ImageView = __webpack_require__(350);
+	var ScrollView = __webpack_require__(358);
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
+	var _this;
+	
+	var DownloadAllPopup = function (_View) {
+	  _inherits(DownloadAllPopup, _View);
+	
+	  function DownloadAllPopup(props, children) {
+	    _classCallCheck(this, DownloadAllPopup);
+	
+	    var _this2 = _possibleConstructorReturn(this, (DownloadAllPopup.__proto__ || Object.getPrototypeOf(DownloadAllPopup)).call(this, props, children));
+	
+	    _this2.show = function () {
+	      _this2.setVisibility("visible");
+	      _this2.isVisible = true;
+	      console.log("DownloadAllPopUp is there");
+	    };
+	
+	    _this2.hide = function () {
+	      _this2.setVisibility("gone");
+	      _this2.isVisible = false;
+	    };
+	
+	    _this2.getVisible = function () {
+	      return _this2.isVisible;
+	    };
+	
+	    _this2.setVisibility = function (data) {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.downloadAllParentId,
+	        visibility: data
+	      });
+	      Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllPopUpjs");
+	    };
+	
+	    _this2.getLineSeperator = function () {
+	      return dom(LinearLayout, {
+	        width: "match_parent",
+	        height: "1",
+	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 53
+	        }
+	      });
+	    };
+	
+	    _this2.handleButtonClick = function () {
+	      _this2.props.buttonClick();
+	    };
+	
+	    _this2.getFooter = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          margin: "0,8,0,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 68
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            stroke: "2," + window.__Colors.PRIMARY_DARK,
+	            width: "0",
+	            margin: "0,0,10,0",
+	            cornerRadius: "4",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 73
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              onClick: function onClick() {
+	                _this2.handleDismissClick();
+	              },
+	              width: "match_parent",
+	              height: "match_parent", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 79
+	              }
+	            },
+	            dom(TextView, {
+	              gravity: "center",
+	              height: "48",
+	              width: "match_parent",
+	              style: window.__TextStyle.textStyle.CARD.ACTION.DARK,
+	              text: window.__S.CANCEL /*"Cancel"*/, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 84
+	              }
+	            })
+	          )
+	        ),
+	        dom(
+	          LinearLayout,
+	          {
+	            background: window.__Colors.PRIMARY_DARK,
+	            cornerRadius: "4",
+	            margin: "10,0,0,0",
+	            width: "0",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 95
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              onClick: function onClick() {
+	                _this2.handleButtonClick();
+	              },
+	              width: "match_parent",
+	              height: "match_parent", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 102
+	              }
+	            },
+	            dom(TextView, {
+	              gravity: "center",
+	              height: "48",
+	              width: "match_parent",
+	              style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+	              text: window.__S.CONFIRM /*"Change"*/, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 107
+	              }
+	            })
+	          )
+	        )
+	      );
+	    };
+	
+	    _this2.getHeader = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          gravity: "center_vertical",
+	          margin: "0,0,0,8", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 126
+	          }
+	        },
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          gravity: "center_vertical",
+	          text: "Download All ?",
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 132
+	          }
+	        }),
+	        dom(ViewWidget, {
+	          width: "0",
+	          weight: "1",
+	          height: "0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 139
+	          }
+	        }),
+	        dom(ImageView, {
+	          width: "18",
+	          height: "18",
+	          onClick: _this2.handleDismissClick,
+	          gravity: "center_vertical",
+	          imageUrl: "ic_action_close", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 144
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.getBody = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          cornerRadius: "2",
+	          width: "match_parent",
+	          height: "wrap_content",
+	          root: "true",
+	          visibility: "visible",
+	          orientation: "vertical",
+	          clickable: "true",
+	          padding: "16,18,16,16",
+	          background: "#ffffff", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 156
+	          }
+	        },
+	        _this2.getHeader(),
+	        _this2.getFooter()
+	      );
+	    };
+	
+	    _this2.handleDismissClick = function () {
+	      _this2.hide();
+	    };
+	
+	    _this2.setIds(["downloadAllParentId"]);
+	    _this = _this2;
+	    window.__DownloadAllPopup = _this2;
+	    _this2.props.totalSize = 0;
+	    _this2.isVisible = false;
+	
+	    return _this2;
+	  }
+	
+	  _createClass(DownloadAllPopup, [{
+	    key: "render",
+	    value: function render() {
+	
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent",
+	          id: this.idSet.downloadAllParentId,
+	          visibility: "gone",
+	          root: "true",
+	          background: window.__Colors.PRIMARY_BLACK_44,
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 187
+	          }
+	        },
+	        dom(LinearLayout, {
+	          height: "0",
+	          width: "match_parent",
+	          onClick: this.handleDismissClick,
+	          weight: "1", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 195
+	          }
+	        }),
+	        this.getBody()
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return DownloadAllPopup;
+	}(View);
+	
+	module.exports = DownloadAllPopup;
+
+/***/ }),
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21936,7 +22258,7 @@
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
 			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birthdate"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current location"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Weblinks"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _en_US),
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birthdate"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current location"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Weblinks"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preffered Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "SYLLABUS", "SYLLABUS"), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -22818,12 +23140,12 @@
 	exports.stringsRes = stringsRes;
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/SplashScreenActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SplashScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22872,7 +23194,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSplashScreenActivityjs");
+	      Android.runInUI(_this.animateView(), null, "49", "UsersnikithshettysunbirdgithubsunbirdduiviewsSplashScreenActivityjs");
 	    };
 	
 	    _this.getApiUrl = function () {
@@ -22906,8 +23228,11 @@
 	      JBridge.logCorrelationPageEvent("SPLASHSCREEN", "", "");
 	
 	      setTimeout(function () {
-	        var whatToSend = [];
-	        var event = { tag: "OPEN_UserActivity", contents: whatToSend };
+	        if (_this.isUserOnboarded != "__failed" && _this.isUserOnboarded != "false") {
+	          var event = { tag: "OPEN_UserActivity", contents: [] };
+	        } else {
+	          var event = { tag: "OPEN_LanguageSelectActivity", contents: [] };
+	        }
 	        window.__runDuiCallback(event);
 	      }, 2000);
 	    };
@@ -22922,6 +23247,7 @@
 	    _this.getIcon();
 	    _this.getTextToDisplay();
 	    window.__pressedLoggedOut = false;
+	    _this.isUserOnboarded = JBridge.getFromSharedPrefs("isUserOnboarded");
 	    //  window.__getGenieEvents = this.dummyFunction;
 	    return _this;
 	  }
@@ -22939,7 +23265,7 @@
 	          background: window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 99
+	            lineNumber: 103
 	          }
 	        },
 	        dom(ImageView, {
@@ -22948,7 +23274,7 @@
 	          layout_gravity: "center",
 	          circularImageUrl: "1," + this.icon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 107
+	            lineNumber: 111
 	          }
 	        }),
 	        dom(TextView, {
@@ -22958,7 +23284,7 @@
 	          textSize: "18",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 112
+	            lineNumber: 116
 	          }
 	        })
 	      );
@@ -22973,12 +23299,12 @@
 	module.exports = Connector(SplashScreenActivity);
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/WelcomeScreenActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/LanguageSelectActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22990,7 +23316,334 @@
 	
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
-	var debounce = __webpack_require__(401);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var ImageView = __webpack_require__(350);
+	var TextView = __webpack_require__(342);
+	var utils = __webpack_require__(397);
+	window.R = __webpack_require__(7);
+	
+	var LanguageSelectActivity = function (_View) {
+	    _inherits(LanguageSelectActivity, _View);
+	
+	    function LanguageSelectActivity(props, children, state) {
+	        _classCallCheck(this, LanguageSelectActivity);
+	
+	        var _this = _possibleConstructorReturn(this, (LanguageSelectActivity.__proto__ || Object.getPrototypeOf(LanguageSelectActivity)).call(this, props, children, state));
+	
+	        _this.initLangArr = function () {
+	            var i = 0;
+	            for (var property in _this.languages) {
+	                if (_this.languages.hasOwnProperty(property)) {
+	                    _this.langArr[i] = {
+	                        langCode: _this.languages[property],
+	                        lang: property,
+	                        isSelected: _this.languages[property] == _this.defaultlang ? true : false
+	                    };
+	                    i++;
+	                }
+	            };
+	        };
+	
+	        _this.afterRender = function () {};
+	
+	        _this.changeLang = function () {
+	            _this.langArr.map(function (item) {
+	                if (item.isSelected) {
+	                    window.__RootScreen.handleChangeLang(item.langCode);
+	                }
+	            });
+	            JBridge.setInSharedPrefs("isUserOnboarded", "true");
+	            var event = { tag: "OPEN_UserActivity_1", contents: [] };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this.changeSelectedLang = function (langCode) {
+	            var newArr = [];
+	            _this.langArr.map(function (item, i) {
+	                newArr[i] = {};
+	                newArr[i].langCode = _this.langArr[i].langCode;
+	                newArr[i].lang = _this.langArr[i].lang;
+	                newArr[i].isSelected = _this.langArr[i].isSelected;
+	                if (item.langCode == langCode) {
+	                    newArr[i].isSelected = true;
+	                } else {
+	                    newArr[i].isSelected = false;
+	                }
+	            });
+	            _this.langArr = newArr;
+	            _this.reRenderLang();
+	        };
+	
+	        _this.reRenderLang = function () {
+	            var layout = dom(
+	                LinearLayout,
+	                {
+	                    height: "wrap_content",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: "#FFF8F8F8",
+	                    cornerRadius: "0", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 73
+	                    }
+	                },
+	                _this.getLanguageLabels()
+	            );
+	            _this.replaceChild(_this.idSet.langContainer, layout.render(), 0);
+	        };
+	
+	        _this.getLanguageLabels = function () {
+	            console.log("getLanguageLabels -> ", _this.langArr);
+	
+	            var size = _this.langArr.length;
+	            return _this.langArr.map(function (item, i) {
+	                return _this.getLabels(item.lang, item.langCode, item.isSelected, size - 1 - i == 0);
+	            });
+	        };
+	
+	        _this.getLabels = function (language, langCode, isSelected, isLast) {
+	            console.log("label -> " + language, isSelected);
+	
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "36",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    margin: "0,16,0,0",
+	                    clickable: "true",
+	                    onClick: function onClick() {
+	                        return _this.changeSelectedLang(langCode);
+	                    }, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 100
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        height: "22",
+	                        width: "match_parent",
+	                        orientation: "horizontal",
+	                        gravity: "center_vertical",
+	                        margin: "2,0,0,0",
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 107
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        height: "20",
+	                        weight: "2",
+	                        text: language + (_this.defaultlang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 114
+	                        }
+	                    }),
+	                    dom(LinearLayout, {
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 119
+	                        }
+	                    }),
+	                    dom(ImageView, {
+	                        height: "15",
+	                        width: "13",
+	                        imageUrl: "ic_blue_tick",
+	                        visibility: isSelected ? "visible" : "gone", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 121
+	                        }
+	                    })
+	                ),
+	                dom(LinearLayout, {
+	                    visibility: isLast ? "gone" : "visible",
+	                    height: "1",
+	                    width: "match_parent",
+	                    background: "#979797",
+	                    stroke: "1,#979797",
+	                    margin: "0,15,3,0",
+	                    alpha: "0.3",
+	                    cornerRadius: "0", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 127
+	                    }
+	                })
+	            );
+	        };
+	
+	        _this.getContinueBtn = function () {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "38",
+	                    width: "match_parent",
+	                    orientation: "horizontal",
+	                    gravity: "center_vertical",
+	                    background: "#FF0076FE",
+	                    stroke: "1,#0076fe",
+	                    cornerRadius: "4",
+	                    margin: "0,0,0,0",
+	                    clickable: "true", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 142
+	                    }
+	                },
+	                dom(
+	                    RelativeLayout,
+	                    {
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        gravity: "center_vertical",
+	                        onClick: _this.changeLang, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 152
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        width: "match_parent",
+	                        text: window.__S.CONTINUE,
+	                        textSize: "12",
+	                        color: "#FFFFFFFF",
+	                        gravity: "center", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 157
+	                        }
+	                    }),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            padding: "0,0,16,0",
+	                            gravity: "right", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 163
+	                            }
+	                        },
+	                        dom(ImageView, {
+	                            height: "20",
+	                            width: "20",
+	                            imageUrl: "ic_white_arrow",
+	                            gravity: "right", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 168
+	                            }
+	                        })
+	                    )
+	                )
+	            );
+	        };
+	
+	        _this.languages = window.__RootScreen.languageMap;
+	        console.log("Default language -> ", JBridge.getLocalLang());
+	        _this.defaultlang = JBridge.getLocalLang();
+	        _this.setIds(["langContainer"]);
+	        _this.langArr = [];
+	        _this.initLangArr();
+	        return _this;
+	    }
+	
+	    _createClass(LanguageSelectActivity, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                LinearLayout,
+	                {
+	                    height: "match_parent",
+	                    width: "match_parent",
+	                    orientation: "horizontal",
+	                    gravity: "center",
+	                    root: true,
+	                    clickable: "true", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 181
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        orientation: "vertical",
+	                        gravity: "center_horizontal",
+	                        padding: "20,58,20,16",
+	                        background: "#FFFFFFFF",
+	                        cornerRadius: "0", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 188
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        height: "22",
+	                        width: "253",
+	                        margin: "34,0,33,0",
+	                        text: window.__S.CHOOSE_LANGUAGE,
+	                        textSize: "16",
+	                        color: "#FF333333",
+	                        gravity: "center", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 196
+	                        }
+	                    }),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            height: "wrap_content",
+	                            width: "match_parent",
+	                            orientation: "vertical",
+	                            padding: "16,16,16,16",
+	                            margin: "0,18,0,0",
+	                            background: "#FFF8F8F8",
+	                            id: this.idSet.langContainer,
+	                            cornerRadius: "0", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 204
+	                            }
+	                        },
+	                        this.getLanguageLabels()
+	                    ),
+	                    dom(LinearLayout, {
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 217
+	                        }
+	                    }),
+	                    this.getContinueBtn()
+	                )
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return LanguageSelectActivity;
+	}(View);
+	
+	module.exports = Connector(LanguageSelectActivity);
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/WelcomeScreenActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var debounce = __webpack_require__(403);
 	var objectAssign = __webpack_require__(317);
 	
 	var View = __webpack_require__(331);
@@ -23119,7 +23772,7 @@
 	module.exports = Connector(WelcomeScreenActivity);
 
 /***/ }),
-/* 401 */
+/* 403 */
 /***/ (function(module, exports) {
 
 	/**
@@ -23181,12 +23834,12 @@
 
 
 /***/ }),
-/* 402 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/StateSelectActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/StateSelectActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23206,7 +23859,7 @@
 	var ListView = __webpack_require__(371);
 	var SimpleToolbar = __webpack_require__(382);
 	var Styles = __webpack_require__(347);
-	var Str = __webpack_require__(398);
+	var Str = __webpack_require__(399);
 	
 	var StateSelectActivity = function (_View) {
 	  _inherits(StateSelectActivity, _View);
@@ -23354,12 +24007,12 @@
 	module.exports = Connector(StateSelectActivity);
 
 /***/ }),
-/* 403 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/MainActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/MainActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23377,23 +24030,23 @@
 	var ViewPager = __webpack_require__(351).androidViews.ViewPager;
 	var ViewWidget = __webpack_require__(349);
 	var ScrollView = __webpack_require__(358);
-	var BottomNavBar = __webpack_require__(404);
-	var HomeFragment = __webpack_require__(405);
-	var CourseFragment = __webpack_require__(420);
-	var ResourceFragment = __webpack_require__(422);
-	var CommunityFragment = __webpack_require__(425);
-	var ProfileFragment = __webpack_require__(429);
-	var ContentLoadingComponent = __webpack_require__(442);
-	var FeedParams = __webpack_require__(443);
+	var BottomNavBar = __webpack_require__(406);
+	var HomeFragment = __webpack_require__(407);
+	var CourseFragment = __webpack_require__(425);
+	var ResourceFragment = __webpack_require__(428);
+	var CommunityFragment = __webpack_require__(431);
+	var ProfileFragment = __webpack_require__(435);
+	var ContentLoadingComponent = __webpack_require__(449);
+	var FeedParams = __webpack_require__(450);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
-	var debounce = __webpack_require__(401);
+	var debounce = __webpack_require__(403);
 	var utils = __webpack_require__(397);
-	var Str = __webpack_require__(398);
+	var Str = __webpack_require__(399);
 	
 	window.R = __webpack_require__(7);
 	
-	var mockResponse = __webpack_require__(444);
+	var mockResponse = __webpack_require__(451);
 	
 	var _this;
 	
@@ -23455,7 +24108,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 630
+	            lineNumber: 504
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -23466,14 +24119,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 637
+	            lineNumber: 511
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 644
+	              lineNumber: 518
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -23484,7 +24137,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 645
+	              lineNumber: 519
 	            }
 	          })
 	        )
@@ -23501,7 +24154,9 @@
 	  var _this3 = this;
 	
 	  this.onPop = function () {
-	    Android.runInUI(_this3.animateView(), null, "72", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsMainActivityjs");
+	    console.log("onPop called in MainActivity");
+	
+	    Android.runInUI(_this3.animateView(), null, "74", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -23519,7 +24174,7 @@
 	  };
 	
 	  this.getUserProfileData = function () {
-	    if (JBridge.isNetworkAvailable() && _this3.profAPIerrCount <= 3) {
+	    if (JBridge.isNetworkAvailable() && _this3.profAPIerrCount <= 3 && window.__loggedInState != "GUEST") {
 	      console.log("this.profAPIerrCount", _this3.profAPIerrCount);
 	      var whatToSend = {
 	        user_token: window.__user_accessToken,
@@ -23540,7 +24195,7 @@
 	
 	  this.getAnnouncemetData = function () {
 	    window.__AnnouncementApiCalled = true;
-	    if (JBridge.isNetworkAvailable()) {
+	    if (JBridge.isNetworkAvailable() && window.__loggedInState != "GUEST") {
 	      var request = {};
 	      var whatToSend = {
 	        user_token: window.__user_accessToken,
@@ -23577,6 +24232,15 @@
 	  };
 	
 	  this.handleStateChange = function (state) {
+	    if (_this3.contentLayout && state.screen == _this3.contentLayout.screenName) {
+	      console.log("contentLayout.handleStateChange -> ", _this3.contentLayout.screenName);
+	      _this3.contentLayout.handleStateChange(state);
+	      return;
+	    } else if (state.screen != "MainActivity") {
+	      console.log("contentLayout.handleStateChange -> unmatched");
+	      return;
+	    }
+	    console.log("contentLayout.handleStateChange -> MainActivity");
 	    var res = utils.processResponse(state);
 	    console.log("res in MainActivity", res);
 	    if (res == undefined) return;
@@ -23620,7 +24284,10 @@
 	          window.__userName = responseData.result.response.userName;
 	
 	          //check for rootOrg details
+	          console.log("window.__API_Profile_Called", window.__API_Profile_Called);
 	          console.log("JBridge.getFromSharedPrefs('logo_url')", JBridge.getFromSharedPrefs("logo_url"));
+	          console.log("JBridge.getFromSharedPrefs('orgName')", JBridge.getFromSharedPrefs("orgName"));
+	          console.log("JBridge.getFromSharedPrefs('channelId')", JBridge.getFromSharedPrefs("channelId"));
 	          if (responseData.result.response && responseData.result.response.rootOrg && !window.__API_Profile_Called && (JBridge.getFromSharedPrefs("logo_url") == "__failed" || JBridge.getFromSharedPrefs("orgName") == "__failed" || JBridge.getFromSharedPrefs("channelId") == "__failed")) {
 	            console.log("slug", responseData.result.response.rootOrg.slug);
 	            window.__orgName = responseData.result.response.rootOrg.orgName;
@@ -23656,116 +24323,19 @@
 	          JBridge.setInSharedPrefs("orgName", window.__orgName);
 	        }
 	        break;
-	      case "API_UserEnrolledCourse":
-	        if (isErr) {
-	          var tmpData = JBridge.getSavedData("savedCourse");
-	          if (tmpData && tmpData != "__failed") {
-	            console.log("fetched enrolledCourses");
-	            window.__enrolledCourses = JSON.parse(utils.decodeBase64(tmpData));
-	            window.setEnrolledCourses(JSON.parse(utils.decodeBase64(tmpData)));
-	            return;
-	          }
-	        } else {
-	          JBridge.saveData("savedCourse", utils.encodeBase64(JSON.stringify(responseData.result.courses)));
-	          window.__enrolledCourses = responseData.result.courses;
-	          window.setEnrolledCourses(responseData.result.courses);
-	          return;
-	        }
-	        break;
-	      case "API_GetAnnouncementData":
-	        if (isErr) {
-	          if (JBridge.getSavedData(_this3.announcementsDataTag) != "__failed") {
-	            var data = JSON.parse(utils.decodeBase64(JBridge.getSavedData(_this3.announcementsDataTag)));
-	          } else {
-	            responseData = {};
-	          }
-	        } else {
-	          console.log("API_GetAnnouncementData :", responseData);
-	          try {
-	            var dataToBeSaved = utils.encodeBase64(JSON.stringify(responseData.result));
-	            console.log("dataToBeSaved ", responseData.result);
-	            JBridge.saveData(_this3.announcementsDataTag, dataToBeSaved);
-	          } catch (err) {
-	            console.log("err: var dataToBeSaved = utils.encodeBase64(JSON.stringify(responseData.result));");
-	            responseData = {};
-	          }
-	        }
-	        break;
-	      case "API_EndorseSkill":
-	        if (isErr) {
-	          window.__Snackbar.show(window.__S.SKILL_NOT_ADDED);
-	        } else {
-	          window.__Snackbar.show(window.__S.SKILLS_ADDED_SUCCESSFULLY);
-	        }
-	        window.__BNavFlowRestart();
-	        return;
-	      case "API_GetSkillsList":
-	        window.__PopulateSkillsList = [];
-	        if (isErr) {} else {
-	          try {
-	            console.log("skills ", responseData.data.result.skills);
-	            window.__PopulateSkillsList = responseData.data.result.skills;
-	          } catch (e) {
-	            console.log("Exception : ", e);
-	          }
-	        }
-	        window.__CustomPopUp.show();
-	        return;
-	      case "API_SetProfileVisibility":
-	        if (isErr) {
-	          if (responseCode == 504) {
-	            window.__LoaderDialog.hide();
-	            window.__Snackbar.show(window.__S.TIME_OUT);
-	          } else {
-	            window.__LoaderDialog.hide();
-	            window.__Snackbar.show("failed");
-	          }
-	        } else {
-	          window.__BNavFlowRestart();
-	        }
-	      default:
-	        break;
-	    }
-	    //////////////////////////////////////////////////////////////////////////////
-	
-	    switch (_this3.currentPageIndex) {
-	      case 0:
-	        shouldBeModified = true;
-	        // JBridge.logCorrelationPageEvent("HOME",responseData.params.msgid,responseData.id)
-	        _this3.logCorrelationPageEvent("HOME");
-	        window.__runDuiCallback({ tag: "OPEN_HomeFragment", contents: [] });
-	        break;
-	      case 1:
-	        shouldBeModified = true;
-	        _this3.logCorrelationPageEvent("COURSES");
-	        // JBridge.logCorrelationPageEvent("COURSES",responseData.params.msgid,responseData.id)
-	        window.__runDuiCallback({ tag: "OPEN_CourseFragment", contents: [] });
-	        break;
-	      case 2:
-	        shouldBeModified = true;
-	        _this3.logCorrelationPageEvent("LIBRARY");
-	        // JBridge.logCorrelationPageEvent("RESOURCES",responseData.params.msgid,responseData.id)
-	        window.__runDuiCallback({ tag: "OPEN_ResourceFragment", contents: [] });
-	        break;
-	      case 3:
-	        //shouldBeModified = true;
-	        window.__runDuiCallback({ tag: "OPEN_CommunityFragment", contents: [] });
-	        break;
-	      case 4:
-	        shouldBeModified = true;
-	        window.__runDuiCallback({ tag: "OPEN_ProfileFragment", contents: [] });
-	        break;
 	      default:
 	        break;
 	    }
 	
-	    if (shouldBeModified) {
-	      if (state.hasOwnProperty("filter_to_send")) responseData.filter_to_send = state.filter_to_send;else responseData.filter_to_send = null;
+	    // if (shouldBeModified) {
+	    //   if (state.hasOwnProperty("filter_to_send"))
+	    //     responseData.filter_to_send = state.filter_to_send;
+	    //   else responseData.filter_to_send = null;
 	
-	      _this3.switchContent(_this3.currentPageIndex, responseData);
-	    } else {
-	      console.log("GOT SAME DATA, not modifying");
-	    }
+	    //   // this.switchContent(this.currentPageIndex, responseData);
+	    // } else {
+	    //   console.log("GOT SAME DATA, not modifying");
+	    // }
 	  };
 	
 	  this.handleProfileFragAPIResErr = function () {
@@ -23786,12 +24356,12 @@
 	
 	  this.switchContent = function (index, data) {
 	    var tmp;
-	    var contentLayout;
+	    _this3.contentLayout;
 	    _this3.color = "#123123";
 	    switch (index) {
 	      case 0:
 	        JBridge.logTabClickEvent("HOME");
-	        contentLayout = dom(HomeFragment, {
+	        _this3.contentLayout = dom(HomeFragment, {
 	          response: data,
 	          recommendedData: _this3.recommendedData,
 	          recommendedimageUrls: _this3.recommendedimageUrls,
@@ -23803,56 +24373,54 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 376
+	            lineNumber: 290
 	          }
 	        });
 	
 	        break;
 	      case 1:
 	        JBridge.logTabClickEvent("COURSES");
-	        contentLayout = dom(CourseFragment, {
+	        _this3.contentLayout = dom(CourseFragment, {
 	          height: "match_parent",
 	          root: "true",
 	          width: "match_parent",
 	          response: data,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 393
+	            lineNumber: 307
 	          }
 	        });
 	
 	        break;
 	      case 2:
 	        JBridge.logTabClickEvent("LIBRARY");
-	        contentLayout = dom(ResourceFragment, {
+	        _this3.contentLayout = dom(ResourceFragment, {
 	          root: "true",
 	          response: data,
 	          height: "match_parent",
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 405
+	            lineNumber: 319
 	          }
 	        });
 	
 	        break;
+	      // case 3:
+	      //   JBridge.logTabClickEvent("GROUPS");
+	      //   this.contentLayout = (
+	      //     <CommunityFragment
+	      //       height="match_parent"
+	      //       root="true"
+	      //       width="match_parent"
+	      //       response={data}
+	      //     />
+	      //   );
+	
+	      //   break;
 	      case 3:
-	        JBridge.logTabClickEvent("GROUPS");
-	        contentLayout = dom(CommunityFragment, {
-	          height: "match_parent",
-	          root: "true",
-	          width: "match_parent",
-	          response: data,
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 417
-	          }
-	        });
-	
-	        break;
-	      case 4:
-	        if (!data.sendBack) JBridge.logTabClickEvent("PROFILE");
-	        contentLayout = dom(ProfileFragment, {
+	        // if (!data.sendBack) JBridge.logTabClickEvent("PROFILE");
+	        _this3.contentLayout = dom(ProfileFragment, {
 	          height: "match_parent",
 	          root: "true",
 	          width: "match_parent",
@@ -23860,17 +24428,17 @@
 	          editable: "true",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 429
+	            lineNumber: 343
 	          }
 	        });
 	        break;
 	
 	      default:
-	        contentLayout = dom(
+	        _this3.contentLayout = dom(
 	          LinearLayout,
 	          { height: "match_parent", root: "true", width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 441
+	              lineNumber: 355
 	            }
 	          },
 	          dom(TextView, {
@@ -23882,7 +24450,7 @@
 	            gravity: "center",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 442
+	              lineNumber: 356
 	            }
 	          })
 	        );
@@ -23892,20 +24460,27 @@
 	      height: "match_parent",
 	      width: "match_parent",
 	      root: "true",
-	      contentLayout: contentLayout,
+	      contentLayout: _this3.contentLayout,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 455
+	        lineNumber: 369
 	      }
 	    });
 	
-	    _this3.replaceChild(_this3.idSet.viewPagerContainer, tmp.render(), 0);
+	    _this3.replaceChild(_this3.idSet.viewPagerContainer, _this3.contentLayout.render(), 0);
 	  };
 	
 	  this.afterRender = function () {
-	    _this3.currentPageIndex = 0;
-	    _this3.renderBNavBar(_this3.currentPageIndex);
+	    _this3.openFragment();
 	    _this3.getUserProfileData();
+	  };
+	
+	  this.openFragment = function () {
+	    _this3.currentPageIndex = 0;
+	    if (window.__loggedInState == "GUEST") {
+	      _this3.currentPageIndex = 2;
+	    }
+	    _this3.renderBNavBar(_this3.currentPageIndex);
 	  };
 	
 	  this.renderBNavBar = function (index) {
@@ -23919,17 +24494,16 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 476
+	          lineNumber: 397
 	        }
 	      },
 	      dom(ViewWidget, {
 	        height: "2",
 	        alpha: "0.2",
 	        width: "match_parent",
-	        background: window.__Colors.DARK_GRAY,
-	        __source: {
+	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 481
+	          lineNumber: 403
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -23941,77 +24515,35 @@
 	
 	  this.setupDuiCallback = function () {
 	    window.__changePureScriptFlow();
-	    window.__LoaderDialog.show();
+	    // window.__LoaderDialog.show();
 	    var event;
-	    var whatToSend;
-	    if (_this3.currentPageIndex != 0) {
-	      window.__Check = 0;
-	      window.__AnnouncementApiCalled = false;
-	    }
 	    switch (_this3.currentPageIndex) {
 	      case 0:
-	        if (!window.__AnnouncementApiCalled && JBridge.isNetworkAvailable()) {
-	          _this3.getAnnouncemetData();
-	        }
-	        if (window.__Check == 0) {
-	          if (!JBridge.isNetworkAvailable()) {
-	            window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
-	          } else {
-	            _this3.getUserProfileData();
-	          }
-	        }
-	        whatToSend = [];
-	        event = { tag: "OPEN_HomeFragment", contents: whatToSend };
-	        window.__Check = 1;
-	        window.__LoaderDialog.hide();
+	        event = { tag: "OPEN_HomeFragment", contents: [] };
 	        break;
 	      case 1:
-	        if (!JBridge.isNetworkAvailable()) {
-	          window.__runDuiCallback({ tag: "OPEN_CourseFragment", contents: [] });
-	          _this3.switchContent(_this3.currentPageIndex);
-	        } else {
-	          whatToSend = {
-	            user_token: window.__user_accessToken,
-	            api_token: window.__apiToken
-	          };
-	          event = { tag: "API_CourseFragment", contents: whatToSend };
-	        }
+	        event = { tag: "OPEN_CourseFragment", contents: [] };
 	        break;
 	      case 2:
-	        if (!JBridge.isNetworkAvailable()) {
-	          window.__runDuiCallback({ tag: "OPEN_ResourceFragment", contents: [] });
-	          _this3.switchContent(_this3.currentPageIndex);
-	        } else {
-	          whatToSend = {
-	            user_token: window.__user_accessToken,
-	            api_token: window.__apiToken
-	          };
-	          event = { tag: "API_ResourceFragment", contents: whatToSend };
-	        }
+	        event = { tag: "OPEN_ResourceFragment", contents: [] };
 	        break;
+	      // case 3:
+	      //   event = { tag: "OPEN_CommunityFragment", contents: [] };
+	      //   break;
 	      case 3:
-	        whatToSend = [];
-	        event = { tag: "OPEN_CommunityFragment", contents: whatToSend };
-	        break;
-	      case 4:
-	        _this3.getUserProfileData();
+	        event = { tag: "OPEN_ProfileFragment", contents: [] };
 	        break;
 	      default:
-	        whatToSend = [];
-	        event = { tag: "OPEN_HomeFragment", contents: whatToSend };
+	        event = { tag: "OPEN_HomeFragment", contents: [] };
 	        break;
 	    }
+	    _this3.switchContent(_this3.currentPageIndex);
 	    if (event) window.__runDuiCallback(event);
 	  };
 	
 	  this.handleBottomNavBarAction = function (index) {
 	    if (index == undefined) index = 0;
-	
 	    _this3.currentPageIndex = index;
-	
-	    if (index != 1 && index != 2 && index != 4) {
-	      _this3.switchContent(index);
-	    }
 	    window.__BottomNavBar.handleNavigationChange(_this3.currentPageIndex);
 	    _this3.setupDuiCallback();
 	  };
@@ -24019,7 +24551,7 @@
 	  this.getBottomNavBar = function () {
 	    var tabValues = [{
 	      name: window.__S.HOME_BNAV,
-	      select: "1",
+	      select: "0",
 	      icon: "ic_home"
 	    }, {
 	      name: window.__S.COURSES_BNAV,
@@ -24029,22 +24561,24 @@
 	      name: window.__S.LIBRARY_BNAV,
 	      select: "0",
 	      icon: "ic_notebook"
-	    }, {
-	      name: window.__S.GROUPS_BNAV,
-	      select: "0",
-	      icon: "ic_chat"
-	    }, {
+	    },
+	    // {
+	    //   name: window.__S.GROUPS_BNAV,
+	    //   select: "0",
+	    //   icon: "ic_chat"
+	    // },
+	    {
 	      name: window.__S.PROFILE_BNAV,
 	      select: "0",
 	      icon: "ic_profile"
 	    }];
 	    _this3.bNavBar = dom(BottomNavBar, {
 	      tabItems: tabValues,
-	      defaultIndex: "3",
+	      defaultIndex: _this3.currentPageIndex,
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 602
+	        lineNumber: 481
 	      }
 	    });
 	
@@ -24058,25 +24592,20 @@
 	  this.handleChangeLang = function (lang) {
 	    console.log("handleChangeLang ", lang);
 	    console.log("handleChangeLang converted string ", lang + "_IN");
-	    window.__LoaderDialog.show();
-	    window.setLanguage(lang + "_IN");
-	    window.__S = Str.strings();
-	    window.__renderBNavBar(0); //rerendering navbar along with fragment
+	    window.__RootScreen.handleChangeLang(lang + "_IN");
 	    window.__LanguagePopup.hide();
-	    window.__reRender(); //rerendering 'Please wait' loader
-	    // window.__BNavFlowRestart();
 	  };
 	};
 	
 	module.exports = Connector(MainActivity);
 
 /***/ }),
-/* 404 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24229,6 +24758,12 @@
 	
 	    var _this3 = _possibleConstructorReturn(this, (BottomNavBar.__proto__ || Object.getPrototypeOf(BottomNavBar)).call(this, props, children));
 	
+	    _this3.selectTab = function (index) {
+	      if (_this3.bottomNavItemList && _this3.bottomNavItemList[index].hasOwnProperty("select")) {
+	        _this3.bottomNavItemList[index].select = "1";
+	      }
+	    };
+	
 	    _this3.handleNavigationChange = function (index) {
 	      console.log("\t\t\tB NAV TO INDEX -> ", index);
 	      if (_this3.currentIndex == index) {
@@ -24243,7 +24778,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "159", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
+	      Android.runInUI(cmd, 0, "161", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
 	
 	      _this3.props._onClick(index);
 	    };
@@ -24293,10 +24828,10 @@
 	    _this3.displayName = "bottom_nav_bar";
 	
 	    _this3.setIds(["horizontal", "TabContainer", "TabContainerSingle", "title"]);
-	
 	    _this3.bottomNavItemList = _this3.props.tabItems;
 	    _this3.currentIndex = _this3.props.defaultIndex === undefined ? 0 : _this3.props.defaultIndex;
 	    window.__BottomNavBar = _this3;
+	    _this3.selectTab(_this3.currentIndex);
 	    return _this3;
 	  }
 	
@@ -24312,7 +24847,7 @@
 	          afterRender: this.renderBottonNavBarItems,
 	          background: window.__Colors.WHITE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 206
+	            lineNumber: 204
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -24320,11 +24855,10 @@
 	          width: "match_parent",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 212
+	            lineNumber: 211
 	          }
 	        })
 	      );
-	
 	      return this.layout.render();
 	    }
 	  }]);
@@ -24335,12 +24869,12 @@
 	module.exports = BottomNavBar;
 
 /***/ }),
-/* 405 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/HomeFragment.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/HomeFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24357,24 +24891,25 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	
+	var LineSpacer = __webpack_require__(408);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var View = __webpack_require__(331);
-	var CourseInProgressContainer = __webpack_require__(406);
-	var HorizontalProgressBar = __webpack_require__(408);
+	var CourseInProgressContainer = __webpack_require__(409);
+	var HorizontalProgressBar = __webpack_require__(411);
 	var utils = __webpack_require__(397);
 	var Button = __webpack_require__(380);
-	var AnnouncementCard = __webpack_require__(409);
-	var CommunityParams = __webpack_require__(410);
+	var HomeQuestionCardStyle = __webpack_require__(413);
+	var AnnouncementCard = __webpack_require__(414);
+	var CommunityParams = __webpack_require__(415);
 	
 	window.R = __webpack_require__(7);
 	
-	var SearchToolbar = __webpack_require__(411);
+	var SearchToolbar = __webpack_require__(416);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var HomeRecommendedContainer = __webpack_require__(414);
-	var HomeTodoContainer = __webpack_require__(418);
+	var HomeRecommendedContainer = __webpack_require__(419);
+	var HomeTodoContainer = __webpack_require__(423);
 	
 	var HomeFragment = function (_View) {
 	  _inherits(HomeFragment, _View);
@@ -24384,9 +24919,19 @@
 	
 	    var _this = _possibleConstructorReturn(this, (HomeFragment.__proto__ || Object.getPrototypeOf(HomeFragment)).call(this, props, children));
 	
-	    _this.setEnrolledCourses = function (list) {
-	      _this.enrolledCourses = list;
-	      window.__UpdateUserCourses(_this.enrolledCourses);
+	    _this.getAnnouncemetData = function () {
+	      if (JBridge.isNetworkAvailable() && window.__loggedInState != "GUEST") {
+	        var request = {};
+	        var whatToSend = {
+	          user_token: window.__user_accessToken,
+	          api_token: window.__apiToken,
+	          requestBody: JSON.stringify(request)
+	        };
+	        var event = { tag: "API_GetAnnouncementData", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      } else {
+	        console.log("__failed to getAnnouncementData");
+	      }
 	    };
 	
 	    _this.handleTodoClick = function (index) {
@@ -24401,6 +24946,50 @@
 	      var whatToSend = { "course": JSON.stringify(content) };
 	      var event = { tag: 'OPEN_EnrolledCourseActivity', contents: whatToSend };
 	      window.__runDuiCallback(event);
+	    };
+	
+	    _this.handleStateChange = function (state) {
+	      var res = utils.processResponse(state);
+	      var status = res.status;
+	      var responseData = res.data;
+	      _this.responseData = responseData;
+	      var responseCode = res.code;
+	      var responseUrl = res.url;
+	      var isErr = res.hasOwnProperty("err");
+	      switch (state.responseFor) {
+	        case "API_UserEnrolledCourse":
+	          if (isErr) {
+	            var tmpData = JBridge.getSavedData("savedCourse");
+	            if (tmpData && tmpData != "__failed") {
+	              console.log("fetched enrolledCourses");
+	              window.__enrolledCourses = JSON.parse(utils.decodeBase64(tmpData));
+	              // window.setEnrolledCourses(JSON.parse(utils.decodeBase64(tmpData)));
+	              _this.courseInProgressContainer.renderContent(JSON.parse(utils.decodeBase64(tmpData)));
+	              return;
+	            }
+	          } else {
+	            JBridge.saveData("savedCourse", utils.encodeBase64(JSON.stringify(responseData.result.courses)));
+	            window.__enrolledCourses = responseData.result.courses;
+	            // window.setEnrolledCourses(responseData.result.courses);
+	            _this.courseInProgressContainer.renderContent(responseData.result.courses);
+	            return;
+	          }
+	          break;
+	        case "API_GetAnnouncementData":
+	          if (isErr) {
+	            console.log("Error fetching announcement data");
+	          } else {
+	            console.log("API_GetAnnouncementData :", responseData);
+	            try {
+	              var dataToBeSaved = utils.encodeBase64(JSON.stringify(responseData.result));
+	              console.log("dataToBeSaved ", responseData.result);
+	              JBridge.saveData(_this.announcementsDataTag, dataToBeSaved);
+	              _this.reRenderAnnoucements();
+	            } catch (err) {
+	              console.log("err: var dataToBeSaved = utils.encodeBase64(JSON.stringify(responseData.result));");
+	            }
+	          }
+	      }
 	    };
 	
 	    _this.handleMenuClick = function (url) {
@@ -24440,18 +25029,6 @@
 	      console.log("data from android ", JSON.parse(data));
 	    };
 	
-	    _this.getSpaceSeparator = function () {
-	      return dom(LinearLayout, {
-	        height: "4",
-	        orientation: "vertical",
-	        width: "match_parent",
-	        background: window.__Colors.WHITE_F2, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 112
-	        }
-	      });
-	    };
-	
 	    _this.getTodoProfileCard = function (index) {
 	      try {
 	        _this.profileData = JSON.parse(utils.decodeBase64(JBridge.getSavedData("savedProfile")));
@@ -24460,7 +25037,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 123
+	            lineNumber: 168
 	          }
 	        });
 	      }
@@ -24470,7 +25047,7 @@
 	        return dom(LinearLayout, {
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 129
+	            lineNumber: 174
 	          }
 	        });
 	      }
@@ -24533,7 +25110,7 @@
 	            return _this.handleEditProfileClick(data.missingFields[index]);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 168
+	            lineNumber: 213
 	          }
 	        },
 	        dom(
@@ -24545,7 +25122,7 @@
 	            stroke: "2," + window.__Colors.PRIMARY_BLACK_66,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 174
+	              lineNumber: 219
 	            }
 	          },
 	          dom(HorizontalProgressBar, {
@@ -24556,7 +25133,7 @@
 	            currentProgress: data.completeness,
 	            totalProgress: 100, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 180
+	              lineNumber: 225
 	            }
 	          }),
 	          dom(
@@ -24566,7 +25143,7 @@
 	              height: "match_parent",
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 187
+	                lineNumber: 232
 	              }
 	            },
 	            dom(ImageView, {
@@ -24577,7 +25154,7 @@
 	              stroke: "2," + "#d8d8d8",
 	              cornerRadius: "37", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 191
+	                lineNumber: 236
 	              }
 	            }),
 	            dom(
@@ -24589,7 +25166,7 @@
 	                margin: "8,20,16,20",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 198
+	                  lineNumber: 243
 	                }
 	              },
 	              dom(TextView, {
@@ -24599,7 +25176,7 @@
 	                text: window.__S.STRENGTHEN_YOUR_PROFILE,
 	                style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 204
+	                  lineNumber: 249
 	                }
 	              }),
 	              dom(TextView, {
@@ -24610,7 +25187,7 @@
 	                text: utils.cropText(window.__S.ADD + " " + editButtonText, 14),
 	                style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 210
+	                  lineNumber: 255
 	                }
 	              })
 	            )
@@ -24623,7 +25200,7 @@
 	            height: "match_parent",
 	            margin: "0,8,0,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 220
+	              lineNumber: 265
 	            }
 	          },
 	          dom(
@@ -24633,7 +25210,7 @@
 	              padding: "0,0,8,0",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 224
+	                lineNumber: 269
 	              }
 	            },
 	            dom(TextView, {
@@ -24642,7 +25219,7 @@
 	              text: window.__S.YOUR_PROFILE_IS.format(data.completeness),
 	              style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 228
+	                lineNumber: 273
 	              }
 	            })
 	          ),
@@ -24655,7 +25232,7 @@
 	              return _this.handleEditProfileClick(data.missingFields[index]);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 234
+	              lineNumber: 279
 	            }
 	          })
 	        )
@@ -24672,19 +25249,19 @@
 	      var cards = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 252
+	          lineNumber: 297
 	        }
 	      });
 	      var card1 = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 253
+	          lineNumber: 298
 	        }
 	      }),
 	          card2 = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 253
+	          lineNumber: 298
 	        }
 	      });
 	      var announcementApiData = JBridge.getSavedData(_this.announcementsDataTag);
@@ -24697,7 +25274,7 @@
 	            height: "wrap_content",
 	            background: window.__Colors.PRIMARY_LIGHT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 258
+	              lineNumber: 303
 	            }
 	          },
 	          dom(TextView, {
@@ -24706,7 +25283,7 @@
 	            gravity: "center",
 	            text: window.__S.NO_ANNOUNCEMENTS, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 262
+	              lineNumber: 307
 	            }
 	          })
 	        );
@@ -24720,7 +25297,7 @@
 	            },
 	            params: announcementApiData.announcements[0], __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 273
+	              lineNumber: 318
 	            }
 	          });
 	        }
@@ -24732,7 +25309,7 @@
 	            },
 	            params: announcementApiData.announcements[1], __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 281
+	              lineNumber: 326
 	            }
 	          });
 	        }
@@ -24743,11 +25320,16 @@
 	            width: "match_parent",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 288
+	              lineNumber: 333
 	            }
 	          },
 	          card1,
-	          _this.getSpaceSeparator(),
+	          dom(LineSpacer, {
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 338
+	            }
+	          }),
 	          card2
 	        );
 	      }
@@ -24759,7 +25341,7 @@
 	          orientation: "vertical",
 	          background: window.__Colors.LIGHT_GRAY, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 299
+	            lineNumber: 344
 	          }
 	        },
 	        dom(
@@ -24769,7 +25351,7 @@
 	            height: "wrap_content",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 304
+	              lineNumber: 349
 	            }
 	          },
 	          dom(TextView, {
@@ -24779,7 +25361,7 @@
 	            text: window.__S.ANNOUNCEMENT,
 	            style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 308
+	              lineNumber: 353
 	            }
 	          }),
 	          dom(TextView, {
@@ -24794,7 +25376,7 @@
 	            text: window.__S.VIEW_ALL,
 	            style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 314
+	              lineNumber: 359
 	            }
 	          })
 	        ),
@@ -24810,6 +25392,95 @@
 	      var whatToSend = { "announcementDetails": JSON.stringify(data) };
 	      var event = { tag: "OPEN_AnnouncementViewAllActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
+	    };
+	
+	    _this.getCourseInProgressContainer = function () {
+	      _this.courseInProgressContainer = dom(CourseInProgressContainer, {
+	        parentContainer: "Home",
+	        addCard: _this.getTodoProfileCard(0),
+	        addCardVisibility: _this.profileUpdateCardVisibility,
+	        transparent: "true",
+	        title: window.__S.TO_DO,
+	        onCourseClick: _this.handleUserCoursesClick, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 386
+	        }
+	      });
+	      return _this.courseInProgressContainer;
+	    };
+	
+	    _this.getSignInOverlay = function () {
+	      if (window.__loggedInState && window.__loggedInState == "GUEST") {
+	        return dom(
+	          LinearLayout,
+	          {
+	            height: "match_parent",
+	            gravity: "center_vertical",
+	            transparent: "true",
+	            background: "#FFFFFF",
+	            alpha: "0.9",
+	            weight: "1",
+	            clickable: "true", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 400
+	            }
+	          },
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 408
+	            }
+	          }),
+	          dom(HomeQuestionCardStyle, {
+	            headerText: window.__S.OVERLAY_LABEL_HOME,
+	            infoText: window.__S.OVERLAY_INFO_TEXT_HOME, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 411
+	            }
+	          }),
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 414
+	            }
+	          })
+	        );
+	      } else {
+	        return dom(LinearLayout, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 420
+	          }
+	        });
+	      }
+	    };
+	
+	    _this.afterRender = function () {
+	      _this.getAnnouncemetData();
+	    };
+	
+	    _this.reRenderAnnoucements = function () {
+	      var layout = dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 485
+	          }
+	        },
+	        _this.getAnnouncementCard(),
+	        dom(LineSpacer, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 490
+	          }
+	        })
+	      );
+	      _this.replaceChild(_this.idSet.announcementContainer, layout.render(), 0);
 	    };
 	
 	    _this.handleEditProfileClick = function (editButtonText) {
@@ -24842,17 +25513,17 @@
 	      window.__runDuiCallback(event);
 	    };
 	
+	    _this.screenName = "HomeFragment";
 	    _this.menuData = {
 	      url: [
 	      // { imageUrl: "ic_scanqr"}, // hide qr scanner feature
 	      { imageUrl: "ic_action_search" }]
 	    };
 	    JBridge.logTabScreenEvent("HOME");
-	    window.setEnrolledCourses = _this.setEnrolledCourses;
 	    _this.profileData = "";
 	    _this.profileUpdateCardVisibility = "gone";
 	    _this.announcementsDataTag = "savedAnnouncements";
-	
+	    _this.setIds(["announcementContainer"]);
 	    return _this;
 	  }
 	
@@ -24870,9 +25541,10 @@
 	          width: "match_parent",
 	          root: "true",
 	          background: window.__Colors.PRIMARY_LIGHT,
-	          height: "match_parent", __source: {
+	          height: "match_parent",
+	          afterRender: this.afterRender, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 346
+	            lineNumber: 435
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -24884,50 +25556,74 @@
 	          menuData: this.menuData,
 	          onMenuItemClick: this.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 352
+	            lineNumber: 442
 	          }
 	        }),
 	        dom(
-	          ScrollView,
+	          RelativeLayout,
 	          {
-	            weight: "1",
+	            height: "match_parent",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 360
+	              lineNumber: 450
 	            }
 	          },
 	          dom(
-	            LinearLayout,
+	            ScrollView,
 	            {
-	              height: "match_parent",
-	              width: "match_parent",
-	              orientation: "vertical", __source: {
+	              weight: "1",
+	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 363
+	                lineNumber: 453
 	              }
 	            },
-	            dom(CourseInProgressContainer, {
-	              parentContainer: "Home",
-	              addCard: this.getTodoProfileCard(0),
-	              addCardVisibility: this.profileUpdateCardVisibility,
-	              transparent: "true",
-	              title: window.__S.TO_DO,
-	              onCourseClick: this.handleUserCoursesClick, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 367
-	              }
-	            }),
-	            this.getAnnouncementCard(),
-	            this.getSpaceSeparator(),
-	            dom(HomeRecommendedContainer, {
-	              title: window.__S.RECOMMENDED,
-	              onCourseOpenClick: this.handleCourseOpen,
-	              onResourceOpenClick: this.handleResourceOpen, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 376
-	              }
-	            })
-	          )
+	            dom(
+	              LinearLayout,
+	              {
+	                height: "match_parent",
+	                width: "match_parent",
+	                orientation: "vertical", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 456
+	                }
+	              },
+	              this.getCourseInProgressContainer(),
+	              dom(LineSpacer, {
+	                __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 461
+	                }
+	              }),
+	              dom(
+	                LinearLayout,
+	                {
+	                  height: "match_parent",
+	                  width: "match_parent",
+	                  orientation: "vertical",
+	                  id: this.idSet.announcementContainer, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 462
+	                  }
+	                },
+	                this.getAnnouncementCard(),
+	                dom(LineSpacer, {
+	                  __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 468
+	                  }
+	                })
+	              ),
+	              dom(HomeRecommendedContainer, {
+	                title: window.__S.RECOMMENDED,
+	                onCourseOpenClick: this.handleCourseOpen,
+	                onResourceOpenClick: this.handleResourceOpen, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 470
+	                }
+	              })
+	            )
+	          ),
+	          this.getSignInOverlay()
 	        )
 	      );
 	      return this.layout.render();
@@ -24940,12 +25636,64 @@
 	module.exports = HomeFragment;
 
 /***/ }),
-/* 406 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LineSpacer.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	
+	var LineSpacer = function (_View) {
+	    _inherits(LineSpacer, _View);
+	
+	    function LineSpacer(props, children, state) {
+	        _classCallCheck(this, LineSpacer);
+	
+	        return _possibleConstructorReturn(this, (LineSpacer.__proto__ || Object.getPrototypeOf(LineSpacer)).call(this, props, children, state));
+	    }
+	
+	    _createClass(LineSpacer, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(LinearLayout, {
+	                height: this.props.height ? this.props.height : "6",
+	                orientation: this.props.width ? this.props.width : "vertical",
+	                width: "match_parent",
+	                background: window.__Colors.WHITE_F2, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 13
+	                }
+	            });
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return LineSpacer;
+	}(View);
+	
+	module.exports = LineSpacer;
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24958,19 +25706,15 @@
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
 	var LinearLayout = __webpack_require__(333);
-	var RelativeLayout = __webpack_require__(340);
-	var ImageView = __webpack_require__(350);
 	var View = __webpack_require__(331);
 	var HorizontalScrollView = __webpack_require__(357);
-	var ProgressBar = __webpack_require__(359);
 	var TextView = __webpack_require__(342);
-	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
-	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var _this;
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
+	var CircularLoader = __webpack_require__(412);
 	
 	var CourseInProgressContainer = function (_View) {
 	  _inherits(CourseInProgressContainer, _View);
@@ -24983,7 +25727,7 @@
 	    _this2.fetchFromServer = function () {
 	      console.log("fetchFromServer");
 	      var res = null;
-	      if (JBridge.isNetworkAvailable()) {
+	      if (JBridge.isNetworkAvailable() && window.__loggedInState != "GUEST") {
 	        var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
 	        var event = { "tag": "API_UserEnrolledCourse", contents: whatToSend };
 	        window.__runDuiCallback(event);
@@ -24994,6 +25738,8 @@
 	          var parsed = JSON.parse(utils.decodeBase64(res));
 	          _this2.renderContent(parsed, true);
 	          window.__enrolledCourses = parsed;
+	        } else {
+	          _this2.renderContent();
 	        }
 	      }
 	    };
@@ -25022,7 +25768,7 @@
 	            text: window.__S.ERROR_NO_COURSES_ENROLLED,
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 79
+	              lineNumber: 75
 	            }
 	          });
 	        } else {
@@ -25034,16 +25780,17 @@
 	          visibility: isDataEmpty ? "gone" : "visible"
 	        });
 	
-	        Android.runInUI(cmd, 0, "95", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
+	        Android.runInUI(cmd, 0, "91", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
 	
 	        layout = dom(
 	          LinearLayout,
 	          {
 	            root: "true",
 	            height: "wrap_content",
-	            width: "match_parent", __source: {
+	            width: "match_parent",
+	            padding: "0,0,16,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 98
+	              lineNumber: 94
 	            }
 	          },
 	          layout1
@@ -25057,9 +25804,10 @@
 	          {
 	            root: "true",
 	            height: "wrap_content",
-	            width: "match_parent", __source: {
+	            width: "match_parent",
+	            padding: "0,0,16,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 110
+	              lineNumber: 107
 	            }
 	          },
 	          _this2.getExtraLayout(),
@@ -25102,7 +25850,7 @@
 	        index: index,
 	        onCardClick: _this2.handleCardClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 151
+	          lineNumber: 149
 	        }
 	      });
 	    };
@@ -25145,7 +25893,7 @@
 	        return dom(LinearLayout, {
 	          visibility: "gone", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 239
+	            lineNumber: 237
 	          }
 	        });
 	      }
@@ -25156,8 +25904,6 @@
 	    console.log("CourseInProgressContainer", _this2.props);
 	    _this2.setIds(["parentContainer", "progressContainer", "viewAllContainer"]);
 	    _this2.displayName = "course_in_progress_container";
-	    window.__UpdateUserCourses = _this2.renderContent;
-	    window.__fetchCourse = _this2.fetchFromServer;
 	
 	    _this2.appendAtPosition = 0;
 	    _this2.savedCourseTag = "savedCourse";
@@ -25176,7 +25922,7 @@
 	          margin: "16,16,16,16",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 160
+	            lineNumber: 158
 	          }
 	        },
 	        dom(TextView, {
@@ -25185,7 +25931,7 @@
 	          text: this.props.title,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 166
+	            lineNumber: 164
 	          }
 	        }),
 	        dom(ViewWidget, {
@@ -25193,7 +25939,7 @@
 	          height: "0",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 172
+	            lineNumber: 170
 	          }
 	        }),
 	        dom(TextView, {
@@ -25205,7 +25951,7 @@
 	          onClick: this.handleViewAllClick,
 	          style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 177
+	            lineNumber: 175
 	          }
 	        })
 	      );
@@ -25216,13 +25962,14 @@
 	      this.layout = dom(
 	        LinearLayout,
 	        {
-	          height: "match_parent",
+	          height: "wrap_content",
 	          width: "match_parent",
+	          visibility: window.__loggedInState != "GUEST" ? "visible" : "gone",
 	          afterRender: this.fetchFromServer,
 	          background: this.props.transparent ? window.__Colors.WHITE_F2 : window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 249
+	            lineNumber: 247
 	          }
 	        },
 	        this.getHeader(),
@@ -25234,18 +25981,28 @@
 	            scrollBarX: "false",
 	            fillViewport: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 258
+	              lineNumber: 257
 	            }
 	          },
-	          dom(LinearLayout, {
-	            padding: "0,0,20,0",
-	            id: this.idSet.parentContainer,
-	            width: "match_parent",
-	            height: "match_parent", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 264
-	            }
-	          })
+	          dom(
+	            LinearLayout,
+	            {
+	              id: this.idSet.parentContainer,
+	              width: "match_parent",
+	              height: "match_parent",
+	              orientation: "horizontal",
+	              layoutTransition: "true", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 263
+	              }
+	            },
+	            dom(CircularLoader, {
+	              margin: "0,16,0,16", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 269
+	              }
+	            })
+	          )
 	        )
 	      );
 	
@@ -25259,12 +26016,12 @@
 	module.exports = CourseInProgressContainer;
 
 /***/ }),
-/* 407 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/CardComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25284,7 +26041,7 @@
 	var RatingBar = __webpack_require__(372);;
 	var Button = __webpack_require__(380);
 	var utils = __webpack_require__(397);
-	var HorizontalProgressBar = __webpack_require__(408);
+	var HorizontalProgressBar = __webpack_require__(411);
 	
 	var _this;
 	
@@ -25499,12 +26256,12 @@
 	module.exports = CardComponent;
 
 /***/ }),
-/* 408 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25631,12 +26388,251 @@
 	module.exports = HorizontalProgressBar;
 
 /***/ }),
-/* 409 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/AnnouncementCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CircularLoader.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ProgressBar = __webpack_require__(359);
+	
+	var CircularLoader = function (_View) {
+	    _inherits(CircularLoader, _View);
+	
+	    function CircularLoader(props, children, state) {
+	        _classCallCheck(this, CircularLoader);
+	
+	        var _this = _possibleConstructorReturn(this, (CircularLoader.__proto__ || Object.getPrototypeOf(CircularLoader)).call(this, props, children, state));
+	
+	        _this.width = _this.props.width ? _this.props.width : "match_parent";
+	        _this.height = _this.props.height ? _this.props.height : "match_parent";
+	        _this.padding = _this.props.padding ? _this.props.padding : "0,0,0,0";
+	        _this.margin = _this.props.margin ? _this.props.margin : "0,0,0,0";
+	        _this.size = _this.props.size ? _this.props.size : "20";
+	        return _this;
+	    }
+	
+	    _createClass(CircularLoader, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                LinearLayout,
+	                {
+	                    width: this.width,
+	                    height: this.height,
+	                    gravity: "center",
+	                    padding: this.padding,
+	                    margin: this.margin, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 19
+	                    }
+	                },
+	                dom(LinearLayout, {
+	                    height: this.size,
+	                    weight: "1",
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 25
+	                    }
+	                }),
+	                dom(ProgressBar, {
+	                    weight: "1",
+	                    height: this.size,
+	                    width: this.size,
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 29
+	                    }
+	                }),
+	                dom(LinearLayout, {
+	                    height: this.size,
+	                    weight: "1",
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 34
+	                    }
+	                })
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return CircularLoader;
+	}(View);
+	
+	module.exports = CircularLoader;
+
+/***/ }),
+/* 413 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeQuestionCardStyle.js";
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var View = __webpack_require__(331);
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	
+	var LinearLayout = __webpack_require__(333);
+	var TextView = __webpack_require__(342);
+	
+	var _this;
+	
+	window.R = __webpack_require__(7);
+	
+	var HomeQuestionCardStyle = function (_View) {
+		_inherits(HomeQuestionCardStyle, _View);
+	
+		function HomeQuestionCardStyle(props, children, state) {
+			_classCallCheck(this, HomeQuestionCardStyle);
+	
+			var _this2 = _possibleConstructorReturn(this, (HomeQuestionCardStyle.__proto__ || Object.getPrototypeOf(HomeQuestionCardStyle)).call(this, props, children, state));
+	
+			_this2.show = function () {
+				_this2.setVisibility("visible");
+				_this2.isVisible = true;
+				//this.afterRender();
+			};
+	
+			_this2.hide = function () {
+				_this2.setVisibility("gone");
+				_this2.isVisible = false;
+			};
+	
+			_this2.setVisibility = function (data) {
+				var cmd = _this2.set({
+					id: _this2.idSet.parentId,
+					visibility: data
+				});
+				Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdHomeQuestionCardStylejs");
+			};
+	
+			_this2.onPop = function () {};
+	
+			_this2.handleLoginClick = function () {
+				console.log(window.__loginUrl, "/auth/realms/sunbird/protocol/openid-connect/auth ", "android");
+				JBridge.keyCloakLogin(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/auth", "android");
+			};
+	
+			_this2.render = function () {
+				_this2.layout = dom(
+					LinearLayout,
+					{
+						height: _this2.props.height ? _this2.props.height : "wrap_content",
+						width: "match_parent",
+						id: _this2.idSet.parentId,
+						orientation: "vertical",
+						background: "#FFFFFF",
+						padding: "16,16,16,16",
+						cornerRadius: "5",
+						clickable: "true",
+						root: true, __source: {
+							fileName: _jsxFileName,
+							lineNumber: 59
+						}
+					},
+					dom(TextView, {
+						height: "27",
+						width: "match_parent",
+						text: _this2.props.headerText ? _this2.props.headerText : "",
+						textSize: _this2.props.textSize ? _this2.props.textSize : "20",
+						color: "#000000",
+						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 69
+						}
+					}),
+					dom(TextView, {
+						id: _this2.setIds.LOCK_INFO_TEXT,
+						height: "match_parent",
+						width: "match_parent",
+						padding: "0,16,0,16",
+						text: _this2.props.infoText ? _this2.props.infoText : "",
+						textSize: "15",
+						color: "#000000",
+						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 77
+						}
+					}),
+					dom(
+						LinearLayout,
+						{
+							height: "38",
+							width: "match_parent",
+							onClick: _this2.handleLoginClick, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 87
+							}
+						},
+						dom(TextView, {
+							background: window.__Colors.THICK_BLUE,
+							stroke: "5," + window.__Colors.THICK_BLUE,
+							cornerRadius: "5",
+							height: "match_parent",
+							width: "match_parent",
+							gravity: "center",
+							textAllCaps: "true",
+							style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+							text: window.__S.SIGN_IN, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 91
+							}
+						})
+					)
+				);
+				//this.containerId = this.layout.idSet.id;
+				return _this2.layout.render();
+			};
+	
+			_this2.setIds(["LOCK_SIGN_IN", "LOCK_LABEL", "LOCK_INFO_TEXT", "parentId"]);
+			_this2.state = state;
+			_this2.screenName = "HomeQuestionCardStyle";
+			window.__HomeQuestionCardStyle = _this2;
+			_this2.visible = true;
+	
+			_this = _this2;
+	
+			return _this2;
+		}
+	
+		return HomeQuestionCardStyle;
+	}(View);
+	
+	;
+	
+	module.exports = HomeQuestionCardStyle;
+
+/***/ }),
+/* 414 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnnouncementCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26004,7 +27000,7 @@
 	module.exports = AnnouncementCard;
 
 /***/ }),
-/* 410 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -26057,12 +27053,12 @@
 	}];
 
 /***/ }),
-/* 411 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26080,9 +27076,9 @@
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
 	var Space = __webpack_require__(366);
-	var ClassListItem = __webpack_require__(412);
-	var SearchResult = __webpack_require__(413);
-	var debounce = __webpack_require__(401);
+	var ClassListItem = __webpack_require__(417);
+	var SearchResult = __webpack_require__(418);
+	var debounce = __webpack_require__(403);
 	var Styles = __webpack_require__(347);
 	var callbackMapper = __webpack_require__(329);
 	var IconStyle = Styles.Params.IconStyle;
@@ -26141,7 +27137,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "96", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleCloseClick = function () {
@@ -26188,7 +27184,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "144", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "144", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleItemClick = function (itemNo, logoNo) {
@@ -26396,7 +27392,7 @@
 	        text: "",
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "161", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "161", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    }
 	  }, {
 	    key: "getSearchList",
@@ -26566,12 +27562,12 @@
 	module.exports = SearchToolbar;
 
 /***/ }),
-/* 412 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ClassListItem.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ClassListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26809,12 +27805,12 @@
 	module.exports = ClassListItem;
 
 /***/ }),
-/* 413 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/SearchResult.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SearchResult.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27001,7 +27997,7 @@
 	      console.log("itemClicked ", item);
 	
 	      var itemDetails = JSON.stringify(item);
-	      if (_this.props.type.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "resource") JBridge.logContentClickEvent("RESOURCES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);
+	      if (_this.props.type.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "resource") JBridge.logContentClickEvent("LIBRARY", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);
 	
 	      if (item.hasOwnProperty("data") && item.data.hasOwnProperty("education")) {
 	        console.log("item data", item);
@@ -27093,12 +28089,12 @@
 	module.exports = SearchResult;
 
 /***/ }),
-/* 414 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27120,11 +28116,11 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseCard = __webpack_require__(415);
+	var CourseCard = __webpack_require__(420);
 	var callbackMapper = __webpack_require__(329);
-	var DownloadedCard = __webpack_require__(417);
+	var DownloadedCard = __webpack_require__(422);
 	
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
 	
 	var HomeRecommendedContainer = function (_View) {
 	  _inherits(HomeRecommendedContainer, _View);
@@ -27304,12 +28300,12 @@
 	module.exports = HomeRecommendedContainer;
 
 /***/ }),
-/* 415 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27331,7 +28327,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(416);
+	var StarComponent = __webpack_require__(421);
 	var _this;
 	
 	var CardRecommended = function (_View) {
@@ -27518,12 +28514,12 @@
 	module.exports = CardRecommended;
 
 /***/ }),
-/* 416 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/StarComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/StarComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27608,12 +28604,12 @@
 	module.exports = StarComponent;
 
 /***/ }),
-/* 417 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/DownloadedCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27635,7 +28631,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(416);
+	var StarComponent = __webpack_require__(421);
 	var _this;
 	
 	var DownloadedCard = function (_View) {
@@ -27810,12 +28806,12 @@
 	module.exports = DownloadedCard;
 
 /***/ }),
-/* 418 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27837,9 +28833,9 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseProgressCard = __webpack_require__(419);
-	var CardComponent = __webpack_require__(407);
-	var DownloadedCard = __webpack_require__(417);
+	var CourseProgressCard = __webpack_require__(424);
+	var CardComponent = __webpack_require__(410);
+	var DownloadedCard = __webpack_require__(422);
 	
 	var HomeTodoContainer = function (_View) {
 	  _inherits(HomeTodoContainer, _View);
@@ -28009,12 +29005,12 @@
 	module.exports = HomeTodoContainer;
 
 /***/ }),
-/* 419 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseProgressCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgressCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28036,7 +29032,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(416);
+	var StarComponent = __webpack_require__(421);
 	var _this;
 	
 	var CourseProgressCard = function (_View) {
@@ -28261,12 +29257,12 @@
 	module.exports = CourseProgressCard;
 
 /***/ }),
-/* 420 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/CourseFragment.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CourseFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28288,12 +29284,18 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
+	var LineSpacer = __webpack_require__(408);
+	var NoInternetCard = __webpack_require__(426);
+	var CircularLoader = __webpack_require__(412);
+	var utils = __webpack_require__(397);
 	
-	var SearchToolbar = __webpack_require__(411);
+	var SearchToolbar = __webpack_require__(416);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var CourseInProgressContainer = __webpack_require__(406);
-	var CourseContainer = __webpack_require__(421);
+	var CourseInProgressContainer = __webpack_require__(409);
+	var CourseContainer = __webpack_require__(427);
+	var HomeQuestionCardStyle = __webpack_require__(413);
+	
 	var _this;
 	
 	var CourseFragment = function (_View) {
@@ -28330,102 +29332,112 @@
 	      window.__timer = setTimeout(_this2.dumyfunction, 5000);
 	    };
 	
-	    _this2.handleResponse = function () {
-	      if (!JBridge.isNetworkAvailable()) {
-	        window.__ContentLoadingComponent.hideLoader();
-	        window.__LoaderDialog.hide();
-	        window.timer = setTimeout(_this2.networkCheck, 5000);
-	        return _this2.getNoInternetLayout();
-	      }
-	      if (_this2.props.response === undefined) {
+	    _this2.handlePageApi = function (isErr) {
+	      if (isErr) {
+	        //Error in response
 	        window.__Snackbar.show(window.__S.ERROR_EMPTY_RESULT);
-	        return _this2.getErrorLayout();
-	      }
+	        _this2.replaceChild(_this2.idSet.courseContentContainer, _this2.getErrorLayout().render(), 0);
+	      } else {
+	        //successful response
+	        _this2.details = _this2.responseData.result.response;
+	        if (!_this2.details.hasOwnProperty("name") || _this2.details.sections == undefined || _this2.details.sections.length == 0) {
+	          //error in fetched data
+	          window.__ContentLoadingComponent.hideLoader();
+	          window.__LoaderDialog.hide();
+	          window.__Snackbar.show(window.__S.ERROR_FETCHING_DATA);
+	          _this2.replaceChild(_this2.idSet.courseContentContainer, _this2.getErrorLayout().render(), 0);
+	        } else {
+	          var rows = _this2.details.sections.map(function (item, index) {
+	            return _this2.getCourseCardLayout(item);
+	          });
 	
-	      _this2.details = _this2.props.response.result.response;
-	      if (!_this2.details.hasOwnProperty("name") || _this2.details.sections == undefined || _this2.details.sections.length == 0) {
-	        window.__ContentLoadingComponent.hideLoader();
-	        window.__LoaderDialog.hide();
-	        window.__Snackbar.show(window.__S.ERROR_FETCHING_DATA);
-	        return _this2.getErrorLayout();
-	      }
+	          var layout = dom(
+	            LinearLayout,
+	            {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              orientation: "vertical",
+	              root: "true", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 130
+	              }
+	            },
+	            rows,
+	            _this2.getSignInOverlay()
+	          );
 	
-	      Android.runInUI(_this2.set({
-	        id: _this2.idSet.fetchingHolder,
-	        visibility: "gone"
-	      }), 0, "128", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsFragmentsCourseFragmentjs");
-	      var emptyBody = dom(LinearLayout, {
-	        layoutTransition: "true",
-	        height: "match_parent",
-	        width: "match_parent", __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 132
+	          _this2.replaceChild(_this2.idSet.courseContentContainer, layout.render(), 0);
 	        }
-	      });
-	      _this2.replaceChild(_this2.idSet.parentContainer, emptyBody.render(), 0);
-	
-	      var rows = _this2.details.sections.map(function (item, index) {
-	        return _this2.getCourseCardLayout(item);
-	      });
-	
-	      var layout = dom(
-	        LinearLayout,
-	        {
-	          height: "wrap_content",
-	          width: "match_parent",
-	          orientation: "vertical",
-	          root: "true", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 144
-	          }
-	        },
-	        rows
-	      );
-	
-	      return layout;
+	      }
+	      utils.addSwipeFunction(_this2.idSet.scrollViewContainerCourse);
 	    };
 	
-	    _this2.getNoInternetLayout = function () {
+	    _this2.getSignInOverlay = function () {
+	      if (window.__loggedInState && window.__loggedInState == "GUEST") {
+	        return dom(
+	          LinearLayout,
+	          {
+	            background: window.__Colors.WHITE_F2,
+	            clickable: "true",
+	            width: "match_parent",
+	            padding: "16,16,16,16", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 148
+	            }
+	          },
+	          dom(HomeQuestionCardStyle, {
+	            headerText: window.__S.OVERLAY_LABEL_COMMON,
+	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	            textSize: "16",
+	            gravity: "left", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 153
+	            }
+	          })
+	        );
+	      } else {
+	        return dom(LinearLayout, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 160
+	          }
+	        });
+	      }
+	    };
 	
-	      var layout = dom(
-	        LinearLayout,
-	        {
-	          background: window.__Colors.WHITE,
-	          height: "400",
-	          width: "match_parent",
-	          alpha: "0.55",
-	          weight: "1",
-	          orientation: "vertical",
-	          gravity: "center_horizontal",
-	          clickable: "true",
-	          visibility: JBridge.isNetworkAvailable() == false ? "visible" : "gone", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 163
+	    _this2.handleStateChange = function (state) {
+	      var res = utils.processResponse(state);
+	      var status = res.status;
+	      var responseData = res.data;
+	      _this2.responseData = responseData;
+	      var responseCode = res.code;
+	      var responseUrl = res.url;
+	      var isErr = res.hasOwnProperty("err");
+	
+	      console.log("responseData -> ", _this2.responseData);
+	      switch (state.responseFor) {
+	        case "API_CourseFragment":
+	          _this2.handlePageApi(isErr);
+	          break;
+	        case "API_UserEnrolledCourse":
+	          if (isErr) {
+	            var tmpData = JBridge.getSavedData("savedCourse");
+	            if (tmpData && tmpData != "__failed") {
+	              console.log("fetched enrolledCourses");
+	              window.__enrolledCourses = JSON.parse(utils.decodeBase64(tmpData));
+	              // window.setEnrolledCourses(JSON.parse(utils.decodeBase64(tmpData)));
+	              _this2.courseInProgressContainer.renderContent(JSON.parse(utils.decodeBase64(tmpData)));
+	              return;
+	            }
+	          } else {
+	            JBridge.saveData("savedCourse", utils.encodeBase64(JSON.stringify(responseData.result.courses)));
+	            window.__enrolledCourses = responseData.result.courses;
+	            // window.setEnrolledCourses(responseData.result.courses);
+	            _this2.courseInProgressContainer.renderContent(responseData.result.courses);
+	            return;
 	          }
-	        },
-	        dom(ImageView, {
-	          width: "100",
-	          height: "100",
-	          margin: "0,58,0,0",
-	          gravity: "center_horizontal",
-	          imageUrl: "ic_no_internet", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 174
-	          }
-	        }),
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          gravity: "center_horizontal",
-	          padding: "0,16,0,0",
-	          style: window.__TextStyle.textStyle.CARD.HEADING,
-	          text: window.__S.ERROR_OFFLINE_MODE, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 181
-	          }
-	        })
-	      );
-	      return layout;
+	          break;
+	      }
 	    };
 	
 	    _this2.getErrorLayout = function () {
@@ -28442,7 +29454,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 199
+	            lineNumber: 203
 	          }
 	        },
 	        dom(ImageView, {
@@ -28452,7 +29464,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 209
+	            lineNumber: 213
 	          }
 	        }),
 	        dom(TextView, {
@@ -28463,7 +29475,7 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 216
+	            lineNumber: 220
 	          }
 	        })
 	      );
@@ -28485,10 +29497,15 @@
 	          visibility: item.contents == undefined ? "gone" : "visible",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 238
+	            lineNumber: 241
 	          }
 	        },
-	        _this2.getSpaceSeparator(),
+	        dom(LineSpacer, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 247
+	          }
+	        }),
 	        dom(CourseContainer, {
 	          title: item.name,
 	          languageTitle: LanguageTitle,
@@ -28497,7 +29514,7 @@
 	          showViewMore: "visible",
 	          onCourseClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 246
+	            lineNumber: 249
 	          }
 	        })
 	      );
@@ -28529,25 +29546,56 @@
 	      window.__runDuiCallback(event);
 	    };
 	
-	    _this2.addSwipeFunction = function () {
+	    _this2.getCourseData = function () {
+	      console.log("getCourseData");
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__ContentLoadingComponent.hideLoader();
+	        window.__LoaderDialog.hide();
+	        window.timer = setTimeout(_this2.networkCheck, 5000);
+	        _this2.replaceChild(_this2.idSet.courseContentContainer, dom(NoInternetCard, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 295
+	          }
+	        }).render(), 0);
+	      } else {
+	        var whatToSend = {
+	          user_token: window.__user_accessToken,
+	          api_token: window.__apiToken
+	        };
+	        var event = { tag: "API_CourseFragment", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      }
+	    };
 	
-	      var callbackRefresh = callbackMapper.map(function (params) {
-	        window.__BNavFlowRestart();
+	    _this2.getCourseInProgressContainer = function () {
+	      _this2.courseInProgressContainer = dom(CourseInProgressContainer, {
+	        parentContainer: "Course",
+	        transparent: "true",
+	        title: window.__S.COURSES_IN_PROGRESS,
+	        showViewMore: "gone",
+	        onCourseClick: _this2.handleUserCoursesClick, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 308
+	        }
 	      });
-	      JBridge.addSwipeRefreshScrollView(_this2.idSet.scrollViewContainerCourse, callbackRefresh);
+	      return _this2.courseInProgressContainer;
+	    };
+	
+	    _this2.afterRender = function () {
+	      _this2.getCourseData();
+	      utils.addSwipeFunction(_this2.idSet.scrollViewContainerCourse);
 	    };
 	
 	    _this2.getBody = function () {
-	
 	      return dom(
 	        LinearLayout,
 	        {
 	          orientation: "vertical",
 	          width: "match_parent",
-	          afterRender: _this2.addSwipeFunction,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 300
+	            lineNumber: 325
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -28558,7 +29606,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 306
+	            lineNumber: 330
 	          }
 	        }),
 	        dom(
@@ -28569,7 +29617,7 @@
 	            id: _this2.idSet.scrollViewContainerCourse,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 315
+	              lineNumber: 338
 	            }
 	          },
 	          dom(
@@ -28580,20 +29628,29 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 321
+	                lineNumber: 344
 	              }
 	            },
-	            dom(CourseInProgressContainer, {
-	              parentContainer: "Course",
-	              transparent: "true",
-	              title: window.__S.COURSES_IN_PROGRESS,
-	              showViewMore: "gone",
-	              onCourseClick: _this2.handleUserCoursesClick, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 328
-	              }
-	            }),
-	            _this2.handleResponse()
+	            _this2.getCourseInProgressContainer(),
+	            dom(
+	              LinearLayout,
+	              {
+	                width: "match_parent",
+	                weight: "1",
+	                orientation: "vertical",
+	                layoutTransition: "true",
+	                id: _this2.idSet.courseContentContainer, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 352
+	                }
+	              },
+	              dom(CircularLoader, {
+	                margin: "0,16,0,0", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 359
+	                }
+	              })
+	            )
 	          )
 	        )
 	      );
@@ -28616,20 +29673,9 @@
 	      }
 	    };
 	
-	    _this2.getSpaceSeparator = function () {
-	      return dom(LinearLayout, {
-	        height: "6",
-	        orientation: "vertical",
-	        width: "match_parent",
-	        background: window.__Colors.WHITE_F2, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 366
-	        }
-	      });
-	    };
-	
+	    _this2.screenName = "CourseFragment";
 	    _this2.props.appendText = _this2.props.appendText || "";
-	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "fetchingHolder", "scrollViewContainerCourse"]);
+	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "fetchingHolder", "scrollViewContainerCourse", "courseContentContainer"]);
 	    _this = _this2;
 	
 	    _this2.props = props;
@@ -28673,9 +29719,10 @@
 	          root: "true",
 	          orientation: "vertical",
 	          width: "match_parent",
-	          height: "match_parent", __source: {
+	          height: "match_parent",
+	          afterRender: this.afterRender, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 376
+	            lineNumber: 389
 	          }
 	        },
 	        this.getBody()
@@ -28691,12 +29738,104 @@
 	module.exports = CourseFragment;
 
 /***/ }),
-/* 421 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/NoInternetCard.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var TextView = __webpack_require__(342);
+	
+	var NoInternetCard = function (_View) {
+	    _inherits(NoInternetCard, _View);
+	
+	    function NoInternetCard(props, children, state) {
+	        _classCallCheck(this, NoInternetCard);
+	
+	        var _this = _possibleConstructorReturn(this, (NoInternetCard.__proto__ || Object.getPrototypeOf(NoInternetCard)).call(this, props, children, state));
+	
+	        _this.width = _this.props.width ? _this.props.width : "match_parent";
+	        _this.height = _this.props.height ? _this.props.height : "400";
+	        _this.padding = _this.props.padding ? _this.props.padding : "0,0,0,0";
+	        _this.margin = _this.props.margin ? _this.props.margin : "0,0,0,0";
+	        _this.weight = _this.props.weight ? _this.props.weight : null;
+	        return _this;
+	    }
+	
+	    _createClass(NoInternetCard, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                LinearLayout,
+	                {
+	                    background: window.__Colors.WHITE,
+	                    height: this.height,
+	                    width: this.width,
+	                    padding: this.padding,
+	                    margin: this.margin,
+	                    weight: this.weight,
+	                    orientation: "vertical",
+	                    gravity: "center_horizontal",
+	                    clickable: "true", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 21
+	                    }
+	                },
+	                dom(ImageView, {
+	                    width: "100",
+	                    height: "100",
+	                    margin: "0,58,0,0",
+	                    alpha: "0.55",
+	                    gravity: "center_horizontal",
+	                    imageUrl: "ic_no_internet", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 32
+	                    }
+	                }),
+	                dom(TextView, {
+	                    width: "wrap_content",
+	                    height: "wrap_content",
+	                    gravity: "center_horizontal",
+	                    alpha: "0.55",
+	                    padding: "0,16,0,0",
+	                    style: window.__TextStyle.textStyle.CARD.HEADING,
+	                    text: window.__S.ERROR_OFFLINE_MODE, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 40
+	                    }
+	                })
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return NoInternetCard;
+	}(View);
+	
+	module.exports = NoInternetCard;
+
+/***/ }),
+/* 427 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28719,7 +29858,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
 	var utils = __webpack_require__(397);
 	
 	var CourseContainer = function (_View) {
@@ -28782,12 +29921,13 @@
 	    _this2.checkEnrolledCourse = function (identifier) {
 	
 	      var enrolled = false;
-	      window.__enrolledCourses.map(function (item) {
-	        if (item.courseId == identifier) {
-	          enrolled = true;
-	        }
-	      });
-	
+	      if (window.__enrolledCourses) {
+	        window.__enrolledCourses.map(function (item) {
+	          if (item.courseId == identifier) {
+	            enrolled = true;
+	          }
+	        });
+	      }
 	      return enrolled;
 	    };
 	
@@ -28813,7 +29953,7 @@
 	        index: i,
 	        onCardClick: _this2.handleCardClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 103
+	          lineNumber: 104
 	        }
 	      });
 	    };
@@ -28870,7 +30010,7 @@
 	          padding: "16,16,16,16",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 114
+	            lineNumber: 115
 	          }
 	        },
 	        dom(TextView, {
@@ -28879,7 +30019,7 @@
 	          text: this.props.languageTitle,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 120
+	            lineNumber: 121
 	          }
 	        }),
 	        dom(ViewWidget, {
@@ -28887,7 +30027,7 @@
 	          height: "0",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 126
+	            lineNumber: 127
 	          }
 	        }),
 	        dom(TextView, {
@@ -28901,7 +30041,7 @@
 	          },
 	          style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 131
+	            lineNumber: 132
 	          }
 	        })
 	      );
@@ -28920,7 +30060,7 @@
 	          root: "true",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 187
+	            lineNumber: 188
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -28929,7 +30069,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 196
+	            lineNumber: 197
 	          }
 	        })
 	      );
@@ -28944,12 +30084,12 @@
 	module.exports = CourseContainer;
 
 /***/ }),
-/* 422 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/ResourceFragment.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ResourceFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28972,13 +30112,16 @@
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	window.R = __webpack_require__(7);
-	var SearchToolbar = __webpack_require__(411);
+	var HomeQuestionCardStyle = __webpack_require__(413);
+	var CircularLoader = __webpack_require__(412);
+	var SearchToolbar = __webpack_require__(416);
+	var LineSpacer = __webpack_require__(408);
+	var NoInternetCard = __webpack_require__(426);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseContainer = __webpack_require__(421);
-	var HomeRecommendedContainer = __webpack_require__(414);
-	var ResourceContainer = __webpack_require__(423);
-	var OfflineResourceContainer = __webpack_require__(424);
-	
+	var CourseContainer = __webpack_require__(427);
+	var HomeRecommendedContainer = __webpack_require__(419);
+	var ResourceContainer = __webpack_require__(429);
+	var OfflineResourceContainer = __webpack_require__(430);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -28991,11 +30134,19 @@
 	
 	    var _this2 = _possibleConstructorReturn(this, (ResourceComponent.__proto__ || Object.getPrototypeOf(ResourceComponent)).call(this, props, children));
 	
-	    _this2.handleResponse = function () {
+	    _this2.handleStateChange = function (state) {
+	      var res = utils.processResponse(state);
+	      var status = res.status;
+	      var responseData = res.data;
+	      _this2.responseData = responseData;
+	      var responseCode = res.code;
+	      var responseUrl = res.url;
+	      var isErr = res.hasOwnProperty("err");
 	
-	      if (_this2.props.response) {
+	      console.log("responseData -> ", _this2.responseData);
 	
-	        _this2.details = _this2.props.response.result.response;
+	      if (!isErr) {
+	        _this2.details = _this2.responseData.result.response;
 	        if (_this2.details.hasOwnProperty("name")) {
 	
 	          var cardsContent = _this2.details.sections.map(function (item) {
@@ -29009,26 +30160,50 @@
 	              orientation: "vertical",
 	              root: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 89
+	                lineNumber: 99
 	              }
 	            },
-	            cardsContent
+	            dom(LineSpacer, {
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 104
+	              }
+	            }),
+	            cardsContent,
+	            _this2.getSignInOverlay()
 	          );
 	        } else {
-	          _this2.cards = _this2.getErrorLayout();
+	          _this2.cards = dom(
+	            LinearLayout,
+	            {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              orientation: "vertical",
+	              root: "true", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 109
+	              }
+	            },
+	            _this2.getErrorLayout(),
+	            _this2.getSignInOverlay()
+	          );
 	        }
 	      } else {
-	
-	        _this2.cards = dom(LinearLayout, {
-	          height: "wrap_content",
-	          width: "match_parent",
-	          orientation: "vertical",
-	          root: "true", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 105
-	          }
-	        });
+	        _this2.cards = dom(
+	          LinearLayout,
+	          {
+	            height: "wrap_content",
+	            width: "match_parent",
+	            orientation: "vertical",
+	            root: "true", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 119
+	            }
+	          },
+	          _this2.getSignInOverlay()
+	        );
 	      }
+	      _this2.replaceChild(_this2.idSet.resourceContentContainer, _this2.cards.render(), 0);
 	    };
 	
 	    _this2.getResourceCardLayout = function (content) {
@@ -29042,17 +30217,16 @@
 	          root: "true",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 120
+	            lineNumber: 135
 	          }
 	        },
-	        _this2.getSpaceSeparator(),
 	        dom(ResourceContainer, {
 	          data: content.contents,
 	          title: content.name,
 	          searchQuery: content.searchQuery,
 	          onViewAllClick: _this2.handleResourceViewAllClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 128
+	            lineNumber: 141
 	          }
 	        })
 	      );
@@ -29072,50 +30246,8 @@
 	      window.__runDuiCallback(event);
 	    };
 	
-	    _this2.getNoInternetLayout = function () {
-	
-	      var layout = dom(
-	        LinearLayout,
-	        {
-	          background: window.__Colors.WHITE,
-	          height: "400",
-	          width: "match_parent",
-	          alpha: "0.55",
-	          weight: "1",
-	          orientation: "vertical",
-	          gravity: "center_horizontal",
-	          clickable: "true",
-	          visibility: JBridge.isNetworkAvailable() == false ? "visible" : "gone", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 158
-	          }
-	        },
-	        dom(ImageView, {
-	          width: "100",
-	          height: "100",
-	          margin: "0,58,0,0",
-	          gravity: "center_horizontal",
-	          imageUrl: "ic_no_internet", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 169
-	          }
-	        }),
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          gravity: "center_horizontal",
-	          padding: "0,16,0,0",
-	          style: window.__TextStyle.textStyle.CARD.HEADING,
-	          text: window.__S.ERROR_OFFLINE_MODE, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 176
-	          }
-	        })
-	      );
-	      return layout;
-	    };
-	
 	    _this2.getErrorLayout = function () {
+	      console.log("getErrorLayout render");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -29129,7 +30261,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 194
+	            lineNumber: 169
 	          }
 	        },
 	        dom(ImageView, {
@@ -29139,7 +30271,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 204
+	            lineNumber: 179
 	          }
 	        }),
 	        dom(TextView, {
@@ -29150,7 +30282,7 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 211
+	            lineNumber: 186
 	          }
 	        })
 	      );
@@ -29158,7 +30290,6 @@
 	    };
 	
 	    _this2.getBody = function () {
-	
 	      return dom(
 	        LinearLayout,
 	        {
@@ -29167,7 +30298,7 @@
 	          id: _this2.idSet.parentContainer,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 230
+	            lineNumber: 202
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -29178,7 +30309,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 236
+	            lineNumber: 208
 	          }
 	        }),
 	        dom(
@@ -29189,7 +30320,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 245
+	              lineNumber: 216
 	            }
 	          },
 	          dom(
@@ -29200,19 +30331,38 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 251
+	                lineNumber: 222
 	              }
 	            },
 	            dom(LinearLayout, {
 	              id: _this2.idSet.offlineContainer,
 	              width: "match_parent",
 	              height: "wrap_content",
-	              orientation: "vertical", __source: {
+	              orientation: "vertical",
+	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 258
+	                lineNumber: 228
 	              }
 	            }),
-	            _this2.cards
+	            dom(
+	              LinearLayout,
+	              {
+	                id: _this2.idSet.resourceContentContainer,
+	                width: "match_parent",
+	                orientation: "vertical",
+	                weight: "1",
+	                layoutTransition: "true", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 235
+	                }
+	              },
+	              dom(CircularLoader, {
+	                margin: "0,16,0,0", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 242
+	                }
+	              })
+	            )
 	          )
 	        )
 	      );
@@ -29243,25 +30393,31 @@
 	      window.whatToSend(event);
 	    };
 	
-	    _this2.getSpaceSeparator = function () {
-	      return dom(LinearLayout, {
-	        height: "6",
-	        orientation: "vertical",
-	        width: "match_parent",
-	        background: window.__Colors.WHITE_F2, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 306
-	        }
-	      });
+	    _this2.afterRender = function () {
+	      utils.addSwipeFunction(_this2.idSet.scrollViewContainer);
+	      _this2.renderOfflineCard();
+	      _this2.getResourceData();
 	    };
 	
-	    _this2.afterRender = function () {
-	      _this2.renderOfflineCard();
-	      var callbackRefresh = callbackMapper.map(function (params) {
-	        window.__BNavFlowRestart();
-	      });
-	
-	      JBridge.addSwipeRefreshScrollView(_this2.idSet.scrollViewContainer, callbackRefresh);
+	    _this2.getResourceData = function () {
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__ContentLoadingComponent.hideLoader();
+	        window.__LoaderDialog.hide();
+	        window.timer = setTimeout(_this2.networkCheck, 5000);
+	        _this2.replaceChild(_this2.idSet.resourceContentContainer, dom(NoInternetCard, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 287
+	          }
+	        }).render(), 0);
+	      } else {
+	        var whatToSend = {
+	          user_token: window.__user_accessToken,
+	          api_token: window.__apiToken
+	        };
+	        var event = { tag: "API_ResourceFragment", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      }
 	    };
 	
 	    _this2.renderOfflineCard = function () {
@@ -29279,7 +30435,7 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 332
+	              lineNumber: 307
 	            }
 	          },
 	          dom(OfflineResourceContainer, {
@@ -29288,18 +30444,15 @@
 	            title: window.__S.SAVED_RESOURCES,
 	            onViewAllClick: _this.handleResourceViewAllClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 338
+	              lineNumber: 312
 	            }
 	          }),
-	          dom(LinearLayout, {
-	            width: "match_parent",
-	            height: "10",
-	            background: window.__Colors.WHITE_F2, __source: {
+	          dom(LineSpacer, {
+	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 344
+	              lineNumber: 318
 	            }
-	          }),
-	          _this.getNoInternetLayout()
+	          })
 	        );
 	
 	        _this.replaceChild(_this.idSet.offlineContainer, layout.render(), 0);
@@ -29310,8 +30463,41 @@
 	      window.__LoaderDialog.hide();
 	    };
 	
+	    _this2.getSignInOverlay = function () {
+	      if (window.__loggedInState && window.__loggedInState == "GUEST") {
+	        return dom(
+	          LinearLayout,
+	          {
+	            background: window.__Colors.WHITE_F2,
+	            clickable: "true",
+	            padding: "16,16,16,16", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 335
+	            }
+	          },
+	          dom(HomeQuestionCardStyle, {
+	            headerText: window.__S.OVERLAY_LABEL_COMMON,
+	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	            textSize: "16",
+	            gravity: "left", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 339
+	            }
+	          })
+	        );
+	      } else {
+	        return dom(LinearLayout, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 346
+	          }
+	        });
+	      }
+	    };
+	
 	    _this2.props.appendText = _this2.props.appendText || "";
-	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "offlineContainer", "scrollViewContainer"]);
+	    _this2.screenName = "ResourceFragment";
+	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "offlineContainer", "scrollViewContainer", "resourceContentContainer"]);
 	    _this = _this2;
 	
 	    _this2.data = [];
@@ -29336,7 +30522,7 @@
 	    }
 	    JBridge.logTabScreenEvent("LIBRARY");
 	    window.__UpdateOfflineContent = _this2.renderOfflineCard;
-	    _this2.handleResponse();
+	    // this.handleResponse();
 	
 	    return _this2;
 	  }
@@ -29353,7 +30539,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 370
+	            lineNumber: 353
 	          }
 	        },
 	        this.getBody()
@@ -29369,12 +30555,12 @@
 	module.exports = ResourceComponent;
 
 /***/ }),
-/* 423 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ResourceContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29397,7 +30583,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
 	var utils = __webpack_require__(397);
 	
 	var ResourceContainer = function (_View) {
@@ -29592,12 +30778,12 @@
 	module.exports = ResourceContainer;
 
 /***/ }),
-/* 424 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29620,7 +30806,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
 	var utils = __webpack_require__(397);
 	
 	var OfflineResourceContainer = function (_View) {
@@ -29637,7 +30823,7 @@
 	        visibility: _this2.offlineCount == 0 ? "gone" : "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "35", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
+	      Android.runInUI(cmd, 0, "35", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
 	    };
 	
 	    _this2.getRows = function () {
@@ -29852,12 +31038,12 @@
 	module.exports = OfflineResourceContainer;
 
 /***/ }),
-/* 425 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/CommunityFragment.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CommunityFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29879,10 +31065,10 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(411);
-	var MyCommunities = __webpack_require__(426);
-	var PopularCommunities = __webpack_require__(427);
-	var RecommendedCommunities = __webpack_require__(428);
+	var SearchToolbar = __webpack_require__(416);
+	var MyCommunities = __webpack_require__(432);
+	var PopularCommunities = __webpack_require__(433);
+	var RecommendedCommunities = __webpack_require__(434);
 	
 	var CommunityFragment = function (_View) {
 	  _inherits(CommunityFragment, _View);
@@ -29981,7 +31167,7 @@
 	        id: _this.idSet.viewallContainer,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "111", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsFragmentsCommunityFragmentjs");
+	      Android.runInUI(cmd, 0, "111", "UsersnikithshettysunbirdgithubsunbirdduiviewsFragmentsCommunityFragmentjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {};
@@ -30126,12 +31312,12 @@
 	module.exports = CommunityFragment;
 
 /***/ }),
-/* 426 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/MyCommunities.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MyCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30426,12 +31612,12 @@
 	module.exports = MyCommunities;
 
 /***/ }),
-/* 427 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PopularCommunities.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PopularCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30697,12 +31883,12 @@
 	module.exports = PopularCommunities;
 
 /***/ }),
-/* 428 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30969,12 +32155,12 @@
 	module.exports = RecommendedCommunities;
 
 /***/ }),
-/* 429 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/Fragments/ProfileFragment.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ProfileFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30997,20 +32183,23 @@
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(430);
-	var ComingSoonComponent = __webpack_require__(431);
-	var PersonalDetails = __webpack_require__(432);
-	var ProfileExperiences = __webpack_require__(433);
-	var ProfileSkillTags = __webpack_require__(435);
-	var ProfileAccomplishments = __webpack_require__(436);
-	var ProfileCreations = __webpack_require__(437);
-	var ProfileBadges = __webpack_require__(438);
-	var ProfileProgress = __webpack_require__(439);
-	var ProfileAdditionalInfo = __webpack_require__(440);
-	var ProfilAffiliations = __webpack_require__(441);
-	var CropParagraph = __webpack_require__(434);
+	var ProfileHeader = __webpack_require__(436);
+	var ComingSoonComponent = __webpack_require__(437);
+	var PersonalDetails = __webpack_require__(438);
+	var ProfileExperiences = __webpack_require__(439);
+	var ProfileSkillTags = __webpack_require__(441);
+	var ProfileAccomplishments = __webpack_require__(442);
+	var ProfileCreations = __webpack_require__(443);
+	var ProfileBadges = __webpack_require__(444);
+	var ProfileProgress = __webpack_require__(445);
+	var ProfileAdditionalInfo = __webpack_require__(446);
+	var ProfilAffiliations = __webpack_require__(447);
+	var GuestAdditionalInfo = __webpack_require__(448);
+	var HomeQuestionCardStyle = __webpack_require__(413);
+	var CropParagraph = __webpack_require__(440);
+	var CircularLoader = __webpack_require__(412);
 	var utils = __webpack_require__(397);
-	var Str = __webpack_require__(398);
+	var Str = __webpack_require__(399);
 	
 	var _this;
 	
@@ -31036,20 +32225,76 @@
 	      window.__Logout();
 	    };
 	
-	    _this2.handleResponse = function () {
-	      console.log("this.props.response", _this2.props.response);
-	      if (_this2.props.response) {
-	        var profileData = _this2.props.response;
-	        _this2.details = profileData.result.response;
-	        _this2.description = _this2.details.profileSummary ? _this2.details.profileSummary : "";
-	        _this2.createdBy = {};
-	        _this2.jobProfile = _this2.details.jobProfile;
-	        _this2.education = _this2.details.education;
-	        _this2.address = _this2.details.address;
-	      } else {
-	        _this2.details = {};
-	        _this2.description = "";
-	        _this2.createdBy = {};
+	    _this2.handleStateChange = function (state) {
+	      var res = utils.processResponse(state);
+	      var status = res.status;
+	      var responseData = res.data;
+	      _this2.responseData = responseData;
+	      var responseCode = res.code;
+	      var responseUrl = res.url;
+	      var isErr = res.hasOwnProperty("err");
+	
+	      console.log("responseData -> ", _this2.responseData);
+	      switch (state.responseFor) {
+	        case "API_ProfileFragment":
+	          if (isErr) {
+	            if (JBridge.getSavedData(_this2.profileDataTag) != "__failed") {
+	              var data = JSON.parse(utils.decodeBase64(JBridge.getSavedData(_this2.profileDataTag)));
+	              data.local = true;
+	              _this2.handleStateChange(data);
+	            } else {
+	              window.__LoaderDialog.hide();
+	            }
+	            _this2.details = {};
+	            _this2.description = "";
+	            _this2.createdBy = {};
+	          } else {
+	            console.log("profileData", responseData);
+	            window.__userName = responseData.result.response.userName;
+	            _this2.details = responseData.result.response;
+	            _this2.description = _this2.details.profileSummary ? _this2.details.profileSummary : "";
+	            _this2.createdBy = {};
+	            _this2.jobProfile = _this2.details.jobProfile;
+	            _this2.education = _this2.details.education;
+	            _this2.address = _this2.details.address;
+	            _this2.populateProfileData();
+	            _this2.getCreatedBy();
+	          }
+	          break;
+	        case "API_EndorseSkill":
+	          if (isErr) {
+	            window.__Snackbar.show(window.__S.SKILL_NOT_ADDED);
+	          } else {
+	            window.__Snackbar.show(window.__S.SKILLS_ADDED_SUCCESSFULLY);
+	            _this2.populateProfileData();
+	          }
+	          // window.__BNavFlowRestart();
+	          return;
+	        case "API_GetSkillsList":
+	          window.__PopulateSkillsList = [];
+	          if (isErr) {} else {
+	            try {
+	              console.log("skills ", responseData.result.skills);
+	              window.__PopulateSkillsList = responseData.result.skills;
+	            } catch (e) {
+	              console.log("Exception : ", e);
+	            }
+	          }
+	          window.__CustomPopUp.show();
+	          return;
+	        case "API_SetProfileVisibility":
+	          if (isErr) {
+	            if (responseCode == 504) {
+	              window.__LoaderDialog.hide();
+	              window.__Snackbar.show(window.__S.TIME_OUT);
+	            } else {
+	              window.__LoaderDialog.hide();
+	              window.__Snackbar.show("failed");
+	            }
+	          } else {
+	            _this2.populateProfileData();
+	            // window.__BNavFlowRestart();
+	          }
 	      }
 	    };
 	
@@ -31058,6 +32303,61 @@
 	        window.__LanguagePopup.show();
 	      } else if (params == 1) {
 	        _this2.logout();
+	      }
+	    };
+	
+	    _this2.getUserProfileData = function () {
+	      if (JBridge.isNetworkAvailable() && window.__loggedInState != "GUEST") {
+	        window.__refreshProfile = false;
+	        var whatToSend = {
+	          user_token: window.__user_accessToken,
+	          api_token: window.__apiToken
+	        };
+	        var event = { tag: "API_ProfileFragment", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      } else if (JBridge.getSavedData(_this2.profileDataTag) != "__failed") {
+	        var data = JSON.parse(utils.decodeBase64(JBridge.getSavedData(_this2.profileDataTag)));
+	        data.local = true;
+	        _this2.handleStateChange(data);
+	      } else {
+	        console.log("__failed in getUserProfileData");
+	        window.__LoaderDialog.hide();
+	      }
+	      window.__LoaderDialog.hide();
+	    };
+	
+	    _this2.getCreatedBy = function () {
+	      var callback = callbackMapper.map(function (data) {
+	        console.log("searchContent data ", data);
+	        if (data[0] != "error") {
+	          console.log("createdBy data", JSON.parse(utils.decodeBase64(data[0])));
+	          _this.createdBy = JSON.parse(utils.decodeBase64(data[0]));
+	          var layout = dom(ProfileCreations, {
+	            data: _this.createdBy,
+	            editable: _this.editable,
+	            onCardClick: _this.handleCreatedCardClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 196
+	            }
+	          });
+	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
+	        }
+	      });
+	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10);else console.log("JBridge.searchContent failed, no internet");
+	      window.__ContentLoadingComponent.hideLoader();
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__LoaderDialog.hide();
+	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        return;
+	      }
+	      window.__LoaderDialog.hide();
+	    };
+	
+	    _this2.afterRender = function () {
+	      if (window.__loggedInState && window.__loggedInState == "GUEST") {
+	        _this2.populateGuestProfile();
+	      } else {
+	        _this2.getUserProfileData();
 	      }
 	    };
 	
@@ -31073,7 +32373,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 141
+	              lineNumber: 230
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -31087,7 +32387,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 153
+	              lineNumber: 238
 	            }
 	          })
 	        );
@@ -31097,16 +32397,14 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 167
+	            lineNumber: 252
 	          }
 	        });
 	      }
 	    };
 	
 	    _this2.setPermissions = function () {
-	
 	      var callback = callbackMapper.map(function (data) {
-	
 	        if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
 	          JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
 	        }
@@ -31115,7 +32413,6 @@
 	          window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.STORAGE);
 	        }
 	      });
-	
 	      JBridge.setPermissions(callback, "android.permission.WRITE_EXTERNAL_STORAGE");
 	    };
 	
@@ -31216,21 +32513,218 @@
 	      }
 	    };
 	
+	    _this2.populateGuestProfile = function () {
+	      _this2.details = {};
+	      var layout = dom(
+	        ScrollView,
+	        {
+	          height: "0",
+	          weight: "1",
+	          id: _this2.idSet.scrollViewContainer,
+	          width: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 381
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            height: "match_parent",
+	            width: "match_parent",
+	            padding: "16,8,16,24",
+	            orientation: "vertical",
+	            layoutTransition: "true", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 386
+	            }
+	          },
+	          dom(ProfileHeader, {
+	            editable: _this2.isEditable,
+	            data: _this2.details,
+	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 392
+	            }
+	          }),
+	          dom(GuestAdditionalInfo, {
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 396
+	            }
+	          }),
+	          _this2.getSignInOverlay()
+	        )
+	      );
+	      _this2.replaceChild(_this2.idSet.profileContainer, layout.render(), 0);
+	    };
+	
+	    _this2.populateProfileData = function () {
+	      console.log("populate Profile data");
+	
+	      var layout = dom(
+	        ScrollView,
+	        {
+	          height: "0",
+	          weight: "1",
+	          id: _this2.idSet.scrollViewContainer,
+	          width: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 407
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            height: "match_parent",
+	            width: "match_parent",
+	            padding: "16,8,16,24",
+	            orientation: "vertical",
+	            layoutTransition: "true", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 412
+	            }
+	          },
+	          dom(ProfileHeader, {
+	            editable: _this2.isEditable,
+	            data: _this2.details,
+	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 418
+	            }
+	          }),
+	          dom(ProfileProgress, {
+	            editable: _this2.isEditable,
+	            data: _this2.details, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 422
+	            }
+	          }),
+	          _this2.getDescription(),
+	          dom(ProfileExperiences, {
+	            editable: _this2.isEditable,
+	            data: _this2.education,
+	            popUpType: window.__PROFILE_POP_UP_TYPE.EDUCATION,
+	            heading: window.__S.TITLE_EDUCATION,
+	            privacyStatus: _this2.checkPrivacy("education"),
+	            handleLock: _this2.handleLockClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 428
+	            }
+	          }),
+	          dom(ProfileExperiences, {
+	            editable: _this2.isEditable,
+	            data: _this2.jobProfile,
+	            popUpType: window.__PROFILE_POP_UP_TYPE.EXPERIENCE,
+	            heading: window.__S.TITLE_EXPERIENCE,
+	            privacyStatus: _this2.checkPrivacy("jobProfile"),
+	            handleLock: _this2.handleLockClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 436
+	            }
+	          }),
+	          dom(ProfileExperiences, {
+	            editable: _this2.isEditable,
+	            data: _this2.address,
+	            popUpType: window.__PROFILE_POP_UP_TYPE.ADDRESS,
+	            heading: window.__S.TITLE_ADDRESS,
+	            privacyStatus: _this2.checkPrivacy("address"),
+	            handleLock: _this2.handleLockClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 445
+	            }
+	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              height: "wrap_content",
+	              width: "wrap_content",
+	              id: _this2.idSet.skillTagComponent, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 452
+	              }
+	            },
+	            dom(ProfileSkillTags, {
+	              id: window.__userToken,
+	              editable: _this2.isEditable,
+	              onAddClicked: _this2.addSkills,
+	              data: _this2.details.skills,
+	              privacyStatus: _this2.checkPrivacy("skills"),
+	              handleLock: _this2.handleLockClick, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 456
+	              }
+	            })
+	          ),
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              id: _this2.idSet.createdByHolder, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 465
+	              }
+	            },
+	            dom(ProfileCreations, {
+	              data: _this.createdBy,
+	              editable: _this.editable,
+	              onCardClick: _this.handleCreatedCardClick, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 469
+	              }
+	            })
+	          ),
+	          dom(ProfileAdditionalInfo, {
+	            data: _this2.details,
+	            editable: _this2.isEditable, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 476
+	            }
+	          })
+	        )
+	      );
+	      _this2.replaceChild(_this2.idSet.profileContainer, layout.render(), 0);
+	      // utils.addSwipeFunction(this.idSet.scrollViewContainer);
+	    };
+	
+	    _this2.getSignInOverlay = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent",
+	          orientation: "vertical",
+	          background: window.__Colors.WHITE_F2,
+	          clickable: "true",
+	          padding: "16,16,16,16", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 488
+	          }
+	        },
+	        dom(HomeQuestionCardStyle, {
+	          headerText: window.__S.OVERLAY_LABEL_COMMON,
+	          infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	          textSize: "16",
+	          gravity: "left", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 495
+	          }
+	        })
+	      );
+	    };
+	
 	    console.log("this.props profile fragments", props);
-	
+	    _this2.screenName = "ProfileFragment";
 	    _this2.props.appendText = _this2.props.appendText || "";
-	    _this2.setIds(['createdByHolder', 'skillTagComponent']);
-	
+	    _this2.setIds(['createdByHolder', 'skillTagComponent', "profileContainer", "scrollViewContainer"]);
+	    _this2.profileDataTag = "savedProfile";
 	    _this = _this2;
 	    _this2.isEditable = _this2.props.editable;
 	    _this2.menuData = {
 	      url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
 	    };
 	    _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT;
-	    // this.popupMenu=window.__S.LOGOUT;
 	    window.__LanguagePopup.props.buttonClick = _this2.handleChangeLang;
-	
-	    _this2.handleResponse();
+	    window.__refreshProfile = false; //Used to control when the profile fragment needs to be refreshed when the user updates any profile data from the app.
 	    JBridge.logTabScreenEvent("PROFILE");
 	    return _this2;
 	  }
@@ -31244,37 +32738,9 @@
 	        margin: "0,16,0,16",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 92
+	          lineNumber: 152
 	        }
 	      });
-	    }
-	  }, {
-	    key: "afterRender",
-	    value: function afterRender() {
-	      var callback = callbackMapper.map(function (data) {
-	        console.log("searchContent data ", data);
-	        if (data[0] != "error") {
-	          console.log("createdBy data", JSON.parse(utils.decodeBase64(data[0])));
-	          _this.createdBy = JSON.parse(utils.decodeBase64(data[0]));
-	          var layout = dom(ProfileCreations, {
-	            data: _this.createdBy,
-	            editable: _this.editable,
-	            onCardClick: _this.handleCreatedCardClick, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 115
-	            }
-	          });
-	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
-	        }
-	      });
-	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10);else console.log("JBridge.searchContent failed, no internet");
-	      window.__ContentLoadingComponent.hideLoader();
-	      if (!JBridge.isNetworkAvailable()) {
-	        window.__LoaderDialog.hide();
-	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
-	        return;
-	      }
-	      window.__LoaderDialog.hide();
 	    }
 	  }, {
 	    key: "render",
@@ -31289,7 +32755,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 305
+	            lineNumber: 510
 	          }
 	        },
 	        dom(
@@ -31301,7 +32767,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 308
+	              lineNumber: 513
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -31314,132 +32780,30 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 316
+	              lineNumber: 520
 	            }
 	          }),
 	          dom(
-	            ScrollView,
+	            LinearLayout,
 	            {
-	              height: "0",
-	              weight: "1",
-	              width: "match_parent", __source: {
+	              id: this.idSet.profileContainer,
+	              height: "match_parent",
+	              width: "match_parent",
+	              orientation: "horizontal",
+	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 327
+	                lineNumber: 530
 	              }
 	            },
-	            dom(
-	              LinearLayout,
-	              {
-	                height: "match_parent",
-	                width: "match_parent",
-	                padding: "16,8,16,24",
-	                orientation: "vertical",
-	                layoutTransition: "true", __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 332
-	                }
-	              },
-	              dom(ProfileHeader, {
-	                editable: this.isEditable,
-	                data: this.details,
-	                textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 339
-	                }
-	              }),
-	              dom(ProfileProgress, {
-	                editable: this.isEditable,
-	                data: this.details, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 343
-	                }
-	              }),
-	              this.getDescription(),
-	              dom(ProfileExperiences, {
-	                editable: this.isEditable,
-	                data: this.education,
-	                popUpType: window.__PROFILE_POP_UP_TYPE.EDUCATION,
-	                heading: window.__S.TITLE_EDUCATION,
-	                privacyStatus: this.checkPrivacy("education"),
-	                handleLock: this.handleLockClick, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 349
-	                }
-	              }),
-	              dom(ProfileExperiences, {
-	                editable: this.isEditable,
-	                data: this.jobProfile,
-	                popUpType: window.__PROFILE_POP_UP_TYPE.EXPERIENCE,
-	                heading: window.__S.TITLE_EXPERIENCE,
-	                privacyStatus: this.checkPrivacy("jobProfile"),
-	                handleLock: this.handleLockClick, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 357
-	                }
-	              }),
-	              dom(ProfileExperiences, {
-	                editable: this.isEditable,
-	                data: this.address,
-	                popUpType: window.__PROFILE_POP_UP_TYPE.ADDRESS,
-	                heading: window.__S.TITLE_ADDRESS,
-	                privacyStatus: this.checkPrivacy("address"),
-	                handleLock: this.handleLockClick, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 366
-	                }
-	              }),
-	              dom(
-	                LinearLayout,
-	                {
-	                  height: "wrap_content",
-	                  width: "wrap_content",
-	                  id: this.idSet.skillTagComponent, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 373
-	                  }
-	                },
-	                dom(ProfileSkillTags, {
-	                  id: window.__userToken,
-	                  editable: this.isEditable,
-	                  onAddClicked: this.addSkills,
-	                  data: this.details.skills,
-	                  privacyStatus: this.checkPrivacy("skills"),
-	                  handleLock: this.handleLockClick, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 377
-	                  }
-	                })
-	              ),
-	              dom(
-	                LinearLayout,
-	                {
-	                  width: "match_parent",
-	                  id: this.idSet.createdByHolder, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 386
-	                  }
-	                },
-	                dom(ProfileCreations, {
-	                  data: _this.createdBy,
-	                  editable: _this.editable,
-	                  onCardClick: _this.handleCreatedCardClick, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 390
-	                  }
-	                })
-	              ),
-	              dom(ProfileAdditionalInfo, {
-	                data: this.details,
-	                editable: this.isEditable, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 397
-	                }
-	              })
-	            )
+	            dom(CircularLoader, {
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 536
+	              }
+	            })
 	          )
 	        )
 	      );
-	
 	      return this.layout.render();
 	    }
 	  }]);
@@ -31450,12 +32814,12 @@
 	module.exports = ProfileFragment;
 
 /***/ }),
-/* 430 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileHeader.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileHeader.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31690,12 +33054,12 @@
 	module.exports = ProfileHeader;
 
 /***/ }),
-/* 431 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31768,12 +33132,12 @@
 	module.exports = ComingSoonComponent;
 
 /***/ }),
-/* 432 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/PersonalDetails.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PersonalDetails.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31929,12 +33293,12 @@
 	module.exports = PersonalDetails;
 
 /***/ }),
-/* 433 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileExperiences.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileExperiences.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31952,7 +33316,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var CropParagraph = __webpack_require__(434);
+	var CropParagraph = __webpack_require__(440);
 	
 	var _this;
 	
@@ -32461,12 +33825,12 @@
 	module.exports = ProfileExperiences;
 
 /***/ }),
-/* 434 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CropParagraph.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CropParagraph.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -32504,7 +33868,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.props.contentText
 	        });
-	        Android.runInUI(cmd, 0, "42", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
 	      } else {
 	        var cmd = _this.set({
 	          id: _this.idSet.showMoreButton,
@@ -32514,7 +33878,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.str
 	        });
-	        Android.runInUI(cmd, 0, "52", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "52", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
 	      }
 	      _this.max = !_this.max;
 	    };
@@ -32675,12 +34039,12 @@
 	module.exports = CropParagraph;
 
 /***/ }),
-/* 435 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33018,12 +34382,12 @@
 	module.exports = ProfileSkillTags;
 
 /***/ }),
-/* 436 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33207,12 +34571,12 @@
 	module.exports = ProfileAccomplishments;
 
 /***/ }),
-/* 437 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileCreations.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileCreations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33232,7 +34596,7 @@
 	var ImageView = __webpack_require__(350);
 	var RatingBar = __webpack_require__(372);;
 	var HorizontalScrollView = __webpack_require__(357);
-	var CardComponent = __webpack_require__(407);
+	var CardComponent = __webpack_require__(410);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -33452,12 +34816,12 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 438 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileBadges.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileBadges.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33559,7 +34923,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "104", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdProfileBadgesjs");
+	      Android.runInUI(cmd, 0, "104", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileBadgesjs");
 	    };
 	
 	    _this.getViewAll = function () {
@@ -33693,12 +35057,12 @@
 	module.exports = ProfileBadges;
 
 /***/ }),
-/* 439 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileProgress.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33718,7 +35082,7 @@
 	var ImageView = __webpack_require__(350);
 	var RatingBar = __webpack_require__(372);;
 	var HorizontalScrollView = __webpack_require__(357);
-	var HorizontalProgressBar = __webpack_require__(408);
+	var HorizontalProgressBar = __webpack_require__(411);
 	
 	var _this;
 	
@@ -34127,12 +35491,12 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 440 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34583,12 +35947,12 @@
 	module.exports = ProfileAdditionalInfo;
 
 /***/ }),
-/* 441 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34785,12 +36149,255 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 442 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/GuestAdditionalInfo.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var View = __webpack_require__(331);
+	var ViewWidget = __webpack_require__(349);
+	var TextView = __webpack_require__(342);
+	var ImageView = __webpack_require__(350);
+	var utils = __webpack_require__(397);
+	
+	var _this;
+	
+	var GuestAdditionalInfo = function (_View) {
+	  _inherits(GuestAdditionalInfo, _View);
+	
+	  function GuestAdditionalInfo(props, children) {
+	    _classCallCheck(this, GuestAdditionalInfo);
+	
+	    var _this2 = _possibleConstructorReturn(this, (GuestAdditionalInfo.__proto__ || Object.getPrototypeOf(GuestAdditionalInfo)).call(this, props, children));
+	
+	    _this2.getRows = function (input) {
+	      var rows = _this2.info.map(function (item, i) {
+	        return dom(
+	          LinearLayout,
+	          {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            margin: "0,16,0,0",
+	            visibility: item.value && item.value != "" ? "visible" : "gone", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 66
+	            }
+	          },
+	          dom(TextView, {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            textAllCaps: "true",
+	            text: item.name,
+	            style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 72
+	            }
+	          }),
+	          dom(ViewWidget, {
+	            height: "0",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 79
+	            }
+	          }),
+	          dom(TextView, {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            text: item.value,
+	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 83
+	            }
+	          })
+	        );
+	      });
+	
+	      return rows;
+	    };
+	
+	    _this2.getBody = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          margin: "0,0,0,16",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 96
+	          }
+	        },
+	        _this2.getRows()
+	      );
+	    };
+	
+	    _this2.getHeader = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          padding: "0,16,0,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 108
+	          }
+	        },
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          text: window.__S.PROFILE_DETAILS_TITLE,
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 113
+	          }
+	        }),
+	        dom(ViewWidget, {
+	          height: "0",
+	          weight: "1", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 119
+	          }
+	        }),
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            padding: "10,5,0,10",
+	            visibility: "true",
+	            onClick: _this2.handleEditProfileClick, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 122
+	            }
+	          },
+	          dom(ImageView, {
+	            width: "18",
+	            height: "18",
+	            imageUrl: "ic_action_edit_blue", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 128
+	            }
+	          })
+	        )
+	      );
+	    };
+	
+	    _this2.getLineSeperator = function () {
+	      return dom(LinearLayout, {
+	        width: "match_parent",
+	        height: "1",
+	        margin: "0,16,0,0",
+	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 137
+	        }
+	      });
+	    };
+	
+	    _this2.handleEditProfileClick = function () {
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        return;
+	      }
+	      // var whatToSend = { "profile" : JSON.stringify(this.data)}
+	      var whatToSend = { "profile": JSON.stringify({}) };
+	      var event = { tag: "OPEN_EditGuestProfileActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
+	
+	    _this2.setIds(["holder"]);
+	    _this = _this2;
+	
+	    //this.data = this.props.data;
+	    console.log("this.data", _this2.data);
+	
+	    //initialise data
+	    _this2.maxLen = 30;
+	    _this2.languages = "";
+	    _this2.state = "Karnataka";
+	    _this2.grade = "Grade 1";
+	    _this2.medium = "English";
+	    _this2.syllabus = "";
+	
+	    if (_this2.data && _this2.data.hasOwnProperty("grade") && _this2.data.grade.length > 0) {
+	      _this2.data.grade.map(function (item, i) {
+	        var append = ",";
+	        if (i == _this2.data.grade.length - 1) append = "";
+	        _this2.grade += item + append;
+	      });
+	    }
+	    _this2.grade = utils.cropText(_this2.grade, _this2.maxLen);
+	
+	    _this2.info = [{
+	      name: window.__S.STATE,
+	      value: _this2.state
+	    }, {
+	      name: window.__S.MEDIUM_GUEST,
+	      value: _this2.medium
+	    }, {
+	      name: window.__S.GRADE,
+	      value: _this2.grade
+	    }, {
+	      name: window.__S.SYLLABUS,
+	      value: _this2.syllabus
+	    }];
+	
+	    _this2.visibility = "gone";
+	    if (_this2.props.editable == "true") {
+	      _this2.visibility = "visible";
+	    }
+	    return _this2;
+	  }
+	
+	  _createClass(GuestAdditionalInfo, [{
+	    key: "render",
+	    value: function render() {
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          margin: "0,0,0,0",
+	          orientation: "vertical",
+	          id: this.idSet.holder,
+	          gravity: "center", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 146
+	          }
+	        },
+	        this.getLineSeperator(),
+	        this.getHeader(),
+	        this.getBody()
+	      );
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return GuestAdditionalInfo;
+	}(View);
+	
+	module.exports = GuestAdditionalInfo;
+
+/***/ }),
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34844,7 +36451,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.loaderComponent,
 	        visibility: "gone"
-	      }), 0, "40", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdContentLoadingComponentjs");
+	      }), 0, "40", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdContentLoadingComponentjs");
 	    };
 	
 	    _this.startRendering = function () {
@@ -34925,7 +36532,7 @@
 	module.exports = ContentLoadingComponent;
 
 /***/ }),
-/* 443 */
+/* 450 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -34963,7 +36570,7 @@
 	}];
 
 /***/ }),
-/* 444 */
+/* 451 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -35051,12 +36658,12 @@
 	};
 
 /***/ }),
-/* 445 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/UserActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/UserActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35068,7 +36675,7 @@
 	
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
-	var debounce = __webpack_require__(401);
+	var debounce = __webpack_require__(403);
 	var objectAssign = __webpack_require__(317);
 	
 	var View = __webpack_require__(331);
@@ -35079,7 +36686,7 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var ViewWidget = __webpack_require__(349);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var ProgressBar = __webpack_require__(359);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
@@ -35106,22 +36713,15 @@
 	    _this2.backPressCount = 0;
 	    _this2.shouldCacheScreen = false;
 	
-	    _this2.isLoginMode = true;
-	    _this2.language = "English";
 	    _this2.userName = _this2.userPass = _this2.firstName = "";
 	    _this = _this2;
 	
 	    _this2.deepLinkCollectionDetails = "";
 	
-	    window.__loginCallback = _this2.getLoginCallback;
-	
-	    if (JBridge.getFromSharedPrefs("whereFromInUserActivity") != "Deeplink") {
-	      JBridge.setInSharedPrefs("whereFromInUserActivity", _this2.state.data.value0.whereFrom);
-	    }
-	
 	    window.__onContentImportResponse = _this2.getImportStatus;
 	    window.__onContentImportProgress = _this2.setImportProgress;
 	    window.__LoaderDialog.hide();
+	    window.__loggedInState = JBridge.getFromSharedPrefs("logged_in");
 	    return _this2;
 	  }
 	
@@ -35146,7 +36746,7 @@
 	          height: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 967
+	            lineNumber: 459
 	          }
 	        },
 	        dom(
@@ -35158,7 +36758,7 @@
 	            gravity: "center",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 974
+	              lineNumber: 467
 	            }
 	          },
 	          dom(ImageView, {
@@ -35167,7 +36767,7 @@
 	            layout_gravity: "center",
 	            circularImageUrl: "1," + imgUrl, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 980
+	              lineNumber: 474
 	            }
 	          }),
 	          dom(TextView, {
@@ -35177,7 +36777,7 @@
 	            height: "wrap_content",
 	            textSize: "18", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 985
+	              lineNumber: 480
 	            }
 	          })
 	        ),
@@ -35192,17 +36792,16 @@
 	            id: this.idSet.importEcarLayout,
 	            visibility: "gone", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 993
+	              lineNumber: 488
 	            }
 	          },
 	          dom(ProgressBar, {
 	            height: "40",
 	            width: "40",
 	            margin: "0,0,15,0",
-	            layout_gravity: "center",
-	            __source: {
+	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 1001
+	              lineNumber: 497
 	            }
 	          }),
 	          dom(TextView, {
@@ -35210,15 +36809,13 @@
 	            height: "wrap_content",
 	            width: "wrap_content",
 	            text: "(1/2)",
-	            layout_gravity: "center",
-	            __source: {
+	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 1007
+	              lineNumber: 503
 	            }
 	          })
 	        )
 	      );
-	
 	      return this.layout.render();
 	    }
 	  }]);
@@ -35226,38 +36823,32 @@
 	  return UserActivity;
 	}(View);
 	
-	// <TextInputView
-	//   hintText={window.__S.HINT_LANGUAGE}
-	//   labelText={window.__S.LANGUAGE}
-	//   margin="20,0,24,12"
-	//   text="English"
-	//   _onChange={this.updateLanguage}/>
-	
-	
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
 	
 	  this.getImportStatus = function (response) {
-	
+	    window.__onContentImportResponse = undefined;
+	    //Callback of JBridge.importEcar(file) asyc call
 	    console.log("response for import", response);
 	
 	    if (response != "ALREADY_EXIST") {
+	      console.log("content doesnot ALREADY_EXIST");
 	      var jsonResponse = JSON.parse(response);
 	      var identifier;
-	      if (jsonResponse.identifier != undefined) {
+	      if (jsonResponse.identifier != undefined && jsonResponse.identifier != "") {
+	        console.log("identifier fetched >>" + jsonResponse.identifier + "<<");
 	        identifier = jsonResponse.identifier;
 	        _this.handleDeepLinkAction(identifier);
 	      } else {
+	        console.log("no identifier fetched ", jsonResponse.identifier);
 	        JBridge.showToast(window.__S.MSG_IMPORTED_SUCCESSFULLY, "short");
-	        var whatToSend = [];
-	        var event = { tag: "OPEN_MainActivity", contents: whatToSend };
+	        var event = { tag: "OPEN_MainActivity", contents: [] };
 	        window.__runDuiCallback(event);
 	      }
 	    } else {
+	      console.log("content ALREADY_EXIST");
 	      JBridge.showToast(window.__S.MSG_ALREADY_IMPORTED, "short");
-	      console.log("Successfully IMPORTED CONTENT");
-	      var whatToSend = [];
-	      var event = { tag: "OPEN_MainActivity", contents: whatToSend };
+	      var event = { tag: "OPEN_MainActivity", contents: [] };
 	      window.__runDuiCallback(event);
 	    }
 	  };
@@ -35274,7 +36865,7 @@
 	      text: progress
 	    });
 	
-	    Android.runInUI(cmd, 0, "112", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(cmd, 0, "102", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleDeepLinkAction = function (identifier) {
@@ -35283,133 +36874,46 @@
 	    var callback = callbackMapper.map(function (data) {
 	      var item = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
 	      console.log("Callback data in userActivity", item);
-	      var deeplinkMode = JBridge.getFromSharedPrefs("deeplinkMode");
 	
 	      if (item.contentType.toLowerCase() == "course") {
-	        console.log("Content type is course", item.contentData);
-	        console.log("DEEPLINK MODE COURSE", deeplinkMode);
-	        if (deeplinkMode == "preview") {
-	          var whatToSend = { details: JSON.stringify(item) };
-	          var event = { tag: "OPEN_DeepLink_ContentPreview", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        } else if (deeplinkMode == "actual") {
-	          _this.clearDeeplinkPreferences();
 	
-	          var whatToSend = { course: JSON.stringify(item.contentData) };
-	          var event = { tag: "OPEN_DeepLink_CourseInfo", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        }
+	        console.log("Content type is course", item.contentData);
+	        var whatToSend = { course: JSON.stringify(item.contentData) };
+	        var event = { tag: "OPEN_DeepLink_CourseInfo", contents: whatToSend };
+	        window.__runDuiCallback(event);
 	      } else if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
 	
-	        if (deeplinkMode == "preview") {
-	          var whatToSend = { details: JSON.stringify(item) };
-	          var event = { tag: "OPEN_DeepLink_ContentPreview", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        } else if (deeplinkMode == "actual") {
-	          console.log("ACTUAL MODE RESOURCE");
-	          _this.clearDeeplinkPreferences();
-	
-	          var itemDetails = JSON.stringify(item.contentData);
-	          _this.deepLinkCollectionDetails = itemDetails;
-	
-	          console.log("Content type is collecion or TextBook", _this.deepLinkCollectionDetails);
-	
-	          // var whatToSend={course:_this.deepLinkCollectionDetails};
-	          // var event={tag:"OPEN_Deeplink_CourseEnrolled",contents:whatToSend}
-	          // window.__runDuiCallback(event);
-	
-	          var whatToSend = { "user_token": window.__userToken, "api_token": window.__apiToken };
-	          var event = { "tag": "API_EnrolledCourses", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        }
+	        utils.clearDeeplinkPreferences();
+	        var itemDetails = JSON.stringify(item.contentData);
+	        _this.deepLinkCollectionDetails = itemDetails;
+	        console.log("Content type is collecion or TextBook", _this.deepLinkCollectionDetails);
+	        var whatToSend = { "user_token": window.__userToken, "api_token": window.__apiToken };
+	        var event = { "tag": "API_EnrolledCourses", contents: whatToSend };
+	        window.__runDuiCallback(event);
 	      } else {
 	
-	        console.log("DEEPLINK MODE RESOURCE", deeplinkMode);
-	
-	        if (deeplinkMode == "preview") {
-	
-	          console.log("PREVIEW MODE RESOURCE");
-	
-	          var whatToSend = { details: JSON.stringify(item) };
-	          var event = { tag: "OPEN_DeepLink_ContentPreview", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        } else if (deeplinkMode == "actual") {
-	
-	          _this.clearDeeplinkPreferences();
-	
-	          console.log("ACTUAL MODE RESOURCE");
-	
-	          var resDetails = {};
-	          var headFooterTitle = item.contentType + (item.hasOwnProperty("size") ? " [" + utils.formatBytes(item.size) + "]" : "");
-	
-	          resDetails['imageUrl'] = item.hasOwnProperty("contentData") ? "file://" + item.basePath + "/" + item.contentData.appIcon : item.appIcon;
-	          resDetails['title'] = item.contentData.name;
-	          resDetails['description'] = item.description;
-	          resDetails['headFooterTitle'] = headFooterTitle;
-	          resDetails['identifier'] = item.identifier;
-	          resDetails['content'] = item;
-	
-	          console.log("resourceDetails IN UserActivity", resDetails);
-	
-	          var whatToSend = { resource: JSON.stringify(resDetails) };
-	          var event = { tag: "OPEN_Deeplink_ResourceDetail", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        }
+	        utils.clearDeeplinkPreferences();
+	        var resDetails = {};
+	        var headFooterTitle = item.contentType + (item.hasOwnProperty("size") ? " [" + utils.formatBytes(item.size) + "]" : "");
+	        resDetails['imageUrl'] = item.hasOwnProperty("contentData") ? "file://" + item.basePath + "/" + item.contentData.appIcon : item.appIcon;
+	        resDetails['title'] = item.contentData.name;
+	        resDetails['description'] = item.description;
+	        resDetails['headFooterTitle'] = headFooterTitle;
+	        resDetails['identifier'] = item.identifier;
+	        resDetails['content'] = item;
+	        console.log("resourceDetails IN UserActivity", resDetails);
+	        var whatToSend = { resource: JSON.stringify(resDetails) };
+	        var event = { tag: "OPEN_Deeplink_ResourceDetail", contents: whatToSend };
+	        window.__runDuiCallback(event);
 	      }
 	    });
+	    //end of callback
 	
 	    if (identifier != "") {
 	      JBridge.getContentDetails(identifier, callback);
 	    } else {
-	      // JBridge.showToast("Can't open empty content","short");
 	      _this3.performLogin();
 	    }
-	  };
-	
-	  this.onPop = function () {
-	    _this3.backPressCount = 0;
-	    _this3.language = "English";
-	    _this3.userName = _this3.userPass = _this3.firstName = "";
-	    Android.runInUI(_this3.animateView(), null, "220", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
-	  };
-	
-	  this.getLoginCallback = function (response) {
-	    console.log("GOT LOGIN RESPONSE ", response);
-	
-	    window.__LoaderDialog.hide();
-	
-	    if (!_this3.enableLoginCallback) {
-	      return;
-	    }
-	
-	    try {
-	      var arr = response.split('.');
-	      var contentBody = atob(arr[1]);
-	
-	      contentBody = JSON.parse(contentBody);
-	
-	      _this3.userToken = contentBody.sub;
-	      _this3.userName = contentBody.given_name;
-	
-	      window.__userToken = contentBody.sub;
-	      window.__Snackbar.show(window.__S.WELCOME_ON_BOARD.format(JBridge.getAppName(), contentBody.given_name));
-	      JBridge.setProfile(_this3.userToken);
-	      _this3.setDataInStorage();
-	
-	      // this.setLoginPreferences();
-	
-	
-	      _this3.performLogin();
-	    } catch (e) {
-	      //console.log(e.message)
-	      window.__Snackbar.show(window.__S.ERROR_INVALID_EMAIL);
-	    }
-	  };
-	
-	  this.setDataInStorage = function () {
-	    JBridge.setInSharedPrefs("user_id", _this3.userToken);
-	    JBridge.setInSharedPrefs("user_name", _this3.userName);
-	    JBridge.setInSharedPrefs("user_token", _this3.userToken);
 	  };
 	
 	  this.performLogin = function () {
@@ -35425,12 +36929,6 @@
 	    var whatToSend = [];
 	    var event = { tag: "OPEN_MainActivity", contents: whatToSend };
 	    window.__runDuiCallback(event);
-	
-	    // setTimeout(() => {
-	    //   var whatToSend = [];
-	    //   var event = { tag: "OPEN_MainActivity", contents: whatToSend };
-	    //   window.__runDuiCallback(event);
-	    // }, 4000);
 	  };
 	
 	  this.onBackPressed = function () {
@@ -35447,26 +36945,14 @@
 	  };
 	
 	  this.handleStateChange = function (state) {
+	    console.log("handleStateChange in UserActivity -> ", state);
+	
 	    window.__LoaderDialog.hide();
 	    var res = utils.processResponse(state);
 	    var status = res.status;
 	    var response = res.data;
 	    var responseCode = res.code;
 	    var responseUrl = res.url;
-	
-	    //
-	    // if(responseCode == 401){
-	    //   var callback  = callbackMapper.map(function(token){
-	    //     window.__apiToken = token;
-	    //     if(state.responseFor == "API_SignUp"){
-	    //       _this.handleSignUpClick();
-	    //     }
-	    //
-	    //   });
-	    //   JBridge.getApiToken(callback);
-	    //   return;
-	    //     }
-	
 	
 	    if (responseCode == 501) {
 	      window.__Snackbar.show(window.__S.ERROR_SERVER_CONNECTION);
@@ -35486,23 +36972,6 @@
 	    var result = response.result;
 	
 	    switch (state.responseFor + "") {
-	      case "API_SignUp":
-	        if (result.response == "SUCCESS") {
-	          console.log(window.__S.WELCOME_ON_BOARD.format(JBridge.getAppName(), _this3.userName));
-	          window.__Snackbar.show(window.__S.WELCOME_ON_BOARD.format(JBridge.getAppName(), _this3.userName));
-	          JBridge.setInSharedPrefs("user_name", _this3.firstName);
-	          JBridge.setInSharedPrefs("user_token", result.userId);
-	          JBridge.logSignUpSuccess();
-	          window.__pressedLoggedOut = true;
-	          _this3.userToken = result.userId;
-	          _this3.setDataInStorage();
-	          JBridge.setProfile(_this3.userToken);
-	          _this3.performLogin();
-	        } else {
-	          window.__Snackbar.show(window.__S.RETRY_ACTION);
-	        }
-	
-	        break;
 	      case "API_EnrolledCourses":
 	        console.log("API_EnrolledCourses in userActivity");
 	        window.__enrolledCourses = response.result.courses;
@@ -35514,78 +36983,20 @@
 	          var event = { tag: "OPEN_Deeplink_CourseEnrolled", contents: whatToSend };
 	          window.__runDuiCallback(event);
 	        }
-	
 	        break;
 	      default:
 	        console.log("default SWITCH");
 	        break;
-	
 	    }
 	  };
 	
-	  this.updateFirstName = function (data) {
-	    _this3.firstName = data;
-	  };
-	
-	  this.updateLanguage = function (data) {
-	    _this3.language = data;
-	  };
-	
-	  this.updateMobileNumber = function (data) {
-	    _this3.mobileNumber = data;
-	  };
-	
-	  this.updateEmail = function (data) {
-	    _this3.email = data;
-	  };
-	
-	  this.updateUserPassword = function (data) {
-	    _this3.userPass = data;
-	  };
-	
-	  this.updateUserName = function (data) {
-	    _this3.userName = data;
-	  };
-	
-	  this.updateLanguage = function (data) {
-	    _this3.language = data;
-	  };
-	
-	  this.toggleSignUpForm = function () {
-	    _this3.isLoginMode = !_this3.isLoginMode;
-	    var visibilityVal = _this3.isLoginMode ? "gone" : "visible";
-	    var oppVisibilityValue = !_this3.isLoginMode ? "gone" : "visible";
-	    var cmd = _this3.set({
-	      id: _this3.idSet.userForumContainer,
-	      visibility: visibilityVal
-	    });
-	
-	    cmd += _this3.set({
-	      id: _this3.idSet.signUpHolder,
-	      visibility: visibilityVal
-	    });
-	    cmd += _this3.set({
-	      id: _this3.idSet.signInHolder,
-	      visibility: oppVisibilityValue
-	    });
-	    cmd += _this3.set({
-	      id: _this3.idSet.needAccHolder,
-	      visibility: oppVisibilityValue
-	    });
-	    cmd += _this3.set({
-	      id: _this3.idSet.alreadyHaveAccHolder,
-	      visibility: visibilityVal
-	    });
-	    Android.runInUI(cmd, 0, "446", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsUserActivityjs");
-	  };
-	
 	  this.handleNotificationAction = function () {
-	    _this3.setLoginPreferences();
 	    var notifData = JBridge.getFromSharedPrefs("intentNotification");
-	    if (notifData != "__failed") {
+	    //Handle notification redirection only if the user is logged in, else just open HomeFragment
+	    if (notifData != "__failed" && window.__loggedInState == "YES") {
+	      _this3.setLoginPreferences();
 	      notifData = JSON.parse(utils.decodeBase64(notifData));
 	      console.log("notifData ", notifData);
-	      JBridge.setInSharedPrefs("intentNotification", "__failed");
 	      switch (JBridge.getFromSharedPrefs("screenToOpen")) {
 	        case "ANNOUNCEMENT_DETAIL":
 	          var data = {
@@ -35607,89 +37018,26 @@
 	    } else {
 	      var event = { tag: "OPEN_MainActivity", contents: [] };
 	    }
+	    JBridge.setInSharedPrefs("intentNotification", "__failed");
 	    window.__runDuiCallback(event);
 	  };
 	
-	  this.handleSignUpClick = function () {
-	    if (!JBridge.isNetworkAvailable()) {
-	      window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
-	      return;
-	    }
-	    JBridge.logSignUpInitiation();
-	    _this3.firstName = _this3.firstName.trim();
-	    _this3.userName = _this3.userName.trim();
-	    _this3.email = _this3.email.trim();
-	    _this3.userPass = _this3.userPass.trim();
-	    _this3.userPass = _this3.userPass.trim();
-	    _this3.mobileNumber = _this3.mobileNumber.trim();
-	
-	    if (_this3.firstName.length <= 0 && _this3.userName.length <= 0 && _this3.email.length <= 0 && _this3.userPass.length <= 0 && _this3.mobileNumber.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_FIELDS);
-	      return;
-	    } else if (_this3.firstName.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_FIRSTNAME);
-	      return;
-	    } else if (_this3.userName.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_USERNAME);
-	      return;
-	    } else if (_this3.email.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_EMAIL);
-	      return;
-	    } else if (!(_this3.email.indexOf("@") !== -1) || !(_this3.email.indexOf(".") !== -1)) {
-	      window.__Snackbar.show(window.__S.ERROR_EMAIL_FORMAT);
-	      return;
-	    } else if (_this3.userPass.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_PASSWORD);
-	      return;
-	    } else if (_this3.userPass.length < 8) {
-	      window.__Snackbar.show(window.__S.ERROR_SHORT_PASSWORD);
-	      return;
-	    } else if (_this3.mobileNumber.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_MOBILE);
-	      return;
-	    } else if (_this3.mobileNumber.length < 10 || _this3.mobileNumber.length > 10) {
-	      window.__Snackbar.show(window.__S.ERROR_SHORT_MOBILE);
-	      return;
-	    } else if (_this3.language.length <= 0) {
-	      window.__Snackbar.show(window.__S.ERROR_EMPTY_LANGUAGE);
-	      return;
-	    }
-	
-	    if (_this3.userName.length > 0 && _this3.userPass.length > 0 && _this3.firstName.length > 0 && _this3.language.length > 0 && _this3.email.length > 0 && _this3.mobileNumber.length > 0) {
-	      window.__LoaderDialog.show();
-	      var requestBody = {
-	        "userName": _this3.userName,
-	        "firstName": _this3.firstName,
-	        "password": _this3.userPass,
-	        "language": ["English"],
-	        "phone": _this3.mobileNumber,
-	        "email": _this3.email
-	
-	      };
-	      requestBody = JSON.stringify(requestBody);
-	      var whatToSend = {
-	        "request": requestBody,
-	        "api_token": window.__apiToken
-	      };
-	      var event = { "tag": "API_SignUp", "contents": whatToSend };
-	      window.__runDuiCallback(event);
-	    } else {
-	      window.__Snackbar.show(window.__S.ERROR_INPUT_FORM);
-	    }
-	  };
-	
 	  this.handleLoginClick = function () {
-	
-	    console.log(window.__loginUrl, "/auth/realms/sunbird/protocol/openid-connect/auth", "\nandroid");
-	
+	    console.log(window.__loginUrl, "/auth/realms/sunbird/protocol/openid-connect/auth ", "android");
 	    JBridge.keyCloakLogin(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/auth", "android");
 	  };
 	
-	  this.handleForgotPasscode = function () {
-	    window.__Snackbar.show(window.__S.COMING_SOON);
+	  this.handleBrowseAsGuest = function () {
+	    console.log("handleBrowseAsGuest");
+	    window.__loggedInState = "GUEST";
+	    window.__enrolledCourses = [];
+	    JBridge.setInSharedPrefs("logged_in", "GUEST");
+	    _this3.setLoginPreferences();
+	    _this3.performRedirection();
 	  };
 	
 	  this.getTopLayout = function () {
+	    //Logo and welcome message
 	    return dom(
 	      LinearLayout,
 	      {
@@ -35699,7 +37047,7 @@
 	        gravity: "center",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 569
+	          lineNumber: 279
 	        }
 	      },
 	      dom(ImageView, {
@@ -35707,7 +37055,7 @@
 	        width: "60",
 	        imageUrl: "ic_launcher", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 576
+	          lineNumber: 286
 	        }
 	      }),
 	      dom(TextView, {
@@ -35717,7 +37065,7 @@
 	        margin: "0,12,0,6",
 	        style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 581
+	          lineNumber: 291
 	        }
 	      }),
 	      dom(TextView, {
@@ -35726,294 +37074,78 @@
 	        text: window.__S.WELCOME_M2,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 588
+	          lineNumber: 298
 	        }
 	      })
 	    );
 	  };
 	
 	  this.getOptions = function () {
+	    //Signin and Browse_as_guest buttons
 	    return dom(
 	      LinearLayout,
 	      {
 	        height: "wrap_content",
 	        width: "match_parent",
 	        gravity: "center",
-	        margin: "24,0,24,0",
-	        __source: {
+	        orientation: "vertical",
+	        margin: "24,0,24,0", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 599
+	          lineNumber: 309
 	        }
 	      },
 	      dom(
 	        LinearLayout,
 	        {
-	          height: "wrap_content",
-	          width: "wrap_content",
+	          height: "38",
+	          width: "match_parent",
+	          onClick: _this3.handleLoginClick, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 316
+	          }
+	        },
+	        dom(TextView, {
 	          background: window.__Colors.THICK_BLUE,
 	          stroke: "5," + window.__Colors.THICK_BLUE,
-	          cornerRadius: "5", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 607
-	          }
-	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            height: "match_parent",
-	            width: "match_parent",
-	            padding: "15,8,15,8",
-	            gravity: "center",
-	            id: _this3.idSet.signInHolder,
-	            visibility: _this3.isLoginMode ? "visible" : "gone",
-	            onClick: _this3.handleLoginClick, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 613
-	            }
-	          },
-	          dom(TextView, {
-	            style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
-	            text: window.__S.SIGN_IN, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 622
-	            }
-	          })
-	        ),
-	        dom(
-	          LinearLayout,
-	          {
-	            height: "match_parent",
-	            width: "match_parent",
-	            padding: "15,8,15,8",
-	            gravity: "center",
-	            id: _this3.idSet.signUpHolder,
-	            visibility: _this3.isLoginMode ? "gone" : "visible",
-	            onClick: _this3.handleSignUpClick, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 626
-	            }
-	          },
-	          dom(TextView, {
-	            text: window.__S.SIGN_UP,
-	            style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 635
-	            }
-	          })
-	        )
-	      )
-	    );
-	  };
-	
-	  this.getForum = function () {
-	    //TextInputView be carefull with the margin, internal EditText position might break
-	
-	    return dom(
-	      LinearLayout,
-	      {
-	        height: "match_parent",
-	        width: "match_parent",
-	        orientation: "vertical",
-	        id: _this3.idSet.userForumContainer,
-	        gravity: "center",
-	        visibility: _this3.isLoginMode ? "gone" : "visible",
-	        root: "true", __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 652
-	        }
-	      },
-	      dom(
-	        ScrollView,
-	        {
+	          cornerRadius: "5",
 	          height: "match_parent",
 	          width: "match_parent",
-	          fillViewPort: "true",
-	
 	          gravity: "center",
-	          __source: {
+	          textAllCaps: "true",
+	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+	          text: window.__S.SIGN_IN, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 660
+	            lineNumber: 321
+	          }
+	        })
+	      ),
+	      dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "38",
+	          margin: "0,16,0,16",
+	          layoutTransition: "true",
+	          onClick: _this3.handleBrowseAsGuest, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 333
 	          }
 	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            height: "match_parent",
-	            width: "match_parent",
-	            orientation: "vertical",
-	            padding: "0,40,0,50",
-	            gravity: "center",
-	            root: "true", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 667
-	            }
-	          },
-	          dom(
-	            LinearLayout,
-	            {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              id: _this3.idSet.firstNameHolder, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 675
-	              }
-	            },
-	            dom(TextInputView, {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              hintText: window.__S.FIRST_NAME_HINT,
-	              labelText: window.__S.FIRST_NAME,
-	              margin: "20,0,24,12",
-	              _onChange: _this3.updateFirstName, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 680
-	              }
-	            })
-	          ),
-	          dom(
-	            LinearLayout,
-	            {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              id: _this3.idSet.userNameHolder, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 690
-	              }
-	            },
-	            dom(TextInputView, {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              hintText: window.__S.HINT_USER_NAME,
-	              labelText: window.__S.USER_NAME,
-	              margin: "20,0,24,12",
-	              _onChange: _this3.updateUserName, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 695
-	              }
-	            })
-	          ),
-	          dom(
-	            LinearLayout,
-	            {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              id: _this3.idSet.emailHolder,
-	              __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 705
-	              }
-	            },
-	            dom(TextInputView, {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              hintText: window.__S.HINT_EMAIL_ID,
-	              labelText: window.__S.EMAIL_ID,
-	              margin: "20,0,24,12",
-	              _onChange: _this3.updateEmail, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 712
-	              }
-	            })
-	          ),
-	          dom(
-	            LinearLayout,
-	            {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              id: _this3.idSet.passwordHolder, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 722
-	              }
-	            },
-	            dom(TextInputView, {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              hintText: window.__S.HINT_PASSWORD,
-	              labelText: window.__S.PASSWORD,
-	              inputType: "password",
-	              margin: "20,0,24,12",
-	              _onChange: _this3.updateUserPassword, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 728
-	              }
-	            })
-	          ),
-	          dom(
-	            LinearLayout,
-	            {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              id: _this3.idSet.mobileNumberHolder, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 739
-	              }
-	            },
-	            dom(TextInputView, {
-	              hintText: window.__S.HINT_MOBILE_NUMBER,
-	              labelText: window.__S.MOBILE_NUMBER,
-	              margin: "20,0,24,12",
-	              inputType: "numeric",
-	              _onChange: _this3.updateMobileNumber, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 744
-	              }
-	            })
-	          ),
-	          dom(LinearLayout, {
-	            height: "wrap_content",
-	            width: "match_parent",
-	            id: _this3.idSet.languageHolder, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 753
-	            }
-	          })
-	        )
+	        dom(TextView, {
+	          width: "match_parent",
+	          height: "match_parent",
+	          gravity: "center",
+	          style: window.__TextStyle.textStyle.CARD.ACTION.BLUE,
+	          text: window.__S.BROWSE_AS_GUEST,
+	          textAllCaps: "true",
+	          cornerRadius: "5",
+	          background: window.__Colors.WHITE,
+	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 340
+	          }
+	        })
 	      )
-	    );
-	  };
-	
-	  this.getSignUpSection = function () {
-	    return dom(
-	      LinearLayout,
-	      {
-	        height: "wrap_content",
-	        width: "match_parent",
-	        orientation: "vertical",
-	        clickable: "true",
-	        gravity: "center_horizontal",
-	        root: "true", __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 770
-	        }
-	      },
-	      dom(TextView, {
-	        height: "wrap_content",
-	        width: "match_parent",
-	        padding: "0,10,0,10",
-	        gravity: "center",
-	        id: _this3.idSet.alreadyHaveAccHolder,
-	        onClick: _this3.toggleSignUpForm,
-	        visibility: _this3.isLoginMode ? "gone" : "visible",
-	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.ALREADY_HAVE_ACC + "</a></font>",
-	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 777
-	        }
-	      }),
-	      dom(TextView, {
-	        height: "wrap_content",
-	        width: "match_parent",
-	        padding: "0,10,0,10",
-	        gravity: "center",
-	        id: _this3.idSet.needAccHolder,
-	        onClick: _this3.toggleSignUpForm,
-	        visibility: JBridge.getApplicationId() == "org.sunbird.app" ? "visible" : "gone",
-	        textFromHtml: "<font color='#007AFF'><a href=''>" + window.__S.NO_ACC_YET + "</a></font>",
-	        style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 788
-	        }
-	      })
 	    );
 	  };
 	
@@ -36029,7 +37161,7 @@
 	        background: window.__Colors.WHITE,
 	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 805
+	          lineNumber: 356
 	        }
 	      },
 	      dom(
@@ -36043,133 +37175,92 @@
 	          gravity: "center",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 814
+	            lineNumber: 365
 	          }
 	        },
-	        _this3.getTopLayout(),
-	        _this3.getForum()
+	        _this3.getTopLayout()
 	      ),
-	      _this3.getOptions(),
-	      dom(LinearLayout, {
-	        height: "wrap_content",
-	        width: "match_parent",
-	        gravity: "center_horizontal",
-	        padding: "12,12,12,12",
-	        orientation: "vertical", __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 834
-	        }
-	      })
+	      _this3.getOptions()
 	    );
 	  };
 	
 	  this.setLoginPreferences = function () {
-	    JBridge.setInSharedPrefs("logged_in", "YES");
 	    window.__userToken = JBridge.getFromSharedPrefs("user_token");
 	    window.__refreshToken = JBridge.getFromSharedPrefs("refresh_token");
 	    window.__user_accessToken = JBridge.getFromSharedPrefs("user_access_token");
-	    JBridge.setProfile(window.__userToken);
+	    if (window.__loggedInState == "GUEST") {
+	      JBridge.setInSharedPrefs("logged_in", "GUEST");
+	      JBridge.setProfile("", true);
+	    } else {
+	      JBridge.setInSharedPrefs("logged_in", "YES");
+	      JBridge.setProfile(window.__userToken, false);
+	    }
 	  };
 	
-	  this.clearDeeplinkPreferences = function () {
+	  this.clearIntentLinkPath = function () {
 	    JBridge.setInSharedPrefs("intentLinkPath", "__failed");
+	  };
+	
+	  this.clearIntentFilePath = function () {
 	    JBridge.setInSharedPrefs("intentFilePath", "__failed");
-	    JBridge.setInSharedPrefs("deeplinkMode", "__failed");
-	    JBridge.setInSharedPrefs("whereFromInUserActivity", "__failed");
 	  };
 	
 	  this.performDeeplinkAction = function () {
 	    if ("__failed" != JBridge.getFromSharedPrefs("intentFilePath")) {
-	
 	      var filePath = JBridge.getFromSharedPrefs("intentFilePath");
 	      JBridge.setInSharedPrefs("intentFilePath", "__failed");
 	      JBridge.importEcar(filePath);
 	    } else if ("__failed" != JBridge.getFromSharedPrefs("intentLinkPath")) {
-	
 	      console.log("INSIDE LINK INTENT");
-	
 	      var output = JBridge.getFromSharedPrefs("intentLinkPath");
-	
 	      console.log("FILE PATH GOT", output);
-	
 	      var identifier = output.substr(output.lastIndexOf("/") + 1, output.length);
 	      console.log("IDENTIFIER GOT", identifier);
 	      _this.handleDeepLinkAction(identifier);
 	    }
 	  };
 	
+	  this.performRedirection = function () {
+	    console.log("performRedirection");
+	    _this3.setLoginPreferences();
+	    if (window.__loggedInState == "YES" || window.__loggedInState == "GUEST") {
+	      if ("__failed" != JBridge.getFromSharedPrefs("intentNotification")) {
+	        console.log("Assuming user has logged in, notification data: ", JBridge.getFromSharedPrefs("intentNotification"));
+	        _this3.handleNotificationAction();
+	      } else if ("__failed" != JBridge.getFromSharedPrefs("intentFilePath") || "__failed" != JBridge.getFromSharedPrefs("intentLinkPath")) {
+	        _this3.performDeeplinkAction();
+	      } else {
+	        var event = { tag: "OPEN_MainActivity", contents: [] };
+	        window.__runDuiCallback(event);
+	      }
+	    } else {
+	      _this3.showLoginOptions();
+	    }
+	  };
+	
 	  this.afterRender = function () {
-	
 	    console.log("AFTER RENDER IN USER ACTIVITY");
-	
-	    var whereFrom = JBridge.getFromSharedPrefs("whereFromInUserActivity");
-	    console.log("WHERE FROM IN AFTER RENDER", whereFrom);
-	
+	    console.log("SHARED PREFERENCES FOR logged_in", JBridge.getFromSharedPrefs("logged_in"));
 	    console.log("SHARED PREFERENCES FOR link", JBridge.getFromSharedPrefs("intentLinkPath"));
 	    console.log("SHARED PREFERENCES FOR file", JBridge.getFromSharedPrefs("intentFilePath"));
+	    _this3.performRedirection();
+	  };
 	
-	    if ("__failed" != JBridge.getFromSharedPrefs("intentNotification")) {
-	      console.log("Assuming user has logged in, notification data: ", JBridge.getFromSharedPrefs("intentNotification"));
-	      _this3.handleNotificationAction();
-	    } else
-	      //from link
-	      if ("__failed" != JBridge.getFromSharedPrefs("intentFilePath") || "__failed" != JBridge.getFromSharedPrefs("intentLinkPath")) {
-	
-	        console.log("SHARED PREFERENCES ARE THERE STILL");
-	        if (whereFrom == "SplashScreenActivity") {
-	          console.log("FROM SPLASH SCREEN ACTIVITY");
-	
-	          if ("YES" == JBridge.getFromSharedPrefs("logged_in")) {
-	
-	            console.log("LOGGED IN");
-	            JBridge.setInSharedPrefs("deeplinkMode", "actual");
-	            _this3.performDeeplinkAction();
-	            _this3.setLoginPreferences();
-	          } else {
-	
-	            console.log("NOT LOGGED IN");
-	            JBridge.setInSharedPrefs("deeplinkMode", "preview");
-	            _this3.performDeeplinkAction();
-	          }
-	        } else if (whereFrom == "Deeplink") {
-	
-	          console.log("FROM DEEPLINK ");
-	
-	          if ("YES" == JBridge.getFromSharedPrefs("logged_in")) {
-	            console.log("LOGGED IN AND FROM DEEPLINK", "ACTUAL");
-	
-	            JBridge.setInSharedPrefs("deeplinkMode", "actual");
-	            _this3.performDeeplinkAction();
-	            _this3.setLoginPreferences();
-	          } else {
-	
-	            console.log("NOT LOGGED IN");
-	            _this3.replaceChild(_this3.idSet.parentContainer, _this3.getBody().render(), 0);
-	          }
-	        }
-	
-	        //from app
-	      } else {
-	
-	        if ("YES" == JBridge.getFromSharedPrefs("logged_in")) {
-	
-	          _this3.performLogin();
-	        } else {
-	          _this3.replaceChild(_this3.idSet.parentContainer, _this3.getBody().render(), 0);
-	        }
-	      }
+	  this.showLoginOptions = function () {
+	    console.log("showLoginOptions");
+	    _this3.replaceChild(_this3.idSet.parentContainer, _this3.getBody().render(), 0);
 	  };
 	};
 	
 	module.exports = Connector(UserActivity);
 
 /***/ }),
-/* 446 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/TextInputView.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/TextInputView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36290,12 +37381,12 @@
 	module.exports = TextInputView;
 
 /***/ }),
-/* 447 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseInfoActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36324,12 +37415,12 @@
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CropParagraph = __webpack_require__(434);
-	var CourseCurriculum = __webpack_require__(448);
+	var CropParagraph = __webpack_require__(440);
+	var CourseCurriculum = __webpack_require__(455);
 	var PageOption = __webpack_require__(379);
-	var CourseProgress = __webpack_require__(452);
-	var ProgressButton = __webpack_require__(453);
-	var SharePopup = __webpack_require__(454);
+	var CourseProgress = __webpack_require__(459);
+	var ProgressButton = __webpack_require__(460);
+	var SharePopup = __webpack_require__(461);
 	
 	var _this;
 	
@@ -36382,7 +37473,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 520
+	            lineNumber: 510
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -36392,7 +37483,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 526
+	            lineNumber: 516
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -36400,7 +37491,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 534
+	            lineNumber: 524
 	          }
 	        })
 	      );
@@ -36439,12 +37530,14 @@
 	        id: _this3.idSet.downloadProgressText,
 	        text: window.__S.FETCHING_CONTENTS.format(downloadedPercent)
 	      });
-	      Android.runInUI(cmd, 0, "96", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
 	  this.renderChildren = function (identifier) {
 	    var callback1 = callbackMapper.map(function (data) {
+	      console.log("JBridge.getChildContent data -> ", data);
+	
 	      if (data == "__failed") {
 	        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
 	        _this.onBackPressed();
@@ -36513,7 +37606,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 170
+	          lineNumber: 172
 	        }
 	      });
 	    } else {
@@ -36526,7 +37619,7 @@
 	        shouldGoForward: "gone",
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 178
+	          lineNumber: 180
 	        }
 	      });
 	      var isVisible = "gone";
@@ -36534,7 +37627,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: isVisible
-	      }), 0, "189", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "191", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	
 	    var layout = dom(
@@ -36544,7 +37637,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 196
+	          lineNumber: 198
 	        }
 	      },
 	      child
@@ -36554,16 +37647,21 @@
 	
 	  this.onPop = function () {
 	
-	    Android.runInUI(_this3.animateView(), null, "211", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "213", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	  };
 	
 	  this.afterRender = function () {
 	
 	    if (window.__enrolledCourses == undefined) {
-	      window.__LoaderDialog.show();
-	      var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
-	      var event = { "tag": "API_EnrolledCoursesList", contents: whatToSend };
-	      window.__runDuiCallback(event);
+	      if (window.__loggedInState == "GUEST") {
+	        window.__enrolledCourses = [];
+	        _this3.checkWhetherEnrolledCourse();
+	      } else {
+	        window.__LoaderDialog.show();
+	        var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
+	        var event = { "tag": "API_EnrolledCoursesList", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      }
 	    } else {
 	      _this3.checkWhetherEnrolledCourse();
 	    }
@@ -36573,7 +37671,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: "gone"
-	      }), 0, "230", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "237", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
@@ -36622,8 +37720,8 @@
 	
 	  this.shareContent = function () {
 	
-	    console.log("SHARE POP UP CALLED");
-	    JBridge.logShareContentInitiateEvent("COURSES", "course", _this3.details.identifier, _this3.details.contentData.pkgVersion);
+	    console.log("SHARE POP UP CALLED", _this3.details);
+	    JBridge.logShareContentInitiateEvent("COURSES", "course", _this3.details.identifier, _this3.details.contentData.pkgVersion || _this3.details.pkgVersion);
 	
 	    var shareCallback = callbackMapper.map(function (data) {
 	
@@ -36641,7 +37739,7 @@
 	          type: "COURSES",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 307
+	            lineNumber: 314
 	          }
 	        });
 	
@@ -36699,7 +37797,7 @@
 	        style: window.__TextStyle.textStyle.HINT.REGULAR,
 	        text: (i == 0 ? "" : " | ") + item.count + " " + item.type, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 370
+	          lineNumber: 377
 	        }
 	      });
 	    });
@@ -36710,7 +37808,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 376
+	          lineNumber: 383
 	        }
 	      },
 	      dom(
@@ -36720,7 +37818,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 379
+	            lineNumber: 386
 	          }
 	        },
 	        items
@@ -36750,7 +37848,7 @@
 	        background: window.__Colors.WHITE,
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 405
+	          lineNumber: 412
 	        }
 	      },
 	      dom(SimpleToolbar, {
@@ -36762,7 +37860,7 @@
 	        showMenu: "true",
 	        onBackPress: _this3.onBackPressed, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 412
+	          lineNumber: 419
 	        }
 	      }),
 	      dom(
@@ -36773,7 +37871,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 421
+	            lineNumber: 428
 	          }
 	        },
 	        dom(
@@ -36784,7 +37882,7 @@
 	            width: "match_parent",
 	            fillViewPort: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 426
+	              lineNumber: 433
 	            }
 	          },
 	          dom(
@@ -36795,7 +37893,7 @@
 	              padding: "16,24,16,16",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 432
+	                lineNumber: 439
 	              }
 	            },
 	            dom(TextView, {
@@ -36805,7 +37903,7 @@
 	              text: utils.firstLeterCapital(_this3.data.courseName),
 	              style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 438
+	                lineNumber: 445
 	              }
 	            }),
 	            dom(TextView, {
@@ -36814,7 +37912,7 @@
 	              margin: "0,0,0,12",
 	              text: _this3.data.courseDesc, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 446
+	                lineNumber: 453
 	              }
 	            }),
 	            dom(TextView, {
@@ -36822,7 +37920,7 @@
 	              text: window.__S.STRUCTURE,
 	              style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 453
+	                lineNumber: 460
 	              }
 	            }),
 	            _this3.getCurriculumnBrief(),
@@ -36836,7 +37934,7 @@
 	                root: "true",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 462
+	                  lineNumber: 469
 	                }
 	              },
 	              dom(ProgressBar, {
@@ -36844,7 +37942,7 @@
 	                width: "30",
 	                margin: "20,20,20,20", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 469
+	                  lineNumber: 476
 	                }
 	              }),
 	              dom(TextView, {
@@ -36854,7 +37952,7 @@
 	                gravity: "center",
 	                width: "match_parent", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 473
+	                  lineNumber: 480
 	                }
 	              })
 	            )
@@ -36868,45 +37966,31 @@
 	            visibility: "gone",
 	            id: _this3.idSet.enrollButtonId, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 485
+	              lineNumber: 492
 	            }
 	          },
 	          dom(PageOption, {
 	            width: "match_parent",
 	            buttonItems: buttonList, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 490
+	              lineNumber: 497
 	            }
 	          })
 	        )
 	      )
 	    );
 	  };
-	
-	  this.logout = function () {
-	    window.__Snackbar.show("Logged out");
-	    JBridge.setInSharedPrefs("logged_in", "NO");
-	    JBridge.setInSharedPrefs("user_id", "__failed");
-	    JBridge.setInSharedPrefs("user_name", "__failed");
-	    JBridge.setInSharedPrefs("user_token", "__failed");
-	
-	    window.__pressedLoggedOut = true;
-	
-	    JBridge.keyCloakLogout(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/logout");
-	
-	    window.__Logout();
-	  };
 	};
 	
 	module.exports = Connector(CourseInfoActivity);
 
 /***/ }),
-/* 448 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseCurriculum.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCurriculum.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36924,9 +38008,9 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	
-	var ChapterList = __webpack_require__(449);
-	var AnswerView = __webpack_require__(450);
-	var ChapterOverView = __webpack_require__(451);
+	var ChapterList = __webpack_require__(456);
+	var AnswerView = __webpack_require__(457);
+	var ChapterOverView = __webpack_require__(458);
 	
 	var CourseCurriculum = function (_View) {
 	  _inherits(CourseCurriculum, _View);
@@ -37063,12 +38147,12 @@
 	module.exports = CourseCurriculum;
 
 /***/ }),
-/* 449 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChapterList.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterList.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37297,12 +38381,12 @@
 	module.exports = ChapterList;
 
 /***/ }),
-/* 450 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/AnswerView.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnswerView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37347,7 +38431,7 @@
 	        });
 	        content = _this.getSelectedImage();
 	      }
-	      Android.runInUI(cmd, 0, "48", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAnswerViewjs");
+	      Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAnswerViewjs");
 	
 	      _this.replaceChild(_this.idSet.selectorContainer, content.render(), 0);
 	    };
@@ -37461,12 +38545,12 @@
 	module.exports = AnswerView;
 
 /***/ }),
-/* 451 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/ChapterOverView.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterOverView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37556,12 +38640,12 @@
 	module.exports = ChapterOverView;
 
 /***/ }),
-/* 452 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CourseProgress.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37712,12 +38796,12 @@
 	module.exports = CourseProgress;
 
 /***/ }),
-/* 453 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/ProgressButton.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ProgressButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37762,7 +38846,7 @@
 	        id: _this2.idSet.cancelDownloadHolder,
 	        visibility: value
 	      });
-	      Android.runInUI(cmd, 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.handleCancelDownload = function () {
@@ -37840,7 +38924,7 @@
 	        visibility: value
 	
 	      });
-	      Android.runInUI(cmd, 0, "131", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "131", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.setButtonFor = function (identifier) {
@@ -37871,7 +38955,7 @@
 	            data = utils.decodeBase64(data[0]);
 	            var parsedData = JSON.parse(utils.jsonifyData(data));
 	            console.log("data from progress", parsedData);
-	            JBridge.playContent(data, data.identifier, parsedData.contentData.pkgVersion);
+	            JBridge.playContent(data, parsedData.identifier, parsedData.contentData.pkgVersion);
 	          });
 	          JBridge.getContentDetails(_this.props.identifier, callback);
 	        } else if (JBridge.isNetworkAvailable()) {
@@ -38143,12 +39227,12 @@
 	module.exports = ProgressButton;
 
 /***/ }),
-/* 454 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SharePopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SharePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38217,7 +39301,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "73", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSharePopupjs");
+	      Android.runInUI(cmd, 0, "73", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSharePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -38488,12 +39572,12 @@
 	module.exports = SharePopup;
 
 /***/ }),
-/* 455 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseEnrolledActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseEnrolledActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38514,15 +39598,16 @@
 	var ProgressBar = __webpack_require__(359);
 	var utils = __webpack_require__(397);
 	var FeatureButton = __webpack_require__(377);
+	var DownloadAllProgressButton = __webpack_require__(463);
 	
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(448);
-	var HorizontalProgressBar = __webpack_require__(408);
-	var CourseProgress = __webpack_require__(452);
-	var FlagPopup = __webpack_require__(456);
-	var SharePopup = __webpack_require__(454);
+	var CourseCurriculum = __webpack_require__(455);
+	var HorizontalProgressBar = __webpack_require__(411);
+	var CourseProgress = __webpack_require__(459);
+	var FlagPopup = __webpack_require__(464);
+	var SharePopup = __webpack_require__(461);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -38537,7 +39622,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "featureButton1", "featureButton2", "simpleToolBarOverFlow", "batchDetailsContainer"]);
+	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "featureButton1", "featureButton2", "simpleToolBarOverFlow", "batchDetailsContainer", "downloadAllProgressButton"]);
 	    _this2.state = state;
 	    _this2.screenName = "CourseEnrolledActivity";
 	
@@ -38550,7 +39635,7 @@
 	    };
 	
 	    _this = _this2;
-	    _this2.shouldCacheScreen = true; //set to true so that the screen does not reinitialize and send startEventLog telemetry
+	    _this2.shouldCacheScreen = false; //set to true so that the screen does not reinitialize and send startEventLog telemetry
 	    _this2.courseContent = "";
 	
 	    _this2.enrolledCourses = window.__enrolledCourses;
@@ -38563,9 +39648,13 @@
 	
 	    _this2.popupMenu = window.__S.DELETE;
 	
-	    _this2.popupMenu = window.__S.DELETE + "," + window.__S.FLAG;
+	    _this2.popupMenu = window.__S.DELETE;
 	    //to get geneie callback for download of spine
 	    window.__getDownloadStatus = _this2.getSpineStatus;
+	
+	    // array of all the children content ids
+	    _this2.subContentArray = [];
+	
 	    console.log("details in CEA", _this2.details);
 	    _this2.showProgress = _this2.details.hasOwnProperty("mimeType") && _this2.details.contentType == "application/vnd.ekstep.content-collection" ? "gone" : "visible";
 	
@@ -38616,7 +39705,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 624
+	            lineNumber: 667
 	          }
 	        },
 	        dom(
@@ -38629,7 +39718,7 @@
 	            orientation: "vertical",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 630
+	              lineNumber: 673
 	            }
 	          },
 	          dom(
@@ -38640,7 +39729,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 637
+	                lineNumber: 680
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -38654,7 +39743,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 642
+	                lineNumber: 685
 	              }
 	            })
 	          ),
@@ -38664,7 +39753,7 @@
 	            totalProgress: this.data.totalProgress,
 	            visibility: this.showProgress, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 654
+	              lineNumber: 697
 	            }
 	          }),
 	          dom(
@@ -38673,7 +39762,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 660
+	                lineNumber: 703
 	              }
 	            },
 	            dom(
@@ -38683,7 +39772,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 664
+	                  lineNumber: 707
 	                }
 	              },
 	              dom(
@@ -38694,7 +39783,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 669
+	                    lineNumber: 712
 	                  }
 	                },
 	                dom(
@@ -38706,7 +39795,7 @@
 	                    padding: "16,24,16,16",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 674
+	                      lineNumber: 717
 	                    }
 	                  },
 	                  dom(CourseProgress, {
@@ -38717,7 +39806,7 @@
 	                    onResumeClick: this.handleCourseResume,
 	                    visibility: this.showProgress, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 681
+	                      lineNumber: 724
 	                    }
 	                  }),
 	                  dom(LinearLayout, {
@@ -38726,7 +39815,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 689
+	                      lineNumber: 732
 	                    }
 	                  }),
 	                  dom(TextView, {
@@ -38736,7 +39825,7 @@
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                    text: window.__S.STRUCTURE, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 697
+	                      lineNumber: 740
 	                    }
 	                  }),
 	                  dom(
@@ -38749,7 +39838,7 @@
 	                      root: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 706
+	                        lineNumber: 749
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -38759,7 +39848,7 @@
 	                      gravity: "center",
 	                      text: window.__S.LOADING_CONTENT, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 714
+	                        lineNumber: 757
 	                      }
 	                    }),
 	                    dom(ProgressBar, {
@@ -38768,7 +39857,7 @@
 	                      width: "20",
 	                      height: "20", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 721
+	                        lineNumber: 764
 	                      }
 	                    })
 	                  )
@@ -38780,7 +39869,7 @@
 	                  height: "wrap_content",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 730
+	                    lineNumber: 773
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -38795,7 +39884,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 733
+	                    lineNumber: 776
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -38810,10 +39899,22 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 744
+	                    lineNumber: 787
 	                  }
 	                })
-	              )
+	              ),
+	              dom(DownloadAllProgressButton, {
+	                width: "match_parent",
+	                identifier: _this.idSet.downloadAllProgressButton,
+	                buttonText: "Download All",
+	                visibility: "visible",
+	                hideDivider: "gone",
+	                handleButtonClick: this.showDownloadAllPopUp,
+	                __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 799
+	                }
+	              })
 	            ),
 	            dom(
 	              LinearLayout,
@@ -38826,7 +39927,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 759
+	                  lineNumber: 810
 	                }
 	              },
 	              dom(TextView, {
@@ -38836,7 +39937,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 768
+	                  lineNumber: 819
 	                }
 	              })
 	            )
@@ -38846,7 +39947,7 @@
 	          onConfirm: this.flagContent,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 783
+	            lineNumber: 834
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -38854,7 +39955,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 787
+	            lineNumber: 838
 	          }
 	        })
 	      );
@@ -38871,7 +39972,7 @@
 	
 	  this.onPop = function () {
 	    window.__getDownloadStatus = _this3.getSpineStatus;
-	    Android.runInUI(_this3.animateView(), null, "120", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "127", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	  };
 	
 	  this.onStop = function () {
@@ -38926,7 +40027,7 @@
 	      return;
 	    }
 	
-	    data.downloadProgress = data.downloadProgress == undefined || isNaN(data.downloadProgress) ? 0 : data.downloadProgress;
+	    data.Progress = data.downloadProgress == undefined || isNaN(data.downloadProgress) ? 0 : data.downloadProgress;
 	    var downloadedPercent = data.downloadProgress;
 	    downloadedPercent = downloadedPercent < 0 ? 0 : downloadedPercent;
 	    if (downloadedPercent == 100) {
@@ -39020,7 +40121,7 @@
 	        padding: "0,8,0,8",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 267
+	          lineNumber: 275
 	        }
 	      },
 	      dom(TextView, {
@@ -39029,7 +40130,7 @@
 	        text: utils.firstLeterCapital(name),
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 274
+	          lineNumber: 282
 	        }
 	      }),
 	      dom(TextView, {
@@ -39038,7 +40139,7 @@
 	        text: description,
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 280
+	          lineNumber: 288
 	        }
 	      }),
 	      dom(
@@ -39048,7 +40149,7 @@
 	          height: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 286
+	            lineNumber: 294
 	          }
 	        },
 	        dom(TextView, {
@@ -39057,7 +40158,7 @@
 	          text: window.__S.CREATED_BY_SMALL + "  ",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 290
+	            lineNumber: 298
 	          }
 	        }),
 	        dom(TextView, {
@@ -39066,7 +40167,7 @@
 	          text: createdBy,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 295
+	            lineNumber: 303
 	          }
 	        })
 	      )
@@ -39103,7 +40204,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "333", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "341", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -39163,7 +40264,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 393
+	          lineNumber: 401
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -39171,7 +40272,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "404", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "412", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -39183,7 +40284,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 407
+	          lineNumber: 415
 	        }
 	      });
 	    }
@@ -39219,7 +40320,7 @@
 	        id: _this3.idSet.featureButton2,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "451", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "459", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	
@@ -39233,7 +40334,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "466", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "474", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -39305,7 +40406,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 540
+	            lineNumber: 548
 	          }
 	        });
 	
@@ -39356,6 +40457,14 @@
 	    return ret;
 	  };
 	
+	  this.getSubcontentIds = function (content) {
+	    content.map(function (item, i) {
+	      if (item.children == undefined) _this.subContentArray.push(item.identifier);else if (item.children != undefined) {
+	        _this.getSubcontentIds(item.children);
+	      }
+	    });
+	  };
+	
 	  this.changeOverFlow = function () {
 	    var toolbar = dom(SimpleToolbar, {
 	      title: "",
@@ -39368,23 +40477,350 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 607
+	        lineNumber: 624
 	      }
 	    });
 	
 	    _this3.replaceChild(_this3.idSet.simpleToolBarOverFlow, toolbar.render(), 0);
+	  };
+	
+	  this.getLineSeperator = function () {
+	    return dom(LinearLayout, {
+	      width: "match_parent",
+	      height: "2",
+	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 638
+	      }
+	    });
+	  };
+	
+	  this.handleDownloadAllClick = function () {
+	    _this3.getSubcontentIds(_this3.courseContent.children);
+	    console.log("children", _this3.subContentArray);
+	    _this3.downloadContentCount = 0;
+	    _this3.childrenCount = _this3.subContentArray.length;
+	    window.__DownloadAllProgressButton.childrenCount = _this3.childrenCount;
+	    window.__DownloadAllProgressButton.childrenArray = _this3.subContentArray;
+	    JBridge.downloadAllContent(_this3.subContentArray);
+	    _this3.subContentArray = [];
+	    window.__DownloadAllPopup.hide();
+	  };
+	
+	  this.showDownloadAllPopUp = function () {
+	    window.__DownloadAllPopup.props.totalSize = 0;
+	    window.__DownloadAllPopup.props.buttonClick = _this3.handleDownloadAllClick;
+	    window.__DownloadAllPopup.show();
 	  };
 	};
 	
 	module.exports = Connector(CourseEnrolledActivity);
 
 /***/ }),
-/* 456 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FlagPopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadAllProgressButton.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var TextView = __webpack_require__(342);
+	var callbackMapper = __webpack_require__(329);
+	var utils = __webpack_require__(397);
+	
+	var Button = __webpack_require__(380);
+	
+	var _this;
+	
+	/*
+	# This component handles downloading and playing of content.
+	# If the content is not available locally, it shows the DOWNLOAD option, handles download.
+	# After the content is dowloaded or available locally, PLAY option is displayed and plays the content.
+	*/
+	
+	var DownloadAllProgressButton = function (_View) {
+	  _inherits(DownloadAllProgressButton, _View);
+	
+	  function DownloadAllProgressButton(props, children) {
+	    _classCallCheck(this, DownloadAllProgressButton);
+	
+	    var _this2 = _possibleConstructorReturn(this, (DownloadAllProgressButton.__proto__ || Object.getPrototypeOf(DownloadAllProgressButton)).call(this, props, children));
+	
+	    _this2.setCancelButtonVisibility = function (value) {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.cancelDownloadHolder,
+	        visibility: value
+	      });
+	      Android.runInUI(cmd, 0, "46", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	    };
+	
+	    _this2.handleCancelDownload = function () {
+	
+	      window.__DownloadAllProgressButton.childrenArray.map(function (item) {
+	        JBridge.cancelDownload(item);
+	      });
+	
+	      _this2.isCancelVisible = false;
+	      _this2.setCancelButtonVisibility("gone");
+	
+	      _this2.startedDownloading = false;
+	      _this2.isDownloaded = false;
+	      _this2.replaceChild(_this2.idSet.downloadBarContainer, _this2.getButtons(0, _this2.props.buttonText).render(), 0);
+	    };
+	
+	    _this2.updateProgress = function (response) {
+	
+	      var jsonResponse = JSON.parse(response);
+	      console.log("response for download all", jsonResponse.status);
+	
+	      if (jsonResponse.status == "IMPORT_COMPLETED") {
+	        _this2.downloadContentCount++;
+	      }
+	
+	      var textToShow = "";
+	      var progress = 0;
+	      if (_this2.downloadContentCount == _this2.childrenCount) {
+	        textToShow = "All Contents Downloaded";
+	        _this2.setCancelButtonVisibility("gone");
+	        _this2.isCancelVisible = false;
+	      } else {
+	        _this.isDownloaded = false;
+	        textToShow = "DOWNLOADING " + _this2.downloadContentCount + "/" + _this2.childrenCount;
+	        progress = _this2.downloadContentCount / _this2.childrenCount * 100;
+	      }
+	      if (!_this2.isCancelVisible) {
+	        _this2.setCancelButtonVisibility("visible");
+	        _this2.isCancelVisible = true;
+	      }
+	      _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(progress, textToShow).render(), 0);
+	    };
+	
+	    _this2.setVisibility = function (value) {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.downloadBar,
+	        visibility: value
+	
+	      });
+	      Android.runInUI(cmd, 0, "102", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	    };
+	
+	    _this2.setButtonFor = function (identifier) {
+	      _this2.props.identifier = identifier;
+	    };
+	
+	    _this2.setLocalStatus = function (status) {
+	      _this2.props.localStatus = status;
+	    };
+	
+	    _this2.setPlayContent = function (content) {
+	      _this2.props.playContent = content;
+	    };
+	
+	    _this2.setContentDetails = function (data) {
+	      _this2.props.contentDetails = data;
+	    };
+	
+	    _this2.handleButtonClick = function () {
+	      // to save download all progress
+	      _this2.downloadContentCount = 0;
+	      window.__onContentImportResponse = _this2.updateProgress;
+	      _this2.props.handleButtonClick();
+	    };
+	
+	    _this2.getDownloadBackground = function (value) {
+	
+	      value = value < 0 ? 0 : value;
+	
+	      var pLeft = parseFloat(value) / parseFloat(100);
+	      var pRight = 1 - pLeft;
+	
+	      var mCornerLeft = "8,0,0,8,";
+	      var mCornerRight = "0,8,8,0,";
+	      if (pLeft == 1) {
+	        mCornerLeft = "8,8,8,8,";
+	      } else if (pLeft <= 0) {
+	        mCornerRight = "8,8,8,8,";
+	      }
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          onClick: _this2.handleButtonClick,
+	          root: "true",
+	          height: "48", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 143
+	          }
+	        },
+	        dom(LinearLayout, {
+	          width: "0",
+	          height: "match_parent",
+	          weight: pLeft,
+	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 149
+	          }
+	        }),
+	        dom(LinearLayout, {
+	          width: "0",
+	          height: "match_parent",
+	          weight: pRight,
+	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 155
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.getButtons = function (value, text) {
+	      var _this = _this2;
+	      var layout = dom(
+	        RelativeLayout,
+	        {
+	          width: "match_parent",
+	          height: "48",
+	          root: "true", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 170
+	          }
+	        },
+	        _this2.getDownloadBackground(value),
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          centerInParent: "true,-1",
+	          id: _this2.idSet.downloadingText,
+	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
+	          text: text, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 179
+	          }
+	        })
+	      );
+	
+	      return layout;
+	    };
+	
+	    _this2.getCancelButton = function (value, text) {
+	      var layout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          id: _this2.idSet.cancelDownloadHolder,
+	          height: "48",
+	          cornerRadius: "5",
+	          margin: "16,16,16,4",
+	          visibility: "gone",
+	          layoutTransition: "true",
+	          background: window.__Colors.WHITE,
+	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 197
+	          }
+	        },
+	        dom(TextView, {
+	          width: "match_parent",
+	          height: "match_parent",
+	          gravity: "center",
+	          onClick: _this2.handleCancelDownload,
+	          style: window.__TextStyle.textStyle.CARD.ACTION.BLUE,
+	          text: window.__S.CANCEL_DOWNLOAD, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 208
+	          }
+	        })
+	      );
+	
+	      return layout;
+	    };
+	
+	    _this2.displayName = "DownloadAllProgressButton";
+	    _this2.setIds(["downloadingText", "downloadBarContainer", "downloadBar", "cancelDownloadHolder"]);
+	
+	    window.__DownloadAllProgressButton = _this2;
+	    _this2.isDownloaded = false;
+	    _this2.startedDownloading = false;
+	
+	    _this = _this2;
+	    _this2.isCancelVisible = false;
+	    console.log("DownloadAllProgressButton props", _this2.props);
+	
+	    return _this2;
+	  }
+	
+	  _createClass(DownloadAllProgressButton, [{
+	    key: "render",
+	    value: function render() {
+	
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          height: "wrap_content",
+	          orientation: "vertical",
+	          width: "match_parent",
+	          background: window.__Colors.WHITE,
+	          visibility: this.props.visibility ? this.props.visibility : "visible",
+	          id: this.idSet.downloadBar,
+	          layoutTransition: "true", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 229
+	          }
+	        },
+	        dom(LinearLayout, {
+	          height: "2",
+	          visibility: this.props.hideDivider ? "gone" : "visible",
+	          width: "match_parent",
+	          background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 238
+	          }
+	        }),
+	        this.getCancelButton(),
+	        dom(
+	          LinearLayout,
+	          {
+	            height: "match_parent",
+	            width: "match_parent",
+	            margin: "16,4,16,16",
+	            root: "true",
+	            id: this.idSet.downloadBarContainer, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 246
+	            }
+	          },
+	          this.getButtons(0, this.props.buttonText)
+	        )
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return DownloadAllProgressButton;
+	}(View);
+	
+	module.exports = DownloadAllProgressButton;
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FlagPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39410,7 +40846,7 @@
 	var FeatureButton = __webpack_require__(377);
 	var RadioListItem = __webpack_require__(384);
 	var Spinner = __webpack_require__(394);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var Styles = __webpack_require__(347);
 	
 	var IconStyle = Styles.Params.IconStyle;
@@ -39439,7 +40875,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "59", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "59", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.showBodyWithOptions = function () {
@@ -39448,7 +40884,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "69", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "69", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.hideBodyWithOptions = function () {
@@ -39457,7 +40893,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "78", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "78", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -39806,12 +41242,12 @@
 	module.exports = FlagPopup;
 
 /***/ }),
-/* 457 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ModuleDetailActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ModuleDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39832,10 +41268,10 @@
 	var ScrollView = __webpack_require__(351).androidViews.ScrollView;
 	var RatingBar = __webpack_require__(372);;
 	var SimpleToolbar = __webpack_require__(382);
-	var SimplePopup = __webpack_require__(459);
-	var CropParagraph = __webpack_require__(434);
-	var ProgressButton = __webpack_require__(453);
-	var CourseCurriculum = __webpack_require__(448);
+	var SimplePopup = __webpack_require__(467);
+	var CropParagraph = __webpack_require__(440);
+	var ProgressButton = __webpack_require__(460);
+	var CourseCurriculum = __webpack_require__(455);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -39888,7 +41324,7 @@
 	
 	        _this2.onPop = function () {
 	            window.__getDownloadStatus = _this2.getSpineStatus;
-	            Android.runInUI(_this2.animateView(), null, "114", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
+	            Android.runInUI(_this2.animateView(), null, "116", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	        };
 	
 	        _this2.getSpineStatus = function (pValue) {
@@ -39912,12 +41348,38 @@
 	                    id: _this2.idSet.downloadProgressText,
 	                    text: "Fetching Contents: " + downloadedPercent + "%"
 	                });
-	                Android.runInUI(cmd, 0, "142", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "144", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	            }
 	        };
 	
 	        _this2.hasChildren = function (mimeType) {
 	            if (mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") return true;else return false;
+	        };
+	
+	        _this2.getSubcontentIds = function (content) {
+	            content.map(function (item, i) {
+	                if (item.children == undefined) _this.subContentArray.push(item.identifier);else if (item.children != undefined) {
+	                    _this.getSubcontentIds(item.children);
+	                }
+	            });
+	        };
+	
+	        _this2.handleDownloadAllClick = function () {
+	            _this2.getSubcontentIds(_this2.courseContent.children);
+	            console.log("children", _this2.subContentArray);
+	            _this2.downloadContentCount = 0;
+	            _this2.childrenCount = _this2.subContentArray.length;
+	            window.__DownloadAllProgressButton.childrenCount = _this2.childrenCount;
+	            window.__DownloadAllProgressButton.childrenArray = _this2.subContentArray;
+	            JBridge.downloadAllContent(_this2.subContentArray);
+	            _this2.subContentArray = [];
+	            window.__DownloadAllPopup.hide();
+	        };
+	
+	        _this2.showDownloadAllPopUp = function () {
+	            window.__DownloadAllPopup.props.totalSize = 0;
+	            window.__DownloadAllPopup.props.buttonClick = _this2.handleDownloadAllClick;
+	            window.__DownloadAllPopup.show();
 	        };
 	
 	        _this2.checkContentLocalStatus = function (module) {
@@ -39998,7 +41460,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 225
+	                        lineNumber: 255
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -40006,6 +41468,7 @@
 	            );
 	            _this2.replaceChild(_this2.idSet.renderPage, layout.render(), 0);
 	            _this2.replaceChild(_this2.idSet.progressButtonContainer, _this2.getProgressButton().render(), 0);
+	            if (_this2.module.hasOwnProperty("children")) _this2.replaceChild(_this2.idSet.downloadAllButtonContainer, _this2.getDownloadAllButton().render(), 0);
 	            _this2.checkContentLocalStatus(module);
 	        };
 	
@@ -40024,7 +41487,7 @@
 	                        onClick: _this2.handleModuleClick,
 	                        content: module.children, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 246
+	                            lineNumber: 278
 	                        }
 	                    });
 	                } else {
@@ -40035,7 +41498,7 @@
 	                        gravity: "center",
 	                        text: window.__S.ERROR_CONTENT_NOT_AVAILABLE, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 258
+	                            lineNumber: 290
 	                        }
 	                    });
 	                }
@@ -40050,7 +41513,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    visibility: "gone"
 	                });
-	                Android.runInUI(cmd, 0, "277", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "309", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	                window.__ProgressButton.setButtonFor(module.identifier);
 	                window.__ProgressButton.setVisibility("visible");
 	            }
@@ -40061,6 +41524,7 @@
 	            window.__ProgressButton.setButtonFor(_this2.module.identifier);
 	            JBridge.logContentDetailScreenEvent(_this2.module.identifier, _this2.module.contentData.pkgVersion);
 	            _this2.checkContentLocalStatus(_this2.module);
+	            if (_this2.module.hasOwnProperty("children")) _this2.replaceChild(_this2.idSet.downloadAllButtonContainer, _this2.getDownloadAllButton().render(), 0);
 	        };
 	
 	        _this2.getLineSeperator = function () {
@@ -40069,7 +41533,7 @@
 	                margin: "0,16,0,0",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 291
+	                    lineNumber: 326
 	                }
 	            });
 	        };
@@ -40082,7 +41546,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 300
+	                        lineNumber: 335
 	                    }
 	                },
 	                dom(
@@ -40093,7 +41557,7 @@
 	                        margin: "0,12,0,12",
 	                        width: "match_parent", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 305
+	                            lineNumber: 340
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -40103,7 +41567,7 @@
 	                        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                        text: _this2.moduleName, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 311
+	                            lineNumber: 346
 	                        }
 	                    })
 	                ),
@@ -40113,7 +41577,7 @@
 	                    width: "match_parent",
 	                    text: _this2.module.contentData.hasOwnProperty("size") ? window.__S.MODULE_SIZE.format(_this2.formatBytes(_this2.module.contentData.size)) : window.__S.MODULE_SIZE_UNAVAILABLE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 320
+	                        lineNumber: 355
 	                    }
 	                }),
 	                dom(CropParagraph, {
@@ -40123,7 +41587,7 @@
 	                    headText: _this2.module.contentData.description ? window.__S.DESCRIPTION : undefined,
 	                    contentText: _this2.module.contentData.description, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 326
+	                        lineNumber: 361
 	                    }
 	                })
 	            );
@@ -40141,7 +41605,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 340
+	                        lineNumber: 375
 	                    }
 	                },
 	                dom(TextView, {
@@ -40151,7 +41615,7 @@
 	                    gravity: "center",
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 347
+	                        lineNumber: 382
 	                    }
 	                })
 	            );
@@ -40182,7 +41646,7 @@
 	                overFlowCallback: _this2.overFlowCallback,
 	                showMenu: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 375
+	                    lineNumber: 410
 	                }
 	            });
 	
@@ -40217,12 +41681,25 @@
 	                localStatus: _this2.localStatus,
 	                identifier: _this2.module.identifier, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 401
+	                    lineNumber: 436
 	                }
 	            });
 	        };
 	
-	        _this2.setIds(['ratingBar', "downloadProgressText", "descriptionContainer", "playButtonContainer", "simpleToolBarOverFlow", "renderPage", "progressButtonContainer"]);
+	        _this2.getDownloadAllButton = function () {
+	            return dom(DownloadAllProgressButton, {
+	                width: "match_parent",
+	                buttonText: "Download All",
+	                visibility: "visible",
+	                hideDivider: "gone",
+	                handleButtonClick: _this2.showDownloadAllPopUp, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 452
+	                }
+	            });
+	        };
+	
+	        _this2.setIds(['ratingBar', "downloadProgressText", "descriptionContainer", "playButtonContainer", "simpleToolBarOverFlow", "renderPage", "progressButtonContainer", "downloadAllButtonContainer"]);
 	        _this2.state = state;
 	        _this2.screenName = "ModuleDetailActivity";
 	        _this2.menuData = {
@@ -40247,7 +41724,8 @@
 	        _this2.localContent = null;
 	        _this = _this2;
 	        _this2.downloadList = [];
-	
+	        // array of all the children content ids
+	        _this2.subContentArray = [];
 	        //stack to maintain child traversal
 	        _this2.isPoped = false;
 	        _this2.stack = [];
@@ -40270,7 +41748,7 @@
 	                    clickable: "true",
 	                    root: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 418
+	                        lineNumber: 464
 	                    }
 	                },
 	                dom(
@@ -40283,7 +41761,7 @@
 	                        clickable: "true",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 423
+	                            lineNumber: 469
 	                        }
 	                    },
 	                    dom(
@@ -40294,7 +41772,7 @@
 	                            height: "wrap_content",
 	                            id: this.idSet.simpleToolBarOverFlow, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 430
+	                                lineNumber: 476
 	                            }
 	                        },
 	                        dom(SimpleToolbar, {
@@ -40305,7 +41783,7 @@
 	                            overFlowCallback: this.overFlowCallback,
 	                            showMenu: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 435
+	                                lineNumber: 481
 	                            }
 	                        })
 	                    ),
@@ -40317,7 +41795,7 @@
 	                            width: "match_parent",
 	                            fillViewport: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 444
+	                                lineNumber: 490
 	                            }
 	                        },
 	                        dom(
@@ -40328,7 +41806,7 @@
 	                                orientation: "vertical",
 	                                id: this.idSet.renderPage, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 450
+	                                    lineNumber: 496
 	                                }
 	                            },
 	                            this.getHeader(),
@@ -40341,18 +41819,25 @@
 	                            id: this.idSet.progressButtonContainer,
 	                            width: "match_parent", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 463
+	                                lineNumber: 509
 	                            }
 	                        },
 	                        this.getProgressButton()
-	                    )
+	                    ),
+	                    dom(LinearLayout, {
+	                        id: this.idSet.downloadAllButtonContainer,
+	                        width: "match_parent", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 515
+	                        }
+	                    })
 	                ),
 	                dom(SimplePopup, {
 	                    buttonClick: this.onSimplePopClick,
 	                    data: this.simpleData,
 	                    __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 469
+	                        lineNumber: 519
 	                    }
 	                })
 	            );
@@ -40365,10 +41850,10 @@
 	}(View);
 	
 	module.exports = Connector(ModuleDetailActivity);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(458)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(466)(module)))
 
 /***/ }),
-/* 458 */
+/* 466 */
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -40384,12 +41869,12 @@
 
 
 /***/ }),
-/* 459 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/SimplePopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimplePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40445,7 +41930,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "61", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreSimplePopupjs");
+	      Android.runInUI(cmd, 0, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSimplePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -40697,12 +42182,12 @@
 	module.exports = SimplePopup;
 
 /***/ }),
-/* 460 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ViewBatchActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ViewBatchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40719,16 +42204,18 @@
 	var callbackMapper = __webpack_require__(329);
 	var View = __webpack_require__(331);
 	window.R = __webpack_require__(7);
-	var debounce = __webpack_require__(401);
+	var debounce = __webpack_require__(403);
 	
 	var LinearLayout = __webpack_require__(351).androidViews.LinearLayout;
+	var RelativeLayout = __webpack_require__(340);
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var ImageView = __webpack_require__(350);
 	
 	//Components
 	var SimpleToolbar = __webpack_require__(382);
-	var BatchCard = __webpack_require__(461);
+	var BatchCard = __webpack_require__(469);
+	var HomeQuestionCardStyle = __webpack_require__(413);
 	
 	//Utils
 	var utils = __webpack_require__(397);
@@ -40761,7 +42248,7 @@
 	    _this2.showChooser = false;
 	
 	    setTimeout(function () {
-	      Android.runInUI(_this.animateView(), null, "46", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "49", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
 	    });
 	
 	    _this2.handleTypeChange = debounce(_this2.handleTypeChange, 100);
@@ -40783,7 +42270,7 @@
 	          layouTransition: "true",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 453
+	            lineNumber: 476
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -40791,31 +42278,41 @@
 	          onBackPress: this.onBackPressed,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 462
+	            lineNumber: 485
 	          }
 	        }),
-	        this.getBatchTypeHead(),
-	        this.getBatchTypeChoser(),
 	        dom(
-	          ScrollView,
+	          RelativeLayout,
 	          {
-	            height: "match_parent",
-	            width: "match_parent",
-	            fillViewPort: "true", __source: {
+	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 472
+	              lineNumber: 489
 	            }
 	          },
-	          dom(LinearLayout, {
-	            id: this.idSet.batchListContainer,
-	            height: "match_parent",
-	            width: "match_parent",
-	            orientation: "vertical",
-	            gravity: "center", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 477
-	            }
-	          })
+	          this.getBatchTypeHead(),
+	          this.getBatchTypeChoser(),
+	          dom(
+	            ScrollView,
+	            {
+	              height: "match_parent",
+	              width: "match_parent",
+	              fillViewPort: "true", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 493
+	              }
+	            },
+	            dom(LinearLayout, {
+	              id: this.idSet.batchListContainer,
+	              height: "match_parent",
+	              width: "match_parent",
+	              orientation: "vertical",
+	              gravity: "center", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 498
+	              }
+	            })
+	          ),
+	          this.getSignInOverlay()
 	        )
 	      );
 	      return this.layout.render();
@@ -40829,7 +42326,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function (type) {
-	    Android.runInUI(_this.animateView(), null, "58", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "61", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.onBackPressed = function () {
@@ -40843,7 +42340,7 @@
 	    Android.runInUI(_this3.set({
 	      id: _this3.idSet.chooserPopup,
 	      visibility: _this3.showChooser ? "visible" : "gone"
-	    }), 0, "72", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
+	    }), 0, "75", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.handleTypeChange = function (type) {
@@ -40861,7 +42358,7 @@
 	      visibility: type === window.__S.VIEW_ONGOING_BATCHES ? "visible" : "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "95", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(cmd, 0, "98", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
 	
 	    if (type === window.__S.VIEW_ONGOING_BATCHES) {
 	      _this3.replaceChild(_this.idSet.batchListContainer, _this.getBatchesList(_this3.ongoingList, "1").render(), 0);
@@ -41034,7 +42531,7 @@
 	        gravity: "center_vertical",
 	        background: window.__Colors.LIGHT_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 268
+	          lineNumber: 271
 	        }
 	      },
 	      dom(TextView, {
@@ -41046,7 +42543,7 @@
 	        text: window.__S.VIEW_ONGOING_BATCHES,
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 274
+	          lineNumber: 277
 	        }
 	      }),
 	      dom(
@@ -41056,7 +42553,7 @@
 	          width: "wrap_content",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 283
+	            lineNumber: 286
 	          }
 	        },
 	        dom(ImageView, {
@@ -41067,7 +42564,7 @@
 	          onClick: _this3.toggleBatchTypeChooser,
 	          imageUrl: "ic_action_arrow_down", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 288
+	            lineNumber: 291
 	          }
 	        })
 	      )
@@ -41112,7 +42609,7 @@
 	        visibility: _this3.showChooser ? "visible" : "gone",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 335
+	          lineNumber: 338
 	        }
 	      },
 	      dom(
@@ -41127,7 +42624,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_ONGOING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 344
+	            lineNumber: 347
 	          }
 	        },
 	        dom(TextView, {
@@ -41137,7 +42634,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_ONGOING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 354
+	            lineNumber: 357
 	          }
 	        })
 	      ),
@@ -41153,7 +42650,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_UPCOMING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 363
+	            lineNumber: 366
 	          }
 	        },
 	        dom(TextView, {
@@ -41163,7 +42660,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_UPCOMING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 373
+	            lineNumber: 376
 	          }
 	        })
 	      )
@@ -41184,7 +42681,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 391
+	            lineNumber: 394
 	          }
 	        },
 	        dom(ImageView, {
@@ -41193,7 +42690,7 @@
 	          imageUrl: "ic_no_batch",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 400
+	            lineNumber: 403
 	          }
 	        }),
 	        dom(TextView, {
@@ -41204,7 +42701,7 @@
 	          style: window.__TextStyle.textStyle.HEADING.DARK,
 	          text: window.__S.ERROR_NO_BATCHES_FOUND, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 406
+	            lineNumber: 409
 	          }
 	        })
 	      );
@@ -41217,7 +42714,7 @@
 	          width: "match_parent",
 	          orientatio: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 419
+	            lineNumber: 422
 	          }
 	        },
 	        dom(BatchCard, {
@@ -41230,7 +42727,7 @@
 	            _this3.handleBatchEnrollClick(item);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 424
+	            lineNumber: 427
 	          }
 	        })
 	      );
@@ -41245,23 +42742,56 @@
 	        width: "match_parent",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 437
+	          lineNumber: 440
 	        }
 	      },
 	      cards
 	    );
+	  };
+	
+	  this.getSignInOverlay = function () {
+	    if (window.__loggedInState && window.__loggedInState == "GUEST") {
+	      return dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          gravity: "center_vertical",
+	          transparent: "true",
+	          background: "#FFFFFF",
+	          alpha: "0.9",
+	          clickable: "true", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 457
+	          }
+	        },
+	        dom(HomeQuestionCardStyle, {
+	          headerText: window.__S.OVERLAY_LABEL_TAKE_COURSE,
+	          infoText: window.__S.OVERLAY_INFO_TEXT_TAKE_COURSE, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 464
+	          }
+	        })
+	      );
+	    } else {
+	      return dom(LinearLayout, {
+	        __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 470
+	        }
+	      });
+	    }
 	  };
 	};
 	
 	module.exports = Connector(ViewBatchActivity);
 
 /***/ }),
-/* 461 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/BatchCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/BatchCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41283,7 +42813,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(416);
+	var StarComponent = __webpack_require__(421);
 	var _this;
 	
 	var utils = __webpack_require__(397);
@@ -41459,12 +42989,12 @@
 	module.exports = BatchCard;
 
 /***/ }),
-/* 462 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommunityInfoActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41486,9 +43016,9 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var CommunityDescription = __webpack_require__(463);
-	var CommunityDefault = __webpack_require__(464);
-	var SearchToolbar = __webpack_require__(411);
+	var CommunityDescription = __webpack_require__(471);
+	var CommunityDefault = __webpack_require__(472);
+	var SearchToolbar = __webpack_require__(416);
 	
 	var CommunityInfoActivity = function (_View) {
 	  _inherits(CommunityInfoActivity, _View);
@@ -41505,7 +43035,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "57", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(_this.animateView(), null, "57", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -41726,7 +43256,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, null, "227", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(cmd, null, "227", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {
@@ -41855,12 +43385,12 @@
 	module.exports = Connector(CommunityInfoActivity);
 
 /***/ }),
-/* 463 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityDescription.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDescription.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42068,12 +43598,12 @@
 	module.exports = CommunityDescription;
 
 /***/ }),
-/* 464 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityDefault.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDefault.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42094,8 +43624,8 @@
 	var ChooseItem = __webpack_require__(383);
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
-	var FeedComponent = __webpack_require__(465);
-	var CommunityEventsContainer = __webpack_require__(467);
+	var FeedComponent = __webpack_require__(473);
+	var CommunityEventsContainer = __webpack_require__(475);
 	
 	var _this;
 	
@@ -42326,12 +43856,12 @@
 	module.exports = CommunityDefault;
 
 /***/ }),
-/* 465 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FeedComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeedComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42349,7 +43879,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var FeedCard = __webpack_require__(466);
+	var FeedCard = __webpack_require__(474);
 	var _this;
 	
 	var FeedComponent = function (_View) {
@@ -42452,12 +43982,12 @@
 	module.exports = FeedComponent;
 
 /***/ }),
-/* 466 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/FeedCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FeedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42908,7 +44438,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "227", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "227", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerClose",
@@ -42923,7 +44453,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "241", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "241", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerSubmit",
@@ -42961,12 +44491,12 @@
 	module.exports = FeedCard;
 
 /***/ }),
-/* 467 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42984,8 +44514,8 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var AnnouncementCard = __webpack_require__(409);
-	var CommunityParams = __webpack_require__(410);
+	var AnnouncementCard = __webpack_require__(414);
+	var CommunityParams = __webpack_require__(415);
 	var _this;
 	
 	var CommunityEventsContainer = function (_View) {
@@ -43066,12 +44596,12 @@
 	module.exports = CommunityEventsContainer;
 
 /***/ }),
-/* 468 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommunityViewAllActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43092,7 +44622,7 @@
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(411);
+	var SearchToolbar = __webpack_require__(416);
 	
 	var CommunityViewAllActivity = function (_View) {
 	  _inherits(CommunityViewAllActivity, _View);
@@ -43249,7 +44779,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "152", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommunityViewAllActivityjs");
+	      Android.runInUI(_this.animateView(), null, "152", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityViewAllActivityjs");
 	    };
 	
 	    _this.setIds(['filterCount']);
@@ -43326,12 +44856,12 @@
 	module.exports = Connector(CommunityViewAllActivity);
 
 /***/ }),
-/* 469 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/NotificationActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/NotificationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43366,7 +44896,7 @@
 	    var _this = _possibleConstructorReturn(this, (NotificationActivity.__proto__ || Object.getPrototypeOf(NotificationActivity)).call(this, props, children, state));
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "59", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsNotificationActivityjs");
+	      Android.runInUI(_this.animateView(), null, "59", "UsersnikithshettysunbirdgithubsunbirdduiviewsNotificationActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -43581,12 +45111,12 @@
 	module.exports = Connector(NotificationActivity);
 
 /***/ }),
-/* 470 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ResourceDetailActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43607,10 +45137,10 @@
 	var ScrollView = __webpack_require__(358);
 	var HorizontalScrollView = __webpack_require__(357);
 	var RatingBar = __webpack_require__(372);;
-	var SharePopup = __webpack_require__(454);
-	var FlagPopup = __webpack_require__(456);
+	var SharePopup = __webpack_require__(461);
+	var FlagPopup = __webpack_require__(464);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProgressButton = __webpack_require__(453);
+	var ProgressButton = __webpack_require__(460);
 	var utils = __webpack_require__(397);
 	
 	window.R = __webpack_require__(7);
@@ -44215,12 +45745,12 @@
 	module.exports = Connector(ResourceDetailActivity);
 
 /***/ }),
-/* 471 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ResourceViewAllActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44238,7 +45768,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ListView = __webpack_require__(371);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(472);
+	var LargeCardComponent = __webpack_require__(480);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -44330,7 +45860,7 @@
 	
 	    _this2.handleResourceClick = function (item, index) {
 	      var index_click = _this2.start_index < 1 ? index + 1 : index + _this2.start_index * 10 + 1;
-	      JBridge.logContentClickEvent("RESOURCES", index_click, "", item.identifier, item.pkgVersion);
+	      JBridge.logContentClickEvent("LIBRARY", index_click, "", item.identifier, item.pkgVersion);
 	      console.log(item);
 	      if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
 	        var whatToSend = { course: JSON.stringify(item) };
@@ -44464,12 +45994,12 @@
 	module.exports = Connector(ResourceViewAllActivity);
 
 /***/ }),
-/* 472 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44756,12 +46286,12 @@
 	module.exports = ResourceViewAllCard;
 
 /***/ }),
-/* 473 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CourseViewAllActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44777,7 +46307,7 @@
 	var LinearLayout = __webpack_require__(333);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(472);
+	var LargeCardComponent = __webpack_require__(480);
 	var ListView = __webpack_require__(371);
 	var utils = __webpack_require__(397);
 	
@@ -44793,11 +46323,13 @@
 	
 	    _this2.checkEnrolledCourse = function (identifier) {
 	      var enrolled = false;
-	      window.__enrolledCourses.map(function (item) {
-	        if (item.courseId == identifier) {
-	          enrolled = true;
-	        }
-	      });
+	      if (window.__enrolledCourses) {
+	        window.__enrolledCourses.map(function (item) {
+	          if (item.courseId == identifier) {
+	            enrolled = true;
+	          }
+	        });
+	      }
 	      return enrolled;
 	    };
 	
@@ -44846,7 +46378,7 @@
 	          index: i,
 	          onResourceClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 92
+	            lineNumber: 94
 	          }
 	        });
 	        _this2.jsonArray.push({ view: _this2.getView(layout.render()), value: "", viewType: 0 });
@@ -44986,7 +46518,7 @@
 	          background: window.__Colors.PRIMARY_LIGHT,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 216
+	            lineNumber: 218
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -44997,7 +46529,7 @@
 	          showMenu: "true",
 	          title: this.appbarTitle, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 223
+	            lineNumber: 225
 	          }
 	        }),
 	        dom(ListView, {
@@ -45005,7 +46537,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 230
+	            lineNumber: 232
 	          }
 	        })
 	      );
@@ -45019,12 +46551,12 @@
 	module.exports = Connector(CourseViewAllActivity);
 
 /***/ }),
-/* 474 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AnnouncementViewAllActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45043,7 +46575,7 @@
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
 	var callbackMapper = __webpack_require__(329);
-	var AnnouncementCard = __webpack_require__(409);
+	var AnnouncementCard = __webpack_require__(414);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -45225,12 +46757,12 @@
 	module.exports = Connector(AnnouncementViewAllActivity);
 
 /***/ }),
-/* 475 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/SearchActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45255,9 +46787,9 @@
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterDialog = __webpack_require__(476);
+	var FilterDialog = __webpack_require__(484);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(413);
+	var SearchResult = __webpack_require__(418);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -45302,7 +46834,7 @@
 	          visibility: "visible",
 	          imageUrl: _this2.filterIcon
 	        });
-	        Android.runInUI(cmd, 0, "89", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	        Android.runInUI(cmd, 0, "89", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	        _this2.getSearchList(_this2.searchText);
 	        window.__LoaderDialog.show();
 	      } else if (window.search && window.search.type == _this2.searchType && window.search.res != undefined && window.search.res != "" && window.search.text != undefined && window.search.text != "") {
@@ -45318,7 +46850,7 @@
 	    };
 	
 	    _this2.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "106", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "106", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.getBack = function () {
@@ -45403,7 +46935,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "175", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "175", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -45544,7 +47076,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "307", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "307", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleSearchClick = function (searchText) {
@@ -45576,7 +47108,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "341", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "341", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
@@ -45699,12 +47231,12 @@
 	module.exports = Connector(SearchActivity);
 
 /***/ }),
-/* 476 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/FilterDialog.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FilterDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45898,12 +47430,12 @@
 	module.exports = FilterDialog;
 
 /***/ }),
-/* 477 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/FilterActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/FilterActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45924,8 +47456,8 @@
 	var ScrollView = __webpack_require__(358);
 	var View = __webpack_require__(331);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterCard = __webpack_require__(478);
-	var FilterPopup = __webpack_require__(479);
+	var FilterCard = __webpack_require__(486);
+	var FilterPopup = __webpack_require__(487);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -46197,12 +47729,12 @@
 	module.exports = Connector(FilterActivity);
 
 /***/ }),
-/* 478 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterCard.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46332,12 +47864,12 @@
 	module.exports = FilterCard;
 
 /***/ }),
-/* 479 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/FilterPopup.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46388,7 +47920,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "51", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdFilterPopupjs");
+	      Android.runInUI(cmd, 0, "51", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterPopupjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -46695,12 +48227,12 @@
 	module.exports = FilterPopup;
 
 /***/ }),
-/* 480 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AdditionalInformationActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AdditionalInformationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -46721,9 +48253,9 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var Spinner = __webpack_require__(394);
-	var MultiSelectSpinner = __webpack_require__(481);
+	var MultiSelectSpinner = __webpack_require__(489);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
@@ -47601,7 +49133,7 @@
 	        text: data[0],
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	      });
-	      Android.runInUI(cmd, 0, "675", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "675", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
 	      _this.updateSaveButtonStatus(_this.checkCompleteStatus());
 	    });
 	
@@ -47898,7 +49430,7 @@
 	        alpha: alphaVal
 	      });
 	
-	      Android.runInUI(cmd, 0, "1039", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "1039", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
 	    }
 	  };
 	
@@ -47961,12 +49493,12 @@
 	module.exports = Connector(AdditionalInformationActivity);
 
 /***/ }),
-/* 481 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48217,12 +49749,440 @@
 	module.exports = MultiSelectSpinner;
 
 /***/ }),
-/* 482 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AddressActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/GuestInformationActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var View = __webpack_require__(331);
+	var HorizontalScrollView = __webpack_require__(357);
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var ImageView = __webpack_require__(350);
+	var ScrollView = __webpack_require__(358);
+	var callbackMapper = __webpack_require__(329);
+	var TextInputView = __webpack_require__(453);
+	var Spinner = __webpack_require__(394);
+	var MultiSelectSpinner = __webpack_require__(489);
+	var Styles = __webpack_require__(347);
+	var PageOption = __webpack_require__(379);
+	var SimpleToolbar = __webpack_require__(382);
+	var utils = __webpack_require__(397);
+	
+	window.R = __webpack_require__(7);
+	var _this;
+	
+	var GuestInformationActivity = function (_View) {
+	  _inherits(GuestInformationActivity, _View);
+	
+	  function GuestInformationActivity(props, children, state) {
+	    _classCallCheck(this, GuestInformationActivity);
+	
+	    var _this2 = _possibleConstructorReturn(this, (GuestInformationActivity.__proto__ || Object.getPrototypeOf(GuestInformationActivity)).call(this, props, children, state));
+	
+	    _this2.show = function () {
+	      _this2.setVisibility("visible");
+	      _this2.isVisible = true;
+	      //this.afterRender();
+	    };
+	
+	    _this2.hide = function () {
+	      _this2.setVisibility("gone");
+	      _this2.isVisible = false;
+	    };
+	
+	    _this2.setVisibility = function (data) {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.parentId,
+	        visibility: data
+	      });
+	      Android.runInUI(cmd, 0, "69", "UsersnikithshettysunbirdgithubsunbirdduiviewsGuestInformationActivityjs");
+	    };
+	
+	    _this2.onPop = function () {};
+	
+	    _this2.getBody = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent",
+	          orientation: "vertical",
+	          padding: "0,0,0,70", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 76
+	          }
+	        },
+	        dom(
+	          ScrollView,
+	          {
+	            width: "match_parent",
+	            height: "match_parent",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 81
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              height: "match_parent",
+	              padding: "11,15,15,15",
+	              orientation: "vertical", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 85
+	              }
+	            },
+	            _this2.getEditTextView(_this2.idSet.nameText, window.__S.FULL_NAME, "", window.__S.FIRST_NAME_HINT, true, "", undefined, false, _this2.idSet.nameLI, "firstName", "8,8,8,8"),
+	            _this2.getSingleSelectSpinner(_this2.idSet.state, window.__S.STATE, true, _this2.loadStateSpinner, true, _this2.idSet.languageLI, "language"),
+	            _this2.getSingleSelectSpinner(_this2.idSet.mediumOfInstruction, window.__S.MEDIUM_OF_INSTRUCTION, true, _this2.loadMediumOfInstructionSpinner, true, _this2.idSet.languageLI, "language"),
+	            _this2.getSingleSelectSpinner(_this2.idSet.grade, window.__S.GRADE, true, _this2.loadGradeSpinner, true, _this2.idSet.languageLI, "language"),
+	            _this2.getSingleSelectSpinner(_this2.idSet.syllabus, window.__S.SYLLABUS, true, _this2.loadSyllabusSpinner, true, _this2.idSet.languageLI, "language")
+	          )
+	        )
+	      );
+	    };
+	
+	    _this2.setName = function (data) {
+	      _this2.currentData.firstName = data;
+	      //this.updateSaveButtonStatus(this.checkCompleteStatus());
+	    };
+	
+	    _this2.getEditTextView = function (id, label, text, hint, optional, onChange, inputType, lockIconVisibility, lockIconId, lockName, padding) {
+	      console.log("getedittextview :", label, "   ", lockIconVisibility);
+	      return dom(
+	        RelativeLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 109
+	          }
+	        },
+	        dom(TextInputView, {
+	          id: id,
+	          height: "wrap_content",
+	          width: "match_parent",
+	          hintText: hint + (optional ? " (Optional)" : ""),
+	          labelText: label.toUpperCase(label),
+	          mandatory: optional ? "false" : "true",
+	          margin: "0,0,0,18",
+	          editTextPadding: "4,4,41,10",
+	          _onChange: onChange,
+	          text: text,
+	          textStyle: window.__TextStyle.textStyle.HINT.SEMI,
+	          editTextStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
+	          inputType: inputType ? inputType : "text", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 112
+	          }
+	        }),
+	        dom(LinearLayout, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          alignParentRight: "true,-1",
+	          padding: "0,0,0,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 126
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.getSingleSelectSpinner = function (id, label, optional, callSpinner, lockIconVisibility, lockIconId, lockName) {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical",
+	          margin: "4,0,0,18", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 137
+	          }
+	        },
+	        _this2.getLabel(label, optional),
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            orientation: "horizontal",
+	            id: id, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 143
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              height: "match_parent",
+	              padding: "0,6,0,0",
+	              weight: "1", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 148
+	              }
+	            },
+	            callSpinner()
+	          )
+	        ),
+	        _this2.getLineSeperator()
+	      );
+	    };
+	
+	    _this2.getLineSeperator = function () {
+	      return dom(LinearLayout, {
+	        width: "match_parent",
+	        margin: "4,0,0,0",
+	        height: "1",
+	        background: window.__Colors.PRIMARY_BLACK, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 160
+	        }
+	      });
+	    };
+	
+	    _this2.getLabel = function (label, optional) {
+	      if (optional) return dom(TextView, {
+	        width: "match_parent",
+	        height: "wrap_content",
+	        style: window.__TextStyle.textStyle.HINT.SEMI,
+	        text: label.toUpperCase(label), __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 170
+	        }
+	      });
+	
+	      return dom(
+	        LinearLayout,
+	        {
+	          height: "wrap_content",
+	          width: "wrap_content",
+	          orientation: "horizontal", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 177
+	          }
+	        },
+	        dom(TextView, {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          style: window.__TextStyle.textStyle.HINT.SEMI,
+	          text: label.toUpperCase(label), __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 181
+	          }
+	        }),
+	        dom(TextView, {
+	          height: "wrap_content",
+	          width: "wrap_content",
+	          text: " *",
+	          color: "#FF0000", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 186
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.loadStateSpinner = function () {
+	      return dom(Spinner, {
+	        width: "match_parent",
+	        height: "24",
+	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
+	        id: _this2.idSet.stateSpinner,
+	        onItemClick: _this2.handleLanguageSpinnerItemClick,
+	        values: "Karnataka", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 194
+	        }
+	      });
+	    };
+	
+	    _this2.loadMediumOfInstructionSpinner = function () {
+	      return dom(Spinner, {
+	        width: "match_parent",
+	        height: "24",
+	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
+	        id: _this2.idSet.mediumOfInstructionSpinner,
+	        onItemClick: _this2.handleLanguageSpinnerItemClick,
+	        values: "English", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 204
+	        }
+	      });
+	    };
+	
+	    _this2.loadGradeSpinner = function () {
+	      return dom(Spinner, {
+	        width: "match_parent",
+	        height: "24",
+	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
+	        id: _this2.idSet.gradeSpinner,
+	        onItemClick: _this2.handleLanguageSpinnerItemClick,
+	        values: "Grade 1", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 214
+	        }
+	      });
+	    };
+	
+	    _this2.loadSyllabusSpinner = function () {
+	      return dom(Spinner, {
+	        width: "match_parent",
+	        height: "24",
+	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
+	        id: _this2.idSet.syllabusSpinner,
+	        onItemClick: _this2.handleLanguageSpinnerItemClick,
+	        values: "English", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 224
+	        }
+	      });
+	    };
+	
+	    _this2.handleLanguageSpinnerItemClick = function () {
+	      for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+	        params[_key] = arguments[_key];
+	      }
+	
+	      console.log(params[2], " loadLanguageSpinner");
+	
+	      if (params[2] > 0) {
+	        _this2.currentData.language = [_this2.LanguageArray[params[2]]];
+	      } else {
+	        _this2.currentData.language = [];
+	      }
+	
+	      _this2.updateSaveButtonStatus(_this2.checkCompleteStatus());
+	    };
+	
+	    _this2.getButtons = function () {
+	      var buttonList = [_this2.saveBtnState];
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          alignParentBottom: "true, -1",
+	          orientation: "vertical",
+	          background: "#ffffff", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 248
+	          }
+	        },
+	        dom(PageOption, {
+	          width: "match_parent",
+	          buttonItems: buttonList,
+	          hideDivider: false, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 254
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.handleSaveClick = function () {
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	      }
+	      var whatToSend = [];
+	      var event = { tag: "BACK_GuestInformationActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
+	
+	    _this2.onBackPressed = function () {
+	      var whatToSend = [];
+	      var event = { tag: "BACK_GuestInformationActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
+	
+	    _this2.setIds(["nameText", "state", "mediumOfInstruction", "grade", "syllabus", "parentId", "stateSpinner", "mediumOfInstructionSpinner", "syllabusSpinner", "gradeSpinner", "languageLI", "saveButton"]);
+	    _this2.state = state;
+	    _this2.shouldCacheScreen = false;
+	    window.__GuestInformationActivity = _this2;
+	    _this2.visible = true;
+	    _this2.saveBtnState = {
+	      text: window.__S.SAVE,
+	      id: _this2.idSet.saveButton,
+	      isClickable: "true",
+	      onClick: _this2.handleSaveClick
+	    };
+	    _this = _this2;
+	    return _this2;
+	  }
+	
+	  _createClass(GuestInformationActivity, [{
+	    key: "render",
+	    value: function render() {
+	      console.log("render");
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          id: this.idSet.parentId,
+	          orientation: "vertical",
+	          root: "true",
+	          background: window.__Colors.WHITE,
+	          width: "match_parent",
+	          height: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 277
+	          }
+	        },
+	        dom(SimpleToolbar, {
+	          title: window.__S.EDIT_PROFILE,
+	          onBackPress: this.onBackPressed,
+	          invert: "true",
+	          width: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 284
+	          }
+	        }),
+	        dom(
+	          RelativeLayout,
+	          {
+	            width: "match_parent",
+	            height: "match_parent", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 289
+	            }
+	          },
+	          this.getBody(),
+	          this.getButtons()
+	        )
+	      );
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return GuestInformationActivity;
+	}(View);
+	
+	;
+	
+	module.exports = Connector(GuestInformationActivity);
+
+/***/ }),
+/* 491 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AddressActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48241,11 +50201,11 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var Spinner = __webpack_require__(394);
 	var SimpleToolbar = __webpack_require__(382);
-	var RadioButton = __webpack_require__(483);
-	var SimplePopup = __webpack_require__(459);
+	var RadioButton = __webpack_require__(492);
+	var SimplePopup = __webpack_require__(467);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -48372,7 +50332,7 @@
 	          clickable: "false",
 	          alpha: "0.5" });
 	      }
-	      Android.runInUI(cmd, 0, "197", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsAddressActivityjs");
+	      Android.runInUI(cmd, 0, "197", "UsersnikithshettysunbirdgithubsunbirdduiviewsAddressActivityjs");
 	    };
 	
 	    _this2.getButtons = function () {
@@ -48791,12 +50751,12 @@
 	module.exports = Connector(AddressActivity);
 
 /***/ }),
-/* 483 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/core/RadioButton.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/RadioButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48968,7 +50928,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "154", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdcoreRadioButtonjs");
+	      Android.runInUI(cmd, 0, "154", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreRadioButtonjs");
 	
 	      _this.onClickCallback();
 	    };
@@ -49038,12 +50998,12 @@
 	module.exports = RadioButton;
 
 /***/ }),
-/* 484 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/EducationActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/EducationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49062,9 +51022,9 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var PageOption = __webpack_require__(379);
-	var SimplePopup = __webpack_require__(459);
+	var SimplePopup = __webpack_require__(467);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -49170,7 +51130,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "178", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsEducationActivityjs");
+	      Android.runInUI(cmd, 0, "178", "UsersnikithshettysunbirdgithubsunbirdduiviewsEducationActivityjs");
 	    };
 	
 	    _this2.checkPassingYear = function (data) {
@@ -49521,12 +51481,12 @@
 	module.exports = Connector(EducationActivity);
 
 /***/ }),
-/* 485 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ExperienceActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ExperienceActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49545,13 +51505,13 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(446);
+	var TextInputView = __webpack_require__(453);
 	var Spinner = __webpack_require__(394);
-	var RadioButton = __webpack_require__(483);
+	var RadioButton = __webpack_require__(492);
 	var callbackMapper = __webpack_require__(329);
 	var PageOption = __webpack_require__(379);
-	var MultiSelectSpinner = __webpack_require__(481);
-	var SimplePopup = __webpack_require__(459);
+	var MultiSelectSpinner = __webpack_require__(489);
+	var SimplePopup = __webpack_require__(467);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -49656,7 +51616,7 @@
 	          text: data[0],
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	        });
-	        Android.runInUI(cmd, 0, "169", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "169", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
 	        _this.changeSaveButtonState(_this.checkCompleteStatus());
 	      });
 	
@@ -49682,7 +51642,7 @@
 	            id: _this2.idSet.closingDateText,
 	            text: "Select Date"
 	          });
-	          Android.runInUI(cmd, 0, "198", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
+	          Android.runInUI(cmd, 0, "198", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
 	          _this2.endDate = null;
 	          _this2.isCurrentJob = true;
 	          _this2.changeSaveButtonState(_this2.checkCompleteStatus());
@@ -49696,7 +51656,7 @@
 	          id: _this2.idSet.closingDateLayout,
 	          visibility: "visible"
 	        });
-	        Android.runInUI(cmd, 0, "216", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "216", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
 	        _this2.isCurrentJob = false;
 	        _this2.changeSaveButtonState(_this2.checkCompleteStatus());
 	      }
@@ -49822,7 +51782,7 @@
 	        clickable: clickable,
 	        alpha: alpha
 	      });
-	      Android.runInUI(cmd, 0, "356", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsExperienceActivityjs");
+	      Android.runInUI(cmd, 0, "356", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
 	      _this2.canSave = data;
 	    };
 	
@@ -50272,14 +52232,14 @@
 	module.exports = Connector(ExperienceActivity);
 
 /***/ }),
-/* 486 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/CommProfSearchActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommProfSearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50302,9 +52262,9 @@
 	var Space = __webpack_require__(366);
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
-	var FilterDialog = __webpack_require__(476);
+	var FilterDialog = __webpack_require__(484);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(413);
+	var SearchResult = __webpack_require__(418);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -50469,7 +52429,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "89", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
+	      Android.runInUI(cmd, 0, "89", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
 	
 	      var searchData;
 	      if (_typeof(_this3.filterData) == 'object') {
@@ -50495,7 +52455,7 @@
 	
 	  this.onPop = function () {
 	    console.log("Inside onPop - CommProfSearchActivity");
-	    Android.runInUI(_this.animateView(), null, "117", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "117", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getBack = function () {
@@ -50613,7 +52573,7 @@
 	      id: _this.idSet.filterHolder,
 	      visibility: "gone"
 	    });
-	    Android.runInUI(cmd, 0, "212", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "212", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
 	
 	    var layout = dom(
 	      LinearLayout,
@@ -50680,7 +52640,7 @@
 	      visibility: "visible"
 	    });
 	
-	    Android.runInUI(cmd, 0, "270", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "270", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getSearchList = function (searchText, flag) {
@@ -50732,7 +52692,7 @@
 	      visibility: "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "325", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "325", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.handleFilterClick = function () {
@@ -50750,12 +52710,12 @@
 	module.exports = Connector(CommProfSearchActivity);
 
 /***/ }),
-/* 487 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ProfileActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ProfileActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50773,12 +52733,12 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(430);
-	var ProfileExperiences = __webpack_require__(433);
-	var ProfileSkillTags = __webpack_require__(435);
-	var ProfileCreations = __webpack_require__(437);
-	var ProfileAdditionalInfo = __webpack_require__(440);
-	var CropParagraph = __webpack_require__(434);
+	var ProfileHeader = __webpack_require__(436);
+	var ProfileExperiences = __webpack_require__(439);
+	var ProfileSkillTags = __webpack_require__(441);
+	var ProfileCreations = __webpack_require__(443);
+	var ProfileAdditionalInfo = __webpack_require__(446);
+	var CropParagraph = __webpack_require__(440);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var _this;
@@ -50827,7 +52787,7 @@
 	        margin: "0,24,0,0",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 96
+	          lineNumber: 86
 	        }
 	      });
 	    }
@@ -50844,7 +52804,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 324
+	            lineNumber: 314
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -50857,7 +52817,7 @@
 	          onBackPress: this.onBackPressed,
 	          showMenu: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 331
+	            lineNumber: 321
 	          }
 	        }),
 	        dom(
@@ -50866,7 +52826,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 342
+	              lineNumber: 332
 	            }
 	          },
 	          dom(
@@ -50878,14 +52838,14 @@
 	              margin: "0,0,0,64",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 346
+	                lineNumber: 336
 	              }
 	            },
 	            dom(ProfileHeader, {
 	              editable: this.isEditable,
 	              data: this.profileData, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 353
+	                lineNumber: 343
 	              }
 	            }),
 	            dom(
@@ -50896,7 +52856,7 @@
 	                orientation: "vertical",
 	                id: this.idSet.mainHolder, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 357
+	                  lineNumber: 347
 	                }
 	              },
 	              this.getDescription(),
@@ -50906,7 +52866,7 @@
 	                popUpType: window.__PROFILE_POP_UP_TYPE.EDUCATION,
 	                heading: window.__S.TITLE_EDUCATION, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 364
+	                  lineNumber: 354
 	                }
 	              }),
 	              dom(ProfileExperiences, {
@@ -50915,7 +52875,7 @@
 	                popUpType: window.__PROFILE_POP_UP_TYPE.EXPERIENCE,
 	                heading: window.__S.TITLE_EXPERIENCE, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 370
+	                  lineNumber: 360
 	                }
 	              }),
 	              dom(ProfileExperiences, {
@@ -50924,7 +52884,7 @@
 	                popUpType: window.__PROFILE_POP_UP_TYPE.ADDRESS,
 	                heading: window.__S.TITLE_ADDRESS, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 376
+	                  lineNumber: 366
 	                }
 	              }),
 	              dom(
@@ -50934,7 +52894,7 @@
 	                  width: "wrap_content",
 	                  id: this.idSet.skillTagComponent, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 382
+	                    lineNumber: 372
 	                  }
 	                },
 	                dom(ProfileSkillTags, {
@@ -50942,7 +52902,7 @@
 	                  data: this.profileData.skills,
 	                  editable: this.isEditable, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 386
+	                    lineNumber: 376
 	                  }
 	                })
 	              ),
@@ -50952,7 +52912,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.createdByHolder, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 391
+	                    lineNumber: 381
 	                  }
 	                },
 	                dom(ProfileCreations, {
@@ -50960,7 +52920,7 @@
 	                  editable: _this.editable,
 	                  onCardClick: _this.handleCreatedCardClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 394
+	                    lineNumber: 384
 	                  }
 	                })
 	              ),
@@ -50968,7 +52928,7 @@
 	                data: this.profileData,
 	                editable: this.isEditable, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 399
+	                  lineNumber: 389
 	                }
 	              })
 	            )
@@ -51002,16 +52962,7 @@
 	  };
 	
 	  this.logout = function () {
-	    window.__Snackbar.show(window.__S.LOGGED_OUT);
-	    JBridge.setInSharedPrefs("logged_in", "NO");
-	    JBridge.setInSharedPrefs("user_id", "__failed");
-	    JBridge.setInSharedPrefs("user_name", "__failed");
-	    JBridge.setInSharedPrefs("user_token", "__failed");
-	
 	    window.__pressedLoggedOut = true;
-	
-	    JBridge.keyCloakLogout(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/logout");
-	
 	    window.__Logout();
 	  };
 	
@@ -51048,7 +52999,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 132
+	            lineNumber: 122
 	          }
 	        },
 	        _this3.getLineSeperator(),
@@ -51059,7 +53010,7 @@
 	          headText: window.__S.DESCRIPTION,
 	          contentText: _this3.profileData.profileSummary, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 139
+	            lineNumber: 129
 	          }
 	        })
 	      );
@@ -51069,7 +53020,7 @@
 	        height: "wrap_content",
 	        width: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 150
+	          lineNumber: 140
 	        }
 	      });
 	    }
@@ -51098,7 +53049,7 @@
 	          editable: _this.editable,
 	          onCardClick: _this.handleCreatedCardClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 179
+	            lineNumber: 169
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
@@ -51122,7 +53073,7 @@
 	          alpha: "0.33",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 199
+	            lineNumber: 189
 	          }
 	        },
 	        _this3.getLineSeperator(),
@@ -51133,7 +53084,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_blank_doc", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 206
+	            lineNumber: 196
 	          }
 	        }),
 	        dom(TextView, {
@@ -51144,7 +53095,7 @@
 	          text: window.__S.MSG_NO_DETAILS_TO_SHOW,
 	          gravity: "center_horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 212
+	            lineNumber: 202
 	          }
 	        })
 	      );
@@ -51229,7 +53180,7 @@
 	              editable: _this3.isEditable,
 	              data: data.result.skills, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 296
+	                lineNumber: 286
 	              }
 	            });
 	            _this3.replaceChild(_this3.idSet.skillTagComponent, layout.render(), 0);
@@ -51255,12 +53206,12 @@
 	module.exports = Connector(ProfileActivity);
 
 /***/ }),
-/* 488 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/AnnouncementDetailActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51278,7 +53229,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var Attachments = __webpack_require__(489);
+	var Attachments = __webpack_require__(498);
 	var SimpleToolbar = __webpack_require__(382);
 	var utils = __webpack_require__(397);
 	
@@ -51700,12 +53651,12 @@
 	module.exports = Connector(AnnouncementDetailActivity);
 
 /***/ }),
-/* 489 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/components/Sunbird/Attachments.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Attachments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51721,7 +53672,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var View = __webpack_require__(331);
-	var HorizontalProgressBar = __webpack_require__(408);
+	var HorizontalProgressBar = __webpack_require__(411);
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
@@ -51761,7 +53712,7 @@
 	            id: _this.idSet.viewButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "49", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
 	        } else if (data[0] == "failure") {
 	          JBridge.showToast(window.__S.ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT, "short");
 	        } else if (data[0] == "finished") {
@@ -51781,7 +53732,7 @@
 	            id: _this.idSet.cancelButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "64", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "64", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
 	        }
 	      });
 	      JBridge.downloadAndOpen(url, path, callback, _this2.props.index);
@@ -51805,7 +53756,7 @@
 	          id: _this.idSet.cancelButton,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "83", "UsersslkiranDocumentsgithubsunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
+	        Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
 	        JBridge.showToast(window.__S.DOWNLOAD_CANCELED, "short");
 	      });
 	      JBridge.cancelDownload(_this2.props.index, callback1);
@@ -51968,12 +53919,12 @@
 	module.exports = Attachments;
 
 /***/ }),
-/* 490 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/ContentPreviewScreen.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ContentPreviewScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51993,10 +53944,10 @@
 	var ScrollView = __webpack_require__(358);
 	var ProgressBar = __webpack_require__(359);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(448);
-	var HorizontalProgressBar = __webpack_require__(408);
-	var FlagPopup = __webpack_require__(456);
-	var SharePopup = __webpack_require__(454);
+	var CourseCurriculum = __webpack_require__(455);
+	var HorizontalProgressBar = __webpack_require__(411);
+	var FlagPopup = __webpack_require__(464);
+	var SharePopup = __webpack_require__(461);
 	var ImageView = __webpack_require__(350);
 	var FeatureButton = __webpack_require__(377);
 	
@@ -52013,7 +53964,7 @@
 	
 	    _this2.onPop = function () {
 	      window.__getDownloadStatus = _this2.getSpineStatus;
-	      Android.runInUI(_this2.animateView(), null, "70", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsContentPreviewScreenjs");
+	      Android.runInUI(_this2.animateView(), null, "70", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
 	    };
 	
 	    _this2.onStop = function () {
@@ -52103,7 +54054,7 @@
 	          id: _this2.idSet.descriptionContainer,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "168", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsContentPreviewScreenjs");
+	        Android.runInUI(cmd, 0, "168", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
 	        layout = dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
@@ -52658,12 +54609,12 @@
 	module.exports = Connector(ContentPreviewScreen);
 
 /***/ }),
-/* 491 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/slkiran/Documents/github-sunbird/sunbird-dui/views/QRActivity.js";
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/QRActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -52830,7 +54781,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, null, "176", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "176", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
 	    };
 	
 	    _this2.isValidBarcode = function (data) {
@@ -52847,7 +54798,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, null, "193", "UsersslkiranDocumentsgithubsunbirdsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "193", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
 	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
 	    };
 	
@@ -53110,7 +55061,7 @@
 	module.exports = Connector(QRActivity);
 
 /***/ }),
-/* 492 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53152,7 +55103,7 @@
 	};
 
 /***/ }),
-/* 493 */
+/* 502 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53182,33 +55133,33 @@
 	};
 
 /***/ }),
-/* 494 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(640);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var DOM_HTML_HTMLElement = __webpack_require__(642);
-	var Data_Foreign_Generic = __webpack_require__(667);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Fragments_CommunityFragment = __webpack_require__(692);
-	var Fragments_CourseFragment = __webpack_require__(713);
-	var Fragments_HomeFragment = __webpack_require__(714);
-	var Fragments_ProfileFragment = __webpack_require__(715);
-	var Fragments_ResourceFragment = __webpack_require__(716);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Console = __webpack_require__(653);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var DOM_HTML_HTMLElement = __webpack_require__(655);
+	var Data_Foreign_Generic = __webpack_require__(680);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Fragments_CommunityFragment = __webpack_require__(701);
+	var Fragments_CourseFragment = __webpack_require__(722);
+	var Fragments_HomeFragment = __webpack_require__(723);
+	var Fragments_ProfileFragment = __webpack_require__(724);
+	var Fragments_ResourceFragment = __webpack_require__(725);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var mainActivity = function mainActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -53228,45 +55179,12 @@
 	                if (v instanceof Types_UITypes.OPEN_ProfileFragment) {
 	                    return Fragments_ProfileFragment.profileFragment(input)("MainActivity")(input);
 	                };
-	                if (v instanceof Types_UITypes.API_CourseFragment) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getCoursesPageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
-	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
-	                            response: v1,
-	                            responseFor: "API_CourseFragment",
-	                            screen: "asas"
-	                        }))(function (v2) {
-	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
-	                        });
-	                    });
-	                };
-	                if (v instanceof Types_UITypes.API_ResourceFragment) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getResourcePageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
-	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
-	                            response: v1,
-	                            responseFor: "API_ResourceFragment",
-	                            screen: "asas"
-	                        }))(function (v2) {
-	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
-	                        });
-	                    });
-	                };
 	                if (v instanceof Types_UITypes.API_ProfileFragment) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getProfileDetail(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_ProfileFragment",
-	                            screen: "asas"
-	                        }))(function (v2) {
-	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
-	                        });
-	                    });
-	                };
-	                if (v instanceof Types_UITypes.API_GetAnnouncementData) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getAnnouncementData(v.value0.user_token)(v.value0.api_token)(v.value0.requestBody))(function (v1) {
-	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
-	                            response: v1,
-	                            responseFor: "API_GetAnnouncementData",
-	                            screen: "asas"
+	                            screen: "MainActivity"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
 	                        });
@@ -53277,7 +55195,7 @@
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_Tenant",
-	                            screen: "asas"
+	                            screen: "MainActivity"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
 	                        });
@@ -53563,13 +55481,26 @@
 	    if (v instanceof Types_UITypes.OPEN_UserActivity) {
 	        return userActivity("SplashScreenActivity");
 	    };
+	    if (v instanceof Types_UITypes.OPEN_LanguageSelectActivity) {
+	        return languageSelectActivity;
+	    };
 	    return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("SplashScreenActivity");
+	});
+	var languageSelectActivity = Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.languageSelectActivity)(Types_UITypes.encodeLanguageSelectionActivityAction)(Types_UITypes.LanguageSelectActivity.value))(function (v) {
+	    if (v instanceof Types_UITypes.OPEN_UserActivity_1) {
+	        return userActivity("LanguageSelectActivity");
+	    };
+	    if (v instanceof Types_UITypes.BACK_LanguageSelectActivity) {
+	        return splashScreenActivity;
+	    };
+	    return languageSelectActivity;
 	});
 	var main = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(splashScreenActivity));
 	var changeFlow = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(mainActivity("{}")("LogInScreen")("Nothing")));
 	module.exports = {
 	    main: main,
 	    splashScreenActivity: splashScreenActivity,
+	    languageSelectActivity: languageSelectActivity,
 	    welcomeScreenActivity: welcomeScreenActivity,
 	    stateSelectActivity: stateSelectActivity,
 	    userActivity: userActivity,
@@ -53585,15 +55516,15 @@
 	};
 
 /***/ }),
-/* 495 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Unit = __webpack_require__(503);
+	var Control_Apply = __webpack_require__(505);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Unit = __webpack_require__(512);
 	var Applicative = function Applicative(Apply0, pure) {
 	    this.Apply0 = Apply0;
 	    this.pure = pure;
@@ -53657,16 +55588,16 @@
 	};
 
 /***/ }),
-/* 496 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(497);
-	var Control_Category = __webpack_require__(498);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
+	var $foreign = __webpack_require__(506);
+	var Control_Category = __webpack_require__(507);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
 	var Apply = function Apply(Functor0, apply) {
 	    this.Functor0 = Functor0;
 	    this.apply = apply;
@@ -53762,18 +55693,21 @@
 	};
 
 /***/ }),
-/* 497 */
+/* 506 */
 /***/ (function(module, exports) {
 
 	"use strict";
 	
 	exports.arrayApply = function (fs) {
 	  return function (xs) {
-	    var result = [];
+	    var l = fs.length;
+	    var k = xs.length;
+	    var result = new Array(l * k);
 	    var n = 0;
-	    for (var i = 0, l = fs.length; i < l; i++) {
-	      for (var j = 0, k = xs.length; j < k; j++) {
-	        result[n++] = fs[i](xs[j]);
+	    for (var i = 0; i < l; i++) {
+	      var f = fs[i];
+	      for (var j = 0; j < k; j++) {
+	        result[n++] = f(xs[j]);
 	      }
 	    }
 	    return result;
@@ -53781,13 +55715,13 @@
 	};
 
 /***/ }),
-/* 498 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(499);
+	var Control_Semigroupoid = __webpack_require__(508);
 	var Category = function Category(Semigroupoid0, id) {
 	    this.Semigroupoid0 = Semigroupoid0;
 	    this.id = id;
@@ -53807,7 +55741,7 @@
 	};
 
 /***/ }),
-/* 499 */
+/* 508 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -53841,13 +55775,13 @@
 	};
 
 /***/ }),
-/* 500 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
+	var Control_Category = __webpack_require__(507);
 	var on = function on(f) {
 	    return function (g) {
 	        return function (x) {
@@ -53888,16 +55822,16 @@
 	};
 
 /***/ }),
-/* 501 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(502);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(511);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Unit = __webpack_require__(512);
 	var Functor = function Functor(map) {
 	    this.map = map;
 	};
@@ -53950,7 +55884,7 @@
 	};
 
 /***/ }),
-/* 502 */
+/* 511 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53967,14 +55901,14 @@
 	};
 
 /***/ }),
-/* 503 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(504);
-	var Data_Show = __webpack_require__(505);
+	var $foreign = __webpack_require__(513);
+	var Data_Show = __webpack_require__(514);
 	var showUnit = new Data_Show.Show(function (v) {
 	    return "unit";
 	});
@@ -53984,7 +55918,7 @@
 	};
 
 /***/ }),
-/* 504 */
+/* 513 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -53992,13 +55926,13 @@
 	exports.unit = {};
 
 /***/ }),
-/* 505 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(506);
+	var $foreign = __webpack_require__(515);
 	var Show = function Show(show) {
 	    this.show = show;
 	};
@@ -54033,7 +55967,7 @@
 	};
 
 /***/ }),
-/* 506 */
+/* 515 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -54111,19 +56045,19 @@
 	};
 
 /***/ }),
-/* 507 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(508);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(517);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Unit = __webpack_require__(512);
 	var Bind = function Bind(Apply0, bind) {
 	    this.Apply0 = Apply0;
 	    this.bind = bind;
@@ -54208,7 +56142,7 @@
 	};
 
 /***/ }),
-/* 508 */
+/* 517 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -54224,47 +56158,47 @@
 	};
 
 /***/ }),
-/* 509 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(510);
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Aff_Internal = __webpack_require__(521);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Parallel = __webpack_require__(600);
-	var Control_Parallel_Class = __webpack_require__(601);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Time_Duration = __webpack_require__(621);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var $foreign = __webpack_require__(519);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Aff_Internal = __webpack_require__(530);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Parallel = __webpack_require__(609);
+	var Control_Parallel_Class = __webpack_require__(610);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Time_Duration = __webpack_require__(630);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var ParAff = function ParAff(x) {
 	    return x;
 	};
@@ -54603,7 +56537,7 @@
 	};
 
 /***/ }),
-/* 510 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/* globals setTimeout, clearTimeout, setImmediate, clearImmediate */
@@ -54939,10 +56873,10 @@
 	    }(a);
 	  };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(511).setImmediate, __webpack_require__(511).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(520).setImmediate, __webpack_require__(520).clearImmediate))
 
 /***/ }),
-/* 511 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var apply = Function.prototype.apply;
@@ -54995,13 +56929,13 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(512);
+	__webpack_require__(521);
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 512 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -55191,10 +57125,10 @@
 	    attachTo.clearImmediate = clearImmediate;
 	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(513)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(522)))
 
 /***/ }),
-/* 513 */
+/* 522 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -55384,14 +57318,14 @@
 
 
 /***/ }),
-/* 514 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(501);
-	var Data_Semigroup = __webpack_require__(515);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Semigroup = __webpack_require__(524);
 	var Alt = function Alt(Functor0, alt) {
 	    this.Functor0 = Functor0;
 	    this.alt = alt;
@@ -55409,15 +57343,15 @@
 	};
 
 /***/ }),
-/* 515 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(516);
-	var Data_Unit = __webpack_require__(503);
-	var Data_Void = __webpack_require__(517);
+	var $foreign = __webpack_require__(525);
+	var Data_Unit = __webpack_require__(512);
+	var Data_Void = __webpack_require__(526);
 	var Semigroup = function Semigroup(append) {
 	    this.append = append;
 	};
@@ -55454,7 +57388,7 @@
 	};
 
 /***/ }),
-/* 516 */
+/* 525 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55474,13 +57408,13 @@
 	};
 
 /***/ }),
-/* 517 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Show = __webpack_require__(505);
+	var Data_Show = __webpack_require__(514);
 	var Void = function Void(x) {
 	    return x;
 	};
@@ -55505,17 +57439,17 @@
 	};
 
 /***/ }),
-/* 518 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Functor = __webpack_require__(501);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Plus = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(510);
 	var Alternative = function Alternative(Applicative0, Plus1) {
 	    this.Applicative0 = Applicative0;
 	    this.Plus1 = Plus1;
@@ -55531,14 +57465,14 @@
 	};
 
 /***/ }),
-/* 519 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Data_Functor = __webpack_require__(501);
+	var Control_Alt = __webpack_require__(523);
+	var Data_Functor = __webpack_require__(510);
 	var Plus = function Plus(Alt0, empty) {
 	    this.Alt0 = Alt0;
 	    this.empty = empty;
@@ -55556,17 +57490,17 @@
 	};
 
 /***/ }),
-/* 520 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Unit = __webpack_require__(503);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Unit = __webpack_require__(512);
 	var Monad = function Monad(Applicative0, Bind1) {
 	    this.Applicative0 = Applicative0;
 	    this.Bind1 = Bind1;
@@ -55630,17 +57564,17 @@
 	};
 
 /***/ }),
-/* 521 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(522);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(566);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(531);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_Maybe = __webpack_require__(575);
+	var Prelude = __webpack_require__(547);
 	module.exports = {
 	    _makeVar: $foreign._makeVar,
 	    _takeVar: $foreign._takeVar,
@@ -55652,7 +57586,7 @@
 	};
 
 /***/ }),
-/* 522 */
+/* 531 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55782,21 +57716,21 @@
 	};
 
 /***/ }),
-/* 523 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(524);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(533);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var $$try = function $$try(action) {
 	    return $foreign.catchException(function ($0) {
 	        return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)(Data_Either.Left.create($0));
@@ -55820,7 +57754,7 @@
 	};
 
 /***/ }),
-/* 524 */
+/* 533 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55872,19 +57806,19 @@
 	};
 
 /***/ }),
-/* 525 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(535);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Unit = __webpack_require__(512);
 	var monadEff = new Control_Monad.Monad(function () {
 	    return applicativeEff;
 	}, function () {
@@ -55914,7 +57848,7 @@
 	};
 
 /***/ }),
-/* 526 */
+/* 535 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55978,36 +57912,36 @@
 	};
 
 /***/ }),
-/* 527 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bifoldable = __webpack_require__(530);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Bitraversable = __webpack_require__(579);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bifoldable = __webpack_require__(539);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Bitraversable = __webpack_require__(588);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Left = function () {
 	    function Left(value0) {
 	        this.value0 = value0;
@@ -56418,16 +58352,16 @@
 	};
 
 /***/ }),
-/* 528 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(529);
-	var Control_Category = __webpack_require__(498);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Semigroup = __webpack_require__(515);
+	var $foreign = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Semigroup = __webpack_require__(524);
 	var Extend = function Extend(Functor0, extend) {
 	    this.Functor0 = Functor0;
 	    this.extend = extend;
@@ -56491,7 +58425,7 @@
 	};
 
 /***/ }),
-/* 529 */
+/* 538 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56505,32 +58439,32 @@
 	};
 
 /***/ }),
-/* 530 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor_Clown = __webpack_require__(531);
-	var Data_Bifunctor_Flip = __webpack_require__(560);
-	var Data_Bifunctor_Joker = __webpack_require__(561);
-	var Data_Bifunctor_Product = __webpack_require__(562);
-	var Data_Bifunctor_Wrap = __webpack_require__(563);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Endo = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor_Clown = __webpack_require__(540);
+	var Data_Bifunctor_Flip = __webpack_require__(569);
+	var Data_Bifunctor_Joker = __webpack_require__(570);
+	var Data_Bifunctor_Product = __webpack_require__(571);
+	var Data_Bifunctor_Wrap = __webpack_require__(572);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Endo = __webpack_require__(586);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Bifoldable = function Bifoldable(bifoldMap, bifoldl, bifoldr) {
 	    this.bifoldMap = bifoldMap;
 	    this.bifoldl = bifoldl;
@@ -56829,24 +58763,24 @@
 	};
 
 /***/ }),
-/* 531 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Clown = function Clown(x) {
 	    return x;
 	};
@@ -56909,13 +58843,13 @@
 	};
 
 /***/ }),
-/* 532 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapply = __webpack_require__(533);
+	var Control_Biapply = __webpack_require__(542);
 	var Biapplicative = function Biapplicative(Biapply0, bipure) {
 	    this.Biapply0 = Biapply0;
 	    this.bipure = bipure;
@@ -56929,15 +58863,15 @@
 	};
 
 /***/ }),
-/* 533 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Function = __webpack_require__(500);
+	var Control_Category = __webpack_require__(507);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Function = __webpack_require__(509);
 	var Biapply = function Biapply(Bifunctor0, biapply) {
 	    this.Bifunctor0 = Bifunctor0;
 	    this.biapply = biapply;
@@ -56993,13 +58927,13 @@
 	};
 
 /***/ }),
-/* 534 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
+	var Control_Category = __webpack_require__(507);
 	var Bifunctor = function Bifunctor(bimap) {
 	    this.bimap = bimap;
 	};
@@ -57022,15 +58956,15 @@
 	};
 
 /***/ }),
-/* 535 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(536);
-	var Data_Unit = __webpack_require__(503);
-	var Data_Void = __webpack_require__(517);
+	var $foreign = __webpack_require__(545);
+	var Data_Unit = __webpack_require__(512);
+	var Data_Void = __webpack_require__(526);
 	var Eq = function Eq(eq) {
 	    this.eq = eq;
 	};
@@ -57099,7 +59033,7 @@
 	};
 
 /***/ }),
-/* 536 */
+/* 545 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57107,12 +59041,6 @@
 	exports.refEq = function (r1) {
 	  return function (r2) {
 	    return r1 === r2;
-	  };
-	};
-	
-	exports.refIneq = function (r1) {
-	  return function (r2) {
-	    return r1 !== r2;
 	  };
 	};
 	
@@ -57129,16 +59057,16 @@
 	};
 
 /***/ }),
-/* 537 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Prelude = __webpack_require__(538);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Prelude = __webpack_require__(547);
 	var Newtype = function Newtype(unwrap, wrap) {
 	    this.unwrap = unwrap;
 	    this.wrap = wrap;
@@ -57338,42 +59266,42 @@
 	};
 
 /***/ }),
-/* 538 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_DivisionRing = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Field = __webpack_require__(558);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_NaturalTransformation = __webpack_require__(559);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Data_Void = __webpack_require__(517);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_DivisionRing = __webpack_require__(564);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Field = __webpack_require__(567);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_NaturalTransformation = __webpack_require__(568);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Data_Void = __webpack_require__(526);
 	module.exports = {};
 
 /***/ }),
-/* 539 */
+/* 548 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -57385,14 +59313,14 @@
 	};
 
 /***/ }),
-/* 540 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Unit = __webpack_require__(503);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Unit = __webpack_require__(512);
 	var BooleanAlgebra = function BooleanAlgebra(HeytingAlgebra0) {
 	    this.HeytingAlgebra0 = HeytingAlgebra0;
 	};
@@ -57415,14 +59343,14 @@
 	};
 
 /***/ }),
-/* 541 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(542);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(551);
+	var Data_Unit = __webpack_require__(512);
 	var HeytingAlgebra = function HeytingAlgebra(conj, disj, ff, implies, not, tt) {
 	    this.conj = conj;
 	    this.disj = disj;
@@ -57512,7 +59440,7 @@
 	};
 
 /***/ }),
-/* 542 */
+/* 551 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57534,16 +59462,16 @@
 	};
 
 /***/ }),
-/* 543 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(544);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(553);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Unit = __webpack_require__(512);
 	var Bounded = function Bounded(Ord0, bottom, top) {
 	    this.Ord0 = Ord0;
 	    this.bottom = bottom;
@@ -57582,7 +59510,7 @@
 	};
 
 /***/ }),
-/* 544 */
+/* 553 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57594,21 +59522,21 @@
 	exports.bottomChar = String.fromCharCode(0);
 
 /***/ }),
-/* 545 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(546);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Ord_Unsafe = __webpack_require__(547);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Unit = __webpack_require__(503);
-	var Data_Void = __webpack_require__(517);
+	var $foreign = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Ord_Unsafe = __webpack_require__(556);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Unit = __webpack_require__(512);
+	var Data_Void = __webpack_require__(526);
 	var Ord = function Ord(Eq0, compare) {
 	    this.Eq0 = Eq0;
 	    this.compare = compare;
@@ -57869,7 +59797,7 @@
 	};
 
 /***/ }),
-/* 546 */
+/* 555 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57901,21 +59829,21 @@
 	};
 
 /***/ }),
-/* 547 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(548);
-	var Data_Ordering = __webpack_require__(549);
+	var $foreign = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(558);
 	var unsafeCompare = $foreign.unsafeCompareImpl(Data_Ordering.LT.value)(Data_Ordering.EQ.value)(Data_Ordering.GT.value);
 	module.exports = {
 	    unsafeCompare: unsafeCompare
 	};
 
 /***/ }),
-/* 548 */
+/* 557 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57933,15 +59861,15 @@
 	};
 
 /***/ }),
-/* 549 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(535);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
 	var LT = function () {
 	    function LT() {};
 	    LT.value = new LT();
@@ -58020,15 +59948,15 @@
 	};
 
 /***/ }),
-/* 550 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(551);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(560);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Unit = __webpack_require__(512);
 	var Ring = function Ring(Semiring0, sub) {
 	    this.Semiring0 = Semiring0;
 	    this.sub = sub;
@@ -58076,7 +60004,7 @@
 	};
 
 /***/ }),
-/* 551 */
+/* 560 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58095,14 +60023,14 @@
 	};
 
 /***/ }),
-/* 552 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(553);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(562);
+	var Data_Unit = __webpack_require__(512);
 	var Semiring = function Semiring(add, mul, one, zero) {
 	    this.add = add;
 	    this.mul = mul;
@@ -58164,7 +60092,7 @@
 	};
 
 /***/ }),
-/* 553 */
+/* 562 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58196,15 +60124,15 @@
 	};
 
 /***/ }),
-/* 554 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Unit = __webpack_require__(503);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Unit = __webpack_require__(512);
 	var CommutativeRing = function CommutativeRing(Ring0) {
 	    this.Ring0 = Ring0;
 	};
@@ -58231,15 +60159,15 @@
 	};
 
 /***/ }),
-/* 555 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
 	var DivisionRing = function DivisionRing(Ring0, recip) {
 	    this.Ring0 = Ring0;
 	    this.recip = recip;
@@ -58275,19 +60203,19 @@
 	};
 
 /***/ }),
-/* 556 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(557);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_Eq = __webpack_require__(535);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
+	var $foreign = __webpack_require__(566);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_Eq = __webpack_require__(544);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
 	var EuclideanRing = function EuclideanRing(CommutativeRing0, degree, div, mod) {
 	    this.CommutativeRing0 = CommutativeRing0;
 	    this.degree = degree;
@@ -58369,7 +60297,7 @@
 	};
 
 /***/ }),
-/* 557 */
+/* 566 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58398,17 +60326,17 @@
 	};
 
 /***/ }),
-/* 558 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_DivisionRing = __webpack_require__(555);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semiring = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_DivisionRing = __webpack_require__(564);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
 	var Field = function Field(EuclideanRing0) {
 	    this.EuclideanRing0 = EuclideanRing0;
 	};
@@ -58421,7 +60349,7 @@
 	};
 
 /***/ }),
-/* 559 */
+/* 568 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -58430,22 +60358,22 @@
 	module.exports = {};
 
 /***/ }),
-/* 560 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Flip = function Flip(x) {
 	    return x;
 	};
@@ -58510,24 +60438,24 @@
 	};
 
 /***/ }),
-/* 561 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Joker = function Joker(x) {
 	    return x;
 	};
@@ -58592,22 +60520,22 @@
 	};
 
 /***/ }),
-/* 562 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Eq = __webpack_require__(535);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Eq = __webpack_require__(544);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Product = function () {
 	    function Product(value0, value1) {
 	        this.value0 = value0;
@@ -58698,22 +60626,22 @@
 	};
 
 /***/ }),
-/* 563 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Wrap = function Wrap(x) {
 	    return x;
 	};
@@ -58778,41 +60706,41 @@
 	};
 
 /***/ }),
-/* 564 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(565);
-	var Control_Alt = __webpack_require__(514);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Endo = __webpack_require__(577);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(574);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Maybe_Last = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Monoid_Additive = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Endo = __webpack_require__(586);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Foldable = function Foldable(foldMap, foldl, foldr) {
 	    this.foldMap = foldMap;
 	    this.foldl = foldl;
@@ -59333,7 +61261,7 @@
 	};
 
 /***/ }),
-/* 565 */
+/* 574 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59365,34 +61293,34 @@
 	};
 
 /***/ }),
-/* 566 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Nothing = function () {
 	    function Nothing() {};
 	    Nothing.value = new Nothing();
@@ -59643,21 +61571,21 @@
 	};
 
 /***/ }),
-/* 567 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Unit = __webpack_require__(503);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Plus = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Unit = __webpack_require__(512);
 	var MonadZero = function MonadZero(Alternative1, Monad0) {
 	    this.Alternative1 = Alternative1;
 	    this.Monad0 = Monad0;
@@ -59685,13 +61613,13 @@
 	};
 
 /***/ }),
-/* 568 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(501);
+	var Data_Functor = __webpack_require__(510);
 	var Invariant = function Invariant(imap) {
 	    this.imap = imap;
 	};
@@ -59716,21 +61644,21 @@
 	};
 
 /***/ }),
-/* 569 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Function = __webpack_require__(500);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Function = __webpack_require__(509);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Monoid = function Monoid(Semigroup0, mempty) {
 	    this.Semigroup0 = Semigroup0;
 	    this.mempty = mempty;
@@ -59772,15 +61700,29 @@
 	                var x$prime = go(p / 2 | 0);
 	                return Data_Semigroup.append(dictMonoid.Semigroup0())(x$prime)(Data_Semigroup.append(dictMonoid.Semigroup0())(x$prime)(x));
 	            };
-	            throw new Error("Failed pattern match at Data.Monoid line 51, column 3 - line 51, column 17: " + [p.constructor.name]);
+	            throw new Error("Failed pattern match at Data.Monoid line 52, column 3 - line 52, column 17: " + [p.constructor.name]);
 	        };
 	        return go;
+	    };
+	};
+	var guard = function guard(dictMonoid) {
+	    return function (v) {
+	        return function (v1) {
+	            if (v) {
+	                return v1;
+	            };
+	            if (!v) {
+	                return mempty(dictMonoid);
+	            };
+	            throw new Error("Failed pattern match at Data.Monoid line 60, column 1 - line 60, column 49: " + [v.constructor.name, v1.constructor.name]);
+	        };
 	    };
 	};
 	module.exports = {
 	    Monoid: Monoid,
 	    mempty: mempty,
 	    power: power,
+	    guard: guard,
 	    monoidUnit: monoidUnit,
 	    monoidOrdering: monoidOrdering,
 	    monoidFn: monoidFn,
@@ -59789,28 +61731,28 @@
 	};
 
 /***/ }),
-/* 570 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var First = function First(x) {
 	    return x;
 	};
@@ -59872,28 +61814,28 @@
 	};
 
 /***/ }),
-/* 571 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Last = function Last(x) {
 	    return x;
 	};
@@ -59958,29 +61900,29 @@
 	};
 
 /***/ }),
-/* 572 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Additive = function Additive(x) {
 	    return x;
 	};
@@ -60077,14 +62019,14 @@
 	};
 
 /***/ }),
-/* 573 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Extend = __webpack_require__(528);
-	var Data_Functor = __webpack_require__(501);
+	var Control_Extend = __webpack_require__(537);
+	var Data_Functor = __webpack_require__(510);
 	var Comonad = function Comonad(Extend0, extract) {
 	    this.Extend0 = Extend0;
 	    this.extract = extract;
@@ -60098,30 +62040,30 @@
 	};
 
 /***/ }),
-/* 574 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Conj = function Conj(x) {
 	    return x;
 	};
@@ -60230,30 +62172,30 @@
 	};
 
 /***/ }),
-/* 575 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Disj = function Disj(x) {
 	    return x;
 	};
@@ -60362,28 +62304,28 @@
 	};
 
 /***/ }),
-/* 576 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Dual = function Dual(x) {
 	    return x;
 	};
@@ -60480,19 +62422,19 @@
 	};
 
 /***/ }),
-/* 577 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Prelude = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Prelude = __webpack_require__(547);
 	var Endo = function Endo(x) {
 	    return x;
 	};
@@ -60527,29 +62469,29 @@
 	};
 
 /***/ }),
-/* 578 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Multiplicative = function Multiplicative(x) {
 	    return x;
 	};
@@ -60646,25 +62588,25 @@
 	};
 
 /***/ }),
-/* 579 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Data_Bifoldable = __webpack_require__(530);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Bifunctor_Clown = __webpack_require__(531);
-	var Data_Bifunctor_Flip = __webpack_require__(560);
-	var Data_Bifunctor_Joker = __webpack_require__(561);
-	var Data_Bifunctor_Product = __webpack_require__(562);
-	var Data_Bifunctor_Wrap = __webpack_require__(563);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Data_Bifoldable = __webpack_require__(539);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Bifunctor_Clown = __webpack_require__(540);
+	var Data_Bifunctor_Flip = __webpack_require__(569);
+	var Data_Bifunctor_Joker = __webpack_require__(570);
+	var Data_Bifunctor_Product = __webpack_require__(571);
+	var Data_Bifunctor_Wrap = __webpack_require__(572);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Bitraversable = function Bitraversable(Bifoldable1, Bifunctor0, bisequence, bitraverse) {
 	    this.Bifoldable1 = Bifoldable1;
 	    this.Bifunctor0 = Bifunctor0;
@@ -60850,29 +62792,29 @@
 	};
 
 /***/ }),
-/* 580 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(581);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Traversable_Accum = __webpack_require__(582);
-	var Data_Traversable_Accum_Internal = __webpack_require__(583);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(590);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Maybe_Last = __webpack_require__(580);
+	var Data_Monoid_Additive = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Traversable_Accum = __webpack_require__(591);
+	var Data_Traversable_Accum_Internal = __webpack_require__(592);
+	var Prelude = __webpack_require__(547);
 	var Traversable = function Traversable(Foldable1, Functor0, sequence, traverse) {
 	    this.Foldable1 = Foldable1;
 	    this.Functor0 = Functor0;
@@ -61132,7 +63074,7 @@
 	};
 
 /***/ }),
-/* 581 */
+/* 590 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61201,7 +63143,7 @@
 	}();
 
 /***/ }),
-/* 582 */
+/* 591 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -61210,17 +63152,17 @@
 	module.exports = {};
 
 /***/ }),
-/* 583 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Traversable_Accum = __webpack_require__(582);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Traversable_Accum = __webpack_require__(591);
+	var Prelude = __webpack_require__(547);
 	var StateR = function StateR(x) {
 	    return x;
 	};
@@ -61317,14 +63259,14 @@
 	};
 
 /***/ }),
-/* 584 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(585);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(594);
+	var Data_Unit = __webpack_require__(512);
 	var runFn1 = function runFn1(f) {
 	    return f;
 	};
@@ -61357,7 +63299,7 @@
 	};
 
 /***/ }),
-/* 585 */
+/* 594 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61582,15 +63524,15 @@
 	};
 
 /***/ }),
-/* 586 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Eff = __webpack_require__(525);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Eff = __webpack_require__(534);
 	var MonadEff = function MonadEff(Monad0, liftEff) {
 	    this.Monad0 = Monad0;
 	    this.liftEff = liftEff;
@@ -61608,21 +63550,21 @@
 	};
 
 /***/ }),
-/* 587 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var MonadThrow = function MonadThrow(Monad0, throwError) {
 	    this.Monad0 = Monad0;
 	    this.throwError = throwError;
@@ -61725,27 +63667,27 @@
 	};
 
 /***/ }),
-/* 588 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(589);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Either = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Identity = __webpack_require__(593);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Unit = __webpack_require__(503);
-	var Partial_Unsafe = __webpack_require__(595);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(598);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Either = __webpack_require__(536);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Identity = __webpack_require__(602);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Unit = __webpack_require__(512);
+	var Partial_Unsafe = __webpack_require__(604);
+	var Prelude = __webpack_require__(547);
 	var Loop = function () {
 	    function Loop(value0) {
 	        this.value0 = value0;
@@ -61979,15 +63921,15 @@
 	};
 
 /***/ }),
-/* 589 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(590);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Semigroupoid = __webpack_require__(499);
+	var $foreign = __webpack_require__(599);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Semigroupoid = __webpack_require__(508);
 	var unsafePerformEff = function unsafePerformEff($0) {
 	    return Control_Monad_Eff.runPure($foreign.unsafeCoerceEff($0));
 	};
@@ -61997,7 +63939,7 @@
 	};
 
 /***/ }),
-/* 590 */
+/* 599 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62007,14 +63949,14 @@
 	};
 
 /***/ }),
-/* 591 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(592);
-	var Control_Monad_Eff = __webpack_require__(525);
+	var $foreign = __webpack_require__(601);
+	var Control_Monad_Eff = __webpack_require__(534);
 	var pureST = function pureST(st) {
 	    return Control_Monad_Eff.runPure($foreign.runST(st));
 	};
@@ -62028,7 +63970,7 @@
 	};
 
 /***/ }),
-/* 592 */
+/* 601 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62066,39 +64008,39 @@
 	};
 
 /***/ }),
-/* 593 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Field = __webpack_require__(558);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Field = __webpack_require__(567);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Identity = function Identity(x) {
 	    return x;
 	};
@@ -62271,13 +64213,13 @@
 	};
 
 /***/ }),
-/* 594 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Unit = __webpack_require__(503);
+	var Data_Unit = __webpack_require__(512);
 	var Lazy = function Lazy(defer) {
 	    this.defer = defer;
 	};
@@ -62308,14 +64250,14 @@
 	};
 
 /***/ }),
-/* 595 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(596);
-	var Partial = __webpack_require__(597);
+	var $foreign = __webpack_require__(605);
+	var Partial = __webpack_require__(606);
 	var unsafePartialBecause = function unsafePartialBecause(v) {
 	    return function (x) {
 	        return $foreign.unsafePartial(function (dictPartial) {
@@ -62335,7 +64277,7 @@
 	};
 
 /***/ }),
-/* 596 */
+/* 605 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62347,13 +64289,13 @@
 	};
 
 /***/ }),
-/* 597 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(598);
+	var $foreign = __webpack_require__(607);
 	var crash = function crash(dictPartial) {
 	    return $foreign.crashWith(dictPartial)("Partial.crash: partial function");
 	};
@@ -62363,7 +64305,7 @@
 	};
 
 /***/ }),
-/* 598 */
+/* 607 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62377,21 +64319,21 @@
 	};
 
 /***/ }),
-/* 599 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Functor = __webpack_require__(501);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Data_Functor = __webpack_require__(510);
 	var MonadPlus = function MonadPlus(MonadZero0) {
 	    this.MonadZero0 = MonadZero0;
 	};
@@ -62404,20 +64346,20 @@
 	};
 
 /***/ }),
-/* 600 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Parallel_Class = __webpack_require__(601);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Parallel_Class = __webpack_require__(610);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var parTraverse_ = function parTraverse_(dictParallel) {
 	    return function (dictFoldable) {
 	        return function (f) {
@@ -62494,37 +64436,37 @@
 	};
 
 /***/ }),
-/* 601 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Cont_Trans = __webpack_require__(602);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Ref = __webpack_require__(610);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(589);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Monad_Maybe_Trans = __webpack_require__(614);
-	var Control_Monad_Reader_Trans = __webpack_require__(615);
-	var Control_Monad_Writer_Trans = __webpack_require__(616);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Compose = __webpack_require__(617);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Cont_Trans = __webpack_require__(611);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Ref = __webpack_require__(619);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(598);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Monad_Maybe_Trans = __webpack_require__(623);
+	var Control_Monad_Reader_Trans = __webpack_require__(624);
+	var Control_Monad_Writer_Trans = __webpack_require__(625);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Compose = __webpack_require__(626);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var ParCont = function ParCont(x) {
 	    return x;
 	};
@@ -62614,7 +64556,7 @@
 	                                if (v4 instanceof Data_Maybe.Just) {
 	                                    return k(a(v4.value0));
 	                                };
-	                                throw new Error("Failed pattern match at Control.Parallel.Class line 81, column 7 - line 83, column 26: " + [v4.constructor.name]);
+	                                throw new Error("Failed pattern match at Control.Parallel.Class line 80, column 7 - line 82, column 26: " + [v4.constructor.name]);
 	                            });
 	                        }))(function () {
 	                            return Control_Monad_Cont_Trans.runContT(v1)(function (b) {
@@ -62625,7 +64567,7 @@
 	                                    if (v4 instanceof Data_Maybe.Just) {
 	                                        return k(v4.value0(b));
 	                                    };
-	                                    throw new Error("Failed pattern match at Control.Parallel.Class line 87, column 7 - line 89, column 26: " + [v4.constructor.name]);
+	                                    throw new Error("Failed pattern match at Control.Parallel.Class line 86, column 7 - line 88, column 26: " + [v4.constructor.name]);
 	                                });
 	                            });
 	                        });
@@ -62709,26 +64651,26 @@
 	};
 
 /***/ }),
-/* 602 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Prelude = __webpack_require__(547);
 	var ContT = function ContT(x) {
 	    return x;
 	};
@@ -62885,13 +64827,13 @@
 	};
 
 /***/ }),
-/* 603 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(538);
+	var Prelude = __webpack_require__(547);
 	var MonadCont = function MonadCont(Monad0, callCC) {
 	    this.Monad0 = Monad0;
 	    this.callCC = callCC;
@@ -62905,17 +64847,17 @@
 	};
 
 /***/ }),
-/* 604 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Functor = __webpack_require__(501);
-	var Prelude = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Functor = __webpack_require__(510);
+	var Prelude = __webpack_require__(547);
 	var MonadAsk = function MonadAsk(Monad0, ask) {
 	    this.Monad0 = Monad0;
 	    this.ask = ask;
@@ -62952,15 +64894,15 @@
 	};
 
 /***/ }),
-/* 605 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var MonadState = function MonadState(Monad0, state) {
 	    this.Monad0 = Monad0;
 	    this.state = state;
@@ -63004,49 +64946,49 @@
 	};
 
 /***/ }),
-/* 606 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Biapplicative = __webpack_require__(532);
-	var Control_Biapply = __webpack_require__(533);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifoldable = __webpack_require__(530);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Bitraversable = __webpack_require__(579);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_Distributive = __webpack_require__(607);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var Type_Equality = __webpack_require__(608);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Biapplicative = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(542);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifoldable = __webpack_require__(539);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Bitraversable = __webpack_require__(588);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_Distributive = __webpack_require__(616);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
+	var Type_Equality = __webpack_require__(617);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -63430,19 +65372,19 @@
 	};
 
 /***/ }),
-/* 607 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Identity = __webpack_require__(593);
-	var Data_Newtype = __webpack_require__(537);
-	var Prelude = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Identity = __webpack_require__(602);
+	var Data_Newtype = __webpack_require__(546);
+	var Prelude = __webpack_require__(547);
 	var Distributive = function Distributive(Functor0, collect, distribute) {
 	    this.Functor0 = Functor0;
 	    this.collect = collect;
@@ -63521,7 +65463,7 @@
 	};
 
 /***/ }),
-/* 608 */
+/* 617 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -63550,13 +65492,13 @@
 	};
 
 /***/ }),
-/* 609 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(538);
+	var Prelude = __webpack_require__(547);
 	var MonadTrans = function MonadTrans(lift) {
 	    this.lift = lift;
 	};
@@ -63569,16 +65511,16 @@
 	};
 
 /***/ }),
-/* 610 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(611);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(620);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var modifyRef = function modifyRef(ref) {
 	    return function (f) {
 	        return $foreign["modifyRef'"](ref)(function (s) {
@@ -63598,7 +65540,7 @@
 	};
 
 /***/ }),
-/* 611 */
+/* 620 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63635,39 +65577,39 @@
 	};
 
 /***/ }),
-/* 612 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Tuple = __webpack_require__(606);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Tuple = __webpack_require__(615);
+	var Prelude = __webpack_require__(547);
 	var ExceptT = function ExceptT(x) {
 	    return x;
 	};
@@ -63956,17 +65898,17 @@
 	};
 
 /***/ }),
-/* 613 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Data_Function = __webpack_require__(500);
-	var Data_Tuple = __webpack_require__(606);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Data_Function = __webpack_require__(509);
+	var Data_Tuple = __webpack_require__(615);
+	var Prelude = __webpack_require__(547);
 	var MonadTell = function MonadTell(Monad0, tell) {
 	    this.Monad0 = Monad0;
 	    this.tell = tell;
@@ -64014,37 +65956,37 @@
 	};
 
 /***/ }),
-/* 614 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Tuple = __webpack_require__(606);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Tuple = __webpack_require__(615);
+	var Prelude = __webpack_require__(547);
 	var MaybeT = function MaybeT(x) {
 	    return x;
 	};
@@ -64289,37 +66231,37 @@
 	};
 
 /***/ }),
-/* 615 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Distributive = __webpack_require__(607);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Distributive = __webpack_require__(616);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Prelude = __webpack_require__(547);
 	var ReaderT = function ReaderT(x) {
 	    return x;
 	};
@@ -64579,38 +66521,38 @@
 	};
 
 /***/ }),
-/* 616 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var WriterT = function WriterT(x) {
 	    return x;
 	};
@@ -64887,30 +66829,30 @@
 	};
 
 /***/ }),
-/* 617 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_App = __webpack_require__(618);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_App = __webpack_require__(627);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Compose = function Compose(x) {
 	    return x;
 	};
@@ -65087,35 +67029,35 @@
 	};
 
 /***/ }),
-/* 618 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var App = function App(x) {
 	    return x;
 	};
@@ -65258,19 +67200,19 @@
 	};
 
 /***/ }),
-/* 619 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(620);
+	var $foreign = __webpack_require__(629);
 	module.exports = {
 	    unsafeCoerce: $foreign.unsafeCoerce
 	};
 
 /***/ }),
-/* 620 */
+/* 629 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -65282,27 +67224,27 @@
 	};
 
 /***/ }),
-/* 621 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Seconds = function Seconds(x) {
 	    return x;
 	};
@@ -65544,41 +67486,41 @@
 	};
 
 /***/ }),
-/* 622 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(623);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Array = __webpack_require__(624);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(635);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Data_Void = __webpack_require__(517);
-	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(639);
+	var $foreign = __webpack_require__(632);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Array = __webpack_require__(633);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_String = __webpack_require__(648);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Data_Void = __webpack_require__(526);
+	var Prelude = __webpack_require__(547);
+	var Type_Proxy = __webpack_require__(652);
 	var SProd = function () {
 	    function SProd(value0, value1) {
 	        this.value0 = value0;
@@ -66590,7 +68532,7 @@
 	};
 
 /***/ }),
-/* 623 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66636,44 +68578,44 @@
 	};
 
 /***/ }),
-/* 624 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(625);
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Array_ST = __webpack_require__(626);
-	var Data_Array_ST_Iterator = __webpack_require__(628);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Partial_Unsafe = __webpack_require__(595);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(634);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Array_ST = __webpack_require__(635);
+	var Data_Array_ST_Iterator = __webpack_require__(637);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Partial_Unsafe = __webpack_require__(604);
+	var Prelude = __webpack_require__(547);
 	var zipWithA = function zipWithA(dictApplicative) {
 	    return function (f) {
 	        return function (xs) {
@@ -66744,7 +68686,7 @@
 	                if (v instanceof Data_Ordering.LT) {
 	                    return -1 | 0;
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 477, column 15 - line 482, column 1: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 698, column 15 - line 703, column 1: " + [v.constructor.name]);
 	            };
 	        };
 	        return $foreign.sortImpl(comp$prime)(xs);
@@ -66777,7 +68719,7 @@
 	        if (v instanceof Data_Maybe.Nothing) {
 	            return [];
 	        };
-	        throw new Error("Failed pattern match at Data.Array line 594, column 3 - line 596, column 18: " + [v.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Array line 888, column 3 - line 890, column 18: " + [v.constructor.name]);
 	    };
 	};
 	var nub = function nub(dictEq) {
@@ -66825,7 +68767,7 @@
 	    if (Data_Boolean.otherwise) {
 	        return new Data_Maybe.Just($foreign.slice(0)($foreign.length(xs) - 1 | 0)(xs));
 	    };
-	    throw new Error("Failed pattern match at Data.Array line 251, column 1 - line 251, column 45: " + [xs.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Array line 319, column 1 - line 319, column 45: " + [xs.constructor.name]);
 	};
 	var index = $foreign.indexImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	var last = function last(xs) {
@@ -66871,7 +68813,7 @@
 	                    $tco_done = true;
 	                    return Data_Maybe.Nothing.value;
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 552, column 5 - line 554, column 25: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 830, column 5 - line 832, column 25: " + [v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($copy_i);
@@ -66897,7 +68839,7 @@
 	                rest: []
 	            };
 	        };
-	        throw new Error("Failed pattern match at Data.Array line 539, column 3 - line 545, column 30: " + [breakIndex.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Array line 817, column 3 - line 823, column 30: " + [breakIndex.constructor.name]);
 	    };
 	};
 	var takeWhile = function takeWhile(p) {
@@ -66975,7 +68917,7 @@
 	                                }));
 	                            });
 	                        };
-	                        throw new Error("Failed pattern match at Data.Array line 704, column 3 - line 708, column 42: " + [res.constructor.name, i.constructor.name]);
+	                        throw new Error("Failed pattern match at Data.Array line 1057, column 3 - line 1061, column 42: " + [res.constructor.name, i.constructor.name]);
 	                    };
 	                };
 	                return Control_Monad_Rec_Class.tailRecM2(dictMonadRec)(go)(a)(0);
@@ -67112,7 +69054,7 @@
 	                if (v instanceof Data_Maybe.Just) {
 	                    return updateAt(i)(v.value0)(xs);
 	                };
-	                throw new Error("Failed pattern match at Data.Array line 392, column 10 - line 394, column 32: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Array line 540, column 10 - line 542, column 32: " + [v.constructor.name]);
 	            };
 	            return Data_Maybe.maybe(Data_Maybe.Nothing.value)(go)(index(xs)(i));
 	        };
@@ -67192,7 +69134,7 @@
 	};
 
 /***/ }),
-/* 625 */
+/* 634 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67204,7 +69146,7 @@
 	exports.range = function (start) {
 	  return function (end) {
 	    var step = start > end ? -1 : 1;
-	    var result = [];
+	    var result = new Array(step * (end - start) + 1);
 	    var i = start,
 	        n = 0;
 	    while (i !== end) {
@@ -67501,21 +69443,21 @@
 	};
 
 /***/ }),
-/* 626 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(627);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Maybe = __webpack_require__(566);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var $foreign = __webpack_require__(636);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Maybe = __webpack_require__(575);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var unsafeFreeze = function unsafeFreeze($7) {
 	    return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)($7);
 	};
@@ -67569,7 +69511,7 @@
 	};
 
 /***/ }),
-/* 627 */
+/* 636 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67643,24 +69585,24 @@
 	};
 
 /***/ }),
-/* 628 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Array_ST = __webpack_require__(626);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(552);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Array_ST = __webpack_require__(635);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Semiring = __webpack_require__(561);
+	var Prelude = __webpack_require__(547);
 	var Iterator = function () {
 	    function Iterator(value0, value1) {
 	        this.value0 = value0;
@@ -67746,28 +69688,33 @@
 	};
 
 /***/ }),
-/* 629 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Plus = __webpack_require__(519);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_FoldableWithIndex = __webpack_require__(639);
+	var Data_Functor = __webpack_require__(510);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_TraversableWithIndex = __webpack_require__(642);
+	var Prelude = __webpack_require__(547);
 	var NonEmpty = function () {
 	    function NonEmpty(value0, value1) {
 	        this.value0 = value0;
@@ -67810,6 +69757,17 @@
 	        };
 	    });
 	};
+	var functorWithIndex = function functorWithIndex(dictFunctorWithIndex) {
+	    return new Data_FunctorWithIndex.FunctorWithIndex(function () {
+	        return functorNonEmpty(dictFunctorWithIndex.Functor0());
+	    }, function (f) {
+	        return function (v) {
+	            return new NonEmpty(f(Data_Maybe.Nothing.value)(v.value0), Data_FunctorWithIndex.mapWithIndex(dictFunctorWithIndex)(function ($136) {
+	                return f(Data_Maybe.Just.create($136));
+	            })(v.value1));
+	        };
+	    });
+	};
 	var fromNonEmpty = function fromNonEmpty(f) {
 	    return function (v) {
 	        return f(v.value0)(v.value1);
@@ -67843,6 +69801,35 @@
 	        };
 	    });
 	};
+	var foldableWithIndexNonEmpty = function foldableWithIndexNonEmpty(dictFoldableWithIndex) {
+	    return new Data_FoldableWithIndex.FoldableWithIndex(function () {
+	        return foldableNonEmpty(dictFoldableWithIndex.Foldable0());
+	    }, function (dictMonoid) {
+	        return function (f) {
+	            return function (v) {
+	                return Data_Semigroup.append(dictMonoid.Semigroup0())(f(Data_Maybe.Nothing.value)(v.value0))(Data_FoldableWithIndex.foldMapWithIndex(dictFoldableWithIndex)(dictMonoid)(function ($137) {
+	                    return f(Data_Maybe.Just.create($137));
+	                })(v.value1));
+	            };
+	        };
+	    }, function (f) {
+	        return function (b) {
+	            return function (v) {
+	                return Data_FoldableWithIndex.foldlWithIndex(dictFoldableWithIndex)(function ($138) {
+	                    return f(Data_Maybe.Just.create($138));
+	                })(f(Data_Maybe.Nothing.value)(b)(v.value0))(v.value1);
+	            };
+	        };
+	    }, function (f) {
+	        return function (b) {
+	            return function (v) {
+	                return f(Data_Maybe.Nothing.value)(v.value0)(Data_FoldableWithIndex.foldrWithIndex(dictFoldableWithIndex)(function ($139) {
+	                    return f(Data_Maybe.Just.create($139));
+	                })(b)(v.value1));
+	            };
+	        };
+	    });
+	};
 	var traversableNonEmpty = function traversableNonEmpty(dictTraversable) {
 	    return new Data_Traversable.Traversable(function () {
 	        return foldableNonEmpty(dictTraversable.Foldable1());
@@ -67856,6 +69843,23 @@
 	        return function (f) {
 	            return function (v) {
 	                return Control_Apply.apply(dictApplicative.Apply0())(Data_Functor.map(dictApplicative.Apply0().Functor0())(NonEmpty.create)(f(v.value0)))(Data_Traversable.traverse(dictTraversable)(dictApplicative)(f)(v.value1));
+	            };
+	        };
+	    });
+	};
+	var traversableWithIndexNonEmpty = function traversableWithIndexNonEmpty(dictTraversableWithIndex) {
+	    return new Data_TraversableWithIndex.TraversableWithIndex(function () {
+	        return foldableWithIndexNonEmpty(dictTraversableWithIndex.FoldableWithIndex1());
+	    }, function () {
+	        return functorWithIndex(dictTraversableWithIndex.FunctorWithIndex0());
+	    }, function () {
+	        return traversableNonEmpty(dictTraversableWithIndex.Traversable2());
+	    }, function (dictApplicative) {
+	        return function (f) {
+	            return function (v) {
+	                return Control_Apply.apply(dictApplicative.Apply0())(Data_Functor.map(dictApplicative.Apply0().Functor0())(NonEmpty.create)(f(Data_Maybe.Nothing.value)(v.value0)))(Data_TraversableWithIndex.traverseWithIndex(dictTraversableWithIndex)(dictApplicative)(function ($140) {
+	                    return f(Data_Maybe.Just.create($140));
+	                })(v.value1));
 	            };
 	        };
 	    });
@@ -67930,28 +69934,702 @@
 	    ordNonEmpty: ordNonEmpty,
 	    ord1NonEmpty: ord1NonEmpty,
 	    functorNonEmpty: functorNonEmpty,
+	    functorWithIndex: functorWithIndex,
 	    foldableNonEmpty: foldableNonEmpty,
-	    traversableNonEmpty: traversableNonEmpty
+	    foldableWithIndexNonEmpty: foldableWithIndexNonEmpty,
+	    traversableNonEmpty: traversableNonEmpty,
+	    traversableWithIndexNonEmpty: traversableWithIndexNonEmpty
 	};
 
 /***/ }),
-/* 630 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(631);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Partial_Unsafe = __webpack_require__(595);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Maybe_Last = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Monoid_Additive = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Endo = __webpack_require__(586);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
+	var Tuple = function () {
+	    function Tuple(value0, value1) {
+	        this.value0 = value0;
+	        this.value1 = value1;
+	    };
+	    Tuple.create = function (value0) {
+	        return function (value1) {
+	            return new Tuple(value0, value1);
+	        };
+	    };
+	    return Tuple;
+	}();
+	var FoldableWithIndex = function FoldableWithIndex(Foldable0, foldMapWithIndex, foldlWithIndex, foldrWithIndex) {
+	    this.Foldable0 = Foldable0;
+	    this.foldMapWithIndex = foldMapWithIndex;
+	    this.foldlWithIndex = foldlWithIndex;
+	    this.foldrWithIndex = foldrWithIndex;
+	};
+	var foldrWithIndex = function foldrWithIndex(dict) {
+	    return dict.foldrWithIndex;
+	};
+	var traverseWithIndex_ = function traverseWithIndex_(dictApplicative) {
+	    return function (dictFoldableWithIndex) {
+	        return function (f) {
+	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function ($41) {
+	                    return Control_Apply.applySecond(dictApplicative.Apply0())(f(i)($41));
+	                };
+	            })(Control_Applicative.pure(dictApplicative)(Data_Unit.unit));
+	        };
+	    };
+	};
+	var forWithIndex_ = function forWithIndex_(dictApplicative) {
+	    return function (dictFoldableWithIndex) {
+	        return Data_Function.flip(traverseWithIndex_(dictApplicative)(dictFoldableWithIndex));
+	    };
+	};
+	var foldlWithIndex = function foldlWithIndex(dict) {
+	    return dict.foldlWithIndex;
+	};
+	var foldableWithIndexMultiplicative = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableMultiplicative;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableMultiplicative)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexMaybe = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableMaybe;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableMaybe)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexLast = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableLast;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableLast)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableLast)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableLast)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexFirst = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableFirst;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableFirst)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexDual = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableDual;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableDual)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableDual)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableDual)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexDisj = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableDisj;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableDisj)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexConj = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableConj;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableConj)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableConj)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableConj)(f(Data_Unit.unit));
+	});
+	var foldableWithIndexAdditive = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableAdditive;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_Foldable.foldMap(Data_Foldable.foldableAdditive)(dictMonoid)(f(Data_Unit.unit));
+	    };
+	}, function (f) {
+	    return Data_Foldable.foldl(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
+	}, function (f) {
+	    return Data_Foldable.foldr(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
+	});
+	var foldWithIndexM = function foldWithIndexM(dictFoldableWithIndex) {
+	    return function (dictMonad) {
+	        return function (f) {
+	            return function (a0) {
+	                return foldlWithIndex(dictFoldableWithIndex)(function (i) {
+	                    return function (ma) {
+	                        return function (b) {
+	                            return Control_Bind.bind(dictMonad.Bind1())(ma)(Data_Function.flip(f(i))(b));
+	                        };
+	                    };
+	                })(Control_Applicative.pure(dictMonad.Applicative0())(a0));
+	            };
+	        };
+	    };
+	};
+	var foldMapWithIndexDefaultR = function foldMapWithIndexDefaultR(dictFoldableWithIndex) {
+	    return function (dictMonoid) {
+	        return function (f) {
+	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function (x) {
+	                    return function (acc) {
+	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(f(i)(x))(acc);
+	                    };
+	                };
+	            })(Data_Monoid.mempty(dictMonoid));
+	        };
+	    };
+	};
+	var foldableWithIndexArray = new FoldableWithIndex(function () {
+	    return Data_Foldable.foldableArray;
+	}, function (dictMonoid) {
+	    return foldMapWithIndexDefaultR(foldableWithIndexArray)(dictMonoid);
+	}, function (f) {
+	    return function (z) {
+	        return function ($42) {
+	            return Data_Foldable.foldl(Data_Foldable.foldableArray)(function (y) {
+	                return function (v) {
+	                    return f(v.value0)(y)(v.value1);
+	                };
+	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($42));
+	        };
+	    };
+	}, function (f) {
+	    return function (z) {
+	        return function ($43) {
+	            return Data_Foldable.foldr(Data_Foldable.foldableArray)(function (v) {
+	                return function (y) {
+	                    return f(v.value0)(v.value1)(y);
+	                };
+	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($43));
+	        };
+	    };
+	});
+	var foldMapWithIndexDefaultL = function foldMapWithIndexDefaultL(dictFoldableWithIndex) {
+	    return function (dictMonoid) {
+	        return function (f) {
+	            return foldlWithIndex(dictFoldableWithIndex)(function (i) {
+	                return function (acc) {
+	                    return function (x) {
+	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)(x));
+	                    };
+	                };
+	            })(Data_Monoid.mempty(dictMonoid));
+	        };
+	    };
+	};
+	var foldMapWithIndex = function foldMapWithIndex(dict) {
+	    return dict.foldMapWithIndex;
+	};
+	var foldlWithIndexDefault = function foldlWithIndexDefault(dictFoldableWithIndex) {
+	    return function (c) {
+	        return function (u) {
+	            return function (xs) {
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function (i) {
+	                    return function ($44) {
+	                        return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c(i))($44)));
+	                    };
+	                })(xs)))(u);
+	            };
+	        };
+	    };
+	};
+	var foldrWithIndexDefault = function foldrWithIndexDefault(dictFoldableWithIndex) {
+	    return function (c) {
+	        return function (u) {
+	            return function (xs) {
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(function (i) {
+	                    return function ($45) {
+	                        return Data_Monoid_Endo.Endo(c(i)($45));
+	                    };
+	                })(xs))(u);
+	            };
+	        };
+	    };
+	};
+	var surroundMapWithIndex = function surroundMapWithIndex(dictFoldableWithIndex) {
+	    return function (dictSemigroup) {
+	        return function (d) {
+	            return function (t) {
+	                return function (f) {
+	                    var joined = function joined(i) {
+	                        return function (a) {
+	                            return function (m) {
+	                                return Data_Semigroup.append(dictSemigroup)(d)(Data_Semigroup.append(dictSemigroup)(t(i)(a))(m));
+	                            };
+	                        };
+	                    };
+	                    return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(joined)(f))(d);
+	                };
+	            };
+	        };
+	    };
+	};
+	var findWithIndex = function findWithIndex(dictFoldableWithIndex) {
+	    return function (p) {
+	        var go = function go(i) {
+	            return function (v) {
+	                return function (v1) {
+	                    if (v instanceof Data_Maybe.Nothing && p(i)(v1)) {
+	                        return new Data_Maybe.Just(v1);
+	                    };
+	                    return v;
+	                };
+	            };
+	        };
+	        return foldlWithIndex(dictFoldableWithIndex)(go)(Data_Maybe.Nothing.value);
+	    };
+	};
+	var anyWithIndex = function anyWithIndex(dictFoldableWithIndex) {
+	    return function (dictHeytingAlgebra) {
+	        return function (t) {
+	            return function ($46) {
+	                return Data_Newtype.unwrap(Data_Monoid_Disj.newtypeDisj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Disj.monoidDisj(dictHeytingAlgebra))(function (i) {
+	                    return function ($47) {
+	                        return Data_Monoid_Disj.Disj(t(i)($47));
+	                    };
+	                })($46));
+	            };
+	        };
+	    };
+	};
+	var allWithIndex = function allWithIndex(dictFoldableWithIndex) {
+	    return function (dictHeytingAlgebra) {
+	        return function (t) {
+	            return function ($48) {
+	                return Data_Newtype.unwrap(Data_Monoid_Conj.newtypeConj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Conj.monoidConj(dictHeytingAlgebra))(function (i) {
+	                    return function ($49) {
+	                        return Data_Monoid_Conj.Conj(t(i)($49));
+	                    };
+	                })($48));
+	            };
+	        };
+	    };
+	};
+	module.exports = {
+	    FoldableWithIndex: FoldableWithIndex,
+	    foldrWithIndex: foldrWithIndex,
+	    foldlWithIndex: foldlWithIndex,
+	    foldMapWithIndex: foldMapWithIndex,
+	    foldrWithIndexDefault: foldrWithIndexDefault,
+	    foldlWithIndexDefault: foldlWithIndexDefault,
+	    foldMapWithIndexDefaultR: foldMapWithIndexDefaultR,
+	    foldMapWithIndexDefaultL: foldMapWithIndexDefaultL,
+	    foldWithIndexM: foldWithIndexM,
+	    traverseWithIndex_: traverseWithIndex_,
+	    forWithIndex_: forWithIndex_,
+	    surroundMapWithIndex: surroundMapWithIndex,
+	    allWithIndex: allWithIndex,
+	    anyWithIndex: anyWithIndex,
+	    findWithIndex: findWithIndex,
+	    foldableWithIndexArray: foldableWithIndexArray,
+	    foldableWithIndexMaybe: foldableWithIndexMaybe,
+	    foldableWithIndexFirst: foldableWithIndexFirst,
+	    foldableWithIndexLast: foldableWithIndexLast,
+	    foldableWithIndexAdditive: foldableWithIndexAdditive,
+	    foldableWithIndexDual: foldableWithIndexDual,
+	    foldableWithIndexDisj: foldableWithIndexDisj,
+	    foldableWithIndexConj: foldableWithIndexConj,
+	    foldableWithIndexMultiplicative: foldableWithIndexMultiplicative
+	};
+
+/***/ }),
+/* 640 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var $foreign = __webpack_require__(641);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Maybe_Last = __webpack_require__(580);
+	var Data_Monoid_Additive = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
+	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
+	    this.Functor0 = Functor0;
+	    this.mapWithIndex = mapWithIndex;
+	};
+	var mapWithIndex = function mapWithIndex(dict) {
+	    return dict.mapWithIndex;
+	};
+	var functorWithIndexMultiplicative = new FunctorWithIndex(function () {
+	    return Data_Monoid_Multiplicative.functorMultiplicative;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Multiplicative.functorMultiplicative)(f(Data_Unit.unit));
+	});
+	var functorWithIndexMaybe = new FunctorWithIndex(function () {
+	    return Data_Maybe.functorMaybe;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe.functorMaybe)(f(Data_Unit.unit));
+	});
+	var functorWithIndexLast = new FunctorWithIndex(function () {
+	    return Data_Maybe_Last.functorLast;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe_Last.functorLast)(f(Data_Unit.unit));
+	});
+	var functorWithIndexFirst = new FunctorWithIndex(function () {
+	    return Data_Maybe_First.functorFirst;
+	}, function (f) {
+	    return Data_Functor.map(Data_Maybe_First.functorFirst)(f(Data_Unit.unit));
+	});
+	var functorWithIndexDual = new FunctorWithIndex(function () {
+	    return Data_Monoid_Dual.functorDual;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Dual.functorDual)(f(Data_Unit.unit));
+	});
+	var functorWithIndexDisj = new FunctorWithIndex(function () {
+	    return Data_Monoid_Disj.functorDisj;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Disj.functorDisj)(f(Data_Unit.unit));
+	});
+	var functorWithIndexConj = new FunctorWithIndex(function () {
+	    return Data_Monoid_Conj.functorConj;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Conj.functorConj)(f(Data_Unit.unit));
+	});
+	var functorWithIndexArray = new FunctorWithIndex(function () {
+	    return Data_Functor.functorArray;
+	}, $foreign.mapWithIndexArray);
+	var functorWithIndexAdditive = new FunctorWithIndex(function () {
+	    return Data_Monoid_Additive.functorAdditive;
+	}, function (f) {
+	    return Data_Functor.map(Data_Monoid_Additive.functorAdditive)(f(Data_Unit.unit));
+	});
+	module.exports = {
+	    FunctorWithIndex: FunctorWithIndex,
+	    mapWithIndex: mapWithIndex,
+	    functorWithIndexArray: functorWithIndexArray,
+	    functorWithIndexMaybe: functorWithIndexMaybe,
+	    functorWithIndexFirst: functorWithIndexFirst,
+	    functorWithIndexLast: functorWithIndexLast,
+	    functorWithIndexAdditive: functorWithIndexAdditive,
+	    functorWithIndexDual: functorWithIndexDual,
+	    functorWithIndexConj: functorWithIndexConj,
+	    functorWithIndexDisj: functorWithIndexDisj,
+	    functorWithIndexMultiplicative: functorWithIndexMultiplicative
+	};
+
+/***/ }),
+/* 641 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	exports.mapWithIndexArray = function (f) {
+	  return function (xs) {
+	    var l = xs.length;
+	    var result = Array(l);
+	    for (var i = 0; i < l; i++) {
+	      result[i] = f(i)(xs[i]);
+	    }
+	    return result;
+	  };
+	};
+
+/***/ }),
+/* 642 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_FoldableWithIndex = __webpack_require__(639);
+	var Data_Function = __webpack_require__(509);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Maybe_First = __webpack_require__(579);
+	var Data_Maybe_Last = __webpack_require__(580);
+	var Data_Monoid_Additive = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(583);
+	var Data_Monoid_Disj = __webpack_require__(584);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Traversable_Accum = __webpack_require__(591);
+	var Data_Traversable_Accum_Internal = __webpack_require__(592);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
+	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
+	    this.FoldableWithIndex1 = FoldableWithIndex1;
+	    this.FunctorWithIndex0 = FunctorWithIndex0;
+	    this.Traversable2 = Traversable2;
+	    this.traverseWithIndex = traverseWithIndex;
+	};
+	var traverseWithIndexDefault = function traverseWithIndexDefault(dictTraversableWithIndex) {
+	    return function (dictApplicative) {
+	        return function (f) {
+	            return function ($17) {
+	                return Data_Traversable.sequence(dictTraversableWithIndex.Traversable2())(dictApplicative)(Data_FunctorWithIndex.mapWithIndex(dictTraversableWithIndex.FunctorWithIndex0())(f)($17));
+	            };
+	        };
+	    };
+	};
+	var traverseWithIndex = function traverseWithIndex(dict) {
+	    return dict.traverseWithIndex;
+	};
+	var traversableWithIndexMultiplicative = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexMultiplicative;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexMultiplicative;
+	}, function () {
+	    return Data_Traversable.traversableMultiplicative;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableMultiplicative)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexMaybe = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexMaybe;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexMaybe;
+	}, function () {
+	    return Data_Traversable.traversableMaybe;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableMaybe)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexLast = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexLast;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexLast;
+	}, function () {
+	    return Data_Traversable.traversableLast;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableLast)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexFirst = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexFirst;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexFirst;
+	}, function () {
+	    return Data_Traversable.traversableFirst;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableFirst)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexDual = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexDual;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexDual;
+	}, function () {
+	    return Data_Traversable.traversableDual;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableDual)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexDisj = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexDisj;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexDisj;
+	}, function () {
+	    return Data_Traversable.traversableDisj;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableDisj)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexConj = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexConj;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexConj;
+	}, function () {
+	    return Data_Traversable.traversableConj;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableConj)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var traversableWithIndexArray = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexArray;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexArray;
+	}, function () {
+	    return Data_Traversable.traversableArray;
+	}, function (dictApplicative) {
+	    return traverseWithIndexDefault(traversableWithIndexArray)(dictApplicative);
+	});
+	var traversableWithIndexAdditive = new TraversableWithIndex(function () {
+	    return Data_FoldableWithIndex.foldableWithIndexAdditive;
+	}, function () {
+	    return Data_FunctorWithIndex.functorWithIndexAdditive;
+	}, function () {
+	    return Data_Traversable.traversableAdditive;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        return Data_Traversable.traverse(Data_Traversable.traversableAdditive)(dictApplicative)(f(Data_Unit.unit));
+	    };
+	});
+	var mapAccumRWithIndex = function mapAccumRWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (s0) {
+	            return function (xs) {
+	                return Data_Traversable_Accum_Internal.stateR(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateR)(function (i) {
+	                    return function (a) {
+	                        return function (s) {
+	                            return f(i)(s)(a);
+	                        };
+	                    };
+	                })(xs))(s0);
+	            };
+	        };
+	    };
+	};
+	var scanrWithIndex = function scanrWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (b0) {
+	            return function (xs) {
+	                return mapAccumRWithIndex(dictTraversableWithIndex)(function (i) {
+	                    return function (b) {
+	                        return function (a) {
+	                            var b$prime = f(i)(a)(b);
+	                            return {
+	                                accum: b$prime,
+	                                value: b$prime
+	                            };
+	                        };
+	                    };
+	                })(b0)(xs).value;
+	            };
+	        };
+	    };
+	};
+	var mapAccumLWithIndex = function mapAccumLWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (s0) {
+	            return function (xs) {
+	                return Data_Traversable_Accum_Internal.stateL(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateL)(function (i) {
+	                    return function (a) {
+	                        return function (s) {
+	                            return f(i)(s)(a);
+	                        };
+	                    };
+	                })(xs))(s0);
+	            };
+	        };
+	    };
+	};
+	var scanlWithIndex = function scanlWithIndex(dictTraversableWithIndex) {
+	    return function (f) {
+	        return function (b0) {
+	            return function (xs) {
+	                return mapAccumLWithIndex(dictTraversableWithIndex)(function (i) {
+	                    return function (b) {
+	                        return function (a) {
+	                            var b$prime = f(i)(b)(a);
+	                            return {
+	                                accum: b$prime,
+	                                value: b$prime
+	                            };
+	                        };
+	                    };
+	                })(b0)(xs).value;
+	            };
+	        };
+	    };
+	};
+	var forWithIndex = function forWithIndex(dictApplicative) {
+	    return function (dictTraversableWithIndex) {
+	        return Data_Function.flip(traverseWithIndex(dictTraversableWithIndex)(dictApplicative));
+	    };
+	};
+	module.exports = {
+	    TraversableWithIndex: TraversableWithIndex,
+	    traverseWithIndex: traverseWithIndex,
+	    traverseWithIndexDefault: traverseWithIndexDefault,
+	    forWithIndex: forWithIndex,
+	    scanlWithIndex: scanlWithIndex,
+	    mapAccumLWithIndex: mapAccumLWithIndex,
+	    scanrWithIndex: scanrWithIndex,
+	    mapAccumRWithIndex: mapAccumRWithIndex,
+	    traversableWithIndexArray: traversableWithIndexArray,
+	    traversableWithIndexMaybe: traversableWithIndexMaybe,
+	    traversableWithIndexFirst: traversableWithIndexFirst,
+	    traversableWithIndexLast: traversableWithIndexLast,
+	    traversableWithIndexAdditive: traversableWithIndexAdditive,
+	    traversableWithIndexDual: traversableWithIndexDual,
+	    traversableWithIndexConj: traversableWithIndexConj,
+	    traversableWithIndexDisj: traversableWithIndexDisj,
+	    traversableWithIndexMultiplicative: traversableWithIndexMultiplicative
+	};
+
+/***/ }),
+/* 643 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Generated by purs version 0.11.7
+	"use strict";
+	
+	var $foreign = __webpack_require__(644);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Partial_Unsafe = __webpack_require__(604);
+	var Prelude = __webpack_require__(547);
 	var Unfoldable = function Unfoldable(unfoldr) {
 	    this.unfoldr = unfoldr;
 	};
@@ -67963,8 +70641,8 @@
 	    return function (n) {
 	        return function (v) {
 	            var step = function step(i) {
-	                var $8 = i <= 0;
-	                if ($8) {
+	                var $9 = i <= 0;
+	                if ($9) {
 	                    return Data_Maybe.Nothing.value;
 	                };
 	                return new Data_Maybe.Just(new Data_Tuple.Tuple(v, i - 1 | 0));
@@ -67987,6 +70665,19 @@
 	var singleton = function singleton(dictUnfoldable) {
 	    return replicate(dictUnfoldable)(1);
 	};
+	var range = function range(dictUnfoldable) {
+	    return function (start) {
+	        return function (end) {
+	            return unfoldr(dictUnfoldable)(function (i) {
+	                var $10 = i <= end;
+	                if ($10) {
+	                    return new Data_Maybe.Just(Data_Tuple.Tuple.create(i)(i + 1 | 0));
+	                };
+	                return Data_Maybe.Nothing.value;
+	            })(start);
+	        };
+	    };
+	};
 	var none = function none(dictUnfoldable) {
 	    return unfoldr(dictUnfoldable)(Data_Function["const"](Data_Maybe.Nothing.value))(Data_Unit.unit);
 	};
@@ -68002,12 +70693,13 @@
 	    replicateA: replicateA,
 	    none: none,
 	    singleton: singleton,
+	    range: range,
 	    fromMaybe: fromMaybe,
 	    unfoldableArray: unfoldableArray
 	};
 
 /***/ }),
-/* 631 */
+/* 644 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68036,44 +70728,49 @@
 	};
 
 /***/ }),
-/* 632 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Monad = __webpack_require__(520);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semigroup_Foldable = __webpack_require__(633);
-	var Data_Semigroup_Traversable = __webpack_require__(634);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Monad = __webpack_require__(529);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_FoldableWithIndex = __webpack_require__(639);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semigroup_Foldable = __webpack_require__(646);
+	var Data_Semigroup_Traversable = __webpack_require__(647);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_TraversableWithIndex = __webpack_require__(642);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Prelude = __webpack_require__(547);
 	var Nil = function () {
 	    function Nil() {};
 	    Nil.value = new Nil();
@@ -68108,8 +70805,8 @@
 	var foldableList = new Data_Foldable.Foldable(function (dictMonoid) {
 	    return function (f) {
 	        return Data_Foldable.foldl(foldableList)(function (acc) {
-	            return function ($143) {
-	                return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f($143));
+	            return function ($158) {
+	                return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f($158));
 	            };
 	        })(Data_Monoid.mempty(dictMonoid));
 	    };
@@ -68129,7 +70826,7 @@
 	                    $copy_v = v.value1;
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List.Types line 78, column 12 - line 80, column 30: " + [v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List.Types line 81, column 12 - line 83, column 30: " + [v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_b, $copy_v);
@@ -68140,35 +70837,54 @@
 	    return go;
 	}, function (f) {
 	    return function (b) {
-	        var rev = function rev($copy_acc) {
-	            return function ($copy_v) {
-	                var $tco_var_acc = $copy_acc;
-	                var $tco_done = false;
-	                var $tco_result;
-	                function $tco_loop(acc, v) {
-	                    if (v instanceof Nil) {
-	                        $tco_done = true;
-	                        return acc;
-	                    };
-	                    if (v instanceof Cons) {
-	                        $tco_var_acc = new Cons(v.value0, acc);
-	                        $copy_v = v.value1;
-	                        return;
-	                    };
-	                    throw new Error("Failed pattern match at Data.List.Types line 73, column 15 - line 75, column 33: " + [v.constructor.name]);
-	                };
-	                while (!$tco_done) {
-	                    $tco_result = $tco_loop($tco_var_acc, $copy_v);
-	                };
-	                return $tco_result;
-	            };
-	        };
-	        return function ($144) {
-	            return Data_Foldable.foldl(foldableList)(Data_Function.flip(f))(b)(rev(Nil.value)($144));
+	        var rev = Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value);
+	        return function ($159) {
+	            return Data_Foldable.foldl(foldableList)(Data_Function.flip(f))(b)(rev($159));
 	        };
 	    };
 	});
 	var foldableNonEmptyList = Data_NonEmpty.foldableNonEmpty(foldableList);
+	var foldableWithIndexList = new Data_FoldableWithIndex.FoldableWithIndex(function () {
+	    return foldableList;
+	}, function (dictMonoid) {
+	    return function (f) {
+	        return Data_FoldableWithIndex.foldlWithIndex(foldableWithIndexList)(function (i) {
+	            return function (acc) {
+	                return function ($160) {
+	                    return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)($160));
+	                };
+	            };
+	        })(Data_Monoid.mempty(dictMonoid));
+	    };
+	}, function (f) {
+	    return function (acc) {
+	        return function ($161) {
+	            return Data_Tuple.snd(Data_Foldable.foldl(foldableList)(function (v) {
+	                return function (a) {
+	                    return new Data_Tuple.Tuple(v.value0 + 1 | 0, f(v.value0)(v.value1)(a));
+	                };
+	            })(new Data_Tuple.Tuple(0, acc))($161));
+	        };
+	    };
+	}, function (f) {
+	    return function (b) {
+	        return function (xs) {
+	            var v = function () {
+	                var rev = Data_Foldable.foldl(foldableList)(function (v1) {
+	                    return function (a) {
+	                        return new Data_Tuple.Tuple(v1.value0 + 1 | 0, new Cons(a, v1.value1));
+	                    };
+	                });
+	                return rev(new Data_Tuple.Tuple(0, Nil.value))(xs);
+	            }();
+	            return Data_Tuple.snd(Data_Foldable.foldl(foldableList)(function (v1) {
+	                return function (a) {
+	                    return new Data_Tuple.Tuple(v1.value0 - 1 | 0, f(v1.value0 - 1 | 0)(a)(v1.value1));
+	                };
+	            })(new Data_Tuple.Tuple(v.value0, b))(v.value1));
+	        };
+	    };
+	});
 	var functorList = new Data_Functor.Functor(function (f) {
 	    return Data_Foldable.foldr(foldableList)(function (x) {
 	        return function (acc) {
@@ -68177,6 +70893,17 @@
 	    })(Nil.value);
 	});
 	var functorNonEmptyList = Data_NonEmpty.functorNonEmpty(functorList);
+	var functorWithIndexList = new Data_FunctorWithIndex.FunctorWithIndex(function () {
+	    return functorList;
+	}, function (f) {
+	    return Data_FoldableWithIndex.foldrWithIndex(foldableWithIndexList)(function (i) {
+	        return function (x) {
+	            return function (acc) {
+	                return new Cons(f(i)(x), acc);
+	            };
+	        };
+	    })(Nil.value);
+	});
 	var semigroupList = new Data_Semigroup.Semigroup(function (xs) {
 	    return function (ys) {
 	        return Data_Foldable.foldr(foldableList)(Cons.create)(ys)(xs);
@@ -68211,16 +70938,36 @@
 	    return Data_Traversable.traverse(traversableList)(dictApplicative)(Control_Category.id(Control_Category.categoryFn));
 	}, function (dictApplicative) {
 	    return function (f) {
-	        return function ($145) {
+	        return function ($162) {
 	            return Data_Functor.map(dictApplicative.Apply0().Functor0())(Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value))(Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($146) {
-	                    return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f($146));
+	                return function ($163) {
+	                    return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f($163));
 	                };
-	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($145));
+	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($162));
 	        };
 	    };
 	});
 	var traversableNonEmptyList = Data_NonEmpty.traversableNonEmpty(traversableList);
+	var traversableWithIndexList = new Data_TraversableWithIndex.TraversableWithIndex(function () {
+	    return foldableWithIndexList;
+	}, function () {
+	    return functorWithIndexList;
+	}, function () {
+	    return traversableList;
+	}, function (dictApplicative) {
+	    return function (f) {
+	        var rev = Data_Foldable.foldl(foldableList)(Data_Function.flip(Cons.create))(Nil.value);
+	        return function ($164) {
+	            return Data_Functor.map(dictApplicative.Apply0().Functor0())(rev)(Data_FoldableWithIndex.foldlWithIndex(foldableWithIndexList)(function (i) {
+	                return function (acc) {
+	                    return function ($165) {
+	                        return Control_Apply.lift2(dictApplicative.Apply0())(Data_Function.flip(Cons.create))(acc)(f(i)($165));
+	                    };
+	                };
+	            })(Control_Applicative.pure(dictApplicative)(Nil.value))($164));
+	        };
+	    };
+	});
 	var unfoldableList = new Data_Unfoldable.Unfoldable(function (f) {
 	    return function (b) {
 	        var go = function go($copy_source) {
@@ -68239,7 +70986,7 @@
 	                        $copy_memo = new Cons(v.value0.value0, memo);
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List.Types line 86, column 22 - line 88, column 52: " + [v.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List.Types line 105, column 22 - line 107, column 52: " + [v.constructor.name]);
 	                };
 	                while (!$tco_done) {
 	                    $tco_result = $tco_loop($tco_var_source, $copy_memo);
@@ -68260,8 +71007,8 @@
 	    return function (f) {
 	        return function (v) {
 	            return Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($147) {
-	                    return Data_Semigroup.append(dictSemigroup)(acc)(f($147));
+	                return function ($166) {
+	                    return Data_Semigroup.append(dictSemigroup)(acc)(f($166));
 	                };
 	            })(f(v.value0))(v.value1);
 	        };
@@ -68307,7 +71054,7 @@
 	                acc: Nil.value
 	            })(v.value1).val);
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 119, column 1 - line 119, column 35: " + [f.constructor.name, v.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 145, column 1 - line 145, column 35: " + [f.constructor.name, v.constructor.name]);
 	    };
 	});
 	var eq1List = new Data_Eq.Eq1(function (dictEq) {
@@ -68388,7 +71135,7 @@
 	                            $tco_done = true;
 	                            return v2;
 	                        };
-	                        throw new Error("Failed pattern match at Data.List.Types line 53, column 5 - line 53, column 20: " + [v.constructor.name, v1.constructor.name]);
+	                        throw new Error("Failed pattern match at Data.List.Types line 55, column 5 - line 55, column 20: " + [v.constructor.name, v1.constructor.name]);
 	                    };
 	                    while (!$tco_done) {
 	                        $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -68423,7 +71170,7 @@
 	        if (v instanceof Cons) {
 	            return Data_Semigroup.append(semigroupList)(Data_Functor.map(functorList)(v.value0)(v1))(Control_Apply.apply(applyList)(v.value1)(v1));
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 94, column 1 - line 94, column 33: " + [v.constructor.name, v1.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 120, column 1 - line 120, column 33: " + [v.constructor.name, v1.constructor.name]);
 	    };
 	});
 	var applyNonEmptyList = new Control_Apply.Apply(function () {
@@ -68443,7 +71190,7 @@
 	        if (v instanceof Cons) {
 	            return Data_Semigroup.append(semigroupList)(v1(v.value0))(Control_Bind.bind(bindList)(v.value1)(v1));
 	        };
-	        throw new Error("Failed pattern match at Data.List.Types line 101, column 1 - line 101, column 31: " + [v.constructor.name, v1.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List.Types line 127, column 1 - line 127, column 31: " + [v.constructor.name, v1.constructor.name]);
 	    };
 	});
 	var bindNonEmptyList = new Control_Bind.Bind(function () {
@@ -68451,8 +71198,8 @@
 	}, function (v) {
 	    return function (f) {
 	        var v1 = f(v.value0);
-	        return new Data_NonEmpty.NonEmpty(v1.value0, Data_Semigroup.append(semigroupList)(v1.value1)(Control_Bind.bind(bindList)(v.value1)(function ($148) {
-	            return toList(f($148));
+	        return new Data_NonEmpty.NonEmpty(v1.value0, Data_Semigroup.append(semigroupList)(v1.value1)(Control_Bind.bind(bindList)(v.value1)(function ($167) {
+	            return toList(f($167));
 	        })));
 	    };
 	});
@@ -68490,8 +71237,8 @@
 	});
 	var applicativeNonEmptyList = new Control_Applicative.Applicative(function () {
 	    return applyNonEmptyList;
-	}, function ($149) {
-	    return NonEmptyList(Data_NonEmpty.singleton(plusList)($149));
+	}, function ($168) {
+	    return NonEmptyList(Data_NonEmpty.singleton(plusList)($168));
 	});
 	var monadNonEmptyList = new Control_Monad.Monad(function () {
 	    return applicativeNonEmptyList;
@@ -68508,8 +71255,8 @@
 	    return function (f) {
 	        return function (v) {
 	            return Data_Functor.mapFlipped(dictApply.Functor0())(Data_Foldable.foldl(foldableList)(function (acc) {
-	                return function ($150) {
-	                    return Control_Apply.lift2(dictApply)(Data_Function.flip(nelCons))(acc)(f($150));
+	                return function ($169) {
+	                    return Control_Apply.lift2(dictApply)(Data_Function.flip(nelCons))(acc)(f($169));
 	                };
 	            })(Data_Functor.map(dictApply.Functor0())(Control_Applicative.pure(applicativeNonEmptyList))(f(v.value0)))(v.value1))(function (v1) {
 	                return Data_Foldable.foldl(foldableList)(Data_Function.flip(nelCons))(Control_Applicative.pure(applicativeNonEmptyList)(v1.value0))(v1.value1);
@@ -68531,9 +71278,12 @@
 	    semigroupList: semigroupList,
 	    monoidList: monoidList,
 	    functorList: functorList,
+	    functorWithIndexList: functorWithIndexList,
 	    foldableList: foldableList,
+	    foldableWithIndexList: foldableWithIndexList,
 	    unfoldableList: unfoldableList,
 	    traversableList: traversableList,
+	    traversableWithIndexList: traversableWithIndexList,
 	    applyList: applyList,
 	    applicativeList: applicativeList,
 	    bindList: bindList,
@@ -68564,23 +71314,23 @@
 	};
 
 /***/ }),
-/* 633 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid_Dual = __webpack_require__(585);
+	var Data_Monoid_Multiplicative = __webpack_require__(587);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Act = function Act(x) {
 	    return x;
 	};
@@ -68678,17 +71428,17 @@
 	};
 
 /***/ }),
-/* 634 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Semigroup_Foldable = __webpack_require__(633);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Semigroup_Foldable = __webpack_require__(646);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Traversable1 = function Traversable1(Foldable10, _Traversable, sequence1, traverse1) {
 	    this.Foldable10 = Foldable10;
 	    this.Traversable1 = _Traversable;
@@ -68724,26 +71474,26 @@
 	};
 
 /***/ }),
-/* 635 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(636);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_String_Unsafe = __webpack_require__(637);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(649);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_String_Unsafe = __webpack_require__(650);
+	var Prelude = __webpack_require__(547);
 	var Replacement = function Replacement(x) {
 	    return x;
 	};
@@ -68884,7 +71634,7 @@
 	};
 
 /***/ }),
-/* 636 */
+/* 649 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69068,13 +71818,13 @@
 	};
 
 /***/ }),
-/* 637 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(638);
+	var $foreign = __webpack_require__(651);
 	module.exports = {
 	    "char": $foreign["char"],
 	    charAt: $foreign.charAt,
@@ -69082,7 +71832,7 @@
 	};
 
 /***/ }),
-/* 638 */
+/* 651 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69107,29 +71857,29 @@
 	};
 
 /***/ }),
-/* 639 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad = __webpack_require__(520);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad = __webpack_require__(529);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Proxy3 = function () {
 	    function Proxy3() {};
 	    Proxy3.value = new Proxy3();
@@ -69408,16 +72158,16 @@
 	};
 
 /***/ }),
-/* 640 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(641);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
+	var $foreign = __webpack_require__(654);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
 	var warnShow = function warnShow(dictShow) {
 	    return function (a) {
 	        return $foreign.warn(Data_Show.show(dictShow)(a));
@@ -69450,7 +72200,7 @@
 	};
 
 /***/ }),
-/* 641 */
+/* 654 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69484,22 +72234,22 @@
 	};
 
 /***/ }),
-/* 642 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(643);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var DOM = __webpack_require__(644);
-	var DOM_HTML_Types = __webpack_require__(645);
-	var DOM_Node_Types = __webpack_require__(662);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Nullable = __webpack_require__(665);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(656);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var DOM = __webpack_require__(657);
+	var DOM_HTML_Types = __webpack_require__(658);
+	var DOM_Node_Types = __webpack_require__(675);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Nullable = __webpack_require__(678);
+	var Prelude = __webpack_require__(547);
 	var offsetParent = function offsetParent($0) {
 	    return Data_Functor.map(Control_Monad_Eff.functorEff)(Data_Nullable.toMaybe)($foreign._offsetParent($0));
 	};
@@ -69536,7 +72286,7 @@
 	};
 
 /***/ }),
-/* 643 */
+/* 656 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69773,35 +72523,35 @@
 	};
 
 /***/ }),
-/* 644 */
+/* 657 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Eff = __webpack_require__(525);
+	var Control_Monad_Eff = __webpack_require__(534);
 	module.exports = {};
 
 /***/ }),
-/* 645 */
+/* 658 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(646);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var DOM_Event_Types = __webpack_require__(647);
-	var DOM_Node_Types = __webpack_require__(662);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var $foreign = __webpack_require__(659);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var DOM_Event_Types = __webpack_require__(660);
+	var DOM_Node_Types = __webpack_require__(675);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var windowToEventTarget = Unsafe_Coerce.unsafeCoerce;
 	var readHTMLVideoElement = Data_Foreign.unsafeReadTagged("HTMLVideoElement");
 	var readHTMLUListElement = Data_Foreign.unsafeReadTagged("HTMLUListElement");
@@ -70084,7 +72834,7 @@
 	};
 
 /***/ }),
-/* 646 */
+/* 659 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70103,26 +72853,26 @@
 	};
 
 /***/ }),
-/* 647 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(648);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var $foreign = __webpack_require__(661);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var EventType = function EventType(x) {
 	    return x;
 	};
@@ -70133,6 +72883,7 @@
 	var readUIEvent = Data_Foreign.unsafeReadTagged("UIEvent");
 	var readTouchEvent = Data_Foreign.unsafeReadTagged("TouchEvent");
 	var readProgressEvent = Data_Foreign.unsafeReadTagged("ProgressEvent");
+	var readPopStateEvent = Data_Foreign.unsafeReadTagged("PopStateEvent");
 	var readMouseEvent = Data_Foreign.unsafeReadTagged("MouseEvent");
 	var readKeyboardEvent = Data_Foreign.unsafeReadTagged("KeyboardEvent");
 	var readInputEvent = Data_Foreign.unsafeReadTagged("InputEvent");
@@ -70146,6 +72897,7 @@
 	var readCompositionEvent = Data_Foreign.unsafeReadTagged("CompositionEvent");
 	var readClipboardEvent = Data_Foreign.unsafeReadTagged("ClipboardEvent");
 	var progressEventToEvent = Unsafe_Coerce.unsafeCoerce;
+	var popStateEventToEvent = Unsafe_Coerce.unsafeCoerce;
 	var ordEventType = Data_Ord.ordString;
 	var newtypeEventType = new Data_Newtype.Newtype(function (n) {
 	    return n;
@@ -70179,6 +72931,8 @@
 	    readKeyboardEvent: readKeyboardEvent,
 	    compositionEventToEvent: compositionEventToEvent,
 	    readCompositionEvent: readCompositionEvent,
+	    popStateEventToEvent: popStateEventToEvent,
+	    readPopStateEvent: readPopStateEvent,
 	    progressEventToEvent: progressEventToEvent,
 	    readProgressEvent: readProgressEvent,
 	    clipboardEventToEvent: clipboardEventToEvent,
@@ -70189,7 +72943,7 @@
 	};
 
 /***/ }),
-/* 648 */
+/* 661 */
 /***/ (function(module, exports) {
 
 	/* global EventTarget */
@@ -70204,33 +72958,33 @@
 	};
 
 /***/ }),
-/* 649 */
+/* 662 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(650);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Identity = __webpack_require__(593);
-	var Data_Int = __webpack_require__(652);
-	var Data_List_NonEmpty = __webpack_require__(660);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(635);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(663);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Identity = __webpack_require__(602);
+	var Data_Int = __webpack_require__(665);
+	var Data_List_NonEmpty = __webpack_require__(673);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_String = __webpack_require__(648);
+	var Prelude = __webpack_require__(547);
 	var ForeignError = function () {
 	    function ForeignError(value0) {
 	        this.value0 = value0;
@@ -70506,7 +73260,7 @@
 	};
 
 /***/ }),
-/* 650 */
+/* 663 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70542,19 +73296,19 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 664 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Identity = __webpack_require__(593);
-	var Data_Newtype = __webpack_require__(537);
-	var Prelude = __webpack_require__(538);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Identity = __webpack_require__(602);
+	var Data_Newtype = __webpack_require__(546);
+	var Prelude = __webpack_require__(547);
 	var withExcept = Control_Monad_Except_Trans.withExceptT(Data_Identity.functorIdentity);
 	var runExcept = function runExcept($0) {
 	    return Data_Newtype.unwrap(Data_Identity.newtypeIdentity)(Control_Monad_Except_Trans.runExceptT($0));
@@ -70571,27 +73325,33 @@
 	};
 
 /***/ }),
-/* 652 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(653);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(535);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Int_Bits = __webpack_require__(654);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Show = __webpack_require__(505);
-	var Global = __webpack_require__(656);
-	var $$Math = __webpack_require__(658);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(666);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_DivisionRing = __webpack_require__(564);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Field = __webpack_require__(567);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Int_Bits = __webpack_require__(667);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Global = __webpack_require__(669);
+	var $$Math = __webpack_require__(671);
+	var Prelude = __webpack_require__(547);
 	var Radix = function Radix(x) {
 	    return x;
 	};
@@ -70612,7 +73372,7 @@
 	    if (v instanceof Odd) {
 	        return "Odd";
 	    };
-	    throw new Error("Failed pattern match at Data.Int line 88, column 1 - line 88, column 35: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Int line 110, column 1 - line 110, column 35: " + [v.constructor.name]);
 	});
 	var radix = function radix(n) {
 	    if (n >= 2 && n <= 36) {
@@ -70621,7 +73381,7 @@
 	    if (Data_Boolean.otherwise) {
 	        return Data_Maybe.Nothing.value;
 	    };
-	    throw new Error("Failed pattern match at Data.Int line 148, column 1 - line 148, column 28: " + [n.constructor.name]);
+	    throw new Error("Failed pattern match at Data.Int line 193, column 1 - line 193, column 28: " + [n.constructor.name]);
 	};
 	var odd = function odd(x) {
 	    return (x & 1) !== 0;
@@ -70649,18 +73409,18 @@
 	    };
 	    throw new Error("Failed pattern match at Data.Int line 64, column 1 - line 64, column 29: " + [x.constructor.name]);
 	};
-	var round = function round($13) {
-	    return unsafeClamp($$Math.round($13));
+	var round = function round($23) {
+	    return unsafeClamp($$Math.round($23));
 	};
-	var floor = function floor($14) {
-	    return unsafeClamp($$Math.floor($14));
+	var floor = function floor($24) {
+	    return unsafeClamp($$Math.floor($24));
 	};
 	var even = function even(x) {
 	    return (x & 1) === 0;
 	};
 	var parity = function parity(n) {
-	    var $8 = even(n);
-	    if ($8) {
+	    var $14 = even(n);
+	    if ($14) {
 	        return Even.value;
 	    };
 	    return Odd.value;
@@ -70692,12 +73452,59 @@
 	        if (x instanceof Odd && y instanceof Odd) {
 	            return Data_Ordering.EQ.value;
 	        };
-	        throw new Error("Failed pattern match at Data.Int line 86, column 8 - line 86, column 40: " + [x.constructor.name, y.constructor.name]);
+	        throw new Error("Failed pattern match at Data.Int line 108, column 8 - line 108, column 40: " + [x.constructor.name, y.constructor.name]);
 	    };
 	});
+	var semiringParity = new Data_Semiring.Semiring(function (x) {
+	    return function (y) {
+	        var $19 = Data_Eq.eq(eqParity)(x)(y);
+	        if ($19) {
+	            return Even.value;
+	        };
+	        return Odd.value;
+	    };
+	}, function (v) {
+	    return function (v1) {
+	        if (v instanceof Odd && v1 instanceof Odd) {
+	            return Odd.value;
+	        };
+	        return Even.value;
+	    };
+	}, Odd.value, Even.value);
+	var ringParity = new Data_Ring.Ring(function () {
+	    return semiringParity;
+	}, Data_Semiring.add(semiringParity));
+	var divisionRingParity = new Data_DivisionRing.DivisionRing(function () {
+	    return ringParity;
+	}, Control_Category.id(Control_Category.categoryFn));
 	var decimal = 10;
-	var ceil = function ceil($15) {
-	    return unsafeClamp($$Math.ceil($15));
+	var commutativeRingParity = new Data_CommutativeRing.CommutativeRing(function () {
+	    return ringParity;
+	});
+	var euclideanRingParity = new Data_EuclideanRing.EuclideanRing(function () {
+	    return commutativeRingParity;
+	}, function (v) {
+	    if (v instanceof Even) {
+	        return 0;
+	    };
+	    if (v instanceof Odd) {
+	        return 1;
+	    };
+	    throw new Error("Failed pattern match at Data.Int line 130, column 1 - line 130, column 53: " + [v.constructor.name]);
+	}, function (x) {
+	    return function (v) {
+	        return x;
+	    };
+	}, function (v) {
+	    return function (v1) {
+	        return Even.value;
+	    };
+	});
+	var fieldParity = new Data_Field.Field(function () {
+	    return euclideanRingParity;
+	});
+	var ceil = function ceil($25) {
+	    return unsafeClamp($$Math.ceil($25));
 	};
 	var boundedParity = new Data_Bounded.Bounded(function () {
 	    return ordParity;
@@ -70726,13 +73533,19 @@
 	    ordParity: ordParity,
 	    showParity: showParity,
 	    boundedParity: boundedParity,
+	    semiringParity: semiringParity,
+	    ringParity: ringParity,
+	    commutativeRingParity: commutativeRingParity,
+	    euclideanRingParity: euclideanRingParity,
+	    divisionRingParity: divisionRingParity,
+	    fieldParity: fieldParity,
 	    toNumber: $foreign.toNumber,
 	    toStringAs: $foreign.toStringAs,
 	    pow: $foreign.pow
 	};
 
 /***/ }),
-/* 653 */
+/* 666 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70792,13 +73605,13 @@
 	};
 
 /***/ }),
-/* 654 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(655);
+	var $foreign = __webpack_require__(668);
 	module.exports = {
 	    and: $foreign.and,
 	    or: $foreign.or,
@@ -70810,7 +73623,7 @@
 	};
 
 /***/ }),
-/* 655 */
+/* 668 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70865,13 +73678,13 @@
 	};
 
 /***/ }),
-/* 656 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(657);
+	var $foreign = __webpack_require__(670);
 	module.exports = {
 	    nan: $foreign.nan,
 	    "isNaN": $foreign["isNaN"],
@@ -70886,7 +73699,7 @@
 	};
 
 /***/ }),
-/* 657 */
+/* 670 */
 /***/ (function(module, exports) {
 
 	/* globals exports */
@@ -70916,13 +73729,13 @@
 	exports.encodeURIComponent = encodeURIComponent;
 
 /***/ }),
-/* 658 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(659);
+	var $foreign = __webpack_require__(672);
 	module.exports = {
 	    abs: $foreign.abs,
 	    acos: $foreign.acos,
@@ -70955,7 +73768,7 @@
 	};
 
 /***/ }),
-/* 659 */
+/* 672 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71041,35 +73854,35 @@
 	exports.sqrt2 = Math.SQRT2;
 
 /***/ }),
-/* 660 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_List = __webpack_require__(661);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semigroup_Foldable = __webpack_require__(633);
-	var Data_Semigroup_Traversable = __webpack_require__(634);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Partial_Unsafe = __webpack_require__(595);
-	var Prelude = __webpack_require__(538);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_List = __webpack_require__(674);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semigroup_Foldable = __webpack_require__(646);
+	var Data_Semigroup_Traversable = __webpack_require__(647);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Partial_Unsafe = __webpack_require__(604);
+	var Prelude = __webpack_require__(547);
 	var zipWith = function zipWith(f) {
 	    return function (v) {
 	        return function (v1) {
@@ -71457,43 +74270,44 @@
 	};
 
 /***/ }),
-/* 661 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Pattern = function Pattern(x) {
 	    return x;
 	};
@@ -71527,7 +74341,7 @@
 	            tail: v.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Data.List line 258, column 1 - line 258, column 66: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 259, column 1 - line 259, column 66: " + [v.constructor.name]);
 	};
 	var toUnfoldable = function toUnfoldable(dictUnfoldable) {
 	    return Data_Unfoldable.unfoldr(dictUnfoldable)(function (xs) {
@@ -71543,7 +74357,7 @@
 	    if (v instanceof Data_List_Types.Cons) {
 	        return new Data_Maybe.Just(v.value1);
 	    };
-	    throw new Error("Failed pattern match at Data.List line 244, column 1 - line 244, column 43: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 245, column 1 - line 245, column 43: " + [v.constructor.name]);
 	};
 	var stripPrefix = function stripPrefix(dictEq) {
 	    return function (v) {
@@ -71694,8 +74508,8 @@
 	            };
 	        };
 	    };
-	    return function ($340) {
-	        return mergeAll(sequences($340));
+	    return function ($333) {
+	        return mergeAll(sequences($333));
 	    };
 	};
 	var sort = function sort(dictOrd) {
@@ -71724,7 +74538,7 @@
 	                    $copy_v = v.value1;
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 367, column 3 - line 367, column 19: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 368, column 3 - line 368, column 19: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -71743,7 +74557,7 @@
 	                var $tco_done = false;
 	                var $tco_result;
 	                function $tco_loop(acc, v, v1) {
-	                    if (v === 0) {
+	                    if (v < 1) {
 	                        $tco_done = true;
 	                        return reverse(acc);
 	                    };
@@ -71757,7 +74571,7 @@
 	                        $copy_v1 = v1.value1;
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 520, column 3 - line 520, column 27: " + [acc.constructor.name, v.constructor.name, v1.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 520, column 3 - line 520, column 35: " + [acc.constructor.name, v.constructor.name, v1.constructor.name]);
 	                };
 	                while (!$tco_done) {
 	                    $tco_result = $tco_loop($tco_var_acc, $tco_var_v, $copy_v1);
@@ -71814,7 +74628,7 @@
 	                    $copy_acc = new Data_List_Types.Cons(v.value0, acc);
 	                    return;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 269, column 3 - line 269, column 23: " + [v.constructor.name, acc.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 270, column 3 - line 270, column 23: " + [v.constructor.name, acc.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_v, $copy_acc);
@@ -71904,7 +74718,7 @@
 	                                    $copy_rest = new Data_List_Types.Cons(s, rest);
 	                                    return;
 	                                };
-	                                throw new Error("Failed pattern match at Data.List line 147, column 3 - line 148, column 65: " + [s.constructor.name, e.constructor.name, step.constructor.name, rest.constructor.name]);
+	                                throw new Error("Failed pattern match at Data.List line 148, column 3 - line 149, column 65: " + [s.constructor.name, e.constructor.name, step.constructor.name, rest.constructor.name]);
 	                            };
 	                            while (!$tco_done) {
 	                                $tco_result = $tco_loop($tco_var_s, $tco_var_e, $tco_var_step, $copy_rest);
@@ -71915,22 +74729,22 @@
 	                };
 	            };
 	            return go(end)(start)(function () {
-	                var $221 = start > end;
-	                if ($221) {
+	                var $219 = start > end;
+	                if ($219) {
 	                    return 1;
 	                };
 	                return -1 | 0;
 	            }())(Data_List_Types.Nil.value);
 	        };
-	        throw new Error("Failed pattern match at Data.List line 143, column 1 - line 143, column 32: " + [start.constructor.name, end.constructor.name]);
+	        throw new Error("Failed pattern match at Data.List line 144, column 1 - line 144, column 32: " + [start.constructor.name, end.constructor.name]);
 	    };
 	};
 	var partition = function partition(p) {
 	    return function (xs) {
 	        var select = function select(x) {
 	            return function (v) {
-	                var $224 = p(x);
-	                if ($224) {
+	                var $222 = p(x);
+	                if ($222) {
 	                    return {
 	                        no: v.no,
 	                        yes: new Data_List_Types.Cons(x, v.yes)
@@ -71957,38 +74771,7 @@
 	var newtypePattern = new Data_Newtype.Newtype(function (n) {
 	    return n;
 	}, Pattern);
-	var mapWithIndex = function mapWithIndex(f) {
-	    return function (lst) {
-	        var go = function go($copy_v) {
-	            return function ($copy_v1) {
-	                return function ($copy_acc) {
-	                    var $tco_var_v = $copy_v;
-	                    var $tco_var_v1 = $copy_v1;
-	                    var $tco_done = false;
-	                    var $tco_result;
-	                    function $tco_loop(v, v1, acc) {
-	                        if (v1 instanceof Data_List_Types.Nil) {
-	                            $tco_done = true;
-	                            return acc;
-	                        };
-	                        if (v1 instanceof Data_List_Types.Cons) {
-	                            $tco_var_v = v + 1 | 0;
-	                            $tco_var_v1 = v1.value1;
-	                            $copy_acc = new Data_List_Types.Cons(f(v)(v1.value0), acc);
-	                            return;
-	                        };
-	                        throw new Error("Failed pattern match at Data.List line 432, column 3 - line 432, column 21: " + [v.constructor.name, v1.constructor.name, acc.constructor.name]);
-	                    };
-	                    while (!$tco_done) {
-	                        $tco_result = $tco_loop($tco_var_v, $tco_var_v1, $copy_acc);
-	                    };
-	                    return $tco_result;
-	                };
-	            };
-	        };
-	        return reverse(go(0)(lst)(Data_List_Types.Nil.value));
-	    };
-	};
+	var mapWithIndex = Data_FunctorWithIndex.mapWithIndex(Data_List_Types.functorWithIndexList);
 	var mapMaybe = function mapMaybe(f) {
 	    var go = function go($copy_acc) {
 	        return function ($copy_v) {
@@ -72012,9 +74795,9 @@
 	                        $copy_v = v.value1;
 	                        return;
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 418, column 5 - line 420, column 32: " + [v1.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 419, column 5 - line 421, column 32: " + [v1.constructor.name]);
 	                };
-	                throw new Error("Failed pattern match at Data.List line 416, column 3 - line 416, column 27: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 417, column 3 - line 417, column 27: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -72101,7 +74884,7 @@
 	                };
 	                return new Data_List_Types.Cons(x, v1);
 	            };
-	            throw new Error("Failed pattern match at Data.List line 215, column 1 - line 215, column 68: " + [v.constructor.name, x.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 216, column 1 - line 216, column 68: " + [v.constructor.name, x.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	};
@@ -72147,7 +74930,7 @@
 	                $copy_v1 = v1 - 1 | 0;
 	                return;
 	            };
-	            throw new Error("Failed pattern match at Data.List line 280, column 1 - line 280, column 44: " + [v.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 281, column 1 - line 281, column 44: " + [v.constructor.name, v1.constructor.name]);
 	        };
 	        while (!$tco_done) {
 	            $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -72162,7 +74945,7 @@
 	    if (v instanceof Data_List_Types.Cons) {
 	        return new Data_Maybe.Just(v.value0);
 	    };
-	    throw new Error("Failed pattern match at Data.List line 229, column 1 - line 229, column 22: " + [v.constructor.name]);
+	    throw new Error("Failed pattern match at Data.List line 230, column 1 - line 230, column 22: " + [v.constructor.name]);
 	};
 	var transpose = function transpose(v) {
 	    if (v instanceof Data_List_Types.Nil) {
@@ -72192,8 +74975,8 @@
 	    return groupBy(Data_Eq.eq(dictEq));
 	};
 	var group$prime = function group$prime(dictOrd) {
-	    return function ($341) {
-	        return group(dictOrd.Eq0())(sort(dictOrd)($341));
+	    return function ($334) {
+	        return group(dictOrd.Eq0())(sort(dictOrd)($334));
 	    };
 	};
 	var fromFoldable = function fromFoldable(dictFoldable) {
@@ -72238,7 +75021,7 @@
 	                    $tco_done = true;
 	                    return Data_Maybe.Nothing.value;
 	                };
-	                throw new Error("Failed pattern match at Data.List line 300, column 3 - line 300, column 35: " + [v.constructor.name, v1.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 301, column 3 - line 301, column 35: " + [v.constructor.name, v1.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_v, $copy_v1);
@@ -72273,7 +75056,7 @@
 	                    });
 	                });
 	            };
-	            throw new Error("Failed pattern match at Data.List line 402, column 1 - line 402, column 75: " + [v.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.List line 403, column 1 - line 403, column 75: " + [v.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	};
@@ -72300,7 +75083,7 @@
 	                        return;
 	                    };
 	                };
-	                throw new Error("Failed pattern match at Data.List line 389, column 3 - line 389, column 27: " + [acc.constructor.name, v.constructor.name]);
+	                throw new Error("Failed pattern match at Data.List line 390, column 3 - line 390, column 27: " + [acc.constructor.name, v.constructor.name]);
 	            };
 	            while (!$tco_done) {
 	                $tco_result = $tco_loop($tco_var_acc, $copy_v);
@@ -72404,7 +75187,7 @@
 	        var $tco_done = false;
 	        var $tco_result;
 	        function $tco_loop(v, v1) {
-	            if (v === 0) {
+	            if (v < 1) {
 	                $tco_done = true;
 	                return v1;
 	            };
@@ -72499,7 +75282,7 @@
 	                    if (v3 instanceof Data_Maybe.Just) {
 	                        return new Data_List_Types.Cons(v3.value0, v2.value1);
 	                    };
-	                    throw new Error("Failed pattern match at Data.List line 351, column 3 - line 353, column 23: " + [v3.constructor.name]);
+	                    throw new Error("Failed pattern match at Data.List line 352, column 3 - line 354, column 23: " + [v3.constructor.name]);
 	                }());
 	            };
 	            if (v2 instanceof Data_List_Types.Cons) {
@@ -72513,8 +75296,8 @@
 	};
 	var modifyAt = function modifyAt(n) {
 	    return function (f) {
-	        return alterAt(n)(function ($342) {
-	            return Data_Maybe.Just.create(f($342));
+	        return alterAt(n)(function ($335) {
+	            return Data_Maybe.Just.create(f($335));
 	        });
 	    };
 	};
@@ -72594,20 +75377,20 @@
 	};
 
 /***/ }),
-/* 662 */
+/* 675 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var DOM_Event_Types = __webpack_require__(647);
-	var DOM_Util_FFI = __webpack_require__(663);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var DOM_Event_Types = __webpack_require__(660);
+	var DOM_Util_FFI = __webpack_require__(676);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var ElementId = function ElementId(x) {
 	    return x;
 	};
@@ -72662,22 +75445,22 @@
 	};
 
 /***/ }),
-/* 663 */
+/* 676 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(664);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(677);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Prelude = __webpack_require__(547);
 	var unsafeReadProtoTagged = function unsafeReadProtoTagged(name) {
 	    return $foreign._unsafeReadProtoTagged(name)(function ($0) {
 	        return Control_Monad_Except_Trans.except(Data_Identity.applicativeIdentity)(Data_Either.Left.create(Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.TypeMismatch.create(name)($0))));
@@ -72690,7 +75473,7 @@
 	};
 
 /***/ }),
-/* 664 */
+/* 677 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72717,21 +75500,21 @@
 	};
 
 /***/ }),
-/* 665 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(666);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(679);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var toNullable = Data_Maybe.maybe($foreign["null"])($foreign.notNull);
 	var toMaybe = function toMaybe(n) {
 	    return $foreign.nullable(n, Data_Maybe.Nothing.value, Data_Maybe.Just.create);
@@ -72768,7 +75551,7 @@
 	};
 
 /***/ }),
-/* 666 */
+/* 679 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72784,26 +75567,26 @@
 	};
 
 /***/ }),
-/* 667 */
+/* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Foreign_Generic_Types = __webpack_require__(681);
-	var Data_Foreign_JSON = __webpack_require__(686);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Identity = __webpack_require__(593);
-	var Global_Unsafe = __webpack_require__(690);
-	var Prelude = __webpack_require__(538);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Foreign_Generic_Types = __webpack_require__(690);
+	var Data_Foreign_JSON = __webpack_require__(695);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Identity = __webpack_require__(602);
+	var Global_Unsafe = __webpack_require__(699);
+	var Prelude = __webpack_require__(547);
 	var genericEncode = function genericEncode(dictGeneric) {
 	    return function (dictGenericEncode) {
 	        return function (opts) {
@@ -72866,31 +75649,31 @@
 	};
 
 /***/ }),
-/* 668 */
+/* 681 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Array = __webpack_require__(624);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Internal = __webpack_require__(669);
-	var Data_Foreign_NullOrUndefined = __webpack_require__(678);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_StrMap = __webpack_require__(670);
-	var Data_Traversable = __webpack_require__(580);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Array = __webpack_require__(633);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Internal = __webpack_require__(682);
+	var Data_Foreign_NullOrUndefined = __webpack_require__(687);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_StrMap = __webpack_require__(683);
+	var Data_Traversable = __webpack_require__(589);
+	var Prelude = __webpack_require__(547);
 	var Decode = function Decode(decode) {
 	    this.decode = decode;
 	};
@@ -72981,21 +75764,21 @@
 	};
 
 /***/ }),
-/* 669 */
+/* 682 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Data_Boolean = __webpack_require__(539);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Function = __webpack_require__(500);
-	var Data_Identity = __webpack_require__(593);
-	var Data_StrMap = __webpack_require__(670);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Data_Boolean = __webpack_require__(548);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Function = __webpack_require__(509);
+	var Data_Identity = __webpack_require__(602);
+	var Data_StrMap = __webpack_require__(683);
+	var Prelude = __webpack_require__(547);
 	var isStrMap = function isStrMap(v) {
 	    return Data_Foreign.tagOf(v) === "Object";
 	};
@@ -73014,40 +75797,40 @@
 	};
 
 /***/ }),
-/* 670 */
+/* 683 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(671);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Array = __webpack_require__(624);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_FoldableWithIndex = __webpack_require__(672);
-	var Data_Function = __webpack_require__(500);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_Functor = __webpack_require__(501);
-	var Data_FunctorWithIndex = __webpack_require__(673);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_StrMap_ST = __webpack_require__(675);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_TraversableWithIndex = __webpack_require__(677);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(684);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Array = __webpack_require__(633);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_FoldableWithIndex = __webpack_require__(639);
+	var Data_Function = __webpack_require__(509);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_Functor = __webpack_require__(510);
+	var Data_FunctorWithIndex = __webpack_require__(640);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_StrMap_ST = __webpack_require__(685);
+	var Data_Traversable = __webpack_require__(589);
+	var Data_TraversableWithIndex = __webpack_require__(642);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Prelude = __webpack_require__(547);
 	var values = $foreign.toArrayWithKey(function (v) {
 	    return function (v1) {
 	        return v1;
@@ -73403,7 +76186,7 @@
 	};
 
 /***/ }),
-/* 671 */
+/* 684 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73534,454 +76317,16 @@
 	});
 
 /***/ }),
-/* 672 */
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Function = __webpack_require__(500);
-	var Data_FunctorWithIndex = __webpack_require__(673);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Endo = __webpack_require__(577);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var Tuple = function () {
-	    function Tuple(value0, value1) {
-	        this.value0 = value0;
-	        this.value1 = value1;
-	    };
-	    Tuple.create = function (value0) {
-	        return function (value1) {
-	            return new Tuple(value0, value1);
-	        };
-	    };
-	    return Tuple;
-	}();
-	var FoldableWithIndex = function FoldableWithIndex(Foldable0, foldMapWithIndex, foldlWithIndex, foldrWithIndex) {
-	    this.Foldable0 = Foldable0;
-	    this.foldMapWithIndex = foldMapWithIndex;
-	    this.foldlWithIndex = foldlWithIndex;
-	    this.foldrWithIndex = foldrWithIndex;
-	};
-	var foldrWithIndex = function foldrWithIndex(dict) {
-	    return dict.foldrWithIndex;
-	};
-	var traverseWithIndex_ = function traverseWithIndex_(dictApplicative) {
-	    return function (dictFoldableWithIndex) {
-	        return function (f) {
-	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function ($41) {
-	                    return Control_Apply.applySecond(dictApplicative.Apply0())(f(i)($41));
-	                };
-	            })(Control_Applicative.pure(dictApplicative)(Data_Unit.unit));
-	        };
-	    };
-	};
-	var forWithIndex_ = function forWithIndex_(dictApplicative) {
-	    return function (dictFoldableWithIndex) {
-	        return Data_Function.flip(traverseWithIndex_(dictApplicative)(dictFoldableWithIndex));
-	    };
-	};
-	var foldlWithIndex = function foldlWithIndex(dict) {
-	    return dict.foldlWithIndex;
-	};
-	var foldableWithIndexMultiplicative = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableMultiplicative;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableMultiplicative)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableMultiplicative)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexMaybe = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableMaybe;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableMaybe)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableMaybe)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexLast = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableLast;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableLast)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableLast)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableLast)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexFirst = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableFirst;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableFirst)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableFirst)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexDual = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableDual;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableDual)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableDual)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableDual)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexDisj = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableDisj;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableDisj)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableDisj)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexConj = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableConj;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableConj)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableConj)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableConj)(f(Data_Unit.unit));
-	});
-	var foldableWithIndexAdditive = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableAdditive;
-	}, function (dictMonoid) {
-	    return function (f) {
-	        return Data_Foldable.foldMap(Data_Foldable.foldableAdditive)(dictMonoid)(f(Data_Unit.unit));
-	    };
-	}, function (f) {
-	    return Data_Foldable.foldl(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
-	}, function (f) {
-	    return Data_Foldable.foldr(Data_Foldable.foldableAdditive)(f(Data_Unit.unit));
-	});
-	var foldWithIndexM = function foldWithIndexM(dictFoldableWithIndex) {
-	    return function (dictMonad) {
-	        return function (f) {
-	            return function (a0) {
-	                return foldlWithIndex(dictFoldableWithIndex)(function (i) {
-	                    return function (ma) {
-	                        return function (b) {
-	                            return Control_Bind.bind(dictMonad.Bind1())(ma)(Data_Function.flip(f(i))(b));
-	                        };
-	                    };
-	                })(Control_Applicative.pure(dictMonad.Applicative0())(a0));
-	            };
-	        };
-	    };
-	};
-	var foldMapWithIndexDefaultR = function foldMapWithIndexDefaultR(dictFoldableWithIndex) {
-	    return function (dictMonoid) {
-	        return function (f) {
-	            return foldrWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function (x) {
-	                    return function (acc) {
-	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(f(i)(x))(acc);
-	                    };
-	                };
-	            })(Data_Monoid.mempty(dictMonoid));
-	        };
-	    };
-	};
-	var foldableWithIndexArray = new FoldableWithIndex(function () {
-	    return Data_Foldable.foldableArray;
-	}, function (dictMonoid) {
-	    return foldMapWithIndexDefaultR(foldableWithIndexArray)(dictMonoid);
-	}, function (f) {
-	    return function (z) {
-	        return function ($42) {
-	            return Data_Foldable.foldl(Data_Foldable.foldableArray)(function (y) {
-	                return function (v) {
-	                    return f(v.value0)(y)(v.value1);
-	                };
-	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($42));
-	        };
-	    };
-	}, function (f) {
-	    return function (z) {
-	        return function ($43) {
-	            return Data_Foldable.foldr(Data_Foldable.foldableArray)(function (v) {
-	                return function (y) {
-	                    return f(v.value0)(v.value1)(y);
-	                };
-	            })(z)(Data_FunctorWithIndex.mapWithIndex(Data_FunctorWithIndex.functorWithIndexArray)(Tuple.create)($43));
-	        };
-	    };
-	});
-	var foldMapWithIndexDefaultL = function foldMapWithIndexDefaultL(dictFoldableWithIndex) {
-	    return function (dictMonoid) {
-	        return function (f) {
-	            return foldlWithIndex(dictFoldableWithIndex)(function (i) {
-	                return function (acc) {
-	                    return function (x) {
-	                        return Data_Semigroup.append(dictMonoid.Semigroup0())(acc)(f(i)(x));
-	                    };
-	                };
-	            })(Data_Monoid.mempty(dictMonoid));
-	        };
-	    };
-	};
-	var foldMapWithIndex = function foldMapWithIndex(dict) {
-	    return dict.foldMapWithIndex;
-	};
-	var foldlWithIndexDefault = function foldlWithIndexDefault(dictFoldableWithIndex) {
-	    return function (c) {
-	        return function (u) {
-	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function (i) {
-	                    return function ($44) {
-	                        return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c(i))($44)));
-	                    };
-	                })(xs)))(u);
-	            };
-	        };
-	    };
-	};
-	var foldrWithIndexDefault = function foldrWithIndexDefault(dictFoldableWithIndex) {
-	    return function (c) {
-	        return function (u) {
-	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(function (i) {
-	                    return function ($45) {
-	                        return Data_Monoid_Endo.Endo(c(i)($45));
-	                    };
-	                })(xs))(u);
-	            };
-	        };
-	    };
-	};
-	var surroundMapWithIndex = function surroundMapWithIndex(dictFoldableWithIndex) {
-	    return function (dictSemigroup) {
-	        return function (d) {
-	            return function (t) {
-	                return function (f) {
-	                    var joined = function joined(i) {
-	                        return function (a) {
-	                            return function (m) {
-	                                return Data_Semigroup.append(dictSemigroup)(d)(Data_Semigroup.append(dictSemigroup)(t(i)(a))(m));
-	                            };
-	                        };
-	                    };
-	                    return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Endo.monoidEndo)(joined)(f))(d);
-	                };
-	            };
-	        };
-	    };
-	};
-	var findWithIndex = function findWithIndex(dictFoldableWithIndex) {
-	    return function (p) {
-	        var go = function go(i) {
-	            return function (v) {
-	                return function (v1) {
-	                    if (v instanceof Data_Maybe.Nothing && p(i)(v1)) {
-	                        return new Data_Maybe.Just(v1);
-	                    };
-	                    return v;
-	                };
-	            };
-	        };
-	        return foldlWithIndex(dictFoldableWithIndex)(go)(Data_Maybe.Nothing.value);
-	    };
-	};
-	var anyWithIndex = function anyWithIndex(dictFoldableWithIndex) {
-	    return function (dictHeytingAlgebra) {
-	        return function (t) {
-	            return function ($46) {
-	                return Data_Newtype.unwrap(Data_Monoid_Disj.newtypeDisj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Disj.monoidDisj(dictHeytingAlgebra))(function (i) {
-	                    return function ($47) {
-	                        return Data_Monoid_Disj.Disj(t(i)($47));
-	                    };
-	                })($46));
-	            };
-	        };
-	    };
-	};
-	var allWithIndex = function allWithIndex(dictFoldableWithIndex) {
-	    return function (dictHeytingAlgebra) {
-	        return function (t) {
-	            return function ($48) {
-	                return Data_Newtype.unwrap(Data_Monoid_Conj.newtypeConj)(foldMapWithIndex(dictFoldableWithIndex)(Data_Monoid_Conj.monoidConj(dictHeytingAlgebra))(function (i) {
-	                    return function ($49) {
-	                        return Data_Monoid_Conj.Conj(t(i)($49));
-	                    };
-	                })($48));
-	            };
-	        };
-	    };
-	};
-	module.exports = {
-	    FoldableWithIndex: FoldableWithIndex,
-	    foldrWithIndex: foldrWithIndex,
-	    foldlWithIndex: foldlWithIndex,
-	    foldMapWithIndex: foldMapWithIndex,
-	    foldrWithIndexDefault: foldrWithIndexDefault,
-	    foldlWithIndexDefault: foldlWithIndexDefault,
-	    foldMapWithIndexDefaultR: foldMapWithIndexDefaultR,
-	    foldMapWithIndexDefaultL: foldMapWithIndexDefaultL,
-	    foldWithIndexM: foldWithIndexM,
-	    traverseWithIndex_: traverseWithIndex_,
-	    forWithIndex_: forWithIndex_,
-	    surroundMapWithIndex: surroundMapWithIndex,
-	    allWithIndex: allWithIndex,
-	    anyWithIndex: anyWithIndex,
-	    findWithIndex: findWithIndex,
-	    foldableWithIndexArray: foldableWithIndexArray,
-	    foldableWithIndexMaybe: foldableWithIndexMaybe,
-	    foldableWithIndexFirst: foldableWithIndexFirst,
-	    foldableWithIndexLast: foldableWithIndexLast,
-	    foldableWithIndexAdditive: foldableWithIndexAdditive,
-	    foldableWithIndexDual: foldableWithIndexDual,
-	    foldableWithIndexDisj: foldableWithIndexDisj,
-	    foldableWithIndexConj: foldableWithIndexConj,
-	    foldableWithIndexMultiplicative: foldableWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 673 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var $foreign = __webpack_require__(674);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
-	    this.Functor0 = Functor0;
-	    this.mapWithIndex = mapWithIndex;
-	};
-	var mapWithIndex = function mapWithIndex(dict) {
-	    return dict.mapWithIndex;
-	};
-	var functorWithIndexMultiplicative = new FunctorWithIndex(function () {
-	    return Data_Monoid_Multiplicative.functorMultiplicative;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Multiplicative.functorMultiplicative)(f(Data_Unit.unit));
-	});
-	var functorWithIndexMaybe = new FunctorWithIndex(function () {
-	    return Data_Maybe.functorMaybe;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe.functorMaybe)(f(Data_Unit.unit));
-	});
-	var functorWithIndexLast = new FunctorWithIndex(function () {
-	    return Data_Maybe_Last.functorLast;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe_Last.functorLast)(f(Data_Unit.unit));
-	});
-	var functorWithIndexFirst = new FunctorWithIndex(function () {
-	    return Data_Maybe_First.functorFirst;
-	}, function (f) {
-	    return Data_Functor.map(Data_Maybe_First.functorFirst)(f(Data_Unit.unit));
-	});
-	var functorWithIndexDual = new FunctorWithIndex(function () {
-	    return Data_Monoid_Dual.functorDual;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Dual.functorDual)(f(Data_Unit.unit));
-	});
-	var functorWithIndexDisj = new FunctorWithIndex(function () {
-	    return Data_Monoid_Disj.functorDisj;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Disj.functorDisj)(f(Data_Unit.unit));
-	});
-	var functorWithIndexConj = new FunctorWithIndex(function () {
-	    return Data_Monoid_Conj.functorConj;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Conj.functorConj)(f(Data_Unit.unit));
-	});
-	var functorWithIndexArray = new FunctorWithIndex(function () {
-	    return Data_Functor.functorArray;
-	}, $foreign.mapWithIndexArray);
-	var functorWithIndexAdditive = new FunctorWithIndex(function () {
-	    return Data_Monoid_Additive.functorAdditive;
-	}, function (f) {
-	    return Data_Functor.map(Data_Monoid_Additive.functorAdditive)(f(Data_Unit.unit));
-	});
-	module.exports = {
-	    FunctorWithIndex: FunctorWithIndex,
-	    mapWithIndex: mapWithIndex,
-	    functorWithIndexArray: functorWithIndexArray,
-	    functorWithIndexMaybe: functorWithIndexMaybe,
-	    functorWithIndexFirst: functorWithIndexFirst,
-	    functorWithIndexLast: functorWithIndexLast,
-	    functorWithIndexAdditive: functorWithIndexAdditive,
-	    functorWithIndexDual: functorWithIndexDual,
-	    functorWithIndexConj: functorWithIndexConj,
-	    functorWithIndexDisj: functorWithIndexDisj,
-	    functorWithIndexMultiplicative: functorWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 674 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	exports.mapWithIndexArray = function (f) {
-	  return function (xs) {
-	    var l = xs.length;
-	    var result = Array(l);
-	    for (var i = 0; i < l; i++) {
-	      result[i] = f(i)(xs[i]);
-	    }
-	    return result;
-	  };
-	};
-
-/***/ }),
-/* 675 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var $foreign = __webpack_require__(676);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_ST = __webpack_require__(591);
-	var Data_Maybe = __webpack_require__(566);
+	var $foreign = __webpack_require__(686);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_ST = __webpack_require__(600);
+	var Data_Maybe = __webpack_require__(575);
 	var peek = $foreign.peekImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	module.exports = {
 	    peek: peek,
@@ -73991,7 +76336,7 @@
 	};
 
 /***/ }),
-/* 676 */
+/* 686 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74033,259 +76378,27 @@
 	};
 
 /***/ }),
-/* 677 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_FoldableWithIndex = __webpack_require__(672);
-	var Data_Function = __webpack_require__(500);
-	var Data_FunctorWithIndex = __webpack_require__(673);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Maybe_First = __webpack_require__(570);
-	var Data_Maybe_Last = __webpack_require__(571);
-	var Data_Monoid_Additive = __webpack_require__(572);
-	var Data_Monoid_Conj = __webpack_require__(574);
-	var Data_Monoid_Disj = __webpack_require__(575);
-	var Data_Monoid_Dual = __webpack_require__(576);
-	var Data_Monoid_Multiplicative = __webpack_require__(578);
-	var Data_Traversable = __webpack_require__(580);
-	var Data_Traversable_Accum = __webpack_require__(582);
-	var Data_Traversable_Accum_Internal = __webpack_require__(583);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
-	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
-	    this.FoldableWithIndex1 = FoldableWithIndex1;
-	    this.FunctorWithIndex0 = FunctorWithIndex0;
-	    this.Traversable2 = Traversable2;
-	    this.traverseWithIndex = traverseWithIndex;
-	};
-	var traverseWithIndexDefault = function traverseWithIndexDefault(dictTraversableWithIndex) {
-	    return function (dictApplicative) {
-	        return function (f) {
-	            return function ($17) {
-	                return Data_Traversable.sequence(dictTraversableWithIndex.Traversable2())(dictApplicative)(Data_FunctorWithIndex.mapWithIndex(dictTraversableWithIndex.FunctorWithIndex0())(f)($17));
-	            };
-	        };
-	    };
-	};
-	var traverseWithIndex = function traverseWithIndex(dict) {
-	    return dict.traverseWithIndex;
-	};
-	var traversableWithIndexMultiplicative = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexMultiplicative;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexMultiplicative;
-	}, function () {
-	    return Data_Traversable.traversableMultiplicative;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableMultiplicative)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexMaybe = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexMaybe;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexMaybe;
-	}, function () {
-	    return Data_Traversable.traversableMaybe;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableMaybe)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexLast = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexLast;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexLast;
-	}, function () {
-	    return Data_Traversable.traversableLast;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableLast)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexFirst = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexFirst;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexFirst;
-	}, function () {
-	    return Data_Traversable.traversableFirst;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableFirst)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexDual = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexDual;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexDual;
-	}, function () {
-	    return Data_Traversable.traversableDual;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableDual)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexDisj = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexDisj;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexDisj;
-	}, function () {
-	    return Data_Traversable.traversableDisj;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableDisj)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexConj = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexConj;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexConj;
-	}, function () {
-	    return Data_Traversable.traversableConj;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableConj)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var traversableWithIndexArray = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexArray;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexArray;
-	}, function () {
-	    return Data_Traversable.traversableArray;
-	}, function (dictApplicative) {
-	    return traverseWithIndexDefault(traversableWithIndexArray)(dictApplicative);
-	});
-	var traversableWithIndexAdditive = new TraversableWithIndex(function () {
-	    return Data_FoldableWithIndex.foldableWithIndexAdditive;
-	}, function () {
-	    return Data_FunctorWithIndex.functorWithIndexAdditive;
-	}, function () {
-	    return Data_Traversable.traversableAdditive;
-	}, function (dictApplicative) {
-	    return function (f) {
-	        return Data_Traversable.traverse(Data_Traversable.traversableAdditive)(dictApplicative)(f(Data_Unit.unit));
-	    };
-	});
-	var mapAccumRWithIndex = function mapAccumRWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (s0) {
-	            return function (xs) {
-	                return Data_Traversable_Accum_Internal.stateR(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateR)(function (i) {
-	                    return function (a) {
-	                        return function (s) {
-	                            return f(i)(s)(a);
-	                        };
-	                    };
-	                })(xs))(s0);
-	            };
-	        };
-	    };
-	};
-	var scanrWithIndex = function scanrWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (b0) {
-	            return function (xs) {
-	                return mapAccumRWithIndex(dictTraversableWithIndex)(function (i) {
-	                    return function (b) {
-	                        return function (a) {
-	                            var b$prime = f(i)(a)(b);
-	                            return {
-	                                accum: b$prime,
-	                                value: b$prime
-	                            };
-	                        };
-	                    };
-	                })(b0)(xs).value;
-	            };
-	        };
-	    };
-	};
-	var mapAccumLWithIndex = function mapAccumLWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (s0) {
-	            return function (xs) {
-	                return Data_Traversable_Accum_Internal.stateL(traverseWithIndex(dictTraversableWithIndex)(Data_Traversable_Accum_Internal.applicativeStateL)(function (i) {
-	                    return function (a) {
-	                        return function (s) {
-	                            return f(i)(s)(a);
-	                        };
-	                    };
-	                })(xs))(s0);
-	            };
-	        };
-	    };
-	};
-	var scanlWithIndex = function scanlWithIndex(dictTraversableWithIndex) {
-	    return function (f) {
-	        return function (b0) {
-	            return function (xs) {
-	                return mapAccumLWithIndex(dictTraversableWithIndex)(function (i) {
-	                    return function (b) {
-	                        return function (a) {
-	                            var b$prime = f(i)(b)(a);
-	                            return {
-	                                accum: b$prime,
-	                                value: b$prime
-	                            };
-	                        };
-	                    };
-	                })(b0)(xs).value;
-	            };
-	        };
-	    };
-	};
-	var forWithIndex = function forWithIndex(dictApplicative) {
-	    return function (dictTraversableWithIndex) {
-	        return Data_Function.flip(traverseWithIndex(dictTraversableWithIndex)(dictApplicative));
-	    };
-	};
-	module.exports = {
-	    TraversableWithIndex: TraversableWithIndex,
-	    traverseWithIndex: traverseWithIndex,
-	    traverseWithIndexDefault: traverseWithIndexDefault,
-	    forWithIndex: forWithIndex,
-	    scanlWithIndex: scanlWithIndex,
-	    mapAccumLWithIndex: mapAccumLWithIndex,
-	    scanrWithIndex: scanrWithIndex,
-	    mapAccumRWithIndex: mapAccumRWithIndex,
-	    traversableWithIndexArray: traversableWithIndexArray,
-	    traversableWithIndexMaybe: traversableWithIndexMaybe,
-	    traversableWithIndexFirst: traversableWithIndexFirst,
-	    traversableWithIndexLast: traversableWithIndexLast,
-	    traversableWithIndexAdditive: traversableWithIndexAdditive,
-	    traversableWithIndexDual: traversableWithIndexDual,
-	    traversableWithIndexConj: traversableWithIndexConj,
-	    traversableWithIndexDisj: traversableWithIndexDisj,
-	    traversableWithIndexMultiplicative: traversableWithIndexMultiplicative
-	};
-
-/***/ }),
-/* 678 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// Generated by purs version 0.11.7
-	"use strict";
-	
-	var $foreign = __webpack_require__(679);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Functor = __webpack_require__(501);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Identity = __webpack_require__(593);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(688);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Functor = __webpack_require__(510);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Identity = __webpack_require__(602);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var NullOrUndefined = function NullOrUndefined(x) {
 	    return x;
 	};
@@ -74338,7 +76451,7 @@
 	};
 
 /***/ }),
-/* 679 */
+/* 688 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -74346,43 +76459,43 @@
 	exports['undefined'] = undefined;
 
 /***/ }),
-/* 680 */
+/* 689 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic_Types = __webpack_require__(681);
-	var Data_Foreign_Index = __webpack_require__(682);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List = __webpack_require__(661);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_StrMap = __webpack_require__(670);
-	var Data_Symbol = __webpack_require__(685);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(639);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic_Types = __webpack_require__(690);
+	var Data_Foreign_Index = __webpack_require__(691);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List = __webpack_require__(674);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_StrMap = __webpack_require__(683);
+	var Data_Symbol = __webpack_require__(694);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Prelude = __webpack_require__(547);
+	var Type_Proxy = __webpack_require__(652);
 	var GenericDecode = function GenericDecode(decodeOpts) {
 	    this.decodeOpts = decodeOpts;
 	};
@@ -74742,7 +76855,7 @@
 	};
 
 /***/ }),
-/* 681 */
+/* 690 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -74762,24 +76875,24 @@
 	};
 
 /***/ }),
-/* 682 */
+/* 691 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(683);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Function = __webpack_require__(500);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_NonEmpty = __webpack_require__(660);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(692);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Function = __webpack_require__(509);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_NonEmpty = __webpack_require__(673);
+	var Prelude = __webpack_require__(547);
 	var Index = function Index(errorAt, hasOwnProperty, hasProperty, index) {
 	    this.errorAt = errorAt;
 	    this.hasOwnProperty = hasOwnProperty;
@@ -74868,7 +76981,7 @@
 	};
 
 /***/ }),
-/* 683 */
+/* 692 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74886,13 +76999,13 @@
 	};
 
 /***/ }),
-/* 684 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Maybe = __webpack_require__(566);
+	var Data_Maybe = __webpack_require__(575);
 	var Inl = function () {
 	    function Inl(value0) {
 	        this.value0 = value0;
@@ -74983,15 +77096,15 @@
 	};
 
 /***/ }),
-/* 685 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Semigroup = __webpack_require__(515);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var Data_Semigroup = __webpack_require__(524);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var SProxy = function () {
 	    function SProxy() {};
 	    SProxy.value = new SProxy();
@@ -75030,27 +77143,27 @@
 	};
 
 /***/ }),
-/* 686 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(687);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Eff_Uncurried = __webpack_require__(688);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Bifunctor = __webpack_require__(534);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List_Types = __webpack_require__(632);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(696);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Eff_Uncurried = __webpack_require__(697);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Bifunctor = __webpack_require__(543);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List_Types = __webpack_require__(645);
+	var Prelude = __webpack_require__(547);
 	var parseJSON = function parseJSON($0) {
 	    return Control_Monad_Except_Trans.ExceptT(Data_Identity.Identity(Data_Bifunctor.lmap(Data_Either.bifunctorEither)(function ($1) {
 	        return Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.JSONError.create(Control_Monad_Eff_Exception.message($1)));
@@ -75065,7 +77178,7 @@
 	};
 
 /***/ }),
-/* 687 */
+/* 696 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75075,14 +77188,14 @@
 	};
 
 /***/ }),
-/* 688 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(689);
-	var Control_Monad_Eff = __webpack_require__(525);
+	var $foreign = __webpack_require__(698);
+	var Control_Monad_Eff = __webpack_require__(534);
 	module.exports = {
 	    mkEffFn1: $foreign.mkEffFn1,
 	    mkEffFn2: $foreign.mkEffFn2,
@@ -75107,7 +77220,7 @@
 	};
 
 /***/ }),
-/* 689 */
+/* 698 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75343,13 +77456,13 @@
 	};
 
 /***/ }),
-/* 690 */
+/* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(691);
+	var $foreign = __webpack_require__(700);
 	module.exports = {
 	    unsafeStringify: $foreign.unsafeStringify,
 	    unsafeToFixed: $foreign.unsafeToFixed,
@@ -75358,7 +77471,7 @@
 	};
 
 /***/ }),
-/* 691 */
+/* 700 */
 /***/ (function(module, exports) {
 
 	/* globals exports, JSON */
@@ -75389,20 +77502,20 @@
 	};
 
 /***/ }),
-/* 692 */
+/* 701 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Data_Function = __webpack_require__(500);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Data_Function = __webpack_require__(509);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var communityViewAllActivity = function communityViewAllActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -75457,26 +77570,26 @@
 	};
 
 /***/ }),
-/* 693 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Api = __webpack_require__(694);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic = __webpack_require__(667);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Function = __webpack_require__(500);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Symbol = __webpack_require__(685);
-	var Prelude = __webpack_require__(538);
-	var Type_Proxy = __webpack_require__(639);
+	var Api = __webpack_require__(703);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic = __webpack_require__(680);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Function = __webpack_require__(509);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Symbol = __webpack_require__(694);
+	var Prelude = __webpack_require__(547);
+	var Type_Proxy = __webpack_require__(652);
 	var RequestOtpResp = function () {
 	    function RequestOtpResp(value0) {
 	        this.value0 = value0;
@@ -75653,34 +77766,34 @@
 	};
 
 /***/ }),
-/* 694 */
+/* 703 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic = __webpack_require__(667);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Function = __webpack_require__(500);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Symbol = __webpack_require__(685);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic = __webpack_require__(680);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Function = __webpack_require__(509);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Symbol = __webpack_require__(694);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var GET = function () {
 	    function GET() {};
 	    GET.value = new GET();
@@ -76025,27 +78138,27 @@
 	};
 
 /***/ }),
-/* 695 */
+/* 704 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(640);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Data_Argonaut_Core = __webpack_require__(696);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Symbol = __webpack_require__(685);
-	var Prelude = __webpack_require__(538);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Console = __webpack_require__(653);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Data_Argonaut_Core = __webpack_require__(705);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Symbol = __webpack_require__(694);
+	var Prelude = __webpack_require__(547);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var DummyWelcomeScreenAction = function () {
 	    function DummyWelcomeScreenAction() {};
 	    DummyWelcomeScreenAction.value = new DummyWelcomeScreenAction();
@@ -76650,6 +78763,15 @@
 	    };
 	    return OPEN_EditProfileActivity;
 	}();
+	var OPEN_EditGuestProfileActivity = function () {
+	    function OPEN_EditGuestProfileActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_EditGuestProfileActivity.create = function (value0) {
+	        return new OPEN_EditGuestProfileActivity(value0);
+	    };
+	    return OPEN_EditGuestProfileActivity;
+	}();
 	var OPEN_AddressActivity = function () {
 	    function OPEN_AddressActivity(value0) {
 	        this.value0 = value0;
@@ -76813,6 +78935,26 @@
 	    MainActivity.value = new MainActivity();
 	    return MainActivity;
 	}();
+	var LanguageSelectActivityAction = function () {
+	    function LanguageSelectActivityAction() {};
+	    LanguageSelectActivityAction.value = new LanguageSelectActivityAction();
+	    return LanguageSelectActivityAction;
+	}();
+	var OPEN_UserActivity_1 = function () {
+	    function OPEN_UserActivity_1() {};
+	    OPEN_UserActivity_1.value = new OPEN_UserActivity_1();
+	    return OPEN_UserActivity_1;
+	}();
+	var BACK_LanguageSelectActivity = function () {
+	    function BACK_LanguageSelectActivity() {};
+	    BACK_LanguageSelectActivity.value = new BACK_LanguageSelectActivity();
+	    return BACK_LanguageSelectActivity;
+	}();
+	var LanguageSelectActivity = function () {
+	    function LanguageSelectActivity() {};
+	    LanguageSelectActivity.value = new LanguageSelectActivity();
+	    return LanguageSelectActivity;
+	}();
 	var ShowInit = function () {
 	    function ShowInit() {};
 	    ShowInit.value = new ShowInit();
@@ -76828,10 +78970,29 @@
 	    OPEN_WelcomeScreenActivity.value = new OPEN_WelcomeScreenActivity();
 	    return OPEN_WelcomeScreenActivity;
 	}();
+	var OPEN_LanguageSelectActivity = function () {
+	    function OPEN_LanguageSelectActivity() {};
+	    OPEN_LanguageSelectActivity.value = new OPEN_LanguageSelectActivity();
+	    return OPEN_LanguageSelectActivity;
+	}();
 	var InitScreen = function () {
 	    function InitScreen() {};
 	    InitScreen.value = new InitScreen();
 	    return InitScreen;
+	}();
+	var BACK_GuestInformationActivity = function () {
+	    function BACK_GuestInformationActivity() {};
+	    BACK_GuestInformationActivity.value = new BACK_GuestInformationActivity();
+	    return BACK_GuestInformationActivity;
+	}();
+	var GuestInformationActivity = function () {
+	    function GuestInformationActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    GuestInformationActivity.create = function (value0) {
+	        return new GuestInformationActivity(value0);
+	    };
+	    return GuestInformationActivity;
 	}();
 	var DummyFilterActivity = function () {
 	    function DummyFilterActivity() {};
@@ -77300,7 +79461,7 @@
 	    if (x instanceof API_EnrolledCoursesList) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 186, column 8 - line 186, column 86: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_CourseInfoActivity.value;
@@ -77327,7 +79488,7 @@
 	            user_token: x.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 186, column 8 - line 186, column 86: " + [x.constructor.name]);
 	});
 	var genericWelcomeScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyWelcomeScreenAction) {
@@ -77336,7 +79497,7 @@
 	    if (x instanceof OPEN_StateSelectActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 53, column 8 - line 53, column 93: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 66, column 8 - line 66, column 93: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyWelcomeScreenAction.value;
@@ -77344,7 +79505,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_StateSelectActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 53, column 8 - line 53, column 93: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 66, column 8 - line 66, column 93: " + [x.constructor.name]);
 	});
 	var genericViewBatchActivity = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyViewBatchActivity) {
@@ -77365,7 +79526,7 @@
 	    if (x instanceof API_Get_Batch_list) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 371, column 8 - line 371, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyViewBatchActivity.value;
@@ -77398,7 +79559,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 371, column 8 - line 371, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 79: " + [x.constructor.name]);
 	});
 	var genericUserActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_MainActivity) {
@@ -77434,7 +79595,7 @@
 	    if (x instanceof API_GetProfileData) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 86, column 8 - line 86, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_MainActivity.value;
@@ -77491,7 +79652,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 86, column 8 - line 86, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 75: " + [x.constructor.name]);
 	});
 	var genericStateSelectActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyStateSelectAction) {
@@ -77503,7 +79664,7 @@
 	    if (x instanceof OPEN_UserActivityFromStateSelection) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 65, column 8 - line 65, column 89: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 78, column 8 - line 78, column 89: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyStateSelectAction.value;
@@ -77514,7 +79675,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_UserActivityFromStateSelection.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 65, column 8 - line 65, column 89: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 78, column 8 - line 78, column 89: " + [x.constructor.name]);
 	});
 	var genericSplashScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyUserActivityAction) {
@@ -77555,7 +79716,7 @@
 	    if (x instanceof OPEN_ResourceFragment_SEARCH) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 307, column 8 - line 307, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 321, column 8 - line 321, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummySearchActivity.value;
@@ -77588,7 +79749,7 @@
 	            course: x.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 307, column 8 - line 307, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 321, column 8 - line 321, column 79: " + [x.constructor.name]);
 	});
 	var genericResourceViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceViewAllAction) {
@@ -77606,7 +79767,7 @@
 	    if (x instanceof OPEN_ResourceViewAllDetail) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 256, column 8 - line 256, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 97: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceViewAllAction.value;
@@ -77629,7 +79790,7 @@
 	            resourceDetails: x.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 256, column 8 - line 256, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 97: " + [x.constructor.name]);
 	});
 	var genericResourceDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceDetailActivityAction) {
@@ -77641,7 +79802,7 @@
 	    if (x instanceof API_FlagContent) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.identifier, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 158, column 8 - line 158, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceDetailActivityAction.value;
@@ -77657,7 +79818,7 @@
 	            user_token: x.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 158, column 8 - line 158, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 95: " + [x.constructor.name]);
 	});
 	var genericQRActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyQRActivity) {
@@ -77675,7 +79836,7 @@
 	    if (x instanceof OPEN_CourseInfoActivity_QR) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 453, column 8 - line 453, column 71: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 480, column 8 - line 480, column 71: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyQRActivity.value;
@@ -77698,7 +79859,7 @@
 	            course: x.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 453, column 8 - line 453, column 71: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 480, column 8 - line 480, column 71: " + [x.constructor.name]);
 	});
 	var genericProfileActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyProfileActivity) {
@@ -77725,7 +79886,7 @@
 	    if (x instanceof OPEN_ResourceDetailActivity_Prof) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 342, column 8 - line 342, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 356, column 8 - line 356, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyProfileActivity.value;
@@ -77767,7 +79928,7 @@
 	            resourceDetails: x.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 342, column 8 - line 342, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 356, column 8 - line 356, column 81: " + [x.constructor.name]);
 	});
 	var genericNotificationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyNotificationActivityAction) {
@@ -77776,7 +79937,7 @@
 	    if (x instanceof BACK_NotificationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 240, column 8 - line 240, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyNotificationActivityAction.value;
@@ -77784,7 +79945,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_NotificationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 240, column 8 - line 240, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 91: " + [x.constructor.name]);
 	});
 	var genericModuleDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyModuleDetailActivityAction) {
@@ -77793,7 +79954,7 @@
 	    if (x instanceof BACK_ModuleDetailActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 202, column 8 - line 202, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 216, column 8 - line 216, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyModuleDetailActivityAction.value;
@@ -77801,7 +79962,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ModuleDetailActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 202, column 8 - line 202, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 216, column 8 - line 216, column 91: " + [x.constructor.name]);
 	});
 	var genericMainActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_HomeFragment) {
@@ -77852,61 +80013,64 @@
 	    if (x instanceof OPEN_EditProfileActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile))))))))))))))));
 	    };
-	    if (x instanceof OPEN_AddressActivity) {
+	    if (x instanceof OPEN_EditGuestProfileActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)))))))))))))))));
 	    };
-	    if (x instanceof OPEN_EducationActivity) {
+	    if (x instanceof OPEN_AddressActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_ExperienceActivity) {
+	    if (x instanceof OPEN_EducationActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_SearchActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails))))))))))))))))))));
+	    if (x instanceof OPEN_ExperienceActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile))))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_CommProfSearchActivity) {
+	    if (x instanceof OPEN_SearchActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails)))))))))))))))))))));
 	    };
+	    if (x instanceof OPEN_CommProfSearchActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails))))))))))))))))))))));
+	    };
 	    if (x instanceof OPEN_AnnouncementDetailActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData)))))))))))))))))))))));
 	    };
 	    if (x instanceof OPEN_QRActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value)))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_ResourceFragment) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))));
-	    };
-	    if (x instanceof API_CourseFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))));
 	    };
-	    if (x instanceof API_ProfileFragment) {
+	    if (x instanceof API_CourseFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))));
 	    };
-	    if (x instanceof API_UserEnrolledCourse) {
+	    if (x instanceof API_ProfileFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))))));
 	    };
+	    if (x instanceof API_UserEnrolledCourse) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))))));
+	    };
 	    if (x instanceof API_FilterPage) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token)))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_CreatedBy) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_SetProfileVisibility) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_EndorseSkill) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_GetSkillsList) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_GetAnnouncementData) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_Tenant) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token)))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token))))))))))))))))))))))))))))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 145, column 8 - line 145, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 159, column 8 - line 159, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_HomeFragment.value;
@@ -77973,112 +80137,140 @@
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_AddressActivity({
+	        return new OPEN_EditGuestProfileActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_EducationActivity({
+	        return new OPEN_AddressActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_ExperienceActivity({
+	        return new OPEN_EducationActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_SearchActivity({
-	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
+	        return new OPEN_ExperienceActivity({
+	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_CommProfSearchActivity({
+	        return new OPEN_SearchActivity({
 	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_AnnouncementDetailActivity({
-	            announcementData: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
+	        return new OPEN_CommProfSearchActivity({
+	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return OPEN_QRActivity.value;
-	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ResourceFragment({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        return new OPEN_AnnouncementDetailActivity({
+	            announcementData: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return OPEN_QRActivity.value;
+	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CourseFragment({
+	        return new API_ResourceFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ProfileFragment({
+	        return new API_CourseFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_UserEnrolledCourse({
+	        return new API_ProfileFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_FilterPage({
+	        return new API_UserEnrolledCourse({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CreatedBy({
+	        return new API_FilterPage({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
+	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_SetProfileVisibility({
+	        return new API_CreatedBy({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_EndorseSkill({
+	        return new API_SetProfileVisibility({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_GetSkillsList({
+	        return new API_EndorseSkill({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new API_GetSkillsList({
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new API_GetAnnouncementData({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
 	        return new API_Tenant({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 145, column 8 - line 145, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 159, column 8 - line 159, column 75: " + [x.constructor.name]);
+	});
+	var genericLanguageSelectionActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    if (x instanceof LanguageSelectActivityAction) {
+	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
+	    };
+	    if (x instanceof OPEN_UserActivity_1) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value));
+	    };
+	    if (x instanceof BACK_LanguageSelectActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 54, column 8 - line 54, column 98: " + [x.constructor.name]);
+	}, function (x) {
+	    if (x instanceof Data_Generic_Rep.Inl) {
+	        return LanguageSelectActivityAction.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
+	        return OPEN_UserActivity_1.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
+	        return BACK_LanguageSelectActivity.value;
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 54, column 8 - line 54, column 98: " + [x.constructor.name]);
 	});
 	var genericInitScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof ShowInit) {
@@ -78088,7 +80280,10 @@
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value));
 	    };
 	    if (x instanceof OPEN_WelcomeScreenActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value)));
+	    };
+	    if (x instanceof OPEN_LanguageSelectActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value)));
 	    };
 	    throw new Error("Failed pattern match at Types.UITypes line 28, column 8 - line 28, column 71: " + [x.constructor.name]);
 	}, function (x) {
@@ -78098,10 +80293,18 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_UserActivity.value;
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_WelcomeScreenActivity.value;
 	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return OPEN_LanguageSelectActivity.value;
+	    };
 	    throw new Error("Failed pattern match at Types.UITypes line 28, column 8 - line 28, column 71: " + [x.constructor.name]);
+	});
+	var genericGuestInformationActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    return Data_Generic_Rep.NoArguments.value;
+	}, function (x) {
+	    return BACK_GuestInformationActivity.value;
 	});
 	var genericFilterActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyFilterActivity) {
@@ -78113,7 +80316,7 @@
 	    if (x instanceof OPEN_SearchActivity_FILTER) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterData));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 355, column 8 - line 355, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 369, column 8 - line 369, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyFilterActivity.value;
@@ -78126,7 +80329,7 @@
 	            filterData: x.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 355, column 8 - line 355, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 369, column 8 - line 369, column 79: " + [x.constructor.name]);
 	});
 	var genericExperienceActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyExperienceActivity) {
@@ -78135,7 +80338,7 @@
 	    if (x instanceof BACK_ExperienceActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 436, column 8 - line 436, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 463, column 8 - line 463, column 87: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyExperienceActivity.value;
@@ -78143,7 +80346,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ExperienceActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 436, column 8 - line 436, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 463, column 8 - line 463, column 87: " + [x.constructor.name]);
 	});
 	var genericEducationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyEducationActivity) {
@@ -78152,7 +80355,7 @@
 	    if (x instanceof BACK_EducationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 423, column 8 - line 423, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 450, column 8 - line 450, column 85: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyEducationActivity.value;
@@ -78160,7 +80363,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_EducationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 423, column 8 - line 423, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 450, column 8 - line 450, column 85: " + [x.constructor.name]);
 	});
 	var genericCourseViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseViewAllActivityAction) {
@@ -78175,7 +80378,7 @@
 	    if (x instanceof OPEN_CourseInfoFlowFromCourseViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 289, column 8 - line 289, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 303, column 8 - line 303, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseViewAllActivityAction.value;
@@ -78193,7 +80396,7 @@
 	            course: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 289, column 8 - line 289, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 303, column 8 - line 303, column 92: " + [x.constructor.name]);
 	});
 	var genericCourseEnrolledActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseEnrolledActivityAction) {
@@ -78217,7 +80420,7 @@
 	    if (x instanceof API_Get_Batch_Creator_name) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 189, column 8 - line 189, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 203, column 8 - line 203, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseEnrolledActivityAction.value;
@@ -78259,7 +80462,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 189, column 8 - line 189, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 203, column 8 - line 203, column 95: " + [x.constructor.name]);
 	});
 	var genericCommunityViewAllAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommunityViewAllAction) {
@@ -78268,7 +80471,7 @@
 	    if (x instanceof BACK_CommunityViewAllActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 215, column 8 - line 215, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 229, column 8 - line 229, column 83: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommunityViewAllAction.value;
@@ -78276,7 +80479,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityViewAllActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 215, column 8 - line 215, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 229, column 8 - line 229, column 83: " + [x.constructor.name]);
 	});
 	var genericCommunityInfoActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyInfoAction) {
@@ -78288,7 +80491,7 @@
 	    if (x instanceof BACK_CommunityInfoActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 227, column 8 - line 227, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 241, column 8 - line 241, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyInfoAction.value;
@@ -78299,7 +80502,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityInfoActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 227, column 8 - line 227, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 241, column 8 - line 241, column 92: " + [x.constructor.name]);
 	});
 	var genericCommProfSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommProfSearchActivity) {
@@ -78323,7 +80526,7 @@
 	    if (x instanceof API_CreatedBy_Search) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 324, column 8 - line 324, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommProfSearchActivity.value;
@@ -78362,7 +80565,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 324, column 8 - line 324, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 95: " + [x.constructor.name]);
 	});
 	var genericAnnouncementViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementViewAllActivity) {
@@ -78377,7 +80580,7 @@
 	    if (x instanceof OPEN_AnnouncementDetailActivityFromViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.announcementData)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 273, column 8 - line 273, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 105: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementViewAllActivity.value;
@@ -78397,7 +80600,7 @@
 	            announcementData: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 273, column 8 - line 273, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 105: " + [x.constructor.name]);
 	});
 	var genericAnnouncementDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementDetailActivityAction) {
@@ -78409,7 +80612,7 @@
 	    if (x instanceof API_ReadAnnouncement) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 426, column 8 - line 426, column 103: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementDetailActivityAction.value;
@@ -78424,7 +80627,7 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 426, column 8 - line 426, column 103: " + [x.constructor.name]);
 	});
 	var genericAddressActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAddressActivity) {
@@ -78433,7 +80636,7 @@
 	    if (x instanceof BACK_AddressActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 410, column 8 - line 410, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 437, column 8 - line 437, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAddressActivity.value;
@@ -78441,7 +80644,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_AddressActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 410, column 8 - line 410, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 437, column 8 - line 437, column 81: " + [x.constructor.name]);
 	});
 	var genericAdditionalInformationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAdditionalInformationActivity) {
@@ -78453,7 +80656,7 @@
 	    if (x instanceof API_ProfileVisibility) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 109: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAdditionalInformationActivity.value;
@@ -78468,7 +80671,7 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 109: " + [x.constructor.name]);
 	});
 	var generiContentPreviewScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof BACK_ContentPreviewScreen) {
@@ -78477,7 +80680,7 @@
 	    if (x instanceof OPEN_UserActivityFromPreview) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 90: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 112, column 8 - line 112, column 90: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_ContentPreviewScreen.value;
@@ -78485,7 +80688,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_UserActivityFromPreview.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 90: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 112, column 8 - line 112, column 90: " + [x.constructor.name]);
 	});
 	var encodeWelcomeScreenActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericWelcomeScreenActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyWelcomeScreenAction";
@@ -78754,6 +80957,10 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
 	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_EditGuestProfileActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_AddressActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
@@ -78859,14 +81066,26 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringEncode))))))))))))))))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringEncode)))))))))))))))))))))))))))))))))))))))));
+	var encodeLanguageSelectionActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericLanguageSelectionActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "LanguageSelectActivityAction";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_UserActivity_1";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_LanguageSelectActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)))));
 	var encodeInitScreenAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericInitScreenAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "ShowInit";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_UserActivity";
-	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_WelcomeScreenActivity";
-	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)))));
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_LanguageSelectActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))))));
+	var encodeGuestInformationActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericGuestInformationActivityAction)(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_GuestInformationActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)));
 	var encodeFilterActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericFilterActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyFilterActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -79445,6 +81664,10 @@
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
 	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_EditGuestProfileActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_AddressActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
@@ -79550,7 +81773,7 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec))))))))))))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec)))))))))))))))))))))))))))))))))))));
 	var homeActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [BACK_HomeActivity.value, OPEN_HomeFragment.value, OPEN_CourseFragment.value, OPEN_ResourceFragment.value, OPEN_CommunityFragment.value, OPEN_ProfileFragment.value];
@@ -79560,13 +81783,31 @@
 	        return Utils.genericUI(dictEncode)(decodeMainActivityAction)(x)(UI.generateMockEvents(homeActivity)(dictEncode)(x));
 	    };
 	});
+	var decodeLanguageSelectionActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericLanguageSelectionActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "LanguageSelectActivityAction";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_UserActivity_1";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_LanguageSelectActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)))));
+	var languageSelectActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [LanguageSelectActivityAction.value, BACK_LanguageSelectActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeLanguageSelectionActivityAction)(x)(UI.generateMockEvents(languageSelectActivity)(dictEncode)(x));
+	    };
+	});
 	var decodeInitScreenAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericInitScreenAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "ShowInit";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_UserActivity";
-	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_WelcomeScreenActivity";
-	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)))));
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_LanguageSelectActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))))));
 	var initScreen = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [ShowInit.value, OPEN_UserActivity.value, OPEN_WelcomeScreenActivity.value];
@@ -79574,6 +81815,18 @@
 	}, function (dictEncode) {
 	    return function (x) {
 	        return Utils.genericUI(dictEncode)(decodeInitScreenAction)(x)(UI.generateMockEvents(initScreen)(dictEncode)(x));
+	    };
+	});
+	var decodeGuestInformationActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericGuestInformationActivityAction)(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_GuestInformationActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)));
+	var guestInformationActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_GuestInformationActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeGuestInformationActivityAction)(x)(UI.generateMockEvents(guestInformationActivity)(dictEncode)(x));
 	    };
 	});
 	var decodeFilterActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericFilterActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -79909,9 +82162,14 @@
 	    ShowInit: ShowInit,
 	    OPEN_UserActivity: OPEN_UserActivity,
 	    OPEN_WelcomeScreenActivity: OPEN_WelcomeScreenActivity,
+	    OPEN_LanguageSelectActivity: OPEN_LanguageSelectActivity,
 	    SplashScreenActivity: SplashScreenActivity,
 	    DummyUserActivityAction: DummyUserActivityAction,
 	    BACK_SplashScreenActivity: BACK_SplashScreenActivity,
+	    LanguageSelectActivity: LanguageSelectActivity,
+	    LanguageSelectActivityAction: LanguageSelectActivityAction,
+	    OPEN_UserActivity_1: OPEN_UserActivity_1,
+	    BACK_LanguageSelectActivity: BACK_LanguageSelectActivity,
 	    WelcomeScreenActivity: WelcomeScreenActivity,
 	    DummyWelcomeScreenAction: DummyWelcomeScreenAction,
 	    OPEN_StateSelectActivity: OPEN_StateSelectActivity,
@@ -79951,6 +82209,7 @@
 	    OPEN_CommunityViewAllActivity: OPEN_CommunityViewAllActivity,
 	    OPEN_NotificationActivity: OPEN_NotificationActivity,
 	    OPEN_EditProfileActivity: OPEN_EditProfileActivity,
+	    OPEN_EditGuestProfileActivity: OPEN_EditGuestProfileActivity,
 	    OPEN_AddressActivity: OPEN_AddressActivity,
 	    OPEN_EducationActivity: OPEN_EducationActivity,
 	    OPEN_ExperienceActivity: OPEN_ExperienceActivity,
@@ -80056,6 +82315,8 @@
 	    DummyAdditionalInformationActivity: DummyAdditionalInformationActivity,
 	    BACK_AdditionalInformationActivity: BACK_AdditionalInformationActivity,
 	    API_ProfileVisibility: API_ProfileVisibility,
+	    GuestInformationActivity: GuestInformationActivity,
+	    BACK_GuestInformationActivity: BACK_GuestInformationActivity,
 	    AnnouncementDetailActivity: AnnouncementDetailActivity,
 	    DummyAnnouncementDetailActivityAction: DummyAnnouncementDetailActivityAction,
 	    BACK_AnnouncementDetailActivity: BACK_AnnouncementDetailActivity,
@@ -80083,6 +82344,10 @@
 	    genericSplashScreenActivityAction: genericSplashScreenActivityAction,
 	    decodeSplashScreenActivityAction: decodeSplashScreenActivityAction,
 	    encodeSplashScreenActivityAction: encodeSplashScreenActivityAction,
+	    languageSelectActivity: languageSelectActivity,
+	    genericLanguageSelectionActivityAction: genericLanguageSelectionActivityAction,
+	    decodeLanguageSelectionActivityAction: decodeLanguageSelectionActivityAction,
+	    encodeLanguageSelectionActivityAction: encodeLanguageSelectionActivityAction,
 	    welcomeScreenActivity: welcomeScreenActivity,
 	    genericWelcomeScreenActivityAction: genericWelcomeScreenActivityAction,
 	    decodeWelcomeScreenActivityAction: decodeWelcomeScreenActivityAction,
@@ -80167,6 +82432,10 @@
 	    genericAdditionalInformationActivityAction: genericAdditionalInformationActivityAction,
 	    decodeAdditionalInformationActivityAction: decodeAdditionalInformationActivityAction,
 	    encodeAdditionalInformationActivityAction: encodeAdditionalInformationActivityAction,
+	    guestInformationActivity: guestInformationActivity,
+	    genericGuestInformationActivityAction: genericGuestInformationActivityAction,
+	    decodeGuestInformationActivityAction: decodeGuestInformationActivityAction,
+	    encodeGuestInformationActivityAction: encodeGuestInformationActivityAction,
 	    announcementDetailActivity: announcementDetailActivity,
 	    genericAnnouncementDetailActivityAction: genericAnnouncementDetailActivityAction,
 	    decodeAnnouncementDetailActivityAction: decodeAnnouncementDetailActivityAction,
@@ -80190,24 +82459,24 @@
 	};
 
 /***/ }),
-/* 696 */
+/* 705 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(697);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Function = __webpack_require__(500);
-	var Data_Function_Uncurried = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Show = __webpack_require__(505);
-	var Data_StrMap = __webpack_require__(670);
-	var Data_Tuple = __webpack_require__(606);
-	var Prelude = __webpack_require__(538);
-	var Unsafe_Coerce = __webpack_require__(619);
+	var $foreign = __webpack_require__(706);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Function = __webpack_require__(509);
+	var Data_Function_Uncurried = __webpack_require__(593);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Show = __webpack_require__(514);
+	var Data_StrMap = __webpack_require__(683);
+	var Data_Tuple = __webpack_require__(615);
+	var Prelude = __webpack_require__(547);
+	var Unsafe_Coerce = __webpack_require__(628);
 	var verbJsonType = function verbJsonType(def) {
 	    return function (f) {
 	        return function (fold) {
@@ -80375,7 +82644,7 @@
 	};
 
 /***/ }),
-/* 697 */
+/* 706 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -80453,28 +82722,28 @@
 	};
 
 /***/ }),
-/* 698 */
+/* 707 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Data_Either = __webpack_require__(527);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic = __webpack_require__(667);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Function = __webpack_require__(500);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Data_Either = __webpack_require__(536);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic = __webpack_require__(680);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Function = __webpack_require__(509);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var UIScreen = function UIScreen(generateMockEvents, ui) {
 	    this.generateMockEvents = generateMockEvents;
 	    this.ui = ui;
@@ -80539,57 +82808,57 @@
 	};
 
 /***/ }),
-/* 699 */
+/* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(700);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Aff_Class = __webpack_require__(701);
-	var Control_Monad_Aff_Console = __webpack_require__(707);
-	var Control_Monad_Eff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Exception = __webpack_require__(523);
-	var Control_Monad_Except = __webpack_require__(651);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Data_Argonaut_Core = __webpack_require__(696);
-	var Data_Array = __webpack_require__(624);
-	var Data_Bifoldable = __webpack_require__(530);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Foreign = __webpack_require__(649);
-	var Data_Foreign_Class = __webpack_require__(668);
-	var Data_Foreign_Generic = __webpack_require__(667);
-	var Data_Foreign_Generic_Class = __webpack_require__(680);
-	var Data_Foreign_Generic_Types = __webpack_require__(681);
-	var Data_Foreign_Index = __webpack_require__(682);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Generic_Rep_Show = __webpack_require__(708);
-	var Data_HTTP_Method = __webpack_require__(709);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Identity = __webpack_require__(593);
-	var Data_List = __webpack_require__(661);
-	var Data_List_NonEmpty = __webpack_require__(660);
-	var Data_List_Types = __webpack_require__(632);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_NonEmpty = __webpack_require__(629);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_StrMap = __webpack_require__(670);
-	var Data_String = __webpack_require__(635);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Network_HTTP_RequestHeader = __webpack_require__(710);
-	var Network_HTTP_StatusCode = __webpack_require__(712);
-	var Partial_Unsafe = __webpack_require__(595);
-	var Prelude = __webpack_require__(538);
-	var UI = __webpack_require__(698);
+	var $foreign = __webpack_require__(709);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Aff_Class = __webpack_require__(710);
+	var Control_Monad_Aff_Console = __webpack_require__(716);
+	var Control_Monad_Eff = __webpack_require__(534);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Exception = __webpack_require__(532);
+	var Control_Monad_Except = __webpack_require__(664);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Data_Argonaut_Core = __webpack_require__(705);
+	var Data_Array = __webpack_require__(633);
+	var Data_Bifoldable = __webpack_require__(539);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Foreign = __webpack_require__(662);
+	var Data_Foreign_Class = __webpack_require__(681);
+	var Data_Foreign_Generic = __webpack_require__(680);
+	var Data_Foreign_Generic_Class = __webpack_require__(689);
+	var Data_Foreign_Generic_Types = __webpack_require__(690);
+	var Data_Foreign_Index = __webpack_require__(691);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Generic_Rep_Show = __webpack_require__(717);
+	var Data_HTTP_Method = __webpack_require__(718);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Identity = __webpack_require__(602);
+	var Data_List = __webpack_require__(674);
+	var Data_List_NonEmpty = __webpack_require__(673);
+	var Data_List_Types = __webpack_require__(645);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_NonEmpty = __webpack_require__(638);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_StrMap = __webpack_require__(683);
+	var Data_String = __webpack_require__(648);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Network_HTTP_RequestHeader = __webpack_require__(719);
+	var Network_HTTP_StatusCode = __webpack_require__(721);
+	var Partial_Unsafe = __webpack_require__(604);
+	var Prelude = __webpack_require__(547);
+	var UI = __webpack_require__(707);
 	var updateState = function updateState(changes) {
 	    return function (state) {
 	        return Control_Monad_Aff.makeAff(function (error) {
@@ -80942,7 +83211,7 @@
 	};
 
 /***/ }),
-/* 700 */
+/* 709 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -81308,27 +83577,27 @@
 	};
 
 /***/ }),
-/* 701 */
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Cont_Trans = __webpack_require__(602);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Control_Monad_List_Trans = __webpack_require__(702);
-	var Control_Monad_Maybe_Trans = __webpack_require__(614);
-	var Control_Monad_RWS_Trans = __webpack_require__(705);
-	var Control_Monad_Reader_Trans = __webpack_require__(615);
-	var Control_Monad_State_Trans = __webpack_require__(706);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Trans = __webpack_require__(616);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Monoid = __webpack_require__(569);
-	var Prelude = __webpack_require__(538);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Cont_Trans = __webpack_require__(611);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Control_Monad_List_Trans = __webpack_require__(711);
+	var Control_Monad_Maybe_Trans = __webpack_require__(623);
+	var Control_Monad_RWS_Trans = __webpack_require__(714);
+	var Control_Monad_Reader_Trans = __webpack_require__(624);
+	var Control_Monad_State_Trans = __webpack_require__(715);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Trans = __webpack_require__(625);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Monoid = __webpack_require__(578);
+	var Prelude = __webpack_require__(547);
 	var MonadAff = function MonadAff(MonadEff0, liftAff) {
 	    this.MonadEff0 = MonadEff0;
 	    this.liftAff = liftAff;
@@ -81414,38 +83683,38 @@
 	};
 
 /***/ }),
-/* 702 */
+/* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Category = __webpack_require__(498);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Lazy = __webpack_require__(703);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unfoldable = __webpack_require__(630);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Category = __webpack_require__(507);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Lazy = __webpack_require__(712);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unfoldable = __webpack_require__(643);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var Yield = function () {
 	    function Yield(value0, value1) {
 	        this.value0 = value0;
@@ -82085,39 +84354,39 @@
 	};
 
 /***/ }),
-/* 703 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(704);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Comonad = __webpack_require__(573);
-	var Control_Extend = __webpack_require__(528);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_BooleanAlgebra = __webpack_require__(540);
-	var Data_Bounded = __webpack_require__(543);
-	var Data_CommutativeRing = __webpack_require__(554);
-	var Data_Eq = __webpack_require__(535);
-	var Data_EuclideanRing = __webpack_require__(556);
-	var Data_Field = __webpack_require__(558);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Functor_Invariant = __webpack_require__(568);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(550);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Semiring = __webpack_require__(552);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var $foreign = __webpack_require__(713);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Comonad = __webpack_require__(582);
+	var Control_Extend = __webpack_require__(537);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_BooleanAlgebra = __webpack_require__(549);
+	var Data_Bounded = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(563);
+	var Data_Eq = __webpack_require__(544);
+	var Data_EuclideanRing = __webpack_require__(565);
+	var Data_Field = __webpack_require__(567);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Functor_Invariant = __webpack_require__(577);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ring = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Semiring = __webpack_require__(561);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var showLazy = function showLazy(dictShow) {
 	    return new Data_Show.Show(function (x) {
 	        return "(defer \\_ -> " + (Data_Show.show(dictShow)($foreign.force(x)) + ")");
@@ -82332,7 +84601,7 @@
 	};
 
 /***/ }),
-/* 704 */
+/* 713 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -82365,36 +84634,36 @@
 	};
 
 /***/ }),
-/* 705 */
+/* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var RWSResult = function () {
 	    function RWSResult(value0, value1, value2) {
 	        this.value0 = value0;
@@ -82761,37 +85030,37 @@
 	};
 
 /***/ }),
-/* 706 */
+/* 715 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(514);
-	var Control_Alternative = __webpack_require__(518);
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Apply = __webpack_require__(496);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Lazy = __webpack_require__(594);
-	var Control_Monad = __webpack_require__(520);
-	var Control_Monad_Cont_Class = __webpack_require__(603);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Error_Class = __webpack_require__(587);
-	var Control_Monad_Reader_Class = __webpack_require__(604);
-	var Control_Monad_Rec_Class = __webpack_require__(588);
-	var Control_Monad_State_Class = __webpack_require__(605);
-	var Control_Monad_Trans_Class = __webpack_require__(609);
-	var Control_Monad_Writer_Class = __webpack_require__(613);
-	var Control_MonadPlus = __webpack_require__(599);
-	var Control_MonadZero = __webpack_require__(567);
-	var Control_Plus = __webpack_require__(519);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Data_Function = __webpack_require__(500);
-	var Data_Functor = __webpack_require__(501);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Tuple = __webpack_require__(606);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Alt = __webpack_require__(523);
+	var Control_Alternative = __webpack_require__(527);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Apply = __webpack_require__(505);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Lazy = __webpack_require__(603);
+	var Control_Monad = __webpack_require__(529);
+	var Control_Monad_Cont_Class = __webpack_require__(612);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Error_Class = __webpack_require__(596);
+	var Control_Monad_Reader_Class = __webpack_require__(613);
+	var Control_Monad_Rec_Class = __webpack_require__(597);
+	var Control_Monad_State_Class = __webpack_require__(614);
+	var Control_Monad_Trans_Class = __webpack_require__(618);
+	var Control_Monad_Writer_Class = __webpack_require__(622);
+	var Control_MonadPlus = __webpack_require__(608);
+	var Control_MonadZero = __webpack_require__(576);
+	var Control_Plus = __webpack_require__(528);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Data_Function = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(510);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Tuple = __webpack_require__(615);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var StateT = function StateT(x) {
 	    return x;
 	};
@@ -83082,17 +85351,17 @@
 	};
 
 /***/ }),
-/* 707 */
+/* 716 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Control_Monad_Eff_Console = __webpack_require__(640);
-	var Control_Semigroupoid = __webpack_require__(499);
-	var Prelude = __webpack_require__(538);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Control_Monad_Eff_Console = __webpack_require__(653);
+	var Control_Semigroupoid = __webpack_require__(508);
+	var Prelude = __webpack_require__(547);
 	var warnShow = function warnShow(dictShow) {
 	    return function ($4) {
 	        return Control_Monad_Eff_Class.liftEff(Control_Monad_Aff.monadEffAff)(Control_Monad_Eff_Console.warnShow(dictShow)($4));
@@ -83137,19 +85406,19 @@
 	};
 
 /***/ }),
-/* 708 */
+/* 717 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Foldable = __webpack_require__(564);
-	var Data_Generic_Rep = __webpack_require__(684);
-	var Data_Monoid = __webpack_require__(569);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Symbol = __webpack_require__(685);
-	var Prelude = __webpack_require__(538);
+	var Data_Foldable = __webpack_require__(573);
+	var Data_Generic_Rep = __webpack_require__(693);
+	var Data_Monoid = __webpack_require__(578);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Symbol = __webpack_require__(694);
+	var Prelude = __webpack_require__(547);
 	var GenericShow = function GenericShow(genericShow$prime) {
 	    this["genericShow'"] = genericShow$prime;
 	};
@@ -83159,6 +85428,9 @@
 	var GenericShowFields = function GenericShowFields(genericShowFields) {
 	    this.genericShowFields = genericShowFields;
 	};
+	var genericShowFieldsNoArguments = new GenericShowFields(function (v) {
+	    return [];
+	});
 	var genericShowFieldsField = function genericShowFieldsField(dictShow) {
 	    return function (dictIsSymbol) {
 	        return new GenericShowFields(function (v) {
@@ -83253,28 +85525,29 @@
 	    genericShowConstructor: genericShowConstructor,
 	    genericShowArgsArgument: genericShowArgsArgument,
 	    genericShowArgsRec: genericShowArgsRec,
-	    genericShowFieldsField: genericShowFieldsField
+	    genericShowFieldsField: genericShowFieldsField,
+	    genericShowFieldsNoArguments: genericShowFieldsNoArguments
 	};
 
 /***/ }),
-/* 709 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Data_Either = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Ordering = __webpack_require__(549);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_String = __webpack_require__(635);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Apply = __webpack_require__(505);
+	var Data_Either = __webpack_require__(536);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Ordering = __webpack_require__(558);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_String = __webpack_require__(648);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var OPTIONS = function () {
 	    function OPTIONS() {};
 	    OPTIONS.value = new OPTIONS();
@@ -83874,19 +86147,19 @@
 	};
 
 /***/ }),
-/* 710 */
+/* 719 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(535);
-	var Data_HeytingAlgebra = __webpack_require__(541);
-	var Data_MediaType = __webpack_require__(711);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Prelude = __webpack_require__(538);
+	var Data_Eq = __webpack_require__(544);
+	var Data_HeytingAlgebra = __webpack_require__(550);
+	var Data_MediaType = __webpack_require__(720);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Prelude = __webpack_require__(547);
 	var Accept = function () {
 	    function Accept(value0) {
 	        this.value0 = value0;
@@ -83978,22 +86251,22 @@
 	};
 
 /***/ }),
-/* 711 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Newtype = __webpack_require__(537);
-	var Data_Ord = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Apply = __webpack_require__(505);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Newtype = __webpack_require__(546);
+	var Data_Ord = __webpack_require__(554);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var MediaType = function MediaType(x) {
 	    return x;
 	};
@@ -84042,20 +86315,20 @@
 	};
 
 /***/ }),
-/* 712 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(496);
-	var Data_Eq = __webpack_require__(535);
-	var Data_Generic = __webpack_require__(622);
-	var Data_Maybe = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(515);
-	var Data_Show = __webpack_require__(505);
-	var Data_Unit = __webpack_require__(503);
-	var Prelude = __webpack_require__(538);
+	var Control_Apply = __webpack_require__(505);
+	var Data_Eq = __webpack_require__(544);
+	var Data_Generic = __webpack_require__(631);
+	var Data_Maybe = __webpack_require__(575);
+	var Data_Semigroup = __webpack_require__(524);
+	var Data_Show = __webpack_require__(514);
+	var Data_Unit = __webpack_require__(512);
+	var Prelude = __webpack_require__(547);
 	var StatusCode = function StatusCode(x) {
 	    return x;
 	};
@@ -84092,22 +86365,22 @@
 	};
 
 /***/ }),
-/* 713 */
+/* 722 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Except_Trans = __webpack_require__(612);
-	var Data_Function = __webpack_require__(500);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Except_Trans = __webpack_require__(621);
+	var Data_Function = __webpack_require__(509);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -84351,12 +86624,23 @@
 	                if (v instanceof Types_UITypes.OPEN_CourseViewAllActivity) {
 	                    return courseViewAllActivity(v.value0.courseListDetails)("CourseFragment")(input);
 	                };
+	                if (v instanceof Types_UITypes.API_CourseFragment) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getCoursesPageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_CourseFragment",
+	                            screen: "CourseFragment"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
 	                if (v instanceof Types_UITypes.API_UserEnrolledCourse) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserEnrolledCourses(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_UserEnrolledCourse",
-	                            screen: "asas"
+	                            screen: "CourseFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
 	                        });
@@ -84367,7 +86651,7 @@
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_FilterPage",
-	                            screen: "asas",
+	                            screen: "CourseFragment",
 	                            filter_to_send: v.value0.filter_to_send
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
@@ -84411,21 +86695,21 @@
 	};
 
 /***/ }),
-/* 714 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Data_Function = __webpack_require__(500);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Data_Function = __webpack_require__(509);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -84607,23 +86891,23 @@
 	                if (v instanceof Types_UITypes.OPEN_QRActivity) {
 	                    return qrActivity("HomeFragment")(input);
 	                };
+	                if (v instanceof Types_UITypes.API_GetAnnouncementData) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getAnnouncementData(v.value0.user_token)(v.value0.api_token)(v.value0.requestBody))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_GetAnnouncementData",
+	                            screen: "HomeFragment"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
 	                if (v instanceof Types_UITypes.API_UserEnrolledCourse) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserEnrolledCourses(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_UserEnrolledCourse",
-	                            screen: "asas"
-	                        }))(function (v2) {
-	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
-	                        });
-	                    });
-	                };
-	                if (v instanceof Types_UITypes.API_Tenant) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getTenantDetail(v.value0.user_token)(v.value0.api_token)(v.value0.slug))(function (v1) {
-	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
-	                            response: v1,
-	                            responseFor: "API_Tenant",
-	                            screen: "asas"
+	                            screen: "HomeFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
 	                        });
@@ -84917,21 +87201,21 @@
 	};
 
 /***/ }),
-/* 715 */
+/* 724 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Data_Function = __webpack_require__(500);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Data_Function = __webpack_require__(509);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -85106,6 +87390,9 @@
 	                if (v instanceof Types_UITypes.OPEN_EditProfileActivity) {
 	                    return additionalInformationActivity(v.value0.profile)("ProfileFragment")(input);
 	                };
+	                if (v instanceof Types_UITypes.OPEN_EditGuestProfileActivity) {
+	                    return guestInformationActivity(v.value0.profile)("ProfileFragment")(input);
+	                };
 	                if (v instanceof Types_UITypes.OPEN_AddressActivity) {
 	                    return addressActivity(v.value0.profile)("ProfileFragment")(input);
 	                };
@@ -85124,13 +87411,12 @@
 	                if (v instanceof Types_UITypes.OPEN_ResourceDetailActivity) {
 	                    return resourceDetailActivity(v.value0.resourceDetails)("ProfileFragment")(input);
 	                };
-	                if (v instanceof Types_UITypes.API_CreatedBy) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.compositeSearch(v.value0.user_token)(v.value0.api_token)(v.value0.filters))(function (v1) {
+	                if (v instanceof Types_UITypes.API_ProfileFragment) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getProfileDetail(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
-	                            responseFor: "API_CreatedBy",
-	                            screen: "asas",
-	                            sendBack: v.value0.sendBack
+	                            responseFor: "API_ProfileFragment",
+	                            screen: "ProfileFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
 	                        });
@@ -85141,7 +87427,7 @@
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_SetProfileVisibility",
-	                            screen: "asas"
+	                            screen: "ProfileFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiCalled");
 	                        });
@@ -85152,7 +87438,7 @@
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_EndorseSkill",
-	                            screen: "asas"
+	                            screen: "ProfileFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
 	                        });
@@ -85163,7 +87449,7 @@
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_GetSkillsList",
-	                            screen: "asas"
+	                            screen: "ProfileFragment"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
 	                        });
@@ -85233,6 +87519,20 @@
 	                    return profileFragment(input)("Terminate")(input);
 	                };
 	                return notificationActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var guestInformationActivity = function guestInformationActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.guestInformationActivity)(Types_UITypes.encodeGuestInformationActivityAction)(new Types_UITypes.GuestInformationActivity({
+	                profile: input
+	            })))(function (v) {
+	                if (whereFrom === "ProfileFragment") {
+	                    return profileFragment(input)("Terminate")(input);
+	                };
+	                return profileFragment(input)("Terminate")(input);
 	            });
 	        };
 	    };
@@ -85393,6 +87693,7 @@
 	    searchProfileActivity: searchProfileActivity,
 	    profileActivity: profileActivity,
 	    additionalInformationActivity: additionalInformationActivity,
+	    guestInformationActivity: guestInformationActivity,
 	    addressActivity: addressActivity,
 	    educationActivity: educationActivity,
 	    experienceActivity: experienceActivity,
@@ -85404,23 +87705,23 @@
 	};
 
 /***/ }),
-/* 716 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(495);
-	var Control_Bind = __webpack_require__(507);
-	var Control_Monad_Aff = __webpack_require__(509);
-	var Control_Monad_Aff_Console = __webpack_require__(707);
-	var Control_Monad_Eff_Class = __webpack_require__(586);
-	var Data_Function = __webpack_require__(500);
-	var Prelude = __webpack_require__(538);
-	var Types_APITypes = __webpack_require__(693);
-	var Types_UITypes = __webpack_require__(695);
-	var UI = __webpack_require__(698);
-	var Utils = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(504);
+	var Control_Bind = __webpack_require__(516);
+	var Control_Monad_Aff = __webpack_require__(518);
+	var Control_Monad_Aff_Console = __webpack_require__(716);
+	var Control_Monad_Eff_Class = __webpack_require__(595);
+	var Data_Function = __webpack_require__(509);
+	var Prelude = __webpack_require__(547);
+	var Types_APITypes = __webpack_require__(702);
+	var Types_UITypes = __webpack_require__(704);
+	var UI = __webpack_require__(707);
+	var Utils = __webpack_require__(708);
 	var subModuleResourceDetailActivity = function subModuleResourceDetailActivity(mName) {
 	    return function (input) {
 	        return function (whereFrom) {
@@ -85512,12 +87813,23 @@
 	                if (v instanceof Types_UITypes.OPEN_CourseInfoActivity) {
 	                    return courseDetailActivity(v.value0.course)("ResourceFragmnet")(input);
 	                };
+	                if (v instanceof Types_UITypes.API_ResourceFragment) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getResourcePageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_ResourceFragment",
+	                            screen: "ResourceFragment"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
 	                if (v instanceof Types_UITypes.API_FilterPage) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getResourcePageFilterApi(v.value0.user_token)(v.value0.api_token)(v.value0.filter_to_send))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
 	                            response: v1,
 	                            responseFor: "API_FilterPage",
-	                            screen: "asas",
+	                            screen: "ResourceFragment",
 	                            filter_to_send: v.value0.filter_to_send
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
