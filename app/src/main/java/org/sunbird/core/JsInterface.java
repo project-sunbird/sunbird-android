@@ -2284,4 +2284,34 @@ public class JsInterface {
     public String getLocalLang() {
         return Locale.getDefault().toString();
     }
+
+    @JavascriptInterface
+    public String getBoards() {
+        return genieWrapper.getBoards();
+    }
+
+    @JavascriptInterface
+    public String getMediums() {
+        return genieWrapper.getMediums();
+    }
+
+    @JavascriptInterface
+    public String getSubjects() {
+        return genieWrapper.getSubjects();
+    }
+
+    @JavascriptInterface
+    public String getGrades() {
+        return genieWrapper.getGrades();
+    }
+
+    @JavascriptInterface
+    public String getCurrentProfileData() {
+        return genieWrapper.getCurrentProfileData();
+    }
+
+    @JavascriptInterface
+    public void updateProfile(String handle, String medium, String grade, String board) {
+        genieWrapper.updateProfile(handle, medium, grade, board);
+    }
 }

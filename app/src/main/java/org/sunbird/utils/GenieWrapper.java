@@ -46,6 +46,7 @@ import org.ekstep.genieservices.utils.ContentPlayer;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.sunbird.BuildConfig;
@@ -65,6 +66,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -787,37 +789,120 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public String[] getBoard() {
+    private Profile currentProfile;
+
+    public Profile getCurrentUserProfile() {
+        return mGenieService.getUserService().getCurrentUser().getResult();
+    }
+
+    public String getBoards() {
         GenieResponse<MasterData> boardData = mGenieService.getConfigService().getMasterData(MasterDataType.BOARD);
         List<MasterDataValues> vals = boardData.getResult().getValues();
-        String[] boards = new String[vals.size()];
+        JSONArray boards = new JSONArray();
         for (int i = 0; i < vals.size(); i++) {
-            boards[i] = vals.get(i).getLabel();
+            JSONObject board = new JSONObject();
+            try {
+                board.put("label", vals.get(i).getLabel());
+                board.put("value", vals.get(i).getLabel());
+                boards.put(board);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        return boards;
+        return Base64Util.encodeToString(boards.toString().getBytes(), Base64Util.DEFAULT);
     }
 
-    public String[] getMedium() {
+    public String getMediums() {
         GenieResponse<MasterData> mediumData = mGenieService.getConfigService().getMasterData(MasterDataType.MEDIUM);
         List<MasterDataValues> vals = mediumData.getResult().getValues();
-        String[] mediums = new String[vals.size()];
+        JSONArray mediums = new JSONArray();
         for (int i = 0; i < vals.size(); i++) {
-            mediums[i] = vals.get(i).getLabel();
+            JSONObject medium = new JSONObject();
+            try {
+                medium.put("label", vals.get(i).getLabel());
+                medium.put("value", vals.get(i).getLabel());
+                mediums.put(medium);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        return mediums;
+        return Base64Util.encodeToString(mediums.toString().getBytes(), Base64Util.DEFAULT);
     }
 
-    public String[] getGrade() {
-        GenieResponse<MasterData> gradeData = mGenieService.getConfigService().getMasterData(MasterDataType.GRADELEVEL);
-        List<MasterDataValues> vals = gradeData.getResult().getValues();
-        String[] grades = new String[vals.size()];
+    public String getSubjects() {
+        GenieResponse<MasterData> mediumData = mGenieService.getConfigService().getMasterData(MasterDataType.MEDIUM);
+        List<MasterDataValues> vals = mediumData.getResult().getValues();
+        JSONArray subjects = new JSONArray();
         for (int i = 0; i < vals.size(); i++) {
-            grades[i] = vals.get(i).getLabel();
+            JSONObject sub = new JSONObject();
+            try {
+                sub.put("label", vals.get(i).getLabel());
+                sub.put("value", vals.get(i).getLabel());
+                subjects.put(sub);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        return grades;
+        return Base64Util.encodeToString(subjects.toString().getBytes(), Base64Util.DEFAULT);
     }
 
-//    public String getHandle() {
-//        GenieResponse<MasterData> gradeData = mGenieService.getConfigService().
-//    }
+    public String getGrades() {
+        HashMap<String, String> mClassMap = new LinkedHashMap<String, String>() {{
+            put("KG", "0");
+            put("Grade 1", "1");
+            put("Grade 2", "2");
+            put("Grade 3", "3");
+            put("Grade 4", "4");
+            put("Grade 5", "5");
+            put("Grade 6", "6");
+            put("Grade 7", "7");
+            put("Grade 8", "8");
+            put("Grade 9", "9");
+            put("Grade 10", "10");
+            put("Grade 11", "11");
+            put("Grade 12", "12");
+            put("Others", "-1");
+        }};
+        JSONArray grades = new JSONArray();
+        for (String key: mClassMap.keySet()) {
+            JSONObject grade = new JSONObject();
+            try {
+                grade.put("label", key);
+                grade.put("value", mClassMap.get(key));
+                grades.put(grade);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return Base64Util.encodeToString(grades.toString().getBytes(), Base64Util.DEFAULT);
+    }
+
+    public String getCurrentProfileData() {
+        if (currentProfile == null) {
+            currentProfile = getCurrentUserProfile();
+        }
+        JSONObject profileData = new JSONObject();
+        try {
+            profileData.put("handle", currentProfile.getHandle());
+            profileData.put("medium", currentProfile.getMedium());
+            profileData.put("grade", currentProfile.getStandard());
+            profileData.put("board", currentProfile.getBoard());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return Base64Util.encodeToString(profileData.toString().getBytes(), Base64Util.DEFAULT);
+    }
+
+    public void updateProfile(String handle, String medium, String grade, String board) {
+        Log.d(TAG, "updateProfile: " + handle + " " + medium + " " + grade + " " + board);
+        if (currentProfile == null) {
+            currentProfile = getCurrentUserProfile();
+        }
+        currentProfile.setHandle(handle);
+        currentProfile.setMedium(medium);
+        currentProfile.setStandard(Integer.parseInt(grade));
+        currentProfile.setBoard(board);
+        mGenieService.getUserService().updateUserProfile(currentProfile);
+    }
 }
