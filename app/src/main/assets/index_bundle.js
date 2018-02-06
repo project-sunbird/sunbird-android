@@ -39918,19 +39918,7 @@
 	                    lineNumber: 787
 	                  }
 	                })
-	              ),
-	              dom(DownloadAllProgressButton, {
-	                width: "match_parent",
-	                identifier: _this.idSet.downloadAllProgressButton,
-	                buttonText: "Download All",
-	                visibility: "visible",
-	                hideDivider: "gone",
-	                handleButtonClick: this.showDownloadAllPopUp,
-	                __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 799
-	                }
-	              })
+	              )
 	            ),
 	            dom(
 	              LinearLayout,
@@ -41703,16 +41691,12 @@
 	        };
 	
 	        _this2.getDownloadAllButton = function () {
-	            return dom(DownloadAllProgressButton, {
-	                width: "match_parent",
-	                buttonText: "Download All",
-	                visibility: "visible",
-	                hideDivider: "gone",
-	                handleButtonClick: _this2.showDownloadAllPopUp, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 452
-	                }
-	            });
+	            return {/*<DownloadAllProgressButton
+	                     width="match_parent"
+	                     buttonText="Download All"
+	                     visibility="visible"
+	                     hideDivider="gone"
+	                    handleButtonClick={this.showDownloadAllPopUp}/>*/};
 	        };
 	
 	        _this2.setIds(['ratingBar', "downloadProgressText", "descriptionContainer", "playButtonContainer", "simpleToolBarOverFlow", "renderPage", "progressButtonContainer", "downloadAllButtonContainer"]);
