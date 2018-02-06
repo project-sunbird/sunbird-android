@@ -199,7 +199,7 @@ dependencies {
     }
     compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.3.0'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
-    compile 'com.google.android.gms:play-services:10.0.1'
+    compile 'com.google.android.gms:play-services-location:10.0.1'
 }
 
 tasks.create(name: 'createJsaFiles') {
