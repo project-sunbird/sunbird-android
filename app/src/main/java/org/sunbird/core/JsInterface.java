@@ -645,9 +645,9 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void searchContent(String callback, String filterParams, String query, String type, int count) {
+    public void searchContent(String callback, String filterParams, String query, String type, int count, boolean viewMoreClicked) {
         Log.e("ser!", query);
-        genieWrapper.searchContent(callback, filterParams, query, type, count);
+        genieWrapper.searchContent(callback, filterParams, query, type, count, viewMoreClicked);
     }
 
     @JavascriptInterface

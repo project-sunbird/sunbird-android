@@ -14958,9 +14958,9 @@
 	
 	      setTimeout(function () {
 	        _this.hide();
-	      }, _this.totalTime + _this.showTime - _this.fadeTime - _this.delayTime //Time @ which fade out animation should start
+	      }, _this.totalTime + _this.showTime - _this.fadeTime - _this.delayTime); //Time @ which fade out animation should start
 	
-	      );_this.totalTime += _this.showTime + _this.delayTime; //Time required to display one Snackbar and delayTime added to totalTime
+	      _this.totalTime += _this.showTime + _this.delayTime; //Time required to display one Snackbar and delayTime added to totalTime
 	    };
 	
 	    _this.hide = function () {
@@ -19164,10 +19164,9 @@
 	            window.__duiShowScreen(callback, { screen: screenName, data: state });
 	            console.log("ReNDERING new SCREEN ", screenName);
 	          } else {
-	            console.log("not ReNDERING SAME SCREEN "
+	            console.log("not ReNDERING SAME SCREEN ");
 	            //add check for handleStateChnage property
 	            //currentScreen.handleStateChange(state);
-	            );
 	          }
 	        };
 	        var noAction = false;
@@ -23826,6 +23825,16 @@
 	      timeout = null;
 	    }
 	  };
+	  
+	  debounced.flush = function() {
+	    if (timeout) {
+	      result = func.apply(context, args);
+	      context = args = null;
+	      
+	      clearTimeout(timeout);
+	      timeout = null;
+	    }
+	  };
 	
 	  return debounced;
 	};
@@ -24106,7 +24115,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 504
+	            lineNumber: 511
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -24117,14 +24126,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 511
+	            lineNumber: 518
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 518
+	              lineNumber: 525
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -24135,7 +24144,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 519
+	              lineNumber: 526
 	            }
 	          })
 	        )
@@ -24324,16 +24333,6 @@
 	      default:
 	        break;
 	    }
-	
-	    // if (shouldBeModified) {
-	    //   if (state.hasOwnProperty("filter_to_send"))
-	    //     responseData.filter_to_send = state.filter_to_send;
-	    //   else responseData.filter_to_send = null;
-	
-	    //   // this.switchContent(this.currentPageIndex, responseData);
-	    // } else {
-	    //   console.log("GOT SAME DATA, not modifying");
-	    // }
 	  };
 	
 	  this.handleProfileFragAPIResErr = function () {
@@ -24371,7 +24370,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 290
+	            lineNumber: 280
 	          }
 	        });
 	
@@ -24385,7 +24384,7 @@
 	          response: data,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 307
+	            lineNumber: 297
 	          }
 	        });
 	
@@ -24399,7 +24398,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 319
+	            lineNumber: 309
 	          }
 	        });
 	
@@ -24426,7 +24425,7 @@
 	          editable: "true",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 343
+	            lineNumber: 333
 	          }
 	        });
 	        break;
@@ -24436,7 +24435,7 @@
 	          LinearLayout,
 	          { height: "match_parent", root: "true", width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 355
+	              lineNumber: 345
 	            }
 	          },
 	          dom(TextView, {
@@ -24448,7 +24447,7 @@
 	            gravity: "center",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 356
+	              lineNumber: 346
 	            }
 	          })
 	        );
@@ -24461,7 +24460,7 @@
 	      contentLayout: _this3.contentLayout,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 369
+	        lineNumber: 359
 	      }
 	    });
 	
@@ -24475,7 +24474,24 @@
 	
 	  this.openFragment = function () {
 	    _this3.currentPageIndex = 0;
-	    if (window.__loggedInState == "GUEST") {
+	    var postLogin = JBridge.getFromSharedPrefs("goToOnLogin");
+	    if (postLogin != "__failed") {
+	      switch (postLogin) {
+	        case "HOME":
+	          _this3.currentPageIndex = 0;
+	          break;
+	        case "COURSE":
+	          _this3.currentPageIndex = 1;
+	          break;
+	        case "LIBRARY":
+	          _this3.currentPageIndex = 2;
+	          break;
+	        case "PROFILE":
+	          _this3.currentPageIndex = 3;
+	          break;
+	      }
+	      JBridge.setInSharedPrefs("goToOnLogin", "__failed");
+	    } else if (window.__loggedInState == "GUEST") {
 	      _this3.currentPageIndex = 2;
 	    }
 	    _this3.renderBNavBar(_this3.currentPageIndex);
@@ -24492,7 +24508,7 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 397
+	          lineNumber: 404
 	        }
 	      },
 	      dom(ViewWidget, {
@@ -24501,7 +24517,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 403
+	          lineNumber: 410
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -24576,7 +24592,7 @@
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 481
+	        lineNumber: 488
 	      }
 	    });
 	
@@ -25465,14 +25481,14 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 483
+	            lineNumber: 484
 	          }
 	        },
 	        _this.getAnnouncementCard(),
 	        dom(LineSpacer, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 488
+	            lineNumber: 489
 	          }
 	        })
 	      );
@@ -25612,6 +25628,7 @@
 	              dom(HomeRecommendedContainer, {
 	                title: window.__S.RECOMMENDED,
 	                onCourseOpenClick: this.handleCourseOpen,
+	                currComponentLocation: "HOME",
 	                onResourceOpenClick: this.handleResourceOpen, __source: {
 	                  fileName: _jsxFileName,
 	                  lineNumber: 468
@@ -26527,6 +26544,7 @@
 			_this2.onPop = function () {};
 	
 			_this2.handleLoginClick = function () {
+				JBridge.setInSharedPrefs("goToOnLogin", _this2.props.currComponentLocation);
 				console.log(window.__loginUrl, "/auth/realms/sunbird/protocol/openid-connect/auth ", "android");
 				JBridge.keyCloakLogin(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/auth", "android");
 			};
@@ -26545,7 +26563,7 @@
 						clickable: "true",
 						root: true, __source: {
 							fileName: _jsxFileName,
-							lineNumber: 59
+							lineNumber: 60
 						}
 					},
 					dom(TextView, {
@@ -26557,7 +26575,7 @@
 						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
 						__source: {
 							fileName: _jsxFileName,
-							lineNumber: 69
+							lineNumber: 70
 						}
 					}),
 					dom(TextView, {
@@ -26571,7 +26589,7 @@
 						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
 						__source: {
 							fileName: _jsxFileName,
-							lineNumber: 77
+							lineNumber: 78
 						}
 					}),
 					dom(
@@ -26581,7 +26599,7 @@
 							width: "match_parent",
 							onClick: _this2.handleLoginClick, __source: {
 								fileName: _jsxFileName,
-								lineNumber: 87
+								lineNumber: 88
 							}
 						},
 						dom(TextView, {
@@ -26595,7 +26613,7 @@
 							style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 							text: window.__S.SIGN_IN, __source: {
 								fileName: _jsxFileName,
-								lineNumber: 91
+								lineNumber: 92
 							}
 						})
 					)
@@ -27984,9 +28002,9 @@
 	          )
 	        );
 	        _this.jsonArray.push({ view: _this.getView(resultLayout.render()), value: "", viewType: 0 });
-	      }
+	      });
 	      //console.log(this.jsonArray);
-	      );JBridge.listViewAdapter(_this.idSet.listContainer, JSON.stringify(_this.jsonArray), 1000, null, "", "", 1);
+	      JBridge.listViewAdapter(_this.idSet.listContainer, JSON.stringify(_this.jsonArray), 1000, null, "", "", 1);
 	    };
 	
 	    _this.handleItemClick = function (item, index) {
@@ -29372,6 +29390,7 @@
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
+	            currComponentLocation: "COURSE",
 	            headerText: window.__S.OVERLAY_LABEL_COMMON,
 	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
 	            textSize: "16",
@@ -29385,7 +29404,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 124
+	            lineNumber: 125
 	          }
 	        });
 	      }
@@ -29444,7 +29463,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 171
+	            lineNumber: 172
 	          }
 	        },
 	        dom(ImageView, {
@@ -29454,7 +29473,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 181
+	            lineNumber: 182
 	          }
 	        }),
 	        dom(TextView, {
@@ -29465,7 +29484,7 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 188
+	            lineNumber: 189
 	          }
 	        })
 	      );
@@ -29487,13 +29506,13 @@
 	          visibility: item.contents == undefined ? "gone" : "visible",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 209
+	            lineNumber: 210
 	          }
 	        },
 	        dom(LineSpacer, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 215
+	            lineNumber: 216
 	          }
 	        }),
 	        dom(CourseContainer, {
@@ -29504,7 +29523,7 @@
 	          showViewMore: "visible",
 	          onCourseClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 217
+	            lineNumber: 218
 	          }
 	        })
 	      );
@@ -29544,7 +29563,7 @@
 	        _this2.replaceChild(_this2.idSet.courseContentContainer, dom(NoInternetCard, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 262
+	            lineNumber: 263
 	          }
 	        }).render(), 0);
 	      } else {
@@ -29565,7 +29584,7 @@
 	        showViewMore: "gone",
 	        onCourseClick: _this2.handleUserCoursesClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 275
+	          lineNumber: 276
 	        }
 	      });
 	      return _this2.courseInProgressContainer;
@@ -29594,7 +29613,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 302
+	            lineNumber: 303
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -29605,7 +29624,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 307
+	            lineNumber: 308
 	          }
 	        }),
 	        dom(
@@ -29616,7 +29635,7 @@
 	            id: _this2.idSet.scrollViewContainerCourse,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 315
+	              lineNumber: 316
 	            }
 	          },
 	          dom(
@@ -29627,7 +29646,7 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 321
+	                lineNumber: 322
 	              }
 	            },
 	            _this2.getCourseInProgressContainer(),
@@ -29640,13 +29659,13 @@
 	                layoutTransition: "true",
 	                id: _this2.idSet.courseContentContainer, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 329
+	                  lineNumber: 330
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 336
+	                  lineNumber: 337
 	                }
 	              })
 	            )
@@ -29696,7 +29715,7 @@
 	          height: "match_parent",
 	          afterRender: this.afterRender, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 360
+	            lineNumber: 361
 	          }
 	        },
 	        this.getBody()
@@ -30468,6 +30487,7 @@
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
+	            currComponentLocation: "LIBRARY",
 	            headerText: window.__S.OVERLAY_LABEL_COMMON,
 	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
 	            textSize: "16",
@@ -30481,7 +30501,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 345
+	            lineNumber: 346
 	          }
 	        });
 	      }
@@ -30519,7 +30539,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 352
+	            lineNumber: 353
 	          }
 	        },
 	        this.getBody()
@@ -32317,13 +32337,13 @@
 	            editable: _this.editable,
 	            onCardClick: _this.handleCreatedCardClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 208
+	              lineNumber: 218
 	            }
 	          });
 	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	        }
 	      });
-	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10);else console.log("JBridge.searchContent failed, no internet");
+	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10, false);else console.log("JBridge.searchContent failed, no internet");
 	      window.__ContentLoadingComponent.hideLoader();
 	      if (!JBridge.isNetworkAvailable()) {
 	        window.__LoaderDialog.hide();
@@ -32353,7 +32373,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 242
+	              lineNumber: 252
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -32367,7 +32387,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 250
+	              lineNumber: 260
 	            }
 	          })
 	        );
@@ -32377,7 +32397,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 264
+	            lineNumber: 274
 	          }
 	        });
 	      }
@@ -32505,7 +32525,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 395
+	            lineNumber: 405
 	          }
 	        },
 	        dom(
@@ -32517,7 +32537,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 400
+	              lineNumber: 410
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -32525,13 +32545,13 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 406
+	              lineNumber: 416
 	            }
 	          }),
 	          dom(GuestAdditionalInfo, {
 	            profileData: _this2.profileData, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 410
+	              lineNumber: 420
 	            }
 	          }),
 	          _this2.getSignInOverlay()
@@ -32551,7 +32571,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 422
+	            lineNumber: 432
 	          }
 	        },
 	        dom(
@@ -32563,7 +32583,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 427
+	              lineNumber: 437
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -32571,14 +32591,14 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 433
+	              lineNumber: 443
 	            }
 	          }),
 	          dom(ProfileProgress, {
 	            editable: _this2.isEditable,
 	            data: _this2.details, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 437
+	              lineNumber: 447
 	            }
 	          }),
 	          _this2.getDescription(),
@@ -32590,7 +32610,7 @@
 	            privacyStatus: _this2.checkPrivacy("education"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 443
+	              lineNumber: 453
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -32601,7 +32621,7 @@
 	            privacyStatus: _this2.checkPrivacy("jobProfile"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 451
+	              lineNumber: 461
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -32612,7 +32632,7 @@
 	            privacyStatus: _this2.checkPrivacy("address"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 460
+	              lineNumber: 470
 	            }
 	          }),
 	          dom(
@@ -32622,7 +32642,7 @@
 	              width: "wrap_content",
 	              id: _this2.idSet.skillTagComponent, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 467
+	                lineNumber: 477
 	              }
 	            },
 	            dom(ProfileSkillTags, {
@@ -32633,7 +32653,7 @@
 	              privacyStatus: _this2.checkPrivacy("skills"),
 	              handleLock: _this2.handleLockClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 471
+	                lineNumber: 481
 	              }
 	            })
 	          ),
@@ -32643,7 +32663,7 @@
 	              width: "match_parent",
 	              id: _this2.idSet.createdByHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 480
+	                lineNumber: 490
 	              }
 	            },
 	            dom(ProfileCreations, {
@@ -32651,7 +32671,7 @@
 	              editable: _this.editable,
 	              onCardClick: _this.handleCreatedCardClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 484
+	                lineNumber: 494
 	              }
 	            })
 	          ),
@@ -32659,7 +32679,7 @@
 	            data: _this2.details,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 491
+	              lineNumber: 501
 	            }
 	          })
 	        )
@@ -32679,16 +32699,17 @@
 	          clickable: "true",
 	          padding: "16,16,16,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 503
+	            lineNumber: 513
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
+	          currComponentLocation: "PROFILE",
 	          headerText: window.__S.OVERLAY_LABEL_COMMON,
 	          infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
 	          textSize: "16",
 	          gravity: "left", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 510
+	            lineNumber: 520
 	          }
 	        })
 	      );
@@ -32701,10 +32722,17 @@
 	    _this2.profileDataTag = "savedProfile";
 	    _this = _this2;
 	    _this2.isEditable = _this2.props.editable;
-	    _this2.menuData = {
-	      url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
-	    };
-	    _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT;
+	    if (window.__loggedInState == "GUEST") {
+	      _this2.menuData = {
+	        url: [{ imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
+	      };
+	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE;
+	    } else {
+	      _this2.menuData = {
+	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
+	      };
+	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT;
+	    }
 	    window.__LanguagePopup.props.buttonClick = _this2.handleChangeLang;
 	    window.__refreshProfile = false; //Used to control when the profile fragment needs to be refreshed when the user updates any profile data from the app.
 	    JBridge.logTabScreenEvent("PROFILE");
@@ -32732,7 +32760,7 @@
 	        margin: "0,16,0,16",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 164
+	          lineNumber: 174
 	        }
 	      });
 	    }
@@ -32749,7 +32777,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 525
+	            lineNumber: 536
 	          }
 	        },
 	        dom(
@@ -32761,7 +32789,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 528
+	              lineNumber: 539
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -32774,7 +32802,7 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 535
+	              lineNumber: 546
 	            }
 	          }),
 	          dom(
@@ -32786,13 +32814,13 @@
 	              orientation: "horizontal",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 545
+	                lineNumber: 556
 	              }
 	            },
 	            dom(CircularLoader, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 551
+	                lineNumber: 562
 	              }
 	            })
 	          )
@@ -33879,9 +33907,9 @@
 	
 	    _this.setIds(["paraContainerCroped", "showMoreButton"]);
 	    _this.str = _this.props.contentText != undefined ? _this.props.contentText : "";
-	    console.log(_this.props
+	    console.log(_this.props);
 	    // console.log("inside CropParagraph, content : " + this.str);
-	    );_this.len = 50;
+	    _this.len = 50;
 	    if (_this.str.length > _this.len) _this.str = _this.str.substring(0, _this.len) + "...";
 	
 	    _this.max = false;
@@ -42258,7 +42286,7 @@
 	          layouTransition: "true",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 476
+	            lineNumber: 477
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -42266,7 +42294,7 @@
 	          onBackPress: this.onBackPressed,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 485
+	            lineNumber: 486
 	          }
 	        }),
 	        dom(
@@ -42274,7 +42302,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 489
+	              lineNumber: 490
 	            }
 	          },
 	          this.getBatchTypeHead(),
@@ -42286,7 +42314,7 @@
 	              width: "match_parent",
 	              fillViewPort: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 493
+	                lineNumber: 494
 	              }
 	            },
 	            dom(LinearLayout, {
@@ -42296,7 +42324,7 @@
 	              orientation: "vertical",
 	              gravity: "center", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 498
+	                lineNumber: 499
 	              }
 	            })
 	          ),
@@ -42753,6 +42781,7 @@
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
+	          currComponentLocation: "COURSE",
 	          headerText: window.__S.OVERLAY_LABEL_TAKE_COURSE,
 	          infoText: window.__S.OVERLAY_INFO_TEXT_TAKE_COURSE, __source: {
 	            fileName: _jsxFileName,
@@ -42764,7 +42793,7 @@
 	      return dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 470
+	          lineNumber: 471
 	        }
 	      });
 	    }
@@ -45902,7 +45931,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Library", (_this.start_index + 2) * 10);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Library", (_this.start_index + 2) * 10, true);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -46457,7 +46486,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", (_this.start_index + 2) * 10);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", (_this.start_index + 2) * 10, true);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -47036,7 +47065,7 @@
 	          if (_this2.filterData != "") {
 	            filterParams = JSON.stringify(_this2.filterData);
 	          }
-	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100);
+	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100, false);
 	        } else {
 	          window.__LoaderDialog.hide();
 	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -53029,7 +53058,7 @@
 	        _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	      }
 	    });
-	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", 10);else {
+	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", 10, false);else {
 	      _this3.getEmptyLayout();
 	    }
 	    window.__LoaderDialog.hide();
@@ -56853,7 +56882,7 @@
 /* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var apply = Function.prototype.apply;
+	/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
 	
 	// DOM APIs, for completeness
 	
@@ -56904,9 +56933,17 @@
 	
 	// setimmediate attaches itself to the global object
 	__webpack_require__(521);
-	exports.setImmediate = setImmediate;
-	exports.clearImmediate = clearImmediate;
-
+	// On some exotic environments, it's not clear which object `setimmeidate` was
+	// able to install onto.  Search each possibility in the same order as the
+	// `setimmediate` library.
+	exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
+	                       (typeof global !== "undefined" && global.setImmediate) ||
+	                       (this && this.setImmediate);
+	exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
+	                         (typeof global !== "undefined" && global.clearImmediate) ||
+	                         (this && this.clearImmediate);
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
 /* 521 */
@@ -83238,10 +83275,9 @@
 	            window.__duiShowScreen(callback, { screen: screenName, data: state });
 	            console.log("ReNDERING new SCREEN ", screenName);
 	          } else {
-	            console.log("not ReNDERING SAME SCREEN "
+	            console.log("not ReNDERING SAME SCREEN ");
 	            //add check for handleStateChnage property
 	            //currentScreen.handleStateChange(state);
-	            );
 	          }
 	        };
 	        var noAction = false;

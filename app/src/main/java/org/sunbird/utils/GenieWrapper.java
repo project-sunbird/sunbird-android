@@ -257,7 +257,7 @@ public class GenieWrapper extends Activity {
     }
 
 
-    public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count) {
+    public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count, boolean viewMoreClicked) {
         try {
             ContentSearchCriteria.SearchBuilder builder = new ContentSearchCriteria.SearchBuilder();
             String[] contentTypes;
@@ -304,7 +304,7 @@ public class GenieWrapper extends Activity {
             boolean isProfileContent = false;
             String fp;
             ContentSearchCriteria filters;
-            if (!StringUtil.isNullOrEmpty(filterParams)) {
+            if (!StringUtil.isNullOrEmpty(filterParams) && !viewMoreClicked) {
                 if (filterParams.equals("userToken")) {     // Get content created by user.
                     isProfileContent = true;
                     builder.contentTypes(contentTypes).limit(count);
