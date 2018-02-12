@@ -465,7 +465,7 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void importCourse(final String course_id, String isChild) {
+    public void importCourse(final String course_id, String isChild, final String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
 
@@ -487,38 +487,44 @@ public class GenieWrapper extends Activity {
         }
         contentImport.setCorrelationData(Util.getCorrelationList());
         builder.add(contentImport);
-        EventBus.getDefault().unregister(this);
-        EventBus.getDefault().register(this);
+
+        final CallbackContainer cbHandler = new CallbackContainer(course_id, callbacks);
+//        EventBus.getDefault().unregister(cbHandler);
+        EventBus.getDefault().register(cbHandler);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
-                EventBus.getDefault().unregister(this);
+//                EventBus.getDefault().unregister(cbHandler);
 
                 List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
-                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
-                    JSONObject jb = new JSONObject();
-                    try {
-                        jb.put("status", contentImportResponse.getStatus().toString());
-                        jb.put("identifier", course_id);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    //{"downloadId":1727,"downloadProgress":51,"identifier":"do_21216425596451225628","status":1}
-                    String date = String.format("window.__getDownloadStatus('%s');", jb.toString());
-                    dynamicUI.addJsToWebView(date);
-
-                }
+//                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
+//                    JSONObject jb = new JSONObject();
+//                    try {
+//                        jb.put("status", contentImportResponse.getStatus().toString());
+//                        jb.put("identifier", course_id);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    //{"downloadId":1727,"downloadProgress":51,"identifier":"do_21216425596451225628","status":1}
+//                    String date = String.format("window.__getDownloadStatus('%s');", jb.toString());
+//                    dynamicUI.addJsToWebView(date);
+//
+//                }
+//                String date = String.format("window.callJSCallback('%s', '%s', '%s');", callbacks[0], course_id, GsonUtil.toJson(contentImportResponseList.get(0)));
+//                    dynamicUI.addJsToWebView(date);
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
-                EventBus.getDefault().unregister(this);
-
+                List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
+                String date = String.format("window.callJSCallback('%s', '%s', '%s');", callbacks[0], course_id, GsonUtil.toJson(contentImportResponseList.get(0)));
+                dynamicUI.addJsToWebView(date);
+                EventBus.getDefault().unregister(cbHandler);
             }
         });
     }
 
-    public void handleDownloadAllClick(String[] mIdentifierList) {
+    public void handleDownloadAllClick(String[] mIdentifierList, String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
 
@@ -537,23 +543,28 @@ public class GenieWrapper extends Activity {
             contentImport.setCorrelationData(Util.getCorrelationList());
             builder.add(contentImport);
         }
+
+        CallbackContainer cbHandler = new CallbackContainer(mIdentifierList[0], callbacks);
+        EventBus.getDefault().unregister(cbHandler);
+        EventBus.getDefault().register(cbHandler);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
+//                EventBus.getDefault().unregister(this);
 
-                List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
-                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
-                    JSONObject jb = new JSONObject();
-                    try {
-                        jb.put("status", contentImportResponse.getStatus().toString());
-                        jb.put("identifier", contentImportResponse.getIdentifier() );
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Log.d("download all status", jb.toString());
-
-
-                }
+//                List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
+//                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
+//                    JSONObject jb = new JSONObject();
+//                    try {
+//                        jb.put("status", contentImportResponse.getStatus().toString());
+//                        jb.put("identifier", contentImportResponse.getIdentifier() );
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Log.d("download all status", jb.toString());
+//                    String date = String.format("window.__getDownloadStatus('%s');", jb.toString());
+//                    dynamicUI.addJsToWebView(date);
+//                }
             }
 
             @Override
@@ -561,8 +572,6 @@ public class GenieWrapper extends Activity {
 
             }
         });
-
-
     }
 
 
@@ -586,7 +595,8 @@ public class GenieWrapper extends Activity {
     }
 
     public void stopEventBus() {
-        EventBus.getDefault().unregister(this);
+        if (telemetryListener != null)
+            EventBus.getDefault().unregister(telemetryListener);
     }
 
     public void syncTelemetry() {
@@ -602,7 +612,7 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void importEcarFile(String ecarFilePath) {
+    public void importEcarFile(String ecarFilePath, String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
         File noMediaFile = new File(directory.getAbsolutePath() + File.separator + Constants.EXTERNAL_PATH + "/" + ".nomedia");
@@ -613,13 +623,14 @@ public class GenieWrapper extends Activity {
                 e.printStackTrace();
             }
         }
-        EventBus.getDefault().unregister(this);
-        EventBus.getDefault().register(this);
+
+        String id = "1234567890";
+        final CallbackContainer cbHandler = new CallbackContainer(id, callbacks);
+        EventBus.getDefault().register(cbHandler);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
-                EventBus.getDefault().unregister(this);
 
                 List<ContentImportResponse> result = genieResponse.getResult();
                 boolean launchDetail = true;
@@ -627,32 +638,17 @@ public class GenieWrapper extends Activity {
                     for (ContentImportResponse contentImportResponse : result) {
                         switch (contentImportResponse.getStatus()) {
                             case ALREADY_EXIST:
-                                launchDetail = false;
+                            case IMPORT_COMPLETED:
+                                EventBus.getDefault().unregister(cbHandler);
                                 break;
                         }
                     }
                 }
-
-                if (launchDetail) {
-                    if (result.size() == 0) {
-                        String importResponse = String.format("window.__onContentImportResponse('%s');", "{}");
-                        dynamicUI.addJsToWebView(importResponse);
-                    } else {
-                        String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(result.get(0)));
-                        dynamicUI.addJsToWebView(importResponse);
-                    }
-                } else {
-                    String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
-                    dynamicUI.addJsToWebView(importResponse);
-                }
-
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
-                EventBus.getDefault().unregister(this);
-                String importResponse = String.format("window.__onContentImportResponse('%s');", "ALREADY_EXIST");
-                dynamicUI.addJsToWebView(importResponse);
+                EventBus.getDefault().unregister(cbHandler);
             }
 
         });
@@ -675,11 +671,16 @@ public class GenieWrapper extends Activity {
         }
     }
 
-    public void playContent(String playContent) {
+    private CallbackContainer telemetryListener;
 
-        EventBus.getDefault().unregister(this);
-        EventBus.getDefault().register(this);
+    public void playContent(String playContent, String cb) {
+
         Content content = GsonUtil.fromJson(playContent, Content.class);
+
+        telemetryListener = new CallbackContainer(content.getIdentifier(), cb);
+        EventBus.getDefault().unregister(telemetryListener);
+        EventBus.getDefault().register(telemetryListener);
+
         List<CorrelationData> cdata = TelemetryUtil.computeCData(content.getHierarchyInfo());
         CurrentGame currentGame = new CurrentGame(content.getIdentifier(), String.valueOf(System.currentTimeMillis()), content.getContentType());
         currentGame.setcData(cdata);
@@ -698,72 +699,6 @@ public class GenieWrapper extends Activity {
 
     public void endContent() {
 
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onDownloadProgress(DownloadProgress downloadProgress) throws InterruptedException {
-
-        String downloadResponse = GsonUtil.toJson(downloadProgress);
-        Log.e(" PROGRESSS :>", downloadResponse.toString());
-        String date = String.format("window.__getDownloadStatus('%s');", downloadResponse);
-        dynamicUI.addJsToWebView(date);
-
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onContentImportResponse(ContentImportResponse contentImportResponse) throws InterruptedException {
-        Log.e("File :--------->", "downloaded");
-        Log.e("import ", GsonUtil.toJson(contentImportResponse));
-
-        switch (contentImportResponse.getStatus()) {
-            case IMPORT_COMPLETED:
-                Map<String, Object> downloadResponse = new HashMap<>();
-                downloadResponse.put("identifier", contentImportResponse.getIdentifier());
-                downloadResponse.put("downloadProgress", "100");
-                downloadResponse.put("FROM OUTSIDE1", 1);
-                String date = String.format("window.__getDownloadStatus('%s');", GsonUtil.toJson(downloadResponse));
-
-                String importResponse = String.format("window.__onContentImportResponse('%s');", GsonUtil.toJson(contentImportResponse));
-                dynamicUI.addJsToWebView(importResponse);
-
-                if (!StringUtil.isNullOrEmpty(contentImportResponse.getIdentifier())) {
-                    dynamicUI.addJsToWebView(date);
-                }
-                break;
-            case DOWNLOAD_COMPLETED:
-                break;
-            case DOWNLOAD_FAILED:
-                break;
-            case DOWNLOAD_STARTED:
-                break;
-            case ENQUEUED_FOR_DOWNLOAD:
-                break;
-            case IMPORT_FAILED:
-                break;
-            case IMPORT_STARTED:
-                break;
-            case NOT_FOUND:
-                break;
-        }
-        // mPresenter.manageImportSuccess(contentImportResponse);
-
-    }
-
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onContentImport(ImportContentProgress importContentProgress) throws InterruptedException {
-
-        String msg =" (" + importContentProgress.getCurrentCount() + "/" + importContentProgress.getTotalCount() + ") ";
-        String importProgress = String.format("window.__onContentImportProgress('%s');", msg);
-        dynamicUI.addJsToWebView(importProgress);
-
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onTelemetryEvent(Telemetry telemetryEvent) throws InterruptedException {
-        String enc = Base64Util.encodeToString(telemetryEvent.toString().getBytes(), Base64Util.DEFAULT);
-        ;
-        String events = String.format("window.__getGenieEvents('%s');", enc);
-        dynamicUI.addJsToWebView(events);
     }
 
     public void exportEcar(String contentId, final String callback) {
@@ -904,5 +839,53 @@ public class GenieWrapper extends Activity {
         currentProfile.setStandard(Integer.parseInt(grade));
         currentProfile.setBoard(board);
         mGenieService.getUserService().updateUserProfile(currentProfile);
+    }
+
+    class CallbackContainer {
+        private String id;
+        private String downloadProgressCb, contentImportResponseCb, contentImportCb, telemetryCb;
+
+        public CallbackContainer (String identifier, String[] callbacks) {
+            this.id = identifier;
+            this.downloadProgressCb = callbacks[0];
+            this.contentImportCb = callbacks[1];
+            this.contentImportResponseCb = callbacks[2];
+        }
+
+        public CallbackContainer (String identifier, String telemetryCallback) {
+            this.id = identifier;
+            this.telemetryCb = telemetryCallback;
+        }
+
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onDownloadProgress(DownloadProgress downloadProgress) throws InterruptedException {
+
+            String downloadResponse = GsonUtil.toJson(downloadProgress);
+            String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", this.downloadProgressCb, "onDownloadProgress", this.id, downloadResponse);
+            dynamicUI.addJsToWebView(javascript);
+        }
+
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onContentImportResponse(ContentImportResponse contentImportResponse) throws InterruptedException {
+            String importResponse = GsonUtil.toJson(contentImportResponse);
+            String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", this.contentImportResponseCb, "onContentImportResponse", this.id, importResponse);
+            dynamicUI.addJsToWebView(javascript);
+
+        }
+
+        @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+        public void onContentImport(ImportContentProgress importContentProgress) throws InterruptedException {
+            String importResponse = GsonUtil.toJson(importContentProgress);
+            String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", this.contentImportCb, "onContentImportProgress", this.id, importResponse);
+            dynamicUI.addJsToWebView(javascript);
+
+        }
+
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onTelemetryEvent(Telemetry telemetryEvent) throws InterruptedException {
+            String enc = Base64Util.encodeToString(telemetryEvent.toString().getBytes(), Base64Util.DEFAULT);
+            String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", this.telemetryCb, "onTelemetryEvent", this.id, enc);
+            dynamicUI.addJsToWebView(javascript);
+        }
     }
 }

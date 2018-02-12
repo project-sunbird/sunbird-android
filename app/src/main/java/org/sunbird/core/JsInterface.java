@@ -651,15 +651,15 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void importCourse(String course_id, String isChild) {
+    public void importCourse(String course_id, String isChild, String[] callbacks) {
         Log.i("import course", "");
-        genieWrapper.importCourse(course_id, isChild);
+        genieWrapper.importCourse(course_id, isChild, callbacks);
     }
 
     @JavascriptInterface
-    public void playContent(String contentDetails, String id, String pkgVersion) {
+    public void playContent(String contentDetails, String id, String pkgVersion, String cb) {
         try {
-            genieWrapper.playContent(contentDetails);
+            genieWrapper.playContent(contentDetails, cb);
             logContentPlayClicked(id, pkgVersion);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1107,8 +1107,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void importEcar(String filePath) {
-        genieWrapper.importEcarFile(filePath);
+    public void importEcar(String filePath, String[] callbacks) {
+        genieWrapper.importEcarFile(filePath, callbacks);
     }
 
     @JavascriptInterface
@@ -2247,8 +2247,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void downloadAllContent(String[] indetifierList) {
-        genieWrapper.handleDownloadAllClick(indetifierList);
+    public void downloadAllContent(String[] indetifierList, String[] callbacks) {
+        genieWrapper.handleDownloadAllClick(indetifierList, callbacks);
     }
 
 
