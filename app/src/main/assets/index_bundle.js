@@ -23237,7 +23237,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "49", "UsersnikithshettysunbirdgithubsunbirdduiviewsSplashScreenActivityjs");
+	      Android.runInUI(_this.animateView(), null, "50", "UsersnikithshettysunbirdgithubsunbirdduiviewsSplashScreenActivityjs");
 	    };
 	
 	    _this.getApiUrl = function () {
@@ -23271,9 +23271,9 @@
 	      JBridge.logCorrelationPageEvent("SPLASHSCREEN", "", "");
 	
 	      setTimeout(function () {
-	        if (_this.isUserOnboarded != "__failed" && _this.isUserOnboarded != "false") {
+	        if (window.__loggedInState == "YES" || window.__loggedInState == "GUEST") {
 	          var event = { tag: "OPEN_UserActivity", contents: [] };
-	        } else {
+	        } else if (_this.isUserOnboarded == "__failed" || _this.isUserOnboarded == "false") {
 	          var event = { tag: "OPEN_LanguageSelectActivity", contents: [] };
 	        }
 	        window.__runDuiCallback(event);
@@ -23290,6 +23290,7 @@
 	    _this.getIcon();
 	    _this.getTextToDisplay();
 	    window.__pressedLoggedOut = false;
+	    window.__loggedInState = JBridge.getFromSharedPrefs("logged_in");
 	    _this.isUserOnboarded = JBridge.getFromSharedPrefs("isUserOnboarded");
 	    //  window.__getGenieEvents = this.dummyFunction;
 	    return _this;
@@ -23308,7 +23309,7 @@
 	          background: window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 103
+	            lineNumber: 105
 	          }
 	        },
 	        dom(ImageView, {
@@ -23317,7 +23318,7 @@
 	          layout_gravity: "center",
 	          circularImageUrl: "1," + this.icon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 111
+	            lineNumber: 113
 	          }
 	        }),
 	        dom(TextView, {
@@ -23327,7 +23328,7 @@
 	          textSize: "18",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 116
+	            lineNumber: 118
 	          }
 	        })
 	      );
@@ -32935,33 +32936,42 @@
 	
 	    _this2.getUserName = function () {
 	      console.log("username", _this2.userName);
-	      return dom(
-	        LinearLayout,
-	        {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          gravity: "center",
-	          background: "#e8e8e8",
-	          cornerRadius: "5",
-	          padding: "5,5,5,5",
-	          margin: "0,0,0,5",
-	          visibility: _this2.userName == null || _this2.userName == undefined || _this2.userName == "" ? "gone" : "visible",
-	          alpha: "0.7", __source: {
+	      if (window.__loggedInState != "GUEST") {
+	        return dom(
+	          LinearLayout,
+	          {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            gravity: "center",
+	            background: "#e8e8e8",
+	            cornerRadius: "5",
+	            padding: "5,5,5,5",
+	            margin: "0,0,0,5",
+	            visibility: _this2.userName == null || _this2.userName == undefined || _this2.userName == "" ? "gone" : "visible",
+	            alpha: "0.7", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 69
+	            }
+	          },
+	          dom(TextView, {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            enableEllipse: "true",
+	            text: window.__S.USER_NAME_PROFILE + "-" + _this2.userName,
+	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 79
+	            }
+	          })
+	        );
+	      } else {
+	        return dom(LinearLayout, {
+	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 68
+	            lineNumber: 88
 	          }
-	        },
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          enableEllipse: "true",
-	          text: window.__S.USER_NAME_PROFILE + "-" + _this2.userName,
-	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 78
-	          }
-	        })
-	      );
+	        });
+	      }
 	    };
 	
 	    _this2.getEmailPart = function () {
@@ -32977,7 +32987,7 @@
 	          visibility: _this2.orgName == null || _this2.orgName == undefined || _this2.orgName == "" || _this2.orgEmail == "" ? "gone" : "visible",
 	          margin: "0,5,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 88
+	            lineNumber: 93
 	          }
 	        },
 	        dom(
@@ -32990,7 +33000,7 @@
 	            alpha: "0.7",
 	            onClick: _this2.sendEmail, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 97
+	              lineNumber: 102
 	            }
 	          },
 	          dom(TextView, {
@@ -33000,7 +33010,7 @@
 	            text: _this2.orgName,
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 104
+	              lineNumber: 109
 	            }
 	          }),
 	          dom(ImageView, {
@@ -33008,7 +33018,7 @@
 	            height: "18",
 	            imageUrl: "ic_mail_outline", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 110
+	              lineNumber: 115
 	            }
 	          })
 	        )
@@ -33020,7 +33030,7 @@
 	    };
 	
 	    _this2.showProfileImagePopup = function () {
-	      if (_this2.isEditable == "true") {
+	      if (_this2.isEditable == "true" && window.__loggedInState != "GUEST") {
 	        window.__ProfileImagePopUp.show(_this2.imageUrl);
 	      }
 	    };
@@ -33034,6 +33044,7 @@
 	    _this2.lastName = _this2.props.data.lastName ? _this2.props.data.lastName : "";
 	    _this2.address = _this2.props.data.address && _this2.props.data.address.length > 0 ? _this2.props.data.address : "";
 	    // this.orgName=this.props.data.rootOrg.orgName?this.props.data.rootOrg.orgName:"";
+	
 	    if (_this2.props.data.rootOrg != null && _this2.props.data.rootOrg.hasOwnProperty("orgName")) {
 	      _this2.orgName = _this2.props.data.rootOrg.orgName;
 	    } else _this2.orgName = "";
@@ -33063,7 +33074,7 @@
 	          gravity: "center_horizontal",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 132
+	            lineNumber: 136
 	          }
 	        },
 	        dom(TextView, {
@@ -33074,7 +33085,7 @@
 	          margin: "0,0,0,16",
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 137
+	            lineNumber: 141
 	          }
 	        }),
 	        dom(ImageView, {
@@ -33085,7 +33096,7 @@
 	          cornerRadius: "40",
 	          onClick: this.showProfileImagePopup, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 144
+	            lineNumber: 148
 	          }
 	        }),
 	        dom(TextView, {
@@ -33095,7 +33106,7 @@
 	          padding: "0,10,0,2",
 	          style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 151
+	            lineNumber: 155
 	          }
 	        }),
 	        this.getUserName(),
@@ -33108,7 +33119,7 @@
 	          padding: "0,0,0,8",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 161
+	            lineNumber: 165
 	          }
 	        })
 	      );
