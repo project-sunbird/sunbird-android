@@ -765,7 +765,7 @@ public class GenieWrapper extends Activity {
     }
 
     public String getSubjects() {
-        GenieResponse<MasterData> mediumData = mGenieService.getConfigService().getMasterData(MasterDataType.MEDIUM);
+        GenieResponse<MasterData> mediumData = mGenieService.getConfigService().getMasterData(MasterDataType.SUBJECT);
         List<MasterDataValues> vals = mediumData.getResult().getValues();
         JSONArray subjects = new JSONArray();
         for (int i = 0; i < vals.size(); i++) {
