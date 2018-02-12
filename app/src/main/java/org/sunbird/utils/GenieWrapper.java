@@ -404,7 +404,7 @@ public class GenieWrapper extends Activity {
             profile = new Profile(uid, "avatar", "en");
             profile.setUid(uid);
         } else {
-            profile = new Profile("Annonymous", "avatar", "en");
+            profile = new Profile("Guest1", "avatar", "en");
         }
 
         mGenieAsyncService.getUserService().createUserProfile(profile, new IResponseHandler<Profile>() {
