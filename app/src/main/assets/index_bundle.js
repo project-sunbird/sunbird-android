@@ -281,11 +281,16 @@
 	  if (JBridge.isNetworkAvailable()) {
 	    JBridge.logLogoutSuccess(window.__userToken);
 	    window.__Snackbar.show(window.__S.LOGGED_OUT);
+	    if (JBridge.getFromSharedPrefs("logged_in") != "__failed") {
+	      JBridge.keyCloakLogout(window.__apiUrl + "/auth/realms/sunbird/protocol/openid-connect/logout");
+	    }
 	    if (JBridge.getFromSharedPrefs("topics") != "__failed") {
 	      console.log("unsetting topics", JBridge.getFromSharedPrefs("topics"));
 	      JBridge.unregisterFCM(JSON.parse(JBridge.getFromSharedPrefs("topics")));
 	    }
 	    JBridge.setInSharedPrefs("intentNotification", "__failed");
+	    JBridge.setInSharedPrefs("intentFilePath", "__failed");
+	    JBridge.setInSharedPrefs("intentLinkPath", "__failed");
 	    JBridge.setInSharedPrefs("logged_in", "__failed");
 	    JBridge.setInSharedPrefs("user_id", "__failed");
 	    JBridge.setInSharedPrefs("user_name", "__failed");
@@ -303,7 +308,6 @@
 	    JBridge.saveData("savedAnnouncements", "__failed");
 	    JBridge.saveData("savedProfile", "__failed");
 	    window.__pressedLoggedOut = true;
-	    JBridge.keyCloakLogout(window.__apiUrl + "/auth/realms/sunbird/protocol/openid-connect/logout");
 	    purescriptUserActivityFlow();
 	  } else {
 	    window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -37283,7 +37287,7 @@
 	    if (window.__loggedInState == "GUEST") {
 	      JBridge.setInSharedPrefs("logged_in", "GUEST");
 	      JBridge.setProfile("", true);
-	    } else {
+	    } else if (window.__loggedInState == "YES") {
 	      JBridge.setInSharedPrefs("logged_in", "YES");
 	      JBridge.setProfile(window.__userToken, false);
 	    }
@@ -40934,6 +40938,10 @@
 	    var _this2 = _possibleConstructorReturn(this, (DownloadAllProgressButton.__proto__ || Object.getPrototypeOf(DownloadAllProgressButton)).call(this, props, children));
 	
 	    _this2.update = function (listOfIds) {
+	      if (_this2.btnState == _this2.BTN_STATES.IDLE) {
+	        _this2.btnState = _this2.BTN_STATES.DOWNLOADING;
+	        _this2.downloadContentCount = 0;
+	      }
 	      _this2.childrenArray = listOfIds;
 	      _this2.setCancelButtonVisibility("visible");
 	      JBridge.downloadAllContent(_this2.childrenArray, utils.getCallbacks(_this2.updateProgress, "", _this2.updateProgress));
@@ -40945,7 +40953,7 @@
 	        id: _this2.idSet.cancelDownloadHolder,
 	        visibility: visibility
 	      });
-	      Android.runInUI(cmd, 0, "51", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	      Android.runInUI(cmd, 0, "55", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	    };
 	
 	    _this2.handleCancelDownload = function () {
@@ -40975,7 +40983,7 @@
 	      var id = res[1];
 	      var data = JSON.parse(res[2]);
 	
-	      if (cb == "importContentSuccessResponse") {
+	      if (cb == "importContentSuccessResponse" && _this2.btnState == _this2.BTN_STATES.DOWNLOADING) {
 	        data.result.map(function (item, i) {
 	          if (item.status == "ENQUEUED_FOR_DOWNLOAD") {
 	            _this2.enqueuedForDownload[i] = {
@@ -41016,7 +41024,7 @@
 	            id: _this2.id,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "123", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	          Android.runInUI(cmd, 0, "127", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	        }
 	      }
 	    };
@@ -41029,16 +41037,13 @@
 	          id: _this2.id,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "136", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	        Android.runInUI(cmd, 0, "140", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	        window.__Snackbar.show("Downloaded all contents");
 	      }
 	    };
 	
 	    _this2.handleButtonClick = function () {
 	      if (_this2.btnState == _this2.BTN_STATES.IDLE) {
-	        _this2.btnState = _this2.BTN_STATES.DOWNLOADING;
-	        _this2.downloadContentCount = 0;
-	        // window.__onContentImportResponse = this.updateProgress;
 	        _this2.props.handleButtonClick();
 	      }
 	    };
@@ -41063,7 +41068,7 @@
 	          root: "true",
 	          height: "48", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 164
+	            lineNumber: 165
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -41072,7 +41077,7 @@
 	          weight: pLeft,
 	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 169
+	            lineNumber: 170
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -41081,7 +41086,7 @@
 	          weight: pRight,
 	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 175
+	            lineNumber: 176
 	          }
 	        })
 	      );
@@ -41097,7 +41102,7 @@
 	          root: "true",
 	          onClick: _this2.handleButtonClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 186
+	            lineNumber: 187
 	          }
 	        },
 	        _this2.getDownloadBackground(value),
@@ -41109,7 +41114,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: text, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 194
+	            lineNumber: 195
 	          }
 	        })
 	      );
@@ -41150,7 +41155,7 @@
 	          id: this.id,
 	          layoutTransition: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 207
+	            lineNumber: 208
 	          }
 	        },
 	        dom(
@@ -41161,7 +41166,7 @@
 	            root: "true",
 	            id: this.idSet.downloadBarContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 217
+	              lineNumber: 218
 	            }
 	          },
 	          this.getButtons(0, this.props.buttonText)
@@ -41175,7 +41180,7 @@
 	            id: this.idSet.cancelDownloadHolder,
 	            onClick: this.handleCancelDownload, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 226
+	              lineNumber: 227
 	            }
 	          },
 	          dom(ImageView, {
@@ -41183,7 +41188,7 @@
 	            width: "48",
 	            imageUrl: "ic_action_close", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 233
+	              lineNumber: 234
 	            }
 	          })
 	        )
