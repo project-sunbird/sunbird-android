@@ -2248,7 +2248,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void downloadAllContent(String[] indetifierList, String[] callbacks) {
-        genieWrapper.handleDownloadAllClick(indetifierList, callbacks);
+        genieWrapper.downloadAllContent(indetifierList, callbacks);
     }
 
 

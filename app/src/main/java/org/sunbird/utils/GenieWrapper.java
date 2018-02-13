@@ -36,6 +36,7 @@ import org.ekstep.genieservices.commons.bean.MasterData;
 import org.ekstep.genieservices.commons.bean.MasterDataValues;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
+import org.ekstep.genieservices.commons.bean.enums.ContentImportStatus;
 import org.ekstep.genieservices.commons.bean.enums.MasterDataType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
@@ -497,21 +498,9 @@ public class GenieWrapper extends Activity {
 //                EventBus.getDefault().unregister(cbHandler);
 
                 List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
-//                for (ContentImportResponse contentImportResponse : contentImportResponseList) {
-//                    JSONObject jb = new JSONObject();
-//                    try {
-//                        jb.put("status", contentImportResponse.getStatus().toString());
-//                        jb.put("identifier", course_id);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    //{"downloadId":1727,"downloadProgress":51,"identifier":"do_21216425596451225628","status":1}
-//                    String date = String.format("window.__getDownloadStatus('%s');", jb.toString());
-//                    dynamicUI.addJsToWebView(date);
-//
-//                }
-//                String date = String.format("window.callJSCallback('%s', '%s', '%s');", callbacks[0], course_id, GsonUtil.toJson(contentImportResponseList.get(0)));
-//                    dynamicUI.addJsToWebView(date);
+                if (contentImportResponseList.get(0).getStatus() == ContentImportStatus.NOT_FOUND){
+                    EventBus.getDefault().unregister(cbHandler);
+                }
             }
 
             @Override
@@ -524,7 +513,7 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void handleDownloadAllClick(String[] mIdentifierList, String[] callbacks) {
+    public void downloadAllContent(final String[] mIdentifierList, final String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
 
@@ -565,11 +554,16 @@ public class GenieWrapper extends Activity {
 //                    String date = String.format("window.__getDownloadStatus('%s');", jb.toString());
 //                    dynamicUI.addJsToWebView(date);
 //                }
+                String importResponse = GsonUtil.toJson(genieResponse);
+                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentSuccessResponse", mIdentifierList[0], importResponse);
+                dynamicUI.addJsToWebView(javascript);
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
-
+                String importResponse = GsonUtil.toJson(genieResponse);
+                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentErrorResponse", mIdentifierList[0], importResponse);
+                dynamicUI.addJsToWebView(javascript);
             }
         });
     }

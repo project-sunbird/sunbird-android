@@ -20375,6 +20375,7 @@
 	            height: "match_parent",
 	            orientation: "vertical",
 	            margin: "0,0,0,0",
+	            clickable: "true",
 	            background: window.__Colors.WHITE,
 	            gravity: "center", __source: {
 	              fileName: _jsxFileName,
@@ -20387,7 +20388,7 @@
 	            margin: "0,0,0,32",
 	            text: window.__S.LOADING_CONTENT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 139
+	              lineNumber: 140
 	            }
 	          }),
 	          dom(
@@ -20399,7 +20400,7 @@
 	              orientation: "vertical",
 	              id: this.idSet.progressContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 145
+	                lineNumber: 146
 	              }
 	            },
 	            this.getProgressBar(0)
@@ -20416,7 +20417,7 @@
 	            id: this.idSet.btnContainer,
 	            margin: "0,8,0,8", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 159
+	              lineNumber: 160
 	            }
 	          },
 	          this.getButton()
@@ -22301,7 +22302,7 @@
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
 			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social Media Links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preffered Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _en_US),
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social Media Links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preffered Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -27893,6 +27894,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var ListView = __webpack_require__(371);
+	var debounce = __webpack_require__(403);
 	
 	var SearchResult = function (_View) {
 	  _inherits(SearchResult, _View);
@@ -27909,7 +27911,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 27
+	          lineNumber: 28
 	        }
 	      });
 	    };
@@ -27933,7 +27935,7 @@
 	              _this.handleItemClick(item, index);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 42
+	              lineNumber: 43
 	            }
 	          },
 	          dom(
@@ -27942,7 +27944,7 @@
 	              width: "match_parent",
 	              height: "wrap_content", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 49
+	                lineNumber: 50
 	              }
 	            },
 	            dom(ImageView, {
@@ -27953,7 +27955,7 @@
 	              gravity: "center",
 	              circularImageUrl: "0," + appIcon, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 53
+	                lineNumber: 54
 	              }
 	            }),
 	            dom(
@@ -27963,7 +27965,7 @@
 	                height: "wrap_content",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 61
+	                  lineNumber: 62
 	                }
 	              },
 	              dom(
@@ -27972,7 +27974,7 @@
 	                  height: "wrap_content",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 66
+	                    lineNumber: 67
 	                  }
 	                },
 	                dom(TextView, {
@@ -27984,14 +27986,14 @@
 	                  weight: "7",
 	                  style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 70
+	                    lineNumber: 71
 	                  }
 	                }),
 	                dom(LinearLayout, {
 	                  width: "0",
 	                  weight: "0.5", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 79
+	                    lineNumber: 80
 	                  }
 	                }),
 	                dom(TextView, {
@@ -28004,7 +28006,7 @@
 	                  text: item.hasOwnProperty("size") ? utils.formatBytes(item.size) : " ",
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 83
+	                    lineNumber: 84
 	                  }
 	                })
 	              ),
@@ -28016,7 +28018,7 @@
 	                text: item.contentType,
 	                style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 94
+	                  lineNumber: 95
 	                }
 	              }),
 	              dom(
@@ -28031,7 +28033,7 @@
 	                  padding: "5,1,5,1",
 	                  margin: "10,5,0,10", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 102
+	                    lineNumber: 103
 	                  }
 	                },
 	                dom(TextView, {
@@ -28041,7 +28043,7 @@
 	                  text: _this.type == "Profile" ? item.data.status == 1 ? "Active" : "Inactive" : "",
 	                  style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 112
+	                    lineNumber: 113
 	                  }
 	                })
 	              )
@@ -28119,6 +28121,7 @@
 	    _this.type = _this.props.type ? _this.props.type : "Resource";
 	    _this.jsonArray = [];
 	    _this.setIds(['listContainer']);
+	    _this.handleItemClick = debounce(_this.handleItemClick, 50);
 	    return _this;
 	  }
 	
@@ -28135,7 +28138,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 211
+	            lineNumber: 212
 	          }
 	        },
 	        this.getData()
@@ -29412,8 +29415,7 @@
 	                lineNumber: 93
 	              }
 	            },
-	            rows,
-	            _this2.getSignInOverlay()
+	            rows
 	          );
 	
 	          _this2.replaceChild(_this2.idSet.courseContentContainer, layout.render(), 0);
@@ -29433,7 +29435,7 @@
 	            width: "match_parent",
 	            padding: "16,16,16,16", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 112
+	              lineNumber: 111
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
@@ -29443,7 +29445,7 @@
 	            textSize: "16",
 	            gravity: "left", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 117
+	              lineNumber: 116
 	            }
 	          })
 	        );
@@ -29451,7 +29453,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 125
+	            lineNumber: 124
 	          }
 	        });
 	      }
@@ -29510,7 +29512,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 172
+	            lineNumber: 171
 	          }
 	        },
 	        dom(ImageView, {
@@ -29520,7 +29522,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 182
+	            lineNumber: 181
 	          }
 	        }),
 	        dom(TextView, {
@@ -29531,7 +29533,7 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 189
+	            lineNumber: 188
 	          }
 	        })
 	      );
@@ -29553,13 +29555,13 @@
 	          visibility: item.contents == undefined ? "gone" : "visible",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 209
 	          }
 	        },
 	        dom(LineSpacer, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 216
+	            lineNumber: 215
 	          }
 	        }),
 	        dom(CourseContainer, {
@@ -29570,7 +29572,7 @@
 	          showViewMore: "visible",
 	          onCourseClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 218
+	            lineNumber: 217
 	          }
 	        })
 	      );
@@ -29610,7 +29612,7 @@
 	        _this2.replaceChild(_this2.idSet.courseContentContainer, dom(NoInternetCard, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 263
+	            lineNumber: 262
 	          }
 	        }).render(), 0);
 	      } else {
@@ -29631,7 +29633,7 @@
 	        showViewMore: "gone",
 	        onCourseClick: _this2.handleUserCoursesClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 276
+	          lineNumber: 275
 	        }
 	      });
 	      return _this2.courseInProgressContainer;
@@ -29660,7 +29662,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 303
+	            lineNumber: 302
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -29671,7 +29673,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 308
+	            lineNumber: 307
 	          }
 	        }),
 	        dom(
@@ -29682,7 +29684,7 @@
 	            id: _this2.idSet.scrollViewContainerCourse,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 316
+	              lineNumber: 315
 	            }
 	          },
 	          dom(
@@ -29693,7 +29695,7 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 322
+	                lineNumber: 321
 	              }
 	            },
 	            _this2.getCourseInProgressContainer(),
@@ -29706,16 +29708,17 @@
 	                layoutTransition: "true",
 	                id: _this2.idSet.courseContentContainer, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 330
+	                  lineNumber: 329
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 337
+	                  lineNumber: 336
 	                }
 	              })
-	            )
+	            ),
+	            _this2.getSignInOverlay()
 	          )
 	        )
 	      );
@@ -30189,7 +30192,7 @@
 	              lineNumber: 67
 	            }
 	          },
-	          _this2.getSignInOverlay()
+	          _this2.getErrorLayout()
 	        );
 	      } else {
 	        window.__PageFilterPopup.resetPopup("Resource", data);
@@ -30216,8 +30219,7 @@
 	                lineNumber: 87
 	              }
 	            }),
-	            cardsContent,
-	            _this2.getSignInOverlay()
+	            cardsContent
 	          );
 	        } else {
 	          _this2.cards = dom(
@@ -30228,11 +30230,10 @@
 	              orientation: "vertical",
 	              root: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 92
+	                lineNumber: 91
 	              }
 	            },
-	            _this2.getErrorLayout(),
-	            _this2.getSignInOverlay()
+	            _this2.getErrorLayout()
 	          );
 	        }
 	      }
@@ -30262,6 +30263,7 @@
 	          window.__BNavFlowRestart();
 	          break;
 	      }
+	      utils.addSwipeFunction(_this2.idSet.scrollViewContainer);
 	    };
 	
 	    _this2.getResourceCardLayout = function (content) {
@@ -30275,7 +30277,7 @@
 	          root: "true",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 135
+	            lineNumber: 134
 	          }
 	        },
 	        dom(ResourceContainer, {
@@ -30284,7 +30286,7 @@
 	          searchQuery: content.searchQuery,
 	          onViewAllClick: _this2.handleResourceViewAllClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 141
+	            lineNumber: 140
 	          }
 	        })
 	      );
@@ -30319,7 +30321,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 169
+	            lineNumber: 168
 	          }
 	        },
 	        dom(ImageView, {
@@ -30329,7 +30331,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 179
+	            lineNumber: 178
 	          }
 	        }),
 	        dom(TextView, {
@@ -30340,7 +30342,7 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 186
+	            lineNumber: 185
 	          }
 	        })
 	      );
@@ -30356,7 +30358,7 @@
 	          id: _this2.idSet.parentContainer,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 202
+	            lineNumber: 201
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -30367,7 +30369,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 208
+	            lineNumber: 207
 	          }
 	        }),
 	        dom(
@@ -30378,7 +30380,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 216
+	              lineNumber: 215
 	            }
 	          },
 	          dom(
@@ -30389,7 +30391,7 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 222
+	                lineNumber: 221
 	              }
 	            },
 	            dom(LinearLayout, {
@@ -30399,7 +30401,7 @@
 	              orientation: "vertical",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 228
+	                lineNumber: 227
 	              }
 	            }),
 	            dom(
@@ -30411,16 +30413,17 @@
 	                weight: "1",
 	                layoutTransition: "true", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 235
+	                  lineNumber: 234
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 242
+	                  lineNumber: 241
 	                }
 	              })
-	            )
+	            ),
+	            _this2.getSignInOverlay()
 	          )
 	        )
 	      );
@@ -39081,10 +39084,10 @@
 	
 	        contentProgress['contentId'] = _this2.props.identifier;
 	        contentProgress['courseId'] = _this2.props.contentDetails.hierarchyInfo[0].identifier;
-	        contentProgress['status'] = telemetryData.edata.eks.progress == 100 ? 2 : 1;
-	        contentProgress['progress'] = telemetryData.edata.eks.progress;
+	        contentProgress['status'] = telemetryData.edata.summary[0].progress == 100 ? 2 : 1;
+	        contentProgress['progress'] = telemetryData.edata.summary[0].progress;
 	        contentProgress['lastAccessTime'] = date;
-	        if (telemetryData.edata.eks.progress == 100) {
+	        if (telemetryData.edata.summary[0].progress == 100) {
 	          contentProgress['lastCompletedTime'] = date;
 	        }
 	        contentProgress['result'] = "pass";
@@ -39093,9 +39096,11 @@
 	        var enrolledCourse;
 	        console.log("contentProgress", contentProgress);
 	
-	        window.__enrolledCourses.map(function (item) {
-	          if (item.courseId == _this.props.contentDetails.hierarchyInfo[0].identifier) enrolledCourse = item;
-	        });
+	        if (window.__enrolledCourses && window.__enrolledCourses != "") {
+	          window.__enrolledCourses.map(function (item) {
+	            if (item.courseId == _this.props.contentDetails.hierarchyInfo[0].identifier) enrolledCourse = item;
+	          });
+	        }
 	        console.log("enrolled", enrolledCourse);
 	        contentProgress['batchId'] = enrolledCourse.hasOwnProperty("batchId") ? enrolledCourse.batchId : 0;
 	        console.log("batch ID", enrolledCourse);
@@ -39166,7 +39171,7 @@
 	          root: "true",
 	          height: "48", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 287
+	            lineNumber: 289
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -39175,7 +39180,7 @@
 	          weight: pLeft,
 	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 293
+	            lineNumber: 295
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -39184,7 +39189,7 @@
 	          weight: pRight,
 	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 299
+	            lineNumber: 301
 	          }
 	        })
 	      );
@@ -39199,7 +39204,7 @@
 	          height: "48",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 314
+	            lineNumber: 316
 	          }
 	        },
 	        _this2.getDownloadBackground(value),
@@ -39211,7 +39216,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: text, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 323
+	            lineNumber: 325
 	          }
 	        })
 	      );
@@ -39233,7 +39238,7 @@
 	          background: window.__Colors.WHITE,
 	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 341
+	            lineNumber: 343
 	          }
 	        },
 	        dom(TextView, {
@@ -39244,7 +39249,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.BLUE,
 	          text: window.__S.CANCEL_DOWNLOAD, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 352
+	            lineNumber: 354
 	          }
 	        })
 	      );
@@ -39283,7 +39288,7 @@
 	          id: this.idSet.downloadBar,
 	          layoutTransition: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 374
+	            lineNumber: 376
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -39292,7 +39297,7 @@
 	          width: "match_parent",
 	          background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 384
+	            lineNumber: 386
 	          }
 	        }),
 	        this.getCancelButton(),
@@ -39305,7 +39310,7 @@
 	            root: "true",
 	            id: this.idSet.downloadBarContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 392
+	              lineNumber: 394
 	            }
 	          },
 	          this.getButtons(0, this.props.buttonText)
@@ -39741,7 +39746,7 @@
 	    // array of all the children content ids
 	    _this2.subContentArray = [];
 	    console.log("details in CEA", _this2.apiDetails);
-	    _this2.showProgress = _this2.apiDetails.hasOwnProperty("mimeType") && _this2.apiDetails.contentType == "application/vnd.ekstep.content-collection" ? "gone" : "visible";
+	    _this2.showProgress = _this2.apiDetails.hasOwnProperty("courseName") ? "visible" : "gone";
 	
 	    if (_this2.apiDetails.hasOwnProperty("courseId")) {
 	      _this2.baseIdentifier = _this2.apiDetails.courseId;
@@ -39760,7 +39765,7 @@
 	          _this2.enrolledCourses = item;
 	        }
 	      });
-	      if (_this2.enrolledCourses.leafNodesCount != null && _this2.enrolledCourses.progress <= _this2.enrolledCourses.leafNodesCount) {
+	      if (_this2.enrolledCourses && _this2.enrolledCourses.leafNodesCount != null && _this2.enrolledCourses.progress <= _this2.enrolledCourses.leafNodesCount) {
 	        _this2.downloadProgress = _this2.apiDetails.leafNodesCount == null ? 0 : _this2.enrolledCourses.progress / _this2.enrolledCourses.leafNodesCount * 100;
 	        _this2.downloadProgress = parseInt(isNaN(_this2.downloadProgress) ? 0 : _this2.downloadProgress);
 	      }
@@ -39771,8 +39776,8 @@
 	      courseDesc: _this2.apiDetails ? _this2.apiDetails.courseDesc : "",
 	      completedProgress: _this2.downloadProgress
 	    };
-	
-	    _this2.downloadedPercent = 0;
+	    _this2.gotSpine = false; //called when fetching spine is complete
+	    _this2.cancelled = false; //called when fetching spine is cancelled
 	    return _this2;
 	  }
 	
@@ -39787,7 +39792,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 661
+	            lineNumber: 662
 	          }
 	        },
 	        dom(
@@ -39799,7 +39804,7 @@
 	            background: window.__Colors.WHITE,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 667
+	              lineNumber: 668
 	            }
 	          },
 	          dom(
@@ -39810,7 +39815,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 673
+	                lineNumber: 674
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -39824,7 +39829,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 679
+	                lineNumber: 680
 	              }
 	            })
 	          ),
@@ -39834,7 +39839,7 @@
 	            totalProgress: this.data.totalProgress,
 	            visibility: this.showProgress, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 691
+	              lineNumber: 692
 	            }
 	          }),
 	          dom(
@@ -39843,7 +39848,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 697
+	                lineNumber: 698
 	              }
 	            },
 	            dom(
@@ -39853,7 +39858,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 701
+	                  lineNumber: 702
 	                }
 	              },
 	              dom(
@@ -39864,7 +39869,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 706
+	                    lineNumber: 707
 	                  }
 	                },
 	                dom(
@@ -39876,7 +39881,7 @@
 	                    padding: "16,24,16,16",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 712
+	                      lineNumber: 713
 	                    }
 	                  },
 	                  dom(CourseProgress, {
@@ -39887,7 +39892,7 @@
 	                    onResumeClick: this.handleCourseResume,
 	                    visibility: this.showProgress, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 719
+	                      lineNumber: 720
 	                    }
 	                  }),
 	                  dom(LinearLayout, {
@@ -39896,7 +39901,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 727
+	                      lineNumber: 728
 	                    }
 	                  }),
 	                  dom(TextView, {
@@ -39906,7 +39911,7 @@
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                    text: window.__S.STRUCTURE, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 733
+	                      lineNumber: 734
 	                    }
 	                  }),
 	                  dom(
@@ -39919,7 +39924,7 @@
 	                      root: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 740
+	                        lineNumber: 741
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -39929,7 +39934,7 @@
 	                      gravity: "center",
 	                      text: window.__S.LOADING_CONTENT, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 748
+	                        lineNumber: 749
 	                      }
 	                    }),
 	                    dom(ProgressBar, {
@@ -39938,7 +39943,7 @@
 	                      width: "20",
 	                      height: "20", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 755
+	                        lineNumber: 756
 	                      }
 	                    })
 	                  )
@@ -39950,7 +39955,7 @@
 	                margin: "0,0,0,16",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 764
+	                  lineNumber: 765
 	                }
 	              }),
 	              dom(
@@ -39960,7 +39965,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.startOrResumeBtnContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 770
+	                    lineNumber: 771
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -39975,7 +39980,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 775
+	                    lineNumber: 776
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -39990,10 +39995,11 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 787
+	                    lineNumber: 788
 	                  }
 	                })
-	              )
+	              ),
+	              this.getDownloadAll()
 	            ),
 	            dom(
 	              LinearLayout,
@@ -40006,7 +40012,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 803
+	                  lineNumber: 804
 	                }
 	              },
 	              dom(TextView, {
@@ -40016,7 +40022,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 812
+	                  lineNumber: 813
 	                }
 	              })
 	            )
@@ -40025,7 +40031,7 @@
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 822
+	            lineNumber: 823
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -40033,7 +40039,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 825
+	            lineNumber: 826
 	          }
 	        })
 	      );
@@ -40093,7 +40099,7 @@
 	    var cb = res[0];
 	    var id = res[1];
 	    var data = JSON.parse(res[2]);
-	    if (id != _this3.baseIdentifier) return;
+	    if (id != _this3.baseIdentifier || _this3.gotSpine || _this3.cancelled) return;
 	
 	    if (cb == "onDownloadProgress") {
 	      var textToShow = "";
@@ -40104,11 +40110,10 @@
 	        return;
 	      }
 	
-	      data.Progress = data.downloadProgress == undefined || isNaN(data.downloadProgress) ? 0 : data.downloadProgress;
-	      _this3.downloadedPercent = data.downloadProgress;
-	      _this3.downloadedPercent = downloadedPercent < 0 ? 0 : downloadedPercent;
-	      console.log("downloadedPercent -> ", _this3.downloadedPercent);
-	      if (_this3.downloadedPercent < 100) {
+	      var downloadedPercent = data.downloadProgress == undefined || isNaN(data.downloadProgress) ? 0 : data.downloadProgress;
+	      downloadedPercent = downloadedPercent < 0 ? 0 : downloadedPercent;
+	      console.log("downloadedPercent -> ", downloadedPercent);
+	      if (downloadedPercent < 100) {
 	        window.__ContentLoaderDialog.show();
 	        window.__ContentLoaderDialog.setClickCallback(_this3.handleContentLoaderCancelClick);
 	        window.__ContentLoaderDialog.updateProgressBar(downloadedPercent);
@@ -40117,11 +40122,13 @@
 	      window.__ContentLoaderDialog.updateProgressBar(100);
 	      window.__ContentLoaderDialog.hide();
 	      _this3.renderChildren(_this3.baseIdentifier);
+	      _this3.gotSpine = true;
 	    }
 	  };
 	
 	  this.handleContentLoaderCancelClick = function () {
 	    JBridge.cancelDownload(_this3.baseIdentifier);
+	    _this3.cancelled = true;
 	    setTimeout(function () {
 	      window.__ContentLoaderDialog.hide();
 	      this.onBackPressed();
@@ -40151,7 +40158,7 @@
 	        Android.runInUI(_this.set({
 	          id: _this.idSet.downloadAllProgressButton,
 	          visibility: "visible"
-	        }), 0, "208", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	        }), 0, "209", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	      }
 	      console.log("to be downloaded -> ", _this.subContentArray);
 	    }
@@ -40215,7 +40222,7 @@
 	        padding: "0,8,0,8",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 266
+	          lineNumber: 267
 	        }
 	      },
 	      dom(TextView, {
@@ -40224,7 +40231,7 @@
 	        text: utils.firstLeterCapital(name),
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 273
+	          lineNumber: 274
 	        }
 	      }),
 	      dom(TextView, {
@@ -40233,7 +40240,7 @@
 	        text: description,
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 279
+	          lineNumber: 280
 	        }
 	      }),
 	      dom(
@@ -40243,7 +40250,7 @@
 	          height: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 285
+	            lineNumber: 286
 	          }
 	        },
 	        dom(TextView, {
@@ -40252,7 +40259,7 @@
 	          text: window.__S.CREATED_BY_SMALL + "  ",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 289
+	            lineNumber: 290
 	          }
 	        }),
 	        dom(TextView, {
@@ -40261,7 +40268,7 @@
 	          text: createdBy,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 294
+	            lineNumber: 295
 	          }
 	        })
 	      )
@@ -40298,7 +40305,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "332", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "333", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -40358,7 +40365,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 392
+	          lineNumber: 393
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -40366,7 +40373,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "403", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "404", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -40378,7 +40385,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 406
+	          lineNumber: 407
 	        }
 	      });
 	    }
@@ -40414,9 +40421,9 @@
 	        id: _this3.idSet.resumeCourseBtn,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "450", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "451", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
-	    if (_this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
+	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.startCourseBtn,
 	        visibility: "gone"
@@ -40426,7 +40433,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "463", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "464", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -40499,7 +40506,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 535
+	            lineNumber: 536
 	          }
 	        });
 	
@@ -40517,7 +40524,7 @@
 	  this.handleResumeClick = function () {
 	    console.log(_this3.apiDetails, "handleResumeClick this.apiDetails");
 	    var id;
-	    if (_this3.enrolledCourses.hasOwnProperty('lastReadContentId') && _this3.enrolledCourses.lastReadContentId != null) {
+	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty('lastReadContentId') && _this3.enrolledCourses.lastReadContentId != null) {
 	      console.log("this.enrolledCourses.lastReadContentId", _this3.enrolledCourses.lastReadContentId);
 	      id = _this3.enrolledCourses.lastReadContentId;
 	    } else if (_this3.apiDetails.hasOwnProperty("lastReadContentId") && _this3.apiDetails.lastReadContentId != null) {
@@ -40572,7 +40579,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 612
+	        lineNumber: 613
 	      }
 	    });
 	
@@ -40585,7 +40592,7 @@
 	      height: "2",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 626
+	        lineNumber: 627
 	      }
 	    });
 	  };
@@ -40611,7 +40618,7 @@
 	      hideDivider: "gone",
 	      handleButtonClick: _this3.showDownloadAllPopUp, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 647
+	        lineNumber: 648
 	      }
 	    });
 	    return _this3.__DownloadAllProgressButton;
@@ -40927,15 +40934,10 @@
 	    var _this2 = _possibleConstructorReturn(this, (DownloadAllProgressButton.__proto__ || Object.getPrototypeOf(DownloadAllProgressButton)).call(this, props, children));
 	
 	    _this2.update = function (listOfIds) {
-	      window.__getDownloadStatus = function (data) {
-	        console.log("__getDownloadStatus -> ", data);
-	      };
-	      window.__onContentImportResponse = _this2.afterDownload;
-	      // window.__onContentImportProgress = this.updateProgress;
 	      _this2.childrenArray = listOfIds;
 	      _this2.setCancelButtonVisibility("visible");
 	      JBridge.downloadAllContent(_this2.childrenArray, utils.getCallbacks(_this2.updateProgress, "", _this2.updateProgress));
-	      _this2.updateProgress(0);
+	      // this.updateProgress(0);
 	    };
 	
 	    _this2.setCancelButtonVisibility = function (visibility) {
@@ -40943,7 +40945,7 @@
 	        id: _this2.idSet.cancelDownloadHolder,
 	        visibility: visibility
 	      });
-	      Android.runInUI(cmd, 0, "57", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	      Android.runInUI(cmd, 0, "51", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	    };
 	
 	    _this2.handleCancelDownload = function () {
@@ -40955,41 +40957,68 @@
 	      });
 	      _this2.isCancelVisible = false;
 	      _this2.setCancelButtonVisibility("gone");
-	      _this2.startedDownloading = false;
 	      _this2.isDownloaded = false;
 	      _this2.replaceChild(_this2.idSet.downloadBarContainer, _this2.getButtons(0, _this2.props.buttonText).render(), 0);
 	    };
 	
-	    _this2.updateProgress = function (res) {
+	    _this2.checkCompleted = function () {
+	      var completed = 0;
+	      _this2.enqueuedForDownload.map(function (item) {
+	        if (item.status == 1) completed += 1;
+	      });
+	      return completed;
+	    };
 	
+	    _this2.updateProgress = function (res) {
+	      console.log("downloadAll res -> ", res);
 	      var cb = res[0];
 	      var id = res[1];
 	      var data = JSON.parse(res[2]);
 	
-	      if (cb == "onDownloadProgress") {} else if (cb == "onContentImportResponse") {}
-	      // var jsonResponse = JSON.parse(response);
-	      // console.log("response for download all", jsonResponse.status);
+	      if (cb == "importContentSuccessResponse") {
+	        data.result.map(function (item, i) {
+	          if (item.status == "ENQUEUED_FOR_DOWNLOAD") {
+	            _this2.enqueuedForDownload[i] = {
+	              id: item.identifier,
+	              status: 0
+	            };
+	          }
+	        });
+	        if (_this2.enqueuedForDownload.length == 0) {
+	          _this2.btnState = _this2.BTN_STATES.IDLE;
+	          JBridge.showToast("Error", "short");
+	          _this2.isDownloaded = false;
+	          _this2.setCancelButtonVisibility("gone");
+	          _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(0, _this2.props.buttonText).render(), 0);
+	        } else {
+	          _this2.btnState = _this2.BTN_STATES.DOWNLOADING;
+	          var text = "0/" + _this2.enqueuedForDownload.length;
+	          _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(progress, window.__S.DOWNLOADING_1.format(text)).render(), 0);
+	        }
+	      }
 	
-	      // if (jsonResponse.status == "IMPORT_COMPLETED") {
-	      //   this.downloadContentCount++;
-	      // }
-	
-	      // var textToShow = ""
-	      // var progress = 0
-	      // if (this.downloadContentCount == this.childrenCount) {
-	      //   textToShow = "All Contents Downloaded"
-	      //   this.setCancelButtonVisibility("gone");
-	      //   this.isCancelVisible = false;
-	      // } else {
-	      //   _this.isDownloaded = false;
-	      //   textToShow = "DOWNLOADING " + this.downloadContentCount + "/" + this.childrenCount
-	      //   progress = (this.downloadContentCount / this.childrenCount) * 100;
-	      // }
-	      // if (!this.isCancelVisible) {
-	      //   this.setCancelButtonVisibility("visible");
-	      //   this.isCancelVisible = true;
-	      // }
-	      _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(0, window.__S.DOWNLOADING.format(progress)).render(), 0);
+	      if (cb == "onDownloadProgress" && _this2.enqueuedForDownload.length != 0 && _this2.btnState == _this2.BTN_STATES.DOWNLOADING) {
+	        var completed = _this2.checkCompleted();
+	        var progress = completed / _this2.enqueuedForDownload.length * 100;
+	        var text = completed + "/" + _this2.enqueuedForDownload.length;
+	        _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(progress, window.__S.DOWNLOADING_1.format(text)).render(), 0);
+	      } else if (cb == "onContentImportResponse" && _this2.enqueuedForDownload.length != 0 && _this2.btnState == _this2.BTN_STATES.DOWNLOADING) {
+	        if (data.status == "IMPORT_COMPLETED") {
+	          var newArr = _this2.enqueuedForDownload.map(function (item, i) {
+	            if (item.id == data.identifier) return { id: item.id, status: 1 };else return item;
+	          });
+	          _this2.enqueuedForDownload = newArr;
+	        }
+	        var noDownloaded = _this2.checkCompleted();
+	        if (noDownloaded == _this2.enqueuedForDownload.length) {
+	          JBridge.showToast("Download Completed", "short");
+	          var cmd = _this2.set({
+	            id: _this2.id,
+	            visibility: "gone"
+	          });
+	          Android.runInUI(cmd, 0, "123", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	        }
+	      }
 	    };
 	
 	    _this2.afterDownload = function (response) {
@@ -41000,7 +41029,7 @@
 	          id: _this2.id,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "118", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	        Android.runInUI(cmd, 0, "136", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	        window.__Snackbar.show("Downloaded all contents");
 	      }
 	    };
@@ -41034,7 +41063,7 @@
 	          root: "true",
 	          height: "48", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 146
+	            lineNumber: 164
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -41043,7 +41072,7 @@
 	          weight: pLeft,
 	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 151
+	            lineNumber: 169
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -41052,7 +41081,7 @@
 	          weight: pRight,
 	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 157
+	            lineNumber: 175
 	          }
 	        })
 	      );
@@ -41068,7 +41097,7 @@
 	          root: "true",
 	          onClick: _this2.handleButtonClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 168
+	            lineNumber: 186
 	          }
 	        },
 	        _this2.getDownloadBackground(value),
@@ -41080,7 +41109,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: text, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 176
+	            lineNumber: 194
 	          }
 	        })
 	      );
@@ -41098,20 +41127,11 @@
 	    _this2.btnState = _this2.BTN_STATES.IDLE;
 	    _this2.childrenArray = [];
 	    _this2.isDownloaded = false;
-	    _this2.startedDownloading = false;
 	    _this2.id = _this2.props.id ? _this2.props.id : _this2.idSet.downloadBtn;
+	    _this2.enqueuedForDownload = [];
 	    _this = _this2;
 	    _this2.isCancelVisible = false;
 	    console.log("DownloadAllProgressButton props", _this2.props);
-	    window.__getDownloadStatus = function (data) {
-	      console.log("__getDownloadStatus -> ", data);
-	    };
-	    window.__onContentImportResponse = function (data) {
-	      console.log("__onContentImportResponse -> ", data);
-	    };
-	    window.__onContentImportProgress = function (data) {
-	      console.log("__onContentImportProgress -> ", data);
-	    };
 	    return _this2;
 	  }
 	
@@ -41130,7 +41150,7 @@
 	          id: this.id,
 	          layoutTransition: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 189
+	            lineNumber: 207
 	          }
 	        },
 	        dom(
@@ -41141,7 +41161,7 @@
 	            root: "true",
 	            id: this.idSet.downloadBarContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 199
+	              lineNumber: 217
 	            }
 	          },
 	          this.getButtons(0, this.props.buttonText)
@@ -41155,7 +41175,7 @@
 	            id: this.idSet.cancelDownloadHolder,
 	            onClick: this.handleCancelDownload, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 208
+	              lineNumber: 226
 	            }
 	          },
 	          dom(ImageView, {
@@ -41163,7 +41183,7 @@
 	            width: "48",
 	            imageUrl: "ic_action_close", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 215
+	              lineNumber: 233
 	            }
 	          })
 	        )
