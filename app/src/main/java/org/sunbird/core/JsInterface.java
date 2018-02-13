@@ -2240,10 +2240,14 @@ public class JsInterface {
     public String checkConnectionType() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
-            return "wifi";
-        else
-            return "mobile network";
+        if (activeNetwork == null) {
+            return "none";
+        } else {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+                return "wifi";
+            else
+                return "mobile network";
+        }
     }
 
     @JavascriptInterface
