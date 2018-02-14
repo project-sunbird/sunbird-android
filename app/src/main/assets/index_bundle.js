@@ -23276,10 +23276,10 @@
 	      JBridge.logCorrelationPageEvent("SPLASHSCREEN", "", "");
 	
 	      setTimeout(function () {
-	        if (window.__loggedInState == "YES" || window.__loggedInState == "GUEST") {
-	          var event = { tag: "OPEN_UserActivity", contents: [] };
-	        } else if (_this.isUserOnboarded == "__failed" || _this.isUserOnboarded == "false") {
+	        if ((window.__loggedInState != "YES" || window.__loggedInState != "GUEST") && (_this.isUserOnboarded == "__failed" || _this.isUserOnboarded == "false")) {
 	          var event = { tag: "OPEN_LanguageSelectActivity", contents: [] };
+	        } else {
+	          var event = { tag: "OPEN_UserActivity", contents: [] };
 	        }
 	        window.__runDuiCallback(event);
 	      }, 2000);
