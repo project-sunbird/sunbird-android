@@ -89,6 +89,7 @@ public class GenieWrapper extends Activity {
     private List<Content> list;
     private ContentSearchResult contentSearchResult;
     private DynamicUI dynamicUI;
+    private ArrayList<CallbackContainer> cbContainerArr;
 
     public GenieWrapper(MainActivity activity, DynamicUI dynamicUI) {
         this.activity = activity;
@@ -490,6 +491,7 @@ public class GenieWrapper extends Activity {
         builder.add(contentImport);
 
         final CallbackContainer cbHandler = new CallbackContainer(course_id, callbacks);
+        startEventBus(cbHandler);
 //        EventBus.getDefault().unregister(cbHandler);
         EventBus.getDefault().register(cbHandler);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
@@ -513,7 +515,7 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void downloadAllContent(final String[] mIdentifierList, final String[] callbacks) {
+    public void downloadAllContent(final String cb_id, final String[] mIdentifierList, final String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
 
@@ -533,7 +535,8 @@ public class GenieWrapper extends Activity {
             builder.add(contentImport);
         }
 
-        CallbackContainer cbHandler = new CallbackContainer(mIdentifierList[0], callbacks);
+        CallbackContainer cbHandler = new CallbackContainer(cb_id, callbacks);
+        startEventBus(cbHandler);
         EventBus.getDefault().unregister(cbHandler);
         EventBus.getDefault().register(cbHandler);
         mGenieAsyncService.getContentService().importContent(builder.build(), new IResponseHandler<List<ContentImportResponse>>() {
@@ -555,14 +558,14 @@ public class GenieWrapper extends Activity {
 //                    dynamicUI.addJsToWebView(date);
 //                }
                 String importResponse = GsonUtil.toJson(genieResponse);
-                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentSuccessResponse", mIdentifierList[0], importResponse);
+                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentSuccessResponse", cb_id, importResponse);
                 dynamicUI.addJsToWebView(javascript);
             }
 
             @Override
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
                 String importResponse = GsonUtil.toJson(genieResponse);
-                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentErrorResponse", mIdentifierList[0], importResponse);
+                String javascript = String.format("window.callJSCallback('%s','%s','%s','%s');", callbacks[0], "importContentErrorResponse", cb_id, importResponse);
                 dynamicUI.addJsToWebView(javascript);
             }
         });
@@ -588,7 +591,26 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void stopEventBus() {
+    public void startEventBus(CallbackContainer cb) {
+        if (cbContainerArr == null) {
+            cbContainerArr = new ArrayList<>();
+        }
+        cbContainerArr.add(cb);
+//        EventBus.getDefault().register(cb);
+    }
+
+    public void stopEventBus(String id) {
+        for (int i = 0; i < cbContainerArr.size(); i++) {
+            if (cbContainerArr.get(i).getId() == id) {
+                EventBus.getDefault().unregister(cbContainerArr.get(i));
+                cbContainerArr.remove(i);
+            }
+        }
+//        if (telemetryListener != null)
+//            EventBus.getDefault().unregister(telemetryListener);
+    }
+
+    public void stopTelemetryEvent() {
         if (telemetryListener != null)
             EventBus.getDefault().unregister(telemetryListener);
     }
@@ -620,6 +642,7 @@ public class GenieWrapper extends Activity {
 
         String id = "1234567890";
         final CallbackContainer cbHandler = new CallbackContainer(id, callbacks);
+        startEventBus(cbHandler);
         EventBus.getDefault().register(cbHandler);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
@@ -849,6 +872,10 @@ public class GenieWrapper extends Activity {
         public CallbackContainer (String identifier, String telemetryCallback) {
             this.id = identifier;
             this.telemetryCb = telemetryCallback;
+        }
+
+        public String getId() {
+            return this.id;
         }
 
         @Subscribe(threadMode = ThreadMode.MAIN)

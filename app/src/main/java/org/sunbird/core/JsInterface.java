@@ -1095,9 +1095,14 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void stopEventBus() {
+    public void stopEventBus(String id) {
         Log.e("stop event bus", "");
-        genieWrapper.stopEventBus();
+        genieWrapper.stopEventBus(id);
+    }
+
+    @JavascriptInterface
+    public void stopTelemetryEvent() {
+        genieWrapper.stopTelemetryEvent();
     }
 
     @JavascriptInterface
@@ -2251,8 +2256,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void downloadAllContent(String[] indetifierList, String[] callbacks) {
-        genieWrapper.downloadAllContent(indetifierList, callbacks);
+    public void downloadAllContent(String cb_id, String[] indetifierList, String[] callbacks) {
+        genieWrapper.downloadAllContent(cb_id, indetifierList, callbacks);
     }
 
 
