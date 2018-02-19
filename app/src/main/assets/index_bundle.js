@@ -36831,7 +36831,7 @@
 	          height: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 487
+	            lineNumber: 493
 	          }
 	        },
 	        dom(
@@ -36843,7 +36843,7 @@
 	            gravity: "center",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 495
+	              lineNumber: 501
 	            }
 	          },
 	          dom(ImageView, {
@@ -36852,7 +36852,7 @@
 	            layout_gravity: "center",
 	            circularImageUrl: "1," + imgUrl, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 502
+	              lineNumber: 508
 	            }
 	          }),
 	          dom(TextView, {
@@ -36862,7 +36862,7 @@
 	            height: "wrap_content",
 	            textSize: "18", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 508
+	              lineNumber: 514
 	            }
 	          })
 	        ),
@@ -36877,7 +36877,7 @@
 	            id: this.idSet.importEcarLayout,
 	            visibility: "gone", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 516
+	              lineNumber: 522
 	            }
 	          },
 	          dom(ProgressBar, {
@@ -36886,7 +36886,7 @@
 	            margin: "0,0,15,0",
 	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 525
+	              lineNumber: 531
 	            }
 	          }),
 	          dom(TextView, {
@@ -36895,7 +36895,7 @@
 	            width: "wrap_content",
 	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 531
+	              lineNumber: 537
 	            }
 	          })
 	        )
@@ -36917,17 +36917,18 @@
 	
 	    console.log("response for import", data);
 	
-	    if (data.status != "ALREADY_EXIST" && data.status == "IMPORT_COMPLETED") {
+	    if (data.status == "IMPORT_COMPLETED") {
 	      console.log("content doesnot ALREADY_EXIST");
 	      var identifier;
 	      if (data.identifier != undefined && data.identifier != "") {
 	        console.log("identifier fetched >>" + data.identifier + "<<");
 	        identifier = data.identifier;
 	        _this.handleDeepLinkAction(identifier);
+	        return;
 	      } else {
 	        console.log("no identifier fetched ", data.identifier);
 	        JBridge.showToast(window.__S.MSG_IMPORTED_SUCCESSFULLY, "short");
-	        if (window.__loggedInState != "GUEST" || window.__loggedInState != "YES") {
+	        if (window.__loggedInState != "GUEST" && window.__loggedInState != "YES") {
 	          _this3.showLoginOptions();
 	        } else {
 	          _this3.setLoginPreferences();
@@ -36938,8 +36939,13 @@
 	    } else if (response.status == "ALREADY_EXIST") {
 	      console.log("content ALREADY_EXIST");
 	      JBridge.showToast(window.__S.MSG_ALREADY_IMPORTED, "short");
-	      var event = { tag: "OPEN_MainActivity", contents: [] };
-	      window.__runDuiCallback(event);
+	      if (window.__loggedInState != "GUEST" && window.__loggedInState != "YES") {
+	        _this3.showLoginOptions();
+	      } else {
+	        _this3.setLoginPreferences();
+	        var event = { tag: "OPEN_MainActivity", contents: [] };
+	        window.__runDuiCallback(event);
+	      }
 	    }
 	  };
 	
@@ -36960,7 +36966,7 @@
 	      text: progress
 	    });
 	
-	    Android.runInUI(cmd, 0, "111", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(cmd, 0, "117", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleDeepLinkAction = function (identifier) {
@@ -37162,7 +37168,7 @@
 	        gravity: "center",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 307
+	          lineNumber: 313
 	        }
 	      },
 	      dom(ImageView, {
@@ -37170,7 +37176,7 @@
 	        width: "60",
 	        imageUrl: "ic_launcher", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 314
+	          lineNumber: 320
 	        }
 	      }),
 	      dom(TextView, {
@@ -37180,7 +37186,7 @@
 	        margin: "0,12,0,6",
 	        style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 319
+	          lineNumber: 325
 	        }
 	      }),
 	      dom(TextView, {
@@ -37189,7 +37195,7 @@
 	        text: window.__S.WELCOME_M2,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 326
+	          lineNumber: 332
 	        }
 	      })
 	    );
@@ -37206,7 +37212,7 @@
 	        orientation: "vertical",
 	        margin: "24,0,24,0", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 337
+	          lineNumber: 343
 	        }
 	      },
 	      dom(
@@ -37216,7 +37222,7 @@
 	          width: "match_parent",
 	          onClick: _this3.handleLoginClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 344
+	            lineNumber: 350
 	          }
 	        },
 	        dom(TextView, {
@@ -37230,7 +37236,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: window.__S.SIGN_IN, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 349
+	            lineNumber: 355
 	          }
 	        })
 	      ),
@@ -37243,7 +37249,7 @@
 	          layoutTransition: "true",
 	          onClick: _this3.handleBrowseAsGuest, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 361
+	            lineNumber: 367
 	          }
 	        },
 	        dom(TextView, {
@@ -37257,7 +37263,7 @@
 	          background: window.__Colors.WHITE,
 	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 368
+	            lineNumber: 374
 	          }
 	        })
 	      )
@@ -37276,7 +37282,7 @@
 	        background: window.__Colors.WHITE,
 	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 384
+	          lineNumber: 390
 	        }
 	      },
 	      dom(
@@ -37290,7 +37296,7 @@
 	          gravity: "center",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 393
+	            lineNumber: 399
 	          }
 	        },
 	        _this3.getTopLayout()
@@ -37679,7 +37685,7 @@
 	      _this.localContent = JSON.parse(utils.decodeBase64(data[0]));
 	      if (_this.localContent.isAvailableLocally == true) {
 	        JBridge.logCourseDetailScreenEvent(_this.details.identifier, _this.details.pkgVersion, true);
-	        _this.renderChildren();
+	        _this.renderChildren(identifier);
 	      } else {
 	        JBridge.logCourseDetailScreenEvent(_this.details.identifier, _this.details.pkgVersion, false);
 	        var callback22 = callbackMapper.map(function (data) {
