@@ -4,4 +4,5 @@
     <string name="deeplink_scheme_http">http</string>
     <string name="deeplink_scheme_https">https</string>
     <string name="deeplink_scheme_content">content</string>
+    <string name="supportEmail">support@diksha.gov.in</string>
 </resources>

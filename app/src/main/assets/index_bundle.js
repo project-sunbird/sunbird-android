@@ -57,11 +57,11 @@
 	
 	var _container2 = _interopRequireDefault(_container);
 	
-	var _ext = __webpack_require__(501);
+	var _ext = __webpack_require__(505);
 	
 	var _ext2 = _interopRequireDefault(_ext);
 	
-	var _index = __webpack_require__(502);
+	var _index = __webpack_require__(506);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -355,42 +355,46 @@
 	var LanguageSelectActivity = __webpack_require__(401);
 	var WelcomeScreenActivity = __webpack_require__(402);
 	var StateSelectActivity = __webpack_require__(404);
+	var SettingsScreenActivity = __webpack_require__(405);
+	var AboutUsActivity = __webpack_require__(408);
+	var AboutUsScreen = __webpack_require__(409);
+	var LanguageSelectActivitySt = __webpack_require__(410);
 	
 	//Home
-	var MainActivity = __webpack_require__(405);
-	var UserActivity = __webpack_require__(452);
+	var MainActivity = __webpack_require__(411);
+	var UserActivity = __webpack_require__(457);
 	//Course or Learn
-	var CourseInfoActivity = __webpack_require__(454);
-	var CourseEnrolledActivity = __webpack_require__(462);
-	var ModuleDetailActivity = __webpack_require__(465);
-	var ViewBatchActivity = __webpack_require__(466);
+	var CourseInfoActivity = __webpack_require__(458);
+	var CourseEnrolledActivity = __webpack_require__(466);
+	var ModuleDetailActivity = __webpack_require__(469);
+	var ViewBatchActivity = __webpack_require__(470);
 	
 	//Resource
 	
 	//Comunity
-	var CommunityInfoActivity = __webpack_require__(468);
-	var CommunityViewAllActivity = __webpack_require__(474);
+	var CommunityInfoActivity = __webpack_require__(472);
+	var CommunityViewAllActivity = __webpack_require__(478);
 	//Profile
-	var NotificationActivity = __webpack_require__(475);
-	var ResourceDetailActivity = __webpack_require__(476);
-	var ResourceViewAllActivity = __webpack_require__(477);
-	var CourseViewAllActivity = __webpack_require__(479);
-	var AnnouncementViewAllActivity = __webpack_require__(480);
-	var SearchActivity = __webpack_require__(481);
-	var FilterActivity = __webpack_require__(483);
-	var AdditionalInformationActivity = __webpack_require__(486);
-	var GuestInformationActivity = __webpack_require__(488);
-	var AddressActivity = __webpack_require__(489);
-	var EducationActivity = __webpack_require__(492);
-	var ExperienceActivity = __webpack_require__(493);
-	var CommProfSearchActivity = __webpack_require__(494);
-	var ProfileActivity = __webpack_require__(495);
-	var AnnouncementDetailActivity = __webpack_require__(496);
+	var NotificationActivity = __webpack_require__(479);
+	var ResourceDetailActivity = __webpack_require__(480);
+	var ResourceViewAllActivity = __webpack_require__(481);
+	var CourseViewAllActivity = __webpack_require__(483);
+	var AnnouncementViewAllActivity = __webpack_require__(484);
+	var SearchActivity = __webpack_require__(485);
+	var FilterActivity = __webpack_require__(487);
+	var AdditionalInformationActivity = __webpack_require__(490);
+	var GuestInformationActivity = __webpack_require__(492);
+	var AddressActivity = __webpack_require__(493);
+	var EducationActivity = __webpack_require__(496);
+	var ExperienceActivity = __webpack_require__(497);
+	var CommProfSearchActivity = __webpack_require__(498);
+	var ProfileActivity = __webpack_require__(499);
+	var AnnouncementDetailActivity = __webpack_require__(500);
 	
-	var ContentPreviewScreen = __webpack_require__(498);
-	var QRActivity = __webpack_require__(499);
+	var ContentPreviewScreen = __webpack_require__(502);
+	var QRActivity = __webpack_require__(503);
 	// ScreenActions
-	var RootScreenActions = __webpack_require__(500);
+	var RootScreenActions = __webpack_require__(504);
 	
 	var determineScreen = function determineScreen(screenName, state) {
 	  var screen;
@@ -406,6 +410,18 @@
 	      break;
 	    case "LanguageSelectActivity":
 	      screen = new (LanguageSelectActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "LanguageSelectActivitySt":
+	      screen = new (LanguageSelectActivitySt(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "SettingsScreenActivity":
+	      screen = new (SettingsScreenActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "AboutUsActivity":
+	      screen = new (AboutUsActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "AboutUsScreen":
+	      screen = new (AboutUsScreen(dispatcher, RootScreenActions))(null, null, state);
 	      break;
 	    case "WelcomeScreenActivity":
 	      screen = new (WelcomeScreenActivity(dispatcher, RootScreenActions))(null, null, state);
@@ -12341,6 +12357,22 @@
 	  localState = payload;
 	
 	  switch (action) {
+	    case "SettingsScreenActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "SettingsScreenActivity";
+	      break;
+	    case "AboutUsScreen":
+	      localState.isInit = false;
+	      localState.currScreen = "AboutUsScreen";
+	      break;
+	    case "AboutUsActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "AboutUsActivity";
+	      break;
+	    case "LanguageSelectActivitySt":
+	      localState.isInit = false;
+	      localState.currScreen = "LanguageSelectActivitySt";
+	      break;
 	    case "GuestInformationActivity":
 	      localState.isInit = false;
 	      localState.currScreen = "GuestInformationActivity";
@@ -22306,7 +22338,7 @@
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
 			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social Media Links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _en_US),
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social Media Links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -24071,6 +24103,1356 @@
 
 	"use strict";
 	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SettingsScreenActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var RelativeLayout = __webpack_require__(340);
+	var HorizontalScrollView = __webpack_require__(357);
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var TextInputView = __webpack_require__(406);
+	var CircularLoader = __webpack_require__(407);
+	var SimpleToolbar = __webpack_require__(382);
+	var TextStyle = __webpack_require__(343);
+	
+	window.R = __webpack_require__(7);
+	var _this;
+	
+	var SettingsScreenActivity = function (_View) {
+	    _inherits(SettingsScreenActivity, _View);
+	
+	    function SettingsScreenActivity(props, children, state) {
+	        _classCallCheck(this, SettingsScreenActivity);
+	
+	        var _this2 = _possibleConstructorReturn(this, (SettingsScreenActivity.__proto__ || Object.getPrototypeOf(SettingsScreenActivity)).call(this, props, children, state));
+	
+	        _this2.defaultlang = function () {
+	            var languages = window.__RootScreen.languageMap;
+	            var currLanguageCode = window.__CurrentLanguage;
+	            for (var language in languages) {
+	                if (languages[language] == currLanguageCode) return language;
+	            }
+	            return "Error getting language";
+	        };
+	
+	        _this2.datasync = function () {
+	            var whatToSend = [];
+	            var event = { tag: "OPEN_DataSync", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.handleClick = function () {
+	            window.__Snackbar.show(window.__S.COMING_SOON);
+	        };
+	
+	        _this2.handleChangeLang = function () {
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "OPEN_LanguageSelectActivitySt", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.handleShareClick = function () {
+	            Android.runInUI(_this2.set({
+	                id: _this2.idSet.popUpContainer,
+	                visibility: "visible"
+	            }), 0, "60", "UsersnikithshettysunbirdgithubsunbirdduiviewsSettingsScreenActivityjs");
+	            JBridge.shareApk(_this2.idSet.linkShareIntents);
+	        };
+	
+	        _this2.openAboutUsActivity = function () {
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "OPEN_AboutUsActivity", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.onBackPressed = function () {
+	            var whatToSend = [];
+	            var event = { tag: "BACK_SettingsScreenActivity", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.handleDismissClick = function () {
+	            Android.runInUI(_this2.set({
+	                id: _this2.idSet.popUpContainer,
+	                visibility: "gone"
+	            }), 0, "81", "UsersnikithshettysunbirdgithubsunbirdduiviewsSettingsScreenActivityjs");
+	        };
+	
+	        _this2.handleSupportClick = function () {
+	            JBridge.supportEmail();
+	        };
+	
+	        _this2.getSharePopUP = function () {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "match_parent",
+	                    width: "match_parent",
+	                    id: _this2.idSet.popUpContainer,
+	                    visibility: "gone",
+	                    root: "true",
+	                    background: window.__Colors.PRIMARY_BLACK_44,
+	                    orientation: "vertical", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 93
+	                    }
+	                },
+	                dom(LinearLayout, {
+	                    height: "0",
+	                    width: "match_parent",
+	                    onClick: _this2.handleDismissClick,
+	                    weight: "1", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 102
+	                    }
+	                }),
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        cornerRadius: "2",
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        root: "true",
+	                        visibility: "visible",
+	                        orientation: "vertical",
+	                        clickable: "true",
+	                        padding: "16,18,16,16",
+	                        background: "#ffffff", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 108
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            gravity: "center_vertical",
+	                            margin: "0,0,0,16", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 119
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            gravity: "center_vertical",
+	                            text: window.__S.SHARE_APP.format(JBridge.getAppName()),
+	                            style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 125
+	                            }
+	                        }),
+	                        dom(LinearLayout, {
+	                            width: "0",
+	                            weight: "1",
+	                            height: "0", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 132
+	                            }
+	                        }),
+	                        dom(ImageView, {
+	                            width: "18",
+	                            height: "18",
+	                            onClick: _this2.handleDismissClick,
+	                            gravity: "center_vertical",
+	                            imageUrl: "ic_action_close", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 137
+	                            }
+	                        })
+	                    ),
+	                    dom(
+	                        HorizontalScrollView,
+	                        {
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            scrollBarX: "false",
+	                            fillViewport: "true", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 145
+	                            }
+	                        },
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                margin: "0,8,0,24",
+	                                width: "wrap_content",
+	                                id: _this2.idSet.linkShareIntents,
+	                                height: "match_parent", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 151
+	                                }
+	                            },
+	                            dom(CircularLoader, {
+	                                margin: "0,0,0,0", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 157
+	                                }
+	                            })
+	                        )
+	                    )
+	                )
+	            );
+	        };
+	
+	        _this2.getBody = function (mainstr, substr, fun) {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    background: "#ffffff",
+	                    width: "match_parent",
+	                    height: "wrap_content", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 175
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        onClick: fun,
+	                        height: "wrap_content",
+	                        clickable: "true",
+	                        background: "#ffffff",
+	                        orientation: "horizontal", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 179
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            padding: "16,16,16,16",
+	                            orientation: "vertical", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 186
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            width: "wrap_content",
+	                            textSize: "14",
+	                            height: "wrap_content",
+	                            color: "#000000"
+	                            //style= {TextStyle.DARK}
+	                            , text: mainstr, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 191
+	                            }
+	                        }),
+	                        dom(TextView, {
+	                            textSize: "14",
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            color: "#000000",
+	                            alpha: "0.3",
+	                            text: substr, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 198
+	                            }
+	                        })
+	                    ),
+	                    dom(LinearLayout, {
+	                        height: "match_parent",
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 206
+	                        }
+	                    }),
+	                    dom(ImageView, {
+	                        width: "10",
+	                        height: "10",
+	                        imageUrl: "ic_action_arrow_right",
+	                        margin: "0,25,8,0", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 209
+	                        }
+	                    })
+	                )
+	            );
+	        };
+	
+	        _this2.getBody2 = function (mainStr, fun) {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    background: "#ffffff",
+	                    width: "match_parent",
+	                    height: "wrap_content", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 219
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        onClick: fun,
+	                        height: "wrap_content",
+	                        clickable: "true",
+	                        background: "#ffffff",
+	                        orientation: "horizontal", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 223
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            padding: "16,16,16,16",
+	                            orientation: "vertical", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 230
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            width: "wrap_content",
+	                            textSize: "14",
+	                            height: "wrap_content",
+	                            color: "#000000",
+	                            text: mainStr, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 235
+	                            }
+	                        })
+	                    ),
+	                    dom(LinearLayout, {
+	                        height: "match_parent",
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 242
+	                        }
+	                    }),
+	                    dom(ImageView, {
+	                        width: "10",
+	                        height: "10",
+	                        imageUrl: "ic_action_arrow_right",
+	                        margin: "0,25,8,0", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 245
+	                        }
+	                    })
+	                )
+	            );
+	        };
+	
+	        _this2.render = function () {
+	            _this2.layout = dom(
+	                RelativeLayout,
+	                {
+	                    root: "true",
+	                    width: "match_parent",
+	                    height: "match_parent", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 256
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        background: "#e2e2e2",
+	                        orientation: "vertical",
+	                        width: "match_parent",
+	                        height: "match_parent", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 260
+	                        }
+	                    },
+	                    dom(SimpleToolbar, {
+	                        title: "Settings",
+	                        afterRender: _this2.afterRender,
+	                        width: "match_parent",
+	                        onBackPress: _this2.onBackPressed, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 265
+	                        }
+	                    }),
+	                    dom(LinearLayout, {
+	                        width: "match_parent",
+	                        height: "4", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 270
+	                        }
+	                    }),
+	                    _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody("Data Sync", "Backup your data, Transfer Telemetry", _this2.handleClick),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody("Device Tags", "Add/Remove Device Tags", _this2.handleClick),
+	                    dom(LinearLayout, {
+	                        width: "match_parent",
+	                        height: "4", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 278
+	                        }
+	                    }),
+	                    _this2.getBody(window.__S.SUPPORT, window.__S.SUPPORT_MESSAGE, _this2.handleSupportClick),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody2(window.__S.SHARE_APP.format(JBridge.getAppName()), _this2.handleShareClick),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody2(window.__S.ABOUT_APP, _this2.openAboutUsActivity)
+	                ),
+	                _this2.getSharePopUP()
+	            );
+	            return _this2.layout.render();
+	        };
+	
+	        _this2.setIds(["linkShareIntents", "popUpContainer", "parentId"]);
+	        _this2.shouldCacheScreen = false;
+	        window.__SettingsScreenActivity = _this2;
+	        //this.defaultlang = this.getCurrentLanguage();
+	        _this2.visible = true;
+	        _this2.screenName = "Settings";
+	        _this = _this2;
+	        return _this2;
+	    }
+	
+	    _createClass(SettingsScreenActivity, [{
+	        key: "getLineSeperator",
+	        value: function getLineSeperator() {
+	            return dom(LinearLayout, {
+	                width: "match_parent",
+	                height: "1",
+	                padding: "0,1,0,0",
+	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 167
+	                }
+	            });
+	        }
+	    }]);
+	
+	    return SettingsScreenActivity;
+	}(View);
+	
+	module.exports = Connector(SettingsScreenActivity);
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/TextInputView.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var View = __webpack_require__(331);
+	var ViewWidget = __webpack_require__(349);
+	var RelativeLayout = __webpack_require__(340);
+	
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var ImageView = __webpack_require__(350);
+	
+	var TextInputView = function (_View) {
+	  _inherits(TextInputView, _View);
+	
+	  function TextInputView(props, children) {
+	    _classCallCheck(this, TextInputView);
+	
+	    var _this = _possibleConstructorReturn(this, (TextInputView.__proto__ || Object.getPrototypeOf(TextInputView)).call(this, props, children));
+	
+	    _this.handleOnChange = function (data) {
+	
+	      _this.props._onChange(data);
+	    };
+	
+	    _this.afterRender = function () {
+	      JBridge.changeFontStylePassword(_this.props.id ? _this.props.id : _this.idSet.editText);
+	    };
+	
+	    _this.setIds(["parentContainer", "editText"]);
+	    _this.displayName = "TextInputview";
+	
+	    return _this;
+	  }
+	
+	  _createClass(TextInputView, [{
+	    key: "render",
+	    value: function render() {
+	
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          id: this.idSet.parentContainer,
+	          width: "match_parent",
+	          height: "wrap_content",
+	          afterRender: this.afterRender,
+	          margin: this.props.margin,
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 39
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            height: "wrap_content",
+	            width: "match_parent",
+	            orientation: "horizontal", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 47
+	            }
+	          },
+	          dom(TextView, {
+	            textFromHtml: this.props.labelText,
+	            padding: "4,0,0,0",
+	            style: this.props.textStyle ? this.props.textStyle : window.__TextStyle.textStyle.BOTTOMBAR.DEFAULT,
+	            width: "wrap_content",
+	            height: "wrap_content", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 52
+	            }
+	          }),
+	          dom(TextView, {
+	            height: "wrap_content",
+	            width: "wrap_content",
+	            text: " *",
+	            visibility: this.props.mandatory && this.props.mandatory == "true" ? "visible" : "gone",
+	            color: window.__Colors.ERROR_RED, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 59
+	            }
+	          })
+	        ),
+	        dom(EditText, {
+	          padding: this.props.editTextPadding || "4,4,0,10",
+	          width: "match_parent",
+	          height: "wrap_content",
+	          id: this.props.id ? this.props.id : this.idSet.editText,
+	          singleLine: "true",
+	          maxLine: "1",
+	          style: this.props.editTextStyle ? this.props.editTextStyle : "",
+	          inputType: this.props.inputType ? this.props.inputType : "text",
+	          color: this.props.color,
+	          hint: this.props.hintText,
+	          text: this.props.text ? this.props.text : "",
+	          onChange: this.handleOnChange, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 67
+	          }
+	        })
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return TextInputView;
+	}(View);
+	
+	module.exports = TextInputView;
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CircularLoader.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ProgressBar = __webpack_require__(359);
+	
+	var CircularLoader = function (_View) {
+	    _inherits(CircularLoader, _View);
+	
+	    function CircularLoader(props, children, state) {
+	        _classCallCheck(this, CircularLoader);
+	
+	        var _this = _possibleConstructorReturn(this, (CircularLoader.__proto__ || Object.getPrototypeOf(CircularLoader)).call(this, props, children, state));
+	
+	        _this.width = _this.props.width ? _this.props.width : "match_parent";
+	        _this.height = _this.props.height ? _this.props.height : "match_parent";
+	        _this.padding = _this.props.padding ? _this.props.padding : "0,0,0,0";
+	        _this.margin = _this.props.margin ? _this.props.margin : "0,0,0,0";
+	        _this.size = _this.props.size ? _this.props.size : "20";
+	        return _this;
+	    }
+	
+	    _createClass(CircularLoader, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                LinearLayout,
+	                {
+	                    width: this.width,
+	                    height: this.height,
+	                    gravity: "center",
+	                    padding: this.padding,
+	                    margin: this.margin, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 19
+	                    }
+	                },
+	                dom(LinearLayout, {
+	                    height: this.size,
+	                    weight: "1",
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 25
+	                    }
+	                }),
+	                dom(ProgressBar, {
+	                    weight: "1",
+	                    height: this.size,
+	                    width: this.size,
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 29
+	                    }
+	                }),
+	                dom(LinearLayout, {
+	                    height: this.size,
+	                    weight: "1",
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 34
+	                    }
+	                })
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return CircularLoader;
+	}(View);
+	
+	module.exports = CircularLoader;
+
+/***/ }),
+/* 408 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AboutUsActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var RelativeLayout = __webpack_require__(340);
+	
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var TextInputView = __webpack_require__(406);
+	var SimpleToolbar = __webpack_require__(382);
+	var TextStyle = __webpack_require__(343);
+	
+	window.R = __webpack_require__(7);
+	var _this;
+	
+	var AboutUsActivity = function (_View) {
+	    _inherits(AboutUsActivity, _View);
+	
+	    function AboutUsActivity(props, children, state) {
+	        _classCallCheck(this, AboutUsActivity);
+	
+	        var _this2 = _possibleConstructorReturn(this, (AboutUsActivity.__proto__ || Object.getPrototypeOf(AboutUsActivity)).call(this, props, children, state));
+	
+	        _this2.handleClick = function () {
+	            window.__Snackbar.show(window.__S.COMING_SOON);
+	        };
+	
+	        _this2.onBackPressed = function () {
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "BACK_AboutUsActivity", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.nextScreen = function () {
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "OPEN_AboutUsScreen", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.getBody = function (mainStr, substr) {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "wrap_content",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: "#ffffff", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 56
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "wrap_content",
+	                        height: "wrap_content",
+	                        padding: "16,16,16,16",
+	                        orientation: "vertical", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 61
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        height: "wrap_content",
+	                        width: "wrap_content",
+	                        text: mainStr,
+	                        textSize: "14",
+	                        color: "#FF000000",
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 66
+	                        }
+	                    }),
+	                    dom(TextView, {
+	                        height: "wrap_content",
+	                        width: "wrap_content",
+	                        padding: "0,4,0,0",
+	                        text: substr,
+	                        textSize: "14",
+	                        color: "#FF969696",
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 73
+	                        }
+	                    })
+	                )
+	            );
+	        };
+	
+	        _this2.getBody2 = function (mainStr, fun) {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "wrap_content",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: "#ffffff", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 86
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        onClick: fun,
+	                        height: "wrap_content",
+	                        clickable: "true",
+	                        background: "#ffffff",
+	                        orientation: "horizontal", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 91
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        height: "wrap_content",
+	                        width: "wrap_content",
+	                        padding: "16,16,16,16",
+	                        text: mainStr,
+	                        textSize: "14",
+	                        color: "#FF000000",
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 98
+	                        }
+	                    }),
+	                    dom(LinearLayout, {
+	                        height: "match_parent",
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 106
+	                        }
+	                    }),
+	                    dom(ImageView, {
+	                        width: "10",
+	                        height: "10",
+	                        imageUrl: "ic_action_arrow_right",
+	                        margin: "0,25,8,0", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 109
+	                        }
+	                    })
+	                )
+	            );
+	        };
+	
+	        _this2.checkUpdates = function () {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "wrap_content",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: "#ffffff", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 119
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "wrap_content",
+	                        height: "wrap_content",
+	                        padding: "16,16,16,16",
+	                        orientation: "vertical", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 124
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        width: "wrap_content",
+	                        textSize: "14",
+	                        height: "wrap_content",
+	                        color: "#000000",
+	                        text: window.__S.APP_VERSION, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 129
+	                        }
+	                    }),
+	                    dom(TextView, {
+	                        height: "wrap_content",
+	                        width: "wrap_content",
+	                        padding: "0,4,0,0",
+	                        text: JBridge.getAppName() + " v" + JBridge.getAppVersion(),
+	                        textSize: "14",
+	                        color: "#FF969696",
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 135
+	                        }
+	                    }),
+	                    dom(TextView, {
+	                        height: "match_parent",
+	                        width: "wrap_content",
+	                        text: window.__S.CHECK_FOR_UPDATES,
+	                        textSize: "12",
+	                        padding: "0,4,0,0",
+	                        color: "#FF0079FF",
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 143
+	                        }
+	                    })
+	                )
+	            );
+	        };
+	
+	        _this2.render = function () {
+	            _this2.layout = dom(
+	                LinearLayout,
+	                {
+	                    id: _this2.idSet.parentId,
+	                    root: "true",
+	                    clickable: "true",
+	                    height: "match_parent",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: window.__Colors.WHITE_F2, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 157
+	                    }
+	                },
+	                dom(SimpleToolbar, {
+	                    title: window.__S.ABOUT_US,
+	                    afterRender: _this2.afterRender,
+	                    width: "match_parent",
+	                    onBackPress: _this2.onBackPressed, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 165
+	                    }
+	                }),
+	                dom(LinearLayout, {
+	                    width: "match_parent",
+	                    height: "4", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 170
+	                    }
+	                }),
+	                _this2.getBody(window.__S.DEVICE_ID, JBridge.getDeviceId()),
+	                _this2.getLineSeperator(),
+	                _this2.checkUpdates(),
+	                dom(LinearLayout, {
+	                    width: "match_parent",
+	                    height: "8", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 176
+	                    }
+	                }),
+	                _this2.getBody2(window.__S.PRIVACY_POLICY, _this2.nextScreen),
+	                _this2.getLineSeperator(),
+	                _this2.getBody2(window.__S.TERMS_OF_SERVICE, _this2.nextScreen),
+	                _this2.getLineSeperator(),
+	                _this2.getBody2(window.__S.ABOUT_APPLICATION, _this2.nextScreen)
+	            );
+	            return _this2.layout.render();
+	        };
+	
+	        _this2.setIds(["parentId"]);
+	        _this2.shouldCacheScreen = false;
+	        window.__AboutUsActivity = _this2;
+	        _this2.state = state;
+	        _this2.visible = true;
+	        _this2.screenName = "AboutUsActivity";
+	        _this = _this2;
+	        return _this2;
+	    }
+	
+	    _createClass(AboutUsActivity, [{
+	        key: "getLineSeperator",
+	        value: function getLineSeperator() {
+	            return dom(LinearLayout, {
+	                width: "match_parent",
+	                height: "1",
+	                margin: "0,1,0,0",
+	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 48
+	                }
+	            });
+	        }
+	    }]);
+	
+	    return AboutUsActivity;
+	}(View);
+	
+	module.exports = Connector(AboutUsActivity);
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AboutUsScreen.js";
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var RelativeLayout = __webpack_require__(340);
+	
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var TextInputView = __webpack_require__(406);
+	var SimpleToolbar = __webpack_require__(382);
+	var TextStyle = __webpack_require__(343);
+	
+	window.R = __webpack_require__(7);
+	var _this;
+	
+	var AboutUsScreen = function (_View) {
+	    _inherits(AboutUsScreen, _View);
+	
+	    function AboutUsScreen(props, children, state) {
+	        _classCallCheck(this, AboutUsScreen);
+	
+	        var _this2 = _possibleConstructorReturn(this, (AboutUsScreen.__proto__ || Object.getPrototypeOf(AboutUsScreen)).call(this, props, children, state));
+	
+	        _this2.onBackPressed = function () {
+	            var whatToSend = [];
+	            var event = { tag: "BACK_AboutUsScreen", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.getBody = function () {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    background: "#ffffff",
+	                    width: "match_parent",
+	                    height: "wrap_content",
+	                    padding: "16,16,16,16", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 38
+	                    }
+	                },
+	                dom(TextView, {
+	                    height: "match_parent",
+	                    width: "wrap_content",
+	                    text: window.__S.ABOUT_US_DATA,
+	                    textSize: "14",
+	                    color: "#FF000000",
+	                    lineHeight: "20px",
+	                    gravity: "left", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 43
+	                    }
+	                })
+	            );
+	        };
+	
+	        _this2.render = function () {
+	            _this2.layout = dom(
+	                LinearLayout,
+	                {
+	                    id: _this2.idSet.parentId,
+	                    background: window.__Colors.WHITE_F2,
+	                    clickable: "true",
+	                    root: "true",
+	                    orientation: "vertical",
+	                    width: "match_parent",
+	                    height: "match_parent", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 56
+	                    }
+	                },
+	                dom(SimpleToolbar, {
+	                    title: window.__S.ABOUT_APPLICATION,
+	                    afterRender: _this2.afterRender,
+	                    width: "match_parent",
+	                    onBackPress: _this2.onBackPressed, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 64
+	                    }
+	                }),
+	                dom(LinearLayout, {
+	                    width: "match_parent",
+	                    height: "4", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 69
+	                    }
+	                }),
+	                _this2.getBody()
+	            );
+	            return _this2.layout.render();
+	        };
+	
+	        _this2.setIds(["parentId"]);
+	        //this.title = window.__aboutTheApp ? window.__aboutTheApp : ""
+	        _this2.shouldCacheScreen = false;
+	        window.__AboutUsScreen = _this2;
+	        _this2.visible = true;
+	        _this2.screenName = "AboutUsScreen";
+	        _this = _this2;
+	        return _this2;
+	    }
+	
+	    return AboutUsScreen;
+	}(View);
+	
+	module.exports = Connector(AboutUsScreen);
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/LanguageSelectActivitySt.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var ImageView = __webpack_require__(350);
+	var TextView = __webpack_require__(342);
+	var SimpleToolbar = __webpack_require__(382);
+	var utils = __webpack_require__(397);
+	window.R = __webpack_require__(7);
+	
+	var LanguageSelectActivitySt = function (_View) {
+	    _inherits(LanguageSelectActivitySt, _View);
+	
+	    function LanguageSelectActivitySt(props, children, state) {
+	        _classCallCheck(this, LanguageSelectActivitySt);
+	
+	        var _this = _possibleConstructorReturn(this, (LanguageSelectActivitySt.__proto__ || Object.getPrototypeOf(LanguageSelectActivitySt)).call(this, props, children, state));
+	
+	        _this.initLangArr = function () {
+	            var i = 0;
+	            for (var property in _this.languages) {
+	                if (_this.languages.hasOwnProperty(property)) {
+	                    _this.langArr[i] = {
+	                        langCode: _this.languages[property],
+	                        lang: property,
+	                        isSelected: _this.languages[property] == _this.defaultlang ? true : false
+	                    };
+	                    i++;
+	                }
+	            };
+	        };
+	
+	        _this.afterRender = function () {};
+	
+	        _this.changeLang = function () {
+	            _this.langArr.map(function (item) {
+	                if (item.isSelected) {
+	                    window.__RootScreen.handleChangeLang(item.langCode);
+	                }
+	            });
+	            //JBridge.setInSharedPrefs("isUserOnboarded", "true");
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "BACK_LanguageSelectActivitySt", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this.onBackPressed = function () {
+	            var whatToSend = { "profile": JSON.stringify("{}") };
+	            var event = { tag: "BACK_LanguageSelectActivitySt", contents: whatToSend };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this.changeSelectedLang = function (langCode) {
+	            var newArr = [];
+	            _this.langArr.map(function (item, i) {
+	                newArr[i] = {};
+	                newArr[i].langCode = _this.langArr[i].langCode;
+	                newArr[i].lang = _this.langArr[i].lang;
+	                newArr[i].isSelected = _this.langArr[i].isSelected;
+	                if (item.langCode == langCode) {
+	                    newArr[i].isSelected = true;
+	                } else {
+	                    newArr[i].isSelected = false;
+	                }
+	            });
+	            _this.langArr = newArr;
+	            _this.reRenderLang();
+	            _this.changeLang();
+	        };
+	
+	        _this.reRenderLang = function () {
+	            var layout = dom(
+	                LinearLayout,
+	                {
+	                    height: "wrap_content",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    background: "#FFF8F8F8",
+	                    cornerRadius: "0", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 84
+	                    }
+	                },
+	                _this.getLanguageLabels()
+	            );
+	            _this.replaceChild(_this.idSet.langContainer, layout.render(), 0);
+	        };
+	
+	        _this.getLanguageLabels = function () {
+	            console.log("getLanguageLabels -> ", _this.langArr);
+	
+	            var size = _this.langArr.length;
+	            return _this.langArr.map(function (item, i) {
+	                return _this.getLabels(item.lang, item.langCode, item.isSelected, size - 1 - i == 0);
+	            });
+	        };
+	
+	        _this.getLabels = function (language, langCode, isSelected, isLast) {
+	            console.log("label -> " + language, isSelected);
+	
+	            return dom(
+	                LinearLayout,
+	                {
+	                    height: "36",
+	                    width: "match_parent",
+	                    orientation: "vertical",
+	                    margin: "0,16,0,0",
+	                    clickable: "true",
+	                    onClick: function onClick() {
+	                        return _this.changeSelectedLang(langCode);
+	                    }, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 111
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        height: "22",
+	                        width: "match_parent",
+	                        orientation: "horizontal",
+	                        gravity: "center_vertical",
+	                        margin: "2,0,0,0",
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 118
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        height: "20",
+	                        weight: "2",
+	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
+	                        gravity: "left", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 125
+	                        }
+	                    }),
+	                    dom(LinearLayout, {
+	                        weight: "1", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 130
+	                        }
+	                    }),
+	                    dom(ImageView, {
+	                        height: "15",
+	                        width: "13",
+	                        imageUrl: "ic_blue_tick",
+	                        visibility: isSelected ? "visible" : "gone", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 132
+	                        }
+	                    })
+	                ),
+	                dom(LinearLayout, {
+	                    visibility: isLast ? "gone" : "visible",
+	                    height: "1",
+	                    width: "match_parent",
+	                    background: "#979797",
+	                    stroke: "1,#979797",
+	                    margin: "0,15,3,0",
+	                    alpha: "0.3",
+	                    cornerRadius: "0", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 138
+	                    }
+	                })
+	            );
+	        };
+	
+	        _this.languages = window.__RootScreen.languageMap;
+	        console.log("Default language -> ", JBridge.getLocalLang());
+	        _this.devicelang = JBridge.getLocalLang();
+	        _this.defaultlang = window.__CurrentLanguage;
+	        _this.setIds(["langContainer"]);
+	        _this.langArr = [];
+	        _this.initLangArr();
+	        _this.shouldCacheScreen = false;
+	
+	        return _this;
+	    }
+	
+	    _createClass(LanguageSelectActivitySt, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                LinearLayout,
+	                {
+	                    height: "match_parent",
+	                    width: "match_parent",
+	                    orientation: "horizontal",
+	                    root: true,
+	                    clickable: "true", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 153
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        orientation: "vertical",
+	                        background: "#FFF8F8F8",
+	                        cornerRadius: "0", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 159
+	                        }
+	                    },
+	                    dom(SimpleToolbar, {
+	                        title: window.__S.SELECT_LANGUAGE,
+	                        afterRender: this.afterRender,
+	                        width: "match_parent",
+	                        onBackPress: this.onBackPressed, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 165
+	                        }
+	                    }),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            height: "wrap_content",
+	                            width: "match_parent",
+	                            orientation: "vertical",
+	                            padding: "16,0,16,16",
+	                            margin: "0,0,0,0",
+	                            background: "#FFFFFFFF",
+	                            id: this.idSet.langContainer,
+	                            cornerRadius: "0", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 170
+	                            }
+	                        },
+	                        this.getLanguageLabels()
+	                    )
+	                )
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return LanguageSelectActivitySt;
+	}(View);
+	
+	module.exports = Connector(LanguageSelectActivitySt);
+
+/***/ }),
+/* 411 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
 	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/MainActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24089,14 +25471,14 @@
 	var ViewPager = __webpack_require__(351).androidViews.ViewPager;
 	var ViewWidget = __webpack_require__(349);
 	var ScrollView = __webpack_require__(358);
-	var BottomNavBar = __webpack_require__(406);
-	var HomeFragment = __webpack_require__(407);
-	var CourseFragment = __webpack_require__(425);
-	var ResourceFragment = __webpack_require__(428);
-	var CommunityFragment = __webpack_require__(431);
-	var ProfileFragment = __webpack_require__(435);
-	var ContentLoadingComponent = __webpack_require__(449);
-	var FeedParams = __webpack_require__(450);
+	var BottomNavBar = __webpack_require__(412);
+	var HomeFragment = __webpack_require__(413);
+	var CourseFragment = __webpack_require__(430);
+	var ResourceFragment = __webpack_require__(433);
+	var CommunityFragment = __webpack_require__(436);
+	var ProfileFragment = __webpack_require__(440);
+	var ContentLoadingComponent = __webpack_require__(454);
+	var FeedParams = __webpack_require__(455);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var debounce = __webpack_require__(403);
@@ -24105,7 +25487,7 @@
 	
 	window.R = __webpack_require__(7);
 	
-	var mockResponse = __webpack_require__(451);
+	var mockResponse = __webpack_require__(456);
 	
 	var _this;
 	
@@ -24666,7 +26048,7 @@
 	module.exports = Connector(MainActivity);
 
 /***/ }),
-/* 406 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24935,7 +26317,7 @@
 	module.exports = BottomNavBar;
 
 /***/ }),
-/* 407 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24957,25 +26339,25 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var LineSpacer = __webpack_require__(408);
+	var LineSpacer = __webpack_require__(414);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var View = __webpack_require__(331);
-	var CourseInProgressContainer = __webpack_require__(409);
-	var HorizontalProgressBar = __webpack_require__(411);
+	var CourseInProgressContainer = __webpack_require__(415);
+	var HorizontalProgressBar = __webpack_require__(417);
 	var utils = __webpack_require__(397);
 	var Button = __webpack_require__(380);
-	var HomeQuestionCardStyle = __webpack_require__(413);
-	var AnnouncementCard = __webpack_require__(414);
-	var CommunityParams = __webpack_require__(415);
+	var HomeQuestionCardStyle = __webpack_require__(418);
+	var AnnouncementCard = __webpack_require__(419);
+	var CommunityParams = __webpack_require__(420);
 	
 	window.R = __webpack_require__(7);
 	
-	var SearchToolbar = __webpack_require__(416);
+	var SearchToolbar = __webpack_require__(421);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var HomeRecommendedContainer = __webpack_require__(419);
-	var HomeTodoContainer = __webpack_require__(423);
+	var HomeRecommendedContainer = __webpack_require__(424);
+	var HomeTodoContainer = __webpack_require__(428);
 	
 	var HomeFragment = function (_View) {
 	  _inherits(HomeFragment, _View);
@@ -25701,7 +27083,7 @@
 	module.exports = HomeFragment;
 
 /***/ }),
-/* 408 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25753,7 +27135,7 @@
 	module.exports = LineSpacer;
 
 /***/ }),
-/* 409 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25778,8 +27160,8 @@
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var _this;
-	var CardComponent = __webpack_require__(410);
-	var CircularLoader = __webpack_require__(412);
+	var CardComponent = __webpack_require__(416);
+	var CircularLoader = __webpack_require__(407);
 	
 	var CourseInProgressContainer = function (_View) {
 	  _inherits(CourseInProgressContainer, _View);
@@ -26081,7 +27463,7 @@
 	module.exports = CourseInProgressContainer;
 
 /***/ }),
-/* 410 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26106,7 +27488,7 @@
 	var RatingBar = __webpack_require__(372);;
 	var Button = __webpack_require__(380);
 	var utils = __webpack_require__(397);
-	var HorizontalProgressBar = __webpack_require__(411);
+	var HorizontalProgressBar = __webpack_require__(417);
 	
 	var _this;
 	
@@ -26321,7 +27703,7 @@
 	module.exports = CardComponent;
 
 /***/ }),
-/* 411 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26453,96 +27835,7 @@
 	module.exports = HorizontalProgressBar;
 
 /***/ }),
-/* 412 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CircularLoader.js";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var dom = __webpack_require__(324);
-	var Connector = __webpack_require__(330);
-	var View = __webpack_require__(331);
-	var LinearLayout = __webpack_require__(333);
-	var ProgressBar = __webpack_require__(359);
-	
-	var CircularLoader = function (_View) {
-	    _inherits(CircularLoader, _View);
-	
-	    function CircularLoader(props, children, state) {
-	        _classCallCheck(this, CircularLoader);
-	
-	        var _this = _possibleConstructorReturn(this, (CircularLoader.__proto__ || Object.getPrototypeOf(CircularLoader)).call(this, props, children, state));
-	
-	        _this.width = _this.props.width ? _this.props.width : "match_parent";
-	        _this.height = _this.props.height ? _this.props.height : "match_parent";
-	        _this.padding = _this.props.padding ? _this.props.padding : "0,0,0,0";
-	        _this.margin = _this.props.margin ? _this.props.margin : "0,0,0,0";
-	        _this.size = _this.props.size ? _this.props.size : "20";
-	        return _this;
-	    }
-	
-	    _createClass(CircularLoader, [{
-	        key: "render",
-	        value: function render() {
-	            this.layout = dom(
-	                LinearLayout,
-	                {
-	                    width: this.width,
-	                    height: this.height,
-	                    gravity: "center",
-	                    padding: this.padding,
-	                    margin: this.margin, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 19
-	                    }
-	                },
-	                dom(LinearLayout, {
-	                    height: this.size,
-	                    weight: "1",
-	                    gravity: "center", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 25
-	                    }
-	                }),
-	                dom(ProgressBar, {
-	                    weight: "1",
-	                    height: this.size,
-	                    width: this.size,
-	                    gravity: "center", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 29
-	                    }
-	                }),
-	                dom(LinearLayout, {
-	                    height: this.size,
-	                    weight: "1",
-	                    gravity: "center", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 34
-	                    }
-	                })
-	            );
-	
-	            return this.layout.render();
-	        }
-	    }]);
-	
-	    return CircularLoader;
-	}(View);
-	
-	module.exports = CircularLoader;
-
-/***/ }),
-/* 413 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26693,7 +27986,7 @@
 	module.exports = HomeQuestionCardStyle;
 
 /***/ }),
-/* 414 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27066,7 +28359,7 @@
 	module.exports = AnnouncementCard;
 
 /***/ }),
-/* 415 */
+/* 420 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -27119,7 +28412,7 @@
 	}];
 
 /***/ }),
-/* 416 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27142,8 +28435,8 @@
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
 	var Space = __webpack_require__(366);
-	var ClassListItem = __webpack_require__(417);
-	var SearchResult = __webpack_require__(418);
+	var ClassListItem = __webpack_require__(422);
+	var SearchResult = __webpack_require__(423);
 	var debounce = __webpack_require__(403);
 	var Styles = __webpack_require__(347);
 	var callbackMapper = __webpack_require__(329);
@@ -27628,7 +28921,7 @@
 	module.exports = SearchToolbar;
 
 /***/ }),
-/* 417 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27871,7 +29164,7 @@
 	module.exports = ClassListItem;
 
 /***/ }),
-/* 418 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28157,7 +29450,7 @@
 	module.exports = SearchResult;
 
 /***/ }),
-/* 419 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28184,11 +29477,11 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseCard = __webpack_require__(420);
+	var CourseCard = __webpack_require__(425);
 	var callbackMapper = __webpack_require__(329);
-	var DownloadedCard = __webpack_require__(422);
+	var DownloadedCard = __webpack_require__(427);
 	
-	var CardComponent = __webpack_require__(410);
+	var CardComponent = __webpack_require__(416);
 	
 	var HomeRecommendedContainer = function (_View) {
 	  _inherits(HomeRecommendedContainer, _View);
@@ -28368,7 +29661,7 @@
 	module.exports = HomeRecommendedContainer;
 
 /***/ }),
-/* 420 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28395,7 +29688,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(421);
+	var StarComponent = __webpack_require__(426);
 	var _this;
 	
 	var CardRecommended = function (_View) {
@@ -28582,7 +29875,7 @@
 	module.exports = CardRecommended;
 
 /***/ }),
-/* 421 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28672,7 +29965,7 @@
 	module.exports = StarComponent;
 
 /***/ }),
-/* 422 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28699,7 +29992,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(421);
+	var StarComponent = __webpack_require__(426);
 	var _this;
 	
 	var DownloadedCard = function (_View) {
@@ -28874,7 +30167,7 @@
 	module.exports = DownloadedCard;
 
 /***/ }),
-/* 423 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28901,9 +30194,9 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseProgressCard = __webpack_require__(424);
-	var CardComponent = __webpack_require__(410);
-	var DownloadedCard = __webpack_require__(422);
+	var CourseProgressCard = __webpack_require__(429);
+	var CardComponent = __webpack_require__(416);
+	var DownloadedCard = __webpack_require__(427);
 	
 	var HomeTodoContainer = function (_View) {
 	  _inherits(HomeTodoContainer, _View);
@@ -29073,7 +30366,7 @@
 	module.exports = HomeTodoContainer;
 
 /***/ }),
-/* 424 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29100,7 +30393,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(421);
+	var StarComponent = __webpack_require__(426);
 	var _this;
 	
 	var CourseProgressCard = function (_View) {
@@ -29325,7 +30618,7 @@
 	module.exports = CourseProgressCard;
 
 /***/ }),
-/* 425 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29352,17 +30645,17 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
-	var LineSpacer = __webpack_require__(408);
-	var NoInternetCard = __webpack_require__(426);
-	var CircularLoader = __webpack_require__(412);
+	var LineSpacer = __webpack_require__(414);
+	var NoInternetCard = __webpack_require__(431);
+	var CircularLoader = __webpack_require__(407);
 	var utils = __webpack_require__(397);
 	
-	var SearchToolbar = __webpack_require__(416);
+	var SearchToolbar = __webpack_require__(421);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var CourseInProgressContainer = __webpack_require__(409);
-	var CourseContainer = __webpack_require__(427);
-	var HomeQuestionCardStyle = __webpack_require__(413);
+	var CourseInProgressContainer = __webpack_require__(415);
+	var CourseContainer = __webpack_require__(432);
+	var HomeQuestionCardStyle = __webpack_require__(418);
 	
 	var _this;
 	
@@ -29785,7 +31078,7 @@
 	module.exports = CourseFragment;
 
 /***/ }),
-/* 426 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29877,7 +31170,7 @@
 	module.exports = NoInternetCard;
 
 /***/ }),
-/* 427 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29905,7 +31198,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(410);
+	var CardComponent = __webpack_require__(416);
 	var utils = __webpack_require__(397);
 	
 	var CourseContainer = function (_View) {
@@ -30131,7 +31424,7 @@
 	module.exports = CourseContainer;
 
 /***/ }),
-/* 428 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30159,16 +31452,16 @@
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	window.R = __webpack_require__(7);
-	var HomeQuestionCardStyle = __webpack_require__(413);
-	var CircularLoader = __webpack_require__(412);
-	var SearchToolbar = __webpack_require__(416);
-	var LineSpacer = __webpack_require__(408);
-	var NoInternetCard = __webpack_require__(426);
+	var HomeQuestionCardStyle = __webpack_require__(418);
+	var CircularLoader = __webpack_require__(407);
+	var SearchToolbar = __webpack_require__(421);
+	var LineSpacer = __webpack_require__(414);
+	var NoInternetCard = __webpack_require__(431);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseContainer = __webpack_require__(427);
-	var HomeRecommendedContainer = __webpack_require__(419);
-	var ResourceContainer = __webpack_require__(429);
-	var OfflineResourceContainer = __webpack_require__(430);
+	var CourseContainer = __webpack_require__(432);
+	var HomeRecommendedContainer = __webpack_require__(424);
+	var ResourceContainer = __webpack_require__(434);
+	var OfflineResourceContainer = __webpack_require__(435);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -30609,7 +31902,7 @@
 	module.exports = ResourceComponent;
 
 /***/ }),
-/* 429 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30637,7 +31930,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(410);
+	var CardComponent = __webpack_require__(416);
 	var utils = __webpack_require__(397);
 	
 	var ResourceContainer = function (_View) {
@@ -30832,7 +32125,7 @@
 	module.exports = ResourceContainer;
 
 /***/ }),
-/* 430 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30860,7 +32153,7 @@
 	var Space = __webpack_require__(366);
 	var _this;
 	var callbackMapper = __webpack_require__(329);
-	var CardComponent = __webpack_require__(410);
+	var CardComponent = __webpack_require__(416);
 	var utils = __webpack_require__(397);
 	
 	var OfflineResourceContainer = function (_View) {
@@ -31092,7 +32385,7 @@
 	module.exports = OfflineResourceContainer;
 
 /***/ }),
-/* 431 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31119,10 +32412,10 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(416);
-	var MyCommunities = __webpack_require__(432);
-	var PopularCommunities = __webpack_require__(433);
-	var RecommendedCommunities = __webpack_require__(434);
+	var SearchToolbar = __webpack_require__(421);
+	var MyCommunities = __webpack_require__(437);
+	var PopularCommunities = __webpack_require__(438);
+	var RecommendedCommunities = __webpack_require__(439);
 	
 	var CommunityFragment = function (_View) {
 	  _inherits(CommunityFragment, _View);
@@ -31366,7 +32659,7 @@
 	module.exports = CommunityFragment;
 
 /***/ }),
-/* 432 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31666,7 +32959,7 @@
 	module.exports = MyCommunities;
 
 /***/ }),
-/* 433 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31937,7 +33230,7 @@
 	module.exports = PopularCommunities;
 
 /***/ }),
-/* 434 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32209,7 +33502,7 @@
 	module.exports = RecommendedCommunities;
 
 /***/ }),
-/* 435 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32237,21 +33530,21 @@
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(436);
-	var ComingSoonComponent = __webpack_require__(437);
-	var PersonalDetails = __webpack_require__(438);
-	var ProfileExperiences = __webpack_require__(439);
-	var ProfileSkillTags = __webpack_require__(441);
-	var ProfileAccomplishments = __webpack_require__(442);
-	var ProfileCreations = __webpack_require__(443);
-	var ProfileBadges = __webpack_require__(444);
-	var ProfileProgress = __webpack_require__(445);
-	var ProfileAdditionalInfo = __webpack_require__(446);
-	var ProfilAffiliations = __webpack_require__(447);
-	var GuestAdditionalInfo = __webpack_require__(448);
-	var HomeQuestionCardStyle = __webpack_require__(413);
-	var CropParagraph = __webpack_require__(440);
-	var CircularLoader = __webpack_require__(412);
+	var ProfileHeader = __webpack_require__(441);
+	var ComingSoonComponent = __webpack_require__(442);
+	var PersonalDetails = __webpack_require__(443);
+	var ProfileExperiences = __webpack_require__(444);
+	var ProfileSkillTags = __webpack_require__(446);
+	var ProfileAccomplishments = __webpack_require__(447);
+	var ProfileCreations = __webpack_require__(448);
+	var ProfileBadges = __webpack_require__(449);
+	var ProfileProgress = __webpack_require__(450);
+	var ProfileAdditionalInfo = __webpack_require__(451);
+	var ProfilAffiliations = __webpack_require__(452);
+	var GuestAdditionalInfo = __webpack_require__(453);
+	var HomeQuestionCardStyle = __webpack_require__(418);
+	var CropParagraph = __webpack_require__(445);
+	var CircularLoader = __webpack_require__(407);
 	var utils = __webpack_require__(397);
 	var Str = __webpack_require__(399);
 	
@@ -32357,7 +33650,19 @@
 	        window.__LanguagePopup.show();
 	      } else if (params == 1) {
 	        _this2.logout();
+	      } else if (params == 2) {
+	        _this2.openSettingsScreen();
 	      }
+	    };
+	
+	    _this2.openSettingsScreen = function () {
+	      if (!JBridge.isNetworkAvailable()) {
+	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        return;
+	      }
+	      var whatToSend = { "profile": JSON.stringify("{}") };
+	      var event = { tag: "OPEN_SettingsScreenActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
 	    };
 	
 	    _this2.getUserProfileData = function () {
@@ -32391,7 +33696,7 @@
 	            editable: _this.editable,
 	            onCardClick: _this.handleCreatedCardClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 218
+	              lineNumber: 231
 	            }
 	          });
 	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
@@ -32427,7 +33732,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 252
+	              lineNumber: 265
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -32441,7 +33746,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 260
+	              lineNumber: 273
 	            }
 	          })
 	        );
@@ -32451,7 +33756,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 274
+	            lineNumber: 287
 	          }
 	        });
 	      }
@@ -32579,7 +33884,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 405
+	            lineNumber: 417
 	          }
 	        },
 	        dom(
@@ -32591,7 +33896,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 410
+	              lineNumber: 422
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -32599,13 +33904,13 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 416
+	              lineNumber: 428
 	            }
 	          }),
 	          dom(GuestAdditionalInfo, {
 	            profileData: _this2.profileData, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 420
+	              lineNumber: 432
 	            }
 	          }),
 	          _this2.getSignInOverlay()
@@ -32625,7 +33930,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 432
+	            lineNumber: 444
 	          }
 	        },
 	        dom(
@@ -32637,7 +33942,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 437
+	              lineNumber: 449
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -32645,14 +33950,14 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 443
+	              lineNumber: 455
 	            }
 	          }),
 	          dom(ProfileProgress, {
 	            editable: _this2.isEditable,
 	            data: _this2.details, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 447
+	              lineNumber: 459
 	            }
 	          }),
 	          _this2.getDescription(),
@@ -32664,7 +33969,7 @@
 	            privacyStatus: _this2.checkPrivacy("education"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 453
+	              lineNumber: 465
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -32675,7 +33980,7 @@
 	            privacyStatus: _this2.checkPrivacy("jobProfile"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 461
+	              lineNumber: 473
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -32686,7 +33991,7 @@
 	            privacyStatus: _this2.checkPrivacy("address"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 470
+	              lineNumber: 482
 	            }
 	          }),
 	          dom(
@@ -32696,7 +34001,7 @@
 	              width: "wrap_content",
 	              id: _this2.idSet.skillTagComponent, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 477
+	                lineNumber: 489
 	              }
 	            },
 	            dom(ProfileSkillTags, {
@@ -32707,7 +34012,7 @@
 	              privacyStatus: _this2.checkPrivacy("skills"),
 	              handleLock: _this2.handleLockClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 481
+	                lineNumber: 493
 	              }
 	            })
 	          ),
@@ -32717,7 +34022,7 @@
 	              width: "match_parent",
 	              id: _this2.idSet.createdByHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 490
+	                lineNumber: 502
 	              }
 	            },
 	            dom(ProfileCreations, {
@@ -32725,7 +34030,7 @@
 	              editable: _this.editable,
 	              onCardClick: _this.handleCreatedCardClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 494
+	                lineNumber: 506
 	              }
 	            })
 	          ),
@@ -32733,7 +34038,7 @@
 	            data: _this2.details,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 501
+	              lineNumber: 513
 	            }
 	          })
 	        )
@@ -32753,7 +34058,7 @@
 	          clickable: "true",
 	          padding: "16,16,16,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 513
+	            lineNumber: 525
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
@@ -32763,7 +34068,7 @@
 	          textSize: "16",
 	          gravity: "left", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 520
+	            lineNumber: 532
 	          }
 	        })
 	      );
@@ -32785,7 +34090,7 @@
 	      _this2.menuData = {
 	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
 	      };
-	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT;
+	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT + "," + window.__S.SETTINGS;
 	    }
 	    window.__LanguagePopup.props.buttonClick = _this2.handleChangeLang;
 	    window.__refreshProfile = false; //Used to control when the profile fragment needs to be refreshed when the user updates any profile data from the app.
@@ -32831,7 +34136,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 536
+	            lineNumber: 548
 	          }
 	        },
 	        dom(
@@ -32843,7 +34148,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 539
+	              lineNumber: 551
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -32856,7 +34161,7 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 546
+	              lineNumber: 558
 	            }
 	          }),
 	          dom(
@@ -32868,13 +34173,13 @@
 	              orientation: "horizontal",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 556
+	                lineNumber: 568
 	              }
 	            },
 	            dom(CircularLoader, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 562
+	                lineNumber: 574
 	              }
 	            })
 	          )
@@ -32890,7 +34195,7 @@
 	module.exports = ProfileFragment;
 
 /***/ }),
-/* 436 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33140,7 +34445,7 @@
 	module.exports = ProfileHeader;
 
 /***/ }),
-/* 437 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33218,7 +34523,7 @@
 	module.exports = ComingSoonComponent;
 
 /***/ }),
-/* 438 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33379,7 +34684,7 @@
 	module.exports = PersonalDetails;
 
 /***/ }),
-/* 439 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33402,7 +34707,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var CropParagraph = __webpack_require__(440);
+	var CropParagraph = __webpack_require__(445);
 	
 	var _this;
 	
@@ -33911,7 +35216,7 @@
 	module.exports = ProfileExperiences;
 
 /***/ }),
-/* 440 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34125,7 +35430,7 @@
 	module.exports = CropParagraph;
 
 /***/ }),
-/* 441 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34468,7 +35773,7 @@
 	module.exports = ProfileSkillTags;
 
 /***/ }),
-/* 442 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34657,7 +35962,7 @@
 	module.exports = ProfileAccomplishments;
 
 /***/ }),
-/* 443 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34682,7 +35987,7 @@
 	var ImageView = __webpack_require__(350);
 	var RatingBar = __webpack_require__(372);;
 	var HorizontalScrollView = __webpack_require__(357);
-	var CardComponent = __webpack_require__(410);
+	var CardComponent = __webpack_require__(416);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -34902,7 +36207,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 444 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35143,7 +36448,7 @@
 	module.exports = ProfileBadges;
 
 /***/ }),
-/* 445 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35168,7 +36473,7 @@
 	var ImageView = __webpack_require__(350);
 	var RatingBar = __webpack_require__(372);;
 	var HorizontalScrollView = __webpack_require__(357);
-	var HorizontalProgressBar = __webpack_require__(411);
+	var HorizontalProgressBar = __webpack_require__(417);
 	
 	var _this;
 	
@@ -35577,7 +36882,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 446 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36033,7 +37338,7 @@
 	module.exports = ProfileAdditionalInfo;
 
 /***/ }),
-/* 447 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36235,7 +37540,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 448 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36479,7 +37784,7 @@
 	module.exports = GuestAdditionalInfo;
 
 /***/ }),
-/* 449 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36619,7 +37924,7 @@
 	module.exports = ContentLoadingComponent;
 
 /***/ }),
-/* 450 */
+/* 455 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -36657,7 +37962,7 @@
 	}];
 
 /***/ }),
-/* 451 */
+/* 456 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -36745,7 +38050,7 @@
 	};
 
 /***/ }),
-/* 452 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36773,7 +38078,7 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var ViewWidget = __webpack_require__(349);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var ProgressBar = __webpack_require__(359);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
@@ -36936,7 +38241,7 @@
 	          window.__runDuiCallback(event);
 	        }
 	      }
-	    } else if (response.status == "ALREADY_EXIST") {
+	    } else if (data.status == "ALREADY_EXIST") {
 	      console.log("content ALREADY_EXIST");
 	      JBridge.showToast(window.__S.MSG_ALREADY_IMPORTED, "short");
 	      if (window.__loggedInState != "GUEST" && window.__loggedInState != "YES") {
@@ -37376,133 +38681,7 @@
 	module.exports = Connector(UserActivity);
 
 /***/ }),
-/* 453 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/TextInputView.js";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var dom = __webpack_require__(324);
-	var Connector = __webpack_require__(330);
-	var LinearLayout = __webpack_require__(333);
-	var View = __webpack_require__(331);
-	var ViewWidget = __webpack_require__(349);
-	var RelativeLayout = __webpack_require__(340);
-	
-	var TextView = __webpack_require__(342);
-	var EditText = __webpack_require__(363);
-	var ImageView = __webpack_require__(350);
-	
-	var TextInputView = function (_View) {
-	  _inherits(TextInputView, _View);
-	
-	  function TextInputView(props, children) {
-	    _classCallCheck(this, TextInputView);
-	
-	    var _this = _possibleConstructorReturn(this, (TextInputView.__proto__ || Object.getPrototypeOf(TextInputView)).call(this, props, children));
-	
-	    _this.handleOnChange = function (data) {
-	
-	      _this.props._onChange(data);
-	    };
-	
-	    _this.afterRender = function () {
-	      JBridge.changeFontStylePassword(_this.props.id ? _this.props.id : _this.idSet.editText);
-	    };
-	
-	    _this.setIds(["parentContainer", "editText"]);
-	    _this.displayName = "TextInputview";
-	
-	    return _this;
-	  }
-	
-	  _createClass(TextInputView, [{
-	    key: "render",
-	    value: function render() {
-	
-	      this.layout = dom(
-	        LinearLayout,
-	        {
-	          id: this.idSet.parentContainer,
-	          width: "match_parent",
-	          height: "wrap_content",
-	          afterRender: this.afterRender,
-	          margin: this.props.margin,
-	          orientation: "vertical", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 39
-	          }
-	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            height: "wrap_content",
-	            width: "match_parent",
-	            orientation: "horizontal", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 47
-	            }
-	          },
-	          dom(TextView, {
-	            textFromHtml: this.props.labelText,
-	            padding: "4,0,0,0",
-	            style: this.props.textStyle ? this.props.textStyle : window.__TextStyle.textStyle.BOTTOMBAR.DEFAULT,
-	            width: "wrap_content",
-	            height: "wrap_content", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 52
-	            }
-	          }),
-	          dom(TextView, {
-	            height: "wrap_content",
-	            width: "wrap_content",
-	            text: " *",
-	            visibility: this.props.mandatory && this.props.mandatory == "true" ? "visible" : "gone",
-	            color: window.__Colors.ERROR_RED, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 59
-	            }
-	          })
-	        ),
-	        dom(EditText, {
-	          padding: this.props.editTextPadding || "4,4,0,10",
-	          width: "match_parent",
-	          height: "wrap_content",
-	          id: this.props.id ? this.props.id : this.idSet.editText,
-	          singleLine: "true",
-	          maxLine: "1",
-	          style: this.props.editTextStyle ? this.props.editTextStyle : "",
-	          inputType: this.props.inputType ? this.props.inputType : "text",
-	          color: this.props.color,
-	          hint: this.props.hintText,
-	          text: this.props.text ? this.props.text : "",
-	          onChange: this.handleOnChange, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 67
-	          }
-	        })
-	      );
-	
-	      return this.layout.render();
-	    }
-	  }]);
-	
-	  return TextInputView;
-	}(View);
-	
-	module.exports = TextInputView;
-
-/***/ }),
-/* 454 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37536,12 +38715,12 @@
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CropParagraph = __webpack_require__(440);
-	var CourseCurriculum = __webpack_require__(455);
+	var CropParagraph = __webpack_require__(445);
+	var CourseCurriculum = __webpack_require__(459);
 	var PageOption = __webpack_require__(379);
-	var CourseProgress = __webpack_require__(459);
-	var ProgressButton = __webpack_require__(460);
-	var SharePopup = __webpack_require__(461);
+	var CourseProgress = __webpack_require__(463);
+	var ProgressButton = __webpack_require__(464);
+	var SharePopup = __webpack_require__(465);
 	
 	var _this;
 	
@@ -38114,7 +39293,7 @@
 	module.exports = Connector(CourseInfoActivity);
 
 /***/ }),
-/* 455 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38137,9 +39316,9 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	
-	var ChapterList = __webpack_require__(456);
-	var AnswerView = __webpack_require__(457);
-	var ChapterOverView = __webpack_require__(458);
+	var ChapterList = __webpack_require__(460);
+	var AnswerView = __webpack_require__(461);
+	var ChapterOverView = __webpack_require__(462);
 	
 	var CourseCurriculum = function (_View) {
 	  _inherits(CourseCurriculum, _View);
@@ -38276,7 +39455,7 @@
 	module.exports = CourseCurriculum;
 
 /***/ }),
-/* 456 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38510,7 +39689,7 @@
 	module.exports = ChapterList;
 
 /***/ }),
-/* 457 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38674,7 +39853,7 @@
 	module.exports = AnswerView;
 
 /***/ }),
-/* 458 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38769,7 +39948,7 @@
 	module.exports = ChapterOverView;
 
 /***/ }),
-/* 459 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38925,7 +40104,7 @@
 	module.exports = CourseProgress;
 
 /***/ }),
-/* 460 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39361,7 +40540,7 @@
 	module.exports = ProgressButton;
 
 /***/ }),
-/* 461 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39706,7 +40885,7 @@
 	module.exports = SharePopup;
 
 /***/ }),
-/* 462 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39732,16 +40911,16 @@
 	var ProgressBar = __webpack_require__(359);
 	var utils = __webpack_require__(397);
 	var FeatureButton = __webpack_require__(377);
-	var DownloadAllProgressButton = __webpack_require__(463);
+	var DownloadAllProgressButton = __webpack_require__(467);
 	
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(455);
-	var HorizontalProgressBar = __webpack_require__(411);
-	var CourseProgress = __webpack_require__(459);
-	var FlagPopup = __webpack_require__(464);
-	var SharePopup = __webpack_require__(461);
+	var CourseCurriculum = __webpack_require__(459);
+	var HorizontalProgressBar = __webpack_require__(417);
+	var CourseProgress = __webpack_require__(463);
+	var FlagPopup = __webpack_require__(468);
+	var SharePopup = __webpack_require__(465);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -40932,7 +42111,7 @@
 	*/
 
 /***/ }),
-/* 463 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41228,7 +42407,7 @@
 	module.exports = DownloadAllProgressButton;
 
 /***/ }),
-/* 464 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41259,7 +42438,7 @@
 	var FeatureButton = __webpack_require__(377);
 	var RadioListItem = __webpack_require__(384);
 	var Spinner = __webpack_require__(394);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var Styles = __webpack_require__(347);
 	
 	var IconStyle = Styles.Params.IconStyle;
@@ -41655,7 +42834,7 @@
 	module.exports = FlagPopup;
 
 /***/ }),
-/* 465 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41681,9 +42860,9 @@
 	var ScrollView = __webpack_require__(351).androidViews.ScrollView;
 	var RatingBar = __webpack_require__(372);;
 	var SimpleToolbar = __webpack_require__(382);
-	var CropParagraph = __webpack_require__(440);
-	var ProgressButton = __webpack_require__(460);
-	var CourseCurriculum = __webpack_require__(455);
+	var CropParagraph = __webpack_require__(445);
+	var ProgressButton = __webpack_require__(464);
+	var CourseCurriculum = __webpack_require__(459);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -42235,7 +43414,7 @@
 	module.exports = Connector(ModuleDetailActivity);
 
 /***/ }),
-/* 466 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42267,8 +43446,8 @@
 	
 	//Components
 	var SimpleToolbar = __webpack_require__(382);
-	var BatchCard = __webpack_require__(467);
-	var HomeQuestionCardStyle = __webpack_require__(413);
+	var BatchCard = __webpack_require__(471);
+	var HomeQuestionCardStyle = __webpack_require__(418);
 	
 	//Utils
 	var utils = __webpack_require__(397);
@@ -42840,7 +44019,7 @@
 	module.exports = Connector(ViewBatchActivity);
 
 /***/ }),
-/* 467 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42867,7 +44046,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(421);
+	var StarComponent = __webpack_require__(426);
 	var _this;
 	
 	var utils = __webpack_require__(397);
@@ -43043,7 +44222,7 @@
 	module.exports = BatchCard;
 
 /***/ }),
-/* 468 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43070,9 +44249,9 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var CommunityDescription = __webpack_require__(469);
-	var CommunityDefault = __webpack_require__(470);
-	var SearchToolbar = __webpack_require__(416);
+	var CommunityDescription = __webpack_require__(473);
+	var CommunityDefault = __webpack_require__(474);
+	var SearchToolbar = __webpack_require__(421);
 	
 	var CommunityInfoActivity = function (_View) {
 	  _inherits(CommunityInfoActivity, _View);
@@ -43439,7 +44618,7 @@
 	module.exports = Connector(CommunityInfoActivity);
 
 /***/ }),
-/* 469 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43652,7 +44831,7 @@
 	module.exports = CommunityDescription;
 
 /***/ }),
-/* 470 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43678,8 +44857,8 @@
 	var ChooseItem = __webpack_require__(383);
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
-	var FeedComponent = __webpack_require__(471);
-	var CommunityEventsContainer = __webpack_require__(473);
+	var FeedComponent = __webpack_require__(475);
+	var CommunityEventsContainer = __webpack_require__(477);
 	
 	var _this;
 	
@@ -43910,7 +45089,7 @@
 	module.exports = CommunityDefault;
 
 /***/ }),
-/* 471 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43933,7 +45112,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var FeedCard = __webpack_require__(472);
+	var FeedCard = __webpack_require__(476);
 	var _this;
 	
 	var FeedComponent = function (_View) {
@@ -44036,7 +45215,7 @@
 	module.exports = FeedComponent;
 
 /***/ }),
-/* 472 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44545,7 +45724,7 @@
 	module.exports = FeedCard;
 
 /***/ }),
-/* 473 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44568,8 +45747,8 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var AnnouncementCard = __webpack_require__(414);
-	var CommunityParams = __webpack_require__(415);
+	var AnnouncementCard = __webpack_require__(419);
+	var CommunityParams = __webpack_require__(420);
 	var _this;
 	
 	var CommunityEventsContainer = function (_View) {
@@ -44650,7 +45829,7 @@
 	module.exports = CommunityEventsContainer;
 
 /***/ }),
-/* 474 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44676,7 +45855,7 @@
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(416);
+	var SearchToolbar = __webpack_require__(421);
 	
 	var CommunityViewAllActivity = function (_View) {
 	  _inherits(CommunityViewAllActivity, _View);
@@ -44910,7 +46089,7 @@
 	module.exports = Connector(CommunityViewAllActivity);
 
 /***/ }),
-/* 475 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45165,7 +46344,7 @@
 	module.exports = Connector(NotificationActivity);
 
 /***/ }),
-/* 476 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45191,10 +46370,10 @@
 	var ScrollView = __webpack_require__(358);
 	var HorizontalScrollView = __webpack_require__(357);
 	var RatingBar = __webpack_require__(372);;
-	var SharePopup = __webpack_require__(461);
-	var FlagPopup = __webpack_require__(464);
+	var SharePopup = __webpack_require__(465);
+	var FlagPopup = __webpack_require__(468);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProgressButton = __webpack_require__(460);
+	var ProgressButton = __webpack_require__(464);
 	var utils = __webpack_require__(397);
 	
 	window.R = __webpack_require__(7);
@@ -45798,7 +46977,7 @@
 	module.exports = Connector(ResourceDetailActivity);
 
 /***/ }),
-/* 477 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45821,7 +47000,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ListView = __webpack_require__(371);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(478);
+	var LargeCardComponent = __webpack_require__(482);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -46047,7 +47226,7 @@
 	module.exports = Connector(ResourceViewAllActivity);
 
 /***/ }),
-/* 478 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46339,7 +47518,7 @@
 	module.exports = ResourceViewAllCard;
 
 /***/ }),
-/* 479 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46360,7 +47539,7 @@
 	var LinearLayout = __webpack_require__(333);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(478);
+	var LargeCardComponent = __webpack_require__(482);
 	var ListView = __webpack_require__(371);
 	var utils = __webpack_require__(397);
 	
@@ -46604,7 +47783,7 @@
 	module.exports = Connector(CourseViewAllActivity);
 
 /***/ }),
-/* 480 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46628,7 +47807,7 @@
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
 	var callbackMapper = __webpack_require__(329);
-	var AnnouncementCard = __webpack_require__(414);
+	var AnnouncementCard = __webpack_require__(419);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -46810,7 +47989,7 @@
 	module.exports = Connector(AnnouncementViewAllActivity);
 
 /***/ }),
-/* 481 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46840,9 +48019,9 @@
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterDialog = __webpack_require__(482);
+	var FilterDialog = __webpack_require__(486);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(418);
+	var SearchResult = __webpack_require__(423);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -47281,7 +48460,7 @@
 	module.exports = Connector(SearchActivity);
 
 /***/ }),
-/* 482 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47480,7 +48659,7 @@
 	module.exports = FilterDialog;
 
 /***/ }),
-/* 483 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47506,8 +48685,8 @@
 	var ScrollView = __webpack_require__(358);
 	var View = __webpack_require__(331);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterCard = __webpack_require__(484);
-	var FilterPopup = __webpack_require__(485);
+	var FilterCard = __webpack_require__(488);
+	var FilterPopup = __webpack_require__(489);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -47779,7 +48958,7 @@
 	module.exports = Connector(FilterActivity);
 
 /***/ }),
-/* 484 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47914,7 +49093,7 @@
 	module.exports = FilterCard;
 
 /***/ }),
-/* 485 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48277,7 +49456,7 @@
 	module.exports = FilterPopup;
 
 /***/ }),
-/* 486 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48303,9 +49482,9 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var Spinner = __webpack_require__(394);
-	var MultiSelectSpinner = __webpack_require__(487);
+	var MultiSelectSpinner = __webpack_require__(491);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
@@ -49552,7 +50731,7 @@
 	module.exports = Connector(AdditionalInformationActivity);
 
 /***/ }),
-/* 487 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49808,7 +50987,7 @@
 	module.exports = MultiSelectSpinner;
 
 /***/ }),
-/* 488 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49834,9 +51013,9 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var Spinner = __webpack_require__(394);
-	var MultiSelectSpinner = __webpack_require__(487);
+	var MultiSelectSpinner = __webpack_require__(491);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
@@ -50235,7 +51414,7 @@
 	module.exports = Connector(GuestInformationActivity);
 
 /***/ }),
-/* 489 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50259,11 +51438,11 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var Spinner = __webpack_require__(394);
 	var SimpleToolbar = __webpack_require__(382);
-	var RadioButton = __webpack_require__(490);
-	var SimplePopup = __webpack_require__(491);
+	var RadioButton = __webpack_require__(494);
+	var SimplePopup = __webpack_require__(495);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -50810,7 +51989,7 @@
 	module.exports = Connector(AddressActivity);
 
 /***/ }),
-/* 490 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51057,7 +52236,7 @@
 	module.exports = RadioButton;
 
 /***/ }),
-/* 491 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51370,7 +52549,7 @@
 	module.exports = SimplePopup;
 
 /***/ }),
-/* 492 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51394,9 +52573,9 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var PageOption = __webpack_require__(379);
-	var SimplePopup = __webpack_require__(491);
+	var SimplePopup = __webpack_require__(495);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -51854,7 +53033,7 @@
 	module.exports = Connector(EducationActivity);
 
 /***/ }),
-/* 493 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51878,13 +53057,13 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(453);
+	var TextInputView = __webpack_require__(406);
 	var Spinner = __webpack_require__(394);
-	var RadioButton = __webpack_require__(490);
+	var RadioButton = __webpack_require__(494);
 	var callbackMapper = __webpack_require__(329);
 	var PageOption = __webpack_require__(379);
-	var MultiSelectSpinner = __webpack_require__(487);
-	var SimplePopup = __webpack_require__(491);
+	var MultiSelectSpinner = __webpack_require__(491);
+	var SimplePopup = __webpack_require__(495);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -52606,7 +53785,7 @@
 	module.exports = Connector(ExperienceActivity);
 
 /***/ }),
-/* 494 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -52636,9 +53815,9 @@
 	var Space = __webpack_require__(366);
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
-	var FilterDialog = __webpack_require__(482);
+	var FilterDialog = __webpack_require__(486);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(418);
+	var SearchResult = __webpack_require__(423);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -53084,7 +54263,7 @@
 	module.exports = Connector(CommProfSearchActivity);
 
 /***/ }),
-/* 495 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53107,12 +54286,12 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(436);
-	var ProfileExperiences = __webpack_require__(439);
-	var ProfileSkillTags = __webpack_require__(441);
-	var ProfileCreations = __webpack_require__(443);
-	var ProfileAdditionalInfo = __webpack_require__(446);
-	var CropParagraph = __webpack_require__(440);
+	var ProfileHeader = __webpack_require__(441);
+	var ProfileExperiences = __webpack_require__(444);
+	var ProfileSkillTags = __webpack_require__(446);
+	var ProfileCreations = __webpack_require__(448);
+	var ProfileAdditionalInfo = __webpack_require__(451);
+	var CropParagraph = __webpack_require__(445);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var _this;
@@ -53580,7 +54759,7 @@
 	module.exports = Connector(ProfileActivity);
 
 /***/ }),
-/* 496 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53603,7 +54782,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var Attachments = __webpack_require__(497);
+	var Attachments = __webpack_require__(501);
 	var SimpleToolbar = __webpack_require__(382);
 	var utils = __webpack_require__(397);
 	
@@ -54025,7 +55204,7 @@
 	module.exports = Connector(AnnouncementDetailActivity);
 
 /***/ }),
-/* 497 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54046,7 +55225,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var View = __webpack_require__(331);
-	var HorizontalProgressBar = __webpack_require__(411);
+	var HorizontalProgressBar = __webpack_require__(417);
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
@@ -54293,7 +55472,7 @@
 	module.exports = Attachments;
 
 /***/ }),
-/* 498 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54318,10 +55497,10 @@
 	var ScrollView = __webpack_require__(358);
 	var ProgressBar = __webpack_require__(359);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(455);
-	var HorizontalProgressBar = __webpack_require__(411);
-	var FlagPopup = __webpack_require__(464);
-	var SharePopup = __webpack_require__(461);
+	var CourseCurriculum = __webpack_require__(459);
+	var HorizontalProgressBar = __webpack_require__(417);
+	var FlagPopup = __webpack_require__(468);
+	var SharePopup = __webpack_require__(465);
 	var ImageView = __webpack_require__(350);
 	var FeatureButton = __webpack_require__(377);
 	
@@ -54983,7 +56162,7 @@
 	module.exports = Connector(ContentPreviewScreen);
 
 /***/ }),
-/* 499 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55435,7 +56614,7 @@
 	module.exports = Connector(QRActivity);
 
 /***/ }),
-/* 500 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55477,7 +56656,7 @@
 	};
 
 /***/ }),
-/* 501 */
+/* 505 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55507,33 +56686,33 @@
 	};
 
 /***/ }),
-/* 502 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Console = __webpack_require__(652);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var DOM_HTML_HTMLElement = __webpack_require__(654);
-	var Data_Foreign_Generic = __webpack_require__(679);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Fragments_CommunityFragment = __webpack_require__(700);
-	var Fragments_CourseFragment = __webpack_require__(721);
-	var Fragments_HomeFragment = __webpack_require__(722);
-	var Fragments_ProfileFragment = __webpack_require__(723);
-	var Fragments_ResourceFragment = __webpack_require__(724);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Console = __webpack_require__(656);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var DOM_HTML_HTMLElement = __webpack_require__(658);
+	var Data_Foreign_Generic = __webpack_require__(683);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Fragments_CommunityFragment = __webpack_require__(704);
+	var Fragments_CourseFragment = __webpack_require__(725);
+	var Fragments_HomeFragment = __webpack_require__(726);
+	var Fragments_ProfileFragment = __webpack_require__(727);
+	var Fragments_ResourceFragment = __webpack_require__(728);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var mainActivity = function mainActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -55890,15 +57069,15 @@
 	};
 
 /***/ }),
-/* 503 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Unit = __webpack_require__(511);
+	var Control_Apply = __webpack_require__(508);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Unit = __webpack_require__(515);
 	var Applicative = function Applicative(Apply0, pure) {
 	    this.Apply0 = Apply0;
 	    this.pure = pure;
@@ -55962,16 +57141,16 @@
 	};
 
 /***/ }),
-/* 504 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(505);
-	var Control_Category = __webpack_require__(506);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
+	var $foreign = __webpack_require__(509);
+	var Control_Category = __webpack_require__(510);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
 	var Apply = function Apply(Functor0, apply) {
 	    this.Functor0 = Functor0;
 	    this.apply = apply;
@@ -56067,7 +57246,7 @@
 	};
 
 /***/ }),
-/* 505 */
+/* 509 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56089,13 +57268,13 @@
 	};
 
 /***/ }),
-/* 506 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(507);
+	var Control_Semigroupoid = __webpack_require__(511);
 	var Category = function Category(Semigroupoid0, id) {
 	    this.Semigroupoid0 = Semigroupoid0;
 	    this.id = id;
@@ -56115,7 +57294,7 @@
 	};
 
 /***/ }),
-/* 507 */
+/* 511 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -56149,13 +57328,13 @@
 	};
 
 /***/ }),
-/* 508 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
+	var Control_Category = __webpack_require__(510);
 	var on = function on(f) {
 	    return function (g) {
 	        return function (x) {
@@ -56196,16 +57375,16 @@
 	};
 
 /***/ }),
-/* 509 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(510);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(514);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Unit = __webpack_require__(515);
 	var Functor = function Functor(map) {
 	    this.map = map;
 	};
@@ -56258,7 +57437,7 @@
 	};
 
 /***/ }),
-/* 510 */
+/* 514 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56275,14 +57454,14 @@
 	};
 
 /***/ }),
-/* 511 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(512);
-	var Data_Show = __webpack_require__(513);
+	var $foreign = __webpack_require__(516);
+	var Data_Show = __webpack_require__(517);
 	var showUnit = new Data_Show.Show(function (v) {
 	    return "unit";
 	});
@@ -56292,7 +57471,7 @@
 	};
 
 /***/ }),
-/* 512 */
+/* 516 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56300,13 +57479,13 @@
 	exports.unit = {};
 
 /***/ }),
-/* 513 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(514);
+	var $foreign = __webpack_require__(518);
 	var Show = function Show(show) {
 	    this.show = show;
 	};
@@ -56341,7 +57520,7 @@
 	};
 
 /***/ }),
-/* 514 */
+/* 518 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56419,19 +57598,19 @@
 	};
 
 /***/ }),
-/* 515 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(516);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(520);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Unit = __webpack_require__(515);
 	var Bind = function Bind(Apply0, bind) {
 	    this.Apply0 = Apply0;
 	    this.bind = bind;
@@ -56516,7 +57695,7 @@
 	};
 
 /***/ }),
-/* 516 */
+/* 520 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -56532,47 +57711,47 @@
 	};
 
 /***/ }),
-/* 517 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(518);
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Aff_Internal = __webpack_require__(529);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Parallel = __webpack_require__(608);
-	var Control_Parallel_Class = __webpack_require__(609);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Time_Duration = __webpack_require__(629);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var $foreign = __webpack_require__(522);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Aff_Internal = __webpack_require__(533);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Parallel = __webpack_require__(612);
+	var Control_Parallel_Class = __webpack_require__(613);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Time_Duration = __webpack_require__(633);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var ParAff = function ParAff(x) {
 	    return x;
 	};
@@ -56911,7 +58090,7 @@
 	};
 
 /***/ }),
-/* 518 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/* globals setTimeout, clearTimeout, setImmediate, clearImmediate */
@@ -57247,10 +58426,10 @@
 	    }(a);
 	  };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(519).setImmediate, __webpack_require__(519).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(523).setImmediate, __webpack_require__(523).clearImmediate))
 
 /***/ }),
-/* 519 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -57303,7 +58482,7 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(520);
+	__webpack_require__(524);
 	// On some exotic environments, it's not clear which object `setimmeidate` was
 	// able to install onto.  Search each possibility in the same order as the
 	// `setimmediate` library.
@@ -57317,7 +58496,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 520 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -57507,10 +58686,10 @@
 	    attachTo.clearImmediate = clearImmediate;
 	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(521)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(525)))
 
 /***/ }),
-/* 521 */
+/* 525 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -57700,14 +58879,14 @@
 
 
 /***/ }),
-/* 522 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(509);
-	var Data_Semigroup = __webpack_require__(523);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Semigroup = __webpack_require__(527);
 	var Alt = function Alt(Functor0, alt) {
 	    this.Functor0 = Functor0;
 	    this.alt = alt;
@@ -57725,15 +58904,15 @@
 	};
 
 /***/ }),
-/* 523 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(524);
-	var Data_Unit = __webpack_require__(511);
-	var Data_Void = __webpack_require__(525);
+	var $foreign = __webpack_require__(528);
+	var Data_Unit = __webpack_require__(515);
+	var Data_Void = __webpack_require__(529);
 	var Semigroup = function Semigroup(append) {
 	    this.append = append;
 	};
@@ -57770,7 +58949,7 @@
 	};
 
 /***/ }),
-/* 524 */
+/* 528 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -57790,13 +58969,13 @@
 	};
 
 /***/ }),
-/* 525 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Show = __webpack_require__(513);
+	var Data_Show = __webpack_require__(517);
 	var Void = function Void(x) {
 	    return x;
 	};
@@ -57821,17 +59000,17 @@
 	};
 
 /***/ }),
-/* 526 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Plus = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(509);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Plus = __webpack_require__(531);
+	var Data_Functor = __webpack_require__(513);
 	var Alternative = function Alternative(Applicative0, Plus1) {
 	    this.Applicative0 = Applicative0;
 	    this.Plus1 = Plus1;
@@ -57847,14 +59026,14 @@
 	};
 
 /***/ }),
-/* 527 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Data_Functor = __webpack_require__(509);
+	var Control_Alt = __webpack_require__(526);
+	var Data_Functor = __webpack_require__(513);
 	var Plus = function Plus(Alt0, empty) {
 	    this.Alt0 = Alt0;
 	    this.empty = empty;
@@ -57872,17 +59051,17 @@
 	};
 
 /***/ }),
-/* 528 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Unit = __webpack_require__(511);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Unit = __webpack_require__(515);
 	var Monad = function Monad(Applicative0, Bind1) {
 	    this.Applicative0 = Applicative0;
 	    this.Bind1 = Bind1;
@@ -57946,17 +59125,17 @@
 	};
 
 /***/ }),
-/* 529 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(530);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_Maybe = __webpack_require__(574);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(534);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_Maybe = __webpack_require__(578);
+	var Prelude = __webpack_require__(550);
 	module.exports = {
 	    _makeVar: $foreign._makeVar,
 	    _takeVar: $foreign._takeVar,
@@ -57968,7 +59147,7 @@
 	};
 
 /***/ }),
-/* 530 */
+/* 534 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58098,21 +59277,21 @@
 	};
 
 /***/ }),
-/* 531 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(532);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var $$try = function $$try(action) {
 	    return $foreign.catchException(function ($0) {
 	        return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)(Data_Either.Left.create($0));
@@ -58136,7 +59315,7 @@
 	};
 
 /***/ }),
-/* 532 */
+/* 536 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58188,19 +59367,19 @@
 	};
 
 /***/ }),
-/* 533 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(538);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Unit = __webpack_require__(515);
 	var monadEff = new Control_Monad.Monad(function () {
 	    return applicativeEff;
 	}, function () {
@@ -58230,7 +59409,7 @@
 	};
 
 /***/ }),
-/* 534 */
+/* 538 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58294,36 +59473,36 @@
 	};
 
 /***/ }),
-/* 535 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bifoldable = __webpack_require__(538);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Bitraversable = __webpack_require__(587);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bifoldable = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Bitraversable = __webpack_require__(591);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Left = function () {
 	    function Left(value0) {
 	        this.value0 = value0;
@@ -58734,16 +59913,16 @@
 	};
 
 /***/ }),
-/* 536 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(537);
-	var Control_Category = __webpack_require__(506);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Semigroup = __webpack_require__(523);
+	var $foreign = __webpack_require__(541);
+	var Control_Category = __webpack_require__(510);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Semigroup = __webpack_require__(527);
 	var Extend = function Extend(Functor0, extend) {
 	    this.Functor0 = Functor0;
 	    this.extend = extend;
@@ -58807,7 +59986,7 @@
 	};
 
 /***/ }),
-/* 537 */
+/* 541 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58821,32 +60000,32 @@
 	};
 
 /***/ }),
-/* 538 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor_Clown = __webpack_require__(539);
-	var Data_Bifunctor_Flip = __webpack_require__(568);
-	var Data_Bifunctor_Joker = __webpack_require__(569);
-	var Data_Bifunctor_Product = __webpack_require__(570);
-	var Data_Bifunctor_Wrap = __webpack_require__(571);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Endo = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor_Clown = __webpack_require__(543);
+	var Data_Bifunctor_Flip = __webpack_require__(572);
+	var Data_Bifunctor_Joker = __webpack_require__(573);
+	var Data_Bifunctor_Product = __webpack_require__(574);
+	var Data_Bifunctor_Wrap = __webpack_require__(575);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Endo = __webpack_require__(589);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Bifoldable = function Bifoldable(bifoldMap, bifoldl, bifoldr) {
 	    this.bifoldMap = bifoldMap;
 	    this.bifoldl = bifoldl;
@@ -59145,24 +60324,24 @@
 	};
 
 /***/ }),
-/* 539 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Clown = function Clown(x) {
 	    return x;
 	};
@@ -59225,13 +60404,13 @@
 	};
 
 /***/ }),
-/* 540 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapply = __webpack_require__(541);
+	var Control_Biapply = __webpack_require__(545);
 	var Biapplicative = function Biapplicative(Biapply0, bipure) {
 	    this.Biapply0 = Biapply0;
 	    this.bipure = bipure;
@@ -59245,15 +60424,15 @@
 	};
 
 /***/ }),
-/* 541 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Function = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Function = __webpack_require__(512);
 	var Biapply = function Biapply(Bifunctor0, biapply) {
 	    this.Bifunctor0 = Bifunctor0;
 	    this.biapply = biapply;
@@ -59309,13 +60488,13 @@
 	};
 
 /***/ }),
-/* 542 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
+	var Control_Category = __webpack_require__(510);
 	var Bifunctor = function Bifunctor(bimap) {
 	    this.bimap = bimap;
 	};
@@ -59338,15 +60517,15 @@
 	};
 
 /***/ }),
-/* 543 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(544);
-	var Data_Unit = __webpack_require__(511);
-	var Data_Void = __webpack_require__(525);
+	var $foreign = __webpack_require__(548);
+	var Data_Unit = __webpack_require__(515);
+	var Data_Void = __webpack_require__(529);
 	var Eq = function Eq(eq) {
 	    this.eq = eq;
 	};
@@ -59415,7 +60594,7 @@
 	};
 
 /***/ }),
-/* 544 */
+/* 548 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59439,16 +60618,16 @@
 	};
 
 /***/ }),
-/* 545 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Prelude = __webpack_require__(546);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Prelude = __webpack_require__(550);
 	var Newtype = function Newtype(unwrap, wrap) {
 	    this.unwrap = unwrap;
 	    this.wrap = wrap;
@@ -59648,42 +60827,42 @@
 	};
 
 /***/ }),
-/* 546 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_DivisionRing = __webpack_require__(563);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Field = __webpack_require__(566);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_NaturalTransformation = __webpack_require__(567);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Data_Void = __webpack_require__(525);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_DivisionRing = __webpack_require__(567);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Field = __webpack_require__(570);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_NaturalTransformation = __webpack_require__(571);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Data_Void = __webpack_require__(529);
 	module.exports = {};
 
 /***/ }),
-/* 547 */
+/* 551 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -59695,14 +60874,14 @@
 	};
 
 /***/ }),
-/* 548 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Unit = __webpack_require__(511);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Unit = __webpack_require__(515);
 	var BooleanAlgebra = function BooleanAlgebra(HeytingAlgebra0) {
 	    this.HeytingAlgebra0 = HeytingAlgebra0;
 	};
@@ -59725,14 +60904,14 @@
 	};
 
 /***/ }),
-/* 549 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(550);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(554);
+	var Data_Unit = __webpack_require__(515);
 	var HeytingAlgebra = function HeytingAlgebra(conj, disj, ff, implies, not, tt) {
 	    this.conj = conj;
 	    this.disj = disj;
@@ -59822,7 +61001,7 @@
 	};
 
 /***/ }),
-/* 550 */
+/* 554 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59844,16 +61023,16 @@
 	};
 
 /***/ }),
-/* 551 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(552);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(556);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Unit = __webpack_require__(515);
 	var Bounded = function Bounded(Ord0, bottom, top) {
 	    this.Ord0 = Ord0;
 	    this.bottom = bottom;
@@ -59892,7 +61071,7 @@
 	};
 
 /***/ }),
-/* 552 */
+/* 556 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59904,21 +61083,21 @@
 	exports.bottomChar = String.fromCharCode(0);
 
 /***/ }),
-/* 553 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(554);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Ord_Unsafe = __webpack_require__(555);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Unit = __webpack_require__(511);
-	var Data_Void = __webpack_require__(525);
+	var $foreign = __webpack_require__(558);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Ord_Unsafe = __webpack_require__(559);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Unit = __webpack_require__(515);
+	var Data_Void = __webpack_require__(529);
 	var Ord = function Ord(Eq0, compare) {
 	    this.Eq0 = Eq0;
 	    this.compare = compare;
@@ -60179,7 +61358,7 @@
 	};
 
 /***/ }),
-/* 554 */
+/* 558 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60211,21 +61390,21 @@
 	};
 
 /***/ }),
-/* 555 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(556);
-	var Data_Ordering = __webpack_require__(557);
+	var $foreign = __webpack_require__(560);
+	var Data_Ordering = __webpack_require__(561);
 	var unsafeCompare = $foreign.unsafeCompareImpl(Data_Ordering.LT.value)(Data_Ordering.EQ.value)(Data_Ordering.GT.value);
 	module.exports = {
 	    unsafeCompare: unsafeCompare
 	};
 
 /***/ }),
-/* 556 */
+/* 560 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60243,15 +61422,15 @@
 	};
 
 /***/ }),
-/* 557 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(543);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
 	var LT = function () {
 	    function LT() {};
 	    LT.value = new LT();
@@ -60330,15 +61509,15 @@
 	};
 
 /***/ }),
-/* 558 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(559);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(563);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Unit = __webpack_require__(515);
 	var Ring = function Ring(Semiring0, sub) {
 	    this.Semiring0 = Semiring0;
 	    this.sub = sub;
@@ -60386,7 +61565,7 @@
 	};
 
 /***/ }),
-/* 559 */
+/* 563 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60405,14 +61584,14 @@
 	};
 
 /***/ }),
-/* 560 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(561);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(565);
+	var Data_Unit = __webpack_require__(515);
 	var Semiring = function Semiring(add, mul, one, zero) {
 	    this.add = add;
 	    this.mul = mul;
@@ -60474,7 +61653,7 @@
 	};
 
 /***/ }),
-/* 561 */
+/* 565 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60506,15 +61685,15 @@
 	};
 
 /***/ }),
-/* 562 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Unit = __webpack_require__(511);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Unit = __webpack_require__(515);
 	var CommutativeRing = function CommutativeRing(Ring0) {
 	    this.Ring0 = Ring0;
 	};
@@ -60541,15 +61720,15 @@
 	};
 
 /***/ }),
-/* 563 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
 	var DivisionRing = function DivisionRing(Ring0, recip) {
 	    this.Ring0 = Ring0;
 	    this.recip = recip;
@@ -60585,19 +61764,19 @@
 	};
 
 /***/ }),
-/* 564 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(565);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_Eq = __webpack_require__(543);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
+	var $foreign = __webpack_require__(569);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_Eq = __webpack_require__(547);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
 	var EuclideanRing = function EuclideanRing(CommutativeRing0, degree, div, mod) {
 	    this.CommutativeRing0 = CommutativeRing0;
 	    this.degree = degree;
@@ -60679,7 +61858,7 @@
 	};
 
 /***/ }),
-/* 565 */
+/* 569 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60708,17 +61887,17 @@
 	};
 
 /***/ }),
-/* 566 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_DivisionRing = __webpack_require__(563);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_DivisionRing = __webpack_require__(567);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
 	var Field = function Field(EuclideanRing0) {
 	    this.EuclideanRing0 = EuclideanRing0;
 	};
@@ -60731,7 +61910,7 @@
 	};
 
 /***/ }),
-/* 567 */
+/* 571 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -60740,22 +61919,22 @@
 	module.exports = {};
 
 /***/ }),
-/* 568 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Flip = function Flip(x) {
 	    return x;
 	};
@@ -60820,24 +61999,24 @@
 	};
 
 /***/ }),
-/* 569 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Joker = function Joker(x) {
 	    return x;
 	};
@@ -60902,22 +62081,22 @@
 	};
 
 /***/ }),
-/* 570 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Eq = __webpack_require__(543);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Product = function () {
 	    function Product(value0, value1) {
 	        this.value0 = value0;
@@ -61008,22 +62187,22 @@
 	};
 
 /***/ }),
-/* 571 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Wrap = function Wrap(x) {
 	    return x;
 	};
@@ -61088,41 +62267,41 @@
 	};
 
 /***/ }),
-/* 572 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(573);
-	var Control_Alt = __webpack_require__(522);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Maybe_Last = __webpack_require__(579);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Monoid_Additive = __webpack_require__(580);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Endo = __webpack_require__(585);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(577);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Maybe_Last = __webpack_require__(583);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Monoid_Additive = __webpack_require__(584);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Endo = __webpack_require__(589);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Foldable = function Foldable(foldMap, foldl, foldr) {
 	    this.foldMap = foldMap;
 	    this.foldl = foldl;
@@ -61643,7 +62822,7 @@
 	};
 
 /***/ }),
-/* 573 */
+/* 577 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61675,34 +62854,34 @@
 	};
 
 /***/ }),
-/* 574 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Nothing = function () {
 	    function Nothing() {};
 	    Nothing.value = new Nothing();
@@ -61953,21 +63132,21 @@
 	};
 
 /***/ }),
-/* 575 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Plus = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Unit = __webpack_require__(511);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Plus = __webpack_require__(531);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Unit = __webpack_require__(515);
 	var MonadZero = function MonadZero(Alternative1, Monad0) {
 	    this.Alternative1 = Alternative1;
 	    this.Monad0 = Monad0;
@@ -61995,13 +63174,13 @@
 	};
 
 /***/ }),
-/* 576 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(509);
+	var Data_Functor = __webpack_require__(513);
 	var Invariant = function Invariant(imap) {
 	    this.imap = imap;
 	};
@@ -62026,21 +63205,21 @@
 	};
 
 /***/ }),
-/* 577 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Function = __webpack_require__(508);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Function = __webpack_require__(512);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Monoid = function Monoid(Semigroup0, mempty) {
 	    this.Semigroup0 = Semigroup0;
 	    this.mempty = mempty;
@@ -62113,28 +63292,28 @@
 	};
 
 /***/ }),
-/* 578 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var First = function First(x) {
 	    return x;
 	};
@@ -62196,28 +63375,28 @@
 	};
 
 /***/ }),
-/* 579 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Last = function Last(x) {
 	    return x;
 	};
@@ -62282,29 +63461,29 @@
 	};
 
 /***/ }),
-/* 580 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Additive = function Additive(x) {
 	    return x;
 	};
@@ -62401,14 +63580,14 @@
 	};
 
 /***/ }),
-/* 581 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Extend = __webpack_require__(536);
-	var Data_Functor = __webpack_require__(509);
+	var Control_Extend = __webpack_require__(540);
+	var Data_Functor = __webpack_require__(513);
 	var Comonad = function Comonad(Extend0, extract) {
 	    this.Extend0 = Extend0;
 	    this.extract = extract;
@@ -62422,30 +63601,30 @@
 	};
 
 /***/ }),
-/* 582 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Conj = function Conj(x) {
 	    return x;
 	};
@@ -62554,30 +63733,30 @@
 	};
 
 /***/ }),
-/* 583 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Disj = function Disj(x) {
 	    return x;
 	};
@@ -62686,28 +63865,28 @@
 	};
 
 /***/ }),
-/* 584 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Dual = function Dual(x) {
 	    return x;
 	};
@@ -62804,19 +63983,19 @@
 	};
 
 /***/ }),
-/* 585 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Prelude = __webpack_require__(546);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Prelude = __webpack_require__(550);
 	var Endo = function Endo(x) {
 	    return x;
 	};
@@ -62851,29 +64030,29 @@
 	};
 
 /***/ }),
-/* 586 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Multiplicative = function Multiplicative(x) {
 	    return x;
 	};
@@ -62970,25 +64149,25 @@
 	};
 
 /***/ }),
-/* 587 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Data_Bifoldable = __webpack_require__(538);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Bifunctor_Clown = __webpack_require__(539);
-	var Data_Bifunctor_Flip = __webpack_require__(568);
-	var Data_Bifunctor_Joker = __webpack_require__(569);
-	var Data_Bifunctor_Product = __webpack_require__(570);
-	var Data_Bifunctor_Wrap = __webpack_require__(571);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Data_Bifoldable = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Bifunctor_Clown = __webpack_require__(543);
+	var Data_Bifunctor_Flip = __webpack_require__(572);
+	var Data_Bifunctor_Joker = __webpack_require__(573);
+	var Data_Bifunctor_Product = __webpack_require__(574);
+	var Data_Bifunctor_Wrap = __webpack_require__(575);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Bitraversable = function Bitraversable(Bifoldable1, Bifunctor0, bisequence, bitraverse) {
 	    this.Bifoldable1 = Bifoldable1;
 	    this.Bifunctor0 = Bifunctor0;
@@ -63174,29 +64353,29 @@
 	};
 
 /***/ }),
-/* 588 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(589);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Maybe_Last = __webpack_require__(579);
-	var Data_Monoid_Additive = __webpack_require__(580);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Traversable_Accum = __webpack_require__(590);
-	var Data_Traversable_Accum_Internal = __webpack_require__(591);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(593);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Maybe_Last = __webpack_require__(583);
+	var Data_Monoid_Additive = __webpack_require__(584);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Traversable_Accum = __webpack_require__(594);
+	var Data_Traversable_Accum_Internal = __webpack_require__(595);
+	var Prelude = __webpack_require__(550);
 	var Traversable = function Traversable(Foldable1, Functor0, sequence, traverse) {
 	    this.Foldable1 = Foldable1;
 	    this.Functor0 = Functor0;
@@ -63456,7 +64635,7 @@
 	};
 
 /***/ }),
-/* 589 */
+/* 593 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63525,7 +64704,7 @@
 	}();
 
 /***/ }),
-/* 590 */
+/* 594 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -63534,17 +64713,17 @@
 	module.exports = {};
 
 /***/ }),
-/* 591 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Traversable_Accum = __webpack_require__(590);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Traversable_Accum = __webpack_require__(594);
+	var Prelude = __webpack_require__(550);
 	var StateR = function StateR(x) {
 	    return x;
 	};
@@ -63641,14 +64820,14 @@
 	};
 
 /***/ }),
-/* 592 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(593);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(597);
+	var Data_Unit = __webpack_require__(515);
 	var runFn1 = function runFn1(f) {
 	    return f;
 	};
@@ -63681,7 +64860,7 @@
 	};
 
 /***/ }),
-/* 593 */
+/* 597 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63906,15 +65085,15 @@
 	};
 
 /***/ }),
-/* 594 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Eff = __webpack_require__(533);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Eff = __webpack_require__(537);
 	var MonadEff = function MonadEff(Monad0, liftEff) {
 	    this.Monad0 = Monad0;
 	    this.liftEff = liftEff;
@@ -63932,21 +65111,21 @@
 	};
 
 /***/ }),
-/* 595 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var MonadThrow = function MonadThrow(Monad0, throwError) {
 	    this.Monad0 = Monad0;
 	    this.throwError = throwError;
@@ -64049,27 +65228,27 @@
 	};
 
 /***/ }),
-/* 596 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(597);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Either = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Identity = __webpack_require__(601);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Unit = __webpack_require__(511);
-	var Partial_Unsafe = __webpack_require__(603);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(601);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Either = __webpack_require__(539);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Identity = __webpack_require__(605);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Unit = __webpack_require__(515);
+	var Partial_Unsafe = __webpack_require__(607);
+	var Prelude = __webpack_require__(550);
 	var Loop = function () {
 	    function Loop(value0) {
 	        this.value0 = value0;
@@ -64303,15 +65482,15 @@
 	};
 
 /***/ }),
-/* 597 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(598);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Semigroupoid = __webpack_require__(507);
+	var $foreign = __webpack_require__(602);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Semigroupoid = __webpack_require__(511);
 	var unsafePerformEff = function unsafePerformEff($0) {
 	    return Control_Monad_Eff.runPure($foreign.unsafeCoerceEff($0));
 	};
@@ -64321,7 +65500,7 @@
 	};
 
 /***/ }),
-/* 598 */
+/* 602 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64331,14 +65510,14 @@
 	};
 
 /***/ }),
-/* 599 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(600);
-	var Control_Monad_Eff = __webpack_require__(533);
+	var $foreign = __webpack_require__(604);
+	var Control_Monad_Eff = __webpack_require__(537);
 	var pureST = function pureST(st) {
 	    return Control_Monad_Eff.runPure($foreign.runST(st));
 	};
@@ -64352,7 +65531,7 @@
 	};
 
 /***/ }),
-/* 600 */
+/* 604 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64390,39 +65569,39 @@
 	};
 
 /***/ }),
-/* 601 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Field = __webpack_require__(566);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Field = __webpack_require__(570);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Identity = function Identity(x) {
 	    return x;
 	};
@@ -64595,13 +65774,13 @@
 	};
 
 /***/ }),
-/* 602 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Unit = __webpack_require__(511);
+	var Data_Unit = __webpack_require__(515);
 	var Lazy = function Lazy(defer) {
 	    this.defer = defer;
 	};
@@ -64632,14 +65811,14 @@
 	};
 
 /***/ }),
-/* 603 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(604);
-	var Partial = __webpack_require__(605);
+	var $foreign = __webpack_require__(608);
+	var Partial = __webpack_require__(609);
 	var unsafePartialBecause = function unsafePartialBecause(v) {
 	    return function (x) {
 	        return $foreign.unsafePartial(function (dictPartial) {
@@ -64659,7 +65838,7 @@
 	};
 
 /***/ }),
-/* 604 */
+/* 608 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64671,13 +65850,13 @@
 	};
 
 /***/ }),
-/* 605 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(606);
+	var $foreign = __webpack_require__(610);
 	var crash = function crash(dictPartial) {
 	    return $foreign.crashWith(dictPartial)("Partial.crash: partial function");
 	};
@@ -64687,7 +65866,7 @@
 	};
 
 /***/ }),
-/* 606 */
+/* 610 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64701,21 +65880,21 @@
 	};
 
 /***/ }),
-/* 607 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Data_Functor = __webpack_require__(509);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Data_Functor = __webpack_require__(513);
 	var MonadPlus = function MonadPlus(MonadZero0) {
 	    this.MonadZero0 = MonadZero0;
 	};
@@ -64728,20 +65907,20 @@
 	};
 
 /***/ }),
-/* 608 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Parallel_Class = __webpack_require__(609);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Parallel_Class = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var parTraverse_ = function parTraverse_(dictParallel) {
 	    return function (dictFoldable) {
 	        return function (f) {
@@ -64818,37 +65997,37 @@
 	};
 
 /***/ }),
-/* 609 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Cont_Trans = __webpack_require__(610);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Ref = __webpack_require__(618);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(597);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Monad_Maybe_Trans = __webpack_require__(622);
-	var Control_Monad_Reader_Trans = __webpack_require__(623);
-	var Control_Monad_Writer_Trans = __webpack_require__(624);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Compose = __webpack_require__(625);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Cont_Trans = __webpack_require__(614);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Ref = __webpack_require__(622);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(601);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Monad_Maybe_Trans = __webpack_require__(626);
+	var Control_Monad_Reader_Trans = __webpack_require__(627);
+	var Control_Monad_Writer_Trans = __webpack_require__(628);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Compose = __webpack_require__(629);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var ParCont = function ParCont(x) {
 	    return x;
 	};
@@ -65033,26 +66212,26 @@
 	};
 
 /***/ }),
-/* 610 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Prelude = __webpack_require__(550);
 	var ContT = function ContT(x) {
 	    return x;
 	};
@@ -65209,13 +66388,13 @@
 	};
 
 /***/ }),
-/* 611 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(546);
+	var Prelude = __webpack_require__(550);
 	var MonadCont = function MonadCont(Monad0, callCC) {
 	    this.Monad0 = Monad0;
 	    this.callCC = callCC;
@@ -65229,17 +66408,17 @@
 	};
 
 /***/ }),
-/* 612 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Functor = __webpack_require__(509);
-	var Prelude = __webpack_require__(546);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Functor = __webpack_require__(513);
+	var Prelude = __webpack_require__(550);
 	var MonadAsk = function MonadAsk(Monad0, ask) {
 	    this.Monad0 = Monad0;
 	    this.ask = ask;
@@ -65276,15 +66455,15 @@
 	};
 
 /***/ }),
-/* 613 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var MonadState = function MonadState(Monad0, state) {
 	    this.Monad0 = Monad0;
 	    this.state = state;
@@ -65328,49 +66507,49 @@
 	};
 
 /***/ }),
-/* 614 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Biapplicative = __webpack_require__(540);
-	var Control_Biapply = __webpack_require__(541);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifoldable = __webpack_require__(538);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Bitraversable = __webpack_require__(587);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_Distributive = __webpack_require__(615);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
-	var Type_Equality = __webpack_require__(616);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Biapplicative = __webpack_require__(544);
+	var Control_Biapply = __webpack_require__(545);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifoldable = __webpack_require__(542);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Bitraversable = __webpack_require__(591);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_Distributive = __webpack_require__(619);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
+	var Type_Equality = __webpack_require__(620);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -65754,19 +66933,19 @@
 	};
 
 /***/ }),
-/* 615 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Identity = __webpack_require__(601);
-	var Data_Newtype = __webpack_require__(545);
-	var Prelude = __webpack_require__(546);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Identity = __webpack_require__(605);
+	var Data_Newtype = __webpack_require__(549);
+	var Prelude = __webpack_require__(550);
 	var Distributive = function Distributive(Functor0, collect, distribute) {
 	    this.Functor0 = Functor0;
 	    this.collect = collect;
@@ -65845,7 +67024,7 @@
 	};
 
 /***/ }),
-/* 616 */
+/* 620 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -65874,13 +67053,13 @@
 	};
 
 /***/ }),
-/* 617 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(546);
+	var Prelude = __webpack_require__(550);
 	var MonadTrans = function MonadTrans(lift) {
 	    this.lift = lift;
 	};
@@ -65893,16 +67072,16 @@
 	};
 
 /***/ }),
-/* 618 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(619);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(623);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var modifyRef = function modifyRef(ref) {
 	    return function (f) {
 	        return $foreign["modifyRef'"](ref)(function (s) {
@@ -65922,7 +67101,7 @@
 	};
 
 /***/ }),
-/* 619 */
+/* 623 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -65959,39 +67138,39 @@
 	};
 
 /***/ }),
-/* 620 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Tuple = __webpack_require__(614);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Tuple = __webpack_require__(618);
+	var Prelude = __webpack_require__(550);
 	var ExceptT = function ExceptT(x) {
 	    return x;
 	};
@@ -66280,17 +67459,17 @@
 	};
 
 /***/ }),
-/* 621 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Data_Function = __webpack_require__(508);
-	var Data_Tuple = __webpack_require__(614);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Data_Function = __webpack_require__(512);
+	var Data_Tuple = __webpack_require__(618);
+	var Prelude = __webpack_require__(550);
 	var MonadTell = function MonadTell(Monad0, tell) {
 	    this.Monad0 = Monad0;
 	    this.tell = tell;
@@ -66338,37 +67517,37 @@
 	};
 
 /***/ }),
-/* 622 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Tuple = __webpack_require__(614);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Tuple = __webpack_require__(618);
+	var Prelude = __webpack_require__(550);
 	var MaybeT = function MaybeT(x) {
 	    return x;
 	};
@@ -66613,37 +67792,37 @@
 	};
 
 /***/ }),
-/* 623 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Distributive = __webpack_require__(615);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Distributive = __webpack_require__(619);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Prelude = __webpack_require__(550);
 	var ReaderT = function ReaderT(x) {
 	    return x;
 	};
@@ -66903,38 +68082,38 @@
 	};
 
 /***/ }),
-/* 624 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var WriterT = function WriterT(x) {
 	    return x;
 	};
@@ -67211,30 +68390,30 @@
 	};
 
 /***/ }),
-/* 625 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_App = __webpack_require__(626);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_App = __webpack_require__(630);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Compose = function Compose(x) {
 	    return x;
 	};
@@ -67411,35 +68590,35 @@
 	};
 
 /***/ }),
-/* 626 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var App = function App(x) {
 	    return x;
 	};
@@ -67582,19 +68761,19 @@
 	};
 
 /***/ }),
-/* 627 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(628);
+	var $foreign = __webpack_require__(632);
 	module.exports = {
 	    unsafeCoerce: $foreign.unsafeCoerce
 	};
 
 /***/ }),
-/* 628 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67606,27 +68785,27 @@
 	};
 
 /***/ }),
-/* 629 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Seconds = function Seconds(x) {
 	    return x;
 	};
@@ -67868,41 +69047,41 @@
 	};
 
 /***/ }),
-/* 630 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(631);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Array = __webpack_require__(632);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_String = __webpack_require__(647);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Data_Void = __webpack_require__(525);
-	var Prelude = __webpack_require__(546);
-	var Type_Proxy = __webpack_require__(651);
+	var $foreign = __webpack_require__(635);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Array = __webpack_require__(636);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_String = __webpack_require__(651);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Data_Void = __webpack_require__(529);
+	var Prelude = __webpack_require__(550);
+	var Type_Proxy = __webpack_require__(655);
 	var SProd = function () {
 	    function SProd(value0, value1) {
 	        this.value0 = value0;
@@ -68914,7 +70093,7 @@
 	};
 
 /***/ }),
-/* 631 */
+/* 635 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68960,44 +70139,44 @@
 	};
 
 /***/ }),
-/* 632 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(633);
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Array_ST = __webpack_require__(634);
-	var Data_Array_ST_Iterator = __webpack_require__(636);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Partial_Unsafe = __webpack_require__(603);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(637);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Array_ST = __webpack_require__(638);
+	var Data_Array_ST_Iterator = __webpack_require__(640);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Partial_Unsafe = __webpack_require__(607);
+	var Prelude = __webpack_require__(550);
 	var zipWithA = function zipWithA(dictApplicative) {
 	    return function (f) {
 	        return function (xs) {
@@ -69516,7 +70695,7 @@
 	};
 
 /***/ }),
-/* 633 */
+/* 637 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69825,21 +71004,21 @@
 	};
 
 /***/ }),
-/* 634 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(635);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Maybe = __webpack_require__(574);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var $foreign = __webpack_require__(639);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Maybe = __webpack_require__(578);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var unsafeFreeze = function unsafeFreeze($7) {
 	    return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)($7);
 	};
@@ -69893,7 +71072,7 @@
 	};
 
 /***/ }),
-/* 635 */
+/* 639 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -69967,24 +71146,24 @@
 	};
 
 /***/ }),
-/* 636 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Array_ST = __webpack_require__(634);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Semiring = __webpack_require__(560);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Array_ST = __webpack_require__(638);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Semiring = __webpack_require__(564);
+	var Prelude = __webpack_require__(550);
 	var Iterator = function () {
 	    function Iterator(value0, value1) {
 	        this.value0 = value0;
@@ -70070,33 +71249,33 @@
 	};
 
 /***/ }),
-/* 637 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_FoldableWithIndex = __webpack_require__(638);
-	var Data_Functor = __webpack_require__(509);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_TraversableWithIndex = __webpack_require__(641);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_FoldableWithIndex = __webpack_require__(642);
+	var Data_Functor = __webpack_require__(513);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_TraversableWithIndex = __webpack_require__(645);
+	var Prelude = __webpack_require__(550);
 	var NonEmpty = function () {
 	    function NonEmpty(value0, value1) {
 	        this.value0 = value0;
@@ -70324,33 +71503,33 @@
 	};
 
 /***/ }),
-/* 638 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Maybe_Last = __webpack_require__(579);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Monoid_Additive = __webpack_require__(580);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Endo = __webpack_require__(585);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Maybe_Last = __webpack_require__(583);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Monoid_Additive = __webpack_require__(584);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Endo = __webpack_require__(589);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -70661,25 +71840,25 @@
 	};
 
 /***/ }),
-/* 639 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(640);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Maybe_Last = __webpack_require__(579);
-	var Data_Monoid_Additive = __webpack_require__(580);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(644);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Maybe_Last = __webpack_require__(583);
+	var Data_Monoid_Additive = __webpack_require__(584);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
 	    this.Functor0 = Functor0;
 	    this.mapWithIndex = mapWithIndex;
@@ -70745,7 +71924,7 @@
 	};
 
 /***/ }),
-/* 640 */
+/* 644 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70762,29 +71941,29 @@
 	};
 
 /***/ }),
-/* 641 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_FoldableWithIndex = __webpack_require__(638);
-	var Data_Function = __webpack_require__(508);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Maybe_First = __webpack_require__(578);
-	var Data_Maybe_Last = __webpack_require__(579);
-	var Data_Monoid_Additive = __webpack_require__(580);
-	var Data_Monoid_Conj = __webpack_require__(582);
-	var Data_Monoid_Disj = __webpack_require__(583);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Traversable_Accum = __webpack_require__(590);
-	var Data_Traversable_Accum_Internal = __webpack_require__(591);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_FoldableWithIndex = __webpack_require__(642);
+	var Data_Function = __webpack_require__(512);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Maybe_First = __webpack_require__(582);
+	var Data_Maybe_Last = __webpack_require__(583);
+	var Data_Monoid_Additive = __webpack_require__(584);
+	var Data_Monoid_Conj = __webpack_require__(586);
+	var Data_Monoid_Disj = __webpack_require__(587);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Traversable_Accum = __webpack_require__(594);
+	var Data_Traversable_Accum_Internal = __webpack_require__(595);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
 	    this.FoldableWithIndex1 = FoldableWithIndex1;
 	    this.FunctorWithIndex0 = FunctorWithIndex0;
@@ -70994,24 +72173,24 @@
 	};
 
 /***/ }),
-/* 642 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(643);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Partial_Unsafe = __webpack_require__(603);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(647);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Partial_Unsafe = __webpack_require__(607);
+	var Prelude = __webpack_require__(550);
 	var Unfoldable = function Unfoldable(unfoldr) {
 	    this.unfoldr = unfoldr;
 	};
@@ -71081,7 +72260,7 @@
 	};
 
 /***/ }),
-/* 643 */
+/* 647 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71110,49 +72289,49 @@
 	};
 
 /***/ }),
-/* 644 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Monad = __webpack_require__(528);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_FoldableWithIndex = __webpack_require__(638);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semigroup_Foldable = __webpack_require__(645);
-	var Data_Semigroup_Traversable = __webpack_require__(646);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_TraversableWithIndex = __webpack_require__(641);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Monad = __webpack_require__(532);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_FoldableWithIndex = __webpack_require__(642);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semigroup_Foldable = __webpack_require__(649);
+	var Data_Semigroup_Traversable = __webpack_require__(650);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_TraversableWithIndex = __webpack_require__(645);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Prelude = __webpack_require__(550);
 	var Nil = function () {
 	    function Nil() {};
 	    Nil.value = new Nil();
@@ -71696,23 +72875,23 @@
 	};
 
 /***/ }),
-/* 645 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid_Dual = __webpack_require__(584);
-	var Data_Monoid_Multiplicative = __webpack_require__(586);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid_Dual = __webpack_require__(588);
+	var Data_Monoid_Multiplicative = __webpack_require__(590);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Act = function Act(x) {
 	    return x;
 	};
@@ -71810,17 +72989,17 @@
 	};
 
 /***/ }),
-/* 646 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Semigroup_Foldable = __webpack_require__(645);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Category = __webpack_require__(510);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Semigroup_Foldable = __webpack_require__(649);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Traversable1 = function Traversable1(Foldable10, _Traversable, sequence1, traverse1) {
 	    this.Foldable10 = Foldable10;
 	    this.Traversable1 = _Traversable;
@@ -71856,26 +73035,26 @@
 	};
 
 /***/ }),
-/* 647 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(648);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_String_Unsafe = __webpack_require__(649);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(652);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_String_Unsafe = __webpack_require__(653);
+	var Prelude = __webpack_require__(550);
 	var Replacement = function Replacement(x) {
 	    return x;
 	};
@@ -72016,7 +73195,7 @@
 	};
 
 /***/ }),
-/* 648 */
+/* 652 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72200,13 +73379,13 @@
 	};
 
 /***/ }),
-/* 649 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(650);
+	var $foreign = __webpack_require__(654);
 	module.exports = {
 	    "char": $foreign["char"],
 	    charAt: $foreign.charAt,
@@ -72214,7 +73393,7 @@
 	};
 
 /***/ }),
-/* 650 */
+/* 654 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72239,29 +73418,29 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad = __webpack_require__(528);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad = __webpack_require__(532);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Proxy3 = function () {
 	    function Proxy3() {};
 	    Proxy3.value = new Proxy3();
@@ -72540,16 +73719,16 @@
 	};
 
 /***/ }),
-/* 652 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(653);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
+	var $foreign = __webpack_require__(657);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
 	var warnShow = function warnShow(dictShow) {
 	    return function (a) {
 	        return $foreign.warn(Data_Show.show(dictShow)(a));
@@ -72582,7 +73761,7 @@
 	};
 
 /***/ }),
-/* 653 */
+/* 657 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72616,22 +73795,22 @@
 	};
 
 /***/ }),
-/* 654 */
+/* 658 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(655);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var DOM = __webpack_require__(656);
-	var DOM_HTML_Types = __webpack_require__(657);
-	var DOM_Node_Types = __webpack_require__(674);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Nullable = __webpack_require__(677);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(659);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var DOM = __webpack_require__(660);
+	var DOM_HTML_Types = __webpack_require__(661);
+	var DOM_Node_Types = __webpack_require__(678);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Nullable = __webpack_require__(681);
+	var Prelude = __webpack_require__(550);
 	var offsetParent = function offsetParent($0) {
 	    return Data_Functor.map(Control_Monad_Eff.functorEff)(Data_Nullable.toMaybe)($foreign._offsetParent($0));
 	};
@@ -72668,7 +73847,7 @@
 	};
 
 /***/ }),
-/* 655 */
+/* 659 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72905,35 +74084,35 @@
 	};
 
 /***/ }),
-/* 656 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Eff = __webpack_require__(533);
+	var Control_Monad_Eff = __webpack_require__(537);
 	module.exports = {};
 
 /***/ }),
-/* 657 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(658);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var DOM_Event_Types = __webpack_require__(659);
-	var DOM_Node_Types = __webpack_require__(674);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var $foreign = __webpack_require__(662);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var DOM_Event_Types = __webpack_require__(663);
+	var DOM_Node_Types = __webpack_require__(678);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var windowToEventTarget = Unsafe_Coerce.unsafeCoerce;
 	var readHTMLVideoElement = Data_Foreign.unsafeReadTagged("HTMLVideoElement");
 	var readHTMLUListElement = Data_Foreign.unsafeReadTagged("HTMLUListElement");
@@ -73216,7 +74395,7 @@
 	};
 
 /***/ }),
-/* 658 */
+/* 662 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73235,26 +74414,26 @@
 	};
 
 /***/ }),
-/* 659 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(660);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var $foreign = __webpack_require__(664);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var EventType = function EventType(x) {
 	    return x;
 	};
@@ -73325,7 +74504,7 @@
 	};
 
 /***/ }),
-/* 660 */
+/* 664 */
 /***/ (function(module, exports) {
 
 	/* global EventTarget */
@@ -73340,33 +74519,33 @@
 	};
 
 /***/ }),
-/* 661 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(662);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Identity = __webpack_require__(601);
-	var Data_Int = __webpack_require__(664);
-	var Data_List_NonEmpty = __webpack_require__(672);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_String = __webpack_require__(647);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(666);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Identity = __webpack_require__(605);
+	var Data_Int = __webpack_require__(668);
+	var Data_List_NonEmpty = __webpack_require__(676);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_String = __webpack_require__(651);
+	var Prelude = __webpack_require__(550);
 	var ForeignError = function () {
 	    function ForeignError(value0) {
 	        this.value0 = value0;
@@ -73642,7 +74821,7 @@
 	};
 
 /***/ }),
-/* 662 */
+/* 666 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73678,19 +74857,19 @@
 	};
 
 /***/ }),
-/* 663 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Identity = __webpack_require__(601);
-	var Data_Newtype = __webpack_require__(545);
-	var Prelude = __webpack_require__(546);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Identity = __webpack_require__(605);
+	var Data_Newtype = __webpack_require__(549);
+	var Prelude = __webpack_require__(550);
 	var withExcept = Control_Monad_Except_Trans.withExceptT(Data_Identity.functorIdentity);
 	var runExcept = function runExcept($0) {
 	    return Data_Newtype.unwrap(Data_Identity.newtypeIdentity)(Control_Monad_Except_Trans.runExceptT($0));
@@ -73707,33 +74886,33 @@
 	};
 
 /***/ }),
-/* 664 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(665);
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_DivisionRing = __webpack_require__(563);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Field = __webpack_require__(566);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Int_Bits = __webpack_require__(666);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Global = __webpack_require__(668);
-	var $$Math = __webpack_require__(670);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(669);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_DivisionRing = __webpack_require__(567);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Field = __webpack_require__(570);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Int_Bits = __webpack_require__(670);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Global = __webpack_require__(672);
+	var $$Math = __webpack_require__(674);
+	var Prelude = __webpack_require__(550);
 	var Radix = function Radix(x) {
 	    return x;
 	};
@@ -73927,7 +75106,7 @@
 	};
 
 /***/ }),
-/* 665 */
+/* 669 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73987,13 +75166,13 @@
 	};
 
 /***/ }),
-/* 666 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(667);
+	var $foreign = __webpack_require__(671);
 	module.exports = {
 	    and: $foreign.and,
 	    or: $foreign.or,
@@ -74005,7 +75184,7 @@
 	};
 
 /***/ }),
-/* 667 */
+/* 671 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74060,13 +75239,13 @@
 	};
 
 /***/ }),
-/* 668 */
+/* 672 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(669);
+	var $foreign = __webpack_require__(673);
 	module.exports = {
 	    nan: $foreign.nan,
 	    "isNaN": $foreign["isNaN"],
@@ -74081,7 +75260,7 @@
 	};
 
 /***/ }),
-/* 669 */
+/* 673 */
 /***/ (function(module, exports) {
 
 	/* globals exports */
@@ -74111,13 +75290,13 @@
 	exports.encodeURIComponent = encodeURIComponent;
 
 /***/ }),
-/* 670 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(671);
+	var $foreign = __webpack_require__(675);
 	module.exports = {
 	    abs: $foreign.abs,
 	    acos: $foreign.acos,
@@ -74150,7 +75329,7 @@
 	};
 
 /***/ }),
-/* 671 */
+/* 675 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74236,35 +75415,35 @@
 	exports.sqrt2 = Math.SQRT2;
 
 /***/ }),
-/* 672 */
+/* 676 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_List = __webpack_require__(673);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semigroup_Foldable = __webpack_require__(645);
-	var Data_Semigroup_Traversable = __webpack_require__(646);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Partial_Unsafe = __webpack_require__(603);
-	var Prelude = __webpack_require__(546);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_List = __webpack_require__(677);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semigroup_Foldable = __webpack_require__(649);
+	var Data_Semigroup_Traversable = __webpack_require__(650);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Partial_Unsafe = __webpack_require__(607);
+	var Prelude = __webpack_require__(550);
 	var zipWith = function zipWith(f) {
 	    return function (v) {
 	        return function (v1) {
@@ -74652,44 +75831,44 @@
 	};
 
 /***/ }),
-/* 673 */
+/* 677 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Pattern = function Pattern(x) {
 	    return x;
 	};
@@ -75759,20 +76938,20 @@
 	};
 
 /***/ }),
-/* 674 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var DOM_Event_Types = __webpack_require__(659);
-	var DOM_Util_FFI = __webpack_require__(675);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var DOM_Event_Types = __webpack_require__(663);
+	var DOM_Util_FFI = __webpack_require__(679);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var ElementId = function ElementId(x) {
 	    return x;
 	};
@@ -75827,22 +77006,22 @@
 	};
 
 /***/ }),
-/* 675 */
+/* 679 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(676);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(680);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Prelude = __webpack_require__(550);
 	var unsafeReadProtoTagged = function unsafeReadProtoTagged(name) {
 	    return $foreign._unsafeReadProtoTagged(name)(function ($0) {
 	        return Control_Monad_Except_Trans.except(Data_Identity.applicativeIdentity)(Data_Either.Left.create(Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.TypeMismatch.create(name)($0))));
@@ -75855,7 +77034,7 @@
 	};
 
 /***/ }),
-/* 676 */
+/* 680 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75882,21 +77061,21 @@
 	};
 
 /***/ }),
-/* 677 */
+/* 681 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(678);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(682);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var toNullable = Data_Maybe.maybe($foreign["null"])($foreign.notNull);
 	var toMaybe = function toMaybe(n) {
 	    return $foreign.nullable(n, Data_Maybe.Nothing.value, Data_Maybe.Just.create);
@@ -75933,7 +77112,7 @@
 	};
 
 /***/ }),
-/* 678 */
+/* 682 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75949,26 +77128,26 @@
 	};
 
 /***/ }),
-/* 679 */
+/* 683 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Foreign_Generic_Types = __webpack_require__(689);
-	var Data_Foreign_JSON = __webpack_require__(694);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Identity = __webpack_require__(601);
-	var Global_Unsafe = __webpack_require__(698);
-	var Prelude = __webpack_require__(546);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Foreign_Generic_Types = __webpack_require__(693);
+	var Data_Foreign_JSON = __webpack_require__(698);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Identity = __webpack_require__(605);
+	var Global_Unsafe = __webpack_require__(702);
+	var Prelude = __webpack_require__(550);
 	var genericEncode = function genericEncode(dictGeneric) {
 	    return function (dictGenericEncode) {
 	        return function (opts) {
@@ -76031,31 +77210,31 @@
 	};
 
 /***/ }),
-/* 680 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Array = __webpack_require__(632);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Internal = __webpack_require__(681);
-	var Data_Foreign_NullOrUndefined = __webpack_require__(686);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_StrMap = __webpack_require__(682);
-	var Data_Traversable = __webpack_require__(588);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Array = __webpack_require__(636);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Internal = __webpack_require__(685);
+	var Data_Foreign_NullOrUndefined = __webpack_require__(690);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_StrMap = __webpack_require__(686);
+	var Data_Traversable = __webpack_require__(592);
+	var Prelude = __webpack_require__(550);
 	var Decode = function Decode(decode) {
 	    this.decode = decode;
 	};
@@ -76146,21 +77325,21 @@
 	};
 
 /***/ }),
-/* 681 */
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Data_Boolean = __webpack_require__(547);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Function = __webpack_require__(508);
-	var Data_Identity = __webpack_require__(601);
-	var Data_StrMap = __webpack_require__(682);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Data_Boolean = __webpack_require__(551);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Function = __webpack_require__(512);
+	var Data_Identity = __webpack_require__(605);
+	var Data_StrMap = __webpack_require__(686);
+	var Prelude = __webpack_require__(550);
 	var isStrMap = function isStrMap(v) {
 	    return Data_Foreign.tagOf(v) === "Object";
 	};
@@ -76179,40 +77358,40 @@
 	};
 
 /***/ }),
-/* 682 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(683);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Array = __webpack_require__(632);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_FoldableWithIndex = __webpack_require__(638);
-	var Data_Function = __webpack_require__(508);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_Functor = __webpack_require__(509);
-	var Data_FunctorWithIndex = __webpack_require__(639);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_StrMap_ST = __webpack_require__(684);
-	var Data_Traversable = __webpack_require__(588);
-	var Data_TraversableWithIndex = __webpack_require__(641);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(687);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Array = __webpack_require__(636);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_FoldableWithIndex = __webpack_require__(642);
+	var Data_Function = __webpack_require__(512);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_Functor = __webpack_require__(513);
+	var Data_FunctorWithIndex = __webpack_require__(643);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_StrMap_ST = __webpack_require__(688);
+	var Data_Traversable = __webpack_require__(592);
+	var Data_TraversableWithIndex = __webpack_require__(645);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Prelude = __webpack_require__(550);
 	var values = $foreign.toArrayWithKey(function (v) {
 	    return function (v1) {
 	        return v1;
@@ -76568,7 +77747,7 @@
 	};
 
 /***/ }),
-/* 683 */
+/* 687 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76699,16 +77878,16 @@
 	});
 
 /***/ }),
-/* 684 */
+/* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(685);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_ST = __webpack_require__(599);
-	var Data_Maybe = __webpack_require__(574);
+	var $foreign = __webpack_require__(689);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_ST = __webpack_require__(603);
+	var Data_Maybe = __webpack_require__(578);
 	var peek = $foreign.peekImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	module.exports = {
 	    peek: peek,
@@ -76718,7 +77897,7 @@
 	};
 
 /***/ }),
-/* 685 */
+/* 689 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76760,27 +77939,27 @@
 	};
 
 /***/ }),
-/* 686 */
+/* 690 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(687);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Functor = __webpack_require__(509);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Identity = __webpack_require__(601);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(691);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Functor = __webpack_require__(513);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Identity = __webpack_require__(605);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var NullOrUndefined = function NullOrUndefined(x) {
 	    return x;
 	};
@@ -76833,7 +78012,7 @@
 	};
 
 /***/ }),
-/* 687 */
+/* 691 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -76841,43 +78020,43 @@
 	exports['undefined'] = undefined;
 
 /***/ }),
-/* 688 */
+/* 692 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic_Types = __webpack_require__(689);
-	var Data_Foreign_Index = __webpack_require__(690);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List = __webpack_require__(673);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_StrMap = __webpack_require__(682);
-	var Data_Symbol = __webpack_require__(693);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Prelude = __webpack_require__(546);
-	var Type_Proxy = __webpack_require__(651);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic_Types = __webpack_require__(693);
+	var Data_Foreign_Index = __webpack_require__(694);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List = __webpack_require__(677);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_StrMap = __webpack_require__(686);
+	var Data_Symbol = __webpack_require__(697);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Prelude = __webpack_require__(550);
+	var Type_Proxy = __webpack_require__(655);
 	var GenericDecode = function GenericDecode(decodeOpts) {
 	    this.decodeOpts = decodeOpts;
 	};
@@ -77237,7 +78416,7 @@
 	};
 
 /***/ }),
-/* 689 */
+/* 693 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -77257,24 +78436,24 @@
 	};
 
 /***/ }),
-/* 690 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(691);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Function = __webpack_require__(508);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_NonEmpty = __webpack_require__(672);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(695);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Function = __webpack_require__(512);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_NonEmpty = __webpack_require__(676);
+	var Prelude = __webpack_require__(550);
 	var Index = function Index(errorAt, hasOwnProperty, hasProperty, index) {
 	    this.errorAt = errorAt;
 	    this.hasOwnProperty = hasOwnProperty;
@@ -77363,7 +78542,7 @@
 	};
 
 /***/ }),
-/* 691 */
+/* 695 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -77381,13 +78560,13 @@
 	};
 
 /***/ }),
-/* 692 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Maybe = __webpack_require__(574);
+	var Data_Maybe = __webpack_require__(578);
 	var Inl = function () {
 	    function Inl(value0) {
 	        this.value0 = value0;
@@ -77478,15 +78657,15 @@
 	};
 
 /***/ }),
-/* 693 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Semigroup = __webpack_require__(523);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var Data_Semigroup = __webpack_require__(527);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var SProxy = function () {
 	    function SProxy() {};
 	    SProxy.value = new SProxy();
@@ -77525,27 +78704,27 @@
 	};
 
 /***/ }),
-/* 694 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(695);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Eff_Uncurried = __webpack_require__(696);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Bifunctor = __webpack_require__(542);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List_Types = __webpack_require__(644);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(699);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Eff_Uncurried = __webpack_require__(700);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Bifunctor = __webpack_require__(546);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List_Types = __webpack_require__(648);
+	var Prelude = __webpack_require__(550);
 	var parseJSON = function parseJSON($0) {
 	    return Control_Monad_Except_Trans.ExceptT(Data_Identity.Identity(Data_Bifunctor.lmap(Data_Either.bifunctorEither)(function ($1) {
 	        return Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.JSONError.create(Control_Monad_Eff_Exception.message($1)));
@@ -77560,7 +78739,7 @@
 	};
 
 /***/ }),
-/* 695 */
+/* 699 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -77570,14 +78749,14 @@
 	};
 
 /***/ }),
-/* 696 */
+/* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(697);
-	var Control_Monad_Eff = __webpack_require__(533);
+	var $foreign = __webpack_require__(701);
+	var Control_Monad_Eff = __webpack_require__(537);
 	module.exports = {
 	    mkEffFn1: $foreign.mkEffFn1,
 	    mkEffFn2: $foreign.mkEffFn2,
@@ -77602,7 +78781,7 @@
 	};
 
 /***/ }),
-/* 697 */
+/* 701 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -77838,13 +79017,13 @@
 	};
 
 /***/ }),
-/* 698 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(699);
+	var $foreign = __webpack_require__(703);
 	module.exports = {
 	    unsafeStringify: $foreign.unsafeStringify,
 	    unsafeToFixed: $foreign.unsafeToFixed,
@@ -77853,7 +79032,7 @@
 	};
 
 /***/ }),
-/* 699 */
+/* 703 */
 /***/ (function(module, exports) {
 
 	/* globals exports, JSON */
@@ -77884,20 +79063,20 @@
 	};
 
 /***/ }),
-/* 700 */
+/* 704 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Data_Function = __webpack_require__(508);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Data_Function = __webpack_require__(512);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var communityViewAllActivity = function communityViewAllActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -77952,26 +79131,26 @@
 	};
 
 /***/ }),
-/* 701 */
+/* 705 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Api = __webpack_require__(702);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic = __webpack_require__(679);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Function = __webpack_require__(508);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Symbol = __webpack_require__(693);
-	var Prelude = __webpack_require__(546);
-	var Type_Proxy = __webpack_require__(651);
+	var Api = __webpack_require__(706);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic = __webpack_require__(683);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Function = __webpack_require__(512);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Symbol = __webpack_require__(697);
+	var Prelude = __webpack_require__(550);
+	var Type_Proxy = __webpack_require__(655);
 	var RequestOtpResp = function () {
 	    function RequestOtpResp(value0) {
 	        this.value0 = value0;
@@ -78148,34 +79327,34 @@
 	};
 
 /***/ }),
-/* 702 */
+/* 706 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic = __webpack_require__(679);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Function = __webpack_require__(508);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Symbol = __webpack_require__(693);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic = __webpack_require__(683);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Function = __webpack_require__(512);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Symbol = __webpack_require__(697);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var GET = function () {
 	    function GET() {};
 	    GET.value = new GET();
@@ -78520,27 +79699,27 @@
 	};
 
 /***/ }),
-/* 703 */
+/* 707 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Console = __webpack_require__(652);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Data_Argonaut_Core = __webpack_require__(704);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Symbol = __webpack_require__(693);
-	var Prelude = __webpack_require__(546);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Console = __webpack_require__(656);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Data_Argonaut_Core = __webpack_require__(708);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Symbol = __webpack_require__(697);
+	var Prelude = __webpack_require__(550);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var DummyWelcomeScreenAction = function () {
 	    function DummyWelcomeScreenAction() {};
 	    DummyWelcomeScreenAction.value = new DummyWelcomeScreenAction();
@@ -78746,6 +79925,38 @@
 	    SplashScreenActivity.value = new SplashScreenActivity();
 	    return SplashScreenActivity;
 	}();
+	var BACK_SettingsScreenActivity = function () {
+	    function BACK_SettingsScreenActivity() {};
+	    BACK_SettingsScreenActivity.value = new BACK_SettingsScreenActivity();
+	    return BACK_SettingsScreenActivity;
+	}();
+	var OPEN_LanguageSelectActivitySt = function () {
+	    function OPEN_LanguageSelectActivitySt(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_LanguageSelectActivitySt.create = function (value0) {
+	        return new OPEN_LanguageSelectActivitySt(value0);
+	    };
+	    return OPEN_LanguageSelectActivitySt;
+	}();
+	var OPEN_AboutUsActivity = function () {
+	    function OPEN_AboutUsActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_AboutUsActivity.create = function (value0) {
+	        return new OPEN_AboutUsActivity(value0);
+	    };
+	    return OPEN_AboutUsActivity;
+	}();
+	var SettingsScreenActivity = function () {
+	    function SettingsScreenActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    SettingsScreenActivity.create = function (value0) {
+	        return new SettingsScreenActivity(value0);
+	    };
+	    return SettingsScreenActivity;
+	}();
 	var DummySearchActivity = function () {
 	    function DummySearchActivity() {};
 	    DummySearchActivity.value = new DummySearchActivity();
@@ -78920,6 +80131,15 @@
 	        return new OPEN_CourseInfoActivity_QR(value0);
 	    };
 	    return OPEN_CourseInfoActivity_QR;
+	}();
+	var OPEN_SearchActivity_QR = function () {
+	    function OPEN_SearchActivity_QR(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_SearchActivity_QR.create = function (value0) {
+	        return new OPEN_SearchActivity_QR(value0);
+	    };
+	    return OPEN_SearchActivity_QR;
 	}();
 	var QRActivity = function () {
 	    function QRActivity() {};
@@ -79154,6 +80374,15 @@
 	    };
 	    return OPEN_EditGuestProfileActivity;
 	}();
+	var OPEN_SettingsScreenActivity = function () {
+	    function OPEN_SettingsScreenActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_SettingsScreenActivity.create = function (value0) {
+	        return new OPEN_SettingsScreenActivity(value0);
+	    };
+	    return OPEN_SettingsScreenActivity;
+	}();
 	var OPEN_AddressActivity = function () {
 	    function OPEN_AddressActivity(value0) {
 	        this.value0 = value0;
@@ -79316,6 +80545,20 @@
 	    function MainActivity() {};
 	    MainActivity.value = new MainActivity();
 	    return MainActivity;
+	}();
+	var BACK_LanguageSelectActivitySt = function () {
+	    function BACK_LanguageSelectActivitySt() {};
+	    BACK_LanguageSelectActivitySt.value = new BACK_LanguageSelectActivitySt();
+	    return BACK_LanguageSelectActivitySt;
+	}();
+	var LanguageSelectActivitySt = function () {
+	    function LanguageSelectActivitySt(value0) {
+	        this.value0 = value0;
+	    };
+	    LanguageSelectActivitySt.create = function (value0) {
+	        return new LanguageSelectActivitySt(value0);
+	    };
+	    return LanguageSelectActivitySt;
 	}();
 	var LanguageSelectActivityAction = function () {
 	    function LanguageSelectActivityAction() {};
@@ -79827,6 +81070,43 @@
 	    };
 	    return AdditionalInformationActivity;
 	}();
+	var BACK_AboutUsScreen = function () {
+	    function BACK_AboutUsScreen() {};
+	    BACK_AboutUsScreen.value = new BACK_AboutUsScreen();
+	    return BACK_AboutUsScreen;
+	}();
+	var AboutUsScreen = function () {
+	    function AboutUsScreen(value0) {
+	        this.value0 = value0;
+	    };
+	    AboutUsScreen.create = function (value0) {
+	        return new AboutUsScreen(value0);
+	    };
+	    return AboutUsScreen;
+	}();
+	var BACK_AboutUsActivity = function () {
+	    function BACK_AboutUsActivity() {};
+	    BACK_AboutUsActivity.value = new BACK_AboutUsActivity();
+	    return BACK_AboutUsActivity;
+	}();
+	var OPEN_AboutUsScreen = function () {
+	    function OPEN_AboutUsScreen(value0) {
+	        this.value0 = value0;
+	    };
+	    OPEN_AboutUsScreen.create = function (value0) {
+	        return new OPEN_AboutUsScreen(value0);
+	    };
+	    return OPEN_AboutUsScreen;
+	}();
+	var AboutUsActivity = function () {
+	    function AboutUsActivity(value0) {
+	        this.value0 = value0;
+	    };
+	    AboutUsActivity.create = function (value0) {
+	        return new AboutUsActivity(value0);
+	    };
+	    return AboutUsActivity;
+	}();
 	var genericourseInfoActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof BACK_CourseInfoActivity) {
 	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
@@ -79843,7 +81123,7 @@
 	    if (x instanceof API_EnrolledCoursesList) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 186, column 8 - line 186, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 187, column 8 - line 187, column 86: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_CourseInfoActivity.value;
@@ -79870,7 +81150,7 @@
 	            user_token: x.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 186, column 8 - line 186, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 187, column 8 - line 187, column 86: " + [x.constructor.name]);
 	});
 	var genericWelcomeScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyWelcomeScreenAction) {
@@ -79908,7 +81188,7 @@
 	    if (x instanceof API_Get_Batch_list) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 386, column 8 - line 386, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyViewBatchActivity.value;
@@ -79941,7 +81221,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 385, column 8 - line 385, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 386, column 8 - line 386, column 79: " + [x.constructor.name]);
 	});
 	var genericUserActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_MainActivity) {
@@ -80076,6 +81356,33 @@
 	    };
 	    throw new Error("Failed pattern match at Types.UITypes line 41, column 8 - line 41, column 91: " + [x.constructor.name]);
 	});
+	var genericSettingsScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    if (x instanceof BACK_SettingsScreenActivity) {
+	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
+	    };
+	    if (x instanceof OPEN_LanguageSelectActivitySt) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile));
+	    };
+	    if (x instanceof OPEN_AboutUsActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.profile));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 423, column 8 - line 423, column 95: " + [x.constructor.name]);
+	}, function (x) {
+	    if (x instanceof Data_Generic_Rep.Inl) {
+	        return BACK_SettingsScreenActivity.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new OPEN_LanguageSelectActivitySt({
+	            profile: x.value0.value0
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
+	        return new OPEN_AboutUsActivity({
+	            profile: x.value0.value0
+	        });
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 423, column 8 - line 423, column 95: " + [x.constructor.name]);
+	});
 	var genericSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummySearchActivity) {
 	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
@@ -80098,7 +81405,7 @@
 	    if (x instanceof OPEN_ResourceFragment_SEARCH) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 321, column 8 - line 321, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 322, column 8 - line 322, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummySearchActivity.value;
@@ -80131,7 +81438,7 @@
 	            course: x.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 321, column 8 - line 321, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 322, column 8 - line 322, column 79: " + [x.constructor.name]);
 	});
 	var genericResourceViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceViewAllAction) {
@@ -80149,7 +81456,7 @@
 	    if (x instanceof OPEN_ResourceViewAllDetail) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 97: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceViewAllAction.value;
@@ -80172,7 +81479,7 @@
 	            resourceDetails: x.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 270, column 8 - line 270, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 97: " + [x.constructor.name]);
 	});
 	var genericResourceDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceDetailActivityAction) {
@@ -80184,7 +81491,7 @@
 	    if (x instanceof API_FlagContent) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.identifier, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 173, column 8 - line 173, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceDetailActivityAction.value;
@@ -80200,7 +81507,7 @@
 	            user_token: x.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 172, column 8 - line 172, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 173, column 8 - line 173, column 95: " + [x.constructor.name]);
 	});
 	var genericQRActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyQRActivity) {
@@ -80216,9 +81523,12 @@
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.resourceDetails))));
 	    };
 	    if (x instanceof OPEN_CourseInfoActivity_QR) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.course)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 480, column 8 - line 480, column 71: " + [x.constructor.name]);
+	    if (x instanceof OPEN_SearchActivity_QR) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterDetails)))));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 526, column 8 - line 526, column 71: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyQRActivity.value;
@@ -80236,12 +81546,17 @@
 	            resourceDetails: x.value0.value0.value0.value0
 	        });
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new OPEN_CourseInfoActivity_QR({
-	            course: x.value0.value0.value0.value0
+	            course: x.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 480, column 8 - line 480, column 71: " + [x.constructor.name]);
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return new OPEN_SearchActivity_QR({
+	            filterDetails: x.value0.value0.value0.value0.value0
+	        });
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 526, column 8 - line 526, column 71: " + [x.constructor.name]);
 	});
 	var genericProfileActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyProfileActivity) {
@@ -80268,7 +81583,7 @@
 	    if (x instanceof OPEN_ResourceDetailActivity_Prof) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 356, column 8 - line 356, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 357, column 8 - line 357, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyProfileActivity.value;
@@ -80310,7 +81625,7 @@
 	            resourceDetails: x.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 356, column 8 - line 356, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 357, column 8 - line 357, column 81: " + [x.constructor.name]);
 	});
 	var genericNotificationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyNotificationActivityAction) {
@@ -80319,7 +81634,7 @@
 	    if (x instanceof BACK_NotificationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 255, column 8 - line 255, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyNotificationActivityAction.value;
@@ -80327,7 +81642,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_NotificationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 254, column 8 - line 254, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 255, column 8 - line 255, column 91: " + [x.constructor.name]);
 	});
 	var genericModuleDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyModuleDetailActivityAction) {
@@ -80336,7 +81651,7 @@
 	    if (x instanceof BACK_ModuleDetailActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 216, column 8 - line 216, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 217, column 8 - line 217, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyModuleDetailActivityAction.value;
@@ -80344,7 +81659,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ModuleDetailActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 216, column 8 - line 216, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 217, column 8 - line 217, column 91: " + [x.constructor.name]);
 	});
 	var genericMainActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_HomeFragment) {
@@ -80398,61 +81713,64 @@
 	    if (x instanceof OPEN_EditGuestProfileActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)))))))))))))))));
 	    };
-	    if (x instanceof OPEN_AddressActivity) {
+	    if (x instanceof OPEN_SettingsScreenActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_EducationActivity) {
+	    if (x instanceof OPEN_AddressActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_ExperienceActivity) {
+	    if (x instanceof OPEN_EducationActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile))))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_SearchActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails)))))))))))))))))))));
+	    if (x instanceof OPEN_ExperienceActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)))))))))))))))))))));
 	    };
-	    if (x instanceof OPEN_CommProfSearchActivity) {
+	    if (x instanceof OPEN_SearchActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails))))))))))))))))))))));
 	    };
+	    if (x instanceof OPEN_CommProfSearchActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.filterDetails)))))))))))))))))))))));
+	    };
 	    if (x instanceof OPEN_AnnouncementDetailActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData)))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData))))))))))))))))))))))));
 	    };
 	    if (x instanceof OPEN_QRActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value)))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_ResourceFragment) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))));
-	    };
-	    if (x instanceof API_CourseFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))));
 	    };
-	    if (x instanceof API_ProfileFragment) {
+	    if (x instanceof API_CourseFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))))));
 	    };
-	    if (x instanceof API_UserEnrolledCourse) {
+	    if (x instanceof API_ProfileFragment) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))))));
 	    };
+	    if (x instanceof API_UserEnrolledCourse) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))))))));
+	    };
 	    if (x instanceof API_FilterPage) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token)))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filter_to_send, x.value0.user_token))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_CreatedBy) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_SetProfileVisibility) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_EndorseSkill) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_GetSkillsList) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_GetAnnouncementData) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))))))))))))))))))))))))))))))))))));
 	    };
 	    if (x instanceof API_Tenant) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token))))))))))))))))))))))))))))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token)))))))))))))))))))))))))))))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 159, column 8 - line 159, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 160, column 8 - line 160, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_HomeFragment.value;
@@ -80524,112 +81842,117 @@
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_AddressActivity({
+	        return new OPEN_SettingsScreenActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_EducationActivity({
+	        return new OPEN_AddressActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_ExperienceActivity({
+	        return new OPEN_EducationActivity({
 	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_SearchActivity({
-	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
+	        return new OPEN_ExperienceActivity({
+	            profile: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_CommProfSearchActivity({
+	        return new OPEN_SearchActivity({
 	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_AnnouncementDetailActivity({
-	            announcementData: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
+	        return new OPEN_CommProfSearchActivity({
+	            filterDetails: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return OPEN_QRActivity.value;
-	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ResourceFragment({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        return new OPEN_AnnouncementDetailActivity({
+	            announcementData: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return OPEN_QRActivity.value;
+	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CourseFragment({
+	        return new API_ResourceFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_ProfileFragment({
+	        return new API_CourseFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_UserEnrolledCourse({
+	        return new API_ProfileFragment({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_FilterPage({
+	        return new API_UserEnrolledCourse({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_CreatedBy({
+	        return new API_FilterPage({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
+	            filter_to_send: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_SetProfileVisibility({
+	        return new API_CreatedBy({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            filters: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            sendBack: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_EndorseSkill({
+	        return new API_SetProfileVisibility({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_GetSkillsList({
+	        return new API_EndorseSkill({
 	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new API_GetSkillsList({
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new API_GetAnnouncementData({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            requestBody: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
 	        return new API_Tenant({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            slug: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 159, column 8 - line 159, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 160, column 8 - line 160, column 75: " + [x.constructor.name]);
 	});
 	var genericLanguageSelectionActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof LanguageSelectActivityAction) {
@@ -80653,6 +81976,11 @@
 	        return BACK_LanguageSelectActivity.value;
 	    };
 	    throw new Error("Failed pattern match at Types.UITypes line 54, column 8 - line 54, column 98: " + [x.constructor.name]);
+	});
+	var genericLanguageSelectActivityStAction = new Data_Generic_Rep.Generic(function (x) {
+	    return Data_Generic_Rep.NoArguments.value;
+	}, function (x) {
+	    return BACK_LanguageSelectActivitySt.value;
 	});
 	var genericInitScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof ShowInit) {
@@ -80698,7 +82026,7 @@
 	    if (x instanceof OPEN_SearchActivity_FILTER) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterData));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 369, column 8 - line 369, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 370, column 8 - line 370, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyFilterActivity.value;
@@ -80711,7 +82039,7 @@
 	            filterData: x.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 369, column 8 - line 369, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 370, column 8 - line 370, column 79: " + [x.constructor.name]);
 	});
 	var genericExperienceActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyExperienceActivity) {
@@ -80720,7 +82048,7 @@
 	    if (x instanceof BACK_ExperienceActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 463, column 8 - line 463, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 508, column 8 - line 508, column 87: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyExperienceActivity.value;
@@ -80728,7 +82056,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ExperienceActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 463, column 8 - line 463, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 508, column 8 - line 508, column 87: " + [x.constructor.name]);
 	});
 	var genericEducationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyEducationActivity) {
@@ -80737,7 +82065,7 @@
 	    if (x instanceof BACK_EducationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 450, column 8 - line 450, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 495, column 8 - line 495, column 85: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyEducationActivity.value;
@@ -80745,7 +82073,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_EducationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 450, column 8 - line 450, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 495, column 8 - line 495, column 85: " + [x.constructor.name]);
 	});
 	var genericCourseViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseViewAllActivityAction) {
@@ -80760,7 +82088,7 @@
 	    if (x instanceof OPEN_CourseInfoFlowFromCourseViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 303, column 8 - line 303, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 304, column 8 - line 304, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseViewAllActivityAction.value;
@@ -80778,7 +82106,7 @@
 	            course: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 303, column 8 - line 303, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 304, column 8 - line 304, column 92: " + [x.constructor.name]);
 	});
 	var genericCourseEnrolledActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseEnrolledActivityAction) {
@@ -80802,7 +82130,7 @@
 	    if (x instanceof API_Get_Batch_Creator_name) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 203, column 8 - line 203, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 204, column 8 - line 204, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseEnrolledActivityAction.value;
@@ -80844,7 +82172,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 203, column 8 - line 203, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 204, column 8 - line 204, column 95: " + [x.constructor.name]);
 	});
 	var genericCommunityViewAllAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommunityViewAllAction) {
@@ -80853,7 +82181,7 @@
 	    if (x instanceof BACK_CommunityViewAllActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 229, column 8 - line 229, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 230, column 8 - line 230, column 83: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommunityViewAllAction.value;
@@ -80861,7 +82189,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityViewAllActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 229, column 8 - line 229, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 230, column 8 - line 230, column 83: " + [x.constructor.name]);
 	});
 	var genericCommunityInfoActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyInfoAction) {
@@ -80873,7 +82201,7 @@
 	    if (x instanceof BACK_CommunityInfoActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 241, column 8 - line 241, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 242, column 8 - line 242, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyInfoAction.value;
@@ -80884,7 +82212,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityInfoActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 241, column 8 - line 241, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 242, column 8 - line 242, column 92: " + [x.constructor.name]);
 	});
 	var genericCommProfSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommProfSearchActivity) {
@@ -80908,7 +82236,7 @@
 	    if (x instanceof API_CreatedBy_Search) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 339, column 8 - line 339, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommProfSearchActivity.value;
@@ -80947,7 +82275,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 339, column 8 - line 339, column 95: " + [x.constructor.name]);
 	});
 	var genericAnnouncementViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementViewAllActivity) {
@@ -80962,7 +82290,7 @@
 	    if (x instanceof OPEN_AnnouncementDetailActivityFromViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.announcementData)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 288, column 8 - line 288, column 105: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementViewAllActivity.value;
@@ -80982,7 +82310,7 @@
 	            announcementData: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 288, column 8 - line 288, column 105: " + [x.constructor.name]);
 	});
 	var genericAnnouncementDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementDetailActivityAction) {
@@ -80994,7 +82322,7 @@
 	    if (x instanceof API_ReadAnnouncement) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 426, column 8 - line 426, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 471, column 8 - line 471, column 103: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementDetailActivityAction.value;
@@ -81009,7 +82337,7 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 426, column 8 - line 426, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 471, column 8 - line 471, column 103: " + [x.constructor.name]);
 	});
 	var genericAddressActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAddressActivity) {
@@ -81018,7 +82346,7 @@
 	    if (x instanceof BACK_AddressActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 437, column 8 - line 437, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 482, column 8 - line 482, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAddressActivity.value;
@@ -81026,7 +82354,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_AddressActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 437, column 8 - line 437, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 482, column 8 - line 482, column 81: " + [x.constructor.name]);
 	});
 	var genericAdditionalInformationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAdditionalInformationActivity) {
@@ -81038,7 +82366,7 @@
 	    if (x instanceof API_ProfileVisibility) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 400, column 8 - line 400, column 109: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAdditionalInformationActivity.value;
@@ -81053,7 +82381,31 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 399, column 8 - line 399, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 400, column 8 - line 400, column 109: " + [x.constructor.name]);
+	});
+	var genericAboutUsScreenAction = new Data_Generic_Rep.Generic(function (x) {
+	    return Data_Generic_Rep.NoArguments.value;
+	}, function (x) {
+	    return BACK_AboutUsScreen.value;
+	});
+	var genericAboutUsActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    if (x instanceof BACK_AboutUsActivity) {
+	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
+	    };
+	    if (x instanceof OPEN_AboutUsScreen) {
+	        return new Data_Generic_Rep.Inr(x.value0.profile);
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 445, column 8 - line 445, column 81: " + [x.constructor.name]);
+	}, function (x) {
+	    if (x instanceof Data_Generic_Rep.Inl) {
+	        return BACK_AboutUsActivity.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr) {
+	        return new OPEN_AboutUsScreen({
+	            profile: x.value0
+	        });
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 445, column 8 - line 445, column 81: " + [x.constructor.name]);
 	});
 	var generiContentPreviewScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof BACK_ContentPreviewScreen) {
@@ -81169,6 +82521,17 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "BACK_SplashScreenActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))));
+	var encodeSettingsScreenActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericSettingsScreenActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_SettingsScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_LanguageSelectActivitySt";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_AboutUsActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringEncode)))))));
 	var encodeSearchActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericSearchActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummySearchActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81238,11 +82601,15 @@
 	    return "OPEN_ResourceDetailActivity_QR";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "resourceDetails";
-	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_CourseInfoActivity_QR";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "course";
-	}))(Data_Foreign_Class.stringEncode)))))))));
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_SearchActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "filterDetails";
+	}))(Data_Foreign_Class.stringEncode))))))))));
 	var encodeProfileActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericProfileActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyProfileActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81340,6 +82707,10 @@
 	    return "profile";
 	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_EditGuestProfileActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_SettingsScreenActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
 	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81448,7 +82819,7 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringEncode)))))))))))))))))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringEncode))))))))))))))))))))))))))))))))))))))))));
 	var encodeLanguageSelectionActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericLanguageSelectionActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "LanguageSelectActivityAction";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81456,6 +82827,9 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "BACK_LanguageSelectActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)))));
+	var encodeLanguageSelectActivityStAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericLanguageSelectActivityStAction)(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_LanguageSelectActivitySt";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)));
 	var encodeInitScreenAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericInitScreenAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "ShowInit";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81668,6 +83042,16 @@
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
 	}))(Data_Foreign_Class.stringEncode)))))))));
+	var encodeAboutUsScreenAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericAboutUsScreenAction)(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_AboutUsScreen";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)));
+	var encodeAboutUsActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericAboutUsActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_AboutUsActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_AboutUsScreen";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringEncode))))));
 	var decodeWelcomeScreenActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericWelcomeScreenActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyWelcomeScreenAction";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81813,6 +83197,26 @@
 	        return Utils.genericUI(dictEncode)(decodeSplashScreenActivityAction)(x)(UI.generateMockEvents(splashScreenActivity)(dictEncode)(x));
 	    };
 	});
+	var decodeSettingsScreenActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericSettingsScreenActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_SettingsScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_LanguageSelectActivitySt";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_AboutUsActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec)))));
+	var settingsScreenActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_SettingsScreenActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeSettingsScreenActivityAction)(x)(UI.generateMockEvents(settingsScreenActivity)(dictEncode)(x));
+	    };
+	});
 	var decodeSearchActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericSearchActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummySearchActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -81909,11 +83313,15 @@
 	    return "OPEN_ResourceDetailActivity_QR";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "resourceDetails";
-	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_CourseInfoActivity_QR";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "course";
-	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec)))))));
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_SearchActivity_QR";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "filterDetails";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))))))));
 	var qrActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [DummyQRActivity.value, BACK_QRActivity.value];
@@ -82050,6 +83458,10 @@
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
 	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_SettingsScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_AddressActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
@@ -82155,7 +83567,7 @@
 	    return "slug";
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec)))))))))))))))))))))))))))))))))))));
+	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec))))))))))))))))))))))))))))))))))))));
 	var homeActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [BACK_HomeActivity.value, OPEN_HomeFragment.value, OPEN_CourseFragment.value, OPEN_ResourceFragment.value, OPEN_CommunityFragment.value, OPEN_ProfileFragment.value];
@@ -82179,6 +83591,18 @@
 	}, function (dictEncode) {
 	    return function (x) {
 	        return Utils.genericUI(dictEncode)(decodeLanguageSelectionActivityAction)(x)(UI.generateMockEvents(languageSelectActivity)(dictEncode)(x));
+	    };
+	});
+	var decodeLanguageSelectActivityStAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericLanguageSelectActivityStAction)(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_LanguageSelectActivitySt";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)));
+	var languageSelectActivitySt = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_LanguageSelectActivitySt.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeLanguageSelectActivityStAction)(x)(UI.generateMockEvents(languageSelectActivitySt)(dictEncode)(x));
 	    };
 	});
 	var decodeInitScreenAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericInitScreenAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -82438,6 +83862,16 @@
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
 	}))(Data_Foreign_Class.stringDecode)))))(Data_Foreign_Generic_Class.genericCountArgsRec)))));
+	var decodeAboutUsScreenAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericAboutUsScreenAction)(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_AboutUsScreen";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)));
+	var decodeAboutUsActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericAboutUsActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_AboutUsActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_AboutUsScreen";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
+	    return "profile";
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))));
 	var courseViewAllActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [DummyCourseViewAllActivityAction.value, BACK_CourseViewAllActivity.value];
@@ -82539,6 +83973,24 @@
 	        return Utils.genericUI(dictEncode)(decodeAddressActivityAction)(x)(UI.generateMockEvents(addressActivity)(dictEncode)(x));
 	    };
 	});
+	var aboutUsScreen = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_AboutUsScreen.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeAboutUsScreenAction)(x)(UI.generateMockEvents(aboutUsScreen)(dictEncode)(x));
+	    };
+	});
+	var aboutUsActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_AboutUsActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeAboutUsActivityAction)(x)(UI.generateMockEvents(aboutUsActivity)(dictEncode)(x));
+	    };
+	});
 	module.exports = {
 	    InitScreen: InitScreen,
 	    ShowInit: ShowInit,
@@ -82592,6 +84044,7 @@
 	    OPEN_NotificationActivity: OPEN_NotificationActivity,
 	    OPEN_EditProfileActivity: OPEN_EditProfileActivity,
 	    OPEN_EditGuestProfileActivity: OPEN_EditGuestProfileActivity,
+	    OPEN_SettingsScreenActivity: OPEN_SettingsScreenActivity,
 	    OPEN_AddressActivity: OPEN_AddressActivity,
 	    OPEN_EducationActivity: OPEN_EducationActivity,
 	    OPEN_ExperienceActivity: OPEN_ExperienceActivity,
@@ -82699,6 +84152,17 @@
 	    API_ProfileVisibility: API_ProfileVisibility,
 	    GuestInformationActivity: GuestInformationActivity,
 	    BACK_GuestInformationActivity: BACK_GuestInformationActivity,
+	    SettingsScreenActivity: SettingsScreenActivity,
+	    BACK_SettingsScreenActivity: BACK_SettingsScreenActivity,
+	    OPEN_LanguageSelectActivitySt: OPEN_LanguageSelectActivitySt,
+	    OPEN_AboutUsActivity: OPEN_AboutUsActivity,
+	    LanguageSelectActivitySt: LanguageSelectActivitySt,
+	    BACK_LanguageSelectActivitySt: BACK_LanguageSelectActivitySt,
+	    AboutUsActivity: AboutUsActivity,
+	    BACK_AboutUsActivity: BACK_AboutUsActivity,
+	    OPEN_AboutUsScreen: OPEN_AboutUsScreen,
+	    AboutUsScreen: AboutUsScreen,
+	    BACK_AboutUsScreen: BACK_AboutUsScreen,
 	    AnnouncementDetailActivity: AnnouncementDetailActivity,
 	    DummyAnnouncementDetailActivityAction: DummyAnnouncementDetailActivityAction,
 	    BACK_AnnouncementDetailActivity: BACK_AnnouncementDetailActivity,
@@ -82718,6 +84182,7 @@
 	    OPEN_CourseEnrolledActivity_QR: OPEN_CourseEnrolledActivity_QR,
 	    OPEN_ResourceDetailActivity_QR: OPEN_ResourceDetailActivity_QR,
 	    OPEN_CourseInfoActivity_QR: OPEN_CourseInfoActivity_QR,
+	    OPEN_SearchActivity_QR: OPEN_SearchActivity_QR,
 	    initScreen: initScreen,
 	    genericInitScreenAction: genericInitScreenAction,
 	    decodeInitScreenAction: decodeInitScreenAction,
@@ -82818,6 +84283,22 @@
 	    genericGuestInformationActivityAction: genericGuestInformationActivityAction,
 	    decodeGuestInformationActivityAction: decodeGuestInformationActivityAction,
 	    encodeGuestInformationActivityAction: encodeGuestInformationActivityAction,
+	    settingsScreenActivity: settingsScreenActivity,
+	    genericSettingsScreenActivityAction: genericSettingsScreenActivityAction,
+	    decodeSettingsScreenActivityAction: decodeSettingsScreenActivityAction,
+	    encodeSettingsScreenActivityAction: encodeSettingsScreenActivityAction,
+	    languageSelectActivitySt: languageSelectActivitySt,
+	    genericLanguageSelectActivityStAction: genericLanguageSelectActivityStAction,
+	    decodeLanguageSelectActivityStAction: decodeLanguageSelectActivityStAction,
+	    encodeLanguageSelectActivityStAction: encodeLanguageSelectActivityStAction,
+	    aboutUsActivity: aboutUsActivity,
+	    genericAboutUsActivityAction: genericAboutUsActivityAction,
+	    decodeAboutUsActivityAction: decodeAboutUsActivityAction,
+	    encodeAboutUsActivityAction: encodeAboutUsActivityAction,
+	    aboutUsScreen: aboutUsScreen,
+	    genericAboutUsScreenAction: genericAboutUsScreenAction,
+	    decodeAboutUsScreenAction: decodeAboutUsScreenAction,
+	    encodeAboutUsScreenAction: encodeAboutUsScreenAction,
 	    announcementDetailActivity: announcementDetailActivity,
 	    genericAnnouncementDetailActivityAction: genericAnnouncementDetailActivityAction,
 	    decodeAnnouncementDetailActivityAction: decodeAnnouncementDetailActivityAction,
@@ -82841,24 +84322,24 @@
 	};
 
 /***/ }),
-/* 704 */
+/* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(705);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Function = __webpack_require__(508);
-	var Data_Function_Uncurried = __webpack_require__(592);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Show = __webpack_require__(513);
-	var Data_StrMap = __webpack_require__(682);
-	var Data_Tuple = __webpack_require__(614);
-	var Prelude = __webpack_require__(546);
-	var Unsafe_Coerce = __webpack_require__(627);
+	var $foreign = __webpack_require__(709);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Function = __webpack_require__(512);
+	var Data_Function_Uncurried = __webpack_require__(596);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Show = __webpack_require__(517);
+	var Data_StrMap = __webpack_require__(686);
+	var Data_Tuple = __webpack_require__(618);
+	var Prelude = __webpack_require__(550);
+	var Unsafe_Coerce = __webpack_require__(631);
 	var verbJsonType = function verbJsonType(def) {
 	    return function (f) {
 	        return function (fold) {
@@ -83026,7 +84507,7 @@
 	};
 
 /***/ }),
-/* 705 */
+/* 709 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -83104,28 +84585,28 @@
 	};
 
 /***/ }),
-/* 706 */
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Data_Either = __webpack_require__(535);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic = __webpack_require__(679);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Function = __webpack_require__(508);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Data_Either = __webpack_require__(539);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic = __webpack_require__(683);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Function = __webpack_require__(512);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var UIScreen = function UIScreen(generateMockEvents, ui) {
 	    this.generateMockEvents = generateMockEvents;
 	    this.ui = ui;
@@ -83190,57 +84671,57 @@
 	};
 
 /***/ }),
-/* 707 */
+/* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(708);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Aff_Class = __webpack_require__(709);
-	var Control_Monad_Aff_Console = __webpack_require__(715);
-	var Control_Monad_Eff = __webpack_require__(533);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Exception = __webpack_require__(531);
-	var Control_Monad_Except = __webpack_require__(663);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Data_Argonaut_Core = __webpack_require__(704);
-	var Data_Array = __webpack_require__(632);
-	var Data_Bifoldable = __webpack_require__(538);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Foreign = __webpack_require__(661);
-	var Data_Foreign_Class = __webpack_require__(680);
-	var Data_Foreign_Generic = __webpack_require__(679);
-	var Data_Foreign_Generic_Class = __webpack_require__(688);
-	var Data_Foreign_Generic_Types = __webpack_require__(689);
-	var Data_Foreign_Index = __webpack_require__(690);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Generic_Rep_Show = __webpack_require__(716);
-	var Data_HTTP_Method = __webpack_require__(717);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Identity = __webpack_require__(601);
-	var Data_List = __webpack_require__(673);
-	var Data_List_NonEmpty = __webpack_require__(672);
-	var Data_List_Types = __webpack_require__(644);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_NonEmpty = __webpack_require__(637);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_StrMap = __webpack_require__(682);
-	var Data_String = __webpack_require__(647);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Network_HTTP_RequestHeader = __webpack_require__(718);
-	var Network_HTTP_StatusCode = __webpack_require__(720);
-	var Partial_Unsafe = __webpack_require__(603);
-	var Prelude = __webpack_require__(546);
-	var UI = __webpack_require__(706);
+	var $foreign = __webpack_require__(712);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Aff_Class = __webpack_require__(713);
+	var Control_Monad_Aff_Console = __webpack_require__(719);
+	var Control_Monad_Eff = __webpack_require__(537);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Exception = __webpack_require__(535);
+	var Control_Monad_Except = __webpack_require__(667);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Data_Argonaut_Core = __webpack_require__(708);
+	var Data_Array = __webpack_require__(636);
+	var Data_Bifoldable = __webpack_require__(542);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Foreign = __webpack_require__(665);
+	var Data_Foreign_Class = __webpack_require__(684);
+	var Data_Foreign_Generic = __webpack_require__(683);
+	var Data_Foreign_Generic_Class = __webpack_require__(692);
+	var Data_Foreign_Generic_Types = __webpack_require__(693);
+	var Data_Foreign_Index = __webpack_require__(694);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Generic_Rep_Show = __webpack_require__(720);
+	var Data_HTTP_Method = __webpack_require__(721);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Identity = __webpack_require__(605);
+	var Data_List = __webpack_require__(677);
+	var Data_List_NonEmpty = __webpack_require__(676);
+	var Data_List_Types = __webpack_require__(648);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_NonEmpty = __webpack_require__(641);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_StrMap = __webpack_require__(686);
+	var Data_String = __webpack_require__(651);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Network_HTTP_RequestHeader = __webpack_require__(722);
+	var Network_HTTP_StatusCode = __webpack_require__(724);
+	var Partial_Unsafe = __webpack_require__(607);
+	var Prelude = __webpack_require__(550);
+	var UI = __webpack_require__(710);
 	var updateState = function updateState(changes) {
 	    return function (state) {
 	        return Control_Monad_Aff.makeAff(function (error) {
@@ -83593,7 +85074,7 @@
 	};
 
 /***/ }),
-/* 708 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -83958,27 +85439,27 @@
 	};
 
 /***/ }),
-/* 709 */
+/* 713 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Cont_Trans = __webpack_require__(610);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Control_Monad_List_Trans = __webpack_require__(710);
-	var Control_Monad_Maybe_Trans = __webpack_require__(622);
-	var Control_Monad_RWS_Trans = __webpack_require__(713);
-	var Control_Monad_Reader_Trans = __webpack_require__(623);
-	var Control_Monad_State_Trans = __webpack_require__(714);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Trans = __webpack_require__(624);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Monoid = __webpack_require__(577);
-	var Prelude = __webpack_require__(546);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Cont_Trans = __webpack_require__(614);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Control_Monad_List_Trans = __webpack_require__(714);
+	var Control_Monad_Maybe_Trans = __webpack_require__(626);
+	var Control_Monad_RWS_Trans = __webpack_require__(717);
+	var Control_Monad_Reader_Trans = __webpack_require__(627);
+	var Control_Monad_State_Trans = __webpack_require__(718);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Trans = __webpack_require__(628);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Monoid = __webpack_require__(581);
+	var Prelude = __webpack_require__(550);
 	var MonadAff = function MonadAff(MonadEff0, liftAff) {
 	    this.MonadEff0 = MonadEff0;
 	    this.liftAff = liftAff;
@@ -84064,38 +85545,38 @@
 	};
 
 /***/ }),
-/* 710 */
+/* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Category = __webpack_require__(506);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Lazy = __webpack_require__(711);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unfoldable = __webpack_require__(642);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Category = __webpack_require__(510);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Lazy = __webpack_require__(715);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unfoldable = __webpack_require__(646);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var Yield = function () {
 	    function Yield(value0, value1) {
 	        this.value0 = value0;
@@ -84735,39 +86216,39 @@
 	};
 
 /***/ }),
-/* 711 */
+/* 715 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(712);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Comonad = __webpack_require__(581);
-	var Control_Extend = __webpack_require__(536);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_BooleanAlgebra = __webpack_require__(548);
-	var Data_Bounded = __webpack_require__(551);
-	var Data_CommutativeRing = __webpack_require__(562);
-	var Data_Eq = __webpack_require__(543);
-	var Data_EuclideanRing = __webpack_require__(564);
-	var Data_Field = __webpack_require__(566);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Functor_Invariant = __webpack_require__(576);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(558);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Semiring = __webpack_require__(560);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var $foreign = __webpack_require__(716);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Comonad = __webpack_require__(585);
+	var Control_Extend = __webpack_require__(540);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_BooleanAlgebra = __webpack_require__(552);
+	var Data_Bounded = __webpack_require__(555);
+	var Data_CommutativeRing = __webpack_require__(566);
+	var Data_Eq = __webpack_require__(547);
+	var Data_EuclideanRing = __webpack_require__(568);
+	var Data_Field = __webpack_require__(570);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Functor_Invariant = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ring = __webpack_require__(562);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Semiring = __webpack_require__(564);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var showLazy = function showLazy(dictShow) {
 	    return new Data_Show.Show(function (x) {
 	        return "(defer \\_ -> " + (Data_Show.show(dictShow)($foreign.force(x)) + ")");
@@ -84982,7 +86463,7 @@
 	};
 
 /***/ }),
-/* 712 */
+/* 716 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -85015,36 +86496,36 @@
 	};
 
 /***/ }),
-/* 713 */
+/* 717 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var RWSResult = function () {
 	    function RWSResult(value0, value1, value2) {
 	        this.value0 = value0;
@@ -85411,37 +86892,37 @@
 	};
 
 /***/ }),
-/* 714 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(522);
-	var Control_Alternative = __webpack_require__(526);
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Apply = __webpack_require__(504);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Lazy = __webpack_require__(602);
-	var Control_Monad = __webpack_require__(528);
-	var Control_Monad_Cont_Class = __webpack_require__(611);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Error_Class = __webpack_require__(595);
-	var Control_Monad_Reader_Class = __webpack_require__(612);
-	var Control_Monad_Rec_Class = __webpack_require__(596);
-	var Control_Monad_State_Class = __webpack_require__(613);
-	var Control_Monad_Trans_Class = __webpack_require__(617);
-	var Control_Monad_Writer_Class = __webpack_require__(621);
-	var Control_MonadPlus = __webpack_require__(607);
-	var Control_MonadZero = __webpack_require__(575);
-	var Control_Plus = __webpack_require__(527);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Data_Function = __webpack_require__(508);
-	var Data_Functor = __webpack_require__(509);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Tuple = __webpack_require__(614);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Alt = __webpack_require__(526);
+	var Control_Alternative = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Apply = __webpack_require__(508);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Lazy = __webpack_require__(606);
+	var Control_Monad = __webpack_require__(532);
+	var Control_Monad_Cont_Class = __webpack_require__(615);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Error_Class = __webpack_require__(599);
+	var Control_Monad_Reader_Class = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(600);
+	var Control_Monad_State_Class = __webpack_require__(617);
+	var Control_Monad_Trans_Class = __webpack_require__(621);
+	var Control_Monad_Writer_Class = __webpack_require__(625);
+	var Control_MonadPlus = __webpack_require__(611);
+	var Control_MonadZero = __webpack_require__(579);
+	var Control_Plus = __webpack_require__(531);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Data_Function = __webpack_require__(512);
+	var Data_Functor = __webpack_require__(513);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Tuple = __webpack_require__(618);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var StateT = function StateT(x) {
 	    return x;
 	};
@@ -85732,17 +87213,17 @@
 	};
 
 /***/ }),
-/* 715 */
+/* 719 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Control_Monad_Eff_Console = __webpack_require__(652);
-	var Control_Semigroupoid = __webpack_require__(507);
-	var Prelude = __webpack_require__(546);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Control_Monad_Eff_Console = __webpack_require__(656);
+	var Control_Semigroupoid = __webpack_require__(511);
+	var Prelude = __webpack_require__(550);
 	var warnShow = function warnShow(dictShow) {
 	    return function ($4) {
 	        return Control_Monad_Eff_Class.liftEff(Control_Monad_Aff.monadEffAff)(Control_Monad_Eff_Console.warnShow(dictShow)($4));
@@ -85787,19 +87268,19 @@
 	};
 
 /***/ }),
-/* 716 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Foldable = __webpack_require__(572);
-	var Data_Generic_Rep = __webpack_require__(692);
-	var Data_Monoid = __webpack_require__(577);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Symbol = __webpack_require__(693);
-	var Prelude = __webpack_require__(546);
+	var Data_Foldable = __webpack_require__(576);
+	var Data_Generic_Rep = __webpack_require__(696);
+	var Data_Monoid = __webpack_require__(581);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Symbol = __webpack_require__(697);
+	var Prelude = __webpack_require__(550);
 	var GenericShow = function GenericShow(genericShow$prime) {
 	    this["genericShow'"] = genericShow$prime;
 	};
@@ -85911,24 +87392,24 @@
 	};
 
 /***/ }),
-/* 717 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Data_Either = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Ordering = __webpack_require__(557);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_String = __webpack_require__(647);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Apply = __webpack_require__(508);
+	var Data_Either = __webpack_require__(539);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Ordering = __webpack_require__(561);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_String = __webpack_require__(651);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var OPTIONS = function () {
 	    function OPTIONS() {};
 	    OPTIONS.value = new OPTIONS();
@@ -86528,19 +88009,19 @@
 	};
 
 /***/ }),
-/* 718 */
+/* 722 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(543);
-	var Data_HeytingAlgebra = __webpack_require__(549);
-	var Data_MediaType = __webpack_require__(719);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Prelude = __webpack_require__(546);
+	var Data_Eq = __webpack_require__(547);
+	var Data_HeytingAlgebra = __webpack_require__(553);
+	var Data_MediaType = __webpack_require__(723);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Prelude = __webpack_require__(550);
 	var Accept = function () {
 	    function Accept(value0) {
 	        this.value0 = value0;
@@ -86632,22 +88113,22 @@
 	};
 
 /***/ }),
-/* 719 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Newtype = __webpack_require__(545);
-	var Data_Ord = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Apply = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Newtype = __webpack_require__(549);
+	var Data_Ord = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var MediaType = function MediaType(x) {
 	    return x;
 	};
@@ -86696,20 +88177,20 @@
 	};
 
 /***/ }),
-/* 720 */
+/* 724 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(504);
-	var Data_Eq = __webpack_require__(543);
-	var Data_Generic = __webpack_require__(630);
-	var Data_Maybe = __webpack_require__(574);
-	var Data_Semigroup = __webpack_require__(523);
-	var Data_Show = __webpack_require__(513);
-	var Data_Unit = __webpack_require__(511);
-	var Prelude = __webpack_require__(546);
+	var Control_Apply = __webpack_require__(508);
+	var Data_Eq = __webpack_require__(547);
+	var Data_Generic = __webpack_require__(634);
+	var Data_Maybe = __webpack_require__(578);
+	var Data_Semigroup = __webpack_require__(527);
+	var Data_Show = __webpack_require__(517);
+	var Data_Unit = __webpack_require__(515);
+	var Prelude = __webpack_require__(550);
 	var StatusCode = function StatusCode(x) {
 	    return x;
 	};
@@ -86746,22 +88227,22 @@
 	};
 
 /***/ }),
-/* 721 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Except_Trans = __webpack_require__(620);
-	var Data_Function = __webpack_require__(508);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Except_Trans = __webpack_require__(624);
+	var Data_Function = __webpack_require__(512);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -87076,21 +88557,21 @@
 	};
 
 /***/ }),
-/* 722 */
+/* 726 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Data_Function = __webpack_require__(508);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Data_Function = __webpack_require__(512);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -87582,21 +89063,21 @@
 	};
 
 /***/ }),
-/* 723 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Data_Function = __webpack_require__(508);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Data_Function = __webpack_require__(512);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -87670,6 +89151,29 @@
 	                    return subModuleDetailActivity(mName)(input)(whereFrom)(whatToSendBack);
 	                });
 	            };
+	        };
+	    };
+	};
+	var settingsScreenActivity = function settingsScreenActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.settingsScreenActivity)(Types_UITypes.encodeSettingsScreenActivityAction)(new Types_UITypes.SettingsScreenActivity({
+	                profile: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.BACK_SettingsScreenActivity) {
+	                    if (whereFrom === "ProfileFragment") {
+	                        return profileFragment(input)("Terminate")(input);
+	                    };
+	                    return profileFragment(input)("Terminate")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_LanguageSelectActivitySt) {
+	                    return languageSelectActivitySt(v.value0.profile)("SettingsScreenActivity")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_AboutUsActivity) {
+	                    return aboutUsActivity(v.value0.profile)("SettingsScreenActivity")(input);
+	                };
+	                return settingsScreenActivity(input)(whereFrom)(whatToSendBack);
+	            });
 	        };
 	    };
 	};
@@ -87773,6 +89277,9 @@
 	                };
 	                if (v instanceof Types_UITypes.OPEN_EditGuestProfileActivity) {
 	                    return guestInformationActivity(v.value0.profile)("ProfileFragment")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_SettingsScreenActivity) {
+	                    return settingsScreenActivity(v.value0.profile)("ProfileActivity")(input);
 	                };
 	                if (v instanceof Types_UITypes.OPEN_AddressActivity) {
 	                    return addressActivity(v.value0.profile)("ProfileFragment")(input);
@@ -87900,6 +89407,20 @@
 	                    return profileFragment(input)("Terminate")(input);
 	                };
 	                return notificationActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var languageSelectActivitySt = function languageSelectActivitySt(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.languageSelectActivitySt)(Types_UITypes.encodeLanguageSelectActivityStAction)(new Types_UITypes.LanguageSelectActivitySt({
+	                profile: input
+	            })))(function (v) {
+	                if (whereFrom === "SettingsScreenActivity") {
+	                    return settingsScreenActivity(input)("Terminate")(input);
+	                };
+	                return settingsScreenActivity(input)("Terminate")(input);
 	            });
 	        };
 	    };
@@ -88068,6 +89589,40 @@
 	        };
 	    };
 	};
+	var aboutUsScreen = function aboutUsScreen(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.aboutUsScreen)(Types_UITypes.encodeAboutUsScreenAction)(new Types_UITypes.AboutUsScreen({
+	                profile: input
+	            })))(function (v) {
+	                if (whereFrom === "AboutUsActivity") {
+	                    return aboutUsActivity(input)("Terminate")(input);
+	                };
+	                return aboutUsActivity(input)("Terminate")(input);
+	            });
+	        };
+	    };
+	};
+	var aboutUsActivity = function aboutUsActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.aboutUsActivity)(Types_UITypes.encodeAboutUsActivityAction)(new Types_UITypes.AboutUsActivity({
+	                profile: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.BACK_AboutUsActivity) {
+	                    if (whereFrom === "SettingsScreenActivity") {
+	                        return settingsScreenActivity(input)("Terminate")(input);
+	                    };
+	                    return settingsScreenActivity(input)("Terminate")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_AboutUsScreen) {
+	                    return aboutUsScreen(v.value0.profile)("AboutUsActivity")(input);
+	                };
+	                return aboutUsActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
 	module.exports = {
 	    profileFragment: profileFragment,
 	    notificationActivity: notificationActivity,
@@ -88075,6 +89630,10 @@
 	    profileActivity: profileActivity,
 	    additionalInformationActivity: additionalInformationActivity,
 	    guestInformationActivity: guestInformationActivity,
+	    settingsScreenActivity: settingsScreenActivity,
+	    languageSelectActivitySt: languageSelectActivitySt,
+	    aboutUsActivity: aboutUsActivity,
+	    aboutUsScreen: aboutUsScreen,
 	    addressActivity: addressActivity,
 	    educationActivity: educationActivity,
 	    experienceActivity: experienceActivity,
@@ -88086,23 +89645,23 @@
 	};
 
 /***/ }),
-/* 724 */
+/* 728 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(503);
-	var Control_Bind = __webpack_require__(515);
-	var Control_Monad_Aff = __webpack_require__(517);
-	var Control_Monad_Aff_Console = __webpack_require__(715);
-	var Control_Monad_Eff_Class = __webpack_require__(594);
-	var Data_Function = __webpack_require__(508);
-	var Prelude = __webpack_require__(546);
-	var Types_APITypes = __webpack_require__(701);
-	var Types_UITypes = __webpack_require__(703);
-	var UI = __webpack_require__(706);
-	var Utils = __webpack_require__(707);
+	var Control_Applicative = __webpack_require__(507);
+	var Control_Bind = __webpack_require__(519);
+	var Control_Monad_Aff = __webpack_require__(521);
+	var Control_Monad_Aff_Console = __webpack_require__(719);
+	var Control_Monad_Eff_Class = __webpack_require__(598);
+	var Data_Function = __webpack_require__(512);
+	var Prelude = __webpack_require__(550);
+	var Types_APITypes = __webpack_require__(705);
+	var Types_UITypes = __webpack_require__(707);
+	var UI = __webpack_require__(710);
+	var Utils = __webpack_require__(711);
 	var subModuleResourceDetailActivity = function subModuleResourceDetailActivity(mName) {
 	    return function (input) {
 	        return function (whereFrom) {

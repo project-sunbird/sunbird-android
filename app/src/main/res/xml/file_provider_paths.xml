@@ -2,4 +2,5 @@
 <paths>
     <external-path name="my_ecars" path="Ecars/tmp/" />
     <external-path name="my_images" path="announcements/" />
+    <external-cache-path name="my_apks" path="." />
 </paths>

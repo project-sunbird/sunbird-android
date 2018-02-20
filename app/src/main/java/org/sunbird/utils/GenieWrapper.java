@@ -628,7 +628,7 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void importEcarFile(String ecarFilePath, String[] callbacks) {
+    public void importEcarFile(String ecarFilePath, final String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
         File noMediaFile = new File(directory.getAbsolutePath() + File.separator + Constants.EXTERNAL_PATH + "/" + ".nomedia");
@@ -640,26 +640,37 @@ public class GenieWrapper extends Activity {
             }
         }
 
-        String id = "1234567890";
-        final CallbackContainer cbHandler = new CallbackContainer(id, callbacks);
+        final String id = "1234567890";
+        String[] mCbs = new String[3];
+        mCbs[0] = callbacks[0];
+        mCbs[1] = callbacks[1];
+        mCbs[2] = "";
+        final CallbackContainer cbHandler = new CallbackContainer(id, mCbs);
         startEventBus(cbHandler);
         EventBus.getDefault().register(cbHandler);
         EcarImportRequest ecarImportRequest = new EcarImportRequest.Builder().fromFilePath(ecarFilePath).toFolder(String.valueOf(directory)).build();
         mGenieAsyncService.getContentService().importEcar(ecarImportRequest, new IResponseHandler<List<ContentImportResponse>>() {
             @Override
             public void onSuccess(GenieResponse<List<ContentImportResponse>> genieResponse) {
-
+                EventBus.getDefault().unregister(cbHandler);
                 List<ContentImportResponse> result = genieResponse.getResult();
-                boolean launchDetail = true;
                 if (!CollectionUtil.isNullOrEmpty(result)) {
                     for (ContentImportResponse contentImportResponse : result) {
                         switch (contentImportResponse.getStatus()) {
                             case ALREADY_EXIST:
                             case IMPORT_COMPLETED:
-                                EventBus.getDefault().unregister(cbHandler);
+                                if (result.size() == 1) {
+                                    String importResponse = GsonUtil.toJson(contentImportResponse);
+                                    String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", callbacks[2], "importEcarSuccess", id, importResponse);
+                                    dynamicUI.addJsToWebView(javascript);
+                                }
                                 break;
                         }
                     }
+                } else {
+                    //TODO in case of success, result size is 0. Needs fix in SDK.
+                    String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", callbacks[2], "importEcarSuccess", id, "{\"status\": \"IMPORT_COMPLETED\"}");
+                    dynamicUI.addJsToWebView(javascript);
                 }
             }
 
@@ -667,7 +678,6 @@ public class GenieWrapper extends Activity {
             public void onError(GenieResponse<List<ContentImportResponse>> genieResponse) {
                 EventBus.getDefault().unregister(cbHandler);
             }
-
         });
     }
 

@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.customtabs.CustomTabsCallback;
 import android.support.customtabs.CustomTabsClient;
 import android.support.customtabs.CustomTabsIntent;
@@ -110,9 +111,11 @@ import org.sunbird.utils.WebSocket;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -2322,5 +2325,161 @@ public class JsInterface {
     @JavascriptInterface
     public void updateProfile(String handle, String medium, String grade, String board) {
         genieWrapper.updateProfile(handle, medium, grade, board);
+    }
+
+    @JavascriptInterface
+    public void shareApk(String layoutId) {
+        final LinearLayout linearLayout = (LinearLayout) activity.findViewById(parseInt(layoutId));
+
+        ApplicationInfo app = context.getApplicationInfo();
+        String filePath = app.sourceDir;
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+
+        // MIME of .apk is "application/vnd.android.package-archive".
+        // but Bluetooth does not accept this. Let's use "*/*" instead.
+        intent.setType("*/*");
+
+        // Append file and send Intent
+        File originalApk = new File(filePath);
+
+        try {
+            //Make new directory in new location
+            File tempFile = new File(activity.getExternalCacheDir() + "/ExtractedApk");
+            //If directory doesn't exists create new
+            if (!tempFile.isDirectory())
+                if (!tempFile.mkdirs())
+                    return;
+            //Get application's name and convert to lowercase
+            tempFile = new File(tempFile.getPath() + "/" + activity.getString(R.string.app_name) + "_" + getAppVersion() + ".apk");
+            //If file doesn't exists create new
+            if (!tempFile.exists()) {
+                if (!tempFile.createNewFile()) {
+                    return;
+                }
+            }
+            //Copy file to new location
+            InputStream in = new FileInputStream(originalApk);
+            OutputStream out = new FileOutputStream(tempFile);
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+            System.out.println("File copied.");
+
+            Uri fileUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", tempFile);
+            intent.putExtra(Intent.EXTRA_STREAM, fileUri);
+
+            final View.OnClickListener onclickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (view instanceof ImageView) {
+                        ImageView imageV = (ImageView) view;
+                        boolean isAppInstalled = appInstalledOrNot((String) imageV.getTag());
+
+                        if (isAppInstalled) {
+                            intent.setPackage((String) imageV.getTag());
+                            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                            activity.getBaseContext().startActivity(intent);
+
+                        } else {
+                            Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
+                            try {
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + (String) imageV.getTag())));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + (String) imageV.getTag())));
+                            }
+                        }
+
+                    } else {
+                        Log.d("APPLINKSHAREINTENTS", "NOT AN INSTANCE OF IMAGE VIEW");
+                    }
+
+                }
+            };
+
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    List<ResolveInfo> resolveInfoList = activity.getPackageManager()
+                            .queryIntentActivities(intent, 0);
+
+                    ArrayList<String> appPackagesList = new ArrayList<>();
+                    for (ResolveInfo resolveInfo : resolveInfoList) {
+                        if (!appPackagesList.contains(resolveInfo.activityInfo.packageName)) {
+                            appPackagesList.add(resolveInfo.activityInfo.packageName);
+                        }
+                    }
+                    PackageManager pm = activity.getApplicationContext().getPackageManager();
+                    ApplicationInfo ai;
+                    String applicationName;
+                    linearLayout.removeAllViews();
+                    TextView[] textView = new TextView[appPackagesList.size()];
+                    ImageView[] imageView = new ImageView[appPackagesList.size()];
+                    LinearLayout[] container = new LinearLayout[appPackagesList.size()];
+                    int layoutHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
+                    int layoutWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
+
+                    ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(layoutWidth, layoutHeight);
+                    LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    containerParams.setMargins(0, 0, 20, 0);
+                    for (int i = 0; i < appPackagesList.size(); i++) {
+                        String packageName = appPackagesList.get(i);
+                        container[i] = new LinearLayout(activity);
+                        container[i].setOrientation(LinearLayout.VERTICAL);
+                        imageView[i] = new ImageView(activity);
+                        Drawable icon = null;
+
+                        try {
+                            ai = pm.getApplicationInfo(packageName, 0);
+                            icon = pm.getApplicationIcon(packageName);
+
+                        } catch (final PackageManager.NameNotFoundException e) {
+                            ai = null;
+                        }
+
+                        applicationName = (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
+
+                        imageView[i].setImageDrawable(icon);
+                        imageView[i].setLayoutParams(params);
+                        imageView[i].setOnClickListener(onclickListener);
+                        imageView[i].setTag(packageName);
+
+                        textView[i] = new TextView(activity);
+                        textView[i].setText(applicationName);
+                        textView[i].setGravity(Gravity.CENTER_HORIZONTAL);
+                        textView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+
+                        container[i].addView(imageView[i]);
+                        container[i].addView(textView[i]);
+                        container[i].setGravity(Gravity.CENTER_HORIZONTAL);
+                        container[i].setLayoutParams(containerParams);
+
+                        linearLayout.addView(container[i]);
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @JavascriptInterface
+    public void supportEmail() {
+        sendEmail(activity.getString(R.string.supportEmail));
+    }
+
+    @JavascriptInterface
+    public String getAppVersion() {
+        return BuildConfig.VERSION_NAME;
+    }
+
+    @JavascriptInterface
+    public String getDeviceId () {
+        return Settings.Secure.getString(activity.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
     }
 }
