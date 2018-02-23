@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.customtabs.CustomTabsCallback;
 import android.support.customtabs.CustomTabsClient;
 import android.support.customtabs.CustomTabsIntent;
@@ -49,6 +48,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -72,6 +74,7 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.apache.cordova.LOG;
+import org.ekstep.genieservices.GenieService;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.json.JSONArray;
@@ -2479,7 +2482,57 @@ public class JsInterface {
 
     @JavascriptInterface
     public String getDeviceId () {
-        return Settings.Secure.getString(activity.getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        if (getFromSharedPrefs("deviceId").equals("__failed")) {
+            String dId = GenieService.getService().getDeviceInfo().getDeviceID();
+            setInSharedPrefs("deviceId", dId);
+            return dId;
+        }
+        return getFromSharedPrefs("deviceId");
+    }
+
+    @JavascriptInterface
+    public void displayHTML (final String layoutId, final String sectionName) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String filePath = "";
+                int id = parseInt(layoutId);
+                switch (sectionName) {
+                    case "PRIVACY_POLICY":
+                        filePath = "file:///android_asset/privacy_policy.html";
+                        break;
+                    case "TERMS_OF_SERVICE":
+                        filePath = "file:///android_asset/terms_of_service.html";
+                        break;
+                    case "ABOUT":
+                        filePath = "file:///android_asset/about_us.html";
+                        break;
+                }
+                LinearLayout linearLayout = (LinearLayout) activity.findViewById(id);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                layoutParams.setMargins(16, 8, 16, 8);
+                linearLayout.setLayoutParams(layoutParams);
+                WebView webview = new WebView(context);
+                WebSettings setting = webview.getSettings();
+                setting.setMinimumFontSize(16);
+                setting.setJavaScriptEnabled(true);
+                setting.setLoadWithOverviewMode(true);
+//                setting.setUseWideViewPort(true);
+                webview.getSettings().setBuiltInZoomControls(true);
+                setting.setSupportZoom(true);
+                setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+                webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+                webview.setWebChromeClient(new WebChromeClient());
+                webview.loadUrl(filePath);
+                linearLayout.addView(webview);
+            }
+        });
+    }
+
+    @JavascriptInterface
+    public void openPlayStoreLink () {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID));
+        activity.startActivity(intent);
     }
 }
