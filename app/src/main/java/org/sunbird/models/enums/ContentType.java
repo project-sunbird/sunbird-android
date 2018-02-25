@@ -6,7 +6,7 @@ import android.support.annotation.StringDef;
  * Created by vinay.narayana on 18/08/17.
  */
 @StringDef({ContentType.STORY, ContentType.WORKSHEET, ContentType.GAME, ContentType.COLLECTION,
-        ContentType.TEXTBOOK, ContentType.TEXTBOOK, ContentType.COURSE, ContentType.LESSIONPLAN})
+        ContentType.TEXTBOOK, ContentType.TEXTBOOK, ContentType.COURSE, ContentType.LESSONPLAN})
 public @interface ContentType {
 
     String STORY = "Story";
@@ -16,5 +16,6 @@ public @interface ContentType {
     String TEXTBOOK = "TextBook";
     String TEXTBOOKUNIT = "TextbookUnit";
     String COURSE = "Course";
-    String LESSIONPLAN = "LessonPlan";
+    String LESSONPLAN = "LessonPlan";
+    String RESOURCE = "Resource";
 }

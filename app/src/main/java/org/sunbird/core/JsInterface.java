@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -75,8 +76,16 @@ import com.squareup.okhttp.Response;
 
 import org.apache.cordova.LOG;
 import org.ekstep.genieservices.GenieService;
+import org.ekstep.genieservices.commons.bean.Content;
+import org.ekstep.genieservices.commons.bean.ContentFilterCriteria;
+import org.ekstep.genieservices.commons.bean.GenieResponse;
+import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
+import org.ekstep.genieservices.commons.bean.enums.JWTokenType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
+import org.ekstep.genieservices.commons.utils.CryptoUtil;
+import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.ekstep.genieservices.utils.DeviceSpec;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,6 +93,7 @@ import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
 import org.sunbird.models.ApiResponse;
+import org.sunbird.models.enums.ContentType;
 import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
@@ -103,7 +113,7 @@ import org.sunbird.ui.ViewPagerAdapter;
 import org.sunbird.utils.Constants;
 import org.sunbird.utils.FileDownloader;
 import org.sunbird.utils.FileDownloader.OnFileDownloadProgressChangedListener;
-import org.sunbird.utils.FileUtil;
+import org.sunbird.utils.FileHandler;
 import org.sunbird.utils.GenieWrapper;
 import org.sunbird.utils.ImagePicker;
 import org.sunbird.utils.KeyValueStore;
@@ -625,9 +635,9 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void getContentDetails(String content_id, String callback) {
+    public void getContentDetails(String content_id, String callback, boolean returnFeedback) {
         Log.e("GEnie", "---------------------------------------------");
-        genieWrapper.getContentDetails(callback, content_id);
+        genieWrapper.getContentDetails(callback, content_id, returnFeedback);
     }
 
     @JavascriptInterface
@@ -1636,27 +1646,6 @@ public class JsInterface {
         return keyValueStore.getString(payload, defaultValue);
     }
 
-    @JavascriptInterface
-    public String decryptAndloadFile(String fileName) {
-        Log.d(LOG_TAG, "Processing File - " + fileName);
-        //Converting byte data to string is messing the gunzipping of file
-        String data = null;
-        byte[] fileData = null;
-        try {
-            fileData = FileUtil.getFileFromInternalStorageOrAssets(activity, fileName, "sunbird");
-            if (fileName.endsWith(".jsa") && fileData != null) {
-                try {
-                    data = new String(decryptJSFile(fileData));
-                } catch (Exception e) {
-                    data = "";
-                }
-            }
-        } catch (Exception e) {
-            data = "";
-        }
-        return data;
-    }
-
     @android.webkit.JavascriptInterface
     public void checkPermission(String callback) {
         try {
@@ -2534,5 +2523,168 @@ public class JsInterface {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID));
         activity.startActivity(intent);
+    }
+
+    @JavascriptInterface
+    public void sendFeedback(String cb, String contentId, String comment, float rating, String pageId, String contentVersion) {
+        genieWrapper.sendFeedback(cb, contentId, comment, rating, pageId, contentVersion);
+    }
+
+    @JavascriptInterface
+    private String getGenieConfigurations() {
+        StringBuilder configString = new StringBuilder();
+
+        //add device id
+        configString.append("did:");
+        configString.append(GenieService.getService().getDeviceInfo().getDeviceID());
+        configString.append("||");
+
+        //add device model
+        configString.append("mdl:");
+        configString.append(DeviceSpec.getDeviceModel());
+        configString.append("||");
+
+        //add device make
+        configString.append("mak:");
+        configString.append(DeviceSpec.getDeviceMaker());
+        configString.append("||");
+
+        //add Android OS version
+        configString.append("dos:");
+        configString.append(DeviceSpec.getOSVersion());
+        configString.append("||");
+
+        //add Crosswalk version
+        configString.append("cwv:");
+        configString.append(getCrossWalkVersion());
+        configString.append("||");
+
+        //add Screen Resolution
+        configString.append("res:");
+        configString.append(DeviceSpec.getScreenWidth(context) + "x" + DeviceSpec.getScreenHeight(context));
+        configString.append("||");
+
+        //add Screen DPI
+        configString.append("dpi:");
+        configString.append(DeviceSpec.getDeviceDensityInDpi(context));
+        configString.append("||");
+
+        //add Total disk space
+        configString.append("tsp:");
+        configString.append(DeviceSpec.getTotalExternalMemorySize() + DeviceSpec.getTotalInternalMemorySize());
+        configString.append("||");
+
+        //add free space
+        configString.append("fsp:");
+        configString.append(DeviceSpec.getAvailableExternalMemorySize() + DeviceSpec.getAvailableInternalMemorySize());
+        configString.append("||");
+
+        //add Count of content on device
+        configString.append("cno:");
+        configString.append(getLocalContentsCount());
+        configString.append("||");
+
+        //add total users on device
+        configString.append("uno:");
+        configString.append(getUsersCount());
+        configString.append("||");
+
+        File genieSupportDirectory = FileHandler.getRequiredDirectory(Environment.getExternalStorageDirectory(), Constants.EXTERNAL_PATH);
+        String filePath = genieSupportDirectory + "/" + SUNBIRD_SUPPORT_FILE;
+        String versionsAndOpenTimes = FileHandler.readFile(filePath);
+
+        //add genie version history
+        configString.append("gv:");
+        configString.append(versionsAndOpenTimes);
+        configString.append("||");
+
+        //add current timestamp
+        configString.append("ts:");
+        configString.append(System.currentTimeMillis());
+
+        //calculate checksum before adding pipes
+        String checksum = Base64Util.encodeToString(CryptoUtil.generateHMAC(configString.toString().trim(),
+                GenieService.getService().getDeviceInfo().getDeviceID().getBytes(), JWTokenType.HS256.getAlgorithmName()), 11);
+        configString.append("||");
+
+        //add HMAC
+        configString.append("csm:");
+        configString.append(checksum);
+
+        return configString.toString();
+    }
+
+    private String getCrossWalkVersion() {
+        PackageInfo pInfo = null;
+        try {
+            pInfo = context.getPackageManager().getPackageInfo("org.xwalk.core", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return pInfo == null ? "na" : pInfo.versionName;
+    }
+
+    private int getLocalContentsCount() {
+        ContentFilterCriteria.Builder contentFilterCriteria = new ContentFilterCriteria.Builder();
+        contentFilterCriteria.contentTypes(new String[]{ContentType.GAME, ContentType.STORY,
+                ContentType.WORKSHEET, ContentType.COLLECTION, ContentType.TEXTBOOK, ContentType.COURSE, ContentType.LESSONPLAN, ContentType.RESOURCE})
+                .withContentAccess();
+        GenieResponse<List<Content>> genieResponse = GenieService.getService().getContentService().
+                getAllLocalContent(contentFilterCriteria.build());
+        List<Content> contentList = genieResponse.getResult();
+        return contentList == null ? 0 : contentList.size();
+    }
+
+    private int getUsersCount() {
+        GenieResponse<List<Profile>> response = GenieService.getService().getUserService().getAllUserProfile();
+        List<Profile> mUsersList = response.getResult();
+        return mUsersList == null ? 0 : mUsersList.size();
+    }
+
+    private String SEPERATOR = "~";
+    private String SUNBIRD_SUPPORT_FILE = "sunbird_support.txt";
+
+    @JavascriptInterface
+    public void makeEntryInSunbirdSupportFile() throws IOException {
+        File genieSupportDirectory = FileHandler.getRequiredDirectory(Environment.getExternalStorageDirectory(), Constants.EXTERNAL_PATH);
+        String filePath = genieSupportDirectory + "/" + SUNBIRD_SUPPORT_FILE;
+//        String packageName = GlobalApplication.getInstance().getClientPackageName();
+        String versionName = BuildConfig.VERSION_NAME;
+
+        //for the first time when file does not exists
+        if (!FileHandler.checkIfFileExists(filePath)) {
+            makeFirstEntryInTheFile(versionName, filePath);
+        } else {
+            String lastLineOfFile = FileHandler.readLastLineFromFile(filePath);
+            if (!StringUtil.isNullOrEmpty(lastLineOfFile)) {
+                String[] partsOfLastLine = lastLineOfFile.split(SEPERATOR);
+
+                if (versionName.equalsIgnoreCase(partsOfLastLine[0])) {
+                    //just remove the last line from the file and update it their
+                    FileHandler.removeLastLineFromFile(filePath);
+
+                    String previousOpenCount = partsOfLastLine[2];
+                    int count = Integer.parseInt(previousOpenCount);
+                    count++;
+                    String updateEntry = versionName + SEPERATOR + partsOfLastLine[1] + SEPERATOR + count;
+                    FileHandler.saveToFile(filePath, updateEntry);
+                } else {
+                    //make a new entry to the file
+                    String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+                    FileHandler.saveToFile(filePath, newEntry);
+                }
+            } else {
+                //make a new entry to the file
+                String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+                FileHandler.saveToFile(filePath, newEntry);
+            }
+        }
+    }
+
+    @JavascriptInterface
+    private void makeFirstEntryInTheFile(String versionName, String filePath) throws IOException {
+        FileHandler.createFileInTheDirectory(filePath);
+        String firstEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+        FileHandler.saveToFile(filePath, firstEntry);
     }
 }

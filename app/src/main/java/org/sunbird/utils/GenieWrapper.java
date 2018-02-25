@@ -20,6 +20,7 @@ import org.ekstep.genieservices.commons.bean.ContentDeleteResponse;
 import org.ekstep.genieservices.commons.bean.ContentDetailsRequest;
 import org.ekstep.genieservices.commons.bean.ContentExportRequest;
 import org.ekstep.genieservices.commons.bean.ContentExportResponse;
+import org.ekstep.genieservices.commons.bean.ContentFeedback;
 import org.ekstep.genieservices.commons.bean.ContentFilterCriteria;
 import org.ekstep.genieservices.commons.bean.ContentImport;
 import org.ekstep.genieservices.commons.bean.ContentImportRequest;
@@ -53,6 +54,7 @@ import org.json.JSONObject;
 import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
+import org.sunbird.models.enums.ContentType;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
@@ -116,8 +118,13 @@ public class GenieWrapper extends Activity {
 
     }
 
-    public void getContentDetails(final String callback, String content_id) {
-        ContentDetailsRequest contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).build();
+    public void getContentDetails(final String callback, String content_id, boolean returnFeedback) {
+        ContentDetailsRequest contentDetailsRequest;
+        if (returnFeedback){
+            contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).withFeedback().build();
+        } else {
+            contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).build();
+        }
         mGenieAsyncService.getContentService().getContentDetails(contentDetailsRequest, new IResponseHandler<Content>() {
             @Override
             public void onSuccess(GenieResponse<Content> genieResponse) {
@@ -267,31 +274,31 @@ public class GenieWrapper extends Activity {
             switch (type) {
                 case "Course":
                     contentTypes = new String[1];
-                    contentTypes[0] = "Course";
+                    contentTypes[0] = ContentType.COURSE;
                     break;
 
                 case "Library":
                     contentTypes = new String[7];
-                    contentTypes[0] = "Story";
-                    contentTypes[1] = "Game";
-                    contentTypes[2] = "TextBook";
-                    contentTypes[3] = "Collection";
-                    contentTypes[4] = "Worksheet";
-                    contentTypes[5] = "Resource";
-                    contentTypes[6] = "LessonPlan";
+                    contentTypes[0] = ContentType.STORY;
+                    contentTypes[1] = ContentType.GAME;
+                    contentTypes[2] = ContentType.TEXTBOOK;
+                    contentTypes[3] = ContentType.COLLECTION;
+                    contentTypes[4] = ContentType.WORKSHEET;
+                    contentTypes[6] = ContentType.RESOURCE;
+                    contentTypes[7] = ContentType.LESSONPLAN;
                     break;
 
                 case "Combined":
                 default:
                     contentTypes = new String[8];
-                    contentTypes[0] = "Story";
-                    contentTypes[1] = "Game";
-                    contentTypes[2] = "TextBook";
-                    contentTypes[3] = "Collection";
-                    contentTypes[4] = "Worksheet";
-                    contentTypes[5] = "Course";
-                    contentTypes[6] = "Resource";
-                    contentTypes[7] = "LessonPlan";
+                    contentTypes[0] = ContentType.STORY;
+                    contentTypes[1] = ContentType.GAME;
+                    contentTypes[2] = ContentType.TEXTBOOK;
+                    contentTypes[3] = ContentType.COLLECTION;
+                    contentTypes[4] = ContentType.WORKSHEET;
+                    contentTypes[5] = ContentType.COURSE;
+                    contentTypes[6] = ContentType.RESOURCE;
+                    contentTypes[7] = ContentType.LESSONPLAN;
                     break;
             }
 
@@ -918,5 +925,26 @@ public class GenieWrapper extends Activity {
             String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", this.telemetryCb, "onTelemetryEvent", this.id, enc);
             dynamicUI.addJsToWebView(javascript);
         }
+    }
+
+    public void sendFeedback (final String cb, String contentId, String comment, float rating, String pageId, String contentVersion) {
+        ContentFeedback contentFeedback = new ContentFeedback();
+        contentFeedback.setContentId(contentId);
+        contentFeedback.setComments(comment);
+        contentFeedback.setRating(rating);
+        contentFeedback.setStageId(pageId);
+        contentFeedback.setContentVersion(contentVersion);
+        mGenieAsyncService.getContentService().sendFeedback(contentFeedback, new IResponseHandler<Void>() {
+            @Override
+            public void onSuccess(GenieResponse<Void> genieResponse) {
+                String javascript = String.format("window.callJSCallback('%s');", cb);
+                dynamicUI.addJsToWebView(javascript);
+            }
+
+            @Override
+            public void onError(GenieResponse<Void> genieResponse) {
+
+            }
+        });
     }
 }

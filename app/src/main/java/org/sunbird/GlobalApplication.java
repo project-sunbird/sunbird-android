@@ -46,12 +46,16 @@ public class GlobalApplication extends Application implements ForegroundService.
         GenieService.setParams(params);
     }
 
+    public String getClientPackageName() {
+        return "org.sunbird";
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         instance = this;
-        GenieService.init(this, this.getClass().getPackage().getName());
+        GenieService.init(this, getClientPackageName());
         initPreferenceWrapper();
         setParams();
         registerActivityLifecycleCallbacks(ForegroundService.getInstance());
