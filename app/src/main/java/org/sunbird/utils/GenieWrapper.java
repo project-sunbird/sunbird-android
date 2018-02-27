@@ -284,8 +284,8 @@ public class GenieWrapper extends Activity {
                     contentTypes[2] = ContentType.TEXTBOOK;
                     contentTypes[3] = ContentType.COLLECTION;
                     contentTypes[4] = ContentType.WORKSHEET;
-                    contentTypes[6] = ContentType.RESOURCE;
-                    contentTypes[7] = ContentType.LESSONPLAN;
+                    contentTypes[5] = ContentType.RESOURCE;
+                    contentTypes[6] = ContentType.LESSONPLAN;
                     break;
 
                 case "Combined":
