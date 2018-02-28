@@ -618,8 +618,10 @@ public class GenieWrapper extends Activity {
     }
 
     public void stopTelemetryEvent() {
-        if (telemetryListener != null)
+        if (telemetryListener != null){
             EventBus.getDefault().unregister(telemetryListener);
+            telemetryListener = null;
+        }
     }
 
     public void syncTelemetry() {
