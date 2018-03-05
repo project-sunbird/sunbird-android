@@ -1,6 +1,7 @@
 package org.sunbird.core;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -40,6 +42,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -56,6 +59,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HeaderViewListAdapter;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -105,6 +109,7 @@ import org.sunbird.telemetry.enums.ImpressionType;
 import org.sunbird.telemetry.enums.Mode;
 import org.sunbird.telemetry.enums.ObjectType;
 import org.sunbird.telemetry.enums.Workflow;
+import org.sunbird.ui.HorizontalScroller;
 import org.sunbird.ui.ListViewAdapter;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.ui.MyRecyclerViewAdapter;
@@ -2681,10 +2686,120 @@ public class JsInterface {
         }
     }
 
-    @JavascriptInterface
     private void makeFirstEntryInTheFile(String versionName, String filePath) throws IOException {
         FileHandler.createFileInTheDirectory(filePath);
         String firstEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
         FileHandler.saveToFile(filePath, firstEntry);
+    }
+
+    @JavascriptInterface
+    public int getViewHeight(String viewId) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int id = parseInt(viewId);
+        View view = activity.findViewById(id);
+        if (view != null) return (int) (view.getHeight() / metrics.density);
+        return -1;
+    }
+
+    @JavascriptInterface
+    public int getViewWidth(String viewId) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int id = parseInt(viewId);
+        View view = activity.findViewById(id);
+        if (view != null) return (int) (view.getWidth() / metrics.density);
+        return -1;
+    }
+
+    @JavascriptInterface
+    public int getScreenWidth() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return (int) (metrics.widthPixels / metrics.density);
+    }
+
+    @JavascriptInterface
+    public void scrollTo (String scrollViewId, String scrollX) {
+        int id = parseInt(scrollViewId);
+        final int x = parseInt(scrollX);
+        final DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        final HorizontalScrollView scrollView = (HorizontalScrollView) activity.findViewById(id);
+        if (scrollView != null) {
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    ObjectAnimator animator = ObjectAnimator.ofInt(scrollView, "scrollX", (int) (x * metrics.density));
+                    animator.setDuration(500);
+                    animator.start();
+                }
+            });
+        }
+    }
+
+    private int[] cardIds;
+
+    @JavascriptInterface
+    public void addScrollListener(final String scrollViewID, final String[] cids, final String onStopCb) {
+        cardIds = new int[cids.length];
+        for (int i = 0; i < cids.length; i++) {
+            cardIds[i] = parseInt(cids[i]);
+        }
+
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int scrollViewId = parseInt(scrollViewID);
+                    final HorizontalScrollView scrollView = (HorizontalScrollView) activity.findViewById(scrollViewId);
+                    HorizontalScroller scroller = new HorizontalScroller(scrollView);
+                    scroller.setOnScrollStoppedListener(new HorizontalScroller.OnScrollStopListener() {
+                        @Override
+                        public void onScrollStopped(int x) {
+                            checkViewVisibility(scrollView, onStopCb);
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.d(LOG_TAG, "Error in rendering scrollView, err -> ");
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void checkViewVisibility(HorizontalScrollView scrollView, String onStopCb) {
+        int maxVId = cardIds[0]; int per = 0;
+        for (int i = 0; i < cardIds.length; i++) {
+            final View view =  activity.findViewById(cardIds[i]);
+            if (view == null) continue;
+            int percentage = isViewVisible(view, scrollView);
+            if (percentage != -1 && percentage > per) {
+                per = percentage;
+                maxVId = cardIds[i];
+            }
+        }
+        String javascript = String.format("window.callJSCallback('%s', '%s');", onStopCb, maxVId);
+        dynamicUI.addJsToWebView(javascript);
+    }
+
+    public int isViewVisible(View view,HorizontalScrollView scrollView){
+        Rect scrollBounds = new Rect();
+        scrollView.getHitRect(scrollBounds);
+        if (view.getLocalVisibleRect(scrollBounds)) {
+            Rect rect = new Rect();
+            view.getGlobalVisibleRect(rect);
+            double visible = rect.width() * rect.height();
+            double total = view.getWidth() * view.getHeight();
+            int percentage = (int) (100 * visible / total);
+            //LogUtil.i(TAG, view.getTag().toString() + " " + percentage + " % Visible");
+            if (percentage >= 50) {
+                return percentage;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
     }
 }
