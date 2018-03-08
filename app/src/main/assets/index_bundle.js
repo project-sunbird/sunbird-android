@@ -22572,6 +22572,7 @@
 	var RadioButton = __webpack_require__(401);
 	var CheckBox = __webpack_require__(361);
 	var TextView = __webpack_require__(342);
+	var PageOption = __webpack_require__(379);
 	var ImageView = __webpack_require__(350);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
@@ -22609,7 +22610,7 @@
 	                id: _this2.idSet.parentContainer,
 	                visibility: data
 	            });
-	            Android.runInUI(cmd, 0, "54", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdGenericSelectorPopupjs");
+	            Android.runInUI(cmd, 0, "55", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdGenericSelectorPopupjs");
 	        };
 	
 	        _this2.handleDismissClick = function () {
@@ -22638,7 +22639,7 @@
 	        };
 	
 	        _this2.handleRadioButtonClick = function () {
-	            if (window.__RadioButton != undefined && window.__RadioButton.currentIndex) {
+	            if (window.__RadioButton != undefined && window.__RadioButton.hasOwnProperty("currentIndex")) {
 	                console.log("radio -> ", window.__RadioButton.currentIndex);
 	                _this2.data.selected = [_this2.data.values[window.__RadioButton.currentIndex]];
 	            }
@@ -22657,9 +22658,9 @@
 	                    width: "match_parent",
 	                    height: "wrap_content",
 	                    gravity: "center_vertical",
-	                    margin: "0,0,0,16", __source: {
+	                    margin: "16,0,16,16", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 96
+	                        lineNumber: 97
 	                    }
 	                },
 	                dom(TextView, {
@@ -22669,7 +22670,7 @@
 	                    text: _this2.data.question,
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 102
+	                        lineNumber: 103
 	                    }
 	                }),
 	                dom(ViewWidget, {
@@ -22677,7 +22678,7 @@
 	                    weight: "1",
 	                    height: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 109
+	                        lineNumber: 110
 	                    }
 	                }),
 	                dom(ImageView, {
@@ -22687,7 +22688,7 @@
 	                    gravity: "center_vertical",
 	                    imageUrl: "ic_action_close", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 114
+	                        lineNumber: 115
 	                    }
 	                })
 	            );
@@ -22699,15 +22700,15 @@
 	                {
 	                    cornerRadius: "2",
 	                    width: "match_parent",
-	                    height: "350",
+	                    height: Math.floor(JBridge.getScreenHeight() * 0.6) + "",
 	                    root: "true",
 	                    visibility: "visible",
 	                    orientation: "vertical",
 	                    clickable: "true",
-	                    padding: "16,18,16,0",
+	                    padding: "0,18,0,0",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 126
+	                        lineNumber: 127
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -22716,55 +22717,43 @@
 	        };
 	
 	        _this2.getFeatureButton = function () {
+	            var cancelBtnState = {
+	                text: window.__S.CANCEL.toUpperCase(),
+	                isClickable: "true",
+	                onClick: _this2.hide,
+	                visibility: "visible"
+	            };
+	            var applyBtnState = {
+	                text: window.__S.SAVE.toUpperCase(),
+	                isClickable: "true",
+	                onClick: _this2.onConfirm,
+	                visibility: "visible"
+	            };
+	            var buttonList = [cancelBtnState, applyBtnState];
 	            return dom(
 	                LinearLayout,
 	                {
-	                    width: "match_parent",
-	                    orientation: "vertical",
 	                    height: "wrap_content",
-	                    alignParentBottom: "true,-1",
-	                    padding: "3,3,3,3",
-	                    cornerRadius: "5",
-	                    gravity: "center", __source: {
+	                    width: "match_parent",
+	                    alignParentBottom: "true, -1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 144
+	                        lineNumber: 158
 	                    }
 	                },
-	                dom(FeatureButton, {
-	                    typeface: "bold",
-	                    clickable: "true",
+	                dom(PageOption, {
 	                    width: "match_parent",
-	                    height: "56",
-	                    stroke: "3," + window.__Colors.WHITE,
-	                    background: window.__Colors.PRIMARY_ACCENT,
-	                    text: window.__S.CONFIRM,
-	                    buttonClick: _this2.onConfirm,
-	                    textColor: window.__Colors.WHITE,
-	                    textSize: "18", __source: {
+	                    buttonItems: buttonList,
+	                    hideDivider: false,
+	                    onButtonClick: _this2.handlePageOption, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 152
+	                        lineNumber: 163
 	                    }
 	                })
 	            );
 	        };
 	
 	        _this2.getCheckboxes = function () {
-	            var lengthOfMenu = _this2.data.values.length;
-	
-	            var leftItems = [];
-	            var rightItems = [];
-	
-	            _this2.data.values.map(function (item, i) {
-	                if (i % 2 == 0) {
-	                    leftItems.push(item);
-	                } else {
-	                    rightItems.push(item);
-	                }
-	            });
-	
-	            var leftBar = "";
-	            var rightBar = "";
-	            leftBar = leftItems.map(function (item, index) {
+	            var checkBoxes = _this2.data.values.map(function (item, index) {
 	                return dom(CheckBox, {
 	                    onCheckChange: function onCheckChange(value) {
 	                        _this2.handleCheckBoxValueChange(item, value);
@@ -22773,61 +22762,23 @@
 	                    text: item,
 	                    index: index, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 184
-	                    }
-	                });
-	            });
-	            rightBar = rightItems.map(function (item, index) {
-	                return dom(CheckBox, {
-	                    onCheckChange: function onCheckChange(value) {
-	                        _this2.handleCheckBoxValueChange(item, value);
-	                    },
-	                    text: item,
-	                    checked: _this2.checkSelected(item, _this2.data.selected),
-	                    index: index, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 191
+	                        lineNumber: 174
 	                    }
 	                });
 	            });
 	            _this2.totalBar = dom(
 	                LinearLayout,
 	                {
-	                    orientation: "horizontal",
+	                    orientation: "vertical",
 	                    width: "match_parent",
 	                    root: "true",
+	                    margin: "16,0,16,0",
 	                    height: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 198
+	                        lineNumber: 181
 	                    }
 	                },
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        orientation: "vertical",
-	                        width: "0",
-	                        weight: "1",
-	                        height: "match_parent", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 203
-	                        }
-	                    },
-	                    leftBar
-	                ),
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        orientation: "vertical",
-	                        width: "0",
-	                        weight: "1",
-	                        height: "match_parent",
-	                        margin: "0,0,0,0", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 210
-	                        }
-	                    },
-	                    rightBar
-	                )
+	                checkBoxes
 	            );
 	
 	            return _this2.totalBar;
@@ -22846,9 +22797,10 @@
 	                {
 	                    orientation: "horizontal",
 	                    width: "match_parent",
-	                    height: "wrap_content", __source: {
+	                    height: "wrap_content",
+	                    margin: "16,0,16,0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 233
+	                        lineNumber: 203
 	                    }
 	                },
 	                dom(RadioButton, {
@@ -22859,7 +22811,7 @@
 	                    items: leftBar,
 	                    onClick: _this2.handleRadioButtonClick, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 237
+	                        lineNumber: 208
 	                    }
 	                })
 	            );
@@ -22871,7 +22823,7 @@
 	            var layouts = dom(LinearLayout, {
 	                __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 251
+	                    lineNumber: 222
 	                }
 	            });
 	            switch (_this2.data.selectorType) {
@@ -22890,10 +22842,9 @@
 	                {
 	                    width: "match_parent",
 	                    height: "wrap_content",
-	                    margin: "0,0,0,10",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 263
+	                        lineNumber: 234
 	                    }
 	                },
 	                dom(
@@ -22901,9 +22852,9 @@
 	                    {
 	                        height: "match_parent",
 	                        width: "match_parent",
-	                        margin: "0,0,0,62", __source: {
+	                        margin: "0,0,0,90", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 269
+	                            lineNumber: 239
 	                        }
 	                    },
 	                    layouts
@@ -22935,7 +22886,7 @@
 	                    background: window.__Colors.PRIMARY_BLACK_44,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 282
+	                        lineNumber: 252
 	                    }
 	                },
 	                dom(LinearLayout, {
@@ -22944,14 +22895,14 @@
 	                    onClick: this.handleDismissClick,
 	                    weight: "1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 292
+	                        lineNumber: 262
 	                    }
 	                }),
 	                dom(LinearLayout, {
 	                    id: this.idSet.bodyContainer,
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 298
+	                        lineNumber: 268
 	                    }
 	                })
 	            );
@@ -26976,31 +26927,10 @@
 	    window.__questions = [{
 	      question: "What grade do you teach?",
 	      option: "SELECT GRADES",
-	      values: ["K.G.", "Grade1", "Grade2", "Grade3", "Grade4", "Grade5"],
+	      values: ["K.G.", "Grade1", "Grade2", "Grade3", "Grade4", "Grade5", "Grade6", "Grade7", "Grade8", "Grade9", "Grade10", "Grade11", "Grade12"],
 	      selected: [],
 	      isCurr: true,
 	      selectorType: "checkbox"
-	    }, {
-	      question: "Which subject do you teach?",
-	      option: "SELECT SUBJECT",
-	      values: ["Mathematics", "Physics", "Chemistry", "English", "Hindi", "Computer Science"],
-	      selected: [],
-	      isCurr: false,
-	      selectorType: "checkbox"
-	    }, {
-	      question: "Which state do you belong to?",
-	      option: "SELECT STATE",
-	      values: ["Karnataka", "Maharastra", "Kerala", "Tamil Nadu"],
-	      selected: [],
-	      isCurr: false,
-	      selectorType: "radio"
-	    }, {
-	      question: "Are you a teacher?",
-	      option: "SELECT",
-	      values: ["Yes", "No"],
-	      selected: [],
-	      isCurr: false,
-	      selectorType: "radio"
 	    }];
 	    return _this2;
 	  }
@@ -27018,7 +26948,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 541
+	            lineNumber: 522
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -27029,14 +26959,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 548
+	            lineNumber: 529
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 555
+	              lineNumber: 536
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -27047,7 +26977,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 556
+	              lineNumber: 537
 	            }
 	          })
 	        )
@@ -27066,7 +26996,7 @@
 	  this.onPop = function () {
 	    console.log("onPop called in MainActivity");
 	
-	    Android.runInUI(_this3.animateView(), null, "104", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "85", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -27273,7 +27203,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 310
+	            lineNumber: 291
 	          }
 	        });
 	
@@ -27287,7 +27217,7 @@
 	          response: data,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 327
+	            lineNumber: 308
 	          }
 	        });
 	
@@ -27301,7 +27231,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 339
+	            lineNumber: 320
 	          }
 	        });
 	
@@ -27328,7 +27258,7 @@
 	          editable: "true",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 363
+	            lineNumber: 344
 	          }
 	        });
 	        break;
@@ -27338,7 +27268,7 @@
 	          LinearLayout,
 	          { height: "match_parent", root: "true", width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 375
+	              lineNumber: 356
 	            }
 	          },
 	          dom(TextView, {
@@ -27350,7 +27280,7 @@
 	            gravity: "center",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 376
+	              lineNumber: 357
 	            }
 	          })
 	        );
@@ -27363,7 +27293,7 @@
 	      contentLayout: _this3.contentLayout,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 389
+	        lineNumber: 370
 	      }
 	    });
 	
@@ -27411,7 +27341,7 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 434
+	          lineNumber: 415
 	        }
 	      },
 	      dom(ViewWidget, {
@@ -27420,7 +27350,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 440
+	          lineNumber: 421
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -27495,7 +27425,7 @@
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 518
+	        lineNumber: 499
 	      }
 	    });
 	
@@ -32232,13 +32162,12 @@
 	    _createClass(Card, [{
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
-	
 	            var fLayout = "";
 	            var visibility = "gone";
 	            if (this.cardData.selected.length == 0) {
 	                fLayout = dom(TextView, {
-	                    textColor: window.__Colors.PRIMARY_ACCENT,
+	                    textSize: "12",
+	                    color: window.__Colors.PRIMARY_ACCENT,
 	                    text: this.cardData.option, __source: {
 	                        fileName: _jsxFileName,
 	                        lineNumber: 34
@@ -32246,16 +32175,18 @@
 	                });
 	            } else {
 	                visibility = "visible";
-	                fLayout = this.cardData.selected.map(function (item, i) {
-	                    var appendText = ", ";
-	                    if (i == _this3.cardData.selected.length - 1) appendText = "";
-	                    return dom(TextView, {
-	                        textColor: window.__Colors.PRIMARY_ACCENT,
-	                        text: item + appendText, __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 44
-	                        }
-	                    });
+	                var dispText = this.cardData.selected.map(function (item, i) {
+	                    return item;
+	                });
+	                dispText = dispText.splice(0, 2).join(", ");
+	                dispText = dispText + (this.cardData.selected.length > 2 ? "..." : "");
+	
+	                fLayout = dom(TextView, {
+	                    textSize: "12",
+	                    text: dispText, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 48
+	                    }
 	                });
 	            }
 	            var layout = dom(
@@ -32268,14 +32199,16 @@
 	                    margin: "4,0,4,0",
 	                    padding: "8,8,8,8", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 51
+	                        lineNumber: 54
 	                    }
 	                },
 	                dom(TextView, {
+	                    margin: "8,8,0,0",
+	                    textSize: "14",
 	                    alignParentTop: "true, -1",
 	                    text: this.cardData.question, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 59
+	                        lineNumber: 62
 	                    }
 	                }),
 	                dom(
@@ -32284,9 +32217,10 @@
 	                        alignParentBottom: "true, -1",
 	                        width: "wrap_content",
 	                        padding: "8,8,8,8",
-	                        onClick: this.props.onClick, __source: {
+	                        onClick: this.props.onClick,
+	                        gravity: "center_vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 63
+	                            lineNumber: 68
 	                        }
 	                    },
 	                    fLayout,
@@ -32297,7 +32231,7 @@
 	                        margin: "4,0,0,0",
 	                        imageUrl: "ic_action_edit_blue", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 69
+	                            lineNumber: 75
 	                        }
 	                    })
 	                )
@@ -32315,77 +32249,199 @@
 	    function QuestionsComponent(props, children) {
 	        _classCallCheck(this, QuestionsComponent);
 	
-	        var _this4 = _possibleConstructorReturn(this, (QuestionsComponent.__proto__ || Object.getPrototypeOf(QuestionsComponent)).call(this, props, children));
+	        var _this3 = _possibleConstructorReturn(this, (QuestionsComponent.__proto__ || Object.getPrototypeOf(QuestionsComponent)).call(this, props, children));
 	
-	        _this4.handleCardOptionClick = function (index, item) {
+	        _this3.handleCardOptionClick = function (index, item) {
 	            console.log("cardOption clicked -> ", item);
-	            var onChangeCb = function onChangeCb(data) {
-	                console.log("updated data -> ", data);
-	
-	                window.__questions[index] = data;
-	                window.__GenericSelectorPopup.hide();
-	
-	                _this4.renderCards = _this4.cardsArr.map(function (item, i) {
-	                    return dom(Card, {
-	                        width: _this4.cardWidth + "",
-	                        data: item,
-	                        onClick: function onClick() {
-	                            _this4.handleCardOptionClick(i, item);
-	                        }, __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 120
-	                        }
-	                    });
-	                });
-	                var nextCardId = "";
-	                _this4.cardsArr.map(function (item, i) {
-	                    if (nextCardId == "" && item.selected.length == 0) nextCardId = _this4.renderCards[i].id;
-	                });
-	                _this4.Carousel.updateCards(nextCardId, _this4.renderCards);
-	            };
-	            window.__GenericSelectorPopup.show(item, onChangeCb);
+	            window.__GenericSelectorPopup.show(item, function (data) {
+	                return _this3.onCardAnswered(index, data);
+	            });
 	        };
 	
-	        _this4.afterRender = function () {};
+	        _this3.onCardAnswered = function (index, data) {
+	            console.log("updated data -> ", data);
 	
-	        _this = _this4;
-	        _this4.setIds(["parentContainer", "scrollViewContainer", "footerContainer"]);
-	        _this4.cardsArr = window.__questions;
-	        _this4.screenWidth = JBridge.getScreenWidth();
-	        _this4.cardWidth = _this4.screenWidth < 300 ? _this4.screenWidth - 32 : 300;
-	        _this4.cardPadding = Math.floor((_this4.screenWidth - _this4.cardWidth) / 2);
+	            window.__questions[index] = data;
+	            window.__GenericSelectorPopup.hide();
 	
-	        console.log("cardPadding -> ", _this4.cardPadding);
+	            _this3.getNextQuestion();
+	            _this3.updateToCurrentState();
+	        };
 	
-	        _this4.renderCards = _this4.cardsArr.map(function (item, i) {
+	        _this3.getNextQuestion = function () {
+	            var ele = window.__allQs.pop();
+	            if (ele) {
+	                window.__questions.push(ele);
+	                _this3.cardsArr = window.__questions;
+	            }
+	            _this3.renderCards = _this3.cardsArr.map(function (item, i) {
+	                return dom(Card, {
+	                    width: _this3.cardWidth + "",
+	                    data: item,
+	                    onClick: function onClick() {
+	                        _this3.handleCardOptionClick(i, item);
+	                    }, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 166
+	                    }
+	                });
+	            });
+	            console.log("window.__allQs -> ", window.__allQs);
+	            console.log("this.cardsArr -> ", _this3.cardsArr);
+	        };
+	
+	        _this3.getProgress = function (pStatus) {
+	            var completedProgress = pStatus;
+	            var remainingProgress = 100 - parseInt(pStatus) + "";
+	            console.log("getProgress -> ", pStatus);
+	            return dom(
+	                LinearLayout,
+	                {
+	                    width: "match_parent",
+	                    height: "5",
+	                    orientation: "horizontal",
+	                    root: "true", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 181
+	                    }
+	                },
+	                dom(LinearLayout, {
+	                    width: "0",
+	                    height: "5",
+	                    background: completedProgress == "100" ? window.__Colors.SUCCESS_GREEN : window.__Colors.LIGHT_BLUE,
+	                    weight: completedProgress, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 186
+	                    }
+	                }),
+	                dom(LinearLayout, {
+	                    width: "0",
+	                    background: window.__Colors.PRIMARY_BLACK_22,
+	                    height: "5",
+	                    weight: remainingProgress, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 191
+	                    }
+	                })
+	            );
+	        };
+	
+	        _this3.updateToCurrentState = function () {
+	            var nextCardIndex = undefined;
+	            var completed = 0;
+	            _this3.cardsArr.map(function (item, i) {
+	                if (item.selected.length == 0) {
+	                    if (nextCardIndex == undefined) nextCardIndex = i;
+	                } else {
+	                    completed += 1;
+	                }
+	            });
+	            console.log("Completed -> ", completed);
+	            console.log("nextCardIndex -> ", nextCardIndex);
+	
+	            _this3.Carousel.updateCards(nextCardIndex, _this3.renderCards);
+	            _this3.replaceChild(_this3.idSet.progressContainer, _this3.getProgress(Math.floor(completed / _this3.cardsArr.length * 100)).render(), 0);
+	        };
+	
+	        _this3.afterRender = function () {
+	            _this3.updateToCurrentState();
+	        };
+	
+	        _this = _this3;
+	        _this3.setIds(["parentContainer", "scrollViewContainer", "footerContainer", "progressContainer"]);
+	        _this3.cardsArr = window.__questions;
+	        _this3.screenWidth = JBridge.getScreenWidth();
+	        _this3.cardWidth = _this3.screenWidth < 300 ? _this3.screenWidth - 32 : 300;
+	        _this3.cardPadding = Math.floor((_this3.screenWidth - _this3.cardWidth) / 2);
+	        window.__allQs = window.__allQs ? window.__allQs : [{
+	            question: "Which subject do you teach?",
+	            option: "SELECT SUBJECT",
+	            values: ["Mathematics", "Physics", "Chemistry", "English", "Hindi", "Computer Science"],
+	            selected: [],
+	            isCurr: false,
+	            selectorType: "checkbox"
+	        }, {
+	            question: "Which state do you belong to?",
+	            option: "SELECT STATE",
+	            values: ["Karnataka", "Maharastra", "Kerala", "Tamil Nadu"],
+	            selected: [],
+	            isCurr: false,
+	            selectorType: "radio"
+	        }, {
+	            question: "Are you a teacher?",
+	            option: "SELECT",
+	            values: ["Yes", "No"],
+	            selected: [],
+	            isCurr: false,
+	            selectorType: "radio"
+	        }];
+	
+	        console.log("cardPadding -> ", _this3.cardPadding);
+	
+	        _this3.renderCards = _this3.cardsArr.map(function (item, i) {
 	            return dom(Card, {
-	                width: _this4.cardWidth + "",
+	                width: _this3.cardWidth + "",
 	                data: item,
 	                onClick: function onClick() {
-	                    _this4.handleCardOptionClick(i, item);
+	                    _this3.handleCardOptionClick(i, item);
 	                }, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 101
+	                    lineNumber: 132
 	                }
 	            });
 	        });
 	
-	        return _this4;
+	        return _this3;
 	    }
 	
 	    _createClass(QuestionsComponent, [{
 	        key: "render",
 	        value: function render() {
+	            var flag = 0;
+	            window.__questions.map(function (item) {
+	                if (item.selected.length == 0) flag = 1;
+	            });
+	            // var visibility = flag == 0 ? "gone" : "visible";
+	            //TODO remove when integrating with content framework
+	            var visibility = "visible;";
 	            this.Carousel = dom(CarouselCards, {
 	                visibility: this.props.visibility,
 	                cardPadding: this.cardPadding + ",0," + this.cardPadding + ",0",
-	                cards: this.renderCards, __source: {
+	                cards: this.renderCards,
+	                totalCards: 4, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 140
+	                    lineNumber: 230
 	                }
 	            });
 	
-	            return this.Carousel.render();
+	            var layout = dom(
+	                LinearLayout,
+	                {
+	                    width: "match_parent",
+	                    height: "wrap_content",
+	                    orientation: "vertical",
+	                    visibility: this.props.visibility == "visible" ? visibility : "gone",
+	                    afterRender: this.afterRender, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 238
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        id: this.idSet.progressContainer, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 245
+	                        }
+	                    },
+	                    this.getProgress(0)
+	                ),
+	                this.Carousel
+	            );
+	
+	            return layout.render();
 	        }
 	    }]);
 	
@@ -32444,7 +32500,7 @@
 	                    fillViewport: "true",
 	                    id: _this2.idSet.scrollViewContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 54
+	                        lineNumber: 57
 	                    }
 	                },
 	                dom(
@@ -32457,7 +32513,7 @@
 	                        padding: _this2.cardPadding,
 	                        layoutTransition: "true", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 62
+	                            lineNumber: 65
 	                        }
 	                    },
 	                    _this2.cards
@@ -32468,9 +32524,9 @@
 	        _this2.getFooter = function (pos) {
 	            var position = pos ? pos : 0;
 	            var width = Math.floor(JBridge.getScreenWidth() / 2);
-	            var dots = _this2.cards.map(function (item, i) {
+	            var dots = _this2.totalCards.map(function (item, i) {
 	                if (i == position) {
-	                    item.isCurr = true;
+	                    _this2.cards[i] ? _this2.cards[i].isCurr = true : "";
 	                    return dom(LinearLayout, {
 	                        height: "10",
 	                        width: "10",
@@ -32478,11 +32534,11 @@
 	                        margin: "2,0,2,0",
 	                        background: "#9B9B9B", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 82
+	                            lineNumber: 85
 	                        }
 	                    });
 	                } else {
-	                    item.isCurr = false;
+	                    _this2.cards[i] ? _this2.cards[i].isCurr = false : "";
 	                    return dom(LinearLayout, {
 	                        height: "10",
 	                        width: "10",
@@ -32490,7 +32546,7 @@
 	                        margin: "2,0,2,0",
 	                        background: "#D8D8D8", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 92
+	                            lineNumber: 95
 	                        }
 	                    });
 	                }
@@ -32503,7 +32559,7 @@
 	                    margin: "0,16,0,16",
 	                    gravity: "center", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 102
+	                        lineNumber: 105
 	                    }
 	                },
 	                dom(
@@ -32513,7 +32569,7 @@
 	                        width: width + "",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 107
+	                            lineNumber: 110
 	                        }
 	                    },
 	                    dots
@@ -32521,50 +32577,55 @@
 	            );
 	        };
 	
-	        _this2.updateCards = function (nextId, cards) {
-	            console.log("updateCards -> ", nextId);
-	
+	        _this2.updateCards = function (nextIndex, cards) {
+	            console.log("updateCards -> ", nextIndex);
 	            _this2.cards = cards ? cards : _this2.cards;
 	            _this2.replaceChild(_this2.idSet.cardsContainer, _this2.getCards().render(), null);
-	            var cardIds = _this2.cards.map(function (item) {
-	                return item.id;
-	            });
-	            var onStopCb = callbackMapper.map(function (data) {
-	                console.log("onstop -> ", data);
-	                _this.snapToCard(data[0]);
-	            });
-	            JBridge.addScrollListener(_this2.idSet.scrollViewContainer, cardIds, onStopCb);
+	            JBridge.addScrollListener(_this2.idSet.scrollViewContainer, _this2.getOnScrollStopCb());
 	            setTimeout(function () {
-	                _this2.snapToCard(nextId);
+	                _this2.snapToCard(nextIndex);
 	            }, 100);
 	        };
 	
-	        _this2.afterRender = function () {
-	            var cardIds = _this2.cards.map(function (item) {
-	                return item.id;
-	            });
-	            var onStopCb = callbackMapper.map(function (data) {
+	        _this2.getOnScrollStopCb = function () {
+	            return callbackMapper.map(function (data) {
 	                console.log("onstop -> ", data);
-	                _this.snapToCard(data[0]);
+	                var delta = parseInt(data[0]);
+	                if (delta > 0) {
+	                    var nextCardIndex = (_this2.currCardIndex + 1) % _this2.cards.length;
+	                    _this.snapToCard(nextCardIndex);
+	                } else if (delta < 0) {
+	                    var prevCardIndex = (_this2.currCardIndex - 1) % _this2.cards.length;
+	                    _this.snapToCard(prevCardIndex);
+	                }
 	            });
-	            JBridge.addScrollListener(_this2.idSet.scrollViewContainer, cardIds, onStopCb);
+	        };
+	
+	        _this2.afterRender = function () {
+	            JBridge.addScrollListener(_this2.idSet.scrollViewContainer, _this2.getOnScrollStopCb());
 	            _this2.replaceChild(_this2.idSet.footerContainer, _this2.getFooter().render(), null);
 	        };
 	
-	        _this2.snapToCard = function (cardId) {
-	            if (cardId == "") {
-	                _this2.replaceChild(_this2.idSet.footerContainer, _this2.getFooter().render(), null);
-	            } else {
-	                _this2.cards.map(function (item, i) {
-	                    if (cardId == item.id + "") {
-	                        console.log("cardId - " + cardId + ", item.id - " + item.id);
-	                        JBridge.scrollTo(_this2.idSet.scrollViewContainer, i * (_this2.cardWidth + 8));
-	                        console.log("true pixel -> ", i * (_this2.cardWidth + 8));
-	                        _this2.replaceChild(_this2.idSet.footerContainer, _this2.getFooter(i).render(), null);
-	                        return;
-	                    }
-	                });
-	            }
+	        _this2.snapToCard = function (cardIndex) {
+	            var index = cardIndex && cardIndex < _this2.cards.length && cardIndex >= 0 ? cardIndex : 0;
+	            index = parseInt(index);
+	            JBridge.scrollTo(_this2.idSet.scrollViewContainer, index * (_this2.cardWidth + 8));
+	            _this2.currCardIndex = index;
+	            console.log("scrollTo pixel -> ", index * (_this2.cardWidth + 8));
+	            _this2.replaceChild(_this2.idSet.footerContainer, _this2.getFooter(index).render(), null);
+	            // if (cardId == "") {
+	            //     this.replaceChild(this.idSet.footerContainer, this.getFooter().render(), null);
+	            // } else {
+	            //     this.cards.map((item, i) => {
+	            //         if (cardId == (item.id + "")) {
+	            //             console.log("cardId - " + cardId + ", item.id - " + item.id);
+	            //             JBridge.scrollTo(this.idSet.scrollViewContainer, (i * (this.cardWidth + 8)));
+	            //             console.log("true pixel -> ", i * (this.cardWidth + 8));
+	            //             this.replaceChild(this.idSet.footerContainer, this.getFooter(i).render(), null);
+	            //             return;
+	            //         }
+	            //     });
+	            // }
 	        };
 	
 	        _this = _this2;
@@ -32580,6 +32641,8 @@
 	                lineNumber: 30
 	            }
 	        })];
+	        _this2.currCardIndex = 0;
+	        _this2.totalCards = Array.from('0'.repeat(_this2.props.totalCards)); //always this.cards.length >= this.totalCards.length
 	
 	        console.log("cardPadding -> ", _this2.cardPadding);
 	
@@ -32598,15 +32661,16 @@
 	                    orientation: "horizontal",
 	                    gravity: "center", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 37
+	                        lineNumber: 39
 	                    }
 	                },
 	                dom(TextView, {
 	                    width: "wrap_content",
 	                    height: "wrap_content",
+	                    textSize: "14",
 	                    text: "Help us get you content thats relevant to you.", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 44
+	                        lineNumber: 46
 	                    }
 	                })
 	            );
@@ -32624,7 +32688,7 @@
 	                    orientation: "vertical",
 	                    afterRender: this.afterRender, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 167
+	                        lineNumber: 173
 	                    }
 	                },
 	                this.getHeader(),
@@ -32634,7 +32698,7 @@
 	                        width: "match_parent",
 	                        id: this.idSet.cardsContainer, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 177
+	                            lineNumber: 183
 	                        }
 	                    },
 	                    this.getCards()
@@ -32646,7 +32710,7 @@
 	                    gravity: "center",
 	                    margin: "0,16,0,16", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 183
+	                        lineNumber: 189
 	                    }
 	                })
 	            );
@@ -45227,8 +45291,6 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -45306,7 +45368,7 @@
 	          layouTransition: "true",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 477
+	            lineNumber: 474
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -45314,7 +45376,7 @@
 	          onBackPress: this.onBackPressed,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 486
+	            lineNumber: 483
 	          }
 	        }),
 	        dom(
@@ -45322,7 +45384,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 490
+	              lineNumber: 487
 	            }
 	          },
 	          dom(
@@ -45331,7 +45393,7 @@
 	              orientation: "vertical",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 491
+	                lineNumber: 488
 	              }
 	            },
 	            this.getBatchTypeHead(),
@@ -45343,7 +45405,7 @@
 	                width: "match_parent",
 	                fillViewPort: "true", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 497
+	                  lineNumber: 494
 	                }
 	              },
 	              dom(LinearLayout, {
@@ -45353,7 +45415,7 @@
 	                orientation: "vertical",
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 502
+	                  lineNumber: 499
 	                }
 	              })
 	            )
@@ -45622,14 +45684,12 @@
 	    if (JBridge.isNetworkAvailable()) {
 	
 	      window.__LoaderDialog.show();
-	      _this3.courseDetails = _defineProperty({
-	        "delta": "delta",
+	      _this3.courseDetails = {
 	        "contentId": _this3.searchId,
 	        "batchId": batch.id,
 	        "userId": window.__userToken,
-	        "courseName": "Enrollment 3",
 	        "courseId": _this3.searchId
-	      }, "delta", "delta");
+	      };
 	      var whatToSend = {
 	        "reqParams": JSON.stringify(_this3.courseDetails),
 	        "user_token": window.__user_accessToken,
@@ -45655,7 +45715,7 @@
 	        visibility: _this3.showChooser ? "visible" : "gone",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 338
+	          lineNumber: 335
 	        }
 	      },
 	      dom(
@@ -45670,7 +45730,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_ONGOING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 347
+	            lineNumber: 344
 	          }
 	        },
 	        dom(TextView, {
@@ -45680,7 +45740,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_ONGOING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 357
+	            lineNumber: 354
 	          }
 	        })
 	      ),
@@ -45696,7 +45756,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_UPCOMING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 366
+	            lineNumber: 363
 	          }
 	        },
 	        dom(TextView, {
@@ -45706,7 +45766,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_UPCOMING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 376
+	            lineNumber: 373
 	          }
 	        })
 	      )
@@ -45727,7 +45787,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 394
+	            lineNumber: 391
 	          }
 	        },
 	        dom(ImageView, {
@@ -45736,7 +45796,7 @@
 	          imageUrl: "ic_no_batch",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 403
+	            lineNumber: 400
 	          }
 	        }),
 	        dom(TextView, {
@@ -45747,7 +45807,7 @@
 	          style: window.__TextStyle.textStyle.HEADING.DARK,
 	          text: window.__S.ERROR_NO_BATCHES_FOUND, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 409
+	            lineNumber: 406
 	          }
 	        })
 	      );
@@ -45760,7 +45820,7 @@
 	          width: "match_parent",
 	          orientatio: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 422
+	            lineNumber: 419
 	          }
 	        },
 	        dom(BatchCard, {
@@ -45773,7 +45833,7 @@
 	            _this3.handleBatchEnrollClick(item);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 427
+	            lineNumber: 424
 	          }
 	        })
 	      );
@@ -45788,7 +45848,7 @@
 	        width: "match_parent",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 440
+	          lineNumber: 437
 	        }
 	      },
 	      cards
@@ -45807,7 +45867,7 @@
 	          alpha: "0.9",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 457
+	            lineNumber: 454
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
@@ -45815,7 +45875,7 @@
 	          headerText: window.__S.OVERLAY_LABEL_TAKE_COURSE,
 	          infoText: window.__S.OVERLAY_INFO_TEXT_TAKE_COURSE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 464
+	            lineNumber: 461
 	          }
 	        })
 	      );
@@ -45823,7 +45883,7 @@
 	      return dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 471
+	          lineNumber: 468
 	        }
 	      });
 	    }

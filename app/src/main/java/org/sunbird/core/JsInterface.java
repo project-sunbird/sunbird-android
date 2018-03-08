@@ -12,6 +12,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.customtabs.CustomTabsCallback;
 import android.support.customtabs.CustomTabsClient;
 import android.support.customtabs.CustomTabsIntent;
@@ -46,6 +48,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -54,6 +57,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -180,6 +184,9 @@ public class JsInterface {
     private Context context;
     private MainActivity activity;
     private DynamicUI dynamicUI;
+    private Map<String,String> mapId=new HashMap<String, String>();
+    private Map<String,String[]> sectionMap = new HashMap<>();
+    private Map<String,String[]> contentMap = new HashMap<>();
     /**
      * Get the download progress callbacks here
      */
@@ -542,7 +549,7 @@ public class JsInterface {
         genieWrapper.getImportStatus(identifier, callback);
     }
 
-    @android.webkit.JavascriptInterface
+    @JavascriptInterface
     public void showCalender(final String callback, final String minDate, final String maxDate, final String currentSelected) {
         Log.e("\n\nCALAN :", "showCAlender");
         this.activity.runOnUiThread(new Runnable() {
@@ -714,20 +721,50 @@ public class JsInterface {
         genieWrapper.endContent();
     }
 
+    int counter = 0;
+
     @JavascriptInterface
     public void syncTelemetry(int delay) {
         Timer t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
+            String option = getFromSharedPrefs("data_sync");
+            int delay = 15000;
+            @Override
+            public void run() {
 
-                                  @Override
-                                  public void run() {
-                                      genieWrapper.syncTelemetry();
+                if(option.equals("Over Wifi") && checkConnectionType().equals("wifi"))
+                    genieWrapper.syncTelemetry();
+                else if(option.equals("Always On")) {
+                    if (checkConnectionType().equals("wifi")){
+                        genieWrapper.syncTelemetry();
+                    } else if(checkConnectionType().equals("mobile network")) {
+                        counter ++;
+                        if (counter % 2 == 0) {
+                            genieWrapper.syncTelemetry();
+                        }
+                    }
 
-                                  }
+                }
+            }
+        },0, 15000);
 
-                              },
-                0, delay);
+    }
 
+    @JavascriptInterface
+    public void syncTelemetryNow(final String callback){
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryPageId.SETTINGS_DATASYNC, TelemetryAction.MANUALSYNC_INITIATED, ContextEnvironment.HOME));
+        genieWrapper.manualSyncTelemetry(callback);
+
+    }
+
+    @JavascriptInterface
+    public void shareTelemetry(final String callback){
+        genieWrapper.exportTelemetry(callback);
+    }
+
+    @JavascriptInterface
+    public void getLastTelemetrySyncTime(){
+        genieWrapper.getLastSyncTime();
     }
 
     @JavascriptInterface
@@ -778,6 +815,14 @@ public class JsInterface {
         Map<String, Object> params = new HashMap<>();
         params.put(TelemetryConstant.PRESENT_ON_DEVICE, onDevice);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(TelemetryPageId.CONTENT_DETAIL, ImpressionType.DETAIL, TelemetryPageId.CONTENT_DETAIL, ContextEnvironment.HOME, params));
+    }
+
+    @JavascriptInterface
+    public void logRollupEvent(String type, String l1, String l2, String l3, String l4){
+        String env = ContextEnvironment.HOME;
+        String pageId = TelemetryPageId.CONTENT_DETAIL;
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, pageId, env, l1, l2, l3, l4));
+
     }
 
     @JavascriptInterface
@@ -850,6 +895,112 @@ public class JsInterface {
         eksMap.put(TelemetryConstant.POSITION_CLICKED, position);
         eksMap.put(TelemetryConstant.SEARCH_PHRASE, sectionName);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.CONTENT_CLICKED, pageId, ContextEnvironment.HOME, eksMap, contentId, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
+    }
+    @JavascriptInterface
+    public void logSettingsClickedEvent(String type) {
+        String pageId = "";
+        String action = "";
+        switch (type) {
+            case "Settings":
+                pageId = TelemetryPageId.PROFILE;
+                action = TelemetryAction.SETTINGS_CLICKED;
+                break;
+            case "Data Sync":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.DATA_SYNC_CLICKED;
+                break;
+            case "Language Settings":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.LANGUAGE_CLICKED;
+                break;
+            case "Support":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.SUPPORT_CLICKED;
+                break;
+            case "Share":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.SHARE_APP_CLICKED;
+                break;
+            case "Device Tags":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.DEVICE_TAGS_CLICKED;
+                break;
+            case "About the app":
+                pageId = TelemetryPageId.SETTINGS;
+                action = TelemetryAction.ABOUT_APP_CLICKED;
+                break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, action, pageId, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logLanguageChangeSettingEvent(String prev,String curr){
+        Map<String, Object> eksMap = new HashMap<>();
+        eksMap.put(TelemetryConstant.PREVIOUS_LANGUAGE, prev);
+        eksMap.put(TelemetryConstant.CURRENT_LANGUAGE, curr);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.LANGUAGE_SETTINGS_SUCCESS, TelemetryPageId.SETTINGS_LANGUAGE, ContextEnvironment.HOME, eksMap));
+    }
+
+    @JavascriptInterface
+    public void logShareAppEvent(){
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_APP_INITIATED, TelemetryPageId.SETTINGS, ContextEnvironment.HOME));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.SHARE_APP_SUCCESS, TelemetryPageId.SETTINGS, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logSettingsScreenEvent(String type){
+        String pageId = "";
+        switch (type){
+            case "SETTINGS":
+                pageId = TelemetryPageId.SETTINGS;
+                break;
+            case "SETTINGS_DATASYNC":
+                pageId = TelemetryPageId.SETTINGS_DATASYNC;
+                break;
+            case "SETTINGS_LANGUAGE":
+                pageId = TelemetryPageId.SETTINGS_LANGUAGE;
+                break;
+            case "SETTINGS_DEVICE_TAGS":
+                pageId = TelemetryPageId.SETTINGS_DEVICE_TAGS;
+                break;
+            case "ABOUT_APP":
+                pageId = TelemetryPageId.ABOUT_APP;
+                break;
+            case "SIGNIN_OVERLAY":
+                pageId = TelemetryPageId.SIGNIN_OVERLAY;
+                break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, pageId, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logGuestEvent(String type){
+        String pageId = "";
+        String action = "";
+        switch (type){
+            case "LOGIN":
+                pageId = TelemetryPageId.LOGIN;
+                action = TelemetryAction.BROWSE_AS_GUEST_CLICKED;
+                break;
+            case "HOME":
+                pageId = TelemetryPageId.HOME;
+                action = TelemetryAction.SIGNIN_OVERLAY_CLICKED;
+                break;
+            case "COURSE":
+                pageId = TelemetryPageId.COURSES;
+                action = TelemetryAction.SIGNIN_OVERLAY_CLICKED;
+                break;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
+                action = TelemetryAction.SIGNIN_OVERLAY_CLICKED;
+                break;
+            case "CONTENT_DETAIL":
+                pageId = TelemetryPageId.CONTENT_DETAIL;
+                action = TelemetryAction.SIGNIN_OVERLAY_CLICKED;
+                break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, action, pageId, ContextEnvironment.HOME));
+
     }
 
     @JavascriptInterface
@@ -1103,14 +1254,26 @@ public class JsInterface {
     public void explicitSearch(String page, String type) {
         String pageId = TelemetryPageId.HOME, subType = TelemetryAction.SEARCH_BUTTON_CLICKED;
         switch (page) {
-            case "COMBINED": pageId = TelemetryPageId.HOME; break;
-            case "COURSE": pageId = TelemetryPageId.COURSES; break;
-            case "LIBRARY": pageId = TelemetryPageId.LIBRARY; break;
-            case "PROFILE": pageId = TelemetryPageId.PROFILE; break;
+            case "COMBINED":
+                pageId = TelemetryPageId.HOME;
+                break;
+            case "COURSE":
+                pageId = TelemetryPageId.COURSES;
+                break;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
+                break;
+            case "PROFILE":
+                pageId = TelemetryPageId.PROFILE;
+                break;
         }
         switch (type) {
-            case "SEARCH": subType = TelemetryAction.SEARCH_BUTTON_CLICKED; break;
-            case "FILTER": subType = TelemetryAction.FILTER_BUTTON_CLICKED; break;
+            case "SEARCH":
+                subType = TelemetryAction.SEARCH_BUTTON_CLICKED;
+                break;
+            case "FILTER":
+                subType = TelemetryAction.FILTER_BUTTON_CLICKED;
+                break;
         }
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, subType, pageId, ContextEnvironment.HOME));
     }
@@ -1359,7 +1522,6 @@ public class JsInterface {
                     for (ResolveInfo resolveInfo : resolveInfoList) {
                         if (!appPackagesList.contains(resolveInfo.activityInfo.packageName)) {
                             if (!resolveInfo.activityInfo.packageName.contains("com.google.android.inputmethod"))
-
                                 appPackagesList.add(resolveInfo.activityInfo.packageName);
                         }
                     }
@@ -1566,7 +1728,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void loadImageForQr() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         this.activity.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
 
@@ -1694,7 +1856,7 @@ public class JsInterface {
         }
     }
 
-    @android.webkit.JavascriptInterface
+    @JavascriptInterface
     public void setPermissions(final String callback, final String permissionName) {
 
         REQUEST_CODE_PERMISSION = 0;
@@ -1738,7 +1900,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void showPermissionScreen() {
-        activity.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + BuildConfig.APPLICATION_ID)));
+        activity.startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + BuildConfig.APPLICATION_ID)));
     }
 
     @JavascriptInterface
@@ -1756,7 +1918,7 @@ public class JsInterface {
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
-    @android.webkit.JavascriptInterface
+    @JavascriptInterface
     public String getSymbol(String symbol) {
         switch (symbol) {
             case "tick":
@@ -1768,7 +1930,7 @@ public class JsInterface {
         }
     }
 
-    @android.webkit.JavascriptInterface
+    @JavascriptInterface
     public void startWebSocket(String url) {
         ws.init(url);
     }
@@ -1946,14 +2108,43 @@ public class JsInterface {
                 try {
                     int listViewId = parseInt(id);
                     final ListView listView = (ListView) activity.findViewById(listViewId);
-                    JSONArray jsonArray = new JSONArray(text);
+                    final JSONArray jsonArray = new JSONArray(text);
                     ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
-                    ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
+                    final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
                     ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
+
+                    final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
+                    final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
+
                     Log.e(TAG, "listViewAdapter: isNull " + listViewAdapter);
                     ListViewAdapter listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
                     listView.setAdapter(listViewAdapter);
                     listView.setDividerHeight(heightOfDivider);
+
+                    listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                        @Override
+                        public void onScrollStateChanged(AbsListView absListView, int i) {
+                            Log.d("ListView","ScrollStop");
+                            int first = listView.getFirstVisiblePosition();
+                            int last = listView.getLastVisiblePosition();
+                            while(first<=last){
+                                String value[] = new String[2];
+                                if(first < idArrayList.size() && first < nameArrayList.size()) {
+                                    value[0] = idArrayList.get(first);
+                                    value[1] = nameArrayList.get(first);
+                                    if (!contentMap.containsKey(first))
+                                        contentMap.put(String.valueOf(first), value);
+                                }
+                                first++;
+                            }
+                        }
+
+                        @Override
+                        public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+
+                        }
+                    });
 
                     if (btnText != null && !btnText.equals("")) {
                         LinearLayout linearLayout = new LinearLayout(activity);
@@ -1992,6 +2183,10 @@ public class JsInterface {
         final ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
         final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
         final ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
+
+        final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
+        final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
+
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -2005,6 +2200,32 @@ public class JsInterface {
                     }
                     adapter.addItemsToList(itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList);
                     adapter.notifyDataSetChanged();
+
+                    listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                        @Override
+                        public void onScrollStateChanged(AbsListView absListView, int i) {
+                            Log.d("ListView","ScrollStop");
+                            int first = listView.getFirstVisiblePosition();
+                            int last = listView.getLastVisiblePosition();
+                            while(first<=last){
+                                String value[] = new String[2];
+                                if(first < idArrayList.size() && first < nameArrayList.size()) {
+                                    value[0] = idArrayList.get(first);
+                                    value[1] = nameArrayList.get(first);
+                                    if (!contentMap.containsKey(first))
+                                        contentMap.put(String.valueOf(first), value);
+                                }
+                                first++;
+                            }
+
+                        }
+
+                        @Override
+                        public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+                        }
+                    });
+
                 } catch (Exception e) {
                     Log.d(LOG_TAG, "Error in adding item to listview");
                 }
@@ -2470,6 +2691,27 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public int isViewVisible(View view,ScrollView scrollView){
+        Rect scrollBounds = new Rect();
+        scrollView.getHitRect(scrollBounds);
+        if (view.getLocalVisibleRect(scrollBounds)) {
+            Rect rect = new Rect();
+            view.getGlobalVisibleRect(rect);
+            double visible = rect.width() * rect.height();
+            double total = view.getWidth() * view.getHeight();
+            int percentage = (int) (100 * visible / total);
+            //LogUtil.i(TAG, view.getTag().toString() + " " + percentage + " % Visible");
+            if (percentage >= 50) {
+                return percentage;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    @JavascriptInterface
     public String getAppVersion() {
         return BuildConfig.VERSION_NAME;
     }
@@ -2774,4 +3016,134 @@ public class JsInterface {
             }
         });
     }
+
+    @JavascriptInterface
+    public void getViews(final String id1) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int scrollViewId = parseInt(id1);
+                    final ScrollView scrollView = (ScrollView) activity.findViewById(scrollViewId);
+                    scrollView.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            switch ( motionEvent.getAction( ) ) {
+                                case MotionEvent.ACTION_SCROLL:
+                                case MotionEvent.ACTION_MOVE:
+                                    //Log.e( "SCROLL", "ACTION_SCROLL" );
+                                    break;
+                                case MotionEvent.ACTION_DOWN:
+                                    //Log.e( "SCROLL", "ACTION_DOWN" );
+                                    break;
+                                case MotionEvent.ACTION_CANCEL:
+                                case MotionEvent.ACTION_UP:
+                                    Log.d( "SCROLL", "SCROLL_STOP" );
+                                    checkViewVisibility(scrollView);
+                                    break;
+
+                            }
+                            return false;
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.d(LOG_TAG, "Error in rendering scrollView, err -> ");
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    @JavascriptInterface
+    public void setMapId(final String id, final String sectionName, final String sectionId, final String index) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int parentViewId = parseInt(id);
+                View view = (View) activity.findViewById(parentViewId);
+                String tagArray[] = {sectionName,index,sectionId};
+                if(view!=null) {
+                    view.setTag(tagArray);
+                    mapId.put(id, sectionName);
+                }
+
+            }
+        });
+
+    }
+
+    @JavascriptInterface
+    public void checkViewVisibility(ScrollView scrollView) {
+        for (Map.Entry mapItem : mapId.entrySet()) {
+            int parentViewId = parseInt(mapItem.getKey().toString());
+            final View view =  activity.findViewById(parentViewId);
+            if (view == null) continue;
+            int percentage = isViewVisible(view, scrollView);
+            if (percentage != -1) {
+                if (view != null && view.getTag() != null) {
+                    String tagArray[] = (String[]) view.getTag();
+                    sectionMap.put(tagArray[0], tagArray);
+                    //mSectionMapList.add(sectionMap);
+                    Log.d("sectionName",tagArray[0]);
+
+                }
+            }
+        }
+    }
+    @JavascriptInterface
+    public void clearMapId() {
+        mapId.clear();
+    }
+
+    @JavascriptInterface
+    public void logVisitEvent(String type) {
+        String pageId = "";
+
+        switch (type) {
+            case "HOME":
+                pageId = TelemetryPageId.HOME;
+                break;
+            case "COURSES":
+                pageId = TelemetryPageId.COURSES;
+                break;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
+                break;
+            case "GROUPS":
+                pageId = TelemetryPageId.GROUPS;
+                break;
+            case "PROFILE":
+                pageId = TelemetryPageId.PROFILE;
+                break;
+        }
+
+        TelemetryBuilder.buildSectionVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, sectionMap);
+        sectionMap.clear();
+    }
+
+    @JavascriptInterface
+    public void logListViewEvent(String type) {
+        String pageId = "";
+
+        switch (type) {
+            case "HOME":
+                pageId = TelemetryPageId.HOME;
+                break;
+            case "COURSES":
+                pageId = TelemetryPageId.COURSES;
+                break;
+            case "LIBRARY":
+                pageId = TelemetryPageId.LIBRARY;
+                break;
+            case "GROUPS":
+                pageId = TelemetryPageId.GROUPS;
+                break;
+            case "PROFILE":
+                pageId = TelemetryPageId.PROFILE;
+                break;
+        }
+
+        TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, contentMap);
+        contentMap.clear();
+    }
+
 }

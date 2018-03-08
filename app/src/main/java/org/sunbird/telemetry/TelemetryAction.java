@@ -34,5 +34,20 @@ public interface TelemetryAction {
     String NOTIFICATION_DISPLAYED = "Notification-Displayed";
     String NOTIFICATION_CLICKED = "Notification-Clicked";
 
+    String SETTINGS_CLICKED = "Settings-Clicked";
+    String LANGUAGE_CLICKED = "language-clicked";
+    String DATA_SYNC_CLICKED = "data-sync-clicked";
+    String DEVICE_TAGS_CLICKED = "device-tags-clicked";
+    String SUPPORT_CLICKED = "support-clicked";
+    String SHARE_APP_CLICKED = "share-app-clicked";
+    String ABOUT_APP_CLICKED = "about_app_clicked";
+    String LANGUAGE_SETTINGS_SUCCESS = "language-settings-success";
+    String MANUALSYNC_INITIATED = "manualsync-initiated";
+    String MANUALSYNC_SUCCESS = "manualsync-success";
+    String SHARE_APP_INITIATED = "share-app-initiated";
+    String SHARE_APP_SUCCESS = "share-app-success";
+    String BROWSE_AS_GUEST_CLICKED = "browse-as-guest-clicked";
+    String SIGNIN_OVERLAY_CLICKED = "signin-overlay-clicked";
+
     String ANNOUNCEMENT_CLICKED = "Announcement-Clicked";
 }

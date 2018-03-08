@@ -25,6 +25,13 @@ public interface TelemetryPageId {
     String SHARE_CONTENT = "share-content";
     String SHARE_ANNOUCEMENT = "share-announcement";
 
+    String SETTINGS = "Settings";
+    String SETTINGS_LANGUAGE = "settings-language";
+    String SETTINGS_DATASYNC = "settings-datasync";
+    String SETTINGS_DEVICE_TAGS = "settings-device-tags";
+    String ABOUT_APP = "about-app";
+    String SIGNIN_OVERLAY = "signin-overlay";
+
     String SERVER_NOTIFICATION = "server-notifiaction";
 
     String ANNOUNCEMENT_LIST = "announcement-list";

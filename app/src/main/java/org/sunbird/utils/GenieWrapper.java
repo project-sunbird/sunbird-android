@@ -37,7 +37,11 @@ import org.ekstep.genieservices.commons.bean.MasterData;
 import org.ekstep.genieservices.commons.bean.MasterDataValues;
 import org.ekstep.genieservices.commons.bean.Profile;
 import org.ekstep.genieservices.commons.bean.SyncStat;
+import org.ekstep.genieservices.commons.bean.TelemetryExportRequest;
+import org.ekstep.genieservices.commons.bean.TelemetryExportResponse;
+import org.ekstep.genieservices.commons.bean.TelemetryStat;
 import org.ekstep.genieservices.commons.bean.enums.ContentImportStatus;
+import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.bean.enums.MasterDataType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
@@ -55,6 +59,7 @@ import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
 import org.sunbird.models.enums.ContentType;
+import org.sunbird.telemetry.TelemetryAction;
 import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
@@ -68,6 +73,7 @@ import org.sunbird.ui.MainActivity;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -342,7 +348,7 @@ public class GenieWrapper extends Activity {
 
                     String javascript = String.format("window.callJSCallback('%s','%s','%s');", callback, enc, filterCriteria);
                     dynamicUI.addJsToWebView(javascript);
-
+                    String env = ContextEnvironment.HOME;
                     String pageId = TelemetryPageId.HOME;
                     switch (type) {
                         case "Course":
@@ -359,6 +365,7 @@ public class GenieWrapper extends Activity {
                             if (finalIsProfileContent) {
                                 Util.setCorrelationContext(CorrelationContext.CONTENT_PROFILE_SEARCH);
                                 pageId = TelemetryPageId.PROFILE;
+                                env = ContextEnvironment.USER;
                             } else {
                                 Util.setCorrelationContext(CorrelationContext.ALL_CONTENT_SEARCH);
                                 pageId = TelemetryPageId.HOME;
@@ -373,7 +380,7 @@ public class GenieWrapper extends Activity {
                     Util.setCorrelationId(contentSearchResult.getResponseMessageId());
                     Util.setCorrelationType(contentSearchResult.getId());
 
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.SEARCH, null, pageId, ContextEnvironment.USER, Util.getCorrelationList()));
+                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.SEARCH, null, pageId, env, Util.getCorrelationList()));
 
                     Map<String, Object> params = new HashMap<>();
                     if (!StringUtil.isNullOrEmpty(query)) {
@@ -637,6 +644,64 @@ public class GenieWrapper extends Activity {
         });
     }
 
+    public void manualSyncTelemetry(final String callback) {
+        Log.d("telemetry auto","synced");
+        mGenieAsyncService.getSyncService().sync(new IResponseHandler<SyncStat>() {
+            @Override
+            public void onSuccess(GenieResponse<SyncStat> genieResponse) {
+                SyncStat syncStat = genieResponse.getResult();
+                long d = syncStat.getSyncTime();
+                String d2 = new Date(d).toString();
+                PreferenceManager.getDefaultSharedPreferences(activity)
+                        .edit()
+                        .putString("sync_time",d2)
+                        .apply();
+
+                PreferenceManager.getDefaultSharedPreferences(activity)
+                        .edit()
+                        .putString("sync_time_error","Success")
+                        .apply();
+
+                TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryPageId.SETTINGS_DATASYNC, TelemetryAction.MANUALSYNC_SUCCESS, ContextEnvironment.HOME));
+                Log.d("TelemetrySyncTime",String.valueOf(syncStat.getSyncTime()));
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "done");
+                dynamicUI.addJsToWebView(javascript);
+            }
+
+            @Override
+            public void onError(GenieResponse<SyncStat> genieResponse) {
+                genieResponse.getError();
+                PreferenceManager.getDefaultSharedPreferences(activity)
+                        .edit()
+                        .putString("sync_time_error",genieResponse.getError())
+                        .apply();
+                Log.d("TelemetrySyncTime",genieResponse.getError());
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "done");
+                dynamicUI.addJsToWebView(javascript);
+            }
+        });
+    }
+
+    public void getLastSyncTime () {
+        mGenieAsyncService.getTelemetryService().getTelemetryStat(new IResponseHandler<TelemetryStat>() {
+
+            @Override
+            public void onSuccess(GenieResponse<TelemetryStat> genieResponse) {
+                genieResponse.getResult().getLastSyncTime();
+                PreferenceManager.getDefaultSharedPreferences(activity)
+                        .edit()
+                        .putString("sync_time",String.valueOf(genieResponse.getResult().getLastSyncTime()))
+                        .apply();
+
+            }
+
+            @Override
+            public void onError(GenieResponse<TelemetryStat> genieResponse) {
+
+            }
+        });
+    }
+
     public void importEcarFile(String ecarFilePath, final String[] callbacks) {
         File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH);
         directory.mkdirs();
@@ -760,6 +825,27 @@ public class GenieWrapper extends Activity {
         });
     }
 
+    public void exportTelemetry(final String callback) {
+        File directory = new File(Environment.getExternalStorageDirectory() + File.separator + "/Ecars");
+        TelemetryExportRequest.Builder builder = new TelemetryExportRequest.Builder();
+        builder.toFolder(String.valueOf(directory));
+        mGenieAsyncService.getTelemetryService().exportTelemetry(builder.build(), new IResponseHandler<TelemetryExportResponse>() {
+            @Override
+            public void onSuccess(GenieResponse<TelemetryExportResponse> genieResponse) {
+                TelemetryExportResponse telemetryExportResponse = genieResponse.getResult();
+                String gzaPath = telemetryExportResponse.getExportedFilePath();
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, gzaPath);
+                dynamicUI.addJsToWebView(javascript);
+            }
+
+            @Override
+            public void onError(GenieResponse<TelemetryExportResponse> genieResponse) {
+                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "failure");
+                dynamicUI.addJsToWebView(javascript);
+            }
+        });
+    }
+
     private Profile currentProfile;
 
     public Profile getCurrentUserProfile() {
@@ -854,6 +940,7 @@ public class GenieWrapper extends Activity {
         }
         JSONObject profileData = new JSONObject();
         try {
+            profileData.put("uid", currentProfile.getUid());
             profileData.put("handle", currentProfile.getHandle());
             profileData.put("medium", currentProfile.getMedium());
             profileData.put("grade", currentProfile.getStandard());

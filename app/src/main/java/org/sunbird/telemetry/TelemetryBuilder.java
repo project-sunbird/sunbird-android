@@ -13,7 +13,9 @@ import org.ekstep.genieservices.commons.bean.telemetry.Impression;
 import org.ekstep.genieservices.commons.bean.telemetry.Interact;
 import org.ekstep.genieservices.commons.bean.telemetry.Interrupt;
 import org.ekstep.genieservices.commons.bean.telemetry.Log;
+import org.ekstep.genieservices.commons.bean.telemetry.Rollup;
 import org.ekstep.genieservices.commons.bean.telemetry.Start;
+import org.ekstep.genieservices.commons.bean.telemetry.Visit;
 import org.ekstep.genieservices.utils.DeviceSpec;
 import org.sunbird.telemetry.enums.Workflow;
 import org.sunbird.utils.Util;
@@ -22,6 +24,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.Integer.parseInt;
+
+//import android.util.Log;
 
 /**
  * Created by anil on 5/17/2016.
@@ -62,6 +68,8 @@ public class TelemetryBuilder {
                 .type(type);
         return interrupt.build();
     }
+
+
 
     public static Start buildStartEvent(Context context, String type, String mode, String pageId, String env, String objId, String objType, String objVersion) {
         // TODO: 1/10/2018  - Handle all the parameter
@@ -110,7 +118,7 @@ public class TelemetryBuilder {
         return start.build();
     }
 
-    public static End buildEndEvent(long duration, String type, String mode, String pageId, String env,String objId, String objType, String objVersion) {
+    public static End buildEndEvent(long duration, String type, String mode, String pageId, String env, String objId, String objType, String objVersion) {
         // TODO: 1/10/2018  - Handle all the parameter
         End.Builder end = new End.Builder()
                 .type(type)
@@ -124,7 +132,8 @@ public class TelemetryBuilder {
 
     //////////////  IMPRESSION EVENT    ////////////////////////
     public static Impression buildImpressionEvent(String type, String pageId, String env) {
-        Impression impression = new Impression.Builder().pageId(pageId).type(type).environment(env).build();
+        Impression impression = new Impression.Builder().pageId(pageId).type(type).environment(env) //.addVisit(Visit)
+                .build();  // .hierarchyLevel(rollup)
         android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
     }
@@ -133,6 +142,60 @@ public class TelemetryBuilder {
         Impression impression = new Impression.Builder().pageId(pageId).type(type).subType(subType).environment(env).build();
         android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
         return impression;
+    }
+
+    public static Impression buildImpressionEvent(String type, String subtype, String pageId, String env, String l1, String l2, String l3, String l4){
+        Rollup rollup = new Rollup(l1,l2,l3,l4);
+        Impression impression = new Impression.Builder().pageId(pageId).type(type).environment(env)  //.addVisit()
+                .hierarchyLevel(rollup).build();
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.toString());
+        return impression;
+    }
+
+    public static Impression buildSectionVisitImpressionEvent(String type, String pageId, String uri, String env, Map<String,String[]> sectionMap) {
+        Map<String, Object> map = new HashMap<>();
+        Impression.Builder impression = new Impression.Builder()
+                .pageId(pageId)
+                .type(type)
+                .uri(uri)
+                .environment(env);
+
+        if(sectionMap != null) {
+            for (Map.Entry mapItem : sectionMap.entrySet()) {
+                String[] tagArray = (String[]) mapItem.getValue();
+                Visit visit = new Visit(tagArray[2], "SECTION");
+                visit.setSection(tagArray[0]);
+                visit.setIndex(parseInt(tagArray[1]));
+                impression.addVisit(visit);
+            }
+        }
+
+
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.build().toString());
+        return impression.build();
+    }
+
+    public static Impression buildContentVisitImpressionEvent(String type, String pageId, String uri, String env, Map<String,String[]> contentMap) {
+        Map<String, Object> map = new HashMap<>();
+        Impression.Builder impression = new Impression.Builder()
+                .pageId(pageId)
+                .type(type)
+                .uri(uri)
+                .environment(env);
+
+        if(contentMap != null) {
+            for (Map.Entry mapItem : contentMap.entrySet()) {
+                String [] value = (String[]) mapItem.getValue();
+                Visit visit = new Visit(value[0], "CONTENT");
+                visit.setSection(value[1]);
+                visit.setIndex(parseInt((String) mapItem.getKey()));
+                impression.addVisit(visit);
+            }
+        }
+
+
+        android.util.Log.d(TAG, "buildImpressionEvent: " + impression.build().toString());
+        return impression.build();
     }
 
     public static Impression buildImpressionEvent(String type, String subType, String pageId, String env, List<CorrelationData> cdata) {
