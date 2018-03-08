@@ -12,7 +12,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -113,6 +112,7 @@ import org.sunbird.ui.HorizontalScroller;
 import org.sunbird.ui.ListViewAdapter;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.ui.MyRecyclerViewAdapter;
+import org.sunbird.ui.SwipeToRefresh;
 import org.sunbird.ui.TabLayout;
 import org.sunbird.ui.ViewPagerAdapter;
 import org.sunbird.utils.Constants;
@@ -1809,7 +1809,7 @@ public class JsInterface {
                 try {
 
                     ScrollView s = (ScrollView) activity.findViewById(parseInt(id));
-                    final SwipeRefreshLayout sWRlayout = new SwipeRefreshLayout(activity);
+                    final SwipeToRefresh sWRlayout = new SwipeToRefresh(activity);
                     if (s.getParent() != null) {
                         ViewGroup tmp;
                         tmp = ((ViewGroup) s.getParent());
@@ -2651,8 +2651,8 @@ public class JsInterface {
 
     @JavascriptInterface
     public void makeEntryInSunbirdSupportFile() throws IOException {
-        File genieSupportDirectory = FileHandler.getRequiredDirectory(Environment.getExternalStorageDirectory(), Constants.EXTERNAL_PATH);
-        String filePath = genieSupportDirectory + "/" + SUNBIRD_SUPPORT_FILE;
+        File sunbirdSupportDirectory = FileHandler.getRequiredDirectory(Environment.getExternalStorageDirectory(), Constants.EXTERNAL_PATH);
+        String filePath = sunbirdSupportDirectory + "/" + SUNBIRD_SUPPORT_FILE;
 //        String packageName = GlobalApplication.getInstance().getClientPackageName();
         String versionName = BuildConfig.VERSION_NAME;
 
@@ -2720,6 +2720,13 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public int getScreenHeight() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return (int) (metrics.heightPixels / metrics.density);
+    }
+
+    @JavascriptInterface
     public void scrollTo (String scrollViewId, String scrollX) {
         int id = parseInt(scrollViewId);
         final int x = parseInt(scrollX);
@@ -2730,8 +2737,10 @@ public class JsInterface {
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {
+                    scrollView.smoothScrollBy(10, 0);
+//                    scrollView.smoothScrollTo((int) (x * metrics.density),0);
                     ObjectAnimator animator = ObjectAnimator.ofInt(scrollView, "scrollX", (int) (x * metrics.density));
-                    animator.setDuration(500);
+                    animator.setDuration(100);
                     animator.start();
                 }
             });
@@ -2741,11 +2750,7 @@ public class JsInterface {
     private int[] cardIds;
 
     @JavascriptInterface
-    public void addScrollListener(final String scrollViewID, final String[] cids, final String onStopCb) {
-        cardIds = new int[cids.length];
-        for (int i = 0; i < cids.length; i++) {
-            cardIds[i] = parseInt(cids[i]);
-        }
+    public void addScrollListener(final String scrollViewID, final String onStopCb) {
 
         activity.runOnUiThread(new Runnable() {
             @Override
@@ -2753,11 +2758,13 @@ public class JsInterface {
                 try {
                     int scrollViewId = parseInt(scrollViewID);
                     final HorizontalScrollView scrollView = (HorizontalScrollView) activity.findViewById(scrollViewId);
+                    scrollView.smoothScrollBy(0,0);
                     HorizontalScroller scroller = new HorizontalScroller(scrollView);
                     scroller.setOnScrollStoppedListener(new HorizontalScroller.OnScrollStopListener() {
                         @Override
-                        public void onScrollStopped(int x) {
-                            checkViewVisibility(scrollView, onStopCb);
+                        public void onScrollStopped(int deltaX) {
+                            String javascript = String.format("window.callJSCallback('%s', '%s');", onStopCb, deltaX);
+                            dynamicUI.addJsToWebView(javascript);
                         }
                     });
                 } catch (Exception e) {
@@ -2766,40 +2773,5 @@ public class JsInterface {
                 }
             }
         });
-    }
-
-    public void checkViewVisibility(HorizontalScrollView scrollView, String onStopCb) {
-        int maxVId = cardIds[0]; int per = 0;
-        for (int i = 0; i < cardIds.length; i++) {
-            final View view =  activity.findViewById(cardIds[i]);
-            if (view == null) continue;
-            int percentage = isViewVisible(view, scrollView);
-            if (percentage != -1 && percentage > per) {
-                per = percentage;
-                maxVId = cardIds[i];
-            }
-        }
-        String javascript = String.format("window.callJSCallback('%s', '%s');", onStopCb, maxVId);
-        dynamicUI.addJsToWebView(javascript);
-    }
-
-    public int isViewVisible(View view,HorizontalScrollView scrollView){
-        Rect scrollBounds = new Rect();
-        scrollView.getHitRect(scrollBounds);
-        if (view.getLocalVisibleRect(scrollBounds)) {
-            Rect rect = new Rect();
-            view.getGlobalVisibleRect(rect);
-            double visible = rect.width() * rect.height();
-            double total = view.getWidth() * view.getHeight();
-            int percentage = (int) (100 * visible / total);
-            //LogUtil.i(TAG, view.getTag().toString() + " " + percentage + " % Visible");
-            if (percentage >= 50) {
-                return percentage;
-            } else {
-                return -1;
-            }
-        } else {
-            return -1;
-        }
     }
 }
