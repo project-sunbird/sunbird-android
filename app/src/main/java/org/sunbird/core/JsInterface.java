@@ -2113,38 +2113,39 @@ public class JsInterface {
                     final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
                     ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
 
-                    final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
-                    final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
-
                     Log.e(TAG, "listViewAdapter: isNull " + listViewAdapter);
                     ListViewAdapter listViewAdapter = new ListViewAdapter(context, itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList, dynamicUI);
                     listView.setAdapter(listViewAdapter);
                     listView.setDividerHeight(heightOfDivider);
 
-                    listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-                        @Override
-                        public void onScrollStateChanged(AbsListView absListView, int i) {
-                            Log.d("ListView","ScrollStop");
-                            int first = listView.getFirstVisiblePosition();
-                            int last = listView.getLastVisiblePosition();
-                            while(first<=last){
-                                String value[] = new String[2];
-                                if(first < idArrayList.size() && first < nameArrayList.size()) {
-                                    value[0] = idArrayList.get(first);
-                                    value[1] = nameArrayList.get(first);
-                                    if (!contentMap.containsKey(first))
-                                        contentMap.put(String.valueOf(first), value);
+                    if(jsonArray.getJSONObject(0).has("name")) {
+                        final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
+                        final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
+                        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                            @Override
+                            public void onScrollStateChanged(AbsListView absListView, int i) {
+                                Log.d("ListView", "ScrollStop");
+                                int first = listView.getFirstVisiblePosition();
+                                int last = listView.getLastVisiblePosition();
+                                while (first <= last) {
+                                    String value[] = new String[2];
+                                    if (first < idArrayList.size() && first < nameArrayList.size()) {
+                                        value[0] = idArrayList.get(first);
+                                        value[1] = nameArrayList.get(first);
+                                        if (!contentMap.containsKey(first))
+                                            contentMap.put(String.valueOf(first), value);
+                                    }
+                                    first++;
                                 }
-                                first++;
                             }
-                        }
 
-                        @Override
-                        public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                            @Override
+                            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
 
 
-                        }
-                    });
+                            }
+                        });
+                    }
 
                     if (btnText != null && !btnText.equals("")) {
                         LinearLayout linearLayout = new LinearLayout(activity);
@@ -2179,13 +2180,10 @@ public class JsInterface {
     public void appendToListView(final String id, String text, final int itemCount) throws Exception {
         int listViewId = parseInt(id);
         final ListView listView = (ListView) activity.findViewById(listViewId);
-        JSONArray jsonArray = new JSONArray(text);
+        final JSONArray jsonArray = new JSONArray(text);
         final ArrayList<String> viewJSXArrayList = jsonToArrayList(jsonArray, "view", "String");
         final ArrayList<String> valueArrayList = jsonToArrayList(jsonArray, "value", "String");
         final ArrayList<Integer> viewTypeArrayList = jsonToArrayList(jsonArray, "viewType", "Int");
-
-        final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
-        final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
 
         activity.runOnUiThread(new Runnable() {
             @Override
@@ -2201,31 +2199,35 @@ public class JsInterface {
                     adapter.addItemsToList(itemCount, valueArrayList, viewJSXArrayList, viewTypeArrayList);
                     adapter.notifyDataSetChanged();
 
-                    listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-                        @Override
-                        public void onScrollStateChanged(AbsListView absListView, int i) {
-                            Log.d("ListView","ScrollStop");
-                            int first = listView.getFirstVisiblePosition();
-                            int last = listView.getLastVisiblePosition();
-                            while(first<=last){
-                                String value[] = new String[2];
-                                if(first < idArrayList.size() && first < nameArrayList.size()) {
-                                    value[0] = idArrayList.get(first);
-                                    value[1] = nameArrayList.get(first);
-                                    if (!contentMap.containsKey(first))
-                                        contentMap.put(String.valueOf(first), value);
+                    if(jsonArray.getJSONObject(0).has("name")) {
+                        final ArrayList<String> nameArrayList = jsonToArrayList(jsonArray, "name", "String");
+                        final ArrayList<String> idArrayList = jsonToArrayList(jsonArray, "id", "String");
+                        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                            @Override
+                            public void onScrollStateChanged(AbsListView absListView, int i) {
+                                Log.d("ListView", "ScrollStop");
+                                int first = listView.getFirstVisiblePosition();
+                                int last = listView.getLastVisiblePosition();
+                                while (first <= last) {
+                                    String value[] = new String[2];
+                                    if (first < idArrayList.size() && first < nameArrayList.size()) {
+                                        value[0] = idArrayList.get(first);
+                                        value[1] = nameArrayList.get(first);
+                                        if (!contentMap.containsKey(first))
+                                            contentMap.put(String.valueOf(first), value);
+                                    }
+                                    first++;
                                 }
-                                first++;
+
                             }
 
-                        }
+                            @Override
+                            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
 
-                        @Override
-                        public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                            }
+                        });
 
-                        }
-                    });
-
+                    }
                 } catch (Exception e) {
                     Log.d(LOG_TAG, "Error in adding item to listview");
                 }
