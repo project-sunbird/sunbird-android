@@ -74,12 +74,15 @@ public class HorizontalScroller implements View.OnTouchListener{
     class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener{
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                scrollView.smoothScrollBy(0,0);
-                if (listener != null) {
-                    listener.onScrollStopped(Math.round(e1.getX() - e2.getX()));
+            if (e1 != null && e2 != null) {
+                if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    scrollView.smoothScrollBy(0,0);
+                    if (listener != null) {
+                        listener.onScrollStopped(Math.round(e1.getX() - e2.getX()));
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             }
             return false;
             //super.onFling(e1, e2, velocityX, velocityY);
