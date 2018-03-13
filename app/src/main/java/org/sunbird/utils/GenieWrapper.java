@@ -10,9 +10,11 @@ import com.google.gson.Gson;
 
 import org.ekstep.genieservices.GenieService;
 import org.ekstep.genieservices.async.GenieAsyncService;
+import org.ekstep.genieservices.async.UserService;
 import org.ekstep.genieservices.commons.IResponseHandler;
 import org.ekstep.genieservices.commons.bean.ChildContentRequest;
 import org.ekstep.genieservices.commons.bean.Content;
+import org.ekstep.genieservices.commons.bean.ContentAccess;
 import org.ekstep.genieservices.commons.bean.ContentData;
 import org.ekstep.genieservices.commons.bean.ContentDelete;
 import org.ekstep.genieservices.commons.bean.ContentDeleteRequest;
@@ -127,7 +129,7 @@ public class GenieWrapper extends Activity {
     public void getContentDetails(final String callback, String content_id, boolean returnFeedback) {
         ContentDetailsRequest contentDetailsRequest;
         if (returnFeedback){
-            contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).withFeedback().build();
+            contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).withFeedback().withContentAccess().build();
         } else {
             contentDetailsRequest = new ContentDetailsRequest.Builder().forContent(content_id).build();
         }
@@ -148,6 +150,26 @@ public class GenieWrapper extends Activity {
                 dynamicUI.addJsToWebView(javascript);
             }
         });
+    }
+
+    public static void addContentAccess(String contentId) {
+        UserService userService = GenieService.getAsyncService().getUserService();
+        if (contentId != null && contentId != "") {
+            ContentAccess contentAccess = new ContentAccess();
+            contentAccess.setStatus(1);
+            contentAccess.setContentId(contentId);
+            userService.addContentAccess(contentAccess, new IResponseHandler<Void>() {
+                @Override
+                public void onSuccess(GenieResponse<Void> genieResponse) {
+                    Log.d(TAG, "Added content access" + genieResponse.getStatus());
+                }
+
+                @Override
+                public void onError(GenieResponse<Void> genieResponse) {
+
+                }
+            });
+        }
     }
 
     public void getImportStatus(final String id, final String callback) {

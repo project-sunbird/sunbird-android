@@ -653,6 +653,11 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void addContentAccess(String contentId) {
+        genieWrapper.addContentAccess(contentId);
+    }
+
+    @JavascriptInterface
     public void getAllLocalContent(String callback) {
         genieWrapper.getAllLocalContent(callback);
     }
