@@ -24,6 +24,7 @@ public interface TelemetryPageId {
     String FLAG_CONTENT = "flag-content";
     String SHARE_CONTENT = "share-content";
     String SHARE_ANNOUCEMENT = "share-announcement";
+    String QRCodeScanner = "QRCode-Scanner";
 
     String SETTINGS = "Settings";
     String SETTINGS_LANGUAGE = "settings-language";

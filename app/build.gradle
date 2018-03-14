@@ -194,6 +194,7 @@ dependencies {
     compile "org.ekstep.genieservices:genie-providers:$GENIE_SDK_VERSION"
     compile "org.ekstep.genieservices:genie-integration:$GENIE_SDK_VERSION"
     compile "org.xwalk:xwalk_shared_library:$X_WALK_VERSION"
+    compile(name: 'qrscannerlib-release', ext: 'aar')
     compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }

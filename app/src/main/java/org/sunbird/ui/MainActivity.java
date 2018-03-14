@@ -7,6 +7,8 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
 import org.sunbird.core.JsInterface;
+import org.sunbird.core.QRScannerInterface;
 import org.sunbird.models.Notification;
 import org.sunbird.notification.enums.NotificationActionId;
 import org.sunbird.telemetry.TelemetryAction;
@@ -52,6 +55,7 @@ import org.sunbird.utils.PreferenceKey;
 import org.sunbird.utils.WebSocket;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     public final static int IMAGE_CHOOSER_ID = 865;
     private static final String TAG = "MainActivity";
     private static final int SEND_SMS_REQUEST = 8;
+    private static final int RESULT_LOAD_IMG = 345;
     private static CustomTabsClient mClient;
     private static CustomTabsServiceConnection mConnection;
     public int PERMISSION_CODE = 111;
@@ -75,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     private DynamicUI dynamicUI;
     private JsInterface jsInterface;
     private String chromePackageName;
+    private QRScannerInterface qrScannerInterface;
 
     public static String getContentName(ContentResolver resolver, Uri uri) {
         Cursor cursor = resolver.query(uri, null, null, null, null);
@@ -156,6 +162,9 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         DynamicUI.setLogger(new NewLogger());
         dynamicUI.loadURL(getResources().getString(R.string.index_base_url));
         dynamicUI.addJavascriptInterface(jsInterface, "JBridge");
+
+        qrScannerInterface = new QRScannerInterface(this, dynamicUI);
+        dynamicUI.addJavascriptInterface(qrScannerInterface, "QRScanner");
 
 //        RestClient.init(this.getApplicationContext());
 
@@ -359,7 +368,33 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            if (requestCode == IMAGE_CHOOSER_ID) {
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                    && null != intent) {
+                qrScannerInterface.openQRScanner();
+                String fileName = "";
+                Uri uri = intent.getData();
+                if (uri != null) {
+                    if (uri.toString().startsWith("file:")) {
+                        fileName = uri.getPath();
+                    } else {
+                        Cursor c = getContentResolver().query(uri, null, null, null, null);
+                        if (c != null && c.moveToFirst()) {
+
+                            int id = c.getColumnIndex(MediaStore.Images.Media.DATA);
+                            if (id != -1) {
+                                fileName = c.getString(id);
+                            }
+                        }
+                    }
+                }
+                try {
+                    File f = new File(fileName);
+                    Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+                    String string = qrScannerInterface.scanQRImage(b);
+                } catch (FileNotFoundException e) {
+                    Log.e("MainActivity", "File not found exception", e);
+                }
+            } else if (requestCode == IMAGE_CHOOSER_ID) {
                 String picturePath = getPath(ImagePicker.getImageUriFromResult(this, resultCode, intent));
                 Log.e(TAG, "onActivityResult: " + picturePath);
                 String javascript = String.format("window.onGetImageFromGallery('%s')", picturePath);
@@ -370,6 +405,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
         super.onActivityResult(requestCode, resultCode, intent);
         Log.d(TAG, "Activity Result is " + requestCode);
+    }
+
+    public QRScannerInterface getQrInterFace() {
+        return qrScannerInterface;
     }
 
     private String getPath(Uri uri) {

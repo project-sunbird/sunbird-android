@@ -678,9 +678,9 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void searchContent(String callback, String filterParams, String query, String type, int count, boolean viewMoreClicked) {
-        Log.e("ser!", query);
-        genieWrapper.searchContent(callback, filterParams, query, type, count, viewMoreClicked);
+    public void searchContent(String callback, String filterParams, String query, String type, int count, String[] keywords, boolean viewMoreClicked) {
+//        Log.e("ser!", query);
+        genieWrapper.searchContent(callback, filterParams, query, type, count, keywords, viewMoreClicked);
     }
 
     @JavascriptInterface
@@ -1029,6 +1029,46 @@ public class JsInterface {
         eksMap.put(TelemetryConstant.SECTION_NAME, sectionName);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.VIEWALL_CLICKED, pageId, ContextEnvironment.HOME, eksMap, Util.getCorrelationList()));
     }
+
+    @JavascriptInterface
+    public void logQRIconClicked() {
+        Log.e(TAG, "logQRIconClicked: ");
+        String stageId = TelemetryPageId.HOME;
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.QRCodeScanClicked, stageId, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logQRScanInitiated() {
+        Log.e(TAG, "logQRScanInitiated: ");
+        String stageId = TelemetryPageId.QRCodeScanner;
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryAction.QRCodeScanInitiate, stageId, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logQRScanSuccess(String scannedData, String action) {
+        Log.e(TAG, "logQRScanSuccess: ");
+        String stageId = TelemetryPageId.QRCodeScanner;
+        Map<String, Object> valueMap = new HashMap<>();
+        valueMap.put(TelemetryConstant.NETWORK_AVAILABLE, isNetworkAvailable());
+        valueMap.put(TelemetryConstant.SCANNED_DATA, scannedData);
+
+        if (action.equals(TelemetryConstant.CONTENT_DETAIL))
+            valueMap.put(TelemetryConstant.ACTION, TelemetryConstant.CONTENT_DETAIL);
+        else if (action.equals(TelemetryConstant.SEARCH_RESULT))
+            valueMap.put(TelemetryConstant.ACTION, TelemetryConstant.SEARCH_RESULT);
+        else if (action.equals(TelemetryConstant.UNKNOWN))
+            valueMap.put(TelemetryConstant.ACTION, TelemetryConstant.UNKNOWN);
+
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.QRCodeScanSuccess, stageId, ContextEnvironment.HOME, valueMap));
+    }
+
+    @JavascriptInterface
+    public void logQRScanCancelled() {
+        Log.e(TAG, "logQRScanCancelled: ");
+        String stageId = TelemetryPageId.QRCodeScanner;
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.QRCodeScanCancelled, stageId, ContextEnvironment.HOME));
+    }
+
 
     @JavascriptInterface
     public void logTabClickEvent(String type) {
@@ -1731,11 +1771,11 @@ public class JsInterface {
         return path[0];
     }
 
-    @JavascriptInterface
-    public void loadImageForQr() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        this.activity.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-    }
+//    @JavascriptInterface
+//    public void loadImageForQr() {
+//        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        this.activity.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+//    }
 
     @JavascriptInterface
     public String getFromSharedPrefs(String key) {
@@ -1818,7 +1858,7 @@ public class JsInterface {
         return keyValueStore.getString(payload, defaultValue);
     }
 
-    @android.webkit.JavascriptInterface
+    @JavascriptInterface
     public void checkPermission(String callback) {
         try {
             JSONObject status = new JSONObject();

@@ -294,7 +294,7 @@ public class GenieWrapper extends Activity {
     }
 
 
-    public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count, boolean viewMoreClicked) {
+    public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count, final String[] keywords, boolean viewMoreClicked) {
         try {
             ContentSearchCriteria.SearchBuilder builder = new ContentSearchCriteria.SearchBuilder();
             String[] contentTypes;
@@ -338,6 +338,10 @@ public class GenieWrapper extends Activity {
                 builder.channel(new String[]{channelId});
             }
 
+            if(keywords != null) {
+                builder.keywords(keywords);
+            }
+
             boolean isProfileContent = false;
             String fp;
             ContentSearchCriteria filters;
@@ -352,7 +356,10 @@ public class GenieWrapper extends Activity {
                     filters = GsonUtil.fromJson(fp, ContentSearchCriteria.class);
                 }
             } else {
-                builder.contentTypes(contentTypes).query(query).limit(count);
+                builder.contentTypes(contentTypes).limit(count);
+                if(query != null) {
+                    builder.query(query);
+                }
                 builder.facets(new String[]{"language", "grade", "domain", "contentType", "subject", "medium"});
                 filters = builder.build();
             }
@@ -967,7 +974,6 @@ public class GenieWrapper extends Activity {
             profileData.put("medium", currentProfile.getMedium());
             profileData.put("grade", currentProfile.getStandard());
             profileData.put("board", currentProfile.getBoard());
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

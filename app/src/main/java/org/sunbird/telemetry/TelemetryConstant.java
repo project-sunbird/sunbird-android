@@ -16,7 +16,12 @@ public interface TelemetryConstant {
     String COMMENT = "Comment";
     String SECTION_NAME = "SectionName";
     String POSITION_CLICKED = "PositionClicked";
-
+    String NETWORK_AVAILABLE = "NetworkAvailable";
+    String SCANNED_DATA = "ScannedData";
+    String ACTION = "Action";
+    String CONTENT_DETAIL = "ContentDetail";
+    String SEARCH_RESULT = "SearchResult";
+    String UNKNOWN = "Unknown";
     String NOTIFICATION_DATA = "NotificationData";
 
     String POSISTION = "Position";
