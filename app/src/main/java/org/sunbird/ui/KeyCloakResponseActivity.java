@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
@@ -19,9 +18,9 @@ import org.sunbird.telemetry.TelemetryConstant;
 import org.sunbird.telemetry.TelemetryHandler;
 import org.sunbird.telemetry.TelemetryPageId;
 import org.sunbird.telemetry.enums.ContextEnvironment;
+import org.sunbird.utils.Util;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,26 +75,24 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                     JSONObject jResponse = new JSONObject(jwtToken);
                     String refreshToken = jResponse.get("refresh_token").toString();
                     jwtToken = jResponse.get("access_token").toString();
+                    String userToken = Util.parseUserTokenFromAccessToken(jwtToken);
 
-                    String value = jwtToken.substring(jwtToken.indexOf("."), jwtToken.lastIndexOf("."));
-
-                    JSONObject jo = new JSONObject(decodeBase64(value));
-                    if (jo.get("sub").toString().length() > 0) {
+                    if (userToken != null && userToken.length() > 0) {
 
                         PreferenceManager.getDefaultSharedPreferences(getBaseContext())
                                 .edit()
                                 .putString("logged_in", "YES")
-                                .putString("user_token", jo.get("sub").toString())
+                                .putString("user_token", userToken)
                                 .putString("user_access_token", jwtToken)
                                 .putString("refresh_token", refreshToken)
                                 .apply();
                         Map<String, Object> vals = new HashMap<>();
-                        vals.put(TelemetryConstant.UID, jo.get("sub").toString());
+                        vals.put(TelemetryConstant.UID, userToken);
                         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.LOGIN_SUCCESS, TelemetryPageId.LOGIN, ContextEnvironment.HOME, vals));
                     }
 
                     Intent openMain = new Intent(KeyCloakResponseActivity.this, MainActivity.class);
-                    openMain.putExtra("user_id", jo.get("sub").toString());
+                    openMain.putExtra("user_id", userToken);
                     openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     openMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(openMain);
@@ -108,12 +105,6 @@ public class KeyCloakResponseActivity extends AppCompatActivity {
                 }
             }
         }).start();
-    }
-
-    public String decodeBase64(String data) throws UnsupportedEncodingException {
-        byte[] dataText = Base64.decode(data, Base64.DEFAULT);
-        String text = new String(dataText, "UTF-8");
-        return text;
     }
 
     @Override

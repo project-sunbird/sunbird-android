@@ -3,6 +3,7 @@ package org.sunbird.core;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.DatePickerDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -2319,6 +2320,12 @@ public class JsInterface {
                     response = client.newCall(request).execute();
                     String body = response.body().string();
                     Log.e(TAG, "refreshToken body: " + body);
+
+                    JSONObject res = new JSONObject(body);
+                    String access_token = res.get("access_token").toString();
+                    String userToken = Util.parseUserTokenFromAccessToken(access_token);
+                    setInSharedPrefs("user_token", userToken);
+
                     final String javascript;
                     String base64Data = Base64.encodeToString(body.getBytes(), Base64.NO_WRAP);
                     if (response.isSuccessful()) {
@@ -2593,8 +2600,89 @@ public class JsInterface {
     }
 
     @JavascriptInterface
+    public void shareSupportFile(String layoutId) {
+        File supportFile = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH + File.separator + SUNBIRD_SUPPORT_FILE);
+        Uri fileUri = FileProvider.getUriForFile(activity.getApplicationContext(), BuildConfig.APPLICATION_ID + ".fileprovider", supportFile);
+
+        final Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+        List<ResolveInfo> resolveInfoList = activity.getPackageManager().queryIntentActivities(sendIntent, 0);
+
+        final View.OnClickListener onclickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view instanceof ImageView) {
+                    ImageView imageV = (ImageView) view;
+                    String[] data = (String[]) imageV.getTag();
+                    boolean isAppInstalled = appInstalledOrNot(data[0]);
+
+                    if (isAppInstalled) {
+                        sendIntent.setPackage(data[0]);
+                        activity.getBaseContext().startActivity(sendIntent);
+                    } else {
+                        Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
+                        try {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + data[0])));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + data[0])));
+                        }
+                    }
+                } else {
+                    Log.d("APPLINKSHAREINTENTS", "NOT AN INSTANCE OF IMAGE VIEW");
+                }
+            }
+        };
+
+        inflateLayouts(layoutId, resolveInfoList, onclickListener);
+    }
+
+    @JavascriptInterface
+    public void supportEmail(String layoutId) {
+        File supportFile = new File(Environment.getExternalStorageDirectory() + File.separator + Constants.EXTERNAL_PATH + File.separator + SUNBIRD_SUPPORT_FILE);
+        Uri fileUri = FileProvider.getUriForFile(activity.getApplicationContext(), BuildConfig.APPLICATION_ID + ".fileprovider", supportFile);
+
+        //ACTION_SENDTO invokes email clients, but cannot attach file.
+        //Hence, create intent with ACTION_SENDTO to retrieve all email clients and then
+        // use ACTION_SEND intent to send attached file to the chosen email client.
+        final Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + activity.getString(R.string.supportEmail)));
+        List<ResolveInfo> resolveInfoList = activity.getPackageManager().queryIntentActivities(emailIntent, 0);
+
+
+        final Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_EMAIL,new String[] { activity.getString(R.string.supportEmail) });
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Support Email");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+        final View.OnClickListener onclickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view instanceof ImageView) {
+                    ImageView imageV = (ImageView) view;
+                    String[] data = (String[]) imageV.getTag();
+                    boolean isAppInstalled = appInstalledOrNot(data[0]);
+
+                    if (isAppInstalled) {
+                        sendIntent.setComponent(new ComponentName(data[0], data[1]));
+                        activity.getBaseContext().startActivity(sendIntent);
+                    } else {
+                        Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
+                        try {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + data[0])));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + data[0])));
+                        }
+                    }
+                } else {
+                    Log.d("APPLINKSHAREINTENTS", "NOT AN INSTANCE OF IMAGE VIEW");
+                }
+            }
+        };
+
+        inflateLayouts(layoutId, resolveInfoList, onclickListener);
+    }
+
+    @JavascriptInterface
     public void shareApk(String layoutId) {
-        final LinearLayout linearLayout = (LinearLayout) activity.findViewById(parseInt(layoutId));
 
         ApplicationInfo app = context.getApplicationInfo();
         String filePath = app.sourceDir;
@@ -2643,19 +2731,20 @@ public class JsInterface {
                 public void onClick(View view) {
                     if (view instanceof ImageView) {
                         ImageView imageV = (ImageView) view;
-                        boolean isAppInstalled = appInstalledOrNot((String) imageV.getTag());
+                        String[] data = (String[]) imageV.getTag();
+                        boolean isAppInstalled = appInstalledOrNot(data[0]);
 
                         if (isAppInstalled) {
-                            intent.setPackage((String) imageV.getTag());
+                            intent.setPackage(data[0]);
                             intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
                             activity.getBaseContext().startActivity(intent);
 
                         } else {
                             Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
                             try {
-                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + (String) imageV.getTag())));
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + data[0])));
                             } catch (android.content.ActivityNotFoundException anfe) {
-                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + (String) imageV.getTag())));
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + data[0])));
                             }
                         }
 
@@ -2666,75 +2755,81 @@ public class JsInterface {
                 }
             };
 
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    List<ResolveInfo> resolveInfoList = activity.getPackageManager()
-                            .queryIntentActivities(intent, 0);
+            List<ResolveInfo> resolveInfoList = activity.getPackageManager()
+                    .queryIntentActivities(intent, 0);
 
-                    ArrayList<String> appPackagesList = new ArrayList<>();
-                    for (ResolveInfo resolveInfo : resolveInfoList) {
-                        if (!appPackagesList.contains(resolveInfo.activityInfo.packageName)) {
-                            appPackagesList.add(resolveInfo.activityInfo.packageName);
-                        }
-                    }
-                    PackageManager pm = activity.getApplicationContext().getPackageManager();
-                    ApplicationInfo ai;
-                    String applicationName;
-                    linearLayout.removeAllViews();
-                    TextView[] textView = new TextView[appPackagesList.size()];
-                    ImageView[] imageView = new ImageView[appPackagesList.size()];
-                    LinearLayout[] container = new LinearLayout[appPackagesList.size()];
-                    int layoutHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
-                    int layoutWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
 
-                    ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(layoutWidth, layoutHeight);
-                    LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    containerParams.setMargins(0, 0, 20, 0);
-                    for (int i = 0; i < appPackagesList.size(); i++) {
-                        String packageName = appPackagesList.get(i);
-                        container[i] = new LinearLayout(activity);
-                        container[i].setOrientation(LinearLayout.VERTICAL);
-                        imageView[i] = new ImageView(activity);
-                        Drawable icon = null;
+            inflateLayouts(layoutId, resolveInfoList, onclickListener);
 
-                        try {
-                            ai = pm.getApplicationInfo(packageName, 0);
-                            icon = pm.getApplicationIcon(packageName);
-
-                        } catch (final PackageManager.NameNotFoundException e) {
-                            ai = null;
-                        }
-
-                        applicationName = (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
-
-                        imageView[i].setImageDrawable(icon);
-                        imageView[i].setLayoutParams(params);
-                        imageView[i].setOnClickListener(onclickListener);
-                        imageView[i].setTag(packageName);
-
-                        textView[i] = new TextView(activity);
-                        textView[i].setText(applicationName);
-                        textView[i].setGravity(Gravity.CENTER_HORIZONTAL);
-                        textView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-
-                        container[i].addView(imageView[i]);
-                        container[i].addView(textView[i]);
-                        container[i].setGravity(Gravity.CENTER_HORIZONTAL);
-                        container[i].setLayoutParams(containerParams);
-
-                        linearLayout.addView(container[i]);
-                    }
-                }
-            });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @JavascriptInterface
-    public void supportEmail() {
-        sendEmail(activity.getString(R.string.supportEmail));
+    public void inflateLayouts(final String layoutId, final List<ResolveInfo> resolveInfoList, final View.OnClickListener onClickListener) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                final LinearLayout linearLayout = (LinearLayout) activity.findViewById(parseInt(layoutId));
+                ArrayList<String> appPackagesList = new ArrayList<>();
+                for (ResolveInfo resolveInfo : resolveInfoList) {
+                    if (!appPackagesList.contains(resolveInfo.activityInfo.packageName)) {
+                        appPackagesList.add(resolveInfo.activityInfo.packageName);
+                    }
+                }
+                PackageManager pm = activity.getApplicationContext().getPackageManager();
+                ApplicationInfo ai;
+                String applicationName;
+                linearLayout.removeAllViews();
+                TextView[] textView = new TextView[appPackagesList.size()];
+                ImageView[] imageView = new ImageView[appPackagesList.size()];
+                LinearLayout[] container = new LinearLayout[appPackagesList.size()];
+                int layoutHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
+                int layoutWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, activity.getResources().getDisplayMetrics());
+
+                ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(layoutWidth, layoutHeight);
+                LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                containerParams.setMargins(0, 0, 20, 0);
+                for (int i = 0; i < appPackagesList.size(); i++) {
+                    String packageName = appPackagesList.get(i);
+                    String name = resolveInfoList.get(i).activityInfo.name;
+                    container[i] = new LinearLayout(activity);
+                    container[i].setOrientation(LinearLayout.VERTICAL);
+                    imageView[i] = new ImageView(activity);
+                    Drawable icon = null;
+
+                    try {
+                        ai = pm.getApplicationInfo(packageName, 0);
+                        icon = pm.getApplicationIcon(packageName);
+
+                    } catch (final PackageManager.NameNotFoundException e) {
+                        ai = null;
+                    }
+
+                    applicationName = (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
+
+                    imageView[i].setImageDrawable(icon);
+                    imageView[i].setLayoutParams(params);
+                    imageView[i].setOnClickListener(onClickListener);
+                    String[] data = new String[2];
+                    data[0] = packageName;
+                    data[1] = name;
+                    imageView[i].setTag(data);
+
+                    textView[i] = new TextView(activity);
+                    textView[i].setText(applicationName);
+                    textView[i].setGravity(Gravity.CENTER_HORIZONTAL);
+                    textView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+
+                    container[i].addView(imageView[i]);
+                    container[i].addView(textView[i]);
+                    container[i].setGravity(Gravity.CENTER_HORIZONTAL);
+                    container[i].setLayoutParams(containerParams);
+
+                    linearLayout.addView(container[i]);
+                }
+            }
+        });
     }
 
     @JavascriptInterface

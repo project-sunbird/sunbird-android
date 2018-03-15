@@ -2,17 +2,20 @@ package org.sunbird.utils;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
 import org.ekstep.genieservices.commons.bean.CorrelationData;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.sunbird.GlobalApplication;
 import org.sunbird.models.CurrentGame;
 import org.sunbird.telemetry.enums.CoRelationType;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -218,4 +221,27 @@ public class Util {
         }
         return out;
     }
+
+    public static String parseUserTokenFromAccessToken(String userAccessToken) {
+        String value = userAccessToken.substring(userAccessToken.indexOf("."), userAccessToken.lastIndexOf("."));
+        String userToken = null;
+        JSONObject jo = null;
+        try {
+            jo = new JSONObject(decodeBase64(value));
+            userAccessToken = jo.get("sub").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return userAccessToken;
+    }
+
+    public static String decodeBase64(String data) throws UnsupportedEncodingException {
+        byte[] dataText = Base64.decode(data, Base64.DEFAULT);
+        String text = new String(dataText, "UTF-8");
+        return text;
+    }
+
 }
