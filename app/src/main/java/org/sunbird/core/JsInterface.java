@@ -2595,7 +2595,7 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void updateProfile(String handle, String medium, String grade, String board) {
+    public void updateProfile(String handle, String[] medium, String[] grade, String[] board) {
         genieWrapper.updateProfile(handle, medium, grade, board);
     }
 

@@ -980,15 +980,18 @@ public class GenieWrapper extends Activity {
         return Base64Util.encodeToString(profileData.toString().getBytes(), Base64Util.DEFAULT);
     }
 
-    public void updateProfile(String handle, String medium, String grade, String board) {
+    public void updateProfile(String handle, String[] medium, String[] grade, String[] board) {
         Log.d(TAG, "updateProfile: " + handle + " " + medium + " " + grade + " " + board);
         if (currentProfile == null) {
             currentProfile = getCurrentUserProfile();
         }
         currentProfile.setHandle(handle);
-        currentProfile.setMedium(medium);
-        currentProfile.setStandard(Integer.parseInt(grade));
-        currentProfile.setBoard(board);
+        if (medium != null)
+            currentProfile.setMedium(medium[0]);
+        if (grade != null)
+            currentProfile.setStandard(Integer.parseInt("0"));//grade[0]
+        if (board != null)
+            currentProfile.setBoard(board[0]);
         mGenieService.getUserService().updateUserProfile(currentProfile);
     }
 
