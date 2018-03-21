@@ -470,7 +470,7 @@ public class GenieWrapper extends Activity {
     }
 
     public void getAllUserProfiles(final String uid, final boolean guestMode) {
-        if (guestMode) {
+        if (guestMode && uid == "") {
             createUserProfile(uid, guestMode);
         } else {
             mGenieAsyncService.getUserService().getAllUserProfile(new IResponseHandler<List<Profile>>() {
