@@ -77,9 +77,12 @@ import org.sunbird.ui.MainActivity;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -817,7 +820,7 @@ public class GenieWrapper extends Activity {
 
     private CallbackContainer telemetryListener;
 
-    public void playContent(String playContent, String cb) {
+    public void playContent(String playContent, String cb, String rollUpData) {
 
         Content content = GsonUtil.fromJson(playContent, Content.class);
 
@@ -832,13 +835,38 @@ public class GenieWrapper extends Activity {
         //TODO Telemetry
 //        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCorrelationList()));
         String mimeType = content.getMimeType();
+        Map<String, String> rollUpMap;
+        try {
+            rollUpMap = jsonToMap(rollUpData);
+        } catch (JSONException e) {
+            rollUpMap = null;
+            Log.d("JSONException", "playContent: "+e);
+        }
         if (mimeType.equals("video/x-youtube")) {
-            ContentPlayer.play(activity, content, null);
+            ContentPlayer.play(activity, content, rollUpMap);
         } else if (content.isAvailableLocally()) {
-            ContentPlayer.play(activity, content, null);
+            ContentPlayer.play(activity, content, rollUpMap);
         } else {
             Toast.makeText(activity, "Content Not Available", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public Map<String, String> jsonToMap(String jsonString) throws JSONException {
+        if(jsonString.equals("")){
+            return null;
+        }
+        HashMap<String, String> map = new HashMap<String, String>();
+        JSONObject jObject = new JSONObject(jsonString);
+        Iterator<?> keys = jObject.keys();
+
+        while( keys.hasNext() ){
+            String key = (String)keys.next();
+            String value = jObject.getString(key);
+            map.put(key, value);
+
+        }
+
+       return map;
     }
 
     public void endContent() {

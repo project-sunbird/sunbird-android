@@ -691,9 +691,9 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void playContent(String contentDetails, String id, String pkgVersion, String cb) {
+    public void playContent(String contentDetails, String id, String pkgVersion, String cb, String rollUpData) {
         try {
-            genieWrapper.playContent(contentDetails, cb);
+            genieWrapper.playContent(contentDetails, cb, rollUpData);
             logContentPlayClicked(id, pkgVersion);
         } catch (Exception e) {
             e.printStackTrace();
