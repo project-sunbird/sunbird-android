@@ -1347,8 +1347,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void setProfile(String uid, boolean isGuestMode) {
-        genieWrapper.getAllUserProfiles(uid, isGuestMode);
+    public void setProfile(String uid, boolean isGuestMode, String setProfileCb) {
+        genieWrapper.getAllUserProfiles(uid, isGuestMode, setProfileCb);
     }
 
     @JavascriptInterface
@@ -2595,8 +2595,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void updateProfile(String handle, String[] medium, String[] grade, String[] board) {
-        genieWrapper.updateProfile(handle, medium, grade, board);
+    public void updateProfile(String handle, String[] medium, String[] grade, String[] board, String[] subjects) {
+        genieWrapper.updateProfile(handle, medium, grade, board, subjects);
     }
 
     @JavascriptInterface
@@ -3286,6 +3286,11 @@ public class JsInterface {
 
         TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, contentMap);
         contentMap.clear();
+    }
+
+    @JavascriptInterface
+    public void getFrameworkDetails(String cb) {
+        genieWrapper.getFrameworkDetails(cb);
     }
 
 }

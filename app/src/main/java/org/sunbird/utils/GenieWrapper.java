@@ -27,17 +27,19 @@ import org.ekstep.genieservices.commons.bean.ContentFilterCriteria;
 import org.ekstep.genieservices.commons.bean.ContentImport;
 import org.ekstep.genieservices.commons.bean.ContentImportRequest;
 import org.ekstep.genieservices.commons.bean.ContentImportResponse;
-import org.ekstep.genieservices.commons.bean.ContentSearchCriteria;
-import org.ekstep.genieservices.commons.bean.ContentSearchResult;
 import org.ekstep.genieservices.commons.bean.CorrelationData;
 import org.ekstep.genieservices.commons.bean.DownloadProgress;
 import org.ekstep.genieservices.commons.bean.EcarImportRequest;
+import org.ekstep.genieservices.commons.bean.Framework;
+import org.ekstep.genieservices.commons.bean.FrameworkDetailsRequest;
 import org.ekstep.genieservices.commons.bean.GenieResponse;
 import org.ekstep.genieservices.commons.bean.HierarchyInfo;
 import org.ekstep.genieservices.commons.bean.ImportContentProgress;
 import org.ekstep.genieservices.commons.bean.MasterData;
 import org.ekstep.genieservices.commons.bean.MasterDataValues;
 import org.ekstep.genieservices.commons.bean.Profile;
+import org.ekstep.genieservices.commons.bean.SunbirdContentSearchCriteria;
+import org.ekstep.genieservices.commons.bean.SunbirdContentSearchResult;
 import org.ekstep.genieservices.commons.bean.SyncStat;
 import org.ekstep.genieservices.commons.bean.TelemetryExportRequest;
 import org.ekstep.genieservices.commons.bean.TelemetryExportResponse;
@@ -45,6 +47,7 @@ import org.ekstep.genieservices.commons.bean.TelemetryStat;
 import org.ekstep.genieservices.commons.bean.enums.ContentImportStatus;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.bean.enums.MasterDataType;
+import org.ekstep.genieservices.commons.bean.enums.ProfileType;
 import org.ekstep.genieservices.commons.bean.telemetry.Telemetry;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.CollectionUtil;
@@ -97,7 +100,7 @@ public class GenieWrapper extends Activity {
     private String jsonInString;
     private MainActivity activity;
     private List<Content> list;
-    private ContentSearchResult contentSearchResult;
+    private SunbirdContentSearchResult contentSearchResult;
     private DynamicUI dynamicUI;
     private ArrayList<CallbackContainer> cbContainerArr;
 
@@ -296,7 +299,7 @@ public class GenieWrapper extends Activity {
 
     public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count, final String[] keywords, boolean viewMoreClicked) {
         try {
-            ContentSearchCriteria.SearchBuilder builder = new ContentSearchCriteria.SearchBuilder();
+            SunbirdContentSearchCriteria.SearchBuilder builder = new SunbirdContentSearchCriteria.SearchBuilder();
             String[] contentTypes;
 
             switch (type) {
@@ -339,12 +342,13 @@ public class GenieWrapper extends Activity {
             }
 
             if(keywords != null) {
-                builder.keywords(keywords);
+                builder.dialCodes(keywords);
+                builder.collectionFilters();
             }
 
             boolean isProfileContent = false;
             String fp;
-            ContentSearchCriteria filters;
+            SunbirdContentSearchCriteria filters;
             if (!StringUtil.isNullOrEmpty(filterParams) && !viewMoreClicked) {
                 if (filterParams.equals("userToken")) {     // Get content created by user.
                     isProfileContent = true;
@@ -353,7 +357,7 @@ public class GenieWrapper extends Activity {
                     filters = builder.build();
                 } else {        // Filter applied
                     fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
-                    filters = GsonUtil.fromJson(fp, ContentSearchCriteria.class);
+                    filters = GsonUtil.fromJson(fp, SunbirdContentSearchCriteria.class);
                 }
             } else {
                 builder.contentTypes(contentTypes).limit(count);
@@ -365,9 +369,9 @@ public class GenieWrapper extends Activity {
             }
 
             final boolean finalIsProfileContent = isProfileContent;
-            mGenieAsyncService.getContentService().searchContent(filters, new IResponseHandler<ContentSearchResult>() {
+            mGenieAsyncService.getContentService().searchSunbirdContent(filters, new IResponseHandler<SunbirdContentSearchResult>() {
                 @Override
-                public void onSuccess(GenieResponse<ContentSearchResult> genieResponse) {
+                public void onSuccess(GenieResponse<SunbirdContentSearchResult> genieResponse) {
                     contentSearchResult = genieResponse.getResult();
 
                     List<ContentData> list = contentSearchResult.getContentDataList();
@@ -421,7 +425,7 @@ public class GenieWrapper extends Activity {
                 }
 
                 @Override
-                public void onError(GenieResponse<ContentSearchResult> genieResponse) {
+                public void onError(GenieResponse<SunbirdContentSearchResult> genieResponse) {
                     String javascript = String.format("window.callJSCallback('%s','%s','%s');", callback, "error", genieResponse.getError());
                     dynamicUI.addJsToWebView(javascript);
                 }
@@ -443,13 +447,20 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void createUserProfile(final String uid, final boolean isGuestMode) {
+    public void createUserProfile(final String uid, final boolean isGuestMode, final String cb) {
         Profile profile;
         if(!isGuestMode) {
             profile = new Profile(uid, "avatar", "en");
             profile.setUid(uid);
         } else {
             profile = new Profile("Guest1", "avatar", "en");
+            ProfileType profileType = ProfileType.TEACHER;
+            String p = PreferenceManager.getDefaultSharedPreferences(activity).getString("role", "__failed");
+            if (p != "__failed") {
+                if (p == "Teacher") profileType = ProfileType.TEACHER;
+                else if (p == "Student") profileType = ProfileType.STUDENT;
+            }
+            profile.setProfileType(profileType);
         }
 
         mGenieAsyncService.getUserService().createUserProfile(profile, new IResponseHandler<Profile>() {
@@ -460,7 +471,8 @@ public class GenieWrapper extends Activity {
                 } else {
                     setUserProfile(uid);
                 }
-//                genieResponse.getResult().getUid();
+                String date = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", cb, "success", "created new profile", GsonUtil.toJson(genieResponse.getResult()));
+                dynamicUI.addJsToWebView(date);
             }
 
             @Override
@@ -469,9 +481,9 @@ public class GenieWrapper extends Activity {
         });
     }
 
-    public void getAllUserProfiles(final String uid, final boolean guestMode) {
+    public void getAllUserProfiles(final String uid, final boolean guestMode, final String cb) {
         if (guestMode && uid == "") {
-            createUserProfile(uid, guestMode);
+            createUserProfile(uid, guestMode, cb);
         } else {
             mGenieAsyncService.getUserService().getAllUserProfile(new IResponseHandler<List<Profile>>() {
                 @Override
@@ -482,10 +494,12 @@ public class GenieWrapper extends Activity {
                         if (uid.equals(profile.getUid())) {
                             setUserProfile(uid);
                             status = false;
+                            String date = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", cb, "success", "found user", GsonUtil.toJson(profile));
+                            dynamicUI.addJsToWebView(date);
                         }
                     }
                     if (status) {
-                        createUserProfile(uid, guestMode);
+                        createUserProfile(uid, guestMode, cb);
                     }
                 }
 
@@ -967,31 +981,24 @@ public class GenieWrapper extends Activity {
         if (currentProfile == null) {
             currentProfile = getCurrentUserProfile();
         }
-        JSONObject profileData = new JSONObject();
-        try {
-            profileData.put("uid", currentProfile.getUid());
-            profileData.put("handle", currentProfile.getHandle());
-            profileData.put("medium", currentProfile.getMedium());
-            profileData.put("grade", currentProfile.getStandard());
-            profileData.put("board", currentProfile.getBoard());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return Base64Util.encodeToString(profileData.toString().getBytes(), Base64Util.DEFAULT);
+        return Base64Util.encodeToString(GsonUtil.toJson(currentProfile).getBytes(), Base64Util.DEFAULT);
     }
 
-    public void updateProfile(String handle, String[] medium, String[] grade, String[] board) {
+    public void updateProfile(String handle, String[] medium, String[] grade, String[] board, String[] subjects) {
         Log.d(TAG, "updateProfile: " + handle + " " + medium + " " + grade + " " + board);
         if (currentProfile == null) {
             currentProfile = getCurrentUserProfile();
         }
         currentProfile.setHandle(handle);
         if (medium != null)
-            currentProfile.setMedium(medium[0]);
-        if (grade != null)
-            currentProfile.setStandard(Integer.parseInt("0"));//grade[0]
+            currentProfile.setMedium(medium);
+        if (grade != null) {
+            currentProfile.setGrade(grade);
+        }
         if (board != null)
-            currentProfile.setBoard(board[0]);
+            currentProfile.setBoard(board);
+        if (subjects != null)
+            currentProfile.setSubject(subjects);
         mGenieService.getUserService().updateUserProfile(currentProfile);
     }
 
@@ -1064,6 +1071,24 @@ public class GenieWrapper extends Activity {
             @Override
             public void onError(GenieResponse<Void> genieResponse) {
 
+            }
+        });
+    }
+
+    public void getFrameworkDetails(final String cb) {
+        FrameworkDetailsRequest.Builder frameworkDetailsRequest = new FrameworkDetailsRequest.Builder();
+        frameworkDetailsRequest.defaultFrameworkDetails();
+        mGenieAsyncService.getFrameworkService().getFrameworkDetails(frameworkDetailsRequest.build(), new IResponseHandler<Framework>() {
+            @Override
+            public void onSuccess(GenieResponse<Framework> genieResponse) {
+                String javascript = String.format("window.callJSCallback('%s', '%s');", cb, GsonUtil.toJson(genieResponse.getResult()));
+                dynamicUI.addJsToWebView(javascript);
+            }
+
+            @Override
+            public void onError(GenieResponse<Framework> genieResponse) {
+                String javascript = String.format("window.callJSCallback('%s', '%s');", cb, "__failure");
+                dynamicUI.addJsToWebView(javascript);
             }
         });
     }
