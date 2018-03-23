@@ -1005,17 +1005,12 @@ public class GenieWrapper extends Activity {
     }
 
     public String getCurrentProfileData() {
-        if (currentProfile == null) {
-            currentProfile = getCurrentUserProfile();
-        }
         return Base64Util.encodeToString(GsonUtil.toJson(getCurrentUserProfile()).getBytes(), Base64Util.DEFAULT);
     }
 
     public void updateProfile(String handle, String[] medium, String[] grade, String[] board, String[] subjects) {
         Log.d(TAG, "updateProfile: " + handle + " " + medium + " " + grade + " " + board);
-        if (currentProfile == null) {
-            currentProfile = getCurrentUserProfile();
-        }
+        currentProfile = getCurrentUserProfile();
         currentProfile.setHandle(handle);
         if (medium != null)
             currentProfile.setMedium(medium);
