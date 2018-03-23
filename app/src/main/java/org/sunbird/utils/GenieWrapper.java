@@ -484,7 +484,7 @@ public class GenieWrapper extends Activity {
     }
 
     public void getAllUserProfiles(final String uid, final boolean guestMode, final String cb) {
-        if (guestMode && uid == "") {
+        if (guestMode && uid.equals("")) {
             createUserProfile(uid, guestMode, cb);
         } else {
             mGenieAsyncService.getUserService().getAllUserProfile(new IResponseHandler<List<Profile>>() {
@@ -1008,7 +1008,7 @@ public class GenieWrapper extends Activity {
         if (currentProfile == null) {
             currentProfile = getCurrentUserProfile();
         }
-        return Base64Util.encodeToString(GsonUtil.toJson(currentProfile).getBytes(), Base64Util.DEFAULT);
+        return Base64Util.encodeToString(GsonUtil.toJson(getCurrentUserProfile()).getBytes(), Base64Util.DEFAULT);
     }
 
     public void updateProfile(String handle, String[] medium, String[] grade, String[] board, String[] subjects) {
