@@ -77,9 +77,7 @@ import org.sunbird.ui.MainActivity;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -381,8 +379,9 @@ public class GenieWrapper extends Activity {
                     String jsonInString = GsonUtil.toJson(list);
                     String filterCriteria = GsonUtil.toJson(contentSearchResult.getFilterCriteria());
                     String enc = Base64Util.encodeToString(jsonInString.getBytes(), Base64Util.DEFAULT);
+                    String collectionList = Base64Util.encodeToString(GsonUtil.toJson(contentSearchResult.getCollectionDataList()).getBytes(), Base64Util.DEFAULT);
 
-                    String javascript = String.format("window.callJSCallback('%s','%s','%s');", callback, enc, filterCriteria);
+                    String javascript = String.format("window.callJSCallback('%s','%s','%s', '%s');", callback, enc, filterCriteria, collectionList);
                     dynamicUI.addJsToWebView(javascript);
                     String env = ContextEnvironment.HOME;
                     String pageId = TelemetryPageId.HOME;
@@ -1109,7 +1108,7 @@ public class GenieWrapper extends Activity {
         mGenieAsyncService.getFrameworkService().getFrameworkDetails(frameworkDetailsRequest.build(), new IResponseHandler<Framework>() {
             @Override
             public void onSuccess(GenieResponse<Framework> genieResponse) {
-                String javascript = String.format("window.callJSCallback('%s', '%s');", cb, GsonUtil.toJson(genieResponse.getResult()));
+                String javascript = String.format("window.callJSCallback('%s', '%s');", cb, genieResponse.getResult().getFramework());
                 dynamicUI.addJsToWebView(javascript);
             }
 
