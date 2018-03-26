@@ -52,6 +52,9 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.JavascriptInterface;
@@ -3291,6 +3294,20 @@ public class JsInterface {
     @JavascriptInterface
     public void getFrameworkDetails(String cb) {
         genieWrapper.getFrameworkDetails(cb);
+    }
+
+    @JavascriptInterface
+    public void animateImageView(String id){
+        int id2 = parseInt(id);
+        ImageView view = (ImageView) activity.findViewById(id2);
+        TranslateAnimation animate = new TranslateAnimation(-50, view.getWidth(), 0, 0);
+        animate.setDuration(1000);
+        animate.setRepeatCount(Animation.INFINITE);
+        animate.setFillAfter(true);
+
+            view.startAnimation(animate);
+
+
     }
 
 }
