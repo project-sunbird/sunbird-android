@@ -14,6 +14,11 @@ import org.ekstep.genieservices.commons.utils.ReflectionUtil;
 import org.ekstep.genieservices.commons.utils.StringUtil;
 import org.ekstep.genieservices.content.ContentConstants;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created on 7/17/2017.
  *
@@ -50,16 +55,18 @@ public class PlayerConfig implements IPlayerConfig {
                 }
                 intent = new Intent(context, className);
 
-                intent.putExtra("showEndPage", false);
+                HashMap<String, Object> plugins = new HashMap<>();
+                plugins.put("id", "org.sunbird.player.endpage");
+                plugins.put("ver", "1.0");
+                plugins.put("type", "plugin");
 
-//                HashMap<String, String> hmap = new HashMap<String, String>();
-//
-//                hmap.put("bgImage", "");
-//                hmap.put("text", "Powered by Nothing");
-//                hmap.put("webLink", "https://www.ekstep.in");
-//                hmap.put("icon", "assets/icons/icn_genie.png");
-//
-//                intent.putExtra("splash", GsonUtil.toJson(hmap));
+                List<Map> pluginsList = new ArrayList<>();
+                pluginsList.add(plugins);
+
+                HashMap<String, Object> config = new HashMap<>();
+                config.put("showEndPage", false);
+                config.put("plugins", pluginsList);
+                intent.putExtra("config", config);
 
             } else {
                 Toast.makeText(context, "Content player not found", Toast.LENGTH_SHORT).show();

@@ -57,11 +57,11 @@
 	
 	var _container2 = _interopRequireDefault(_container);
 	
-	var _ext = __webpack_require__(509);
+	var _ext = __webpack_require__(515);
 	
 	var _ext2 = _interopRequireDefault(_ext);
 	
-	var _index = __webpack_require__(510);
+	var _index = __webpack_require__(516);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -145,7 +145,7 @@
 	      // add the lock file
 	      // window.__LOCK.lastActionTime = currTime;
 	
-	      if (timeDiff >= 2000) {
+	      if (timeDiff >= 500) {
 	        var _window$__PROXY_FN$fN2;
 	
 	        console.log("BUTTON_CLICKED_" + window.__CURR_SCREEN);
@@ -292,6 +292,7 @@
 	    JBridge.setInSharedPrefs("intentFilePath", "__failed");
 	    JBridge.setInSharedPrefs("intentLinkPath", "__failed");
 	    JBridge.setInSharedPrefs("logged_in", "__failed");
+	    JBridge.setInSharedPrefs("role", "__failed");
 	    JBridge.setInSharedPrefs("user_id", "__failed");
 	    JBridge.setInSharedPrefs("user_name", "__failed");
 	    JBridge.setInSharedPrefs("user_token", "__failed");
@@ -353,48 +354,50 @@
 	var RootScreen = __webpack_require__(323);
 	var SplashScreenActivity = __webpack_require__(406);
 	var LanguageSelectActivity = __webpack_require__(407);
-	var WelcomeScreenActivity = __webpack_require__(408);
-	var StateSelectActivity = __webpack_require__(410);
-	var SettingsScreenActivity = __webpack_require__(411);
-	var AboutUsActivity = __webpack_require__(413);
-	var AboutUsScreen = __webpack_require__(414);
-	var LanguageSelectActivitySt = __webpack_require__(415);
+	var RoleSelectionActivity = __webpack_require__(408);
+	var WelcomeScreenActivity = __webpack_require__(409);
+	var StateSelectActivity = __webpack_require__(411);
+	var SettingsScreenActivity = __webpack_require__(412);
+	var AboutUsActivity = __webpack_require__(415);
+	var AboutUsScreen = __webpack_require__(416);
+	var LanguageSelectActivitySt = __webpack_require__(417);
+	var DataSyncScreenActivity = __webpack_require__(418);
 	
 	//Home
-	var MainActivity = __webpack_require__(416);
-	var UserActivity = __webpack_require__(462);
+	var MainActivity = __webpack_require__(421);
+	var UserActivity = __webpack_require__(468);
 	//Course or Learn
-	var CourseInfoActivity = __webpack_require__(463);
-	var CourseEnrolledActivity = __webpack_require__(471);
-	var ModuleDetailActivity = __webpack_require__(474);
-	var ViewBatchActivity = __webpack_require__(475);
+	var CourseInfoActivity = __webpack_require__(470);
+	var CourseEnrolledActivity = __webpack_require__(478);
+	var ModuleDetailActivity = __webpack_require__(481);
+	var ViewBatchActivity = __webpack_require__(482);
 	
 	//Resource
 	
 	//Comunity
-	var CommunityInfoActivity = __webpack_require__(477);
-	var CommunityViewAllActivity = __webpack_require__(483);
+	var CommunityInfoActivity = __webpack_require__(484);
+	var CommunityViewAllActivity = __webpack_require__(490);
 	//Profile
-	var NotificationActivity = __webpack_require__(484);
-	var ResourceDetailActivity = __webpack_require__(485);
-	var ResourceViewAllActivity = __webpack_require__(486);
-	var CourseViewAllActivity = __webpack_require__(488);
-	var AnnouncementViewAllActivity = __webpack_require__(489);
-	var SearchActivity = __webpack_require__(490);
-	var FilterActivity = __webpack_require__(492);
-	var AdditionalInformationActivity = __webpack_require__(495);
-	var GuestInformationActivity = __webpack_require__(497);
-	var AddressActivity = __webpack_require__(498);
-	var EducationActivity = __webpack_require__(500);
-	var ExperienceActivity = __webpack_require__(501);
-	var CommProfSearchActivity = __webpack_require__(502);
-	var ProfileActivity = __webpack_require__(503);
-	var AnnouncementDetailActivity = __webpack_require__(504);
+	var NotificationActivity = __webpack_require__(491);
+	var ResourceDetailActivity = __webpack_require__(492);
+	var ResourceViewAllActivity = __webpack_require__(493);
+	var CourseViewAllActivity = __webpack_require__(495);
+	var AnnouncementViewAllActivity = __webpack_require__(496);
+	var SearchActivity = __webpack_require__(497);
+	var FilterActivity = __webpack_require__(499);
+	var AdditionalInformationActivity = __webpack_require__(502);
+	var GuestInformationActivity = __webpack_require__(503);
+	var AddressActivity = __webpack_require__(504);
+	var EducationActivity = __webpack_require__(506);
+	var ExperienceActivity = __webpack_require__(507);
+	var CommProfSearchActivity = __webpack_require__(508);
+	var ProfileActivity = __webpack_require__(509);
+	var AnnouncementDetailActivity = __webpack_require__(510);
 	
-	var ContentPreviewScreen = __webpack_require__(506);
-	var QRActivity = __webpack_require__(507);
+	var ContentPreviewScreen = __webpack_require__(512);
+	var QRActivity = __webpack_require__(513);
 	// ScreenActions
-	var RootScreenActions = __webpack_require__(508);
+	var RootScreenActions = __webpack_require__(514);
 	
 	var determineScreen = function determineScreen(screenName, state) {
 	  var screen;
@@ -411,8 +414,14 @@
 	    case "LanguageSelectActivity":
 	      screen = new (LanguageSelectActivity(dispatcher, RootScreenActions))(null, null, state);
 	      break;
+	    case "RoleSelectionActivity":
+	      screen = new (RoleSelectionActivity(dispatcher, RootScreenActions))(null, null, state);
+	      break;
 	    case "LanguageSelectActivitySt":
 	      screen = new (LanguageSelectActivitySt(dispatcher, RootScreenActions))(null, null, state);
+	      break;
+	    case "DataSyncScreenActivity":
+	      screen = new (DataSyncScreenActivity(dispatcher, RootScreenActions))(null, null, state);
 	      break;
 	    case "SettingsScreenActivity":
 	      screen = new (SettingsScreenActivity(dispatcher, RootScreenActions))(null, null, state);
@@ -12357,6 +12366,10 @@
 	  localState = payload;
 	
 	  switch (action) {
+	    case "DataSyncScreenActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "DataSyncScreenActivity";
+	      break;
 	    case "SettingsScreenActivity":
 	      localState.isInit = false;
 	      localState.currScreen = "SettingsScreenActivity";
@@ -12388,6 +12401,10 @@
 	    case "LanguageSelectActivity":
 	      localState.isInit = false;
 	      localState.currScreen = "LanguageSelectActivity";
+	      break;
+	    case "RoleSelectionActivity":
+	      localState.isInit = false;
+	      localState.currScreen = "RoleSelectionActivity";
 	      break;
 	    case "WelcomeScreenActivity":
 	      localState.isInit = false;
@@ -20289,7 +20306,8 @@
 	    _this.show = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "visible" }), null, "31", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "visible"
+	      }), null, "31", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.updateProgressBar(0);
 	      _this.isVisible = true;
 	    };
@@ -20297,7 +20315,8 @@
 	    _this.hide = function () {
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
-	        visibility: "gone" }), null, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	        visibility: "gone"
+	      }), null, "43", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.isVisible = false;
 	      if (_this.handleClickCallback) _this.handleClickCallback = null;
 	    };
@@ -20318,7 +20337,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "visible"
-	          }), 0, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "69", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      } else {
 	        if (_this.isButtonVisible) {
@@ -20326,7 +20345,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "gone"
-	          }), 0, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "77", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      }
 	    };
@@ -20340,7 +20359,7 @@
 	          gravity: "center",
 	          margin: "0,24,0,24", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 85
+	            lineNumber: 87
 	          }
 	        },
 	        dom(TextView, {
@@ -20352,7 +20371,7 @@
 	          color: window.__Colors.PRIMARY_ACCENT,
 	          padding: "16,10,16,10", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 90
+	            lineNumber: 92
 	          }
 	        })
 	      );
@@ -20368,7 +20387,7 @@
 	          root: "true",
 	          height: "20", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 105
+	            lineNumber: 107
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -20377,7 +20396,7 @@
 	          background: window.__Colors.LIGHT_BLUE,
 	          weight: completedProgress, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 109
+	            lineNumber: 111
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -20386,7 +20405,7 @@
 	          height: "10",
 	          weight: remainingProgress, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 114
+	            lineNumber: 116
 	          }
 	        })
 	      );
@@ -20416,7 +20435,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 124
+	            lineNumber: 126
 	          }
 	        },
 	        dom(
@@ -20430,7 +20449,7 @@
 	            background: window.__Colors.WHITE,
 	            gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 131
+	              lineNumber: 133
 	            }
 	          },
 	          dom(TextView, {
@@ -20439,7 +20458,7 @@
 	            margin: "0,0,0,32",
 	            text: window.__S.LOADING_CONTENT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 140
+	              lineNumber: 142
 	            }
 	          }),
 	          dom(
@@ -20451,7 +20470,7 @@
 	              orientation: "vertical",
 	              id: this.idSet.progressContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 146
+	                lineNumber: 148
 	              }
 	            },
 	            this.getProgressBar(0)
@@ -20468,7 +20487,7 @@
 	            id: this.idSet.btnContainer,
 	            margin: "0,8,0,8", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 160
+	              lineNumber: 162
 	            }
 	          },
 	          this.getButton()
@@ -21827,11 +21846,13 @@
 					var response = JSON.parse(exports.decodeBase64(arguments[1]));
 					var statusCode = arguments[2];
 					// console.log("statusCode: " + statusCode + "-- response: " + response);
-					if (status == "failure") window.__Logout();else {
+					if (status == "failure") {
+						window.__Logout();
+					} else {
 						console.log("response ", response);
 						window.__refreshToken = response.refresh_token;
 						window.__user_accessToken = response.access_token;
-						JBridge.setInSharedPrefs("user_token", response.access_token);
+						JBridge.setInSharedPrefs("user_access_token", response.access_token);
 						JBridge.setInSharedPrefs("refresh_token", response.refresh_token);
 						var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
 						var event = { "tag": state.responseFor, contents: whatToSend };
@@ -21896,6 +21917,88 @@
 		return callbackMapper.map(function (data) {
 			func(data);
 		});
+	};
+	
+	exports.setLoginPreferences = function () {
+		window.__userToken = JBridge.getFromSharedPrefs("user_token");
+		window.__refreshToken = JBridge.getFromSharedPrefs("refresh_token");
+		window.__user_accessToken = JBridge.getFromSharedPrefs("user_access_token");
+		var setProfileCb = callbackMapper.map(function (data) {
+			console.log("setProfile -> ", data);
+		});
+		if (window.__loggedInState == "GUEST") {
+			JBridge.setInSharedPrefs("logged_in", "GUEST");
+			if (window.__userToken == "__failed") {
+				var cb = callbackMapper.map(function (data) {
+					console.log("setProfile -> ", data);
+	
+					var guestData = JSON.parse(exports.decodeBase64(JBridge.getCurrentProfileData()));
+					window.__userToken = guestData.uid;
+					JBridge.setInSharedPrefs("user_token", guestData.uid);
+				});
+				JBridge.setProfile("", true, cb);
+			} else {
+				//JBridge.setProfile(window.__userToken, true, setProfileCb);
+			}
+		} else if (window.__loggedInState == "YES") {
+			JBridge.setInSharedPrefs("logged_in", "YES");
+			JBridge.setProfile(window.__userToken, false, setProfileCb);
+		}
+	};
+	
+	exports.formatJSON = function (json) {
+		var s = json;
+		s = s.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
+		s = s.replace(/[\u0000-\u0019]+/g, "");
+		return s;
+	};
+	
+	exports.eqObjProp = function (obj1, obj2, prop) {
+		if (obj1[prop] === obj2[prop]) return true;else return false;
+	};
+	
+	exports.findObjOnProp = function (objArr, prop, val) {
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+	
+		try {
+			for (var _iterator = objArr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var obj = _step.value;
+	
+				if (obj[prop] == val) return obj;
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
+	
+		return null;
+	};
+	
+	exports.setPermissions = function () {
+		var callback = callbackMapper.map(function (data) {
+	
+			if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
+				JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
+			}
+			if (data == "DeniedPermanently") {
+				console.log("DENIED DeniedPermanently");
+				JBridge.hideKeyboard();
+				window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.STORAGE);
+			}
+		});
+		JBridge.setPermissions(callback, "android.permission.WRITE_EXTERNAL_STORAGE");
 	};
 
 /***/ }),
@@ -22074,7 +22177,7 @@
 	          width: "wrap_content",
 	          height: "wrap_content",
 	          gravity: "center_vertical",
-	          text: "Download All ?",
+	          text: window.__S.DOWNLOAD_ALL,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 132
@@ -22214,10 +22317,16 @@
 	
 	        _this2.show = function (id) {
 	            _this2.setVisibility("visible", id);
+	            _this2.visibility = true;
 	        };
 	
 	        _this2.hide = function (id) {
 	            _this2.setVisibility("gone", id);
+	            _this2.visibility = false;
+	        };
+	
+	        _this2.getVisibility = function () {
+	            return _this2.visibility;
 	        };
 	
 	        _this2.initData = function (contentId, pageId, contentVersion, rating, comment) {
@@ -22226,7 +22335,12 @@
 	            _this2.contentVersion = contentVersion;
 	            _this2.comment = comment ? comment : "";
 	            _this2.rating = Math.floor(rating ? rating : 0);
+	            _this2.commentHint = _this2.rating == 0 ? window.__S.FEEDBACK_HINT : window.__S.FEEDBACK_HINT_1;
 	            _this2.updateStars(_this2.rating - 1);
+	        };
+	
+	        _this2.isRatingsAvailable = function () {
+	            if (_this2.comment != "" || _this2.rating != 0) return true;else return false;
 	        };
 	
 	        _this2.setVisibility = function (data, id) {
@@ -22234,7 +22348,7 @@
 	                id: id || _this2.parentId,
 	                visibility: data
 	            });
-	            Android.runInUI(cmd, 0, "57", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRatingsPopupjs");
+	            Android.runInUI(cmd, 0, "71", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRatingsPopupjs");
 	        };
 	
 	        _this2.handleDismissClick = function () {
@@ -22243,6 +22357,7 @@
 	
 	        _this2.submitFeedback = function () {
 	            _this2.rating = _this2.totalRatedStars();
+	            _this2.commentHint = _this2.rating == 0 ? window.__S.FEEDBACK_HINT : window.__S.FEEDBACK_HINT_1;
 	            var successCb = callbackMapper.map(function () {
 	                window.__Snackbar.show("Thank you for rating.");
 	            });
@@ -22275,7 +22390,7 @@
 	                    layouTransition: "true",
 	                    margin: "0, 16, 0, 0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 88
+	                        lineNumber: 103
 	                    }
 	                },
 	                _this2.getStars(),
@@ -22296,7 +22411,7 @@
 	                            _this2.updateStars(i);
 	                        }, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 105
+	                            lineNumber: 120
 	                        }
 	                    });
 	                } else {
@@ -22308,7 +22423,7 @@
 	                            _this2.updateStars(i);
 	                        }, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 111
+	                            lineNumber: 126
 	                        }
 	                    });
 	                }
@@ -22321,7 +22436,7 @@
 	                    orientation: "horizontal",
 	                    margin: "0, 16, 0, 0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 119
+	                        lineNumber: 134
 	                    }
 	                },
 	                stars
@@ -22338,12 +22453,12 @@
 	            return dom(EditText, {
 	                width: "match_parent",
 	                text: _this2.comment != "" ? _this2.comment : null,
-	                hint: window.__S.FEEDBACK_HINT,
+	                hint: _this2.commentHint,
 	                margin: "0, 16, 0, 0",
 	                visibility: flag == 0 ? "gone" : "visible",
 	                onChange: _this2.updateFeedbackText, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 137
+	                    lineNumber: 152
 	                }
 	            });
 	        };
@@ -22367,7 +22482,7 @@
 	                    textColor: window.__Colors.WHITE,
 	                    textSize: "18", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 153
+	                        lineNumber: 168
 	                    }
 	                });
 	            } else {
@@ -22384,7 +22499,7 @@
 	                    textColor: window.__Colors.WHITE,
 	                    textSize: "18", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 169
+	                        lineNumber: 184
 	                    }
 	                });
 	            }
@@ -22399,7 +22514,7 @@
 	                    gravity: "center_vertical",
 	                    margin: "0,0,0,0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 187
+	                        lineNumber: 202
 	                    }
 	                },
 	                dom(
@@ -22410,7 +22525,7 @@
 	                        height: "wrap_content",
 	                        gravity: "center_vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 193
+	                            lineNumber: 208
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -22420,7 +22535,7 @@
 	                        text: window.__S.ENJOYED_THIS_CONTENT,
 	                        style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 199
+	                            lineNumber: 214
 	                        }
 	                    }),
 	                    dom(TextView, {
@@ -22429,7 +22544,7 @@
 	                        gravity: "center_vertical",
 	                        text: window.__S.HELP_US_BY_RATING, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 206
+	                            lineNumber: 221
 	                        }
 	                    })
 	                ),
@@ -22438,7 +22553,7 @@
 	                    weight: "1",
 	                    height: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 213
+	                        lineNumber: 228
 	                    }
 	                }),
 	                dom(ImageView, {
@@ -22448,7 +22563,7 @@
 	                    gravity: "top",
 	                    imageUrl: "ic_action_close", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 218
+	                        lineNumber: 233
 	                    }
 	                })
 	            );
@@ -22462,7 +22577,7 @@
 	                id: _this2.idSet.starsContainer,
 	                layouTransition: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 230
+	                    lineNumber: 245
 	                }
 	            });
 	        };
@@ -22481,7 +22596,7 @@
 	                    padding: "16,18,16,16",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 240
+	                        lineNumber: 255
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -22502,9 +22617,11 @@
 	        //data to send for the feedback
 	        _this2.contentId = "";
 	        _this2.comment = "";
+	        _this2.commentHint = "";
 	        _this2.rating = 0;
 	        _this2.pageId = "";
 	        _this2.contentVersion = "";
+	        _this2.visibility = false;
 	        return _this2;
 	    }
 	
@@ -22523,7 +22640,7 @@
 	                    background: window.__Colors.PRIMARY_BLACK_44,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 263
+	                        lineNumber: 278
 	                    }
 	                },
 	                dom(LinearLayout, {
@@ -22532,7 +22649,7 @@
 	                    onClick: this.handleDismissClick,
 	                    weight: "1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 273
+	                        lineNumber: 288
 	                    }
 	                }),
 	                this.getBody()
@@ -22617,8 +22734,12 @@
 	            _this2.hide();
 	        };
 	
-	        _this2.checkSelected = function (item, list) {
-	            if (list.indexOf(item) > -1) {
+	        _this2.checkSelected = function (ele, list) {
+	            var flag = -1;
+	            list.map(function (item) {
+	                if (item.code == ele.code) flag = 1;
+	            });
+	            if (flag != -1) {
 	                return true;
 	            }
 	            return false;
@@ -22647,7 +22768,7 @@
 	
 	        _this2.removeFromArr = function (array, element) {
 	            return array.filter(function (e) {
-	                return e !== element;
+	                return e.code !== element.code;
 	            });
 	        };
 	
@@ -22660,7 +22781,7 @@
 	                    gravity: "center_vertical",
 	                    margin: "16,0,16,16", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 97
+	                        lineNumber: 101
 	                    }
 	                },
 	                dom(TextView, {
@@ -22670,7 +22791,7 @@
 	                    text: _this2.data.question,
 	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 103
+	                        lineNumber: 107
 	                    }
 	                }),
 	                dom(ViewWidget, {
@@ -22678,7 +22799,7 @@
 	                    weight: "1",
 	                    height: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 110
+	                        lineNumber: 114
 	                    }
 	                }),
 	                dom(ImageView, {
@@ -22688,7 +22809,7 @@
 	                    gravity: "center_vertical",
 	                    imageUrl: "ic_action_close", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 115
+	                        lineNumber: 119
 	                    }
 	                })
 	            );
@@ -22708,7 +22829,7 @@
 	                    padding: "0,18,0,0",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 127
+	                        lineNumber: 131
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -22737,7 +22858,7 @@
 	                    width: "match_parent",
 	                    alignParentBottom: "true, -1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 158
+	                        lineNumber: 162
 	                    }
 	                },
 	                dom(PageOption, {
@@ -22746,7 +22867,7 @@
 	                    hideDivider: false,
 	                    onButtonClick: _this2.handlePageOption, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 163
+	                        lineNumber: 167
 	                    }
 	                })
 	            );
@@ -22759,10 +22880,10 @@
 	                        _this2.handleCheckBoxValueChange(item, value);
 	                    },
 	                    checked: _this2.checkSelected(item, _this2.data.selected),
-	                    text: item,
+	                    text: item.name,
 	                    index: index, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 174
+	                        lineNumber: 178
 	                    }
 	                });
 	            });
@@ -22772,10 +22893,10 @@
 	                    orientation: "vertical",
 	                    width: "match_parent",
 	                    root: "true",
-	                    margin: "16,0,16,0",
+	                    margin: "8,0,16,0",
 	                    height: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 181
+	                        lineNumber: 185
 	                    }
 	                },
 	                checkBoxes
@@ -22788,7 +22909,7 @@
 	            var leftBar = [];
 	            leftBar = _this2.data.values.map(function (item, index) {
 	                var op = _this2.checkSelected(item, _this2.data.selected) ? "1" : "0";
-	                return { name: item, select: op, icon: "ic_action_radio" };
+	                return { name: item.name, select: op, icon: "ic_action_radio" };
 	            });
 	            console.log("radio btns -> ", leftBar);
 	
@@ -22800,7 +22921,7 @@
 	                    height: "wrap_content",
 	                    margin: "16,0,16,0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 203
+	                        lineNumber: 207
 	                    }
 	                },
 	                dom(RadioButton, {
@@ -22811,7 +22932,7 @@
 	                    items: leftBar,
 	                    onClick: _this2.handleRadioButtonClick, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 208
+	                        lineNumber: 212
 	                    }
 	                })
 	            );
@@ -22823,7 +22944,7 @@
 	            var layouts = dom(LinearLayout, {
 	                __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 222
+	                    lineNumber: 226
 	                }
 	            });
 	            switch (_this2.data.selectorType) {
@@ -22844,7 +22965,7 @@
 	                    height: "wrap_content",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 234
+	                        lineNumber: 238
 	                    }
 	                },
 	                dom(
@@ -22854,7 +22975,7 @@
 	                        width: "match_parent",
 	                        margin: "0,0,0,90", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 239
+	                            lineNumber: 243
 	                        }
 	                    },
 	                    layouts
@@ -22886,7 +23007,7 @@
 	                    background: window.__Colors.PRIMARY_BLACK_44,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 252
+	                        lineNumber: 256
 	                    }
 	                },
 	                dom(LinearLayout, {
@@ -22895,14 +23016,14 @@
 	                    onClick: this.handleDismissClick,
 	                    weight: "1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 262
+	                        lineNumber: 266
 	                    }
 	                }),
 	                dom(LinearLayout, {
 	                    id: this.idSet.bodyContainer,
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 268
+	                        lineNumber: 272
 	                    }
 	                })
 	            );
@@ -23383,7 +23504,7 @@
 	        LinearLayout,
 	        {
 	          height: "wrap_content",
-	          width: "match_parent",
+	          width: "wrap_content",
 	          margin: "16,0,0,22",
 	          onClick: this.handleCardClick,
 	          afterRender: this.afterRender,
@@ -23655,6 +23776,7 @@
 			CONTENT_FLAG_FAIL: "Content flagging failed",
 			COURSES_BNAV: "COURSES",
 			COURSES_IN_PROGRESS: "Courses In Progress",
+			COURSES_IN_PROGRESS_2: "CoursesInProgress",
 			COURSES_LW: "Courses",
 			CREATED_BY: "CREATED BY",
 			DELETE: "Delete",
@@ -23727,6 +23849,7 @@
 			RETRY_ACTION: "Try again",
 			SAVED_ON: "Saved on",
 			SAVED_RESOURCES: "Saved Resources",
+			SAVED_RESOURCES_2: "SavedResources",
 			SEARCH_HINT: "Search",
 			SELECT: "SELECT",
 			SELECT_A_REASON: "SELECT A REASON",
@@ -23747,7 +23870,7 @@
 			WELCOME_M2: "Structured education for the educators",
 			WELCOME_ON_BOARD: "Welcome to %s, %s ",
 			WHAT_WENT_WRONG: "What went wrong?",
-			YOUR_PROGRESS: "Your Progress: %s%",
+			YOUR_PROGRESS: "%s% Complete",
 			FLAG: "Report",
 			ERROR_EMPTY_RESULT: "Search results unavailable",
 			ERROR_FLAG_CONTENT_MIN_REASON: "Select atleast one reason to flag the content",
@@ -23804,7 +23927,7 @@
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
 			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social Media Links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Inavlid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to Sunbird."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that Sunbird has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents? %s"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _defineProperty(_en_US, "DOWNLOAD_ALL_wSIZE", "Download all %s?"), _defineProperty(_en_US, "ENJOYED_THIS_CONTENT", "Enjoyed this content?"), _defineProperty(_en_US, "HELP_US_BY_RATING", "Help us by rating this content"), _defineProperty(_en_US, "FEEDBACK_HINT", "Feedback (optional)"), _en_US),
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social media links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Invalid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to %s."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that %s has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _defineProperty(_en_US, "OFF", "Off"), _defineProperty(_en_US, "OVER_WIFI", "Over Wifi"), _defineProperty(_en_US, "ALWAYS_ON", "Always on"), _defineProperty(_en_US, "SYNCING_NOW", "Syncing Now"), _defineProperty(_en_US, "SHARE_TELEMETRY", "Share Telemetry"), _defineProperty(_en_US, "SYNC_NOW", "Sync Now"), _defineProperty(_en_US, "AUTOMATIC_SYNC", "Automatic Data Sync"), _defineProperty(_en_US, "DATA_SYNC", "Data Sync"), _defineProperty(_en_US, "DATA_SYNC_SUB", "Backup your data, Transfer Telemetry"), _defineProperty(_en_US, "DEVICE_TAGS", "Device Tags"), _defineProperty(_en_US, "DEVICE_TAGS_SUB", "Add/Remove Device Tags"), _defineProperty(_en_US, "LAST_SYNC", "Last synced on "), _defineProperty(_en_US, "DOWNLOAD_ALL_wSIZE", "Download all %s?"), _defineProperty(_en_US, "ENJOYED_THIS_CONTENT", "Enjoyed this content?"), _defineProperty(_en_US, "HELP_US_BY_RATING", "Help us by rating this content"), _defineProperty(_en_US, "FEEDBACK_HINT", "Feedback (optional)"), _defineProperty(_en_US, "FEEDBACK_HINT_1", "Add a comment here"), _defineProperty(_en_US, "ABOUT", "About"), _defineProperty(_en_US, "SUBJECT", "SUBJECT"), _defineProperty(_en_US, "BOARD", "BOARD"), _defineProperty(_en_US, "MEDIUM_2", "MEDIUM"), _defineProperty(_en_US, "VIEW_CREDITS_INFO", "View Credits and Licensing Info"), _defineProperty(_en_US, "HIDE_CREDITS_INFO", "Hide Credits and Licensing Info"), _defineProperty(_en_US, "TRY_BEFORE_RATING", "Please try the content before rating it."), _defineProperty(_en_US, "SEND_EMAIL", "Send Email"), _defineProperty(_en_US, "BY", "By"), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -24933,7 +25056,7 @@
 	                    background: "#FFF8F8F8",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 73
+	                        lineNumber: 76
 	                    }
 	                },
 	                _this.getLanguageLabels()
@@ -24965,7 +25088,7 @@
 	                        return _this.changeSelectedLang(langCode);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 100
+	                        lineNumber: 103
 	                    }
 	                },
 	                dom(
@@ -24978,22 +25101,22 @@
 	                        margin: "2,0,0,0",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 107
+	                            lineNumber: 110
 	                        }
 	                    },
 	                    dom(TextView, {
 	                        height: "20",
 	                        weight: "2",
-	                        text: language + (_this.defaultlang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
+	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 114
+	                            lineNumber: 117
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 119
+	                            lineNumber: 122
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -25002,7 +25125,7 @@
 	                        imageUrl: "ic_blue_tick",
 	                        visibility: isSelected ? "visible" : "gone", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 121
+	                            lineNumber: 124
 	                        }
 	                    })
 	                ),
@@ -25016,7 +25139,7 @@
 	                    alpha: "0.3",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 127
+	                        lineNumber: 130
 	                    }
 	                })
 	            );
@@ -25035,7 +25158,7 @@
 	                    margin: "0,0,0,0",
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 142
+	                        lineNumber: 145
 	                    }
 	                },
 	                dom(
@@ -25046,7 +25169,7 @@
 	                        gravity: "center_vertical",
 	                        onClick: _this.changeLang, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 151
+	                            lineNumber: 154
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25057,7 +25180,7 @@
 	                        color: "#FFFFFFFF",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 156
+	                            lineNumber: 159
 	                        }
 	                    }),
 	                    dom(
@@ -25068,7 +25191,7 @@
 	                            padding: "0,0,16,0",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 163
+	                                lineNumber: 166
 	                            }
 	                        },
 	                        dom(ImageView, {
@@ -25077,7 +25200,7 @@
 	                            imageUrl: "ic_white_arrow",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 168
+	                                lineNumber: 171
 	                            }
 	                        })
 	                    )
@@ -25085,10 +25208,26 @@
 	            );
 	        };
 	
+	        _this.onBackPressed = function () {
+	            _this.backPressCount++;
+	            if (_this.backPressCount == 1) {
+	                window.__Snackbar.show(window.__S.BACK_TO_EXIT);
+	            }
+	            if (_this.backPressCount > 1) {
+	                JBridge.closeApp();
+	            }
+	            setTimeout(function () {
+	                _this.backPressCount = 0;
+	            }, 1500);
+	        };
+	
 	        _this.languages = window.__RootScreen.languageMap;
 	        console.log("Default language -> ", JBridge.getLocalLang());
-	        _this.defaultlang = JBridge.getLocalLang();
+	        _this.devicelang = JBridge.getLocalLang();
+	        _this.defaultlang = window.__CurrentLanguage;
 	        _this.setIds(["langContainer"]);
+	        _this.backPressCount = 0;
+	        _this.shouldCacheScreen = false;
 	        _this.langArr = [];
 	        _this.initLangArr();
 	        return _this;
@@ -25107,7 +25246,7 @@
 	                    root: true,
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 181
+	                        lineNumber: 197
 	                    }
 	                },
 	                dom(
@@ -25121,7 +25260,7 @@
 	                        background: "#FFFFFFFF",
 	                        cornerRadius: "0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 188
+	                            lineNumber: 204
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25133,7 +25272,7 @@
 	                        color: "#FF333333",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 196
+	                            lineNumber: 212
 	                        }
 	                    }),
 	                    dom(
@@ -25148,7 +25287,7 @@
 	                            id: this.idSet.langContainer,
 	                            cornerRadius: "0", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 204
+	                                lineNumber: 220
 	                            }
 	                        },
 	                        this.getLanguageLabels()
@@ -25156,7 +25295,7 @@
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 217
+	                            lineNumber: 233
 	                        }
 	                    }),
 	                    this.getContinueBtn()
@@ -25178,6 +25317,336 @@
 
 	"use strict";
 	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/RoleSelectionActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var TextView = __webpack_require__(342);
+	var SimpleToolbar = __webpack_require__(382);
+	var callbackMapper = __webpack_require__(329);
+	var ImageView = __webpack_require__(350);
+	var utils = __webpack_require__(397);
+	window.R = __webpack_require__(7);
+	var Font = __webpack_require__(345);
+	
+	var RoleSelectionActivity = function (_View) {
+	    _inherits(RoleSelectionActivity, _View);
+	
+	    function RoleSelectionActivity(props, children, state) {
+	        _classCallCheck(this, RoleSelectionActivity);
+	
+	        var _this = _possibleConstructorReturn(this, (RoleSelectionActivity.__proto__ || Object.getPrototypeOf(RoleSelectionActivity)).call(this, props, children, state));
+	
+	        _this.handleRoleSelect = function () {
+	            var role = "";
+	            _this.options.map(function (item) {
+	                if (item.selected) role = item.role;
+	            });
+	            if (role != "") {
+	                JBridge.setInSharedPrefs("role", role);
+	                _this.setAsGuestUser();
+	            }
+	        };
+	
+	        _this.handleCardClick = function (index) {
+	            _this.options.map(function (item, i) {
+	                if (index == i) {
+	                    item.selected = true;
+	                } else {
+	                    item.selected = false;
+	                }
+	            });
+	            var layout = dom(
+	                LinearLayout,
+	                {
+	                    width: "match_parent",
+	                    height: "match_parent",
+	                    orientation: "vertical",
+	                    gravity: "center", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 54
+	                    }
+	                },
+	                _this.getCards()
+	            );
+	            _this.replaceChild(_this.idSet.cardsContainer, layout.render(), null);
+	        };
+	
+	        _this.getContinueBtn = function () {
+	            return dom(
+	                LinearLayout,
+	                {
+	                    id: _this.idSet.continueBtn,
+	                    height: "48",
+	                    width: "match_parent",
+	                    orientation: "horizontal",
+	                    gravity: "center_vertical",
+	                    background: "#FF0076FE",
+	                    cornerRadius: "4",
+	                    alignParentBottom: "true,-1",
+	                    margin: "20,58,20,16",
+	                    clickable: "true",
+	                    visibility: "gone", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 67
+	                    }
+	                },
+	                dom(
+	                    RelativeLayout,
+	                    {
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        gravity: "center_vertical",
+	                        onClick: _this.handleRoleSelect, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 79
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        width: "match_parent",
+	                        textAllCaps: "true",
+	                        text: window.__S.CONTINUE,
+	                        textSize: "14",
+	                        color: "#FFFFFFFF",
+	                        gravity: "center", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 84
+	                        }
+	                    }),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            padding: "0,0,16,0",
+	                            gravity: "right", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 91
+	                            }
+	                        },
+	                        dom(ImageView, {
+	                            height: "20",
+	                            width: "20",
+	                            imageUrl: "ic_white_arrow",
+	                            gravity: "right", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 96
+	                            }
+	                        })
+	                    )
+	                )
+	            );
+	        };
+	
+	        _this.getCards = function () {
+	            var flag = -1;
+	            var layout = _this.options.map(function (item, i) {
+	                if (item.selected) flag = 0;
+	                return dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        background: "#f2f2f2",
+	                        orientation: "horizontal",
+	                        root: "true",
+	                        margin: "20,8,20,8",
+	                        padding: "16,16,16,16",
+	                        cornerRadius: "5",
+	                        stroke: item.selected ? "4," + window.__Colors.PRIMARY_ACCENT : null, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 112
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            onClick: function onClick() {
+	                                _this.handleCardClick(i);
+	                            }, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 123
+	                            }
+	                        },
+	                        dom(ImageView, {
+	                            height: "90",
+	                            width: "90",
+	                            margin: "8,8,8,8",
+	                            layout_gravity: "center",
+	                            circularImageUrl: "0," + "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 128
+	                            }
+	                        }),
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                width: "0",
+	                                weight: "1",
+	                                margin: "8,8,8,8",
+	                                height: "wrap_content",
+	                                orientation: "vertical", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 135
+	                                }
+	                            },
+	                            dom(TextView, {
+	                                width: "wrap_content",
+	                                height: "wrap_content",
+	                                margin: "0,0,0,16",
+	                                text: item.role, __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 142
+	                                }
+	                            }),
+	                            dom(TextView, {
+	                                width: "wrap_content",
+	                                height: "wrap_content",
+	                                text: item.desc, __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 148
+	                                }
+	                            })
+	                        )
+	                    )
+	                );
+	            });
+	            if (flag != -1) {
+	                var cmd = _this.set({
+	                    id: _this.idSet.continueBtn,
+	                    visibility: "visible"
+	                });
+	                Android.runInUI(cmd, 0, "162", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
+	            }
+	            return layout;
+	        };
+	
+	        _this.onBackPressed = function () {
+	            var event = { tag: "BACK_RoleSelectionActivityAction", contents: [] };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this.afterRender = function () {
+	            if (JBridge.getFromSharedPrefs("role") != "__failed") {
+	                _this.setAsGuestUser();
+	            }
+	        };
+	
+	        _this.setAsGuestUser = function () {
+	            window.__loggedInState = "GUEST";
+	            JBridge.setInSharedPrefs("logged_in", "GUEST");
+	            utils.setLoginPreferences();
+	            var event = { tag: "OPEN_MainActivity_RoleSelection", contents: [] };
+	            window.__runDuiCallback(event);
+	        };
+	
+	        _this.setIds(["cardsContainer", "continueBtn"]);
+	        _this.options = [{
+	            role: "Teacher",
+	            selected: false,
+	            desc: "1. Browse through courses\n2. Find relevant resources\n3. Browse through groups"
+	        }, {
+	            role: "Student",
+	            selected: false,
+	            desc: "1. Browse through resources"
+	        }];
+	        _this.shouldCacheScreen = false;
+	        return _this;
+	    }
+	
+	    _createClass(RoleSelectionActivity, [{
+	        key: "render",
+	        value: function render() {
+	            this.layout = dom(
+	                RelativeLayout,
+	                {
+	                    root: "true",
+	                    width: "match_parent",
+	                    height: "match_parent",
+	                    clickable: "true",
+	                    background: window.__Colors.WHITE,
+	                    orientation: "vertical", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 188
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        orientation: "vertical",
+	                        gravity: "center", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 196
+	                        }
+	                    },
+	                    dom(SimpleToolbar, {
+	                        title: "",
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        onBackPress: this.onBackPressed, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 202
+	                        }
+	                    }),
+	                    dom(TextView, {
+	                        width: "wrap_content",
+	                        height: "wrap_content",
+	                        text: "You are a",
+	                        textSize: "16",
+	                        fontStyle: Font.fontStyle.SEMIBOLD,
+	                        margin: "0,16,0,16", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 207
+	                        }
+	                    }),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            id: this.idSet.cardsContainer,
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            orientation: "vertical",
+	                            gravity: "center", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 214
+	                            }
+	                        },
+	                        this.getCards()
+	                    )
+	                ),
+	                this.getContinueBtn()
+	            );
+	
+	            return this.layout.render();
+	        }
+	    }]);
+	
+	    return RoleSelectionActivity;
+	}(View);
+	
+	module.exports = Connector(RoleSelectionActivity);
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
 	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/WelcomeScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25190,7 +25659,7 @@
 	
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
-	var debounce = __webpack_require__(409);
+	var debounce = __webpack_require__(410);
 	var objectAssign = __webpack_require__(317);
 	
 	var View = __webpack_require__(331);
@@ -25319,7 +25788,7 @@
 	module.exports = Connector(WelcomeScreenActivity);
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports) {
 
 	/**
@@ -25391,7 +25860,7 @@
 
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25564,7 +26033,7 @@
 	module.exports = Connector(StateSelectActivity);
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25588,429 +26057,333 @@
 	var HorizontalScrollView = __webpack_require__(357);
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var CircularLoader = __webpack_require__(404);
 	var SimpleToolbar = __webpack_require__(382);
+	var ShareFilePopup = __webpack_require__(414);
 	var TextStyle = __webpack_require__(343);
 	
 	window.R = __webpack_require__(7);
 	var _this;
 	
 	var SettingsScreenActivity = function (_View) {
-	    _inherits(SettingsScreenActivity, _View);
+	  _inherits(SettingsScreenActivity, _View);
 	
-	    function SettingsScreenActivity(props, children, state) {
-	        _classCallCheck(this, SettingsScreenActivity);
+	  function SettingsScreenActivity(props, children, state) {
+	    _classCallCheck(this, SettingsScreenActivity);
 	
-	        var _this2 = _possibleConstructorReturn(this, (SettingsScreenActivity.__proto__ || Object.getPrototypeOf(SettingsScreenActivity)).call(this, props, children, state));
+	    var _this2 = _possibleConstructorReturn(this, (SettingsScreenActivity.__proto__ || Object.getPrototypeOf(SettingsScreenActivity)).call(this, props, children, state));
 	
-	        _this2.defaultlang = function () {
-	            var languages = window.__RootScreen.languageMap;
-	            var currLanguageCode = window.__CurrentLanguage;
-	            for (var language in languages) {
-	                if (languages[language] == currLanguageCode) return language;
-	            }
-	            return "Error getting language";
-	        };
+	    _this2.defaultlang = function () {
+	      var languages = window.__RootScreen.languageMap;
+	      var currLanguageCode = window.__CurrentLanguage;
+	      for (var language in languages) {
+	        if (languages[language] == currLanguageCode) return language;
+	      }
+	      return "Error getting language";
+	    };
 	
-	        _this2.datasync = function () {
-	            var whatToSend = [];
-	            var event = { tag: "OPEN_DataSync", contents: whatToSend };
-	            window.__runDuiCallback(event);
-	        };
+	    _this2.datasync = function () {
+	      JBridge.logSettingsClickedEvent(window.__S.DATA_SYNC);
+	      var whatToSend = [];
+	      var event = { tag: "OPEN_DataSyncScreenActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
 	
-	        _this2.handleClick = function () {
-	            window.__Snackbar.show(window.__S.COMING_SOON);
-	        };
+	    _this2.handleClick = function () {
+	      window.__Snackbar.show(window.__S.COMING_SOON);
+	    };
 	
-	        _this2.handleChangeLang = function () {
-	            var whatToSend = { "profile": JSON.stringify("{}") };
-	            var event = { tag: "OPEN_LanguageSelectActivitySt", contents: whatToSend };
-	            window.__runDuiCallback(event);
-	        };
+	    _this2.handleChangeLang = function () {
+	      JBridge.logSettingsClickedEvent(window.__S.LANGUAGE_SETTINGS);
+	      var whatToSend = { "profile": JSON.stringify("{}") };
+	      var event = { tag: "OPEN_LanguageSelectActivitySt", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
 	
-	        _this2.handleShareClick = function () {
-	            Android.runInUI(_this2.set({
-	                id: _this2.idSet.popUpContainer,
-	                visibility: "visible"
-	            }), 0, "60", "UsersnikithshettysunbirdgithubsunbirdduiviewsSettingsScreenActivityjs");
-	            JBridge.shareApk(_this2.idSet.linkShareIntents);
-	        };
+	    _this2.handleShareClick = function () {
+	      var cb = function cb(containerId) {
+	        JBridge.logSettingsClickedEvent("Share");
+	        JBridge.shareApk(containerId);
+	      };
+	      _this2.SharePopup.show(window.__S.SHARE_APP.format(JBridge.getAppName()), cb);
+	    };
 	
-	        _this2.openAboutUsActivity = function () {
-	            var whatToSend = { "profile": JSON.stringify("{}") };
-	            var event = { tag: "OPEN_AboutUsActivity", contents: whatToSend };
-	            window.__runDuiCallback(event);
-	        };
+	    _this2.openAboutUsActivity = function () {
+	      JBridge.logSettingsClickedEvent(window.__S.ABOUT_APP);
+	      var whatToSend = { "profile": JSON.stringify("{}") };
+	      var event = { tag: "OPEN_AboutUsActivity", contents: whatToSend };
+	      window.__runDuiCallback(event);
+	    };
 	
-	        _this2.onBackPressed = function () {
-	            var whatToSend = [];
-	            var event = { tag: "BACK_SettingsScreenActivity", contents: whatToSend };
-	            window.__runDuiCallback(event);
-	        };
+	    _this2.onBackPressed = function () {
+	      if (_this2.SharePopup.getVisibility()) {
+	        _this2.SharePopup.hide();
+	      } else {
+	        var whatToSend = [];
+	        var event = { tag: "BACK_SettingsScreenActivity", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      }
+	    };
 	
-	        _this2.handleDismissClick = function () {
-	            Android.runInUI(_this2.set({
-	                id: _this2.idSet.popUpContainer,
-	                visibility: "gone"
-	            }), 0, "81", "UsersnikithshettysunbirdgithubsunbirdduiviewsSettingsScreenActivityjs");
-	        };
+	    _this2.handleSupportClick = function () {
+	      var cb = function cb(containerId) {
+	        JBridge.logSettingsClickedEvent(window.__S.SUPPORT);
+	        JBridge.supportEmail(containerId);
+	      };
+	      _this2.SharePopup.show(window.__S.SEND_EMAIL, cb);
+	    };
 	
-	        _this2.handleSupportClick = function () {
-	            JBridge.supportEmail();
-	        };
-	
-	        _this2.getSharePopUP = function () {
-	            return dom(
-	                LinearLayout,
-	                {
-	                    height: "match_parent",
-	                    width: "match_parent",
-	                    id: _this2.idSet.popUpContainer,
-	                    visibility: "gone",
-	                    root: "true",
-	                    background: window.__Colors.PRIMARY_BLACK_44,
-	                    orientation: "vertical", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 93
-	                    }
-	                },
-	                dom(LinearLayout, {
-	                    height: "0",
-	                    width: "match_parent",
-	                    onClick: _this2.handleDismissClick,
-	                    weight: "1", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 102
-	                    }
-	                }),
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        cornerRadius: "2",
-	                        width: "match_parent",
-	                        height: "wrap_content",
-	                        root: "true",
-	                        visibility: "visible",
-	                        orientation: "vertical",
-	                        clickable: "true",
-	                        padding: "16,18,16,16",
-	                        background: "#ffffff", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 108
-	                        }
-	                    },
-	                    dom(
-	                        LinearLayout,
-	                        {
-	                            width: "match_parent",
-	                            height: "wrap_content",
-	                            gravity: "center_vertical",
-	                            margin: "0,0,0,16", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 119
-	                            }
-	                        },
-	                        dom(TextView, {
-	                            width: "wrap_content",
-	                            height: "wrap_content",
-	                            gravity: "center_vertical",
-	                            text: window.__S.SHARE_APP.format(JBridge.getAppName()),
-	                            style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 125
-	                            }
-	                        }),
-	                        dom(LinearLayout, {
-	                            width: "0",
-	                            weight: "1",
-	                            height: "0", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 132
-	                            }
-	                        }),
-	                        dom(ImageView, {
-	                            width: "18",
-	                            height: "18",
-	                            onClick: _this2.handleDismissClick,
-	                            gravity: "center_vertical",
-	                            imageUrl: "ic_action_close", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 137
-	                            }
-	                        })
-	                    ),
-	                    dom(
-	                        HorizontalScrollView,
-	                        {
-	                            width: "wrap_content",
-	                            height: "wrap_content",
-	                            scrollBarX: "false",
-	                            fillViewport: "true", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 145
-	                            }
-	                        },
-	                        dom(
-	                            LinearLayout,
-	                            {
-	                                margin: "0,8,0,24",
-	                                width: "wrap_content",
-	                                id: _this2.idSet.linkShareIntents,
-	                                height: "match_parent", __source: {
-	                                    fileName: _jsxFileName,
-	                                    lineNumber: 151
-	                                }
-	                            },
-	                            dom(CircularLoader, {
-	                                margin: "0,0,0,0", __source: {
-	                                    fileName: _jsxFileName,
-	                                    lineNumber: 157
-	                                }
-	                            })
-	                        )
-	                    )
-	                )
-	            );
-	        };
-	
-	        _this2.getBody = function (mainstr, substr, fun) {
-	            return dom(
-	                LinearLayout,
-	                {
-	                    background: "#ffffff",
-	                    width: "match_parent",
-	                    height: "wrap_content", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 175
-	                    }
-	                },
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        width: "match_parent",
-	                        onClick: fun,
-	                        height: "wrap_content",
-	                        clickable: "true",
-	                        background: "#ffffff",
-	                        orientation: "horizontal", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 179
-	                        }
-	                    },
-	                    dom(
-	                        LinearLayout,
-	                        {
-	                            width: "wrap_content",
-	                            height: "wrap_content",
-	                            padding: "16,16,16,16",
-	                            orientation: "vertical", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 186
-	                            }
-	                        },
-	                        dom(TextView, {
-	                            width: "wrap_content",
-	                            textSize: "14",
-	                            height: "wrap_content",
-	                            color: "#000000"
-	                            //style= {TextStyle.DARK}
-	                            , text: mainstr, __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 191
-	                            }
-	                        }),
-	                        dom(TextView, {
-	                            textSize: "14",
-	                            width: "wrap_content",
-	                            height: "wrap_content",
-	                            color: "#000000",
-	                            alpha: "0.3",
-	                            text: substr, __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 198
-	                            }
-	                        })
-	                    ),
-	                    dom(LinearLayout, {
-	                        height: "match_parent",
-	                        weight: "1", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 206
-	                        }
-	                    }),
-	                    dom(ImageView, {
-	                        width: "10",
-	                        height: "10",
-	                        imageUrl: "ic_action_arrow_right",
-	                        margin: "0,25,8,0", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 209
-	                        }
-	                    })
-	                )
-	            );
-	        };
-	
-	        _this2.getBody2 = function (mainStr, fun) {
-	            return dom(
-	                LinearLayout,
-	                {
-	                    background: "#ffffff",
-	                    width: "match_parent",
-	                    height: "wrap_content", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 219
-	                    }
-	                },
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        width: "match_parent",
-	                        onClick: fun,
-	                        height: "wrap_content",
-	                        clickable: "true",
-	                        background: "#ffffff",
-	                        orientation: "horizontal", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 223
-	                        }
-	                    },
-	                    dom(
-	                        LinearLayout,
-	                        {
-	                            width: "wrap_content",
-	                            height: "wrap_content",
-	                            padding: "16,16,16,16",
-	                            orientation: "vertical", __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 230
-	                            }
-	                        },
-	                        dom(TextView, {
-	                            width: "wrap_content",
-	                            textSize: "14",
-	                            height: "wrap_content",
-	                            color: "#000000",
-	                            text: mainStr, __source: {
-	                                fileName: _jsxFileName,
-	                                lineNumber: 235
-	                            }
-	                        })
-	                    ),
-	                    dom(LinearLayout, {
-	                        height: "match_parent",
-	                        weight: "1", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 242
-	                        }
-	                    }),
-	                    dom(ImageView, {
-	                        width: "10",
-	                        height: "10",
-	                        imageUrl: "ic_action_arrow_right",
-	                        margin: "0,25,8,0", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 245
-	                        }
-	                    })
-	                )
-	            );
-	        };
-	
-	        _this2.render = function () {
-	            _this2.layout = dom(
-	                RelativeLayout,
-	                {
-	                    root: "true",
-	                    width: "match_parent",
-	                    height: "match_parent", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 256
-	                    }
-	                },
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        background: "#e2e2e2",
-	                        orientation: "vertical",
-	                        width: "match_parent",
-	                        height: "match_parent", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 260
-	                        }
-	                    },
-	                    dom(SimpleToolbar, {
-	                        title: "Settings",
-	                        afterRender: _this2.afterRender,
-	                        width: "match_parent",
-	                        onBackPress: _this2.onBackPressed, __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 265
-	                        }
-	                    }),
-	                    dom(LinearLayout, {
-	                        width: "match_parent",
-	                        height: "4", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 270
-	                        }
-	                    }),
-	                    _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody("Data Sync", "Backup your data, Transfer Telemetry", _this2.handleClick),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody("Device Tags", "Add/Remove Device Tags", _this2.handleClick),
-	                    dom(LinearLayout, {
-	                        width: "match_parent",
-	                        height: "4", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 278
-	                        }
-	                    }),
-	                    _this2.getBody(window.__S.SUPPORT, window.__S.SUPPORT_MESSAGE, _this2.handleSupportClick),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody2(window.__S.SHARE_APP.format(JBridge.getAppName()), _this2.handleShareClick),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody2(window.__S.ABOUT_APP, _this2.openAboutUsActivity)
-	                ),
-	                _this2.getSharePopUP()
-	            );
-	            return _this2.layout.render();
-	        };
-	
-	        _this2.setIds(["linkShareIntents", "popUpContainer", "parentId"]);
-	        _this2.shouldCacheScreen = false;
-	        window.__SettingsScreenActivity = _this2;
-	        //this.defaultlang = this.getCurrentLanguage();
-	        _this2.visible = true;
-	        _this2.screenName = "Settings";
-	        _this = _this2;
-	        return _this2;
-	    }
-	
-	    _createClass(SettingsScreenActivity, [{
-	        key: "getLineSeperator",
-	        value: function getLineSeperator() {
-	            return dom(LinearLayout, {
-	                width: "match_parent",
-	                height: "1",
-	                padding: "0,1,0,0",
-	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
-	                    fileName: _jsxFileName,
-	                    lineNumber: 167
-	                }
-	            });
+	    _this2.getSharePopUP = function () {
+	      _this2.SharePopup = dom(ShareFilePopup, {
+	        __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 98
 	        }
-	    }]);
+	      });
+	      return _this2.SharePopup;
+	    };
 	
-	    return SettingsScreenActivity;
+	    _this2.getBody = function (mainstr, substr, fun) {
+	      return dom(
+	        LinearLayout,
+	        {
+	          background: "#ffffff",
+	          width: "match_parent",
+	          height: "wrap_content", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 112
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            onClick: fun,
+	            height: "wrap_content",
+	            clickable: "true",
+	            background: "#ffffff",
+	            orientation: "horizontal", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 116
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              padding: "16,16,16,16",
+	              orientation: "vertical", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 123
+	              }
+	            },
+	            dom(TextView, {
+	              width: "wrap_content",
+	              textSize: "14",
+	              height: "wrap_content",
+	              color: "#000000"
+	              //style= {TextStyle.DARK}
+	              , text: mainstr, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 128
+	              }
+	            }),
+	            dom(TextView, {
+	              textSize: "14",
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              color: "#000000",
+	              alpha: "0.3",
+	              text: substr, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 135
+	              }
+	            })
+	          ),
+	          dom(LinearLayout, {
+	            height: "match_parent",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 143
+	            }
+	          }),
+	          dom(ImageView, {
+	            width: "10",
+	            height: "10",
+	            imageUrl: "ic_action_arrow_right",
+	            margin: "0,25,8,0", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 146
+	            }
+	          })
+	        )
+	      );
+	    };
+	
+	    _this2.getBody2 = function (mainStr, fun) {
+	      return dom(
+	        LinearLayout,
+	        {
+	          background: "#ffffff",
+	          width: "match_parent",
+	          height: "wrap_content", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 156
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            onClick: fun,
+	            height: "wrap_content",
+	            clickable: "true",
+	            background: "#ffffff",
+	            orientation: "horizontal", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 160
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              padding: "16,16,16,16",
+	              orientation: "vertical", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 167
+	              }
+	            },
+	            dom(TextView, {
+	              width: "wrap_content",
+	              textSize: "14",
+	              height: "wrap_content",
+	              color: "#000000",
+	              text: mainStr, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 172
+	              }
+	            })
+	          ),
+	          dom(LinearLayout, {
+	            height: "match_parent",
+	            weight: "1", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 179
+	            }
+	          }),
+	          dom(ImageView, {
+	            width: "10",
+	            height: "10",
+	            imageUrl: "ic_action_arrow_right",
+	            margin: "0,25,8,0", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 182
+	            }
+	          })
+	        )
+	      );
+	    };
+	
+	    _this2.afterRender = function () {
+	      JBridge.logSettingsScreenEvent("SETTINGS");
+	    };
+	
+	    _this2.render = function () {
+	      _this2.layout = dom(
+	        RelativeLayout,
+	        {
+	          root: "true",
+	          width: "match_parent",
+	          height: "match_parent", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 197
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            background: "#e2e2e2",
+	            orientation: "vertical",
+	            width: "match_parent",
+	            height: "match_parent", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 201
+	            }
+	          },
+	          dom(SimpleToolbar, {
+	            title: "Settings",
+	            afterRender: _this2.afterRender,
+	            width: "match_parent",
+	            onBackPress: _this2.onBackPressed, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 206
+	            }
+	          }),
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            height: "4", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 211
+	            }
+	          }),
+	          _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
+	          _this2.getLineSeperator(),
+	          _this2.getBody(window.__S.DATA_SYNC, window.__S.DATA_SYNC_SUB, _this2.datasync),
+	          _this2.getLineSeperator(),
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            height: "4", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 219
+	            }
+	          }),
+	          _this2.getBody(window.__S.SUPPORT, window.__S.SUPPORT_MESSAGE, _this2.handleSupportClick),
+	          _this2.getLineSeperator(),
+	          _this2.getBody2(window.__S.SHARE_APP.format(JBridge.getAppName()), _this2.handleShareClick),
+	          _this2.getLineSeperator(),
+	          _this2.getBody2(window.__S.ABOUT_APP, _this2.openAboutUsActivity)
+	        ),
+	        _this2.getSharePopUP()
+	      );
+	      return _this2.layout.render();
+	    };
+	
+	    _this2.setIds(["linkShareIntents", "popUpContainer", "parentId"]);
+	    _this2.shouldCacheScreen = false;
+	    window.__SettingsScreenActivity = _this2;
+	    //this.defaultlang = this.getCurrentLanguage();
+	    _this2.visible = true;
+	    _this2.screenName = "Settings";
+	    _this = _this2;
+	    return _this2;
+	  }
+	
+	  _createClass(SettingsScreenActivity, [{
+	    key: "getLineSeperator",
+	    value: function getLineSeperator() {
+	      return dom(LinearLayout, {
+	        width: "match_parent",
+	        height: "1",
+	        padding: "0,1,0,0",
+	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 104
+	        }
+	      });
+	    }
+	  }]);
+	
+	  return SettingsScreenActivity;
 	}(View);
 	
 	module.exports = Connector(SettingsScreenActivity);
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26136,7 +26509,198 @@
 	module.exports = TextInputView;
 
 /***/ }),
-/* 413 */
+/* 414 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ShareFilePopup.js";
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var RelativeLayout = __webpack_require__(340);
+	var HorizontalScrollView = __webpack_require__(357);
+	var TextView = __webpack_require__(342);
+	var CircularLoader = __webpack_require__(404);
+	var TextStyle = __webpack_require__(343);
+	
+	var ShareFilePopup = function (_View) {
+	    _inherits(ShareFilePopup, _View);
+	
+	    function ShareFilePopup(props, children, state) {
+	        _classCallCheck(this, ShareFilePopup);
+	
+	        var _this = _possibleConstructorReturn(this, (ShareFilePopup.__proto__ || Object.getPrototypeOf(ShareFilePopup)).call(this, props, children, state));
+	
+	        _this.show = function (headerText, cb) {
+	            _this.isVisible = true;
+	            _this.setVisibility(headerText, "visible");
+	            cb(_this.idSet.linkShareIntents);
+	        };
+	
+	        _this.hide = function () {
+	            _this.isVisible = false;
+	            _this.replaceChild(_this.idSet.linkShareIntents, dom(CircularLoader, {
+	                margin: "0,0,0,0", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 31
+	                }
+	            }).render(), null);
+	            _this.setVisibility("", "gone");
+	        };
+	
+	        _this.getVisibility = function () {
+	            return _this.isVisible;
+	        };
+	
+	        _this.setVisibility = function (headerText, data) {
+	            var cmd = _this.set({
+	                id: _this.idSet.popUpContainer,
+	                visibility: data
+	            });
+	            cmd += _this.set({
+	                id: _this.idSet.headerText,
+	                text: headerText
+	            });
+	            Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdShareFilePopupjs");
+	        };
+	
+	        _this.render = function () {
+	            var layout = dom(
+	                LinearLayout,
+	                {
+	                    height: "match_parent",
+	                    width: "match_parent",
+	                    id: _this.idSet.popUpContainer,
+	                    visibility: "gone",
+	                    root: "true",
+	                    background: window.__Colors.PRIMARY_BLACK_44,
+	                    orientation: "vertical", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 54
+	                    }
+	                },
+	                dom(LinearLayout, {
+	                    height: "0",
+	                    width: "match_parent",
+	                    onClick: _this.hide,
+	                    weight: "1", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 63
+	                    }
+	                }),
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        cornerRadius: "2",
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        root: "true",
+	                        visibility: "visible",
+	                        orientation: "vertical",
+	                        clickable: "true",
+	                        padding: "16,18,16,16",
+	                        background: "#ffffff", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 69
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "wrap_content",
+	                            gravity: "center_vertical",
+	                            margin: "0,0,0,16", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 80
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            id: _this.idSet.headerText,
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            gravity: "center_vertical",
+	                            style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 86
+	                            }
+	                        }),
+	                        dom(LinearLayout, {
+	                            width: "0",
+	                            weight: "1",
+	                            height: "0", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 93
+	                            }
+	                        }),
+	                        dom(ImageView, {
+	                            width: "18",
+	                            height: "18",
+	                            onClick: _this.hide,
+	                            gravity: "center_vertical",
+	                            imageUrl: "ic_action_close", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 98
+	                            }
+	                        })
+	                    ),
+	                    dom(
+	                        HorizontalScrollView,
+	                        {
+	                            width: "wrap_content",
+	                            height: "wrap_content",
+	                            scrollBarX: "false",
+	                            fillViewport: "true", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 106
+	                            }
+	                        },
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                margin: "0,8,0,24",
+	                                width: "wrap_content",
+	                                id: _this.idSet.linkShareIntents,
+	                                height: "match_parent", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 112
+	                                }
+	                            },
+	                            dom(CircularLoader, {
+	                                margin: "0,0,0,0", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 118
+	                                }
+	                            })
+	                        )
+	                    )
+	                )
+	            );
+	            return layout.render();
+	        };
+	
+	        _this.setIds(["popUpContainer", "headerText", "linkShareIntents"]);
+	        _this.isVisible = false;
+	        return _this;
+	    }
+	
+	    return ShareFilePopup;
+	}(View);
+	
+	module.exports = ShareFilePopup;
+
+/***/ }),
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26157,10 +26721,11 @@
 	var LinearLayout = __webpack_require__(333);
 	var ImageView = __webpack_require__(350);
 	var RelativeLayout = __webpack_require__(340);
+	var ShareFilePopup = __webpack_require__(414);
 	
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var SimpleToolbar = __webpack_require__(382);
 	var TextStyle = __webpack_require__(343);
 	
@@ -26180,9 +26745,13 @@
 	        };
 	
 	        _this2.onBackPressed = function () {
-	            var whatToSend = { "profile": JSON.stringify("{}") };
-	            var event = { tag: "BACK_AboutUsActivity", contents: whatToSend };
-	            window.__runDuiCallback(event);
+	            if (_this2.SharePopup.getVisibility()) {
+	                _this2.SharePopup.hide();
+	            } else {
+	                var whatToSend = { "profile": JSON.stringify("{}") };
+	                var event = { tag: "BACK_AboutUsActivity", contents: whatToSend };
+	                window.__runDuiCallback(event);
+	            }
 	        };
 	
 	        _this2.nextScreen = function (section) {
@@ -26191,6 +26760,16 @@
 	                }) };
 	            var event = { tag: "OPEN_AboutUsScreen", contents: whatToSend };
 	            window.__runDuiCallback(event);
+	        };
+	
+	        _this2.getSharePopup = function () {
+	            _this2.SharePopup = dom(ShareFilePopup, {
+	                __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 69
+	                }
+	            });
+	            return _this2.SharePopup;
 	        };
 	
 	        _this2.getBody = function (mainStr, substr) {
@@ -26202,7 +26781,7 @@
 	                    orientation: "vertical",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 58
+	                        lineNumber: 75
 	                    }
 	                },
 	                dom(
@@ -26213,7 +26792,7 @@
 	                        padding: "16,16,16,16",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 63
+	                            lineNumber: 80
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -26224,7 +26803,7 @@
 	                        color: "#FF000000",
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 68
+	                            lineNumber: 85
 	                        }
 	                    }),
 	                    dom(TextView, {
@@ -26236,7 +26815,7 @@
 	                        color: "#FF969696",
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 75
+	                            lineNumber: 92
 	                        }
 	                    })
 	                )
@@ -26252,7 +26831,7 @@
 	                    orientation: "vertical",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 88
+	                        lineNumber: 105
 	                    }
 	                },
 	                dom(
@@ -26265,7 +26844,7 @@
 	                        background: "#ffffff",
 	                        orientation: "horizontal", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 93
+	                            lineNumber: 110
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -26277,14 +26856,14 @@
 	                        color: "#FF000000",
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 100
+	                            lineNumber: 117
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        height: "match_parent",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 108
+	                            lineNumber: 125
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -26293,7 +26872,7 @@
 	                        imageUrl: "ic_action_arrow_right",
 	                        margin: "0,25,8,0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 111
+	                            lineNumber: 128
 	                        }
 	                    })
 	                )
@@ -26309,7 +26888,7 @@
 	                    orientation: "vertical",
 	                    background: "#ffffff", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 121
+	                        lineNumber: 138
 	                    }
 	                },
 	                dom(
@@ -26320,7 +26899,7 @@
 	                        padding: "16,16,16,16",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 126
+	                            lineNumber: 143
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -26330,7 +26909,7 @@
 	                        color: "#000000",
 	                        text: window.__S.APP_VERSION, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 131
+	                            lineNumber: 148
 	                        }
 	                    }),
 	                    dom(TextView, {
@@ -26342,7 +26921,7 @@
 	                        color: "#FF969696",
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 137
+	                            lineNumber: 154
 	                        }
 	                    }),
 	                    dom(TextView, {
@@ -26357,65 +26936,92 @@
 	                            JBridge.openPlayStoreLink();
 	                        }, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 145
+	                            lineNumber: 162
 	                        }
 	                    })
 	                )
 	            );
 	        };
 	
+	        _this2.handleMenuClick = function (url) {
+	            if (url == "ic_action_share_black") {
+	                var cb = function cb(containerId) {
+	                    JBridge.shareSupportFile(containerId);
+	                };
+	                _this2.SharePopup.show(window.__S.SHARE_THIS, cb);
+	            }
+	        };
+	
+	        _this2.afterRender = function () {
+	            JBridge.logSettingsScreenEvent("ABOUT_APP");
+	        };
+	
 	        _this2.render = function () {
 	            _this2.layout = dom(
-	                LinearLayout,
+	                RelativeLayout,
 	                {
-	                    id: _this2.idSet.parentId,
 	                    root: "true",
 	                    clickable: "true",
 	                    height: "match_parent",
-	                    width: "match_parent",
-	                    orientation: "vertical",
-	                    background: window.__Colors.WHITE_F2, __source: {
+	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 160
+	                        lineNumber: 190
 	                    }
 	                },
-	                dom(SimpleToolbar, {
-	                    title: window.__S.ABOUT_US,
-	                    afterRender: _this2.afterRender,
-	                    width: "match_parent",
-	                    onBackPress: _this2.onBackPressed, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 168
-	                    }
-	                }),
-	                dom(LinearLayout, {
-	                    width: "match_parent",
-	                    height: "4", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 173
-	                    }
-	                }),
-	                _this2.getBody(window.__S.DEVICE_ID, JBridge.getDeviceId()),
-	                _this2.getLineSeperator(),
-	                _this2.checkUpdates(),
-	                dom(LinearLayout, {
-	                    width: "match_parent",
-	                    height: "8", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 179
-	                    }
-	                }),
-	                _this2.getBody2(window.__S.PRIVACY_POLICY, function () {
-	                    return _this2.nextScreen("PRIVACY_POLICY");
-	                }),
-	                _this2.getLineSeperator(),
-	                _this2.getBody2(window.__S.TERMS_OF_SERVICE, function () {
-	                    return _this2.nextScreen("TERMS_OF_SERVICE");
-	                }),
-	                _this2.getLineSeperator(),
-	                _this2.getBody2(window.__S.ABOUT_APPLICATION, function () {
-	                    return _this2.nextScreen("ABOUT");
-	                })
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        id: _this2.idSet.parentId,
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        orientation: "vertical",
+	                        background: window.__Colors.WHITE_F2, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 195
+	                        }
+	                    },
+	                    dom(SimpleToolbar, {
+	                        title: window.__S.ABOUT_US,
+	                        afterRender: _this2.afterRender,
+	                        width: "match_parent",
+	                        menuData: _this2.menuData,
+	                        onMenuItemClick: _this2.handleMenuClick,
+	                        showMenu: "true",
+	                        onBackPress: _this2.onBackPressed, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 201
+	                        }
+	                    }),
+	                    dom(LinearLayout, {
+	                        width: "match_parent",
+	                        height: "4", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 209
+	                        }
+	                    }),
+	                    _this2.getBody(window.__S.DEVICE_ID, JBridge.getDeviceId()),
+	                    _this2.getLineSeperator(),
+	                    _this2.checkUpdates(),
+	                    dom(LinearLayout, {
+	                        width: "match_parent",
+	                        height: "8", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 215
+	                        }
+	                    }),
+	                    _this2.getBody2(window.__S.PRIVACY_POLICY, function () {
+	                        return _this2.nextScreen("PRIVACY_POLICY");
+	                    }),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody2(window.__S.TERMS_OF_SERVICE, function () {
+	                        return _this2.nextScreen("TERMS_OF_SERVICE");
+	                    }),
+	                    _this2.getLineSeperator(),
+	                    _this2.getBody2(window.__S.ABOUT_APPLICATION, function () {
+	                        return _this2.nextScreen("ABOUT");
+	                    })
+	                ),
+	                _this2.getSharePopup()
 	            );
 	            return _this2.layout.render();
 	        };
@@ -26426,6 +27032,9 @@
 	        _this2.state = state;
 	        _this2.visible = true;
 	        _this2.screenName = "AboutUsActivity";
+	        _this2.menuData = {
+	            url: [{ imageUrl: "ic_action_share_black" }]
+	        };
 	        _this = _this2;
 	        return _this2;
 	    }
@@ -26439,7 +27048,7 @@
 	                margin: "0,1,0,0",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 50
+	                    lineNumber: 60
 	                }
 	            });
 	        }
@@ -26451,7 +27060,7 @@
 	module.exports = Connector(AboutUsActivity);
 
 /***/ }),
-/* 414 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26473,7 +27082,7 @@
 	
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var SimpleToolbar = __webpack_require__(382);
 	var ScrollView = __webpack_require__(358);
 	var TextStyle = __webpack_require__(343);
@@ -26575,7 +27184,7 @@
 	module.exports = Connector(AboutUsScreen);
 
 /***/ }),
-/* 415 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26623,7 +27232,9 @@
 	            };
 	        };
 	
-	        _this.afterRender = function () {};
+	        _this.afterRender = function () {
+	            JBridge.logSettingsScreenEvent("SETTINGS_LANGUAGE");
+	        };
 	
 	        _this.changeLang = function () {
 	            _this.langArr.map(function (item) {
@@ -26644,6 +27255,7 @@
 	        };
 	
 	        _this.changeSelectedLang = function (langCode) {
+	            JBridge.logLanguageChangeSettingEvent(_this.defaultlang, langCode);
 	            var newArr = [];
 	            _this.langArr.map(function (item, i) {
 	                newArr[i] = {};
@@ -26671,7 +27283,7 @@
 	                    background: "#FFF8F8F8",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 84
+	                        lineNumber: 87
 	                    }
 	                },
 	                _this.getLanguageLabels()
@@ -26703,7 +27315,7 @@
 	                        return _this.changeSelectedLang(langCode);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 111
+	                        lineNumber: 114
 	                    }
 	                },
 	                dom(
@@ -26716,7 +27328,7 @@
 	                        margin: "2,0,0,0",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 118
+	                            lineNumber: 121
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -26725,13 +27337,13 @@
 	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 125
+	                            lineNumber: 128
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 130
+	                            lineNumber: 133
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -26740,7 +27352,7 @@
 	                        imageUrl: "ic_blue_tick",
 	                        visibility: isSelected ? "visible" : "gone", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 132
+	                            lineNumber: 135
 	                        }
 	                    })
 	                ),
@@ -26754,7 +27366,7 @@
 	                    alpha: "0.3",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 138
+	                        lineNumber: 141
 	                    }
 	                })
 	            );
@@ -26784,7 +27396,7 @@
 	                    root: true,
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 153
+	                        lineNumber: 156
 	                    }
 	                },
 	                dom(
@@ -26796,7 +27408,7 @@
 	                        background: "#FFF8F8F8",
 	                        cornerRadius: "0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 159
+	                            lineNumber: 162
 	                        }
 	                    },
 	                    dom(SimpleToolbar, {
@@ -26805,7 +27417,7 @@
 	                        width: "match_parent",
 	                        onBackPress: this.onBackPressed, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 165
+	                            lineNumber: 168
 	                        }
 	                    }),
 	                    dom(
@@ -26820,7 +27432,7 @@
 	                            id: this.idSet.langContainer,
 	                            cornerRadius: "0", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 170
+	                                lineNumber: 173
 	                            }
 	                        },
 	                        this.getLanguageLabels()
@@ -26838,7 +27450,1003 @@
 	module.exports = Connector(LanguageSelectActivitySt);
 
 /***/ }),
-/* 416 */
+/* 418 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/DataSyncScreenActivity.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var View = __webpack_require__(331);
+	var HorizontalScrollView = __webpack_require__(357);
+	var TextView = __webpack_require__(342);
+	var EditText = __webpack_require__(363);
+	var ImageView = __webpack_require__(350);
+	var ScrollView = __webpack_require__(358);
+	var callbackMapper = __webpack_require__(329);
+	var TextInputView = __webpack_require__(413);
+	var Spinner = __webpack_require__(394);
+	var MultiSelectSpinner = __webpack_require__(419);
+	var Styles = __webpack_require__(347);
+	var PageOption = __webpack_require__(379);
+	var SimpleToolbar = __webpack_require__(382);
+	var utils = __webpack_require__(397);
+	var RadioButton = __webpack_require__(401);
+	var SharePopup = __webpack_require__(420);
+	
+	window.R = __webpack_require__(7);
+	var _this;
+	
+	var DataSyncScreenActivity = function (_View) {
+		_inherits(DataSyncScreenActivity, _View);
+	
+		function DataSyncScreenActivity(props, children, state) {
+			_classCallCheck(this, DataSyncScreenActivity);
+	
+			var _this2 = _possibleConstructorReturn(this, (DataSyncScreenActivity.__proto__ || Object.getPrototypeOf(DataSyncScreenActivity)).call(this, props, children, state));
+	
+			_this2.initializeData = function () {
+	
+				if (_this2.optionType == "Off") {
+					_this2.index = 0;
+					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "1", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+				} else if (_this2.optionType == "Over Wifi") {
+					_this2.index = 1;
+					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "1", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+				} else if (_this2.optionType == "Always On") {
+					_this2.index = 2;
+					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "1", icon: "ic_action_radio" }];
+				} else {
+					_this2.index = -1;
+					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+				}
+	
+				//this.index=-1;
+			};
+	
+			_this2.handleRadioButtonClick = function () {
+				if (window.__RadioButton != undefined && window.__RadioButton.currentIndex > -1) {
+					console.log("Radio Button click" + _this2.OPTION_TYPE[window.__RadioButton.currentIndex]);
+					//_this.optionType = this.OPTION_TYPE[window.__RadioButton.currentIndex];
+					_this2.optionType = _this2.OPTION_TYPE[window.__RadioButton.currentIndex];
+					// _this.checkDataChanged();
+					JBridge.setInSharedPrefs("data_sync", _this2.optionType);
+				}
+			};
+	
+			_this2.getBody = function () {};
+	
+			_this2.getLineSeperator = function () {
+				return dom(LinearLayout, {
+					width: "match_parent",
+					margin: "4,0,0,0",
+					height: "1",
+					background: window.__Colors.PRIMARY_BLACK, __source: {
+						fileName: _jsxFileName,
+						lineNumber: 124
+					}
+				});
+			};
+	
+			_this2.handleSaveClick = function () {};
+	
+			_this2.onBackPressed = function () {
+				var whatToSend = [];
+				var event = { tag: "BACK_DataSyncScreenActivity", contents: whatToSend };
+				window.__runDuiCallback(event);
+			};
+	
+			_this2.onSyncNowClick = function () {
+				window.__LoaderDialog.show();
+	
+				var callback = callbackMapper.map(function (data) {
+					var postSyncMessage = JBridge.getFromSharedPrefs("sync_time_error");
+	
+					if (postSyncMessage != "__failed") window.__Snackbar.show(window.__S.DATA_SYNC + ": " + postSyncMessage);
+	
+					_this.replaceChild(_this.idSet.lastSyncTextView, _this.getSyncNowTextView().render(), 0);
+					window.__LoaderDialog.hide();
+				}); //end of callback
+				JBridge.syncTelemetryNow(callback);
+			};
+	
+			_this2.getSyncNowTextView = function () {
+	
+				_this2.lastSync = window.__S.LAST_SYNC + JBridge.getFromSharedPrefs("sync_time");
+				return dom(
+					LinearLayout,
+					{
+						height: "match_parent",
+						width: "match_parent",
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 163
+						}
+					},
+					dom(TextView, {
+						id: _this2.idSet.lastSyncTextView,
+						height: "17",
+						width: "208",
+						margin: "18,26,134,0",
+						text: _this2.lastSync,
+						textSize: "12",
+						color: "#FF969696",
+						gravity: "left", __source: {
+							fileName: _jsxFileName,
+							lineNumber: 167
+						}
+					})
+				);
+			};
+	
+			_this2.shareTelemetry = function () {
+				var shareCallback = callbackMapper.map(function (data) {
+					console.log(data);
+					if (data[0] != "failure") {
+						var input;
+						console.log("SHARE CALLBACK DATA", data[0]);
+	
+						input = [{
+							type: "file",
+							data: "file://" + data[0]
+						}];
+					} else {
+						window.__Snackbar.show("ERROR!");
+						return;
+					}
+					var sharePopUp = dom(SharePopup, {
+						data: input,
+						type: "TELEMETRY", __source: {
+							fileName: _jsxFileName,
+							lineNumber: 196
+						}
+					});
+					_this.replaceChild(_this.idSet.sharePopupContainer, sharePopUp.render(), 0);
+					window.__SharePopup.show();
+				});
+				JBridge.shareTelemetry(shareCallback);
+			};
+	
+			_this2.afterRender = function () {
+				JBridge.logSettingsScreenEvent("SETTINGS_DATASYNC");
+			};
+	
+			_this2.OPTION_TYPE = ["Off", "Over Wifi", "Always On"];
+			_this2.setIds(["parentId", "saveButton", "addressTypeRadio", "lastSyncTextView", "sharePopupContainer"]);
+			JBridge.getLastTelemetrySyncTime();
+	
+			_this2.state = state;
+			_this2.shouldCacheScreen = false;
+			console.log("state in DataSyncScreenActivity -> ", state);
+	
+			window.__DataSyncScreenActivity = _this2;
+			_this2.visible = true;
+			_this2.saveBtnState = {
+				text: window.__S.SAVE,
+				id: _this2.idSet.saveButton,
+				isClickable: "true",
+				onClick: _this2.handleSaveClick
+			};
+			_this2.lastSync = JBridge.getFromSharedPrefs("sync_time");
+			_this2.lastSync = _this2.lastSync == "__failed" ? "" : window.__S.LAST_SYNC + _this2.lastSync;
+			_this = _this2;
+	
+			_this2.optionTypeValue = [];
+			_this2.index = -1;
+			_this2.optionType = JBridge.getFromSharedPrefs("data_sync");
+			_this2.initializeData();
+			// window.__profileData = this.profileData;//testing
+			return _this2;
+		}
+	
+		_createClass(DataSyncScreenActivity, [{
+			key: "render",
+			value: function render() {
+				this.layout = dom(
+					RelativeLayout,
+					{
+						width: "match_parent",
+						height: "match_parent",
+						clickable: "true",
+						root: "true", __source: {
+							fileName: _jsxFileName,
+							lineNumber: 213
+						}
+					},
+					dom(
+						LinearLayout,
+						{
+							height: "match_parent",
+							width: "match_parent",
+							orientation: "vertical",
+							padding: "0,11,0,0",
+							background: "#FFFFFFFF",
+							cornerRadius: "0",
+							clickable: "true", __source: {
+								fileName: _jsxFileName,
+								lineNumber: 218
+							}
+						},
+						dom(SimpleToolbar, {
+							title: window.__S.DATA_SYNC,
+							afterRender: this.afterRender,
+							width: "match_parent",
+							onBackPress: this.onBackPressed, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 226
+							}
+						}),
+						dom(TextView, {
+							height: "20",
+							width: "136",
+							margin: "16,29,208,0",
+							text: window.__S.AUTOMATIC_SYNC,
+							textSize: "12",
+							color: "#FF969696",
+							lineHeight: "20px",
+							gravity: "left", __source: {
+								fileName: _jsxFileName,
+								lineNumber: 231
+							}
+						}),
+						dom(
+							LinearLayout,
+							{
+								height: "wrap_content",
+								width: "wrap_content",
+								padding: "16,0,0,0", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 240
+								}
+							},
+							dom(RadioButton, {
+								id: this.idSet.addressTypeRadio,
+								height: "wrap_content",
+								width: "wrap_content",
+								textSize: "14",
+								orientation: "vertical",
+								items: this.optionTypeValue,
+								defaultIndex: this.index,
+								onClick: this.handleRadioButtonClick, __source: {
+									fileName: _jsxFileName,
+									lineNumber: 244
+								}
+							})
+						),
+						dom(
+							LinearLayout,
+							{
+								id: this.idSet.lastSyncTextView,
+								height: "wrap_content",
+								width: "wrap_content",
+								orientation: "vertical",
+								padding: "16,0,0,0", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 254
+								}
+							},
+							dom(TextView, {
+								height: "17",
+								width: "208",
+								margin: "18,26,134,0",
+								text: this.lastSync,
+								textSize: "12",
+								color: "#FF969696",
+								gravity: "left", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 260
+								}
+							})
+						),
+						dom(
+							LinearLayout,
+							{
+								height: "38",
+								width: "match_parent",
+								orientation: "horizontal",
+								gravity: "center",
+								margin: "16,10,16,0", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 269
+								}
+							},
+							dom(
+								LinearLayout,
+								{
+									height: "38",
+									width: "match_parent",
+									orientation: "horizontal",
+									gravity: "center",
+									background: "#FF007AFF",
+									cornerRadius: "4",
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 275
+									}
+								},
+								dom(TextView, {
+									height: "19",
+									width: "68",
+									text: window.__S.SYNC_NOW,
+									textSize: "14",
+									onClick: this.onSyncNowClick,
+									color: "#FFFFFFFF",
+									gravity: "left", __source: {
+										fileName: _jsxFileName,
+										lineNumber: 283
+									}
+								})
+							)
+						),
+						dom(LinearLayout, {
+							height: "2",
+							width: "match_parent",
+							background: "#FFD7D7D7",
+							margin: "16,16,16,0",
+							cornerRadius: "0", __source: {
+								fileName: _jsxFileName,
+								lineNumber: 293
+							}
+						}),
+						dom(TextView, {
+							height: "17",
+							width: "108",
+							margin: "16,16,236,0",
+							onClick: this.shareTelemetry,
+							text: window.__S.SHARE_TELEMETRY,
+							textSize: "12",
+							color: "#FF0079FF",
+							gravity: "left", __source: {
+								fileName: _jsxFileName,
+								lineNumber: 299
+							}
+						}),
+						dom(LinearLayout, {
+							height: "match_parent",
+							width: "match_parent",
+							background: "#FFF2F2F2",
+							margin: "0,16,0,0",
+							cornerRadius: "0", __source: {
+								fileName: _jsxFileName,
+								lineNumber: 308
+							}
+						})
+					),
+					dom(LinearLayout, {
+						width: "match_parent",
+						height: "match_parent",
+						id: this.idSet.sharePopupContainer, __source: {
+							fileName: _jsxFileName,
+							lineNumber: 316
+						}
+					})
+				);
+				return this.layout.render();
+			}
+		}]);
+	
+		return DataSyncScreenActivity;
+	}(View);
+	
+	;
+	
+	module.exports = Connector(DataSyncScreenActivity);
+
+/***/ }),
+/* 419 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var HorizontalScrollView = __webpack_require__(357);
+	var Spinner = __webpack_require__(394);
+	var TextView = __webpack_require__(342);
+	var ImageView = __webpack_require__(350);
+	
+	var MultiSelectSpinner = function (_View) {
+	  _inherits(MultiSelectSpinner, _View);
+	
+	  function MultiSelectSpinner(props, children) {
+	    _classCallCheck(this, MultiSelectSpinner);
+	
+	    var _this = _possibleConstructorReturn(this, (MultiSelectSpinner.__proto__ || Object.getPrototypeOf(MultiSelectSpinner)).call(this, props, children));
+	
+	    _this.handleItemClick = function () {
+	      if (parseInt(arguments.length <= 2 ? undefined : arguments[2]) > 0) {
+	        var selectedValue = _this.data[parseInt(arguments.length <= 2 ? undefined : arguments[2])];
+	        _this.data.splice(_this.data.indexOf(selectedValue), 1);
+	        _this.selectedData.push(selectedValue);
+	
+	        _this.replaceChild(_this.idSet.spinnerContainer, _this.getUi().render(), 0);
+	        _this.onItemChange(_this.selectedData);
+	      }
+	    };
+	
+	    _this.handleRemoveClick = function (item) {
+	      _this.selectedData.splice(_this.selectedData.indexOf(item), 1);
+	      _this.data.push(item);
+	
+	      _this.replaceChild(_this.idSet.spinnerContainer, _this.getUi().render(), 0);
+	      _this.onItemChange(_this.selectedData);
+	    };
+	
+	    _this.getExtraLayout = function () {
+	      if (_this.props.addLayout != undefined && _this.props.addLayout != "") {
+	        return _this.props.addLayout;
+	      }
+	      return dom(LinearLayout, {
+	        __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 151
+	        }
+	      });
+	    };
+	
+	    _this.setIds(["spinnerContainer", "spinner", "horizontalScrollContainer", "selectedValueContainer"]);
+	
+	    _this.hint = props.hint;
+	    _this.data = props.data;
+	    _this.selectedData = props.selectedData ? props.selectedData : new Array();
+	    _this.addLayout = props.addLayout;
+	
+	    if (_this.selectedData.length > 0) {
+	      _this.selectedData.map(function (value) {
+	        _this.data.splice(_this.data.indexOf(value), 1);
+	      });
+	    }
+	
+	    _this.onItemChange = props.onItemChange;
+	    return _this;
+	  }
+	
+	  _createClass(MultiSelectSpinner, [{
+	    key: "getSelectedItemListView",
+	    value: function getSelectedItemListView() {
+	      var _this2 = this;
+	
+	      if (this.selectedData.length == 0) {
+	        return dom(LinearLayout, {
+	          width: "wrap_content",
+	          height: "wrap_content", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 60
+	          }
+	        });
+	      }
+	
+	      var itemListView = this.selectedData.map(function (item) {
+	        return dom(
+	          LinearLayout,
+	          {
+	            height: "wrap_content",
+	            width: "wrap_content",
+	            padding: "12,4,12,4",
+	            margin: "0,0,10,0",
+	            cornerRadius: "16,16,16,16",
+	            background: window.__Colors.DARK_GRAY_44,
+	            gravity: "center", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 68
+	            }
+	          },
+	          dom(TextView, {
+	            height: "wrap_content",
+	            width: "wrap_content",
+	            text: item,
+	            margin: "0,0,4,0",
+	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 77
+	            }
+	          }),
+	          dom(ImageView, {
+	            height: "15",
+	            width: "15",
+	            imageUrl: "ic_action_close",
+	            margin: "0,1,0,0",
+	            onClick: function onClick() {
+	              _this2.handleRemoveClick(item);
+	            },
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 84
+	            }
+	          })
+	        );
+	      });
+	
+	      return itemListView;
+	    }
+	  }, {
+	    key: "getSpinnerComponent",
+	    value: function getSpinnerComponent() {
+	      var spinnerItem = this.data.join(", ");
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          cornerRadius: "4",
+	          padding: "0,8,8,8",
+	          margin: "4,0,4,0",
+	          stroke: "2," + window.__Colors.PRIMARY_BLACK_66, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 103
+	          }
+	        },
+	        dom(Spinner, {
+	          id: this.idSet.spinner,
+	          width: "match_parent",
+	          height: "24",
+	          margin: "0,0,5,6",
+	          values: spinnerItem,
+	          onItemClick: this.handleItemClick,
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 111
+	          }
+	        })
+	      );
+	    }
+	  }, {
+	    key: "getSelectedView",
+	    value: function getSelectedView() {
+	      var itemList = this.getSelectedItemListView();
+	
+	      return dom(
+	        HorizontalScrollView,
+	        {
+	          id: this.idSet.horizontalScrollContainer,
+	          height: "wrap_content",
+	          width: "match_parent",
+	          margin: "4, 4, 4, 4", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 129
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            id: this.idSet.selectedValueContainer,
+	            height: "match_parent",
+	            width: "match_parent",
+	            orientation: "horizontal", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 134
+	            }
+	          },
+	          itemList
+	        )
+	      );
+	    }
+	  }, {
+	    key: "getUi",
+	    value: function getUi() {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "horizontal", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 156
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            weight: "1",
+	            height: "wrap_content",
+	            orientation: "vertical", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 160
+	            }
+	          },
+	          this.getSpinnerComponent(),
+	          this.getSelectedView()
+	        ),
+	        this.getExtraLayout()
+	      );
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          id: this.idSet.spinnerContainer,
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 174
+	          }
+	        },
+	        this.getUi()
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return MultiSelectSpinner;
+	}(View);
+	
+	module.exports = MultiSelectSpinner;
+
+/***/ }),
+/* 420 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SharePopup.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var View = __webpack_require__(331);
+	var LinearLayout = __webpack_require__(333);
+	var RelativeLayout = __webpack_require__(340);
+	var FrameLayout = __webpack_require__(351).androidViews.FrameLayout;
+	var ImageView = __webpack_require__(350);
+	var ScrollView = __webpack_require__(358);
+	var TextView = __webpack_require__(342);
+	var CheckBox = __webpack_require__(361);
+	var EditText = __webpack_require__(363);
+	var HorizontalScrollView = __webpack_require__(357);
+	var Space = __webpack_require__(366);
+	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
+	var callbackMapper = __webpack_require__(329);
+	var utils = __webpack_require__(397);
+	var Styles = __webpack_require__(347);
+	var IconStyle = Styles.Params.IconStyle;
+	var _this;
+	
+	var SharePopup = function (_View) {
+	  _inherits(SharePopup, _View);
+	
+	  function SharePopup(props, children) {
+	    _classCallCheck(this, SharePopup);
+	
+	    var _this2 = _possibleConstructorReturn(this, (SharePopup.__proto__ || Object.getPrototypeOf(SharePopup)).call(this, props, children));
+	
+	    _this2.show = function () {
+	      _this2.setVisibility("visible");
+	      _this2.isVisible = true;
+	      _this2.logTelelmetry(_this2.props.identifier);
+	    };
+	
+	    _this2.logTelelmetry = function (id) {
+	      var callback = callbackMapper.map(function (data) {
+	        if (data != "__failed") {
+	          data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
+	          console.log("telemetry data SharePopUp", data);
+	          JBridge.logshareScreenEvent(id, data.contentData.pkgVersion);
+	        }
+	      });
+	      JBridge.getContentDetails(id, callback, false);
+	    };
+	
+	    _this2.hide = function () {
+	      _this2.setVisibility("gone");
+	      _this2.isVisible = false;
+	    };
+	
+	    _this2.getVisible = function () {
+	      return _this2.isVisible;
+	    };
+	
+	    _this2.setVisibility = function (data) {
+	      var cmd = _this2.set({
+	        id: _this2.idSet.parentContainer,
+	        visibility: data
+	      });
+	
+	      Android.runInUI(cmd, 0, "73", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSharePopupjs");
+	    };
+	
+	    _this2.getLineSeperator = function () {
+	      return dom(LinearLayout, {
+	        width: "match_parent",
+	        height: "1",
+	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 79
+	        }
+	      });
+	    };
+	
+	    _this2.getContent = function () {
+	      var fileLinkAvailable;
+	      var textLinkAvailable;
+	
+	      _this2.props.data.map(function (item, index) {
+	
+	        if (item.type == "file") {
+	          // JBridge.logShareClickEvent("FILE");
+	          fileLinkAvailable = true;
+	        } else if (item.type == "text") {
+	          // JBridge.logShareClickEvent("LINK");
+	          textLinkAvailable = true;
+	        }
+	      });
+	
+	      return dom(
+	        ScrollView,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 105
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            orientation: "vertical",
+	            width: "match_parent",
+	            height: "wrap_content", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 109
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              orientation: "vertical",
+	              visibility: textLinkAvailable ? "visibile" : "gone", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 114
+	              }
+	            },
+	            dom(TextView, {
+	              margin: "0,25,0,12",
+	              width: "match_parent",
+	              style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK,
+	              height: "wrap_content",
+	              text: window.__S.AS_LINK, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 120
+	              }
+	            }),
+	            dom(
+	              HorizontalScrollView,
+	              {
+	                width: "wrap_content",
+	                height: "wrap_content",
+	                scrollBarX: "false",
+	                fillViewport: "true", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 128
+	                }
+	              },
+	              dom(LinearLayout, {
+	                width: "wrap_content",
+	                id: _this2.idSet.linkShareIntents,
+	                height: "wrap_content", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 134
+	                }
+	              })
+	            )
+	          ),
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              orientation: "vertical",
+	              visibility: fileLinkAvailable ? "visibile" : "gone", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 144
+	              }
+	            },
+	            dom(TextView, {
+	              margin: "0,25,0,12",
+	              width: "match_parent",
+	              style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK,
+	              height: "wrap_content",
+	              text: window.__S.AS_FILE, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 150
+	              }
+	            }),
+	            dom(
+	              HorizontalScrollView,
+	              {
+	                width: "wrap_content",
+	                height: "wrap_content",
+	                scrollBarX: "false",
+	                fillViewport: "true", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 158
+	                }
+	              },
+	              dom(LinearLayout, {
+	                width: "wrap_content",
+	                id: _this2.idSet.fileShareIntents,
+	                height: "wrap_content", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 164
+	                }
+	              })
+	            )
+	          )
+	        )
+	      );
+	    };
+	
+	    _this2.getHeader = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          gravity: "center_vertical",
+	          margin: "0,0,0,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 183
+	          }
+	        },
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          gravity: "center_vertical",
+	          text: window.__S.SHARE_THIS,
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 189
+	          }
+	        }),
+	        dom(ViewWidget, {
+	          width: "0",
+	          weight: "1",
+	          height: "0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 196
+	          }
+	        }),
+	        dom(ImageView, {
+	          width: "18",
+	          height: "18",
+	          onClick: _this2.handleDismissClick,
+	          gravity: "center_vertical",
+	          imageUrl: "ic_action_close", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 201
+	          }
+	        })
+	      );
+	    };
+	
+	    _this2.getBody = function () {
+	      return dom(
+	        LinearLayout,
+	        {
+	          cornerRadius: "2",
+	          width: "match_parent",
+	          height: "350",
+	          root: "true",
+	          visibility: "visible",
+	          orientation: "vertical",
+	          clickable: "true",
+	          padding: "16,18,16,16",
+	          background: "#ffffff", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 215
+	          }
+	        },
+	        _this2.getHeader(),
+	        _this2.getContent()
+	      );
+	    };
+	
+	    _this2.handleDismissClick = function () {
+	      _this2.hide();
+	    };
+	
+	    _this2.shareContent = function () {
+	
+	      _this.props.data.map(function (item, index) {
+	        if (item.type == "file") {
+	          JBridge.shareContentThroughIntent(item.data, "file", _this.idSet.fileShareIntents, _this2.props.identifier, _this2.props.type);
+	        } else if (item.type == "text") {
+	          JBridge.shareContentThroughIntent(item.data, "text", _this.idSet.linkShareIntents, _this2.props.identifier, _this2.props.type);
+	        }
+	      });
+	    };
+	
+	    _this2.afterRender = function () {
+	      _this2.shareContent();
+	    };
+	
+	    _this2.setIds(["chooseItemContainer", "featureContainer", "parentContainer", "contentContainer", "spinnerContainer", "linkShareIntents", "fileShareIntents"]);
+	    _this2.chosenItem;
+	    _this2.selectedList = [];
+	    _this = _this2;
+	    window.__SharePopup = _this2;
+	    console.log("SHARE POPUP CME");
+	    _this2.isVisible = false;
+	    return _this2;
+	  }
+	
+	  _createClass(SharePopup, [{
+	    key: "render",
+	    value: function render() {
+	
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          height: "match_parent",
+	          width: "match_parent",
+	          id: this.idSet.parentContainer,
+	          visibility: "gone",
+	          afterRender: this.afterRender,
+	          root: "true",
+	          background: window.__Colors.PRIMARY_BLACK_44,
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 262
+	          }
+	        },
+	        dom(LinearLayout, {
+	          height: "0",
+	          width: "match_parent",
+	          onClick: this.handleDismissClick,
+	          weight: "1", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 271
+	          }
+	        }),
+	        this.getBody()
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return SharePopup;
+	}(View);
+	
+	module.exports = SharePopup;
+
+/***/ }),
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26861,23 +28469,24 @@
 	var ViewPager = __webpack_require__(351).androidViews.ViewPager;
 	var ViewWidget = __webpack_require__(349);
 	var ScrollView = __webpack_require__(358);
-	var BottomNavBar = __webpack_require__(417);
-	var HomeFragment = __webpack_require__(418);
-	var CourseFragment = __webpack_require__(433);
-	var ResourceFragment = __webpack_require__(438);
-	var CommunityFragment = __webpack_require__(441);
-	var ProfileFragment = __webpack_require__(445);
-	var ContentLoadingComponent = __webpack_require__(459);
-	var FeedParams = __webpack_require__(460);
+	var BottomNavBar = __webpack_require__(422);
+	var HomeFragment = __webpack_require__(423);
+	var CourseFragment = __webpack_require__(438);
+	var ResourceFragment = __webpack_require__(443);
+	var CommunityFragment = __webpack_require__(446);
+	var ProfileFragment = __webpack_require__(450);
+	var ContentLoadingComponent = __webpack_require__(464);
+	var FeedParams = __webpack_require__(465);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
-	var debounce = __webpack_require__(409);
+	var debounce = __webpack_require__(410);
 	var utils = __webpack_require__(397);
 	var Str = __webpack_require__(405);
+	var questionsF = __webpack_require__(466);
 	
 	window.R = __webpack_require__(7);
 	
-	var mockResponse = __webpack_require__(461);
+	var mockResponse = __webpack_require__(467);
 	
 	var _this;
 	
@@ -26924,14 +28533,19 @@
 	
 	    // window.handleChangeLang = this.handleChangeLang; //added for testing
 	
-	    window.__questions = [{
-	      question: "What grade do you teach?",
-	      option: "SELECT GRADES",
-	      values: ["K.G.", "Grade1", "Grade2", "Grade3", "Grade4", "Grade5", "Grade6", "Grade7", "Grade8", "Grade9", "Grade10", "Grade11", "Grade12"],
-	      selected: [],
-	      isCurr: true,
-	      selectorType: "checkbox"
-	    }];
+	    var cb = callbackMapper.map(function (data) {
+	      console.log("framework -> ", data[0]);
+	      if (data[0] != "__failed") {
+	        var framework = JSON.parse(data[0]);
+	        console.log("framework -> ", framework);
+	        window.__questionStore = new questionsF(framework);
+	        if (_this.contentLayout && _this.contentLayout.getQuestionsComponent) {
+	          _this.contentLayout.getQuestionsComponent();
+	          console.log("called to render in current screen");
+	        }
+	      }
+	    });
+	    JBridge.getFrameworkDetails(cb);
 	    return _this2;
 	  }
 	
@@ -26948,7 +28562,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 522
+	            lineNumber: 528
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -26959,14 +28573,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 529
+	            lineNumber: 535
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 536
+	              lineNumber: 542
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -26977,7 +28591,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 537
+	              lineNumber: 543
 	            }
 	          })
 	        )
@@ -26996,7 +28610,7 @@
 	  this.onPop = function () {
 	    console.log("onPop called in MainActivity");
 	
-	    Android.runInUI(_this3.animateView(), null, "85", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "90", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -27203,7 +28817,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 291
+	            lineNumber: 296
 	          }
 	        });
 	
@@ -27217,7 +28831,7 @@
 	          response: data,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 308
+	            lineNumber: 313
 	          }
 	        });
 	
@@ -27231,7 +28845,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 320
+	            lineNumber: 325
 	          }
 	        });
 	
@@ -27250,6 +28864,7 @@
 	      //   break;
 	      case 3:
 	        // if (!data.sendBack) JBridge.logTabClickEvent("PROFILE");
+	        JBridge.logTabClickEvent("PROFILE");
 	        _this3.contentLayout = dom(ProfileFragment, {
 	          height: "match_parent",
 	          root: "true",
@@ -27258,7 +28873,7 @@
 	          editable: "true",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 344
+	            lineNumber: 350
 	          }
 	        });
 	        break;
@@ -27268,7 +28883,7 @@
 	          LinearLayout,
 	          { height: "match_parent", root: "true", width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 356
+	              lineNumber: 362
 	            }
 	          },
 	          dom(TextView, {
@@ -27280,7 +28895,7 @@
 	            gravity: "center",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 357
+	              lineNumber: 363
 	            }
 	          })
 	        );
@@ -27293,7 +28908,7 @@
 	      contentLayout: _this3.contentLayout,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 370
+	        lineNumber: 376
 	      }
 	    });
 	
@@ -27341,7 +28956,7 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 415
+	          lineNumber: 421
 	        }
 	      },
 	      dom(ViewWidget, {
@@ -27350,7 +28965,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 421
+	          lineNumber: 427
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -27425,7 +29040,7 @@
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 499
+	        lineNumber: 505
 	      }
 	    });
 	
@@ -27447,7 +29062,7 @@
 	module.exports = Connector(MainActivity);
 
 /***/ }),
-/* 417 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27716,7 +29331,7 @@
 	module.exports = BottomNavBar;
 
 /***/ }),
-/* 418 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27738,25 +29353,25 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var LineSpacer = __webpack_require__(419);
+	var LineSpacer = __webpack_require__(424);
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var View = __webpack_require__(331);
-	var CourseInProgressContainer = __webpack_require__(420);
+	var CourseInProgressContainer = __webpack_require__(425);
 	var HorizontalProgressBar = __webpack_require__(403);
 	var utils = __webpack_require__(397);
 	var Button = __webpack_require__(380);
-	var HomeQuestionCardStyle = __webpack_require__(421);
-	var AnnouncementCard = __webpack_require__(422);
-	var CommunityParams = __webpack_require__(423);
+	var HomeQuestionCardStyle = __webpack_require__(426);
+	var AnnouncementCard = __webpack_require__(427);
+	var CommunityParams = __webpack_require__(428);
 	
 	window.R = __webpack_require__(7);
 	
-	var SearchToolbar = __webpack_require__(424);
+	var SearchToolbar = __webpack_require__(429);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var HomeRecommendedContainer = __webpack_require__(427);
-	var HomeTodoContainer = __webpack_require__(431);
+	var HomeRecommendedContainer = __webpack_require__(432);
+	var HomeTodoContainer = __webpack_require__(436);
 	
 	var HomeFragment = function (_View) {
 	  _inherits(HomeFragment, _View);
@@ -27792,6 +29407,7 @@
 	    _this.handleUserCoursesClick = function (content, type) {
 	      var whatToSend = { "course": JSON.stringify(content) };
 	      var event = { tag: 'OPEN_EnrolledCourseActivity', contents: whatToSend };
+	      JBridge.logVisitEvent("HOME");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -27845,10 +29461,13 @@
 	        var searchDetails = { filterDetails: "", searchType: "Combined" };
 	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
+	        JBridge.logVisitEvent("HOME");
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_scanqr") {
+	        JBridge.logQRIconClicked();
 	        var whatToSend = [];
 	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
+	        JBridge.logVisitEvent(window.__S.HOME_BNAV);
 	        window.__runDuiCallback(event);
 	      }
 	    };
@@ -27857,12 +29476,14 @@
 	      console.log("resourceDetails");
 	      var whatToSend = { "resourceDetails": "nothing" };
 	      var event = { tag: "OPEN_ResourceDetailActivity", contents: whatToSend };
+	      JBridge.logVisitEvent("HOME");
 	      window.__runDuiCallback(event);
 	    };
 	
 	    _this.handleCourseOpen = function (data) {
 	      var whatToSend = { "course": "something" };
 	      var event = { tag: "OPEN_CourseInfoActivity", contents: whatToSend };
+	      JBridge.logVisitEvent("HOME");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -27882,7 +29503,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 166
+	            lineNumber: 177
 	          }
 	        });
 	      }
@@ -27892,7 +29513,7 @@
 	        return dom(LinearLayout, {
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 172
+	            lineNumber: 182
 	          }
 	        });
 	      }
@@ -27955,7 +29576,7 @@
 	            return _this.handleEditProfileClick(data.missingFields[index]);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 211
+	            lineNumber: 221
 	          }
 	        },
 	        dom(
@@ -27967,7 +29588,7 @@
 	            stroke: "2," + window.__Colors.PRIMARY_BLACK_66,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 217
+	              lineNumber: 227
 	            }
 	          },
 	          dom(HorizontalProgressBar, {
@@ -27978,7 +29599,7 @@
 	            currentProgress: data.completeness,
 	            totalProgress: 100, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 223
+	              lineNumber: 233
 	            }
 	          }),
 	          dom(
@@ -27988,7 +29609,7 @@
 	              height: "match_parent",
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 230
+	                lineNumber: 240
 	              }
 	            },
 	            dom(ImageView, {
@@ -27999,7 +29620,7 @@
 	              stroke: "2," + "#d8d8d8",
 	              cornerRadius: "37", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 234
+	                lineNumber: 244
 	              }
 	            }),
 	            dom(
@@ -28011,7 +29632,7 @@
 	                margin: "8,20,16,20",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 241
+	                  lineNumber: 251
 	                }
 	              },
 	              dom(TextView, {
@@ -28021,7 +29642,7 @@
 	                text: window.__S.STRENGTHEN_YOUR_PROFILE,
 	                style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 247
+	                  lineNumber: 257
 	                }
 	              }),
 	              dom(TextView, {
@@ -28032,7 +29653,7 @@
 	                text: utils.cropText(window.__S.ADD + " " + editButtonText, 14),
 	                style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 253
+	                  lineNumber: 263
 	                }
 	              })
 	            )
@@ -28045,7 +29666,7 @@
 	            height: "match_parent",
 	            margin: "0,8,0,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 263
+	              lineNumber: 273
 	            }
 	          },
 	          dom(
@@ -28055,7 +29676,7 @@
 	              padding: "0,0,8,0",
 	              height: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 267
+	                lineNumber: 277
 	              }
 	            },
 	            dom(TextView, {
@@ -28064,7 +29685,7 @@
 	              text: window.__S.YOUR_PROFILE_IS.format(data.completeness),
 	              style: window.__TextStyle.textStyle.HINT.TINY, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 271
+	                lineNumber: 281
 	              }
 	            })
 	          ),
@@ -28077,7 +29698,7 @@
 	              return _this.handleEditProfileClick(data.missingFields[index]);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 277
+	              lineNumber: 287
 	            }
 	          })
 	        )
@@ -28094,19 +29715,19 @@
 	      var cards = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 295
+	          lineNumber: 305
 	        }
 	      });
 	      var card1 = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 296
+	          lineNumber: 306
 	        }
 	      }),
 	          card2 = dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 296
+	          lineNumber: 306
 	        }
 	      });
 	      var announcementApiData = JBridge.getSavedData(_this.announcementsDataTag);
@@ -28119,7 +29740,7 @@
 	            height: "wrap_content",
 	            background: window.__Colors.PRIMARY_LIGHT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 301
+	              lineNumber: 310
 	            }
 	          },
 	          dom(TextView, {
@@ -28128,7 +29749,7 @@
 	            gravity: "center",
 	            text: window.__S.NO_ANNOUNCEMENTS, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 305
+	              lineNumber: 314
 	            }
 	          })
 	        );
@@ -28142,7 +29763,7 @@
 	            },
 	            params: announcementApiData.announcements[0], __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 316
+	              lineNumber: 325
 	            }
 	          });
 	        }
@@ -28154,7 +29775,7 @@
 	            },
 	            params: announcementApiData.announcements[1], __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 324
+	              lineNumber: 333
 	            }
 	          });
 	        }
@@ -28165,14 +29786,14 @@
 	            width: "match_parent",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 331
+	              lineNumber: 340
 	            }
 	          },
 	          card1,
 	          dom(LineSpacer, {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 336
+	              lineNumber: 345
 	            }
 	          }),
 	          card2
@@ -28186,7 +29807,7 @@
 	          orientation: "vertical",
 	          background: window.__Colors.LIGHT_GRAY, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 342
+	            lineNumber: 351
 	          }
 	        },
 	        dom(
@@ -28196,7 +29817,7 @@
 	            height: "wrap_content",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 347
+	              lineNumber: 356
 	            }
 	          },
 	          dom(TextView, {
@@ -28206,7 +29827,7 @@
 	            text: window.__S.ANNOUNCEMENT,
 	            style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 351
+	              lineNumber: 360
 	            }
 	          }),
 	          dom(TextView, {
@@ -28221,7 +29842,7 @@
 	            text: window.__S.VIEW_ALL,
 	            style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 357
+	              lineNumber: 366
 	            }
 	          })
 	        ),
@@ -28236,6 +29857,7 @@
 	      };
 	      var whatToSend = { "announcementDetails": JSON.stringify(data) };
 	      var event = { tag: "OPEN_AnnouncementViewAllActivity", contents: whatToSend };
+	      JBridge.logVisitEvent("HOME");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -28248,7 +29870,7 @@
 	        title: window.__S.TO_DO,
 	        onCourseClick: _this.handleUserCoursesClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 384
+	          lineNumber: 394
 	        }
 	      });
 	      return _this.courseInProgressContainer;
@@ -28267,28 +29889,29 @@
 	            weight: "1",
 	            clickable: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 398
+	              lineNumber: 408
 	            }
 	          },
 	          dom(LinearLayout, {
 	            width: "match_parent",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 406
+	              lineNumber: 416
 	            }
 	          }),
 	          dom(HomeQuestionCardStyle, {
+	            fromWhere: "HOME",
 	            headerText: window.__S.OVERLAY_LABEL_HOME,
 	            infoText: window.__S.OVERLAY_INFO_TEXT_HOME, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 409
+	              lineNumber: 419
 	            }
 	          }),
 	          dom(LinearLayout, {
 	            width: "match_parent",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 412
+	              lineNumber: 423
 	            }
 	          })
 	        );
@@ -28296,13 +29919,15 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 418
+	            lineNumber: 429
 	          }
 	        });
 	      }
 	    };
 	
 	    _this.afterRender = function () {
+	      JBridge.getViews(_this.idSet.scrollViewContainerHome + "");
+	
 	      _this.getAnnouncemetData();
 	    };
 	
@@ -28314,14 +29939,14 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 484
+	            lineNumber: 499
 	          }
 	        },
 	        _this.getAnnouncementCard(),
 	        dom(LineSpacer, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 489
+	            lineNumber: 504
 	          }
 	        })
 	      );
@@ -28355,20 +29980,20 @@
 	          whatToSend = { "profile": JSON.stringify(_this.profileData.result.response) };
 	          event = { tag: "OPEN_EditProfileActivity", contents: whatToSend };
 	      }
+	      JBridge.logVisitEvent("HOME");
 	      window.__runDuiCallback(event);
 	    };
 	
 	    _this.screenName = "HomeFragment";
 	    _this.menuData = {
-	      url: [
-	      // { imageUrl: "ic_scanqr"}, // hide qr scanner feature
-	      { imageUrl: "ic_action_search" }]
+	      url: [{ imageUrl: "ic_scanqr" }, { imageUrl: "ic_action_search" }]
 	    };
 	    JBridge.logTabScreenEvent("HOME");
 	    _this.profileData = "";
 	    _this.profileUpdateCardVisibility = "gone";
 	    _this.announcementsDataTag = "savedAnnouncements";
-	    _this.setIds(["announcementContainer"]);
+	    _this.setIds(["announcementContainer", "scrollViewContainerHome", "parentId"]);
+	    JBridge.clearMapId();
 	    return _this;
 	  }
 	
@@ -28382,6 +30007,7 @@
 	      this.layout = dom(
 	        LinearLayout,
 	        {
+	          id: this.idSet.parentId,
 	          orientation: "vertical",
 	          width: "match_parent",
 	          root: "true",
@@ -28389,7 +30015,7 @@
 	          height: "match_parent",
 	          afterRender: this.afterRender, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 433
+	            lineNumber: 446
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -28401,7 +30027,7 @@
 	          menuData: this.menuData,
 	          onMenuItemClick: this.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 440
+	            lineNumber: 454
 	          }
 	        }),
 	        dom(
@@ -28410,16 +30036,17 @@
 	            height: "match_parent",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 448
+	              lineNumber: 462
 	            }
 	          },
 	          dom(
 	            ScrollView,
 	            {
+	              id: this.idSet.scrollViewContainerHome,
 	              weight: "1",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 451
+	                lineNumber: 465
 	              }
 	            },
 	            dom(
@@ -28429,14 +30056,14 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 454
+	                  lineNumber: 469
 	                }
 	              },
 	              this.getCourseInProgressContainer(),
 	              dom(LineSpacer, {
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 459
+	                  lineNumber: 474
 	                }
 	              }),
 	              dom(
@@ -28447,14 +30074,14 @@
 	                  orientation: "vertical",
 	                  id: this.idSet.announcementContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 460
+	                    lineNumber: 475
 	                  }
 	                },
 	                this.getAnnouncementCard(),
 	                dom(LineSpacer, {
 	                  __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 466
+	                    lineNumber: 481
 	                  }
 	                })
 	              ),
@@ -28464,7 +30091,7 @@
 	                currComponentLocation: "HOME",
 	                onResourceOpenClick: this.handleResourceOpen, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 468
+	                  lineNumber: 483
 	                }
 	              })
 	            )
@@ -28482,7 +30109,7 @@
 	module.exports = HomeFragment;
 
 /***/ }),
-/* 419 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28534,7 +30161,7 @@
 	module.exports = LineSpacer;
 
 /***/ }),
-/* 420 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28569,6 +30196,10 @@
 	    _classCallCheck(this, CourseInProgressContainer);
 	
 	    var _this2 = _possibleConstructorReturn(this, (CourseInProgressContainer.__proto__ || Object.getPrototypeOf(CourseInProgressContainer)).call(this, props, children));
+	
+	    _this2.afterRender = function () {
+	      _this2.fetchFromServer();
+	    };
 	
 	    _this2.fetchFromServer = function () {
 	      console.log("fetchFromServer");
@@ -28614,7 +30245,7 @@
 	            text: window.__S.ERROR_NO_COURSES_ENROLLED,
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 75
+	              lineNumber: 80
 	            }
 	          });
 	        } else {
@@ -28626,7 +30257,7 @@
 	          visibility: isDataEmpty ? "gone" : "visible"
 	        });
 	
-	        Android.runInUI(cmd, 0, "91", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
+	        Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
 	
 	        layout = dom(
 	          LinearLayout,
@@ -28636,7 +30267,7 @@
 	            width: "match_parent",
 	            padding: "0,0,16,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 94
+	              lineNumber: 99
 	            }
 	          },
 	          layout1
@@ -28653,7 +30284,7 @@
 	            width: "match_parent",
 	            padding: "0,0,16,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 107
+	              lineNumber: 112
 	            }
 	          },
 	          _this2.getExtraLayout(),
@@ -28664,6 +30295,7 @@
 	      _this2.replaceChild(_this2.idSet.parentContainer, layout.render(), 0);
 	      window.__ContentLoadingComponent.hideLoader();
 	      window.__LoaderDialog.hide();
+	      JBridge.setMapId(_this2.idSet.parentId + "", _this2.props.title || window.__S.COURSES_IN_PROGRESS, window.__S.COURSES_IN_PROGRESS_2, "0");
 	    };
 	
 	    _this2.formatBytes = function (bytes) {
@@ -28696,7 +30328,7 @@
 	        index: index,
 	        onCardClick: _this2.handleCardClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 149
+	          lineNumber: 155
 	        }
 	      });
 	    };
@@ -28739,7 +30371,7 @@
 	        return dom(LinearLayout, {
 	          visibility: "gone", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 237
+	            lineNumber: 243
 	          }
 	        });
 	      }
@@ -28748,7 +30380,7 @@
 	
 	    _this = _this2;
 	    console.log("CourseInProgressContainer", _this2.props);
-	    _this2.setIds(["parentContainer", "progressContainer", "viewAllContainer"]);
+	    _this2.setIds(["parentId", "parentContainer", "progressContainer", "viewAllContainer"]);
 	    _this2.displayName = "course_in_progress_container";
 	
 	    _this2.appendAtPosition = 0;
@@ -28768,7 +30400,7 @@
 	          margin: "16,16,16,16",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 158
+	            lineNumber: 164
 	          }
 	        },
 	        dom(TextView, {
@@ -28777,7 +30409,7 @@
 	          text: this.props.title,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 164
+	            lineNumber: 170
 	          }
 	        }),
 	        dom(ViewWidget, {
@@ -28785,7 +30417,7 @@
 	          height: "0",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 170
+	            lineNumber: 176
 	          }
 	        }),
 	        dom(TextView, {
@@ -28797,7 +30429,7 @@
 	          onClick: this.handleViewAllClick,
 	          style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 175
+	            lineNumber: 181
 	          }
 	        })
 	      );
@@ -28808,14 +30440,15 @@
 	      this.layout = dom(
 	        LinearLayout,
 	        {
+	          id: this.idSet.parentId,
 	          height: "wrap_content",
 	          width: "match_parent",
 	          visibility: window.__loggedInState != "GUEST" ? "visible" : "gone",
-	          afterRender: this.fetchFromServer,
+	          afterRender: this.afterRender,
 	          background: this.props.transparent ? window.__Colors.WHITE_F2 : window.__Colors.WHITE,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 247
+	            lineNumber: 253
 	          }
 	        },
 	        this.getHeader(),
@@ -28827,7 +30460,7 @@
 	            scrollBarX: "false",
 	            fillViewport: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 257
+	              lineNumber: 264
 	            }
 	          },
 	          dom(
@@ -28839,13 +30472,13 @@
 	              orientation: "horizontal",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 263
+	                lineNumber: 270
 	              }
 	            },
 	            dom(CircularLoader, {
 	              margin: "0,16,0,16", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 269
+	                lineNumber: 276
 	              }
 	            })
 	          )
@@ -28862,7 +30495,7 @@
 	module.exports = CourseInProgressContainer;
 
 /***/ }),
-/* 421 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28910,15 +30543,21 @@
 					id: _this2.idSet.parentId,
 					visibility: data
 				});
-				Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdHomeQuestionCardStylejs");
+				Android.runInUI(cmd, 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdHomeQuestionCardStylejs");
 			};
 	
 			_this2.onPop = function () {};
 	
 			_this2.handleLoginClick = function () {
+				if (_this2.props.fromWhere && _this2.props.fromWhere != "") JBridge.logGuestEvent(_this2.props.fromWhere);
+	
 				JBridge.setInSharedPrefs("goToOnLogin", _this2.props.currComponentLocation);
 				console.log(window.__loginUrl, "/auth/realms/sunbird/protocol/openid-connect/auth ", "android");
 				JBridge.keyCloakLogin(window.__loginUrl + "/auth/realms/sunbird/protocol/openid-connect/auth", "android");
+			};
+	
+			_this2.afterRender = function () {
+				JBridge.logSettingsScreenEvent("SIGNIN_OVERLAY");
 			};
 	
 			_this2.render = function () {
@@ -28933,9 +30572,10 @@
 						padding: "16,16,16,16",
 						cornerRadius: "5",
 						clickable: "true",
+						afterRender: _this2.afterRender,
 						root: true, __source: {
 							fileName: _jsxFileName,
-							lineNumber: 60
+							lineNumber: 65
 						}
 					},
 					dom(TextView, {
@@ -28947,11 +30587,10 @@
 						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
 						__source: {
 							fileName: _jsxFileName,
-							lineNumber: 70
+							lineNumber: 76
 						}
 					}),
 					dom(TextView, {
-						id: _this2.setIds.LOCK_INFO_TEXT,
 						height: "match_parent",
 						width: "match_parent",
 						padding: "0,16,0,16",
@@ -28961,7 +30600,7 @@
 						gravity: _this2.props.gravity ? _this2.props.gravity : "center",
 						__source: {
 							fileName: _jsxFileName,
-							lineNumber: 78
+							lineNumber: 84
 						}
 					}),
 					dom(
@@ -28971,7 +30610,7 @@
 							width: "match_parent",
 							onClick: _this2.handleLoginClick, __source: {
 								fileName: _jsxFileName,
-								lineNumber: 88
+								lineNumber: 93
 							}
 						},
 						dom(TextView, {
@@ -28985,7 +30624,7 @@
 							style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 							text: window.__S.SIGN_IN, __source: {
 								fileName: _jsxFileName,
-								lineNumber: 92
+								lineNumber: 97
 							}
 						})
 					)
@@ -28994,7 +30633,7 @@
 				return _this2.layout.render();
 			};
 	
-			_this2.setIds(["LOCK_SIGN_IN", "LOCK_LABEL", "LOCK_INFO_TEXT", "parentId"]);
+			_this2.setIds(["parentId"]);
 			_this2.state = state;
 			_this2.screenName = "HomeQuestionCardStyle";
 			window.__HomeQuestionCardStyle = _this2;
@@ -29013,7 +30652,7 @@
 	module.exports = HomeQuestionCardStyle;
 
 /***/ }),
-/* 422 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29066,7 +30705,7 @@
 	        background: window.__Colors.PRIMARY_BLACK_66,
 	        style: window.__TextStyle.textStyle.SYMBOL.STATUSBAR.LABEL, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 33
+	          lineNumber: 34
 	        }
 	      });
 	    };
@@ -29085,7 +30724,7 @@
 	          padding: "0,0,0,10",
 	          visibility: content == "" ? "gone" : "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 122
+	            lineNumber: 123
 	          }
 	        },
 	        dom(TextView, {
@@ -29096,7 +30735,7 @@
 	          padding: "0,0,7,2",
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 127
+	            lineNumber: 128
 	          }
 	        }),
 	        dom(TextView, {
@@ -29110,7 +30749,7 @@
 	          text: window.__S.READ_MORE,
 	          style: window.__TextStyle.textStyle.CLICKABLE.BLUE_SEMI, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 134
+	            lineNumber: 135
 	          }
 	        })
 	      );
@@ -29133,7 +30772,7 @@
 	          },
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 154
+	            lineNumber: 155
 	          }
 	        },
 	        dom(ImageView, {
@@ -29141,7 +30780,7 @@
 	          width: "18",
 	          imageUrl: "ic_action_link", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 161
+	            lineNumber: 162
 	          }
 	        }),
 	        dom(TextView, {
@@ -29152,7 +30791,7 @@
 	          text: link,
 	          style: window.__TextStyle.textStyle.CLICKABLE.BLUE_SEMI, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 165
+	            lineNumber: 166
 	          }
 	        })
 	      );
@@ -29181,7 +30820,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 197
+	            lineNumber: 198
 	          }
 	        });
 	      }
@@ -29197,7 +30836,7 @@
 	          visibility: _this.hasAttachments ? "visible" : "gone",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 199
+	            lineNumber: 200
 	          }
 	        },
 	        dom(ImageView, {
@@ -29205,7 +30844,7 @@
 	          width: "18",
 	          imageUrl: "ic_action_attachment", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 206
+	            lineNumber: 207
 	          }
 	        }),
 	        dom(TextView, {
@@ -29216,7 +30855,7 @@
 	          text: temp.name || "Attachments",
 	          style: window.__TextStyle.textStyle.CLICKABLE.BLUE_SEMI, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 211
 	          }
 	        }),
 	        dom(TextView, {
@@ -29225,7 +30864,7 @@
 	          padding: "5,0,5,0",
 	          text: "(" + (attachmentsType || "NA") + "," + (temp.size || "NA") + ")", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 217
+	            lineNumber: 218
 	          }
 	        })
 	      );
@@ -29240,12 +30879,16 @@
 	        text: window.__S.SENT_ON + " " + time,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 230
+	          lineNumber: 231
 	        }
 	      });
 	    };
 	
-	    _this.setIds(["readBar"]);
+	    _this.afterRender = function () {
+	      JBridge.setMapId(_this.idSet.parentContainer + "", window.__S.ANNOUNCEMENT, window.__S.ANNOUNCEMENT, "1");
+	    };
+	
+	    _this.setIds(["readBar", "parentContainer"]);
 	
 	    _this.props = _this.props || "";
 	    _this.data = _this.props.params || "";
@@ -29265,7 +30908,7 @@
 	        margin: "0,0,0,6",
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 49
+	          lineNumber: 50
 	        }
 	      });
 	    }
@@ -29282,7 +30925,7 @@
 	        text: from,
 	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 62
+	          lineNumber: 63
 	        }
 	      });
 	    }
@@ -29304,7 +30947,7 @@
 	          orientation: "vertical",
 	          background: window.__Colors.WHITE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 82
+	            lineNumber: 83
 	          }
 	        },
 	        this.getLabel(),
@@ -29319,7 +30962,7 @@
 	          visibility: linksCount > 1 ? "visible" : "gone",
 	          text: "+" + tempWeblinksCount + " " + window.__S.WEBLINKS, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 93
+	            lineNumber: 94
 	          }
 	        }),
 	        this.getAttachment(),
@@ -29330,7 +30973,7 @@
 	          visibility: this.hasAttachments && this.data.attachments.length > 1 ? "visible" : "gone",
 	          text: "+" + tempAttachmentsCount + " " + window.__S.ATTACHMENTS, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 100
+	            lineNumber: 101
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -29340,7 +30983,7 @@
 	          margin: "0,15,0,5",
 	          background: window.__Colors.WHITE_F2, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 106
+	            lineNumber: 107
 	          }
 	        }),
 	        this.getFooter()
@@ -29354,6 +30997,7 @@
 	      this.layout = dom(
 	        LinearLayout,
 	        {
+	          id: this.idSet.parentContainer,
 	          width: "match_parent",
 	          height: "wrap_content",
 	          root: "true",
@@ -29362,7 +31006,7 @@
 	          },
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 240
+	            lineNumber: 245
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -29371,7 +31015,7 @@
 	          id: this.idSet.readBar,
 	          background: this.data.read ? window.__Colors.PRIMARY_LIGHT : window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 246
+	            lineNumber: 252
 	          }
 	        }),
 	        this.getBody()
@@ -29386,7 +31030,7 @@
 	module.exports = AnnouncementCard;
 
 /***/ }),
-/* 423 */
+/* 428 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -29439,7 +31083,7 @@
 	}];
 
 /***/ }),
-/* 424 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29462,9 +31106,9 @@
 	var TextView = __webpack_require__(342);
 	var EditText = __webpack_require__(363);
 	var Space = __webpack_require__(366);
-	var ClassListItem = __webpack_require__(425);
-	var SearchResult = __webpack_require__(426);
-	var debounce = __webpack_require__(409);
+	var ClassListItem = __webpack_require__(430);
+	var SearchResult = __webpack_require__(431);
+	var debounce = __webpack_require__(410);
 	var Styles = __webpack_require__(347);
 	var callbackMapper = __webpack_require__(329);
 	var IconStyle = Styles.Params.IconStyle;
@@ -29948,7 +31592,7 @@
 	module.exports = SearchToolbar;
 
 /***/ }),
-/* 425 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30191,7 +31835,7 @@
 	module.exports = ClassListItem;
 
 /***/ }),
-/* 426 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30218,7 +31862,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var ListView = __webpack_require__(371);
-	var debounce = __webpack_require__(409);
+	var debounce = __webpack_require__(410);
 	
 	var SearchResult = function (_View) {
 	  _inherits(SearchResult, _View);
@@ -30235,13 +31879,14 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 28
+	          lineNumber: 30
 	        }
 	      });
 	    };
 	
 	    _this.showList = function () {
 	      _this.props.data.map(function (item, index) {
+	        var halfWidth = Math.floor((_this.screenWidth - 100) / 2);
 	        var appIcon = "ic_launcher";
 	        if (_this.type == "Profile") {
 	          appIcon = item.data && item.data.avatar ? item.data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
@@ -30256,10 +31901,10 @@
 	            orientation: "vertical",
 	            margin: "16,0,16,0",
 	            onClick: function onClick() {
-	              _this.handleItemClick(item, index);
+	              _this.props.onClick(item, index);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 43
+	              lineNumber: 46
 	            }
 	          },
 	          dom(
@@ -30268,18 +31913,18 @@
 	              width: "match_parent",
 	              height: "wrap_content", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 50
+	                lineNumber: 53
 	              }
 	            },
 	            dom(ImageView, {
-	              width: "32",
-	              height: "32",
-	              margin: "10,12,0,12",
+	              width: "37",
+	              height: "37",
+	              margin: item.subject || item.gradeLevel ? "10,22,0,22" : "10,12,0,12",
 	              scaleType: "fixXY",
 	              gravity: "center",
 	              circularImageUrl: "0," + appIcon, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 54
+	                lineNumber: 57
 	              }
 	            }),
 	            dom(
@@ -30289,7 +31934,7 @@
 	                height: "wrap_content",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 62
+	                  lineNumber: 65
 	                }
 	              },
 	              dom(
@@ -30298,53 +31943,160 @@
 	                  height: "wrap_content",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 67
+	                    lineNumber: 70
 	                  }
 	                },
 	                dom(TextView, {
 	                  height: "wrap_content",
-	                  width: "0",
+	                  width: "wrap_content",
 	                  padding: "10,10,0,0",
 	                  enableEllipse: "true",
 	                  text: item.name,
-	                  weight: "7",
+	                  weight: "0",
 	                  style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 71
+	                    lineNumber: 74
 	                  }
 	                }),
-	                dom(LinearLayout, {
-	                  width: "0",
-	                  weight: "0.5", __source: {
+	                dom(ImageView, {
+	                  width: "16",
+	                  height: "16",
+	                  gravity: "left",
+	                  visibility: "gone",
+	                  margin: "4,10,0,0",
+	                  imageUrl: "ic_check_circle", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 80
+	                    lineNumber: 83
+	                  }
+	                })
+	              ),
+	              dom(
+	                LinearLayout,
+	                {
+	                  orientation: "horizontal", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 91
+	                  }
+	                },
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  padding: "10,4,0,0",
+	                  width: "wrap_content",
+	                  visibility: item.contentType ? "visible" : "gone",
+	                  text: item.contentType,
+	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 93
+	                  }
+	                }),
+	                dom(ImageView, {
+	                  width: "10",
+	                  height: "10",
+	                  gravity: "left",
+	                  margin: "4,7,0,0",
+	                  imageUrl: "ic_dot_lightgrey", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 101
+	                  }
+	                }),
+	                dom(ImageView, {
+	                  width: "12",
+	                  height: "12",
+	                  gravity: "left",
+	                  margin: "4,6,0,0",
+	                  visibility: item.me_averageRating ? "visible" : "gone",
+	                  imageUrl: "ic_grey_star", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 108
 	                  }
 	                }),
 	                dom(TextView, {
 	                  height: "wrap_content",
-	                  padding: "0,10,10,0",
-	                  weight: "2",
-	                  gravity: "right",
-	                  width: "0",
+	                  padding: "4,4,0,0",
+	                  gravity: "left",
+	                  width: "wrap_content",
+	                  visibility: item.me_averageRating ? "visible" : "gone",
+	                  text: item.me_averageRating ? parseInt(item.me_averageRating).toString() : "",
+	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 116
+	                  }
+	                }),
+	                dom(ImageView, {
+	                  width: "10",
+	                  height: "10",
+	                  gravity: "left",
+	                  margin: "4,7,0,0",
+	                  visibility: item.me_averageRating ? "visible" : "gone",
+	                  imageUrl: "ic_dot_lightgrey", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 126
+	                  }
+	                }),
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  padding: "4,4,0,0",
+	                  gravity: "left",
+	                  width: "wrap_content",
 	                  visibility: item.hasOwnProperty("size") ? "visible" : "gone",
 	                  text: item.hasOwnProperty("size") ? utils.formatBytes(item.size) : " ",
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 84
+	                    lineNumber: 134
 	                  }
 	                })
 	              ),
-	              dom(TextView, {
-	                height: "wrap_content",
-	                padding: "10,3,10,10",
-	                width: "wrap_content",
-	                visibility: item.contentType ? "visible" : "gone",
-	                text: item.contentType,
-	                style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 95
-	                }
-	              }),
+	              dom(
+	                LinearLayout,
+	                {
+	                  orientation: "horizontal",
+	                  padding: "10,0,0,0", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 144
+	                  }
+	                },
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  id: _this.idSet.gradeTextView,
+	                  width: item.gradeLevel && item.gradeLevel.length > 2 && item.subject ? halfWidth + "" : "wrap_content",
+	                  padding: item.subject ? "0,4,0,10" : "0,4,16,10",
+	                  gravity: "left",
+	                  enableEllipse: "true",
+	                  singleLine: "true",
+	                  scrollHorizontally: "true",
+	                  visibility: item.gradeLevel ? "visible" : "gone",
+	                  text: item.gradeLevel ? item.gradeLevel.toString().replace(/,/g, ", ") : "",
+	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 148
+	                  }
+	                }),
+	                dom(ImageView, {
+	                  width: "10",
+	                  height: "10",
+	                  visibility: item.gradeLevel && item.subject ? "visible" : "gone",
+	                  gravity: "left",
+	                  margin: "4,7,0,0",
+	                  imageUrl: "ic_dot_lightgrey", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 162
+	                  }
+	                }),
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  padding: "4,3,16,10",
+	                  gravity: "left",
+	                  width: "wrap_content",
+	                  enableEllipse: "true",
+	                  singleLine: "true",
+	                  visibility: item.subject ? "visible" : "gone",
+	                  text: item.subject ? item.subject.toString() : "",
+	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 170
+	                  }
+	                })
+	              ),
 	              dom(
 	                LinearLayout,
 	                {
@@ -30357,7 +32109,7 @@
 	                  padding: "5,1,5,1",
 	                  margin: "10,5,0,10", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 103
+	                    lineNumber: 186
 	                  }
 	                },
 	                dom(TextView, {
@@ -30367,7 +32119,7 @@
 	                  text: _this.type == "Profile" ? item.data.status == 1 ? "Active" : "Inactive" : "",
 	                  style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 113
+	                    lineNumber: 196
 	                  }
 	                })
 	              )
@@ -30380,72 +32132,12 @@
 	      JBridge.listViewAdapter(_this.idSet.listContainer, JSON.stringify(_this.jsonArray), 1000, null, "", "", 1);
 	    };
 	
-	    _this.handleItemClick = function (item, index) {
-	      console.log("itemClicked ", item);
-	
-	      var itemDetails = JSON.stringify(item);
-	      if (_this.props.type.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);else if (_this.props.type.toLowerCase() == "resource") JBridge.logContentClickEvent("LIBRARY", index + 1, _this.props.searchText, item.identifier, item.pkgVersion);
-	
-	      if (item.hasOwnProperty("data") && item.data.hasOwnProperty("education")) {
-	        console.log("item data", item);
-	        var whatToSend = { profile: JSON.stringify(item) };
-	        var event = { tag: "OPEN_ProfileActivity_SEARCH", contents: whatToSend };
-	        window.__runDuiCallback(event);
-	      } else if (item.contentType.toLowerCase() == "course") {
-	
-	        if (JBridge.getKey("isPermissionSetWriteExternalStorage", "false") == "true") {
-	          var whatToSend = { course: itemDetails };
-	          var event = { tag: "OPEN_CourseInfoActivity_SEARCH", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        } else {
-	          _this.setPermissions();
-	        }
-	      } else if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection" || utils.checkEnrolledCourse(item.identifier)) {
-	
-	        if (JBridge.getKey("isPermissionSetWriteExternalStorage", "false") == "true") {
-	          var whatToSend = { course: itemDetails };
-	          var event = { tag: "OPEN_CourseEnrolledActivity_SEARCH", contents: whatToSend };
-	          window.__runDuiCallback(event);
-	        } else {
-	          _this.setPermissions();
-	        }
-	      } else {
-	        var headFooterTitle = item.contentType + (item.hasOwnProperty("size") ? " [" + utils.formatBytes(item.size) + "]" : "");
-	        var resDetails = {};
-	        resDetails['imageUrl'] = item.appIcon;
-	        resDetails['title'] = item.name;
-	        resDetails['description'] = item.description;
-	        resDetails['headFooterTitle'] = headFooterTitle;
-	        resDetails['identifier'] = item.identifier;
-	        resDetails['screenshots'] = item.screenshots || [];
-	        resDetails['content'] = item;
-	
-	        var whatToSend = { resourceDetails: JSON.stringify(resDetails) };
-	        var event = { tag: "OPEN_ResourceDetailActivity_SEARCH", contents: whatToSend };
-	        window.__runDuiCallback(event);
-	      }
-	    };
-	
-	    _this.setPermissions = function () {
-	      var callback = callbackMapper.map(function (data) {
-	
-	        if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
-	          JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
-	        }
-	        if (data == "DeniedPermanently") {
-	          console.log("DENIED DeniedPermanently");
-	          JBridge.hideKeyboard();
-	          window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.STORAGE);
-	        }
-	      });
-	      JBridge.setPermissions(callback, "android.permission.WRITE_EXTERNAL_STORAGE");
-	    };
-	
 	    console.log(_this.props.data);
 	    _this.type = _this.props.type ? _this.props.type : "Resource";
 	    _this.jsonArray = [];
-	    _this.setIds(['listContainer']);
+	    _this.setIds(['listContainer', "gradeTextView"]);
 	    _this.handleItemClick = debounce(_this.handleItemClick, 50);
+	    _this.screenWidth = JBridge.getScreenWidth();
 	    return _this;
 	  }
 	
@@ -30462,7 +32154,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 212
+	            lineNumber: 224
 	          }
 	        },
 	        this.getData()
@@ -30477,7 +32169,7 @@
 	module.exports = SearchResult;
 
 /***/ }),
-/* 427 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30504,9 +32196,9 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseCard = __webpack_require__(428);
+	var CourseCard = __webpack_require__(433);
 	var callbackMapper = __webpack_require__(329);
-	var DownloadedCard = __webpack_require__(430);
+	var DownloadedCard = __webpack_require__(435);
 	
 	var CardComponent = __webpack_require__(402);
 	
@@ -30688,7 +32380,7 @@
 	module.exports = HomeRecommendedContainer;
 
 /***/ }),
-/* 428 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30715,7 +32407,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(429);
+	var StarComponent = __webpack_require__(434);
 	var _this;
 	
 	var CardRecommended = function (_View) {
@@ -30902,7 +32594,7 @@
 	module.exports = CardRecommended;
 
 /***/ }),
-/* 429 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30992,7 +32684,7 @@
 	module.exports = StarComponent;
 
 /***/ }),
-/* 430 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31019,7 +32711,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(429);
+	var StarComponent = __webpack_require__(434);
 	var _this;
 	
 	var DownloadedCard = function (_View) {
@@ -31194,7 +32886,7 @@
 	module.exports = DownloadedCard;
 
 /***/ }),
-/* 431 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31221,9 +32913,9 @@
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
 	var _this;
-	var CourseProgressCard = __webpack_require__(432);
+	var CourseProgressCard = __webpack_require__(437);
 	var CardComponent = __webpack_require__(402);
-	var DownloadedCard = __webpack_require__(430);
+	var DownloadedCard = __webpack_require__(435);
 	
 	var HomeTodoContainer = function (_View) {
 	  _inherits(HomeTodoContainer, _View);
@@ -31393,7 +33085,7 @@
 	module.exports = HomeTodoContainer;
 
 /***/ }),
-/* 432 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31420,7 +33112,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(429);
+	var StarComponent = __webpack_require__(434);
 	var _this;
 	
 	var CourseProgressCard = function (_View) {
@@ -31645,7 +33337,7 @@
 	module.exports = CourseProgressCard;
 
 /***/ }),
-/* 433 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31670,20 +33362,20 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var QuestionsComponent = __webpack_require__(434);
+	var QuestionsComponent = __webpack_require__(439);
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
-	var LineSpacer = __webpack_require__(419);
-	var NoInternetCard = __webpack_require__(436);
+	var LineSpacer = __webpack_require__(424);
+	var NoInternetCard = __webpack_require__(441);
 	var CircularLoader = __webpack_require__(404);
 	var utils = __webpack_require__(397);
 	
-	var SearchToolbar = __webpack_require__(424);
+	var SearchToolbar = __webpack_require__(429);
 	var SimpleToolbar = __webpack_require__(382);
 	
-	var CourseInProgressContainer = __webpack_require__(420);
-	var CourseContainer = __webpack_require__(437);
-	var HomeQuestionCardStyle = __webpack_require__(421);
+	var CourseInProgressContainer = __webpack_require__(425);
+	var CourseContainer = __webpack_require__(442);
+	var HomeQuestionCardStyle = __webpack_require__(426);
 	
 	var _this;
 	
@@ -31726,7 +33418,7 @@
 	          console.log("this.details in handlePageApi -> ", _this2.details);
 	
 	          var rows = _this2.details.sections.map(function (item, index) {
-	            return _this2.getCourseCardLayout(item);
+	            return _this2.getCourseCardLayout(item, index);
 	          });
 	
 	          var layout = dom(
@@ -31737,7 +33429,7 @@
 	              orientation: "vertical",
 	              root: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 94
+	                lineNumber: 99
 	              }
 	            },
 	            rows
@@ -31760,17 +33452,18 @@
 	            width: "match_parent",
 	            padding: "16,16,16,16", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 112
+	              lineNumber: 117
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
 	            currComponentLocation: "COURSE",
-	            headerText: window.__S.OVERLAY_LABEL_COMMON,
-	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	            fromWhere: "COURSE",
+	            headerText: window.__S.OVERLAY_LABEL_COMMON.format(JBridge.getAppName()),
+	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON.format(JBridge.getAppName()),
 	            textSize: "16",
 	            gravity: "left", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 117
+	              lineNumber: 122
 	            }
 	          })
 	        );
@@ -31778,7 +33471,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 125
+	            lineNumber: 131
 	          }
 	        });
 	      }
@@ -31837,35 +33530,37 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 172
+	            lineNumber: 178
 	          }
 	        },
 	        dom(ImageView, {
 	          width: "100",
 	          height: "100",
+	          alpha: "0.55",
 	          margin: "0,58,0,0",
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 182
+	            lineNumber: 188
 	          }
 	        }),
 	        dom(TextView, {
 	          width: "wrap_content",
 	          height: "wrap_content",
 	          gravity: "center_horizontal",
+	          alpha: "0.55",
 	          padding: "0,16,0,0",
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 189
+	            lineNumber: 196
 	          }
 	        })
 	      );
 	      return layout;
 	    };
 	
-	    _this2.getCourseCardLayout = function (item) {
+	    _this2.getCourseCardLayout = function (item, index) {
 	
 	      var langCode = window.__CurrentLanguage.substr(0, 2);
 	      if (langCode != "hi") langCode = "en";
@@ -31880,16 +33575,18 @@
 	          visibility: item.contents == undefined ? "gone" : "visible",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 218
 	          }
 	        },
 	        dom(LineSpacer, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 216
+	            lineNumber: 224
 	          }
 	        }),
 	        dom(CourseContainer, {
+	          sectionId: item.id,
+	          sectionIndex: index + 1,
 	          title: item.name,
 	          languageTitle: LanguageTitle,
 	          data: item.contents,
@@ -31897,7 +33594,7 @@
 	          showViewMore: "visible",
 	          onCourseClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 218
+	            lineNumber: 226
 	          }
 	        })
 	      );
@@ -31918,6 +33615,7 @@
 	        whatToSend = { "course": tmp };
 	        event = { tag: 'OPEN_CourseInfoActivity', contents: whatToSend };
 	      }
+	      JBridge.logVisitEvent("COURSES");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -31926,6 +33624,7 @@
 	      JBridge.logCardClickEvent("COURSES", index + 1, "COURSES_IN_PROGRESS", content.identifier, null);
 	      var whatToSend = { "course": JSON.stringify(content) };
 	      var event = { tag: 'OPEN_EnrolledCourseActivity', contents: whatToSend };
+	      JBridge.logVisitEvent("COURSES");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -31937,7 +33636,7 @@
 	        _this2.replaceChild(_this2.idSet.courseContentContainer, dom(NoInternetCard, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 263
+	            lineNumber: 273
 	          }
 	        }).render(), 0);
 	      } else {
@@ -31958,13 +33657,15 @@
 	        showViewMore: "gone",
 	        onCourseClick: _this2.handleUserCoursesClick, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 276
+	          lineNumber: 286
 	        }
 	      });
 	      return _this2.courseInProgressContainer;
 	    };
 	
 	    _this2.afterRender = function () {
+	      JBridge.getViews(_this2.idSet.scrollViewContainerCourse + "");
+	      _this2.getQuestionsComponent();
 	      if (!window.__CourseFilter) {
 	        console.log("CF afterRender -> no window.__CourseFilter");
 	
@@ -31979,6 +33680,28 @@
 	      utils.addSwipeFunction(_this2.idSet.scrollViewContainerCourse);
 	    };
 	
+	    _this2.getQuestionsComponent = function () {
+	      console.log("getQuestionsComponent render");
+	
+	      var layout;
+	      if (window.__questionStore && !window.__questionStore.isAllQsAnsweredAtInit() && window.__loggedInState == "GUEST") {
+	        layout = dom(QuestionsComponent, {
+	          visibility: "visible", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 319
+	          }
+	        });
+	      } else {
+	        layout = dom(LinearLayout, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 324
+	          }
+	        });
+	      }
+	      _this2.replaceChild(_this2.idSet.questionsComponentContainer, layout.render(), null);
+	    };
+	
 	    _this2.getBody = function () {
 	      return dom(
 	        LinearLayout,
@@ -31987,7 +33710,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 303
+	            lineNumber: 332
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -31998,7 +33721,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 308
+	            lineNumber: 337
 	          }
 	        }),
 	        dom(
@@ -32009,7 +33732,7 @@
 	            id: _this2.idSet.scrollViewContainerCourse,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 316
+	              lineNumber: 345
 	            }
 	          },
 	          dom(
@@ -32020,13 +33743,15 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 322
+	                lineNumber: 351
 	              }
 	            },
-	            dom(QuestionsComponent, {
-	              visibility: window.__loggedInState == "GUEST" ? "visible" : "gone", __source: {
+	            dom(LinearLayout, {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              id: _this2.idSet.questionsComponentContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 328
+	                lineNumber: 357
 	              }
 	            }),
 	            _this2.getCourseInProgressContainer(),
@@ -32039,13 +33764,13 @@
 	                layoutTransition: "true",
 	                id: _this2.idSet.courseContentContainer, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 333
+	                  lineNumber: 364
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 340
+	                  lineNumber: 371
 	                }
 	              })
 	            ),
@@ -32060,6 +33785,12 @@
 	        var searchDetails = { filterDetails: "", searchType: "Course" };
 	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
+	        JBridge.logVisitEvent("COURSES");
+	        window.__runDuiCallback(event);
+	      } else if (url == "ic_scanqr") {
+	        var whatToSend = [];
+	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
+	        JBridge.logVisitEvent(window.__S.COURSES_BNAV);
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_filter" || url == "ic_action_filter_applied") {
 	        JBridge.explicitSearch("COURSE", "FILTER");
@@ -32068,19 +33799,20 @@
 	    };
 	
 	    _this2.screenName = "CourseFragment";
-	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "fetchingHolder", "scrollViewContainerCourse", "courseContentContainer"]);
+	    _this2.setIds(["parentId", "parentContainer", "infoContainer", "viewallContainer", "fetchingHolder", "scrollViewContainerCourse", "courseContentContainer", "questionsComponentContainer"]);
 	    _this = _this2;
 	
 	    if (window.__CourseFilter) {
 	      _this2.menuData = {
-	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter_applied" }]
+	        url: [{ imageUrl: "ic_scanqr" }, { imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter_applied" }]
 	      };
 	    } else {
 	      _this2.menuData = {
-	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter" }]
+	        url: [{ imageUrl: "ic_scanqr" }, { imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter" }]
 	      };
 	    }
 	    JBridge.logTabScreenEvent("COURSES");
+	    JBridge.clearMapId();
 	    return _this2;
 	  }
 	
@@ -32090,13 +33822,14 @@
 	      this.layout = dom(
 	        LinearLayout,
 	        {
+	          id: this.idSet.parentId,
 	          root: "true",
 	          orientation: "vertical",
 	          width: "match_parent",
 	          height: "match_parent",
 	          afterRender: this.afterRender, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 365
+	            lineNumber: 402
 	          }
 	        },
 	        this.getBody()
@@ -32112,7 +33845,7 @@
 	module.exports = CourseFragment;
 
 /***/ }),
-/* 434 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32140,157 +33873,88 @@
 	var utils = __webpack_require__(397);
 	var _this;
 	var CardComponent = __webpack_require__(402);
-	var CarouselCards = __webpack_require__(435);
+	var CarouselCards = __webpack_require__(440);
 	var CircularLoader = __webpack_require__(404);
+	var Font = __webpack_require__(345);
 	
-	var Card = function (_View) {
-	    _inherits(Card, _View);
-	
-	    function Card(props, children) {
-	        _classCallCheck(this, Card);
-	
-	        var _this2 = _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).call(this, props, children));
-	
-	        _this2.setIds(["card"]);
-	        _this2.height = _this2.props.height ? _this2.props.height : "106";
-	        _this2.width = _this2.props.width ? _this2.props.width : "200";
-	        _this2.cardData = _this2.props.data;
-	        _this2.id = _this2.idSet.card; //important feild
-	        return _this2;
-	    }
-	
-	    _createClass(Card, [{
-	        key: "render",
-	        value: function render() {
-	            var fLayout = "";
-	            var visibility = "gone";
-	            if (this.cardData.selected.length == 0) {
-	                fLayout = dom(TextView, {
-	                    textSize: "12",
-	                    color: window.__Colors.PRIMARY_ACCENT,
-	                    text: this.cardData.option, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 34
-	                    }
-	                });
-	            } else {
-	                visibility = "visible";
-	                var dispText = this.cardData.selected.map(function (item, i) {
-	                    return item;
-	                });
-	                dispText = dispText.splice(0, 2).join(", ");
-	                dispText = dispText + (this.cardData.selected.length > 2 ? "..." : "");
-	
-	                fLayout = dom(TextView, {
-	                    textSize: "12",
-	                    text: dispText, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 48
-	                    }
-	                });
-	            }
-	            var layout = dom(
-	                RelativeLayout,
-	                {
-	                    id: this.idSet.card,
-	                    height: this.height,
-	                    width: this.width,
-	                    background: "#FFFFFF",
-	                    margin: "4,0,4,0",
-	                    padding: "8,8,8,8", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 54
-	                    }
-	                },
-	                dom(TextView, {
-	                    margin: "8,8,0,0",
-	                    textSize: "14",
-	                    alignParentTop: "true, -1",
-	                    text: this.cardData.question, __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 62
-	                    }
-	                }),
-	                dom(
-	                    LinearLayout,
-	                    {
-	                        alignParentBottom: "true, -1",
-	                        width: "wrap_content",
-	                        padding: "8,8,8,8",
-	                        onClick: this.props.onClick,
-	                        gravity: "center_vertical", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 68
-	                        }
-	                    },
-	                    fLayout,
-	                    dom(ImageView, {
-	                        width: "11",
-	                        height: "11",
-	                        visibility: visibility,
-	                        margin: "4,0,0,0",
-	                        imageUrl: "ic_action_edit_blue", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 75
-	                        }
-	                    })
-	                )
-	            );
-	            return layout.render();
-	        }
-	    }]);
-	
-	    return Card;
-	}(View);
-	
-	var QuestionsComponent = function (_View2) {
-	    _inherits(QuestionsComponent, _View2);
+	var QuestionsComponent = function (_View) {
+	    _inherits(QuestionsComponent, _View);
 	
 	    function QuestionsComponent(props, children) {
 	        _classCallCheck(this, QuestionsComponent);
 	
-	        var _this3 = _possibleConstructorReturn(this, (QuestionsComponent.__proto__ || Object.getPrototypeOf(QuestionsComponent)).call(this, props, children));
+	        var _this2 = _possibleConstructorReturn(this, (QuestionsComponent.__proto__ || Object.getPrototypeOf(QuestionsComponent)).call(this, props, children));
 	
-	        _this3.handleCardOptionClick = function (index, item) {
+	        _this2.handleCardOptionClick = function (index, item) {
 	            console.log("cardOption clicked -> ", item);
 	            window.__GenericSelectorPopup.show(item, function (data) {
-	                return _this3.onCardAnswered(index, data);
+	                return _this2.onCardAnswered(index, data);
 	            });
 	        };
 	
-	        _this3.onCardAnswered = function (index, data) {
+	        _this2.onCardAnswered = function (index, data) {
 	            console.log("updated data -> ", data);
 	
-	            window.__questions[index] = data;
 	            window.__GenericSelectorPopup.hide();
-	
-	            _this3.getNextQuestion();
-	            _this3.updateToCurrentState();
+	            window.__questionStore.setAnswer(index, data);
+	            _this2.saveToProfile();
+	            _this2.getNextQuestion();
+	            _this2.updateToCurrentState();
 	        };
 	
-	        _this3.getNextQuestion = function () {
-	            var ele = window.__allQs.pop();
-	            if (ele) {
-	                window.__questions.push(ele);
-	                _this3.cardsArr = window.__questions;
-	            }
-	            _this3.renderCards = _this3.cardsArr.map(function (item, i) {
+	        _this2.saveToProfile = function () {
+	            var profile = JSON.parse(utils.decodeBase64(JBridge.getCurrentProfileData()));
+	            profile.board = [];
+	            profile.grade = [];
+	            profile.subject = [];
+	            profile.medium = [];
+	            var qs = window.__questionStore.getAllQs();
+	            qs.map(function (item) {
+	                var selected = [];
+	                item.selected.map(function (item) {
+	                    selected.push(item.name);
+	                });
+	                console.log("current saved value -> ", item);
+	                switch (item.code) {
+	                    case "board":
+	                        profile.board = selected;
+	                        break;
+	                    case "gradeLevel":
+	                        profile.grade = selected;
+	                        break;
+	                    case "subject":
+	                        // JBridge.setInSharedPrefs(window.__S.SUBJECTS, selected.join(","));
+	                        profile.subject = selected;
+	                        break;
+	                    case "medium":
+	                        profile.medium = selected;
+	                        break;
+	                }
+	            });
+	            console.log("profile while updating -> ", profile);
+	
+	            JBridge.updateProfile(profile.handle, profile.medium, profile.grade, profile.board, profile.subject);
+	        };
+	
+	        _this2.getNextQuestion = function () {
+	            window.__questionStore.addNextQ();
+	            _this2.cardsArr = window.__questionStore.getAllQs();
+	            _this2.renderCards = _this2.cardsArr.map(function (item, i) {
 	                return dom(Card, {
-	                    width: _this3.cardWidth + "",
+	                    width: _this2.cardWidth + "",
 	                    data: item,
 	                    onClick: function onClick() {
-	                        _this3.handleCardOptionClick(i, item);
+	                        _this2.handleCardOptionClick(i, item);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 166
+	                        lineNumber: 101
 	                    }
 	                });
 	            });
-	            console.log("window.__allQs -> ", window.__allQs);
-	            console.log("this.cardsArr -> ", _this3.cardsArr);
+	            console.log("this.cardsArr -> ", _this2.cardsArr);
 	        };
 	
-	        _this3.getProgress = function (pStatus) {
+	        _this2.getProgress = function (pStatus) {
 	            var completedProgress = pStatus;
 	            var remainingProgress = 100 - parseInt(pStatus) + "";
 	            console.log("getProgress -> ", pStatus);
@@ -32302,7 +33966,7 @@
 	                    orientation: "horizontal",
 	                    root: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 181
+	                        lineNumber: 115
 	                    }
 	                },
 	                dom(LinearLayout, {
@@ -32311,7 +33975,7 @@
 	                    background: completedProgress == "100" ? window.__Colors.SUCCESS_GREEN : window.__Colors.LIGHT_BLUE,
 	                    weight: completedProgress, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 186
+	                        lineNumber: 120
 	                    }
 	                }),
 	                dom(LinearLayout, {
@@ -32320,16 +33984,16 @@
 	                    height: "5",
 	                    weight: remainingProgress, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 191
+	                        lineNumber: 125
 	                    }
 	                })
 	            );
 	        };
 	
-	        _this3.updateToCurrentState = function () {
+	        _this2.updateToCurrentState = function () {
 	            var nextCardIndex = undefined;
 	            var completed = 0;
-	            _this3.cardsArr.map(function (item, i) {
+	            _this2.cardsArr.map(function (item, i) {
 	                if (item.selected.length == 0) {
 	                    if (nextCardIndex == undefined) nextCardIndex = i;
 	                } else {
@@ -32339,78 +34003,53 @@
 	            console.log("Completed -> ", completed);
 	            console.log("nextCardIndex -> ", nextCardIndex);
 	
-	            _this3.Carousel.updateCards(nextCardIndex, _this3.renderCards);
-	            _this3.replaceChild(_this3.idSet.progressContainer, _this3.getProgress(Math.floor(completed / _this3.cardsArr.length * 100)).render(), 0);
+	            _this2.Carousel.updateCards(nextCardIndex, _this2.renderCards);
+	            _this2.replaceChild(_this2.idSet.progressContainer, _this2.getProgress(Math.floor(completed / window.__questionStore.getTotalQs() * 100)).render(), 0);
 	        };
 	
-	        _this3.afterRender = function () {
-	            _this3.updateToCurrentState();
+	        _this2.afterRender = function () {
+	            _this2.updateToCurrentState();
 	        };
 	
-	        _this = _this3;
-	        _this3.setIds(["parentContainer", "scrollViewContainer", "footerContainer", "progressContainer"]);
-	        _this3.cardsArr = window.__questions;
-	        _this3.screenWidth = JBridge.getScreenWidth();
-	        _this3.cardWidth = _this3.screenWidth < 300 ? _this3.screenWidth - 32 : 300;
-	        _this3.cardPadding = Math.floor((_this3.screenWidth - _this3.cardWidth) / 2);
-	        window.__allQs = window.__allQs ? window.__allQs : [{
-	            question: "Which subject do you teach?",
-	            option: "SELECT SUBJECT",
-	            values: ["Mathematics", "Physics", "Chemistry", "English", "Hindi", "Computer Science"],
-	            selected: [],
-	            isCurr: false,
-	            selectorType: "checkbox"
-	        }, {
-	            question: "Which state do you belong to?",
-	            option: "SELECT STATE",
-	            values: ["Karnataka", "Maharastra", "Kerala", "Tamil Nadu"],
-	            selected: [],
-	            isCurr: false,
-	            selectorType: "radio"
-	        }, {
-	            question: "Are you a teacher?",
-	            option: "SELECT",
-	            values: ["Yes", "No"],
-	            selected: [],
-	            isCurr: false,
-	            selectorType: "radio"
-	        }];
+	        _this = _this2;
+	        _this2.setIds(["parentContainer", "scrollViewContainer", "footerContainer", "progressContainer"]);
+	        _this2.cardsArr = [];
+	        _this2.getNextQuestion();
+	        _this2.screenWidth = JBridge.getScreenWidth();
+	        _this2.cardWidth = _this2.screenWidth < 300 ? _this2.screenWidth - 32 : 300;
+	        _this2.cardPadding = Math.floor((_this2.screenWidth - _this2.cardWidth) / 2);
 	
-	        console.log("cardPadding -> ", _this3.cardPadding);
+	        console.log("cardPadding -> ", _this2.cardPadding);
 	
-	        _this3.renderCards = _this3.cardsArr.map(function (item, i) {
+	        _this2.renderCards = _this2.cardsArr.map(function (item, i) {
 	            return dom(Card, {
-	                width: _this3.cardWidth + "",
+	                width: _this2.cardWidth + "",
 	                data: item,
 	                onClick: function onClick() {
-	                    _this3.handleCardOptionClick(i, item);
+	                    _this2.handleCardOptionClick(i, item);
 	                }, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 132
+	                    lineNumber: 38
 	                }
 	            });
 	        });
 	
-	        return _this3;
+	        return _this2;
 	    }
 	
 	    _createClass(QuestionsComponent, [{
 	        key: "render",
 	        value: function render() {
-	            var flag = 0;
-	            window.__questions.map(function (item) {
-	                if (item.selected.length == 0) flag = 1;
-	            });
-	            // var visibility = flag == 0 ? "gone" : "visible";
-	            //TODO remove when integrating with content framework
 	            var visibility = "visible;";
 	            this.Carousel = dom(CarouselCards, {
-	                visibility: this.props.visibility,
+	                visibility: this.props.visibility ? this.props.visibility : "visible",
 	                cardPadding: this.cardPadding + ",0," + this.cardPadding + ",0",
 	                cards: this.renderCards,
-	                totalCards: 4, __source: {
+	                totalCards: window.__questionStore.getTotalQs(),
+	                background: window.__Colors.WHITE_F2,
+	                header: "Help us get you content thats relevant to you.", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 230
+	                    lineNumber: 158
 	                }
 	            });
 	
@@ -32423,7 +34062,7 @@
 	                    visibility: this.props.visibility == "visible" ? visibility : "gone",
 	                    afterRender: this.afterRender, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 238
+	                        lineNumber: 168
 	                    }
 	                },
 	                dom(
@@ -32433,7 +34072,7 @@
 	                        height: "wrap_content",
 	                        id: this.idSet.progressContainer, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 245
+	                            lineNumber: 175
 	                        }
 	                    },
 	                    this.getProgress(0)
@@ -32449,9 +34088,109 @@
 	}(View);
 	
 	module.exports = QuestionsComponent;
+	
+	var Card = function (_View2) {
+	    _inherits(Card, _View2);
+	
+	    function Card(props, children) {
+	        _classCallCheck(this, Card);
+	
+	        var _this3 = _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).call(this, props, children));
+	
+	        _this3.setIds(["card"]);
+	        _this3.height = _this3.props.height ? _this3.props.height : "106";
+	        _this3.width = _this3.props.width ? _this3.props.width : "200";
+	        _this3.cardData = _this3.props.data;
+	        _this3.id = _this3.idSet.card; //important feild
+	        return _this3;
+	    }
+	
+	    _createClass(Card, [{
+	        key: "render",
+	        value: function render() {
+	            var fLayout = "";
+	            var visibility = "gone";
+	            if (this.cardData.selected.length == 0) {
+	                fLayout = dom(TextView, {
+	                    text: this.cardData.option,
+	                    style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 209
+	                    }
+	                });
+	            } else {
+	                visibility = "visible";
+	                var dispText = this.cardData.selected.map(function (item, i) {
+	                    return item.name;
+	                });
+	                dispText = dispText.splice(0, 2).join(", ");
+	                dispText = dispText + (this.cardData.selected.length > 2 ? "..." : "");
+	
+	                fLayout = dom(TextView, {
+	                    textSize: "14",
+	                    text: dispText, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 222
+	                    }
+	                });
+	            }
+	            var layout = dom(
+	                RelativeLayout,
+	                {
+	                    id: this.idSet.card,
+	                    height: this.height,
+	                    width: this.width,
+	                    background: "#FFFFFF",
+	                    margin: "4,0,4,0",
+	                    padding: "8,8,8,8", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 228
+	                    }
+	                },
+	                dom(TextView, {
+	                    margin: "8,8,0,0",
+	                    textSize: "14",
+	                    fontStyle: Font.fontStyle.REGULAR,
+	                    alignParentTop: "true, -1",
+	                    text: this.cardData.question, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 236
+	                    }
+	                }),
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        alignParentBottom: "true, -1",
+	                        width: "wrap_content",
+	                        padding: "8,8,8,8",
+	                        onClick: this.props.onClick,
+	                        gravity: "center_vertical", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 243
+	                        }
+	                    },
+	                    fLayout,
+	                    dom(ImageView, {
+	                        width: "11",
+	                        height: "11",
+	                        visibility: visibility,
+	                        margin: "4,0,0,0",
+	                        imageUrl: "ic_action_edit_blue", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 250
+	                        }
+	                    })
+	                )
+	            );
+	            return layout.render();
+	        }
+	    }]);
+	
+	    return Card;
+	}(View);
 
 /***/ }),
-/* 435 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32479,6 +34218,7 @@
 	var _this;
 	var CardComponent = __webpack_require__(402);
 	var CircularLoader = __webpack_require__(404);
+	var Font = __webpack_require__(345);
 	
 	var CarouselCards = function (_View) {
 	    _inherits(CarouselCards, _View);
@@ -32500,7 +34240,7 @@
 	                    fillViewport: "true",
 	                    id: _this2.idSet.scrollViewContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 57
+	                        lineNumber: 67
 	                    }
 	                },
 	                dom(
@@ -32513,7 +34253,7 @@
 	                        padding: _this2.cardPadding,
 	                        layoutTransition: "true", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 65
+	                            lineNumber: 75
 	                        }
 	                    },
 	                    _this2.cards
@@ -32534,7 +34274,7 @@
 	                        margin: "2,0,2,0",
 	                        background: "#9B9B9B", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 85
+	                            lineNumber: 95
 	                        }
 	                    });
 	                } else {
@@ -32546,7 +34286,7 @@
 	                        margin: "2,0,2,0",
 	                        background: "#D8D8D8", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 95
+	                            lineNumber: 105
 	                        }
 	                    });
 	                }
@@ -32559,7 +34299,7 @@
 	                    margin: "0,16,0,16",
 	                    gravity: "center", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 105
+	                        lineNumber: 115
 	                    }
 	                },
 	                dom(
@@ -32569,7 +34309,7 @@
 	                        width: width + "",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 110
+	                            lineNumber: 120
 	                        }
 	                    },
 	                    dots
@@ -32592,7 +34332,7 @@
 	                console.log("onstop -> ", data);
 	                var delta = parseInt(data[0]);
 	                if (delta > 0) {
-	                    var nextCardIndex = (_this2.currCardIndex + 1) % _this2.cards.length;
+	                    var nextCardIndex = _this2.currCardIndex == _this2.cards.length - 1 ? _this2.currCardIndex : (_this2.currCardIndex + 1) % _this2.cards.length;
 	                    _this.snapToCard(nextCardIndex);
 	                } else if (delta < 0) {
 	                    var prevCardIndex = (_this2.currCardIndex - 1) % _this2.cards.length;
@@ -32613,19 +34353,6 @@
 	            _this2.currCardIndex = index;
 	            console.log("scrollTo pixel -> ", index * (_this2.cardWidth + 8));
 	            _this2.replaceChild(_this2.idSet.footerContainer, _this2.getFooter(index).render(), null);
-	            // if (cardId == "") {
-	            //     this.replaceChild(this.idSet.footerContainer, this.getFooter().render(), null);
-	            // } else {
-	            //     this.cards.map((item, i) => {
-	            //         if (cardId == (item.id + "")) {
-	            //             console.log("cardId - " + cardId + ", item.id - " + item.id);
-	            //             JBridge.scrollTo(this.idSet.scrollViewContainer, (i * (this.cardWidth + 8)));
-	            //             console.log("true pixel -> ", i * (this.cardWidth + 8));
-	            //             this.replaceChild(this.idSet.footerContainer, this.getFooter(i).render(), null);
-	            //             return;
-	            //         }
-	            //     });
-	            // }
 	        };
 	
 	        _this = _this2;
@@ -32638,11 +34365,14 @@
 	        _this2.cards = _this2.props.cards ? _this2.props.cards : [dom(LinearLayout, {
 	            __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 30
+	                lineNumber: 31
 	            }
 	        })];
 	        _this2.currCardIndex = 0;
 	        _this2.totalCards = Array.from('0'.repeat(_this2.props.totalCards)); //always this.cards.length >= this.totalCards.length
+	        _this2.height = _this2.props.height ? _this2.props.height : "200";
+	        _this2.background = _this2.props.background ? _this2.props.background : "#ffffff";
+	        _this2.headerText = _this2.props.header ? _this2.props.header : "";
 	
 	        console.log("cardPadding -> ", _this2.cardPadding);
 	
@@ -32652,28 +34382,38 @@
 	    _createClass(CarouselCards, [{
 	        key: "getHeader",
 	        value: function getHeader() {
-	            return dom(
-	                LinearLayout,
-	                {
-	                    width: "match_parent",
-	                    height: "wrap_content",
-	                    margin: "0,16,0,16",
-	                    orientation: "horizontal",
-	                    gravity: "center", __source: {
+	            if (this.headerText != "") {
+	                return dom(
+	                    LinearLayout,
+	                    {
+	                        width: "match_parent",
+	                        height: "wrap_content",
+	                        margin: "0,16,0,16",
+	                        orientation: "horizontal",
+	                        gravity: "center", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 44
+	                        }
+	                    },
+	                    dom(TextView, {
+	                        width: "wrap_content",
+	                        height: "wrap_content",
+	                        textSize: "14",
+	                        fontStyle: Font.fontStyle.REGULAR,
+	                        text: this.headerText, __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 51
+	                        }
+	                    })
+	                );
+	            } else {
+	                return dom(LinearLayout, {
+	                    __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 39
+	                        lineNumber: 59
 	                    }
-	                },
-	                dom(TextView, {
-	                    width: "wrap_content",
-	                    height: "wrap_content",
-	                    textSize: "14",
-	                    text: "Help us get you content thats relevant to you.", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 46
-	                    }
-	                })
-	            );
+	                });
+	            }
 	        }
 	    }, {
 	        key: "render",
@@ -32681,14 +34421,14 @@
 	            this.layout = dom(
 	                LinearLayout,
 	                {
-	                    height: "200",
+	                    height: this.height,
 	                    width: "match_parent",
 	                    visibility: this.props.visibility ? this.props.visibility : "visible",
-	                    background: window.__Colors.WHITE_F2,
+	                    background: this.background,
 	                    orientation: "vertical",
 	                    afterRender: this.afterRender, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 173
+	                        lineNumber: 170
 	                    }
 	                },
 	                this.getHeader(),
@@ -32698,7 +34438,7 @@
 	                        width: "match_parent",
 	                        id: this.idSet.cardsContainer, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 183
+	                            lineNumber: 180
 	                        }
 	                    },
 	                    this.getCards()
@@ -32710,7 +34450,7 @@
 	                    gravity: "center",
 	                    margin: "0,16,0,16", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 189
+	                        lineNumber: 186
 	                    }
 	                })
 	            );
@@ -32725,7 +34465,7 @@
 	module.exports = CarouselCards;
 
 /***/ }),
-/* 436 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32817,7 +34557,7 @@
 	module.exports = NoInternetCard;
 
 /***/ }),
-/* 437 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32903,6 +34643,7 @@
 	      );
 	
 	      _this2.replaceChild(_this2.idSet.courseContainer, layout.render(), 0);
+	      JBridge.setMapId(_this2.idSet.parentContainer + "", _this2.props.title, _this2.props.sectionId + "", _this2.props.sectionIndex + "");
 	    };
 	
 	    _this2.checkEnrolledCourse = function (identifier) {
@@ -33071,7 +34812,7 @@
 	module.exports = CourseContainer;
 
 /***/ }),
-/* 438 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33096,20 +34837,20 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var QuestionsComponent = __webpack_require__(434);
+	var QuestionsComponent = __webpack_require__(439);
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	window.R = __webpack_require__(7);
-	var HomeQuestionCardStyle = __webpack_require__(421);
+	var HomeQuestionCardStyle = __webpack_require__(426);
 	var CircularLoader = __webpack_require__(404);
-	var SearchToolbar = __webpack_require__(424);
-	var LineSpacer = __webpack_require__(419);
-	var NoInternetCard = __webpack_require__(436);
+	var SearchToolbar = __webpack_require__(429);
+	var LineSpacer = __webpack_require__(424);
+	var NoInternetCard = __webpack_require__(441);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseContainer = __webpack_require__(437);
-	var HomeRecommendedContainer = __webpack_require__(427);
-	var ResourceContainer = __webpack_require__(439);
-	var OfflineResourceContainer = __webpack_require__(440);
+	var CourseContainer = __webpack_require__(442);
+	var HomeRecommendedContainer = __webpack_require__(432);
+	var ResourceContainer = __webpack_require__(444);
+	var OfflineResourceContainer = __webpack_require__(445);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -33134,7 +34875,7 @@
 	            orientation: "vertical",
 	            root: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 68
+	              lineNumber: 72
 	            }
 	          },
 	          _this2.getErrorLayout()
@@ -33144,8 +34885,8 @@
 	        _this2.details = data.result.response;
 	        if (_this2.details.hasOwnProperty("name")) {
 	
-	          var cardsContent = _this2.details.sections.map(function (item) {
-	            return _this2.getResourceCardLayout(item);
+	          var cardsContent = _this2.details.sections.map(function (item, index) {
+	            return _this2.getResourceCardLayout(item, index);
 	          });
 	          _this2.cards = dom(
 	            LinearLayout,
@@ -33155,13 +34896,13 @@
 	              orientation: "vertical",
 	              root: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 83
+	                lineNumber: 87
 	              }
 	            },
 	            dom(LineSpacer, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 88
+	                lineNumber: 92
 	              }
 	            }),
 	            cardsContent
@@ -33175,7 +34916,7 @@
 	              orientation: "vertical",
 	              root: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 92
+	                lineNumber: 96
 	              }
 	            },
 	            _this2.getErrorLayout()
@@ -33211,9 +34952,8 @@
 	      utils.addSwipeFunction(_this2.idSet.scrollViewContainer);
 	    };
 	
-	    _this2.getResourceCardLayout = function (content) {
+	    _this2.getResourceCardLayout = function (content, index) {
 	      console.log("resource contents", content);
-	
 	      return dom(
 	        LinearLayout,
 	        {
@@ -33222,16 +34962,18 @@
 	          root: "true",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 135
+	            lineNumber: 138
 	          }
 	        },
 	        dom(ResourceContainer, {
 	          data: content.contents,
 	          title: content.name,
 	          searchQuery: content.searchQuery,
-	          onViewAllClick: _this2.handleResourceViewAllClick, __source: {
+	          onViewAllClick: _this2.handleResourceViewAllClick,
+	          sectionId: content.id,
+	          sectionIndex: index + 1, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 141
+	            lineNumber: 144
 	          }
 	        })
 	      );
@@ -33247,7 +34989,7 @@
 	      };
 	      var whatToSend = { "resourceDetails": JSON.stringify(resourceDetails) };
 	      var event = { tag: "OPEN_ResourceViewAllActivity", contents: whatToSend };
-	
+	      JBridge.logVisitEvent("LIBRARY");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -33266,7 +35008,7 @@
 	          gravity: "center_horizontal",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 169
+	            lineNumber: 174
 	          }
 	        },
 	        dom(ImageView, {
@@ -33276,7 +35018,7 @@
 	          gravity: "center_horizontal",
 	          imageUrl: "ic_no_internet", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 179
+	            lineNumber: 184
 	          }
 	        }),
 	        dom(TextView, {
@@ -33287,11 +35029,33 @@
 	          style: window.__TextStyle.textStyle.CARD.HEADING,
 	          text: window.__S.ERROR_FETCHING_DATA, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 186
+	            lineNumber: 191
 	          }
 	        })
 	      );
 	      return layout;
+	    };
+	
+	    _this2.getQuestionsComponent = function () {
+	      console.log("getQuestionsComponent render");
+	
+	      var layout;
+	      if (window.__questionStore && !window.__questionStore.isAllQsAnsweredAtInit() && window.__loggedInState == "GUEST") {
+	        layout = dom(QuestionsComponent, {
+	          visibility: "visible", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 224
+	          }
+	        });
+	      } else {
+	        layout = dom(LinearLayout, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 229
+	          }
+	        });
+	      }
+	      _this2.replaceChild(_this2.idSet.questionsComponentContainer, layout.render(), null);
 	    };
 	
 	    _this2.getBody = function () {
@@ -33303,7 +35067,7 @@
 	          id: _this2.idSet.parentContainer,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 202
+	            lineNumber: 237
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -33314,7 +35078,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 208
+	            lineNumber: 243
 	          }
 	        }),
 	        dom(
@@ -33325,7 +35089,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 216
+	              lineNumber: 251
 	            }
 	          },
 	          dom(
@@ -33336,13 +35100,15 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 222
+	                lineNumber: 257
 	              }
 	            },
-	            dom(QuestionsComponent, {
-	              visibility: window.__loggedInState == "GUEST" ? "visible" : "gone", __source: {
+	            dom(LinearLayout, {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              id: _this2.idSet.questionsComponentContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 228
+	                lineNumber: 263
 	              }
 	            }),
 	            dom(LinearLayout, {
@@ -33352,7 +35118,7 @@
 	              orientation: "vertical",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 231
+	                lineNumber: 268
 	              }
 	            }),
 	            dom(
@@ -33364,13 +35130,13 @@
 	                weight: "1",
 	                layoutTransition: "true", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 238
+	                  lineNumber: 275
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 245
+	                  lineNumber: 282
 	                }
 	              })
 	            ),
@@ -33384,10 +35150,16 @@
 	      if (url == "ic_action_filter" || url == "ic_action_filter_applied") {
 	        JBridge.explicitSearch("LIBRARY", "FILTER");
 	        window.__PageFilterPopup.show();
+	      } else if (url == "ic_scanqr") {
+	        var whatToSend = [];
+	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
+	        JBridge.logVisitEvent(window.__S.LIBRARY_BNAV);
+	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_search") {
 	        var searchDetails = { filterDetails: "", searchType: "Library" };
 	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
 	        var event = { tag: "OPEN_SearchActivity", contents: whatToSend };
+	        JBridge.logVisitEvent("LIBRARY");
 	        window.__runDuiCallback(event);
 	      }
 	    };
@@ -33399,6 +35171,8 @@
 	    };
 	
 	    _this2.afterRender = function () {
+	      JBridge.getViews(_this2.idSet.scrollViewContainer + "");
+	      _this2.getQuestionsComponent();
 	      _this2.renderOfflineCard();
 	      if (!window.__ResourceFilter) {
 	        _this2.getResourceData();
@@ -33419,7 +35193,7 @@
 	        _this2.replaceChild(_this2.idSet.resourceContentContainer, dom(NoInternetCard, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 292
+	            lineNumber: 337
 	          }
 	        }).render(), 0);
 	      } else {
@@ -33447,7 +35221,7 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 312
+	              lineNumber: 357
 	            }
 	          },
 	          dom(OfflineResourceContainer, {
@@ -33456,13 +35230,13 @@
 	            title: window.__S.SAVED_RESOURCES,
 	            onViewAllClick: _this.handleResourceViewAllClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 317
+	              lineNumber: 362
 	            }
 	          }),
 	          dom(LineSpacer, {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 323
+	              lineNumber: 368
 	            }
 	          })
 	        );
@@ -33484,17 +35258,18 @@
 	            clickable: "true",
 	            padding: "16,16,16,16", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 338
+	              lineNumber: 383
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
 	            currComponentLocation: "LIBRARY",
-	            headerText: window.__S.OVERLAY_LABEL_COMMON,
-	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	            fromWhere: "LIBRARY",
+	            headerText: window.__S.OVERLAY_LABEL_COMMON.format(JBridge.getAppName()),
+	            infoText: window.__S.OVERLAY_INFO_TEXT_COMMON.format(JBridge.getAppName()),
 	            textSize: "16",
 	            gravity: "left", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 342
+	              lineNumber: 387
 	            }
 	          })
 	        );
@@ -33502,7 +35277,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 350
+	            lineNumber: 396
 	          }
 	        });
 	      }
@@ -33510,23 +35285,37 @@
 	
 	    _this2.props.appendText = _this2.props.appendText || "";
 	    _this2.screenName = "ResourceFragment";
-	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "offlineContainer", "scrollViewContainer", "resourceContentContainer"]);
+	    _this2.setIds(["parentContainer", "infoContainer", "viewallContainer", "offlineContainer", "scrollViewContainer", "resourceContentContainer", "questionsComponentContainer"]);
 	    _this = _this2;
 	
 	    _this2.data = [];
 	
 	    if (window.__ResourceFilter) {
 	      _this2.menuData = {
-	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter_applied" }]
+	        url: [{ imageUrl: "ic_scanqr" }, { imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter_applied" }]
 	      };
 	    } else {
 	      _this2.menuData = {
-	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter" }]
+	        url: [{ imageUrl: "ic_scanqr" }, { imageUrl: "ic_action_search" }, { imageUrl: "ic_action_filter" }]
 	      };
 	    }
+	    JBridge.clearMapId();
 	    JBridge.logTabScreenEvent("LIBRARY");
 	    return _this2;
 	  }
+	
+	  // getQuestionsComponent = () => {
+	  //   if (window.__questionStore && !window.__questionStore.isAllQsAnsweredAtInit() && window.__loggedInState == "GUEST") {
+	  //     return (
+	  //       <QuestionsComponent
+	  //         visibility = "visible" />
+	  //     );
+	  //   } else {
+	  //     return (
+	  //       <LinearLayout />
+	  //     );
+	  //   }
+	  // }
 	
 	  _createClass(ResourceComponent, [{
 	    key: "render",
@@ -33540,7 +35329,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 357
+	            lineNumber: 403
 	          }
 	        },
 	        this.getBody()
@@ -33556,7 +35345,7 @@
 	module.exports = ResourceComponent;
 
 /***/ }),
-/* 439 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33673,7 +35462,11 @@
 	      _this2.props.onViewAllClick(_this2.data, _this2.props.title, _this2.props.searchQuery, "visible");
 	    };
 	
-	    _this2.setIds([]);
+	    _this2.afterRender = function () {
+	      JBridge.setMapId(_this2.idSet.parentContainer + "", _this2.props.title, _this2.props.sectionId + "", _this2.props.sectionIndex + "");
+	    };
+	
+	    _this2.setIds(["parentContainer"]);
 	    console.log(_this2.props.data, "data");
 	    _this2.count = _this2.props.data != undefined ? _this2.props.data.length : 0;
 	    return _this2;
@@ -33736,10 +35529,12 @@
 	          height: "match_parent",
 	          width: "match_parent",
 	          orientation: "vertical",
+	          id: this.idSet.parentContainer,
+	          afterRender: this.afterRender,
 	          visibility: this.props.data ? "visible" : "gone",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 138
+	            lineNumber: 142
 	          }
 	        },
 	        this.getHeader(),
@@ -33751,7 +35546,7 @@
 	            scrollBarX: "false",
 	            fillViewport: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 147
+	              lineNumber: 153
 	            }
 	          },
 	          dom(
@@ -33761,14 +35556,13 @@
 	              width: "match_parent",
 	              height: "wrap_content", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 153
+	                lineNumber: 159
 	              }
 	            },
 	            this.getRows()
 	          )
 	        )
 	      );
-	
 	      return this.layout.render();
 	    }
 	  }]);
@@ -33779,7 +35573,7 @@
 	module.exports = ResourceContainer;
 
 /***/ }),
-/* 440 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33823,8 +35617,8 @@
 	        id: _this2.idSet.viewAllContainer,
 	        visibility: _this2.offlineCount == 0 ? "gone" : "visible"
 	      });
-	
-	      Android.runInUI(cmd, 0, "35", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
+	      Android.runInUI(cmd, 0, "37", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
+	      JBridge.setMapId(_this2.idSet.parentId + "", window.__S.SAVED_RESOURCES, window.__S.SAVED_RESOURCES_2, "0");
 	    };
 	
 	    _this2.getRows = function () {
@@ -33836,7 +35630,6 @@
 	      }
 	
 	      var rows = _this2.jsData.map(function (item, i) {
-	
 	        if (item.contentType != "course") {
 	
 	          console.log("item in offline container", item);
@@ -33861,7 +35654,7 @@
 	            index: i,
 	            onCardClick: _this2.handleCardClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 77
+	              lineNumber: 78
 	            }
 	          });
 	        } else {
@@ -33869,7 +35662,7 @@
 	            width: "0",
 	            height: "0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 83
+	              lineNumber: 84
 	            }
 	          });
 	        }
@@ -33883,7 +35676,7 @@
 	          text: window.__S.ERROR_NO_OFFLINE_RESOURCE,
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 93
+	            lineNumber: 94
 	          }
 	        });
 	      }
@@ -33895,7 +35688,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 101
+	            lineNumber: 102
 	          }
 	        },
 	        rows
@@ -33934,7 +35727,7 @@
 	
 	    _this = _this2;
 	
-	    _this2.setIds(["viewAllContainer"]);
+	    _this2.setIds(["viewAllContainer", "parentId"]);
 	    _this2.offlineCount = 0;
 	    return _this2;
 	  }
@@ -33950,7 +35743,7 @@
 	          margin: "16,16,16,16",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 116
+	            lineNumber: 117
 	          }
 	        },
 	        dom(TextView, {
@@ -33959,14 +35752,14 @@
 	          text: this.props.title,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 122
+	            lineNumber: 123
 	          }
 	        }),
 	        dom(ViewWidget, {
 	          weight: "1",
 	          height: "0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 128
+	            lineNumber: 129
 	          }
 	        }),
 	        dom(TextView, {
@@ -33978,7 +35771,7 @@
 	          onClick: this.handleViewAllClick,
 	          style: window.__TextStyle.textStyle.TABBAR.SELECTED, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 132
+	            lineNumber: 133
 	          }
 	        })
 	      );
@@ -33997,10 +35790,11 @@
 	        {
 	          height: "match_parent",
 	          width: "match_parent",
+	          id: this.idSet.parentId,
 	          afterRender: this.afterRender,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 185
+	            lineNumber: 186
 	          }
 	        },
 	        this.getHeader(),
@@ -34012,7 +35806,7 @@
 	            scrollBarX: "false",
 	            fillViewport: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 193
+	              lineNumber: 195
 	            }
 	          },
 	          dom(
@@ -34021,7 +35815,7 @@
 	              width: "match_parent",
 	              height: "wrap_content", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 199
+	                lineNumber: 201
 	              }
 	            },
 	            this.getRows()
@@ -34039,7 +35833,7 @@
 	module.exports = OfflineResourceContainer;
 
 /***/ }),
-/* 441 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34066,10 +35860,10 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(424);
-	var MyCommunities = __webpack_require__(442);
-	var PopularCommunities = __webpack_require__(443);
-	var RecommendedCommunities = __webpack_require__(444);
+	var SearchToolbar = __webpack_require__(429);
+	var MyCommunities = __webpack_require__(447);
+	var PopularCommunities = __webpack_require__(448);
+	var RecommendedCommunities = __webpack_require__(449);
 	
 	var CommunityFragment = function (_View) {
 	  _inherits(CommunityFragment, _View);
@@ -34313,7 +36107,7 @@
 	module.exports = CommunityFragment;
 
 /***/ }),
-/* 442 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34613,7 +36407,7 @@
 	module.exports = MyCommunities;
 
 /***/ }),
-/* 443 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34884,7 +36678,7 @@
 	module.exports = PopularCommunities;
 
 /***/ }),
-/* 444 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35156,7 +36950,7 @@
 	module.exports = RecommendedCommunities;
 
 /***/ }),
-/* 445 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35184,20 +36978,20 @@
 	var Space = __webpack_require__(366);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(446);
-	var ComingSoonComponent = __webpack_require__(447);
-	var PersonalDetails = __webpack_require__(448);
-	var ProfileExperiences = __webpack_require__(449);
-	var ProfileSkillTags = __webpack_require__(451);
-	var ProfileAccomplishments = __webpack_require__(452);
-	var ProfileCreations = __webpack_require__(453);
-	var ProfileBadges = __webpack_require__(454);
-	var ProfileProgress = __webpack_require__(455);
-	var ProfileAdditionalInfo = __webpack_require__(456);
-	var ProfilAffiliations = __webpack_require__(457);
-	var GuestAdditionalInfo = __webpack_require__(458);
-	var HomeQuestionCardStyle = __webpack_require__(421);
-	var CropParagraph = __webpack_require__(450);
+	var ProfileHeader = __webpack_require__(451);
+	var ComingSoonComponent = __webpack_require__(452);
+	var PersonalDetails = __webpack_require__(453);
+	var ProfileExperiences = __webpack_require__(454);
+	var ProfileSkillTags = __webpack_require__(456);
+	var ProfileAccomplishments = __webpack_require__(457);
+	var ProfileCreations = __webpack_require__(458);
+	var ProfileBadges = __webpack_require__(459);
+	var ProfileProgress = __webpack_require__(460);
+	var ProfileAdditionalInfo = __webpack_require__(461);
+	var ProfilAffiliations = __webpack_require__(462);
+	var GuestAdditionalInfo = __webpack_require__(463);
+	var HomeQuestionCardStyle = __webpack_require__(426);
+	var CropParagraph = __webpack_require__(455);
 	var CircularLoader = __webpack_require__(404);
 	var utils = __webpack_require__(397);
 	var Str = __webpack_require__(405);
@@ -35301,19 +37095,14 @@
 	
 	    _this2.overFlowCallback = function (params) {
 	      if (params == 0) {
-	        window.__LanguagePopup.show();
+	        if (window.__loggedInState == "GUEST") _this2.openSettingsScreen();else _this2.logout();
 	      } else if (params == 1) {
-	        _this2.logout();
-	      } else if (params == 2) {
 	        _this2.openSettingsScreen();
 	      }
 	    };
 	
 	    _this2.openSettingsScreen = function () {
-	      if (!JBridge.isNetworkAvailable()) {
-	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
-	        return;
-	      }
+	      JBridge.logSettingsClickedEvent("Settings");
 	      var whatToSend = { "profile": JSON.stringify("{}") };
 	      var event = { tag: "OPEN_SettingsScreenActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -35350,13 +37139,13 @@
 	            editable: _this.editable,
 	            onCardClick: _this.handleCreatedCardClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 231
+	              lineNumber: 228
 	            }
 	          });
 	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	        }
 	      });
-	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10, false);else console.log("JBridge.searchContent failed, no internet");
+	      if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", window.__userToken, "Combined", 10, null, false);else console.log("JBridge.searchContent failed, no internet");
 	      window.__ContentLoadingComponent.hideLoader();
 	      if (!JBridge.isNetworkAvailable()) {
 	        window.__LoaderDialog.hide();
@@ -35386,7 +37175,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 265
+	              lineNumber: 262
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -35400,7 +37189,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 273
+	              lineNumber: 270
 	            }
 	          })
 	        );
@@ -35410,7 +37199,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 287
+	            lineNumber: 284
 	          }
 	        });
 	      }
@@ -35538,7 +37327,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 417
+	            lineNumber: 414
 	          }
 	        },
 	        dom(
@@ -35550,7 +37339,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 422
+	              lineNumber: 419
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -35558,13 +37347,13 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 428
+	              lineNumber: 425
 	            }
 	          }),
 	          dom(GuestAdditionalInfo, {
 	            profileData: _this2.profileData, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 432
+	              lineNumber: 429
 	            }
 	          }),
 	          _this2.getSignInOverlay()
@@ -35584,7 +37373,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 444
+	            lineNumber: 441
 	          }
 	        },
 	        dom(
@@ -35596,7 +37385,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 449
+	              lineNumber: 446
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -35604,14 +37393,14 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 455
+	              lineNumber: 452
 	            }
 	          }),
 	          dom(ProfileProgress, {
 	            editable: _this2.isEditable,
 	            data: _this2.details, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 459
+	              lineNumber: 456
 	            }
 	          }),
 	          _this2.getDescription(),
@@ -35623,7 +37412,7 @@
 	            privacyStatus: _this2.checkPrivacy("education"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 465
+	              lineNumber: 462
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -35634,7 +37423,7 @@
 	            privacyStatus: _this2.checkPrivacy("jobProfile"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 473
+	              lineNumber: 470
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -35645,7 +37434,7 @@
 	            privacyStatus: _this2.checkPrivacy("address"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 482
+	              lineNumber: 479
 	            }
 	          }),
 	          dom(
@@ -35655,7 +37444,7 @@
 	              width: "wrap_content",
 	              id: _this2.idSet.skillTagComponent, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 489
+	                lineNumber: 486
 	              }
 	            },
 	            dom(ProfileSkillTags, {
@@ -35666,7 +37455,7 @@
 	              privacyStatus: _this2.checkPrivacy("skills"),
 	              handleLock: _this2.handleLockClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 493
+	                lineNumber: 490
 	              }
 	            })
 	          ),
@@ -35676,7 +37465,7 @@
 	              width: "match_parent",
 	              id: _this2.idSet.createdByHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 502
+	                lineNumber: 499
 	              }
 	            },
 	            dom(ProfileCreations, {
@@ -35684,7 +37473,7 @@
 	              editable: _this.editable,
 	              onCardClick: _this.handleCreatedCardClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 506
+	                lineNumber: 503
 	              }
 	            })
 	          ),
@@ -35692,7 +37481,7 @@
 	            data: _this2.details,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 513
+	              lineNumber: 510
 	            }
 	          })
 	        )
@@ -35712,17 +37501,17 @@
 	          clickable: "true",
 	          padding: "16,16,16,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 525
+	            lineNumber: 522
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
 	          currComponentLocation: "PROFILE",
-	          headerText: window.__S.OVERLAY_LABEL_COMMON,
-	          infoText: window.__S.OVERLAY_INFO_TEXT_COMMON,
+	          headerText: window.__S.OVERLAY_LABEL_COMMON.format(JBridge.getAppName()),
+	          infoText: window.__S.OVERLAY_INFO_TEXT_COMMON.format(JBridge.getAppName()),
 	          textSize: "16",
 	          gravity: "left", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 532
+	            lineNumber: 529
 	          }
 	        })
 	      );
@@ -35739,12 +37528,12 @@
 	      _this2.menuData = {
 	        url: [{ imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
 	      };
-	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE;
+	      _this2.popupMenu = window.__S.SETTINGS;
 	    } else {
 	      _this2.menuData = {
 	        url: [{ imageUrl: "ic_action_search" }, { imageUrl: "ic_action_notification" }, { imageUrl: "ic_action_overflow" }]
 	      };
-	      _this2.popupMenu = window.__S.CHANGE_LANGUAGE + "," + window.__S.LOGOUT + "," + window.__S.SETTINGS;
+	      _this2.popupMenu = window.__S.LOGOUT + "," + window.__S.SETTINGS;
 	    }
 	    window.__LanguagePopup.props.buttonClick = _this2.handleChangeLang;
 	    window.__refreshProfile = false; //Used to control when the profile fragment needs to be refreshed when the user updates any profile data from the app.
@@ -35790,7 +37579,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 548
+	            lineNumber: 545
 	          }
 	        },
 	        dom(
@@ -35802,7 +37591,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 551
+	              lineNumber: 548
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -35815,7 +37604,7 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 558
+	              lineNumber: 555
 	            }
 	          }),
 	          dom(
@@ -35827,13 +37616,13 @@
 	              orientation: "horizontal",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 568
+	                lineNumber: 565
 	              }
 	            },
 	            dom(CircularLoader, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 574
+	                lineNumber: 571
 	              }
 	            })
 	          )
@@ -35849,7 +37638,7 @@
 	module.exports = ProfileFragment;
 
 /***/ }),
-/* 446 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36099,7 +37888,7 @@
 	module.exports = ProfileHeader;
 
 /***/ }),
-/* 447 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36177,7 +37966,7 @@
 	module.exports = ComingSoonComponent;
 
 /***/ }),
-/* 448 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36338,7 +38127,7 @@
 	module.exports = PersonalDetails;
 
 /***/ }),
-/* 449 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36361,7 +38150,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var CropParagraph = __webpack_require__(450);
+	var CropParagraph = __webpack_require__(455);
 	
 	var _this;
 	
@@ -36870,7 +38659,7 @@
 	module.exports = ProfileExperiences;
 
 /***/ }),
-/* 450 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36913,7 +38702,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.props.contentText
 	        });
-	        Android.runInUI(cmd, 0, "42", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "43", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
 	      } else {
 	        var cmd = _this.set({
 	          id: _this.idSet.showMoreButton,
@@ -36923,7 +38712,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.str
 	        });
-	        Android.runInUI(cmd, 0, "52", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "53", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
 	      }
 	      _this.max = !_this.max;
 	    };
@@ -36933,6 +38722,7 @@
 	    console.log(_this.props);
 	    // console.log("inside CropParagraph, content : " + this.str);
 	    _this.len = 50;
+	
 	    if (_this.str.length > _this.len) _this.str = _this.str.substring(0, _this.len) + "...";
 	
 	    _this.max = false;
@@ -36953,13 +38743,33 @@
 	          width: "match_parent",
 	          height: "wrap_content",
 	          margin: this.props.margin || "0,0,0,0",
-	          visibility: this.props.headText == undefined || this.props.headText.length == 0 ? "gone" : "visible",
 	          layoutTransition: "true",
+	          visibility: this.props.headText == undefined || this.props.headText.length == 0 ? "gone" : "visible",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 61
+	            lineNumber: 60
 	          }
 	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            background: this.props.background || window.__Colors.WHITE, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 68
+	            }
+	          },
+	          dom(TextView, {
+	            text: this.props.headText,
+	            style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
+	            margin: this.props.headTextMargin || "0,0,0,8",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 72
+	            }
+	          })
+	        ),
 	        dom(
 	          LinearLayout,
 	          {
@@ -36967,22 +38777,14 @@
 	            width: "wrap_content",
 	            layout: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 70
+	              lineNumber: 78
 	            }
 	          },
-	          dom(TextView, {
-	            text: this.props.headText,
-	            style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
-	            margin: "0,0,0,8", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 74
-	            }
-	          }),
 	          dom(ViewWidget, {
 	            height: "0",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 79
+	              lineNumber: 85
 	            }
 	          }),
 	          dom(
@@ -36993,7 +38795,7 @@
 	              layout: "horizontal",
 	              visibility: this.props.editable == "true" ? "visible" : "gone", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 83
+	                lineNumber: 89
 	              }
 	            },
 	            dom(
@@ -37001,7 +38803,7 @@
 	              {
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 88
+	                  lineNumber: 94
 	                }
 	              },
 	              dom(ImageView, {
@@ -37014,7 +38816,7 @@
 	                visibility: this.lockIconVisibility ? "visible" : "gone",
 	                imageUrl: "ic_action_lock", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 89
+	                  lineNumber: 95
 	                }
 	              }),
 	              dom(ImageView, {
@@ -37027,7 +38829,7 @@
 	                visibility: this.lockIconVisibility ? "gone" : "visible",
 	                imageUrl: "ic_action_unlock", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 96
+	                  lineNumber: 102
 	                }
 	              })
 	            )
@@ -37041,7 +38843,7 @@
 	            height: "wrap_content",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 108
+	              lineNumber: 114
 	            }
 	          },
 	          dom(TextView, {
@@ -37052,7 +38854,7 @@
 	            layoutTransition: "true",
 	            style: this.props.textStyle ? this.props.textStyle : window.__TextStyle.textStyle.CARD.BODY.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 114
+	              lineNumber: 120
 	            }
 	          }),
 	          dom(TextView, {
@@ -37068,7 +38870,7 @@
 	            style: window.__TextStyle.textStyle.CARD.BODY.BLUE_R,
 	            color: window.__Colors.PRIMARY_ACCENT, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 122
+	              lineNumber: 128
 	            }
 	          })
 	        )
@@ -37084,7 +38886,7 @@
 	module.exports = CropParagraph;
 
 /***/ }),
-/* 451 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37427,7 +39229,7 @@
 	module.exports = ProfileSkillTags;
 
 /***/ }),
-/* 452 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37616,7 +39418,7 @@
 	module.exports = ProfileAccomplishments;
 
 /***/ }),
-/* 453 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37861,7 +39663,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 454 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38102,7 +39904,7 @@
 	module.exports = ProfileBadges;
 
 /***/ }),
-/* 455 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38536,7 +40338,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 456 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38992,7 +40794,7 @@
 	module.exports = ProfileAdditionalInfo;
 
 /***/ }),
-/* 457 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39194,7 +40996,7 @@
 	module.exports = ProfileCreations;
 
 /***/ }),
-/* 458 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39228,19 +41030,7 @@
 	
 	    var _this2 = _possibleConstructorReturn(this, (GuestAdditionalInfo.__proto__ || Object.getPrototypeOf(GuestAdditionalInfo)).call(this, props, children));
 	
-	    _this2.initGrade = function () {
-	      var gradeList = JSON.parse(utils.decodeBase64(JBridge.getGrades()));
-	      var grade = _this2.profileData.grade;
-	      gradeList.map(function (item, i) {
-	        if (item.value == grade) {
-	          _this2.profileData.grade = item.label;
-	        }
-	      });
-	      _this2.profileData.grade == -1 ? "" : _this2.profileData.grade + "";
-	      return _this2.profileData.grade;
-	    };
-	
-	    _this2.getRows = function (input) {
+	    _this2.getRows = function () {
 	      var rows = _this2.info.map(function (item, i) {
 	        return dom(
 	          LinearLayout,
@@ -39250,7 +41040,7 @@
 	            margin: "0,16,0,0",
 	            visibility: item.value && item.value != "" ? "visible" : "gone", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 66
+	              lineNumber: 55
 	            }
 	          },
 	          dom(TextView, {
@@ -39260,14 +41050,14 @@
 	            text: item.name,
 	            style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 72
+	              lineNumber: 61
 	            }
 	          }),
 	          dom(ViewWidget, {
 	            height: "0",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 79
+	              lineNumber: 68
 	            }
 	          }),
 	          dom(TextView, {
@@ -39276,7 +41066,7 @@
 	            text: item.value,
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 83
+	              lineNumber: 72
 	            }
 	          })
 	        );
@@ -39294,7 +41084,7 @@
 	          margin: "0,0,0,16",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 95
+	            lineNumber: 84
 	          }
 	        },
 	        _this2.getRows()
@@ -39309,7 +41099,7 @@
 	          height: "wrap_content",
 	          padding: "0,16,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 106
+	            lineNumber: 95
 	          }
 	        },
 	        dom(TextView, {
@@ -39318,14 +41108,14 @@
 	          text: window.__S.PROFILE_DETAILS_TITLE,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 111
+	            lineNumber: 100
 	          }
 	        }),
 	        dom(ViewWidget, {
 	          height: "0",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 117
+	            lineNumber: 106
 	          }
 	        }),
 	        dom(
@@ -39337,7 +41127,7 @@
 	            visibility: "true",
 	            onClick: _this2.handleEditProfileClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 121
+	              lineNumber: 110
 	            }
 	          },
 	          dom(ImageView, {
@@ -39345,7 +41135,7 @@
 	            height: "18",
 	            imageUrl: "ic_action_edit_blue", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 128
+	              lineNumber: 117
 	            }
 	          })
 	        )
@@ -39359,7 +41149,7 @@
 	        margin: "0,16,0,0",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 137
+	          lineNumber: 126
 	        }
 	      });
 	    };
@@ -39383,27 +41173,27 @@
 	    _this2.profileData = _this2.props.profileData;
 	    _this2.maxLen = 30;
 	    _this2.handle = _this2.profileData.handle;
-	    _this2.medium = _this2.profileData.medium;
-	    _this2.grade = _this2.initGrade();
-	    _this2.board = _this2.profileData.board;
-	    _this2.subjects = JBridge.getFromSharedPrefs(window.__S.SUBJECTS);
+	    _this2.medium = _this2.profileData.medium ? _this2.profileData.medium.join(", ") : "";
+	    _this2.grade = _this2.profileData.grade ? _this2.profileData.grade.join(", ") : "";
+	    _this2.board = _this2.profileData.board ? _this2.profileData.board.join(", ") : "";
+	    _this2.subjects = _this2.profileData.subject ? _this2.profileData.subject.join(", ") : "";
 	
 	    if (_this2.subjects == "__failed") {
 	      _this2.subjects = "";
 	    }
 	
 	    _this2.info = [{
-	      name: window.__S.MEDIUM_GUEST,
-	      value: _this2.medium
+	      name: window.__S.BOARD,
+	      value: _this2.board
 	    }, {
 	      name: window.__S.GRADE,
 	      value: _this2.grade
 	    }, {
-	      name: window.__S.BOARD,
-	      value: _this2.board
-	    }, {
 	      name: window.__S.SUBJECTS,
 	      value: _this2.subjects
+	    }, {
+	      name: window.__S.MEDIUM_GUEST,
+	      value: _this2.medium
 	    }];
 	    return _this2;
 	  }
@@ -39421,7 +41211,7 @@
 	          id: this.idSet.holder,
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 146
+	            lineNumber: 135
 	          }
 	        },
 	        this.getLineSeperator(),
@@ -39438,7 +41228,7 @@
 	module.exports = GuestAdditionalInfo;
 
 /***/ }),
-/* 459 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39578,7 +41368,7 @@
 	module.exports = ContentLoadingComponent;
 
 /***/ }),
-/* 460 */
+/* 465 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -39616,7 +41406,163 @@
 	}];
 
 /***/ }),
-/* 461 */
+/* 466 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var QuestionsFramework = function QuestionsFramework(framework) {
+	    var _this = this;
+	
+	    _classCallCheck(this, QuestionsFramework);
+	
+	    this.getTotalQs = function () {
+	        return _this.totalCards;
+	    };
+	
+	    this.getQFromFramework = function (index) {
+	        var nextQ;
+	        if (index == 0) {
+	            _this.categories.map(function (item, i) {
+	                if (item.index == index + 1) {
+	                    nextQ = {
+	                        identifier: item.identifier,
+	                        question: _this.questionMap[item.code].question,
+	                        option: _this.questionMap[item.code].option,
+	                        values: item.terms,
+	                        selected: [],
+	                        isCurr: true,
+	                        selectorType: "checkbox",
+	                        code: item.code
+	                    };
+	                }
+	            });
+	        } else {
+	            var nextQVals = [];
+	            var prevQ = _this.questions[index - 1]; //get the previous question
+	            var associations = [];
+	            var ele = _this.getEleAtIndex(_this.categories, index + 1); //get the current question
+	            //check whether prev Q asnwer has any associations
+	            //merge associations to the next Q options, if present, else merge all the terms
+	            prevQ.selected.map(function (item, i) {
+	                if (item.associations) {
+	                    item.associations.map(function (item) {
+	                        if (associations.indexOf(item.identifier) == -1) associations.push(item.identifier);
+	                    });
+	                } else {
+	                    ele.terms.map(function (item) {
+	                        if (associations.indexOf(item.identifier) == -1) associations.push(item.identifier);
+	                    });
+	                }
+	            });
+	            if (associations.length != 0) {
+	                ele.terms.map(function (item) {
+	                    if (associations.indexOf(item.identifier) != -1) nextQVals.push(item);
+	                });
+	            } else {
+	                nextQVals = ele.terms;
+	            }
+	            nextQ = {
+	                identifier: ele.identifier,
+	                question: _this.questionMap[ele.code].question,
+	                option: _this.questionMap[ele.code].option,
+	                values: nextQVals,
+	                selected: [],
+	                isCurr: true,
+	                selectorType: "checkbox",
+	                code: ele.code
+	            };
+	        }
+	        return nextQ;
+	    };
+	
+	    this.isAllQsAnsweredAtInit = function () {
+	        //updated only when initialized
+	        return _this.answeredAll;
+	    };
+	
+	    this.getEleAtIndex = function (arr, index) {
+	        var ele;
+	        arr.map(function (item) {
+	            if (item.index == index) {
+	                ele = item;
+	            }
+	        });
+	        return ele;
+	    };
+	
+	    this.addNextQ = function () {
+	        console.log("this.questions[" + _this.currIndex + "] -> ", _this.questions[_this.currIndex]);
+	
+	        if (_this.currIndex + 1 != _this.getTotalQs()) {
+	            if (_this.currIndex != -1 && _this.questions[_this.currIndex].selected.length == 0) {
+	                return;
+	            }
+	            _this.currIndex++;
+	            var q = _this.getQFromFramework(_this.currIndex);
+	            if (q) _this.questions.push(q);
+	        }
+	    };
+	
+	    this.resetArr = function (arr) {
+	        _this.questions = arr;
+	        JBridge.setInSharedPrefs("answeredQs", JSON.stringify(_this.questions));
+	    };
+	
+	    this.getAllQs = function () {
+	        return _this.questions;
+	    };
+	
+	    this.setAnswer = function (index, data) {
+	        if (index != _this.currIndex) _this.currIndex = index;
+	        _this.questions[index] = data;
+	        _this.questions = _this.questions.slice(0, index + 1);
+	        JBridge.setInSharedPrefs("answeredQs", JSON.stringify(_this.questions));
+	    };
+	
+	    this.frameworkJSON = framework;
+	    this.categories = this.frameworkJSON.categories;
+	    this.totalCards = this.categories.length;
+	    var answeredQs = JBridge.getFromSharedPrefs("answeredQs");
+	    if (answeredQs == "__failed") {
+	        this.questions = [];
+	        this.currIndex = -1;
+	    } else {
+	        this.questions = JSON.parse(answeredQs);
+	        this.currIndex = this.questions.length - 1;
+	    }
+	    var numberSelected = 0;
+	    this.questions.map(function (item) {
+	        if (item.selected.length != 0) numberSelected++;
+	    });
+	    this.answeredAll = this.totalCards == numberSelected;
+	
+	    this.questionMap = {
+	        "board": {
+	            question: "Which board does your school follow?",
+	            option: "SELECT BOARD"
+	        },
+	        "gradeLevel": {
+	            question: "Which class do you belong to?",
+	            option: "SELECT CLASS"
+	        },
+	        "subject": {
+	            question: "Which subjects are you looking for?",
+	            option: "SELECT SUBJECT"
+	        },
+	        "medium": {
+	            question: "What medium/language does your school teach in?",
+	            option: "SELECT MEDIUM/LANG"
+	        }
+	    };
+	};
+	
+	module.exports = QuestionsFramework;
+
+/***/ }),
+/* 467 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -39704,7 +41650,7 @@
 	};
 
 /***/ }),
-/* 462 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39721,9 +41667,9 @@
 	
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
-	var debounce = __webpack_require__(409);
+	var debounce = __webpack_require__(410);
 	var objectAssign = __webpack_require__(317);
-	
+	var FeatureCards = __webpack_require__(469);
 	var View = __webpack_require__(331);
 	var LinearLayout = __webpack_require__(333);
 	var RelativeLayout = __webpack_require__(340);
@@ -39732,9 +41678,10 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var ViewWidget = __webpack_require__(349);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var ProgressBar = __webpack_require__(359);
 	var callbackMapper = __webpack_require__(329);
+	var SimpleToolbar = __webpack_require__(382);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -39752,10 +41699,11 @@
 	    _initialiseProps.call(_this2);
 	
 	    _this2.state = state;
+	    console.log("UA in state -> ", _this2.state);
 	
 	    _this2.screenName = "UserActivity";
 	
-	    _this2.setIds(["userForumContainer", "tabLayoutContainer", "firstNameHolder", "languageHolder", "alreadyHaveAccHolder", "userNameHolder", "passwordHolder", "needAccHolder", "forgotPasswordHolder", "signInHolder", "signUpHolder", "mobileNumberHolder", "emailHolder", "parentContainer", "importEcarLayout", "importEcarText"]);
+	    _this2.setIds(["parentContainer", "importEcarLayout", "importEcarText"]);
 	    _this2.backPressCount = 0;
 	    _this2.shouldCacheScreen = false;
 	
@@ -39763,6 +41711,7 @@
 	    _this = _this2;
 	
 	    _this2.deepLinkCollectionDetails = "";
+	    _this2.whereFrom = _this2.state.data.value0.whereFrom;
 	
 	    window.__LoaderDialog.hide();
 	    window.__loggedInState = JBridge.getFromSharedPrefs("logged_in");
@@ -39790,7 +41739,7 @@
 	          height: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 493
+	            lineNumber: 447
 	          }
 	        },
 	        dom(
@@ -39802,7 +41751,7 @@
 	            gravity: "center",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 501
+	              lineNumber: 455
 	            }
 	          },
 	          dom(ImageView, {
@@ -39811,7 +41760,7 @@
 	            layout_gravity: "center",
 	            circularImageUrl: "1," + imgUrl, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 508
+	              lineNumber: 462
 	            }
 	          }),
 	          dom(TextView, {
@@ -39821,7 +41770,7 @@
 	            height: "wrap_content",
 	            textSize: "18", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 514
+	              lineNumber: 468
 	            }
 	          })
 	        ),
@@ -39836,7 +41785,7 @@
 	            id: this.idSet.importEcarLayout,
 	            visibility: "gone", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 522
+	              lineNumber: 476
 	            }
 	          },
 	          dom(ProgressBar, {
@@ -39845,7 +41794,7 @@
 	            margin: "0,0,15,0",
 	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 531
+	              lineNumber: 485
 	            }
 	          }),
 	          dom(TextView, {
@@ -39854,7 +41803,7 @@
 	            width: "wrap_content",
 	            layout_gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 537
+	              lineNumber: 491
 	            }
 	          })
 	        )
@@ -39890,18 +41839,18 @@
 	        if (window.__loggedInState != "GUEST" && window.__loggedInState != "YES") {
 	          _this3.showLoginOptions();
 	        } else {
-	          _this3.setLoginPreferences();
+	          utils.setLoginPreferences();
 	          var event = { tag: "OPEN_MainActivity", contents: [] };
 	          window.__runDuiCallback(event);
 	        }
 	      }
-	    } else if (data.status == "ALREADY_EXIST") {
+	    } else if (response.status == "ALREADY_EXIST") {
 	      console.log("content ALREADY_EXIST");
 	      JBridge.showToast(window.__S.MSG_ALREADY_IMPORTED, "short");
 	      if (window.__loggedInState != "GUEST" && window.__loggedInState != "YES") {
 	        _this3.showLoginOptions();
 	      } else {
-	        _this3.setLoginPreferences();
+	        utils.setLoginPreferences();
 	        var event = { tag: "OPEN_MainActivity", contents: [] };
 	        window.__runDuiCallback(event);
 	      }
@@ -39925,7 +41874,7 @@
 	      text: progress
 	    });
 	
-	    Android.runInUI(cmd, 0, "117", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(cmd, 0, "106", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleDeepLinkAction = function (identifier) {
@@ -40004,7 +41953,7 @@
 	    window.__patchCallback = function (data) {
 	      console.log("login patch call", data);
 	    };
-	    _this3.setLoginPreferences();
+	    utils.setLoginPreferences();
 	    JBridge.patchApi(window.__loginUrl + "/api/user/v1/update/logintime", JSON.stringify(body), window.__user_accessToken, window.__apiToken);
 	    var whatToSend = [];
 	    var event = { tag: "OPEN_MainActivity", contents: whatToSend };
@@ -40012,16 +41961,8 @@
 	  };
 	
 	  this.onBackPressed = function () {
-	    _this3.backPressCount++;
-	    if (_this3.backPressCount == 1) {
-	      window.__Snackbar.show(window.__S.BACK_TO_EXIT);
-	    }
-	    if (_this3.backPressCount > 1) {
-	      JBridge.closeApp();
-	    }
-	    setTimeout(function () {
-	      _this3.backPressCount = 0;
-	    }, 1500);
+	    var event = { tag: "BACK_UserActivity", contents: [] };
+	    window.__runDuiCallback(event);
 	  };
 	
 	  this.handleStateChange = function (state) {
@@ -40074,7 +42015,7 @@
 	    var notifData = JBridge.getFromSharedPrefs("intentNotification");
 	    //Handle notification redirection only if the user is logged in, else just open HomeFragment
 	    if (notifData != "__failed" && window.__loggedInState == "YES") {
-	      _this3.setLoginPreferences();
+	      utils.setLoginPreferences();
 	      notifData = JSON.parse(utils.decodeBase64(notifData));
 	      console.log("notifData ", notifData);
 	      switch (JBridge.getFromSharedPrefs("screenToOpen")) {
@@ -40109,11 +42050,10 @@
 	
 	  this.handleBrowseAsGuest = function () {
 	    console.log("handleBrowseAsGuest");
-	    window.__loggedInState = "GUEST";
 	    window.__enrolledCourses = [];
-	    JBridge.setInSharedPrefs("logged_in", "GUEST");
-	    _this3.setLoginPreferences();
-	    _this3.performRedirection();
+	    JBridge.logGuestEvent("LOGIN");
+	    var event = { tag: "OPEN_RoleSelectionActivity", contents: [] };
+	    window.__runDuiCallback(event);
 	  };
 	
 	  this.getTopLayout = function () {
@@ -40123,38 +42063,17 @@
 	      {
 	        height: "wrap_content",
 	        width: "match_parent",
-	        padding: "12,20,12,20",
+	        margin: "0,0,0,8",
 	        gravity: "center",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 313
+	          lineNumber: 293
 	        }
 	      },
-	      dom(ImageView, {
-	        height: "60",
-	        width: "60",
-	        imageUrl: "ic_launcher", __source: {
+	      dom(FeatureCards, {
+	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 320
-	        }
-	      }),
-	      dom(TextView, {
-	        width: "match_parent",
-	        text: window.__S.WELCOME_M1.format(JBridge.getAppName()),
-	        gravity: "center",
-	        margin: "0,12,0,6",
-	        style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 325
-	        }
-	      }),
-	      dom(TextView, {
-	        width: "match_parent",
-	        gravity: "center",
-	        text: window.__S.WELCOME_M2,
-	        style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 332
+	          lineNumber: 300
 	        }
 	      })
 	    );
@@ -40168,10 +42087,11 @@
 	        height: "wrap_content",
 	        width: "match_parent",
 	        gravity: "center",
+	        alignParentBottom: "true, -1",
 	        orientation: "vertical",
 	        margin: "24,0,24,0", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 343
+	          lineNumber: 308
 	        }
 	      },
 	      dom(
@@ -40181,7 +42101,7 @@
 	          width: "match_parent",
 	          onClick: _this3.handleLoginClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 350
+	            lineNumber: 316
 	          }
 	        },
 	        dom(TextView, {
@@ -40195,7 +42115,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: window.__S.SIGN_IN, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 355
+	            lineNumber: 321
 	          }
 	        })
 	      ),
@@ -40208,7 +42128,7 @@
 	          layoutTransition: "true",
 	          onClick: _this3.handleBrowseAsGuest, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 367
+	            lineNumber: 333
 	          }
 	        },
 	        dom(TextView, {
@@ -40222,7 +42142,7 @@
 	          background: window.__Colors.WHITE,
 	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 374
+	            lineNumber: 340
 	          }
 	        })
 	      )
@@ -40231,50 +42151,43 @@
 	
 	  this.getBody = function () {
 	    return dom(
-	      LinearLayout,
+	      RelativeLayout,
 	      {
 	        root: "true",
-	        orientation: "vertical",
 	        width: "match_parent",
 	        clickable: "true",
-	        padding: "0,12,0,0",
-	        background: window.__Colors.WHITE,
 	        height: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 390
+	          lineNumber: 356
 	        }
 	      },
 	      dom(
 	        LinearLayout,
 	        {
-	          height: "0",
-	          weight: "1",
 	          root: "true",
-	          layoutTransition: "true",
+	          orientation: "vertical",
 	          width: "match_parent",
-	          gravity: "center",
-	          orientation: "vertical", __source: {
+	          clickable: "true",
+	          margin: "0,0,0,100",
+	          background: window.__Colors.WHITE,
+	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 399
+	            lineNumber: 361
 	          }
 	        },
+	        dom(SimpleToolbar, {
+	          title: "",
+	          width: "match_parent",
+	          height: "wrap_content",
+	          onBackPress: _this3.onBackPressed, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 370
+	          }
+	        }),
 	        _this3.getTopLayout()
 	      ),
 	      _this3.getOptions()
 	    );
-	  };
-	
-	  this.setLoginPreferences = function () {
-	    window.__userToken = JBridge.getFromSharedPrefs("user_token");
-	    window.__refreshToken = JBridge.getFromSharedPrefs("refresh_token");
-	    window.__user_accessToken = JBridge.getFromSharedPrefs("user_access_token");
-	    if (window.__loggedInState == "GUEST") {
-	      JBridge.setInSharedPrefs("logged_in", "GUEST");
-	      JBridge.setProfile("", true);
-	    } else if (window.__loggedInState == "YES") {
-	      JBridge.setInSharedPrefs("logged_in", "YES");
-	      JBridge.setProfile(window.__userToken, false);
-	    }
 	  };
 	
 	  this.clearIntentLinkPath = function () {
@@ -40302,7 +42215,7 @@
 	
 	  this.performRedirection = function () {
 	    console.log("performRedirection");
-	    _this3.setLoginPreferences();
+	    utils.setLoginPreferences();
 	    if (window.__loggedInState == "YES" || window.__loggedInState == "GUEST") {
 	      if ("__failed" != JBridge.getFromSharedPrefs("intentNotification")) {
 	        console.log("Assuming user has logged in, notification data: ", JBridge.getFromSharedPrefs("intentNotification"));
@@ -40335,7 +42248,230 @@
 	module.exports = Connector(UserActivity);
 
 /***/ }),
-/* 463 */
+/* 469 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeatureCards.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var RelativeLayout = __webpack_require__(340);
+	var LinearLayout = __webpack_require__(333);
+	var ImageView = __webpack_require__(350);
+	var View = __webpack_require__(331);
+	var HorizontalScrollView = __webpack_require__(357);
+	var TextView = __webpack_require__(342);
+	var ViewWidget = __webpack_require__(349);
+	var callbackMapper = __webpack_require__(329);
+	var utils = __webpack_require__(397);
+	var _this;
+	var CardComponent = __webpack_require__(402);
+	var CarouselCards = __webpack_require__(440);
+	var CircularLoader = __webpack_require__(404);
+	var Font = __webpack_require__(345);
+	
+	var Card = function (_View) {
+	    _inherits(Card, _View);
+	
+	    function Card(props, children) {
+	        _classCallCheck(this, Card);
+	
+	        var _this2 = _possibleConstructorReturn(this, (Card.__proto__ || Object.getPrototypeOf(Card)).call(this, props, children));
+	
+	        _this2.setIds(["card"]);
+	        _this2.height = _this2.props.height ? _this2.props.height : "106";
+	        _this2.width = _this2.props.width ? _this2.props.width : "200";
+	        _this2.cardData = _this2.props.data;
+	        _this2.id = _this2.idSet.card; //important feild
+	        return _this2;
+	    }
+	
+	    _createClass(Card, [{
+	        key: "render",
+	        value: function render() {
+	            var fLayout = "";
+	            var visibility = "gone";
+	            var layout = dom(
+	                RelativeLayout,
+	                {
+	                    id: this.idSet.card,
+	                    height: this.height,
+	                    width: this.width,
+	                    background: "#FFFFFF",
+	                    margin: "0,0,0,0",
+	                    gravity: "center",
+	                    padding: "24,0,24,0", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 34
+	                    }
+	                },
+	                dom(
+	                    LinearLayout,
+	                    {
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        gravity: "center_horizontal",
+	                        orientation: "vertical", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 43
+	                        }
+	                    },
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "0",
+	                            weight: "1",
+	                            gravity: "center", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 49
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            width: "wrap_content",
+	                            margin: "0,8,0,8",
+	                            textSize: "16",
+	                            fontStyle: Font.fontStyle.SEMIBOLD,
+	                            text: this.cardData.heading, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 54
+	                            }
+	                        })
+	                    ),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            height: "wrap_content",
+	                            width: "match_parent",
+	                            padding: "0,8,0,8",
+	                            gravity: "center", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 62
+	                            }
+	                        },
+	                        dom(ImageView, {
+	                            width: "match_parent",
+	                            height: "match_parent",
+	                            margin: "0,0,0,0",
+	                            imageUrl: this.cardData.illustration, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 67
+	                            }
+	                        })
+	                    ),
+	                    dom(
+	                        LinearLayout,
+	                        {
+	                            width: "match_parent",
+	                            height: "0",
+	                            weight: "1",
+	                            gravity: "center", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 74
+	                            }
+	                        },
+	                        dom(TextView, {
+	                            gravity: "center",
+	                            width: "wrap_content",
+	                            margin: "0,8,0,0",
+	                            padding: "24,0,24,0",
+	                            textSize: "14",
+	                            fontStyle: Font.fontStyle.REGULAR,
+	                            text: this.cardData.desc, __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 79
+	                            }
+	                        })
+	                    )
+	                )
+	            );
+	            return layout.render();
+	        }
+	    }]);
+	
+	    return Card;
+	}(View);
+	
+	var FeatureCards = function (_View2) {
+	    _inherits(FeatureCards, _View2);
+	
+	    function FeatureCards(props, children) {
+	        _classCallCheck(this, FeatureCards);
+	
+	        var _this3 = _possibleConstructorReturn(this, (FeatureCards.__proto__ || Object.getPrototypeOf(FeatureCards)).call(this, props, children));
+	
+	        _this3.afterRender = function () {};
+	
+	        _this = _this3;
+	        _this3.setIds(["parentContainer", "scrollViewContainer", "footerContainer", "progressContainer"]);
+	        _this3.cardsArr = [{
+	            heading: "Get Content On-the-Go",
+	            illustration: "ic_content_otg",
+	            desc: "Browse and consume content from our growing collection of free courses and resources."
+	        }, {
+	            heading: "Scan QR Codes for Quick Access",
+	            illustration: "ic_scan_qr",
+	            desc: "Scan QR Codes using the Sunbird app to quickly get access to related content and resources."
+	        }, {
+	            heading: "Connect with Peers and Experts",
+	            illustration: "ic_connect_with_peers",
+	            desc: "Join communities and speak to peers and experts. Learn and share your knowledge."
+	        }];
+	        _this3.cardWidth = JBridge.getScreenWidth();
+	        _this3.cardHeight = JBridge.getScreenHeight() - 250;
+	        _this3.cardPadding = Math.floor((_this3.screenWidth - _this3.cardWidth) / 2);
+	
+	        console.log("cardPadding -> ", _this3.cardPadding);
+	
+	        _this3.renderCards = _this3.cardsArr.map(function (item, i) {
+	            return dom(Card, {
+	                height: _this3.cardHeight + "",
+	                width: _this3.cardWidth + "",
+	                data: item, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 129
+	                }
+	            });
+	        });
+	
+	        return _this3;
+	    }
+	
+	    _createClass(FeatureCards, [{
+	        key: "render",
+	        value: function render() {
+	            var visibility = "visible;";
+	            this.Carousel = dom(CarouselCards, {
+	                height: JBridge.getScreenHeight() - 200 + "",
+	                cardPadding: "0,0,0,0",
+	                cards: this.renderCards,
+	                cardWidth: this.cardWidth,
+	                totalCards: this.cardsArr.length, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 144
+	                }
+	            });
+	            return this.Carousel.render();
+	        }
+	    }]);
+	
+	    return FeatureCards;
+	}(View);
+	
+	module.exports = FeatureCards;
+
+/***/ }),
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40361,6 +42497,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ScrollView = __webpack_require__(358);;
 	var HorizontalScrollView = __webpack_require__(357);
+	var ImageView = __webpack_require__(350);
 	var ProgressBar = __webpack_require__(359);
 	var utils = __webpack_require__(397);
 	
@@ -40369,12 +42506,12 @@
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CropParagraph = __webpack_require__(450);
-	var CourseCurriculum = __webpack_require__(464);
+	var CropContentDetails = __webpack_require__(471);
+	var CourseCurriculum = __webpack_require__(472);
 	var PageOption = __webpack_require__(379);
-	var CourseProgress = __webpack_require__(468);
-	var ProgressButton = __webpack_require__(469);
-	var SharePopup = __webpack_require__(470);
+	var CourseProgress = __webpack_require__(476);
+	var ProgressButton = __webpack_require__(477);
+	var SharePopup = __webpack_require__(420);
 	
 	var _this;
 	
@@ -40388,7 +42525,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(["parentContainer", "pageOption", "descriptionContainer", "downloadProgressText", "totalContainer", "sharePopupContainer", "enrollButtonId"]);
+	    _this2.setIds(["parentContainer", "pageOption", "descriptionContainer", "downloadProgressText", "totalContainer", "sharePopupContainer", "enrollButtonId", "readMore", "creditsSection", "creditsText", "viewCreditsButton", "upDownBlueArrow"]);
 	    _this2.state = state;
 	    _this2.screenName = "CourseInfoActivity";
 	
@@ -40401,6 +42538,8 @@
 	    //to get geneie callback for download of spine
 	    window.__getDownloadStatus = _this2.getSpineStatus;
 	    _this2.cour = "";
+	    _this2.creditsAndLicense = "";
+	    _this2.showCredits = true;
 	
 	    _this = _this2;
 	
@@ -40427,7 +42566,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 521
+	            lineNumber: 695
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -40437,7 +42576,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 527
+	            lineNumber: 701
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -40445,7 +42584,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 535
+	            lineNumber: 709
 	          }
 	        })
 	      );
@@ -40478,7 +42617,7 @@
 	        id: _this3.idSet.downloadProgressText,
 	        text: window.__S.FETCHING_CONTENTS.format(downloadedPercent)
 	      });
-	      Android.runInUI(cmd, 0, "88", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    } else if (cb == "onContentImportResponse" && data.status == "IMPORT_COMPLETED") {
 	      if (data.status == "NOT_FOUND") {
 	        window.__ContentLoaderDialog.hide();
@@ -40519,6 +42658,7 @@
 	          window.__Snackbar.show(window.__S.ERROR_NO_INTERNET_MESSAGE);
 	        }
 	        _this.onBackPressed();
+	        return;
 	      }
 	      _this.localContent = JSON.parse(utils.decodeBase64(data[0]));
 	      if (_this.localContent.isAvailableLocally == true) {
@@ -40535,8 +42675,10 @@
 	
 	        JBridge.getContentImportStatus(identifier, callback22);
 	      }
+	      _this.contentDetails(JSON.parse(utils.decodeBase64(data[0])));
+	      _this.creditsDetail(JSON.parse(utils.decodeBase64(data[0])));
 	    });
-	    JBridge.getContentDetails(identifier, callback, true);
+	    JBridge.getContentDetails(identifier, callback, false);
 	  };
 	
 	  this.onStop = function () {
@@ -40573,7 +42715,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 183
+	          lineNumber: 194
 	        }
 	      });
 	    } else {
@@ -40586,7 +42728,7 @@
 	        shouldGoForward: "gone",
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 191
+	          lineNumber: 202
 	        }
 	      });
 	      var isVisible = "gone";
@@ -40594,7 +42736,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: isVisible
-	      }), 0, "202", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "213", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	
 	    var layout = dom(
@@ -40604,7 +42746,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 209
+	          lineNumber: 220
 	        }
 	      },
 	      child
@@ -40614,7 +42756,7 @@
 	
 	  this.onPop = function () {
 	
-	    Android.runInUI(_this3.animateView(), null, "224", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "235", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	  };
 	
 	  this.afterRender = function () {
@@ -40638,7 +42780,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: "gone"
-	      }), 0, "248", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "259", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
@@ -40706,7 +42848,7 @@
 	          type: "COURSES",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 325
+	            lineNumber: 336
 	          }
 	        });
 	
@@ -40764,7 +42906,7 @@
 	        style: window.__TextStyle.textStyle.HINT.REGULAR,
 	        text: (i == 0 ? "" : " | ") + item.count + " " + item.type, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 388
+	          lineNumber: 399
 	        }
 	      });
 	    });
@@ -40775,7 +42917,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 394
+	          lineNumber: 405
 	        }
 	      },
 	      dom(
@@ -40785,7 +42927,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 397
+	            lineNumber: 408
 	          }
 	        },
 	        items
@@ -40798,6 +42940,186 @@
 	
 	      _this3.shareContent();
 	    }
+	  };
+	
+	  this.contentDetails = function (data) {
+	    var screenWidth = JBridge.getScreenWidth().toString();
+	    var contentText = "";
+	    if (data.contentData && data.contentData.description) {
+	      contentText += "<br>" + data.contentData.description + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.gradeLevel) {
+	      contentText += "GRADE:<br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.subject) {
+	      contentText += "SUBJECT:<br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.board) {
+	      contentText += "BOARD:<br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.language) {
+	      contentText += "MEDIUM:<br>" + data.contentData.language.toString().replace(/,/g, ", ");
+	    }
+	
+	    var layout = dom(
+	      LinearLayout,
+	      {
+	        id: _this3.idSet.readMore,
+	        width: "match_parent",
+	        height: "wrap_content",
+	        orientation: "vertical", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 445
+	        }
+	      },
+	      dom(
+	        LinearLayout,
+	        {
+	          width: screenWidth,
+	          height: "wrap_content",
+	          orientation: "vertical",
+	          background: window.__Colors.WHITE_F2, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 450
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.ABOUT,
+	          margin: "16,12,0,12",
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 455
+	          }
+	        })
+	      ),
+	      dom(CropContentDetails, {
+	        height: "match_parent",
+	        width: "match_parent",
+	        margin: "16,0,16,16",
+	        contentDescription: data.contentData.description ? data.contentData.description : " ",
+	        contentText: contentText, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 460
+	        }
+	      })
+	    );
+	    _this3.replaceChild(_this3.idSet.readMore, layout.render(), 0);
+	  };
+	
+	  this.creditsDetail = function (data) {
+	    if (data.contentData.license || data.contentData.credits) {
+	      if (data.contentData.credits) {
+	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
+	      }
+	      if (data.contentData.license) {
+	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + data.contentData.license;
+	      }
+	      var creditsLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical",
+	          visibility: "visible", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 479
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "1000",
+	            height: "wrap_content",
+	            orientation: "vertical",
+	            margin: "0,8,0,0",
+	            background: window.__Colors.WHITE_F2, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 484
+	            }
+	          },
+	          dom(TextView, {
+	            id: _this3.idSet.creditsText,
+	            textFromHtml: "",
+	            visibility: "gone",
+	            margin: "16,0,0,0",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 490
+	            }
+	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 496
+	              }
+	            },
+	            dom(TextView, {
+	              id: _this3.idSet.viewCreditsButton,
+	              text: window.__S.VIEW_CREDITS_INFO,
+	              margin: "16,8,0,8",
+	              color: "#FF0079FF",
+	              onClick: _this3.viewCreditsButtonClick, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 498
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "10",
+	              height: "10",
+	              id: _this3.idSet.upDownBlueArrow,
+	              gravity: "center_vertical",
+	              margin: "8,14,0,8",
+	              imageUrl: "ic_action_down_blue", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 504
+	              }
+	            })
+	          )
+	        )
+	      );
+	      _this3.replaceChild(_this3.idSet.creditsSection, creditsLayout.render(), 0);
+	    }
+	  };
+	
+	  this.viewCreditsButtonClick = function () {
+	    if (!_this3.showCredits) {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: "",
+	        visibility: "gone"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.VIEW_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_down_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "535", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    } else {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: _this3.creditsAndLicense,
+	        visibility: "visible"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.HIDE_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_up_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "552", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    }
+	    _this3.showCredits = !_this3.showCredits;
 	  };
 	
 	  this.getBody = function () {
@@ -40815,7 +43137,7 @@
 	        background: window.__Colors.WHITE,
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 423
+	          lineNumber: 565
 	        }
 	      },
 	      dom(SimpleToolbar, {
@@ -40827,7 +43149,7 @@
 	        showMenu: "true",
 	        onBackPress: _this3.onBackPressed, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 430
+	          lineNumber: 572
 	        }
 	      }),
 	      dom(
@@ -40838,7 +43160,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 439
+	            lineNumber: 581
 	          }
 	        },
 	        dom(
@@ -40849,7 +43171,7 @@
 	            width: "match_parent",
 	            fillViewPort: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 444
+	              lineNumber: 586
 	            }
 	          },
 	          dom(
@@ -40857,72 +43179,142 @@
 	            {
 	              height: "match_parent",
 	              width: "match_parent",
-	              padding: "16,24,16,16",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 450
+	                lineNumber: 591
 	              }
 	            },
-	            dom(TextView, {
-	              width: "wrap_content",
-	              height: "wrap_content",
-	              margin: "0,0,0,7",
-	              text: utils.firstLeterCapital(_this3.data.courseName),
-	              style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 456
-	              }
-	            }),
-	            dom(TextView, {
-	              height: "wrap_content",
-	              width: "match_parent",
-	              margin: "0,0,0,12",
-	              text: _this3.data.courseDesc, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 464
-	              }
-	            }),
-	            dom(TextView, {
-	              margin: "0,0,0,4",
-	              text: window.__S.STRUCTURE,
-	              style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 471
-	              }
-	            }),
-	            _this3.getCurriculumnBrief(),
 	            dom(
 	              LinearLayout,
 	              {
-	                id: _this3.idSet.descriptionContainer,
-	                height: "wrap_content",
+	                height: "match_parent",
 	                width: "match_parent",
-	                gravity: "center",
-	                root: "true",
+	                padding: "16,24,16,16",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 480
+	                  lineNumber: 595
 	                }
 	              },
-	              dom(ProgressBar, {
-	                height: "30",
-	                width: "30",
-	                margin: "20,20,20,20", __source: {
+	              dom(TextView, {
+	                width: "wrap_content",
+	                height: "wrap_content",
+	                margin: "0,0,0,0",
+	                text: utils.firstLeterCapital(_this3.data.courseName),
+	                style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 487
+	                  lineNumber: 601
 	                }
 	              }),
-	              dom(TextView, {
-	                id: _this3.idSet.downloadProgressText,
-	                test: "Fetching spine",
+	              dom(
+	                LinearLayout,
+	                {
+	                  orientation: "horizontal", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 607
+	                  }
+	                },
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  width: "match_parent",
+	                  margin: "0,4,0,0",
+	                  visibility: _this3.data.owner ? "visible" : "gone",
+	                  text: window.__S.BY,
+	                  style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 609
+	                  }
+	                }),
+	                dom(TextView, {
+	                  height: "wrap_content",
+	                  width: "match_parent",
+	                  margin: "0,4,0,0",
+	                  visibility: _this3.data.owner ? "visible" : "gone",
+	                  text: _this3.data.owner, __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 617
+	                  }
+	                })
+	              )
+	            ),
+	            dom(LinearLayout, {
+	              id: _this3.idSet.readMore, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 626
+	              }
+	            }),
+	            dom(
+	              LinearLayout,
+	              {
+	                width: "match_parent",
 	                height: "wrap_content",
-	                gravity: "center",
-	                width: "match_parent", __source: {
+	                orientation: "vertical",
+	                background: window.__Colors.WHITE_F2, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 491
+	                  lineNumber: 628
+	                }
+	              },
+	              dom(TextView, {
+	                margin: "16,16,0,16",
+	                text: window.__S.STRUCTURE,
+	                style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 633
 	                }
 	              })
-	            )
+	            ),
+	            dom(
+	              LinearLayout,
+	              {
+	                height: "match_parent",
+	                width: "match_parent",
+	                padding: "16,24,16,16",
+	                orientation: "vertical", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 639
+	                }
+	              },
+	              _this3.getCurriculumnBrief(),
+	              dom(
+	                LinearLayout,
+	                {
+	                  id: _this3.idSet.descriptionContainer,
+	                  height: "wrap_content",
+	                  width: "match_parent",
+	                  gravity: "center",
+	                  root: "true",
+	                  orientation: "vertical", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 648
+	                  }
+	                },
+	                dom(ProgressBar, {
+	                  height: "30",
+	                  width: "30",
+	                  margin: "20,20,20,20", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 656
+	                  }
+	                }),
+	                dom(TextView, {
+	                  id: _this3.idSet.downloadProgressText,
+	                  test: "Fetching spine",
+	                  height: "wrap_content",
+	                  gravity: "center",
+	                  width: "match_parent", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 660
+	                  }
+	                })
+	              )
+	            ),
+	            dom(LinearLayout, {
+	              width: "match_parent",
+	              height: "match_parent",
+	              id: _this3.idSet.creditsSection, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 670
+	              }
+	            })
 	          )
 	        ),
 	        dom(
@@ -40933,14 +43325,14 @@
 	            visibility: "gone",
 	            id: _this3.idSet.enrollButtonId, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 503
+	              lineNumber: 677
 	            }
 	          },
 	          dom(PageOption, {
 	            width: "match_parent",
 	            buttonItems: buttonList, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 508
+	              lineNumber: 682
 	            }
 	          })
 	        )
@@ -40952,7 +43344,164 @@
 	module.exports = Connector(CourseInfoActivity);
 
 /***/ }),
-/* 464 */
+/* 471 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CropContentDetails.js";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var dom = __webpack_require__(324);
+	var Connector = __webpack_require__(330);
+	var LinearLayout = __webpack_require__(333);
+	var View = __webpack_require__(331);
+	var ViewWidget = __webpack_require__(349);
+	var RelativeLayout = __webpack_require__(340);
+	var TextView = __webpack_require__(342);
+	var ImageView = __webpack_require__(350);
+	
+	var CropContentDetails = function (_View) {
+	  _inherits(CropContentDetails, _View);
+	
+	  function CropContentDetails(props, children) {
+	    _classCallCheck(this, CropContentDetails);
+	
+	    var _this = _possibleConstructorReturn(this, (CropContentDetails.__proto__ || Object.getPrototypeOf(CropContentDetails)).call(this, props, children));
+	
+	    _this.handleMoreClick = function (data) {
+	      if (!_this.max) {
+	        var cmd = _this.set({
+	          id: _this.idSet.showMoreButton,
+	          text: window.__S.READ_LESS,
+	          padding: "0,16,0,0"
+	        });
+	        cmd += _this.set({
+	          id: _this.idSet.paraContainerCroped,
+	          textFromHtml: _this.props.contentText,
+	          maxLines: "5000"
+	        });
+	        cmd += _this.set({
+	          id: _this.idSet.upDownBlueArrow,
+	          visibility: "visible",
+	          imageUrl: "ic_action_up_blue",
+	          margin: "8,20,0,0"
+	
+	        });
+	        Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropContentDetailsjs");
+	      } else {
+	        var cmd = _this.set({
+	          id: _this.idSet.showMoreButton,
+	          text: window.__S.READ_MORE,
+	          padding: "0,8,0,0"
+	        });
+	        cmd += _this.set({
+	          id: _this.idSet.paraContainerCroped,
+	          textFromHtml: _this.str,
+	          maxLines: "3"
+	        });
+	        cmd += _this.set({
+	          id: _this.idSet.upDownBlueArrow,
+	          visibility: "visible",
+	          imageUrl: "ic_action_down_blue",
+	          margin: "8,12,0,0"
+	        });
+	        Android.runInUI(cmd, 0, "65", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropContentDetailsjs");
+	      }
+	      _this.max = !_this.max;
+	    };
+	
+	    _this.setIds(["paraContainerCroped", "showMoreButton", "upDownBlueArrow"]);
+	
+	    _this.str = _this.props.contentDescription != undefined ? _this.props.contentText : "";
+	    console.log(_this.props);
+	
+	    _this.str = "<br>" + _this.props.contentDescription;
+	    _this.max = false;
+	    return _this;
+	  }
+	
+	  _createClass(CropContentDetails, [{
+	    key: "render",
+	    value: function render() {
+	      var _dom;
+	
+	      this.layout = dom(
+	        LinearLayout,
+	        {
+	          background: window.__Colors.WHITE,
+	          width: "match_parent",
+	          height: "match_parent",
+	          margin: this.props.margin || "0,0,0,0",
+	          orientation: "vertical",
+	          layoutTransition: "true", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 72
+	          }
+	        },
+	        dom(TextView, (_dom = {
+	          id: this.idSet.paraContainerCroped,
+	          maxLines: "3",
+	          enableEllipse: "true",
+	          textFromHtml: this.str
+	        }, _defineProperty(_dom, "enableEllipse", "true"), _defineProperty(_dom, "style", this.props.textStyle ? this.props.textStyle : window.__TextStyle.textStyle.CARD.BODY.REGULAR), _defineProperty(_dom, "__source", {
+	          fileName: _jsxFileName,
+	          lineNumber: 79
+	        }), _dom)),
+	        dom(
+	          LinearLayout,
+	          {
+	            orientation: "horizontal", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 86
+	            }
+	          },
+	          dom(TextView, {
+	            id: this.idSet.showMoreButton,
+	            padding: "0,8,0,0",
+	            text: window.__S.READ_MORE,
+	            gravity: "left",
+	            onClick: this.handleMoreClick,
+	            style: window.__TextStyle.textStyle.CARD.BODY.BLUE_R,
+	            color: window.__Colors.PRIMARY_ACCENT, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 88
+	            }
+	          }),
+	          dom(ImageView, {
+	            width: "10",
+	            height: "10",
+	            id: this.idSet.upDownBlueArrow,
+	            gravity: "left",
+	            margin: "8,12,0,0",
+	            imageUrl: "ic_action_down_blue", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 96
+	            }
+	          })
+	        )
+	      );
+	
+	      return this.layout.render();
+	    }
+	  }]);
+	
+	  return CropContentDetails;
+	}(View);
+	
+	module.exports = CropContentDetails;
+
+/***/ }),
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40975,9 +43524,9 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	
-	var ChapterList = __webpack_require__(465);
-	var AnswerView = __webpack_require__(466);
-	var ChapterOverView = __webpack_require__(467);
+	var ChapterList = __webpack_require__(473);
+	var AnswerView = __webpack_require__(474);
+	var ChapterOverView = __webpack_require__(475);
 	
 	var CourseCurriculum = function (_View) {
 	  _inherits(CourseCurriculum, _View);
@@ -41114,7 +43663,7 @@
 	module.exports = CourseCurriculum;
 
 /***/ }),
-/* 465 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41348,7 +43897,7 @@
 	module.exports = ChapterList;
 
 /***/ }),
-/* 466 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41512,7 +44061,7 @@
 	module.exports = AnswerView;
 
 /***/ }),
-/* 467 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41607,7 +44156,7 @@
 	module.exports = ChapterOverView;
 
 /***/ }),
-/* 468 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41648,9 +44197,9 @@
 	        {
 	          visibility: _this.props.visibility,
 	          width: "match_parent",
-	          margin: "0,0,0,0", __source: {
+	          margin: "0,0,0,4", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 36
+	            lineNumber: 34
 	          }
 	        },
 	        dom(TextView, {
@@ -41658,36 +44207,7 @@
 	          id: _this.idSet.completedTextView,
 	          text: window.__S.YOUR_PROGRESS.format(_this.progressBar), __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 41
-	          }
-	        })
-	      );
-	    };
-	
-	    _this.getResumeButton = function () {
-	      return dom(
-	        LinearLayout,
-	        {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          background: window.__Colors.PRIMARY_ACCENT,
-	          cornerRadius: "2",
-	          gravity: "center", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 50
-	          }
-	        },
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          text: window.__S.RESUME,
-	          gravity: "center",
-	          onClick: function onClick() {
-	            return _this.props.onResumeClick();
-	          },
-	          style: window.__TextStyle.textStyle.TABBAR.WHITE, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 57
+	            lineNumber: 39
 	          }
 	        })
 	      );
@@ -41718,7 +44238,7 @@
 	          gravity: "center",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 74
+	            lineNumber: 51
 	          }
 	        },
 	        dom(
@@ -41729,17 +44249,68 @@
 	            height: "match_parent",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 79
+	              lineNumber: 56
 	            }
 	          },
-	          dom(TextView, {
-	            text: utils.firstLeterCapital(this.props.title || this.props.name || "No title"),
-	            style: window.__TextStyle.textStyle.HEADING.DARK,
-	            margin: "0,0,0,8", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 84
-	            }
-	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 61
+	              }
+	            },
+	            dom(TextView, {
+	              text: utils.firstLeterCapital(this.props.title || this.props.name || "No title"),
+	              style: window.__TextStyle.textStyle.HEADING.DARK,
+	              margin: "0,0,0,4", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 63
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "16",
+	              height: "16",
+	              visibility: this.props.textbook ? "visible" : "gone",
+	              gravity: "left",
+	              margin: "8,6,0,4",
+	              imageUrl: "ic_check_circle", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 67
+	              }
+	            })
+	          ),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal",
+	              visibility: this.props.batchCreatedBy ? "visible" : "gone", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 76
+	              }
+	            },
+	            dom(TextView, {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              margin: "0,0,0,4",
+	              visibility: this.props.batchCreatedBy != "" ? "visible" : "gone",
+	              text: window.__S.BY,
+	              style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 80
+	              }
+	            }),
+	            dom(TextView, {
+	              height: "wrap_content",
+	              width: "match_parent",
+	              margin: "0,0,0,4",
+	              visibility: this.props.batchCreatedBy != "" ? "visible" : "gone",
+	              text: " " + this.props.batchCreatedBy, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 88
+	              }
+	            })
+	          ),
 	          this.getProgressStatus()
 	        ),
 	        dom(LinearLayout, {
@@ -41748,7 +44319,7 @@
 	          window: "wrap_content",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 94
+	            lineNumber: 99
 	          }
 	        })
 	      );
@@ -41763,7 +44334,7 @@
 	module.exports = CourseProgress;
 
 /***/ }),
-/* 469 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41918,7 +44489,10 @@
 	            data = utils.decodeBase64(data[0]);
 	            var parsedData = JSON.parse(utils.jsonifyData(data));
 	            console.log("data from progress", parsedData);
-	            JBridge.playContent(data, parsedData.identifier, parsedData.contentData.pkgVersion, utils.getFuncMapped(_this.checkTelemetry));
+	            window.__currResourceAllowRating = true;
+	            window.__currContentAllowRating = true;
+	            JBridge.addContentAccess(parsedData.identifier);
+	            JBridge.playContent(data, parsedData.identifier, parsedData.contentData.pkgVersion, utils.getFuncMapped(_this.checkTelemetry), _this.props.rollUpData);
 	          });
 	          JBridge.getContentDetails(_this.props.identifier, callback, false);
 	        } else if (JBridge.isNetworkAvailable()) {
@@ -41949,7 +44523,7 @@
 	      console.log("telemetryData.eid", telemetryData.eid);
 	      if (telemetryData.eid == "END") {
 	        JBridge.stopTelemetryEvent();
-	        window.__RatingsPopup.show();
+	        var _ = window.__RatingsPopup.isRatingsAvailable() || window.__loggedInState == "GUEST" ? "" : window.__RatingsPopup.show();
 	        var time = new Date();
 	        var date = utils.formatDate(time);
 	        var contentProgress = {};
@@ -42051,7 +44625,7 @@
 	          root: "true",
 	          height: "48", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 294
+	            lineNumber: 297
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -42060,7 +44634,7 @@
 	          weight: pLeft,
 	          multiCorners: mCornerLeft + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 300
+	            lineNumber: 303
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -42069,7 +44643,7 @@
 	          weight: pRight,
 	          multiCorners: mCornerRight + window.__Colors.PRIMARY_DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 306
+	            lineNumber: 309
 	          }
 	        })
 	      );
@@ -42084,7 +44658,7 @@
 	          height: "48",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 321
+	            lineNumber: 324
 	          }
 	        },
 	        _this2.getDownloadBackground(value),
@@ -42096,7 +44670,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	          text: text, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 330
+	            lineNumber: 333
 	          }
 	        })
 	      );
@@ -42118,7 +44692,7 @@
 	          background: window.__Colors.WHITE,
 	          stroke: "2," + window.__Colors.THICK_BLUE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 348
+	            lineNumber: 351
 	          }
 	        },
 	        dom(TextView, {
@@ -42129,7 +44703,7 @@
 	          style: window.__TextStyle.textStyle.CARD.ACTION.BLUE,
 	          text: window.__S.CANCEL_DOWNLOAD, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 359
+	            lineNumber: 362
 	          }
 	        })
 	      );
@@ -42168,7 +44742,7 @@
 	          id: this.idSet.downloadBar,
 	          layoutTransition: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 381
+	            lineNumber: 384
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -42177,7 +44751,7 @@
 	          width: "match_parent",
 	          background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 391
+	            lineNumber: 394
 	          }
 	        }),
 	        this.getCancelButton(),
@@ -42190,7 +44764,7 @@
 	            root: "true",
 	            id: this.idSet.downloadBarContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 399
+	              lineNumber: 402
 	            }
 	          },
 	          this.getButtons(0, this.props.buttonText)
@@ -42207,352 +44781,7 @@
 	module.exports = ProgressButton;
 
 /***/ }),
-/* 470 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SharePopup.js";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var dom = __webpack_require__(324);
-	var View = __webpack_require__(331);
-	var LinearLayout = __webpack_require__(333);
-	var RelativeLayout = __webpack_require__(340);
-	var FrameLayout = __webpack_require__(351).androidViews.FrameLayout;
-	var ImageView = __webpack_require__(350);
-	var ScrollView = __webpack_require__(358);
-	var TextView = __webpack_require__(342);
-	var CheckBox = __webpack_require__(361);
-	var EditText = __webpack_require__(363);
-	var HorizontalScrollView = __webpack_require__(357);
-	var Space = __webpack_require__(366);
-	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
-	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
-	var Styles = __webpack_require__(347);
-	var IconStyle = Styles.Params.IconStyle;
-	var _this;
-	
-	var SharePopup = function (_View) {
-	  _inherits(SharePopup, _View);
-	
-	  function SharePopup(props, children) {
-	    _classCallCheck(this, SharePopup);
-	
-	    var _this2 = _possibleConstructorReturn(this, (SharePopup.__proto__ || Object.getPrototypeOf(SharePopup)).call(this, props, children));
-	
-	    _this2.show = function () {
-	      _this2.setVisibility("visible");
-	      _this2.isVisible = true;
-	      _this2.logTelelmetry(_this2.props.identifier);
-	    };
-	
-	    _this2.logTelelmetry = function (id) {
-	      var callback = callbackMapper.map(function (data) {
-	        if (data != "__failed") {
-	          data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	          console.log("telemetry data SharePopUp", data);
-	          JBridge.logshareScreenEvent(id, data.contentData.pkgVersion);
-	        }
-	      });
-	      JBridge.getContentDetails(id, callback, false);
-	    };
-	
-	    _this2.hide = function () {
-	      _this2.setVisibility("gone");
-	      _this2.isVisible = false;
-	    };
-	
-	    _this2.getVisible = function () {
-	      return _this2.isVisible;
-	    };
-	
-	    _this2.setVisibility = function (data) {
-	      var cmd = _this2.set({
-	        id: _this2.idSet.parentContainer,
-	        visibility: data
-	      });
-	
-	      Android.runInUI(cmd, 0, "73", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSharePopupjs");
-	    };
-	
-	    _this2.getLineSeperator = function () {
-	      return dom(LinearLayout, {
-	        width: "match_parent",
-	        height: "1",
-	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 79
-	        }
-	      });
-	    };
-	
-	    _this2.getContent = function () {
-	      var fileLinkAvailable;
-	      var textLinkAvailable;
-	
-	      _this2.props.data.map(function (item, index) {
-	
-	        if (item.type == "file") {
-	          // JBridge.logShareClickEvent("FILE");
-	          fileLinkAvailable = true;
-	        } else if (item.type == "text") {
-	          // JBridge.logShareClickEvent("LINK");
-	          textLinkAvailable = true;
-	        }
-	      });
-	
-	      return dom(
-	        ScrollView,
-	        {
-	          width: "match_parent",
-	          height: "wrap_content", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 105
-	          }
-	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            orientation: "vertical",
-	            width: "match_parent",
-	            height: "wrap_content", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 109
-	            }
-	          },
-	          dom(
-	            LinearLayout,
-	            {
-	              width: "wrap_content",
-	              height: "wrap_content",
-	              orientation: "vertical",
-	              visibility: textLinkAvailable ? "visibile" : "gone", __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 114
-	              }
-	            },
-	            dom(TextView, {
-	              margin: "0,25,0,12",
-	              width: "match_parent",
-	              style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK,
-	              height: "wrap_content",
-	              text: window.__S.AS_LINK, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 120
-	              }
-	            }),
-	            dom(
-	              HorizontalScrollView,
-	              {
-	                width: "wrap_content",
-	                height: "wrap_content",
-	                scrollBarX: "false",
-	                fillViewport: "true", __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 128
-	                }
-	              },
-	              dom(LinearLayout, {
-	                width: "wrap_content",
-	                id: _this2.idSet.linkShareIntents,
-	                height: "wrap_content", __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 134
-	                }
-	              })
-	            )
-	          ),
-	          dom(
-	            LinearLayout,
-	            {
-	              width: "wrap_content",
-	              height: "wrap_content",
-	              orientation: "vertical",
-	              visibility: fileLinkAvailable ? "visibile" : "gone", __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 144
-	              }
-	            },
-	            dom(TextView, {
-	              margin: "0,25,0,12",
-	              width: "match_parent",
-	              style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK,
-	              height: "wrap_content",
-	              text: window.__S.AS_FILE, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 150
-	              }
-	            }),
-	            dom(
-	              HorizontalScrollView,
-	              {
-	                width: "wrap_content",
-	                height: "wrap_content",
-	                scrollBarX: "false",
-	                fillViewport: "true", __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 158
-	                }
-	              },
-	              dom(LinearLayout, {
-	                width: "wrap_content",
-	                id: _this2.idSet.fileShareIntents,
-	                height: "wrap_content", __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 164
-	                }
-	              })
-	            )
-	          )
-	        )
-	      );
-	    };
-	
-	    _this2.getHeader = function () {
-	      return dom(
-	        LinearLayout,
-	        {
-	          width: "match_parent",
-	          height: "wrap_content",
-	          gravity: "center_vertical",
-	          margin: "0,0,0,0", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 183
-	          }
-	        },
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          gravity: "center_vertical",
-	          text: window.__S.SHARE_THIS,
-	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 189
-	          }
-	        }),
-	        dom(ViewWidget, {
-	          width: "0",
-	          weight: "1",
-	          height: "0", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 196
-	          }
-	        }),
-	        dom(ImageView, {
-	          width: "18",
-	          height: "18",
-	          onClick: _this2.handleDismissClick,
-	          gravity: "center_vertical",
-	          imageUrl: "ic_action_close", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 201
-	          }
-	        })
-	      );
-	    };
-	
-	    _this2.getBody = function () {
-	      return dom(
-	        LinearLayout,
-	        {
-	          cornerRadius: "2",
-	          width: "match_parent",
-	          height: "350",
-	          root: "true",
-	          visibility: "visible",
-	          orientation: "vertical",
-	          clickable: "true",
-	          padding: "16,18,16,16",
-	          background: "#ffffff", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 215
-	          }
-	        },
-	        _this2.getHeader(),
-	        _this2.getContent()
-	      );
-	    };
-	
-	    _this2.handleDismissClick = function () {
-	      _this2.hide();
-	    };
-	
-	    _this2.shareContent = function () {
-	
-	      _this.props.data.map(function (item, index) {
-	        if (item.type == "file") {
-	          JBridge.shareContentThroughIntent(item.data, "file", _this.idSet.fileShareIntents, _this2.props.identifier, _this2.props.type);
-	        } else if (item.type == "text") {
-	          JBridge.shareContentThroughIntent(item.data, "text", _this.idSet.linkShareIntents, _this2.props.identifier, _this2.props.type);
-	        }
-	      });
-	    };
-	
-	    _this2.afterRender = function () {
-	      _this2.shareContent();
-	    };
-	
-	    _this2.setIds(["chooseItemContainer", "featureContainer", "parentContainer", "contentContainer", "spinnerContainer", "linkShareIntents", "fileShareIntents"]);
-	    _this2.chosenItem;
-	    _this2.selectedList = [];
-	    _this = _this2;
-	    window.__SharePopup = _this2;
-	    console.log("SHARE POPUP CME");
-	    _this2.isVisible = false;
-	    return _this2;
-	  }
-	
-	  _createClass(SharePopup, [{
-	    key: "render",
-	    value: function render() {
-	
-	      this.layout = dom(
-	        LinearLayout,
-	        {
-	          height: "match_parent",
-	          width: "match_parent",
-	          id: this.idSet.parentContainer,
-	          visibility: "gone",
-	          afterRender: this.afterRender,
-	          root: "true",
-	          background: window.__Colors.PRIMARY_BLACK_44,
-	          orientation: "vertical", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 262
-	          }
-	        },
-	        dom(LinearLayout, {
-	          height: "0",
-	          width: "match_parent",
-	          onClick: this.handleDismissClick,
-	          weight: "1", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 271
-	          }
-	        }),
-	        this.getBody()
-	      );
-	
-	      return this.layout.render();
-	    }
-	  }]);
-	
-	  return SharePopup;
-	}(View);
-	
-	module.exports = SharePopup;
-
-/***/ }),
-/* 471 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42578,16 +44807,19 @@
 	var ProgressBar = __webpack_require__(359);
 	var utils = __webpack_require__(397);
 	var FeatureButton = __webpack_require__(377);
-	var DownloadAllProgressButton = __webpack_require__(472);
+	var DownloadAllProgressButton = __webpack_require__(479);
 	var RatingBar = __webpack_require__(372);
+	var CropContentDetails = __webpack_require__(471);
+	var ImageView = __webpack_require__(350);
+	
 	window.R = __webpack_require__(7);
 	
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(464);
+	var CourseCurriculum = __webpack_require__(472);
 	var HorizontalProgressBar = __webpack_require__(403);
-	var CourseProgress = __webpack_require__(468);
-	var FlagPopup = __webpack_require__(473);
-	var SharePopup = __webpack_require__(470);
+	var CourseProgress = __webpack_require__(476);
+	var FlagPopup = __webpack_require__(480);
+	var SharePopup = __webpack_require__(420);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -42602,7 +44834,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "startCourseBtn", "resumeCourseBtn", "simpleToolBarOverFlow", "batchDetailsContainer", "downloadAllProgressButton", "startOrResumeBtnContainer", "horizontalProgressBarContainer", "headerContainer", "ratingBar", "ratingContainer"]);
+	    _this2.setIds(["descriptionContainer", "courseNotStartedOverLay", "sharePopupContainer", "startCourseBtn", "resumeCourseBtn", "simpleToolBarOverFlow", "batchDetailsContainer", "downloadAllProgressButton", "startOrResumeBtnContainer", "horizontalProgressBarContainer", "headerContainer", "readMore", "ratingBar", "ratingContainer", "creditsSection", "creditsText", "viewCreditsButton", "upDownBlueArrow"]);
 	    _this2.state = state;
 	    _this2.screenName = "CourseEnrolledActivity";
 	
@@ -42621,11 +44853,13 @@
 	    _this2.courseContent = {}; //Children contents if any
 	    _this2.batchName = "";
 	    _this2.batchDescription = "";
+	    _this2.batchCreatedBy = "";
 	    _this2.popupMenu = window.__loggedInState == "GUEST" ? window.__S.DELETE : window.__S.DELETE + "," + window.__S.FLAG;
-	
 	    // array of all the children content ids
 	    _this2.subContentArray = [];
 	    _this2.downloadSize = 0; //size of all the contents to download
+	    _this2.creditsAndLicense = "";
+	    _this2.showCredits = true;
 	    console.log("details in CEA", _this2.apiDetails);
 	    _this2.showProgress = _this2.apiDetails.hasOwnProperty("courseName") ? "visible" : "gone";
 	
@@ -42662,9 +44896,45 @@
 	    if (window.__currCourseDetails == undefined) {
 	      window.__currCourseDetails = {};
 	      window.__currCourseDetails.courseId = _this2.baseIdentifier;
+	      window.__currCourseDetails.moduleName = _this2.apiDetails.identifier;
 	    }
 	    return _this2;
 	  }
+	
+	  /*getBatchDetailSection = (name, description, createdBy) => {
+	    return (<LinearLayout
+	      width="match_parent"
+	      height="wrap_content"
+	      root="true"
+	      padding="0,8,0,8"
+	      orientation="vertical">
+	       <TextView
+	        width="match_parent"
+	        height="wrap_content"
+	        text={utils.firstLeterCapital(name)}
+	        style={window.__TextStyle.textStyle.CARD.TITLE.DARK_16} />
+	       <TextView
+	        width="match_parent"
+	        height="wrap_content"
+	        text={description}
+	        style={window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10} />
+	       <LinearLayout
+	        width="match_parent"
+	        height="wrap_content"
+	        orientation="horizontal">
+	        <TextView
+	          width="wrap_content"
+	          height="wrap_content"
+	          text={window.__S.CREATED_BY_SMALL + "  "}
+	          style={window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10} />
+	        <TextView
+	          width="wrap_content"
+	          height="wrap_content"
+	          text={createdBy}
+	          style={window.__TextStyle.textStyle.CARD.TITLE.DARK_14} />
+	      </LinearLayout>
+	    </LinearLayout>)
+	  }*/
 	
 	  _createClass(CourseEnrolledActivity, [{
 	    key: "render",
@@ -42677,7 +44947,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 765
+	            lineNumber: 931
 	          }
 	        },
 	        dom(
@@ -42689,7 +44959,7 @@
 	            background: window.__Colors.WHITE,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 771
+	              lineNumber: 937
 	            }
 	          },
 	          dom(
@@ -42700,7 +44970,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 777
+	                lineNumber: 943
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -42714,7 +44984,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 783
+	                lineNumber: 949
 	              }
 	            })
 	          ),
@@ -42724,7 +44994,7 @@
 	              width: "match_parent",
 	              id: this.idSet.horizontalProgressBarContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 795
+	                lineNumber: 961
 	              }
 	            },
 	            dom(HorizontalProgressBar, {
@@ -42733,7 +45003,7 @@
 	              totalProgress: this.data.totalProgress,
 	              visibility: this.showProgress, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 799
+	                lineNumber: 965
 	              }
 	            })
 	          ),
@@ -42743,7 +45013,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 806
+	                lineNumber: 972
 	              }
 	            },
 	            dom(
@@ -42753,7 +45023,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 810
+	                  lineNumber: 976
 	                }
 	              },
 	              dom(
@@ -42764,7 +45034,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 815
+	                    lineNumber: 981
 	                  }
 	                },
 	                dom(
@@ -42773,83 +45043,125 @@
 	                    height: "match_parent",
 	                    width: "match_parent",
 	                    root: "true",
-	                    padding: "16,24,16,16",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 821
+	                      lineNumber: 987
 	                    }
 	                  },
 	                  dom(
 	                    LinearLayout,
 	                    {
+	                      height: "match_parent",
 	                      width: "match_parent",
-	                      id: this.idSet.headerContainer, __source: {
+	                      padding: "16,24,16,16",
+	                      layoutTransition: "true",
+	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 828
+	                        lineNumber: 993
 	                      }
 	                    },
-	                    this.getHeader()
+	                    dom(
+	                      LinearLayout,
+	                      {
+	                        width: "match_parent",
+	                        id: this.idSet.headerContainer, __source: {
+	                          fileName: _jsxFileName,
+	                          lineNumber: 999
+	                        }
+	                      },
+	                      this.getHeader()
+	                    ),
+	                    dom(LinearLayout, {
+	                      width: "wrap_content",
+	                      height: "wrap_content",
+	                      layoutTransition: "true",
+	                      id: this.idSet.ratingContainer, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 1005
+	                      }
+	                    })
 	                  ),
 	                  dom(LinearLayout, {
-	                    id: this.idSet.batchDetailsContainer,
-	                    height: "match_parent",
-	                    width: "match_parent",
-	                    orientation: "vertical", __source: {
+	                    id: this.idSet.readMore, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 835
-	                    }
-	                  }),
-	                  dom(LinearLayout, {
-	                    width: "wrap_content",
-	                    height: "wrap_content",
-	                    id: this.idSet.ratingContainer, __source: {
-	                      fileName: _jsxFileName,
-	                      lineNumber: 841
-	                    }
-	                  }),
-	                  dom(TextView, {
-	                    width: "wrap_content",
-	                    height: "wrap_content",
-	                    margin: "0,16,0,0",
-	                    style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
-	                    text: window.__S.STRUCTURE, __source: {
-	                      fileName: _jsxFileName,
-	                      lineNumber: 846
+	                      lineNumber: 1012
 	                    }
 	                  }),
 	                  dom(
 	                    LinearLayout,
 	                    {
-	                      id: this.idSet.descriptionContainer,
-	                      height: "match_parent",
 	                      width: "match_parent",
-	                      gravity: "center",
-	                      root: "true",
-	                      orientation: "vertical", __source: {
+	                      height: "wrap_content",
+	                      orientation: "vertical",
+	                      background: window.__Colors.WHITE_F2, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 853
+	                        lineNumber: 1015
 	                      }
 	                    },
 	                    dom(TextView, {
-	                      margin: "0,50,0,0",
 	                      width: "wrap_content",
 	                      height: "wrap_content",
-	                      gravity: "center",
-	                      text: window.__S.LOADING_CONTENT, __source: {
+	                      margin: "16,16,0,16",
+	                      style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
+	                      text: window.__S.STRUCTURE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 861
-	                      }
-	                    }),
-	                    dom(ProgressBar, {
-	                      margin: "0,10,0,0",
-	                      gravity: "center",
-	                      width: "20",
-	                      height: "20", __source: {
-	                        fileName: _jsxFileName,
-	                        lineNumber: 868
+	                        lineNumber: 1020
 	                      }
 	                    })
-	                  )
+	                  ),
+	                  dom(
+	                    LinearLayout,
+	                    {
+	                      height: "match_parent",
+	                      width: "match_parent",
+	                      padding: "16,24,16,16",
+	                      orientation: "vertical", __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 1027
+	                      }
+	                    },
+	                    dom(
+	                      LinearLayout,
+	                      {
+	                        id: this.idSet.descriptionContainer,
+	                        height: "match_parent",
+	                        width: "match_parent",
+	                        gravity: "center",
+	                        root: "true",
+	                        orientation: "vertical", __source: {
+	                          fileName: _jsxFileName,
+	                          lineNumber: 1034
+	                        }
+	                      },
+	                      dom(TextView, {
+	                        margin: "0,50,0,0",
+	                        width: "wrap_content",
+	                        height: "wrap_content",
+	                        gravity: "center",
+	                        text: window.__S.LOADING_CONTENT, __source: {
+	                          fileName: _jsxFileName,
+	                          lineNumber: 1042
+	                        }
+	                      }),
+	                      dom(ProgressBar, {
+	                        margin: "0,10,0,0",
+	                        gravity: "center",
+	                        width: "20",
+	                        height: "20", __source: {
+	                          fileName: _jsxFileName,
+	                          lineNumber: 1049
+	                        }
+	                      })
+	                    )
+	                  ),
+	                  dom(LinearLayout, {
+	                    width: "match_parent",
+	                    height: "match_parent",
+	                    id: this.idSet.creditsSection, __source: {
+	                      fileName: _jsxFileName,
+	                      lineNumber: 1056
+	                    }
+	                  })
 	                )
 	              ),
 	              dom(LinearLayout, {
@@ -42858,7 +45170,7 @@
 	                margin: "0,0,0,16",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 877
+	                  lineNumber: 1063
 	                }
 	              }),
 	              dom(
@@ -42868,7 +45180,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.startOrResumeBtnContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 883
+	                    lineNumber: 1069
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -42883,7 +45195,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 888
+	                    lineNumber: 1074
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -42898,7 +45210,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 900
+	                    lineNumber: 1086
 	                  }
 	                })
 	              ),
@@ -42906,7 +45218,7 @@
 	                width: "match_parent",
 	                id: _this.idSet.downloadAllProgressButton, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 913
+	                  lineNumber: 1099
 	                }
 	              })
 	            ),
@@ -42921,7 +45233,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 918
+	                  lineNumber: 1104
 	                }
 	              },
 	              dom(TextView, {
@@ -42931,7 +45243,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 927
+	                  lineNumber: 1113
 	                }
 	              })
 	            )
@@ -42940,7 +45252,7 @@
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 937
+	            lineNumber: 1123
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -42948,7 +45260,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 940
+	            lineNumber: 1126
 	          }
 	        })
 	      );
@@ -42963,7 +45275,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function () {
-	    Android.runInUI(_this3.animateView(), null, "112", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "124", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	  };
 	
 	  this.onStop = function () {
@@ -43085,7 +45397,7 @@
 	        return;
 	      }
 	      data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
-	      console.log("this.courseDetails ", data);
+	      console.log("this.courseDetails", data);
 	
 	      _this.courseDetails = data;
 	      console.log("data", data);
@@ -43101,6 +45413,11 @@
 	      } else {
 	        window.__RatingsPopup.initData(_this.courseDetails.identifier, "content-detail", _this.courseDetails.contentData.pkgVersion);
 	      }
+	
+	      _this.contentDetails();
+	
+	      _this.creditsDetail(data);
+	
 	      if (data.isAvailableLocally == true) {
 	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
 	        _this.renderChildren(identifier);
@@ -43136,70 +45453,8 @@
 	    window.__runDuiCallback(event);
 	  };
 	
-	  this.getBatchDetailSection = function (name, description, createdBy) {
-	    return dom(
-	      LinearLayout,
-	      {
-	        width: "match_parent",
-	        height: "wrap_content",
-	        root: "true",
-	        padding: "0,8,0,8",
-	        orientation: "vertical", __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 291
-	        }
-	      },
-	      dom(TextView, {
-	        width: "match_parent",
-	        height: "wrap_content",
-	        text: utils.firstLeterCapital(name),
-	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK_16, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 298
-	        }
-	      }),
-	      dom(TextView, {
-	        width: "match_parent",
-	        height: "wrap_content",
-	        text: description,
-	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 304
-	        }
-	      }),
-	      dom(
-	        LinearLayout,
-	        {
-	          width: "match_parent",
-	          height: "wrap_content",
-	          orientation: "horizontal", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 310
-	          }
-	        },
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          text: window.__S.CREATED_BY_SMALL + "  ",
-	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULA_10, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 314
-	          }
-	        }),
-	        dom(TextView, {
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          text: createdBy,
-	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK_14, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 319
-	          }
-	        })
-	      )
-	    );
-	  };
-	
 	  this.handleStateChange = function (state) {
+	
 	    var res = utils.processResponse(state);
 	    if (res.code != 504) {
 	      var response = res.data; //JSON.parse(utils.decodeBase64(state.response.status[1]))
@@ -43229,7 +45484,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "357", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "377", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -43270,7 +45525,11 @@
 	        console.log("user details", user_details);
 	        console.log(_this3.batchName, _this3.batchDescription);
 	        var userName = user_details.firstName + " " + (user_details.lastName || " ");
-	        _this3.replaceChild(_this.idSet.batchDetailsContainer, _this.getBatchDetailSection(_this3.batchName, _this3.batchDescription, userName).render(), 0);
+	        _this3.batchCreatedBy = userName;
+	        _this3.contentDetails();
+	
+	        _this3.replaceChild(_this3.idSet.headerContainer, _this3.getHeader().render(), 0);
+	        //this.replaceChild(_this.idSet.batchDetailsContainer, _this.getBatchDetailSection(this.batchName, this.batchDescription, userName).render(), 0);
 	        if (window.__currCourseDetails && window.__currCourseDetails.hasOwnProperty("reload") && window.__currCourseDetails.reload) {
 	          _this3.refeshCourseProgressApi();
 	        }
@@ -43296,7 +45555,7 @@
 	          totalProgress: _this3.data.totalProgress,
 	          visibility: _this3.showProgress, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 424
+	            lineNumber: 448
 	          }
 	        });
 	        _this3.replaceChild(_this3.idSet.horizontalProgressBarContainer, layout.render(), 0);
@@ -43308,21 +45567,25 @@
 	  };
 	
 	  this.getHeader = function () {
+	    var isTextbook = _this3.apiDetails.contentType == "textbook";
 	    return dom(CourseProgress, {
 	      height: "wrap_content",
 	      width: "wrap_content",
 	      content: _this3.data,
+	      textbook: isTextbook,
 	      title: _this3.data.courseName || _this3.apiDetails.name || _this3.apiDetails.contentData.name,
+	      batchCreatedBy: _this3.apiDetails.owner || "",
 	      onResumeClick: _this3.handleCourseResume,
 	      visibility: _this3.showProgress, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 441
+	        lineNumber: 466
 	      }
 	    });
 	  };
 	
 	  this.renderCourseChildren = function () {
 	    var layout;
+	    JBridge.logRollupEvent("COURSE", window.__currCourseDetails.moduleName, "", "", "");
 	
 	    if (_this3.courseContent.children == undefined) {
 	      layout = dom(TextView, {
@@ -43332,7 +45595,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 455
+	          lineNumber: 483
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -43340,7 +45603,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "466", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "494", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -43352,7 +45615,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 469
+	          lineNumber: 497
 	        }
 	      });
 	    }
@@ -43371,9 +45634,13 @@
 	      window.__ContentLoaderDialog.hide();
 	      return;
 	    }
-	    JBridge.endEventLog(_this3.courseDetails.contentType, _this3.courseDetails.identifier, _this3.courseDetails.contentData.pkgVersion);
-	    var event = { tag: 'BACK_CourseEnrolledActivity', contents: [] };
-	    window.__runDuiCallback(event);
+	    if (window.__RatingsPopup.getVisibility()) {
+	      window.__RatingsPopup.hide();
+	    } else {
+	      JBridge.endEventLog(_this3.courseDetails.contentType, _this3.courseDetails.identifier, _this3.courseDetails.contentData.pkgVersion);
+	      var event = { tag: 'BACK_CourseEnrolledActivity', contents: [] };
+	      window.__runDuiCallback(event);
+	    }
 	  };
 	
 	  this.refeshCourseProgressApi = function () {
@@ -43400,7 +45667,7 @@
 	        id: _this3.idSet.resumeCourseBtn,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "525", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "557", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	      var cmd = _this3.set({
@@ -43412,7 +45679,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "538", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "570", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -43485,7 +45752,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 610
+	            lineNumber: 642
 	          }
 	        });
 	
@@ -43561,7 +45828,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 690
+	        lineNumber: 722
 	      }
 	    });
 	
@@ -43574,7 +45841,7 @@
 	      height: "2",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 704
+	        lineNumber: 736
 	      }
 	    });
 	  };
@@ -43599,10 +45866,14 @@
 	        width: "wrap_content",
 	        height: "wrap_content",
 	        onClick: function onClick() {
-	          window.__RatingsPopup.show();
+	          if (window.__loggedInState != "GUEST") {
+	            window.__RatingsPopup.show();
+	          } else {
+	            window.__Snackbar.show("Sign in to use this feature.");
+	          }
 	        }, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 726
+	          lineNumber: 758
 	        }
 	      },
 	      dom(RatingBar, {
@@ -43610,7 +45881,7 @@
 	        width: "wrap_content",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 730
+	          lineNumber: 762
 	        }
 	      })
 	    );
@@ -43629,7 +45900,7 @@
 	      hideDivider: "gone",
 	      handleButtonClick: _this3.showDownloadAllPopUp, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 746
+	        lineNumber: 778
 	      }
 	    });
 	    return dom(
@@ -43639,11 +45910,193 @@
 	        height: "wrap_content",
 	        margin: "16,0,16,16", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 753
+	          lineNumber: 785
 	        }
 	      },
 	      _this3.__DownloadAllProgressButton
 	    );
+	  };
+	
+	  this.contentDetails = function () {
+	    var data = _this3.courseDetails;
+	    var screenWidth = JBridge.getScreenWidth().toString();
+	    var contentText = "";
+	    if (data.contentData && data.contentData.description) {
+	      contentText += "<br>" + data.contentData.description + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.gradeLevel) {
+	      contentText += "GRADE:<br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.subject) {
+	      contentText += "SUBJECT:<br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.board) {
+	      contentText += "BOARD:<br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
+	    }
+	    if (data.contentData && data.contentData.language) {
+	      contentText += "MEDIUM:<br>" + data.contentData.language.toString().replace(/,/g, ", ");
+	    }
+	    if (_this3.batchName != "" && _this3.batchDescription != "" && _this3.batchCreatedBy != "") {
+	      contentText += "<br><br><b>Batch Details</b><br>" + _this3.batchName + "<br>" + _this3.batchDescription + "<br>" + window.__S.CREATED_BY_SMALL + " " + _this3.batchCreatedBy;
+	    }
+	    var layout = dom(
+	      LinearLayout,
+	      {
+	        width: "match_parent",
+	        height: "wrap_content",
+	        orientation: "vertical", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 817
+	        }
+	      },
+	      dom(
+	        LinearLayout,
+	        {
+	          width: screenWidth,
+	          height: "wrap_content",
+	          background: window.__Colors.WHITE_F2, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 821
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.ABOUT,
+	          width: "match_parent",
+	          margin: "16,12,0,12",
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 825
+	          }
+	        })
+	      ),
+	      dom(CropContentDetails, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        margin: "16,0,16,16",
+	        contentDescription: data.contentData.description ? data.contentData.description : " ",
+	        contentText: contentText, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 831
+	        }
+	      })
+	    );
+	    _this3.replaceChild(_this3.idSet.readMore, layout.render(), 0);
+	  };
+	
+	  this.creditsDetail = function (data) {
+	    if (data.contentData.license || data.contentData.credits) {
+	      if (data.contentData.credits) {
+	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
+	      }
+	      if (data.contentData.license) {
+	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + data.contentData.license;
+	      }
+	      var creditsLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical",
+	          visibility: "visible", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 850
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "1000",
+	            height: "wrap_content",
+	            orientation: "vertical",
+	            margin: "0,8,0,0",
+	            background: window.__Colors.WHITE_F2, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 855
+	            }
+	          },
+	          dom(TextView, {
+	            id: _this3.idSet.creditsText,
+	            textFromHtml: "",
+	            visibility: "gone",
+	            margin: "16,0,0,0",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 861
+	            }
+	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 867
+	              }
+	            },
+	            dom(TextView, {
+	              id: _this3.idSet.viewCreditsButton,
+	              text: window.__S.VIEW_CREDITS_INFO,
+	              margin: "16,8,0,8",
+	              color: "#FF0079FF",
+	              onClick: _this3.viewCreditsButtonClick, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 869
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "10",
+	              height: "10",
+	              id: _this3.idSet.upDownBlueArrow,
+	              gravity: "center_vertical",
+	              margin: "8,14,0,8",
+	              imageUrl: "ic_action_down_blue", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 875
+	              }
+	            })
+	          )
+	        )
+	      );
+	      _this3.replaceChild(_this3.idSet.creditsSection, creditsLayout.render(), 0);
+	    }
+	  };
+	
+	  this.viewCreditsButtonClick = function () {
+	    if (!_this3.showCredits) {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: "",
+	        visibility: "gone"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.VIEW_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_down_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "906", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    } else {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: _this3.creditsAndLicense,
+	        visibility: "visible"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.HIDE_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_up_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "923", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    }
+	    _this3.showCredits = !_this3.showCredits;
 	  };
 	};
 	
@@ -43920,7 +46373,7 @@
 	*/
 
 /***/ }),
-/* 472 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44216,7 +46669,7 @@
 	module.exports = DownloadAllProgressButton;
 
 /***/ }),
-/* 473 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44247,7 +46700,7 @@
 	var FeatureButton = __webpack_require__(377);
 	var RadioListItem = __webpack_require__(384);
 	var Spinner = __webpack_require__(394);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var Styles = __webpack_require__(347);
 	
 	var IconStyle = Styles.Params.IconStyle;
@@ -44643,7 +47096,7 @@
 	module.exports = FlagPopup;
 
 /***/ }),
-/* 474 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44669,9 +47122,9 @@
 	var ScrollView = __webpack_require__(351).androidViews.ScrollView;
 	var RatingBar = __webpack_require__(372);;
 	var SimpleToolbar = __webpack_require__(382);
-	var CropParagraph = __webpack_require__(450);
-	var ProgressButton = __webpack_require__(469);
-	var CourseCurriculum = __webpack_require__(464);
+	var CropParagraph = __webpack_require__(455);
+	var ProgressButton = __webpack_require__(477);
+	var CourseCurriculum = __webpack_require__(472);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -44724,7 +47177,7 @@
 	
 	        _this2.onPop = function () {
 	            window.__getDownloadStatus = _this2.getSpineStatus;
-	            Android.runInUI(_this2.animateView(), null, "117", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	            Android.runInUI(_this2.animateView(), null, "120", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	        };
 	
 	        _this2.getSpineStatus = function (pValue) {
@@ -44748,7 +47201,7 @@
 	                    id: _this2.idSet.downloadProgressText,
 	                    text: "Fetching Contents: " + downloadedPercent + "%"
 	                });
-	                Android.runInUI(cmd, 0, "145", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "148", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	            }
 	        };
 	
@@ -44801,6 +47254,9 @@
 	                        } else {
 	                            window.__RatingsPopup.initData(_this.localContent.identifier, "content-detail", _this.localContent.contentData.pkgVersion);
 	                        }
+	                        if (_this.localContent.hasOwnProperty("contentAccess") && _this.localContent.contentAccess.length != 0 && _this.localContent.contentAccess[0].status == 1) {
+	                            window.__currContentAllowRating = true;
+	                        }
 	                    }
 	                });
 	                JBridge.getContentDetails(module.identifier, cb, true);
@@ -44812,6 +47268,7 @@
 	                window.__ProgressButton.checkContentLocalStatus(_this2.localStatus);
 	            } else {
 	                //if the current content had children, get the children data and render the children
+	                window.__currContentAllowRating = true;
 	                var _ = _this2.isPoped ? "" : JBridge.startEventLog(module.contentType, module.identifier, module.contentData.pkgVersion);
 	                var callback = callbackMapper.map(function (data) {
 	                    if (data == "__failed") {
@@ -44879,6 +47336,7 @@
 	
 	        _this2.reRender = function (moduleName, module) {
 	            console.log("inside reRender, index : " + module.index);
+	            window.__currContentAllowRating = false;
 	            _this2.moduleName = moduleName;
 	            _this2.module = module;
 	            var layout = dom(
@@ -44889,7 +47347,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 286
+	                        lineNumber: 294
 	                    }
 	                },
 	                _this2.getHeader(),
@@ -44898,6 +47356,8 @@
 	            _this2.replaceChild(_this2.idSet.renderPage, layout.render(), 0);
 	            _this2.replaceChild(_this2.idSet.progressButtonContainer, _this2.getProgressButton().render(), 0);
 	            _this2.checkContentLocalStatus(module);
+	            var levels = _this2.getBottomThreeElements();
+	            JBridge.logRollupEvent("COURSE", window.__currCourseDetails.moduleName, levels[0], levels[1], levels[2]);
 	        };
 	
 	        _this2.renderModuleChildren = function (module) {
@@ -44915,7 +47375,7 @@
 	                        onClick: _this2.handleModuleClick,
 	                        content: module.children, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 307
+	                            lineNumber: 318
 	                        }
 	                    });
 	                } else {
@@ -44926,7 +47386,7 @@
 	                        gravity: "center",
 	                        text: window.__S.ERROR_CONTENT_NOT_AVAILABLE, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 319
+	                            lineNumber: 330
 	                        }
 	                    });
 	                }
@@ -44941,7 +47401,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    visibility: "gone"
 	                });
-	                Android.runInUI(cmd, 0, "338", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "349", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
 	                window.__ProgressButton.setButtonFor(module.identifier);
 	                window.__ProgressButton.setVisibility("visible");
 	            }
@@ -44952,6 +47412,27 @@
 	            window.__ProgressButton.setButtonFor(_this2.module.identifier);
 	            JBridge.logContentDetailScreenEvent(_this2.module.identifier, _this2.module.contentData.pkgVersion);
 	            _this2.checkContentLocalStatus(_this2.module);
+	            var levels = _this2.getBottomThreeElements();
+	            JBridge.logRollupEvent("COURSE", window.__currCourseDetails.moduleName, levels[0], levels[1], levels[2]);
+	        };
+	
+	        _this2.getBottomThreeElements = function () {
+	            var result = [];
+	            var count = 0;
+	            while (count < 4) {
+	                var moduleName = _this2.stack[count] ? _this2.stack[count].module.identifier : "";
+	                result.push(moduleName);
+	                count++;
+	            }
+	            //Updating the rollupJSON for ProgressButton
+	            _this2.rollUpData = {
+	                "l1": window.__currCourseDetails.moduleName,
+	                "l2": result[0],
+	                "l3": result[1],
+	                "l4": result[2]
+	            };
+	
+	            return result;
 	        };
 	
 	        _this2.getLineSeperator = function () {
@@ -44960,9 +47441,21 @@
 	                margin: "0,16,0,0",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 352
+	                    lineNumber: 385
 	                }
 	            });
+	        };
+	
+	        _this2.handleRatingsBarClick = function () {
+	            if (window.__loggedInState != "GUEST") {
+	                if (window.__currContentAllowRating) {
+	                    window.__RatingsPopup.show();
+	                } else {
+	                    window.__Snackbar.show(window.__s.TRY_BEFORE_RATING);
+	                }
+	            } else {
+	                window.__Snackbar.show("Sign in to use this feature.");
+	            }
 	        };
 	
 	        _this2.updateRatings = function (rating) {
@@ -44972,11 +47465,9 @@
 	                {
 	                    width: "wrap_content",
 	                    height: "wrap_content",
-	                    onClick: function onClick() {
-	                        window.__RatingsPopup.show();
-	                    }, __source: {
+	                    onClick: _this2.handleRatingsBarClick, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 362
+	                        lineNumber: 407
 	                    }
 	                },
 	                dom(RatingBar, {
@@ -44984,7 +47475,7 @@
 	                    width: "wrap_content",
 	                    height: "wrap_content", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 366
+	                        lineNumber: 411
 	                    }
 	                })
 	            );
@@ -45000,7 +47491,7 @@
 	                    width: "match_parent",
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 378
+	                        lineNumber: 423
 	                    }
 	                },
 	                dom(
@@ -45011,7 +47502,7 @@
 	                        margin: "0,12,0,12",
 	                        width: "match_parent", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 383
+	                            lineNumber: 428
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -45021,7 +47512,7 @@
 	                        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                        text: _this2.moduleName, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 389
+	                            lineNumber: 434
 	                        }
 	                    })
 	                ),
@@ -45031,7 +47522,7 @@
 	                    width: "match_parent",
 	                    text: _this2.module.contentData.hasOwnProperty("size") ? window.__S.MODULE_SIZE.format(_this2.formatBytes(_this2.module.contentData.size)) : window.__S.MODULE_SIZE_UNAVAILABLE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 398
+	                        lineNumber: 443
 	                    }
 	                }),
 	                dom(LinearLayout, {
@@ -45039,7 +47530,7 @@
 	                    height: "wrap_content",
 	                    id: _this2.idSet.ratingContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 404
+	                        lineNumber: 449
 	                    }
 	                }),
 	                dom(CropParagraph, {
@@ -45049,7 +47540,7 @@
 	                    headText: _this2.module.contentData.description ? window.__S.DESCRIPTION : undefined,
 	                    contentText: _this2.module.contentData.description, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 409
+	                        lineNumber: 454
 	                    }
 	                })
 	            );
@@ -45067,7 +47558,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 424
+	                        lineNumber: 468
 	                    }
 	                },
 	                dom(TextView, {
@@ -45077,7 +47568,7 @@
 	                    gravity: "center",
 	                    width: "match_parent", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 431
+	                        lineNumber: 475
 	                    }
 	                })
 	            );
@@ -45089,13 +47580,17 @@
 	            JBridge.endEventLog(_this2.module.contentType, _this2.module.identifier, _this2.module.contentData.pkgVersion);
 	            _this2.stackPop();
 	            var top = _this2.stackTop();
-	            if (!_this2.stack.length < 1 || top) {
-	                _this2.reRender(top.moduleName, top.module);
-	                window.__ProgressButton.setVisibility("gone");
+	            if (window.__RatingsPopup.getVisibility()) {
+	                window.__RatingsPopup.hide();
 	            } else {
-	                var whatToSend = [];
-	                var event = { "tag": "BACK_ModuleDetailActivity", contents: whatToSend };
-	                window.__runDuiCallback(event);
+	                if (!_this2.stack.length < 1 || top) {
+	                    _this2.reRender(top.moduleName, top.module);
+	                    window.__ProgressButton.setVisibility("gone");
+	                } else {
+	                    var whatToSend = [];
+	                    var event = { "tag": "BACK_ModuleDetailActivity", contents: whatToSend };
+	                    window.__runDuiCallback(event);
+	                }
 	            }
 	        };
 	
@@ -45108,7 +47603,7 @@
 	                overFlowCallback: _this2.overFlowCallback,
 	                showMenu: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 459
+	                    lineNumber: 507
 	                }
 	            });
 	
@@ -45120,11 +47615,13 @@
 	        };
 	
 	        _this2.getProgressButton = function () {
+	            _this2.getBottomThreeElements();
 	            return dom(ProgressButton, {
 	                id: _this2.idSet.playButtonContainer,
 	                width: "match_parent",
 	                visibility: "gone",
 	                isCourse: "true",
+	                rollUpData: JSON.stringify(_this2.rollUpData),
 	                playContent: _this2.props.localContent,
 	                contentDetails: _this2.module,
 	                changeOverFlowMenu: _this2.handleOverFlowClick,
@@ -45132,7 +47629,7 @@
 	                localStatus: _this2.localStatus,
 	                identifier: _this2.module.identifier, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 476
+	                    lineNumber: 525
 	                }
 	            });
 	        };
@@ -45167,7 +47664,10 @@
 	        //stack to maintain child traversal
 	        _this2.isPoped = false;
 	        _this2.stack = [];
+	        _this2.rollUpData = {};
 	        _this2.stackPush(_this2.moduleName, _this2.module); //the current content is always on the top of the stack
+	
+	        window.__currContentAllowRating = false;
 	        return _this2;
 	    }
 	
@@ -45186,7 +47686,7 @@
 	                    clickable: "true",
 	                    root: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 493
+	                        lineNumber: 543
 	                    }
 	                },
 	                dom(
@@ -45199,7 +47699,7 @@
 	                        clickable: "true",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 498
+	                            lineNumber: 548
 	                        }
 	                    },
 	                    dom(
@@ -45210,7 +47710,7 @@
 	                            height: "wrap_content",
 	                            id: this.idSet.simpleToolBarOverFlow, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 505
+	                                lineNumber: 555
 	                            }
 	                        },
 	                        dom(SimpleToolbar, {
@@ -45221,7 +47721,7 @@
 	                            overFlowCallback: this.overFlowCallback,
 	                            showMenu: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 510
+	                                lineNumber: 560
 	                            }
 	                        })
 	                    ),
@@ -45233,7 +47733,7 @@
 	                            width: "match_parent",
 	                            fillViewport: "true", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 519
+	                                lineNumber: 569
 	                            }
 	                        },
 	                        dom(
@@ -45242,9 +47742,10 @@
 	                                width: "match_parent",
 	                                padding: "16,0,16,0",
 	                                orientation: "vertical",
+	                                layoutTransition: "true",
 	                                id: this.idSet.renderPage, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 525
+	                                    lineNumber: 575
 	                                }
 	                            },
 	                            this.getHeader(),
@@ -45257,7 +47758,7 @@
 	                            id: this.idSet.progressButtonContainer,
 	                            width: "match_parent", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 538
+	                                lineNumber: 589
 	                            }
 	                        },
 	                        this.getProgressButton()
@@ -45266,7 +47767,7 @@
 	                        id: this.idSet.downloadAllButtonContainer,
 	                        width: "match_parent", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 544
+	                            lineNumber: 595
 	                        }
 	                    })
 	                )
@@ -45282,7 +47783,7 @@
 	module.exports = Connector(ModuleDetailActivity);
 
 /***/ }),
-/* 475 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45290,6 +47791,8 @@
 	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ViewBatchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -45302,7 +47805,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var View = __webpack_require__(331);
 	window.R = __webpack_require__(7);
-	var debounce = __webpack_require__(409);
+	var debounce = __webpack_require__(410);
 	
 	var LinearLayout = __webpack_require__(351).androidViews.LinearLayout;
 	var RelativeLayout = __webpack_require__(340);
@@ -45312,8 +47815,8 @@
 	
 	//Components
 	var SimpleToolbar = __webpack_require__(382);
-	var BatchCard = __webpack_require__(476);
-	var HomeQuestionCardStyle = __webpack_require__(421);
+	var BatchCard = __webpack_require__(483);
+	var HomeQuestionCardStyle = __webpack_require__(426);
 	
 	//Utils
 	var utils = __webpack_require__(397);
@@ -45368,7 +47871,7 @@
 	          layouTransition: "true",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 474
+	            lineNumber: 478
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -45376,7 +47879,7 @@
 	          onBackPress: this.onBackPressed,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 483
+	            lineNumber: 487
 	          }
 	        }),
 	        dom(
@@ -45384,7 +47887,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 487
+	              lineNumber: 491
 	            }
 	          },
 	          dom(
@@ -45393,7 +47896,7 @@
 	              orientation: "vertical",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 488
+	                lineNumber: 492
 	              }
 	            },
 	            this.getBatchTypeHead(),
@@ -45405,7 +47908,7 @@
 	                width: "match_parent",
 	                fillViewPort: "true", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 494
+	                  lineNumber: 498
 	                }
 	              },
 	              dom(LinearLayout, {
@@ -45415,7 +47918,7 @@
 	                orientation: "vertical",
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 499
+	                  lineNumber: 503
 	                }
 	              })
 	            )
@@ -45684,12 +48187,14 @@
 	    if (JBridge.isNetworkAvailable()) {
 	
 	      window.__LoaderDialog.show();
-	      _this3.courseDetails = {
+	      _this3.courseDetails = _defineProperty({
+	        "delta": "delta",
 	        "contentId": _this3.searchId,
 	        "batchId": batch.id,
 	        "userId": window.__userToken,
+	        "courseName": "Enrollment 3",
 	        "courseId": _this3.searchId
-	      };
+	      }, "delta", "delta");
 	      var whatToSend = {
 	        "reqParams": JSON.stringify(_this3.courseDetails),
 	        "user_token": window.__user_accessToken,
@@ -45715,7 +48220,7 @@
 	        visibility: _this3.showChooser ? "visible" : "gone",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 335
+	          lineNumber: 338
 	        }
 	      },
 	      dom(
@@ -45730,7 +48235,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_ONGOING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 344
+	            lineNumber: 347
 	          }
 	        },
 	        dom(TextView, {
@@ -45740,7 +48245,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_ONGOING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 354
+	            lineNumber: 357
 	          }
 	        })
 	      ),
@@ -45756,7 +48261,7 @@
 	            _this.handleTypeChange(window.__S.VIEW_UPCOMING_BATCHES);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 363
+	            lineNumber: 366
 	          }
 	        },
 	        dom(TextView, {
@@ -45766,7 +48271,7 @@
 	          background: window.__Colors.LIGHT_GRAY,
 	          text: window.__S.VIEW_UPCOMING_BATCHES, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 373
+	            lineNumber: 376
 	          }
 	        })
 	      )
@@ -45787,7 +48292,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 391
+	            lineNumber: 394
 	          }
 	        },
 	        dom(ImageView, {
@@ -45796,7 +48301,7 @@
 	          imageUrl: "ic_no_batch",
 	          gravity: "center", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 400
+	            lineNumber: 403
 	          }
 	        }),
 	        dom(TextView, {
@@ -45807,7 +48312,7 @@
 	          style: window.__TextStyle.textStyle.HEADING.DARK,
 	          text: window.__S.ERROR_NO_BATCHES_FOUND, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 406
+	            lineNumber: 409
 	          }
 	        })
 	      );
@@ -45820,7 +48325,7 @@
 	          width: "match_parent",
 	          orientatio: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 419
+	            lineNumber: 422
 	          }
 	        },
 	        dom(BatchCard, {
@@ -45833,7 +48338,7 @@
 	            _this3.handleBatchEnrollClick(item);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 424
+	            lineNumber: 427
 	          }
 	        })
 	      );
@@ -45848,7 +48353,7 @@
 	        width: "match_parent",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 437
+	          lineNumber: 440
 	        }
 	      },
 	      cards
@@ -45867,15 +48372,16 @@
 	          alpha: "0.9",
 	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 454
+	            lineNumber: 457
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
 	          currComponentLocation: "COURSE",
+	          fromWhere: "CONTENT_DETAIL",
 	          headerText: window.__S.OVERLAY_LABEL_TAKE_COURSE,
 	          infoText: window.__S.OVERLAY_INFO_TEXT_TAKE_COURSE, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 461
+	            lineNumber: 464
 	          }
 	        })
 	      );
@@ -45883,7 +48389,7 @@
 	      return dom(LinearLayout, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 468
+	          lineNumber: 472
 	        }
 	      });
 	    }
@@ -45893,7 +48399,7 @@
 	module.exports = Connector(ViewBatchActivity);
 
 /***/ }),
-/* 476 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45920,7 +48426,7 @@
 	var Button = __webpack_require__(380);
 	var ViewWidget = __webpack_require__(349);
 	var Space = __webpack_require__(366);
-	var StarComponent = __webpack_require__(429);
+	var StarComponent = __webpack_require__(434);
 	var _this;
 	
 	var utils = __webpack_require__(397);
@@ -46096,7 +48602,7 @@
 	module.exports = BatchCard;
 
 /***/ }),
-/* 477 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46123,9 +48629,9 @@
 	var ScrollView = __webpack_require__(358);
 	var Space = __webpack_require__(366);
 	
-	var CommunityDescription = __webpack_require__(478);
-	var CommunityDefault = __webpack_require__(479);
-	var SearchToolbar = __webpack_require__(424);
+	var CommunityDescription = __webpack_require__(485);
+	var CommunityDefault = __webpack_require__(486);
+	var SearchToolbar = __webpack_require__(429);
 	
 	var CommunityInfoActivity = function (_View) {
 	  _inherits(CommunityInfoActivity, _View);
@@ -46492,7 +48998,7 @@
 	module.exports = Connector(CommunityInfoActivity);
 
 /***/ }),
-/* 478 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46705,7 +49211,7 @@
 	module.exports = CommunityDescription;
 
 /***/ }),
-/* 479 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46731,8 +49237,8 @@
 	var ChooseItem = __webpack_require__(383);
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
-	var FeedComponent = __webpack_require__(480);
-	var CommunityEventsContainer = __webpack_require__(482);
+	var FeedComponent = __webpack_require__(487);
+	var CommunityEventsContainer = __webpack_require__(489);
 	
 	var _this;
 	
@@ -46963,7 +49469,7 @@
 	module.exports = CommunityDefault;
 
 /***/ }),
-/* 480 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46986,7 +49492,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var FeedCard = __webpack_require__(481);
+	var FeedCard = __webpack_require__(488);
 	var _this;
 	
 	var FeedComponent = function (_View) {
@@ -47089,7 +49595,7 @@
 	module.exports = FeedComponent;
 
 /***/ }),
-/* 481 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47598,7 +50104,7 @@
 	module.exports = FeedCard;
 
 /***/ }),
-/* 482 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47621,8 +50127,8 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var Space = __webpack_require__(366);
-	var AnnouncementCard = __webpack_require__(422);
-	var CommunityParams = __webpack_require__(423);
+	var AnnouncementCard = __webpack_require__(427);
+	var CommunityParams = __webpack_require__(428);
 	var _this;
 	
 	var CommunityEventsContainer = function (_View) {
@@ -47703,7 +50209,7 @@
 	module.exports = CommunityEventsContainer;
 
 /***/ }),
-/* 483 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47729,7 +50235,7 @@
 	var View = __webpack_require__(331);
 	var Space = __webpack_require__(366);
 	
-	var SearchToolbar = __webpack_require__(424);
+	var SearchToolbar = __webpack_require__(429);
 	
 	var CommunityViewAllActivity = function (_View) {
 	  _inherits(CommunityViewAllActivity, _View);
@@ -47963,7 +50469,7 @@
 	module.exports = Connector(CommunityViewAllActivity);
 
 /***/ }),
-/* 484 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48218,7 +50724,7 @@
 	module.exports = Connector(NotificationActivity);
 
 /***/ }),
-/* 485 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48244,10 +50750,10 @@
 	var ScrollView = __webpack_require__(358);
 	var HorizontalScrollView = __webpack_require__(357);
 	var RatingBar = __webpack_require__(372);
-	var SharePopup = __webpack_require__(470);
-	var FlagPopup = __webpack_require__(473);
+	var SharePopup = __webpack_require__(420);
+	var FlagPopup = __webpack_require__(480);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProgressButton = __webpack_require__(469);
+	var ProgressButton = __webpack_require__(477);
 	var utils = __webpack_require__(397);
 	var RatingsPopup = __webpack_require__(399);
 	
@@ -48265,7 +50771,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(['ratingBar', "progressButtonContainer", "simpleToolBarOverFlow", "sharePopupContainer"]);
+	    _this2.setIds(['ratingBar', "progressButtonContainer", "simpleToolBarOverFlow", "sharePopupContainer", "aboutSection", "gradeSection", "subjectSection", "boardSection", "mediumSection", "creditsSection", "creditsText", "viewCreditsButton", "upDownBlueArrow"]);
 	    _this2.state = state;
 	    _this2.screenName = "ResourceDetailActivity";
 	    _this2.menuData = {
@@ -48276,8 +50782,10 @@
 	    };
 	    _this2.popupMenu = window.__loggedInState == "GUEST" ? window.__S.DELETE : window.__S.DELETE + "," + window.__S.FLAG;
 	    _this = _this2;
-	
+	    _this2.creditsAndLicense = "";
+	    _this2.showCredits = true;
 	    _this2.shouldCacheScreen = false;
+	    window.__currResourceAllowRating = false;
 	
 	    _this2.details = state.data.value0.resourceDetails;
 	    _this2.details = JSON.parse(_this2.details);
@@ -48285,20 +50793,12 @@
 	    JBridge.logResourceDetailScreenEvent(_this.details.content.identifier, _this.details.content.pkgVersion, _this.details.isAvailableLocally);
 	    JBridge.startEventLog(_this.details.content.contentType, _this.details.content.identifier, _this.details.content.pkgVersion);
 	    _this2.localStatus = false;
+	    _this2.rollUpData = {};
 	    return _this2;
 	  }
 	
 	  _createClass(ResourceDetailActivity, [{
 	    key: "render",
-	
-	
-	    // getRatingsPopup = () => {
-	    //   this.RatingsPopup = (
-	    //     <RatingsPopup />
-	    //   );
-	    //   return this.RatingsPopup;
-	    // }
-	
 	    value: function render() {
 	      this.layout = dom(
 	        RelativeLayout,
@@ -48308,7 +50808,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 437
+	            lineNumber: 646
 	          }
 	        },
 	        dom(
@@ -48319,7 +50819,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 442
+	              lineNumber: 651
 	            }
 	          },
 	          dom(
@@ -48330,7 +50830,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 447
+	                lineNumber: 656
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -48342,7 +50842,7 @@
 	              overFlowCallback: this.overFlowCallback,
 	              showMenu: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 452
+	                lineNumber: 661
 	              }
 	            })
 	          ),
@@ -48353,7 +50853,7 @@
 	              width: "match_parent",
 	              fillViewport: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 461
+	                lineNumber: 670
 	              }
 	            },
 	            dom(
@@ -48361,10 +50861,10 @@
 	              {
 	                height: "match_parent",
 	                width: "match_parent",
-	                padding: "16,0,16,0",
+	                padding: "0,0,0,0",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 465
+	                  lineNumber: 674
 	                }
 	              },
 	              this.getHeader(),
@@ -48378,14 +50878,14 @@
 	            id: this.idSet.progressButtonContainer,
 	            root: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 475
+	              lineNumber: 685
 	            }
 	          })
 	        ),
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 481
+	            lineNumber: 691
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -48393,7 +50893,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 483
+	            lineNumber: 693
 	          }
 	        })
 	      );
@@ -48406,6 +50906,15 @@
 	
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
+	
+	  this.updateRollUpData = function (identifier) {
+	    _this3.rollUpData = {
+	      "l1": identifier,
+	      "l2": "",
+	      "l3": "",
+	      "l4": ""
+	    };
+	  };
 	
 	  this.checkLocalStatus = function (data) {
 	    var callback = callbackMapper.map(function (data) {
@@ -48421,11 +50930,16 @@
 	        return;
 	      }
 	      _this.contentData = JSON.parse(utils.decodeBase64(data[0]));
+	      _this.updateRollUpData(_this.contentData.identifier.toString());
+	      _this.populateAboutSection();
 	      console.log("this.contentData: ", _this.contentData);
 	      if (_this.contentData.hasOwnProperty("contentFeedback") && _this.contentData.contentFeedback.length != 0) {
 	        window.__RatingsPopup.initData(_this.contentData.identifier, "content-detail", _this.contentData.contentData.pkgVersion, _this.contentData.contentFeedback[0].rating, _this.contentData.contentFeedback[0].comments);
 	      } else {
 	        window.__RatingsPopup.initData(_this.contentData.identifier, "content-detail", _this.contentData.contentData.pkgVersion);
+	      }
+	      if (_this.contentData.hasOwnProperty("contentAccess") && _this.contentData.contentAccess.length != 0 && _this.contentData.contentAccess[0].status == 1) {
+	        window.__currResourceAllowRating = true;
 	      }
 	      if (_this.contentData.isAvailableLocally == true) {
 	        _this.localStatus = true;
@@ -48435,11 +50949,12 @@
 	          playContent: _this.contentData,
 	          contentDetail: _this.contentData.contentData,
 	          buttonText: window.__S.PLAY,
+	          rollUpData: JSON.stringify(_this.rollUpData),
 	          localStatus: _this.localStatus,
 	          identifier: _this.contentData.identifier,
 	          changeOverFlowMenu: _this.changeOverFlow, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 81
+	            lineNumber: 107
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.progressButtonContainer, pButonLayout.render(), 0);
@@ -48450,12 +50965,13 @@
 	          isCourse: "false",
 	          contentDetail: _this.contentData.contentData,
 	          buttonText: window.__S.DOWNLOAD,
+	          rollUpData: JSON.stringify(_this.rollUpData),
 	          playContent: null,
 	          localStatus: _this.localStatus,
 	          identifier: _this.contentData.identifier,
 	          changeOverFlowMenu: _this.changeOverFlow, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 94
+	            lineNumber: 121
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.progressButtonContainer, pButonLayout.render(), 0);
@@ -48504,7 +51020,7 @@
 	        identifier: _this.details.identifier,
 	        type: "LIBRARY", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 145
+	          lineNumber: 173
 	        }
 	      });
 	      _this.replaceChild(_this.idSet.sharePopupContainer, sharePopUp.render(), 0);
@@ -48521,6 +51037,13 @@
 	      JBridge.setRating(_this3.idSet.ratingBar, _this3.details.content.contentData.me_averageRating);
 	    } else {
 	      JBridge.setRating(_this3.idSet.ratingBar, 0);
+	    }
+	
+	    //for rollup telemetry
+	    if (_this3.details && _this3.details.content && _this3.details.content.identifier) {
+	      JBridge.logRollupEvent("RESOURCE", _this3.details.content.identifier, "", "", "");
+	    } else if (_this3.details && _this3.details.content && _this3.details.content.contentData && _this3.details.content.contentData.identifier) {
+	      JBridge.logRollupEvent("RESOURCE", _this3.details.content.contentData.identifier, "", "", "");
 	    }
 	  };
 	
@@ -48559,91 +51082,374 @@
 	      margin: "0,16,0,0",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 197
+	        lineNumber: 233
 	      }
 	    });
 	  };
 	
 	  this.getBody = function () {
-	    var description = "Not Available";
-	    if (_this3.details.description) description = _this3.details.description;else if (_this3.details.hasOwnProperty("content")) {
-	      if (_this3.details.content.hasOwnProperty("description")) description = _this3.details.content.description;else if (_this3.details.content.hasOwnProperty("contentData") && _this3.details.content.contentData.description) description = _this3.details.content.contentData.description;
-	    }
 	    return dom(
+	      LinearLayout,
+	      {
+	        height: "match_parent",
+	        width: "match_parent",
+	        orientation: "vertical", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 242
+	        }
+	      },
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.aboutSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 246
+	        }
+	      }),
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.gradeSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 250
+	        }
+	      }),
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.subjectSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 254
+	        }
+	      }),
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.boardSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 258
+	        }
+	      }),
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.mediumSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 262
+	        }
+	      }),
+	      dom(LinearLayout, {
+	        height: "wrap_content",
+	        width: "match_parent",
+	        id: _this3.idSet.creditsSection, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 266
+	        }
+	      })
+	    );
+	  };
+	
+	  this.populateAboutSection = function () {
+	    var screenWidth = JBridge.getScreenWidth();
+	    var description = _this3.contentData.contentData.description || "";
+	
+	    var layout = dom(
 	      LinearLayout,
 	      {
 	        width: "match_parent",
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 215
+	          lineNumber: 278
 	        }
 	      },
-	      dom(TextView, {
-	        margin: "0,13,0,0",
-	        width: "wrap_content",
-	        height: "wrap_content",
-	        text: window.__S.ABOUT_MODULE,
-	        style: window.__TextStyle.textStyle.HINT.BOLD, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 219
-	        }
-	      }),
-	      dom(TextView, {
-	        margin: "0,4,0,0",
-	        width: "wrap_content",
-	        height: "wrap_content",
-	        textFromHtml: description,
-	        style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 225
-	        }
-	      }),
-	      dom(TextView, {
-	        margin: "0,16,0,0",
-	        width: "wrap_content",
-	        height: "wrap_content",
-	        text: window.__S.CREATED_BY,
-	        style: window.__TextStyle.textStyle.HINT.BOLD, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 231
-	        }
-	      }),
+	      dom(
+	        LinearLayout,
+	        {
+	          width: screenWidth.toString(),
+	          height: "wrap_content",
+	          background: window.__Colors.WHITE_F2, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 282
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.ABOUT,
+	          margin: "16,12,0,12",
+	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 286
+	          }
+	        })
+	      ),
 	      dom(
 	        LinearLayout,
 	        {
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 237
+	            lineNumber: 291
 	          }
 	        },
 	        dom(TextView, {
-	          margin: "0,4,0,10",
-	          width: "wrap_content",
-	          height: "wrap_content",
-	          text: _this3.details.content.creator || window.__S.CREATOR_NAME_NOT_AVAILABLE,
-	          style: window.__TextStyle.textStyle.CARD.TITLE.REGULAR_BLACK, __source: {
+	          text: description,
+	          margin: "16,8,16,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 240
-	          }
-	        }),
-	        dom(LinearLayout, {
-	          weight: "1", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 246
-	          }
-	        }),
-	        dom(ImageView, {
-	          width: "20",
-	          height: "12",
-	          imageUrl: "ic_chat", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 248
+	            lineNumber: 294
 	          }
 	        })
 	      )
 	    );
+	
+	    _this3.replaceChild(_this3.idSet.aboutSection, layout.render(), 0);
+	
+	    if (_this3.contentData.contentData.gradeLevel) {
+	      var grades = _this3.contentData.contentData.gradeLevel.toString().replace(/,/g, ", ");
+	      var gradeLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 304
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.GRADE,
+	          typeface: "bold",
+	          margin: "16,8,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 308
+	          }
+	        }),
+	        dom(TextView, {
+	          text: grades,
+	          margin: "16,0,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 312
+	          }
+	        })
+	      );
+	      _this3.replaceChild(_this3.idSet.gradeSection, gradeLayout.render(), 0);
+	    }
+	    if (_this3.contentData.contentData.subject) {
+	      var subject = _this3.contentData.contentData.subject.toString().replace(/,/g, ", ");
+	      var subjectLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 320
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.SUBJECT,
+	          typeface: "bold",
+	          margin: "16,8,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 324
+	          }
+	        }),
+	        dom(TextView, {
+	          text: subject,
+	          margin: "16,0,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 328
+	          }
+	        })
+	      );
+	      _this3.replaceChild(_this3.idSet.subjectSection, subjectLayout.render(), 0);
+	    }
+	    if (_this3.contentData.contentData.board) {
+	      var board = _this3.contentData.contentData.board.toString().replace(/,/g, ", ");
+	      var boardLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 336
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.BOARD,
+	          typeface: "bold",
+	          margin: "16,8,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 340
+	          }
+	        }),
+	        dom(TextView, {
+	          text: board,
+	          margin: "16,0,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 344
+	          }
+	        })
+	      );
+	      _this3.replaceChild(_this3.idSet.boardSection, boardLayout.render(), 0);
+	    }
+	    if (_this3.contentData.contentData.language) {
+	      var language = _this3.contentData.contentData.language.toString().replace(/,/g, ", ");
+	      var languageLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 352
+	          }
+	        },
+	        dom(TextView, {
+	          text: window.__S.MEDIUM_2,
+	          typeface: "bold",
+	          margin: "16,8,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 356
+	          }
+	        }),
+	        dom(TextView, {
+	          text: language,
+	          margin: "16,0,16,0", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 360
+	          }
+	        })
+	      );
+	      _this3.replaceChild(_this3.idSet.mediumSection, languageLayout.render(), 0);
+	    }
+	    if (_this3.contentData.contentData.license || _this3.contentData.contentData.credits) {
+	      if (_this3.contentData.contentData.credits) {
+	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + _this3.contentData.contentData.credits.toString().replace(/,/, ", ");
+	      }
+	      if (_this3.contentData.contentData.license) {
+	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + _this3.contentData.contentData.license;
+	      }
+	      var creditsLayout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "match_parent",
+	          orientation: "vertical",
+	          layoutTransition: "true", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 373
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: screenWidth.toString(),
+	            height: "match_parent",
+	            orientation: "vertical",
+	            margin: "0,8,0,0",
+	            background: window.__Colors.WHITE_F2,
+	            layoutTransition: "true", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 379
+	            }
+	          },
+	          dom(TextView, {
+	            id: _this3.idSet.creditsText,
+	            textFromHtml: "",
+	            visibility: "gone",
+	            margin: "16,0,16,0",
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 386
+	            }
+	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal",
+	              layoutTransition: "true", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 392
+	              }
+	            },
+	            dom(TextView, {
+	              id: _this3.idSet.viewCreditsButton,
+	              text: window.__S.VIEW_CREDITS_INFO,
+	              margin: "16,8,0,8",
+	              color: "#FF0079FF",
+	              onClick: _this3.viewCreditsButtonClick, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 395
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "10",
+	              height: "10",
+	              id: _this3.idSet.upDownBlueArrow,
+	              gravity: "center_vertical",
+	              margin: "8,14,16,8",
+	              imageUrl: "ic_action_down_blue", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 401
+	              }
+	            })
+	          )
+	        )
+	      );
+	      _this3.replaceChild(_this3.idSet.creditsSection, creditsLayout.render(), 0);
+	    }
+	  };
+	
+	  this.viewCreditsButtonClick = function () {
+	    if (!_this3.showCredits) {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: "",
+	        visibility: "gone"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.VIEW_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_down_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "432", "UsersnikithshettysunbirdgithubsunbirdduiviewsResourceDetailActivityjs");
+	    } else {
+	      var cmd = _this3.set({
+	        id: _this3.idSet.creditsText,
+	        textFromHtml: _this3.creditsAndLicense,
+	        visibility: "visible"
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.viewCreditsButton,
+	        text: window.__S.HIDE_CREDITS_INFO
+	      });
+	      cmd += _this3.set({
+	        id: _this3.idSet.upDownBlueArrow,
+	        visibility: "visible",
+	        imageUrl: "ic_action_up_blue"
+	      });
+	
+	      Android.runInUI(cmd, 0, "449", "UsersnikithshettysunbirdgithubsunbirdduiviewsResourceDetailActivityjs");
+	    }
+	    _this3.showCredits = !_this3.showCredits;
+	  };
+	
+	  this.handleRatingsBarClick = function () {
+	    if (window.__loggedInState != "GUEST") {
+	      if (window.__currResourceAllowRating) {
+	        window.__RatingsPopup.show();
+	      } else {
+	        window.__Snackbar.show(window.__s.TRY_BEFORE_RATING);
+	      }
+	    } else {
+	      window.__Snackbar.show("Sign in to use this feature.");
+	    }
 	  };
 	
 	  this.getHeader = function () {
@@ -48652,50 +51458,58 @@
 	      {
 	        width: "match_parent",
 	        height: "wrap_content",
-	        margin: "0,16,0,0",
+	        margin: "16,16,16,0",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 259
+	          lineNumber: 468
 	        }
 	      },
-	      dom(
-	        LinearLayout,
-	        {
-	          width: "80",
-	          height: "50",
-	          cornerRadius: "4",
-	          background: window.__Colors.PRIMARY_BLACK_66, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 264
-	          }
-	        },
-	        dom(ImageView, {
-	          width: "80",
-	          height: "50",
-	          circularImageUrl: "4," + (_this3.details.imageUrl ? _this3.details.imageUrl : "ic_launcher"), __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 269
-	          }
-	        })
-	      ),
 	      dom(TextView, {
 	        width: "wrap_content",
 	        height: "wrap_content",
-	        padding: "8,0,0,0",
+	        padding: "0,0,0,0",
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	        text: _this3.details.title, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 274
+	          lineNumber: 474
 	        }
 	      }),
 	      dom(
 	        LinearLayout,
 	        {
-	          margin: "0,12,0,0",
+	          margin: "0,4,0,0",
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 280
+	            lineNumber: 480
+	          }
+	        },
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          text: window.__S.BY,
+	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 484
+	          }
+	        }),
+	        dom(TextView, {
+	          width: "wrap_content",
+	          height: "wrap_content",
+	          text: " " + _this3.details.content.owner, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 489
+	          }
+	        })
+	      ),
+	      dom(
+	        LinearLayout,
+	        {
+	          margin: "0,4,0,0",
+	          width: "match_parent",
+	          height: "wrap_content", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 494
 	          }
 	        },
 	        dom(TextView, {
@@ -48704,13 +51518,13 @@
 	          text: _this3.details.headFooterTitle,
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 284
+	            lineNumber: 498
 	          }
 	        }),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 289
+	            lineNumber: 503
 	          }
 	        }),
 	        dom(TextView, {
@@ -48720,18 +51534,18 @@
 	          text: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? parseInt(_this3.details.content.me_totalDownloads) : "0",
 	          style: window.__TextStyle.textStyle.HINT.DULL, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 291
+	            lineNumber: 505
 	          }
 	        })
 	      ),
 	      dom(
 	        LinearLayout,
 	        {
-	          margin: "0,2,0,0",
+	          margin: "0,4,0,0",
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 298
+	            lineNumber: 512
 	          }
 	        },
 	        dom(
@@ -48739,11 +51553,9 @@
 	          {
 	            width: "wrap_content",
 	            height: "wrap_content",
-	            onClick: function onClick() {
-	              window.__RatingsPopup.show();
-	            }, __source: {
+	            onClick: _this3.handleRatingsBarClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 302
+	              lineNumber: 516
 	            }
 	          },
 	          dom(RatingBar, {
@@ -48751,14 +51563,14 @@
 	            width: "wrap_content",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 306
+	              lineNumber: 520
 	            }
 	          })
 	        ),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 311
+	            lineNumber: 525
 	          }
 	        }),
 	        dom(TextView, {
@@ -48768,7 +51580,7 @@
 	          visibility: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? "visible" : "gone",
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 313
+	            lineNumber: 527
 	          }
 	        })
 	      )
@@ -48831,6 +51643,8 @@
 	      window.__PermissionDeniedDialog.hide();
 	    } else if (window.__PreviewImagePopup.getVisibility()) {
 	      window.__PreviewImagePopup.hide();
+	    } else if (window.__RatingsPopup.getVisibility()) {
+	      window.__RatingsPopup.hide();
 	    } else {
 	      JBridge.endEventLog(_this.details.content.contentType, _this.details.content.identifier, _this.details.content.pkgVersion);
 	      var event = { "tag": "BACK_ResourceDetailActivity", contents: [] };
@@ -48848,7 +51662,7 @@
 	      overFlowCallback: _this3.overFlowCallback,
 	      showMenu: "true", __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 390
+	        lineNumber: 606
 	      }
 	    });
 	
@@ -48885,7 +51699,7 @@
 	module.exports = Connector(ResourceDetailActivity);
 
 /***/ }),
-/* 486 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48908,7 +51722,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ListView = __webpack_require__(371);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(487);
+	var LargeCardComponent = __webpack_require__(494);
 	var utils = __webpack_require__(397);
 	
 	var _this;
@@ -48977,7 +51791,7 @@
 	              lineNumber: 89
 	            }
 	          });
-	          _this2.jsonArray.push({ view: _this2.getView(layout.render()), value: "", viewType: 0 });
+	          _this2.jsonArray.push({ view: _this2.getView(layout.render()), value: "", viewType: 0, name: _this2.name, id: item.identifier });
 	        }
 	      });
 	      var callback1 = callbackMapper.map(function () {
@@ -49005,6 +51819,7 @@
 	      if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection") {
 	        var whatToSend = { course: JSON.stringify(item) };
 	        var event = { tag: "OPEN_CourseEnrolled", contents: whatToSend };
+	        JBridge.logListViewEvent("LIBRARY");
 	        window.__runDuiCallback(event);
 	      } else {
 	        var name = "",
@@ -49027,6 +51842,7 @@
 	
 	        var whatToSend = { resourceDetails: JSON.stringify(resDetails) };
 	        var event = { tag: "OPEN_ResourceInfo", contents: whatToSend };
+	        JBridge.logListViewEvent("LIBRARY");
 	        window.__runDuiCallback(event);
 	      }
 	    };
@@ -49037,6 +51853,7 @@
 	
 	    _this2.onBackPressed = function () {
 	      var event = { tag: "BACK_ResourceViewAllActivity", contents: [] };
+	      JBridge.logListViewEvent("LIBRARY");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -49056,7 +51873,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Library", (_this.start_index + 2) * 10, true);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.details.searchQuery), "", "Library", (_this.start_index + 2) * 10, null, true);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -49102,7 +51919,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 202
+	            lineNumber: 205
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -49112,7 +51929,7 @@
 	          showMenu: "true",
 	          title: this.appbarTitle, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 209
+	            lineNumber: 212
 	          }
 	        }),
 	        dom(ListView, {
@@ -49120,7 +51937,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 215
+	            lineNumber: 218
 	          }
 	        })
 	      );
@@ -49134,7 +51951,7 @@
 	module.exports = Connector(ResourceViewAllActivity);
 
 /***/ }),
-/* 487 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49426,7 +52243,7 @@
 	module.exports = ResourceViewAllCard;
 
 /***/ }),
-/* 488 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49447,7 +52264,7 @@
 	var LinearLayout = __webpack_require__(333);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var LargeCardComponent = __webpack_require__(487);
+	var LargeCardComponent = __webpack_require__(494);
 	var ListView = __webpack_require__(371);
 	var utils = __webpack_require__(397);
 	
@@ -49511,17 +52328,25 @@
 	        temp['actionText'] = actionText;
 	        temp["footerSubTitle"] = window.__S.ERROR_DURATION_NOT_AVAILABLE;
 	        temp["type"] = type;
-	
+	        var contentName = "";
+	        var contentId = "";
+	        if (item.courseId) {
+	          contentName = item.courseName;
+	          contentId = item.courseId;
+	        } else if (item.identifier) {
+	          contentName = item.name;
+	          contentId = item.identifier;
+	        }
 	        var layout = dom(LargeCardComponent, {
 	          data: temp,
 	          content: item,
 	          index: i,
 	          onResourceClick: _this2.handleCourseClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 94
+	            lineNumber: 102
 	          }
 	        });
-	        _this2.jsonArray.push({ view: _this2.getView(layout.render()), value: "", viewType: 0 });
+	        _this2.jsonArray.push({ view: _this2.getView(layout.render()), value: "", viewType: 0, name: contentName, id: contentId });
 	      });
 	      var callback1 = callbackMapper.map(function () {
 	        console.log("button pressed");
@@ -49576,6 +52401,7 @@
 	      } else {
 	        var event = { tag: 'OPEN_CourseInfoFlowFromCourseViewAll', contents: whatToSend };
 	      }
+	      JBridge.logListViewEvent("COURSES");
 	      window.__runDuiCallback(event);
 	    };
 	
@@ -49584,6 +52410,7 @@
 	    };
 	
 	    _this2.onBackPressed = function () {
+	      JBridge.logListViewEvent("COURSES");
 	      if (window.__PermissionDeniedDialog.getVisibility() == "visible") {
 	        window.__PermissionDeniedDialog.hide();
 	      } else {
@@ -49611,7 +52438,7 @@
 	            _this.changeViewMoreButtonStatus();
 	          }
 	        });
-	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", (_this.start_index + 2) * 10, true);
+	        JBridge.searchContent(callback, JSON.stringify(_this2.searchQuery), "", "Course", (_this.start_index + 2) * 10, null, true);
 	      } else {
 	        window.__LoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -49658,7 +52485,7 @@
 	          background: window.__Colors.PRIMARY_LIGHT,
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 218
+	            lineNumber: 228
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -49669,7 +52496,7 @@
 	          showMenu: "true",
 	          title: this.appbarTitle, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 225
+	            lineNumber: 235
 	          }
 	        }),
 	        dom(ListView, {
@@ -49677,7 +52504,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 232
+	            lineNumber: 242
 	          }
 	        })
 	      );
@@ -49691,7 +52518,7 @@
 	module.exports = Connector(CourseViewAllActivity);
 
 /***/ }),
-/* 489 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49715,7 +52542,7 @@
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
 	var callbackMapper = __webpack_require__(329);
-	var AnnouncementCard = __webpack_require__(422);
+	var AnnouncementCard = __webpack_require__(427);
 	
 	var utils = __webpack_require__(397);
 	var _this;
@@ -49897,7 +52724,7 @@
 	module.exports = Connector(AnnouncementViewAllActivity);
 
 /***/ }),
-/* 490 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49927,9 +52754,9 @@
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterDialog = __webpack_require__(491);
+	var FilterDialog = __webpack_require__(498);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(426);
+	var SearchResult = __webpack_require__(431);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -49945,7 +52772,7 @@
 	
 	    _this2.afterRender = function () {
 	
-	      if (_this2.filterData != undefined && _this2.filterData.length != 0) {
+	      if (_this2.filterData && _this2.filterData.length != 0 && _this2.filterData.facetFilters) {
 	        console.log(_this2.filterData, "filterinsearch");
 	        var flag = false;
 	        var facetFilters = _this2.filterData.facetFilters;
@@ -49974,11 +52801,38 @@
 	          visibility: "visible",
 	          imageUrl: _this2.filterIcon
 	        });
-	        Android.runInUI(cmd, 0, "88", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
-	        _this2.getSearchList(_this2.searchText);
+	        Android.runInUI(cmd, 0, "91", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	        // this.getSearchList(this.searchText);
+	
+	        // var searchData
+	        // if (typeof this.filterData == 'object') {
+	        //   searchData = this.filterData
+	        // } else {
+	        //   searchData = JSON.parse(this.filter)
+	        // }
 	        window.__LoaderDialog.show();
+	        if (window.search && window.search.etb && window.search.keywords) {
+	          _this2.handleSearchClick(null, window.search.keywords);
+	          // this.getSearchList(this.searchText, "false", window.search.keywords);
+	        } else {
+	          _this2.getSearchList(_this2.searchText, "true");
+	        }
 	      } else if (window.search && window.search.type == _this2.searchType && window.search.res != undefined && window.search.res != "" && window.search.text != undefined && window.search.text != "") {
+	        console.log("prev res");
 	        _this.renderResult(JSON.parse(window.search.res), window.search.text);
+	        // window.__LoaderDialog.show();
+	      } else if (_this2.searchText && _this2.searchText != "") {
+	        console.log("handleSeachClick ", _this2.searchText);
+	
+	        var cmd = _this2.set({
+	          id: _this2.idSet.searchHolder,
+	          text: _this2.searchText
+	        });
+	        Android.runInUI(cmd, 0, "118", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	
+	        _this2.handleSearchClick(_this2.searchText);
+	      } else if (_this2.keywords) {
+	        _this2.handleSearchClick(null, _this2.keywords);
 	      }
 	
 	      var callback = callbackMapper.map(function (data) {
@@ -49986,13 +52840,59 @@
 	        _this.handleSearchClick(data);
 	      });
 	      JBridge.handleImeAction(_this2.idSet.searchHolder, callback);
-	      if (window.searchText == undefined || window.searchText == "" || window.search.type != _this2.searchType && window.searchText != "") {
+	      if (!_this2.keywords && (window.searchText == undefined || window.searchText == "" || window.search.type != _this2.searchType && window.searchText != "")) {
 	        JBridge.getFocus(_this2.idSet.searchHolder);
 	      }
 	    };
 	
+	    _this2.handleItemClick = function (item, index, searchText) {
+	      console.log("itemClicked ", item);
+	
+	      var itemDetails = JSON.stringify(item);
+	      if (_this2.searchType.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, searchText, item.identifier, item.pkgVersion);else if (_this2.searchType.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, searchText, item.identifier, item.pkgVersion);else if (_this2.searchType.toLowerCase() == "resource") JBridge.logContentClickEvent("LIBRARY", index + 1, searchText, item.identifier, item.pkgVersion);
+	
+	      if (item.hasOwnProperty("data") && item.data.hasOwnProperty("education")) {
+	        console.log("item data", item);
+	        var whatToSend = { profile: JSON.stringify(item) };
+	        var event = { tag: "OPEN_ProfileActivity_SEARCH", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      } else if (item.contentType.toLowerCase() == "course") {
+	
+	        if (JBridge.getKey("isPermissionSetWriteExternalStorage", "false") == "true") {
+	          var whatToSend = { course: itemDetails };
+	          var event = { tag: "OPEN_CourseInfoActivity_SEARCH", contents: whatToSend };
+	          window.__runDuiCallback(event);
+	        } else {
+	          utils.setPermissions();
+	        }
+	      } else if (item.mimeType.toLowerCase() == "application/vnd.ekstep.content-collection" || utils.checkEnrolledCourse(item.identifier)) {
+	
+	        if (JBridge.getKey("isPermissionSetWriteExternalStorage", "false") == "true") {
+	          var whatToSend = { course: itemDetails };
+	          var event = { tag: "OPEN_CourseEnrolledActivity_SEARCH", contents: whatToSend };
+	          window.__runDuiCallback(event);
+	        } else {
+	          utils.setPermissions();
+	        }
+	      } else {
+	        var headFooterTitle = item.contentType + (item.hasOwnProperty("size") ? " [" + utils.formatBytes(item.size) + "]" : "");
+	        var resDetails = {};
+	        resDetails['imageUrl'] = item.appIcon;
+	        resDetails['title'] = item.name;
+	        resDetails['description'] = item.description;
+	        resDetails['headFooterTitle'] = headFooterTitle;
+	        resDetails['identifier'] = item.identifier;
+	        resDetails['screenshots'] = item.screenshots || [];
+	        resDetails['content'] = item;
+	
+	        var whatToSend = { resourceDetails: JSON.stringify(resDetails) };
+	        var event = { tag: "OPEN_ResourceDetailActivity_SEARCH", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	      }
+	    };
+	
 	    _this2.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "107", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "188", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.getBack = function () {
@@ -50002,7 +52902,7 @@
 	        onClick: _this2.onBackPressed,
 	        imageUrl: "ic_action_arrow_left", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 115
+	          lineNumber: 196
 	        }
 	      });
 	    };
@@ -50017,7 +52917,7 @@
 	          gravity: "center_vertical",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 123
+	            lineNumber: 204
 	          }
 	        },
 	        dom(EditText, {
@@ -50032,7 +52932,7 @@
 	          id: _this2.idSet.searchHolder,
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 130
+	            lineNumber: 211
 	          }
 	        })
 	      );
@@ -50045,7 +52945,7 @@
 	          width: "wrap_content",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 148
+	            lineNumber: 229
 	          }
 	        },
 	        dom(ImageView, {
@@ -50054,7 +52954,7 @@
 	          style: IconStyle,
 	          imageUrl: "ic_action_close", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 152
+	            lineNumber: 233
 	          }
 	        }),
 	        dom(ImageView, {
@@ -50064,11 +52964,305 @@
 	          visibility: "gone",
 	          imageUrl: _this2.filterIcon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 158
+	            lineNumber: 239
 	          }
 	        })
 	      );
 	      return layout;
+	    };
+	
+	    _this2.getContents = function (content, index, searchText) {
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          padding: "16,16,16,16",
+	          margin: "0,0,0,0",
+	          onClick: function onClick() {
+	            _this2.handleItemClick(content, index, searchText);
+	          }, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 253
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "wrap_content",
+	            height: "wrap_content",
+	            gravity: "center", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 260
+	            }
+	          },
+	          dom(ImageView, {
+	            width: "37",
+	            height: "37",
+	            margin: "0,0,8,0",
+	            circularImageUrl: "0," + "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 265
+	            }
+	          })
+	        ),
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "0",
+	            weight: "1",
+	            height: "wrap_content",
+	            orientation: "vertical", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 272
+	            }
+	          },
+	          dom(TextView, {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            text: content.name,
+	            style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 278
+	            }
+	          }),
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              height: "wrap_content",
+	              gravity: "center_vertical", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 284
+	              }
+	            },
+	            dom(TextView, {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              text: content.contentType,
+	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 289
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "10",
+	              height: "10",
+	              margin: "4,0,4,0",
+	              imageUrl: "ic_dot_lightgrey", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 295
+	              }
+	            }),
+	            dom(TextView, {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              text: content.hasOwnProperty("size") ? utils.formatBytes(content.size) : " ",
+	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 301
+	              }
+	            })
+	          ),
+	          dom(
+	            LinearLayout,
+	            {
+	              orientation: "horizontal",
+	              padding: "10,0,0,0", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 308
+	              }
+	            },
+	            dom(TextView, {
+	              height: "wrap_content",
+	              id: _this2.idSet.gradeTextView,
+	              width: content.gradeLevel && content.gradeLevel.length > 2 && content.subject ? halfWidth + "" : "wrap_content",
+	              padding: content.subject ? "0,4,0,10" : "0,4,16,10",
+	              gravity: "left",
+	              enableEllipse: "true",
+	              singleLine: "true",
+	              scrollHorizontally: "true",
+	              visibility: content.gradeLevel ? "visible" : "gone",
+	              text: content.gradeLevel ? content.gradeLevel.toString().replace(/,/g, ", ") : "",
+	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 312
+	              }
+	            }),
+	            dom(ImageView, {
+	              width: "10",
+	              height: "10",
+	              visibility: content.gradeLevel && content.subject ? "visible" : "gone",
+	              gravity: "left",
+	              margin: "4,7,0,0",
+	              imageUrl: "ic_dot_lightgrey", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 326
+	              }
+	            }),
+	            dom(TextView, {
+	              height: "wrap_content",
+	              padding: "4,3,16,10",
+	              gravity: "left",
+	              width: "wrap_content",
+	              enableEllipse: "true",
+	              singleLine: "true",
+	              visibility: content.subject ? "visible" : "gone",
+	              text: content.subject ? content.subject.toString() : "",
+	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 334
+	              }
+	            })
+	          )
+	        )
+	      );
+	    };
+	
+	    _this2.getGroup = function (collection, contents, index, searchText) {
+	      var contentsList = [];
+	      console.log("creating grp for -> ", collection);
+	
+	      collection.childNodes.map(function (item) {
+	        var content = utils.findObjOnProp(contents, "identifier", item);
+	        if (content) {
+	          contentsList.push(content);
+	        }
+	      });
+	      var contentsLayout = contentsList.map(function (item, i) {
+	        var dividerVisibility = contents.length - 1 == i ? "gone" : "visible";
+	        return dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            orientation: "vertical", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 363
+	            }
+	          },
+	          _this2.getContents(item, i, searchText),
+	          dom(LinearLayout, {
+	            width: "match_parent",
+	            height: "5",
+	            margin: "16,0,16,0",
+	            visibility: dividerVisibility, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 368
+	            }
+	          })
+	        );
+	      });
+	      return dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 377
+	          }
+	        },
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            orientation: "vertical",
+	            onClick: function onClick() {
+	              _this2.handleItemClick(collection, index, searchText);
+	            }, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 382
+	            }
+	          },
+	          dom(
+	            LinearLayout,
+	            {
+	              width: "match_parent",
+	              height: "wrap_content",
+	              margin: "16,16,16,0", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 388
+	              }
+	            },
+	            dom(TextView, {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              textSize: "14",
+	              text: "From ", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 393
+	              }
+	            }),
+	            dom(TextView, {
+	              width: "wrap_content",
+	              height: "wrap_content",
+	              style: window.__TextStyle.textStyle.CARD.HEADING,
+	              text: collection.name, __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 399
+	              }
+	            })
+	          ),
+	          dom(TextView, {
+	            width: "match_parent",
+	            height: "wrap_content",
+	            text: "View " + collection.contentType + " >",
+	            style: window.__TextStyle.textStyle.TABBAR.SELECTED,
+	            margin: "16,0,16,0", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 405
+	            }
+	          })
+	        ),
+	        contentsLayout
+	      );
+	    };
+	
+	    _this2.renderEtbContent = function (collection, contents, searchText) {
+	      var groups = collection.map(function (item, i) {
+	        return _this2.getGroup(item, contents, i, searchText);
+	      });
+	      var contentsLayout = contents.map(function (item, i) {
+	        return _this2.getContents(item, i, searchText);
+	      });
+	      var layout = dom(
+	        LinearLayout,
+	        {
+	          width: "match_parent",
+	          height: "wrap_content",
+	          root: "true",
+	          background: "#ffffff",
+	          orientation: "vertical", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 424
+	          }
+	        },
+	        groups,
+	        dom(LinearLayout, {
+	          height: "5",
+	          width: "match_parent",
+	          background: "#f2f2f2", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 431
+	          }
+	        }),
+	        dom(
+	          LinearLayout,
+	          {
+	            width: "match_parent",
+	            height: "wrap_content", __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 435
+	            }
+	          },
+	          contentsLayout
+	        )
+	      );
+	
+	      _this2.replaceChild(_this2.idSet.searchListContainer, layout.render(), 0);
+	      window.__LoaderDialog.hide();
 	    };
 	
 	    _this2.renderNoResult = function () {
@@ -50077,7 +53271,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "176", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "452", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -50089,7 +53283,7 @@
 	          gravity: "center_horizontal",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 178
+	            lineNumber: 454
 	          }
 	        },
 	        dom(TextView, {
@@ -50101,13 +53295,14 @@
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING,
 	          text: window.__S.EMPTY_SEARCH_RESULTS, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 186
+	            lineNumber: 462
 	          }
 	        })
 	      );
 	
 	      _this2.replaceChild(_this2.idSet.searchListContainer, layout.render(), 0);
 	      window.__LoaderDialog.hide();
+	      JBridge.hideKeyboard();
 	    };
 	
 	    _this2.renderResult = function (data, searchText) {
@@ -50121,16 +53316,18 @@
 	          background: "#ffffff",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 205
+	            lineNumber: 481
 	          }
 	        },
 	        dom(SearchResult, {
 	          filterData: _this.filterData,
 	          type: _this2.searchType,
-	          searchText: searchText,
-	          data: data, __source: {
+	          data: data,
+	          onClick: function onClick(item, index) {
+	            _this2.handleItemClick(item, index, searchText);
+	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 211
+	            lineNumber: 487
 	          }
 	        })
 	      );
@@ -50143,18 +53340,35 @@
 	      _this2.searchTextValue = data;
 	    };
 	
-	    _this2.getSearchList = function (searchText) {
-	      JBridge.hideKeyboard();
+	    _this2.getSearchList = function (searchText, flag, keywords) {
+	
 	      if (searchText == "") {
 	        _this2.renderNoResult();
 	        window.__LoaderDialog.hide();
 	      } else {
 	        var callback = callbackMapper.map(function (data) {
-	          console.log("callback data", data);
+	          console.log("callback data", JSON.parse(utils.decodeBase64(data[2])));
 	          if (data[0] == "error") {
 	            console.log("Error at callback", data[1]);
 	            window.__Snackbar.show("" + data[1]);
 	            _this.renderNoResult();
+	            window.__LoaderDialog.hide();
+	          } else if (JSON.parse(utils.decodeBase64(data[2]))) {
+	            console.log("inside collectiondata");
+	            var collection = JSON.parse(utils.decodeBase64(data[2]));
+	            _this.filterData = data[1];
+	            window.search = {};
+	            window.search.etb = collection;
+	            window.search.keywords = keywords;
+	            window.search.text = searchText;
+	            window.search.type = _this.searchType;
+	            data[0] = utils.decodeBase64(data[0]);
+	            var s = utils.formatJSON(data[0]);
+	            var contents = JSON.parse(s);
+	            console.log("contents -> ", contents);
+	
+	            // _this.renderResult(JSON.parse(s), searchText);
+	            _this.renderEtbContent(collection, contents, searchText);
 	            window.__LoaderDialog.hide();
 	          } else {
 	            data[0] = utils.decodeBase64(data[0]);
@@ -50163,24 +53377,28 @@
 	              _this.renderNoResult();
 	              window.__LoaderDialog.hide();
 	            } else {
-	              var s = data[0];
-	              s = s.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
-	              s = s.replace(/[\u0000-\u0019]+/g, "");
-	              window.search = {};
-	              window.search.res = s;
-	              window.search.text = searchText;
-	              window.search.type = _this.searchType;
-	              _this.renderResult(JSON.parse(s), searchText);
-	              window.__LoaderDialog.hide();
+	              _this.filterData = data[1];
+	              if (searchText == "" || data[0] == "[]") {
+	                _this.renderNoResult();
+	                window.__LoaderDialog.hide();
+	              } else {
+	                var s = utils.formatJSON(data[0]);
+	                window.search = {};
+	                window.search.res = s;
+	                window.search.text = searchText;
+	                window.search.type = _this.searchType;
+	                _this.renderResult(JSON.parse(s), searchText);
+	                window.__LoaderDialog.hide();
+	              }
 	            }
 	          }
 	        }); //end of callback
 	
-	        if (_this2.filterData != undefined && _this2.filterData.length == 0) {
-	          status = "false";
-	        } else {
-	          status = "true";
-	        }
+	        // if (this.filterData != undefined && this.filterData.length == 0) {
+	        //   status = "false";
+	        // } else {
+	        //   status = "true";
+	        // }
 	
 	        if (JBridge.isNetworkAvailable()) {
 	          console.log(_this2.filterData, " filterData ");
@@ -50188,7 +53406,7 @@
 	          if (_this2.filterData != "") {
 	            filterParams = JSON.stringify(_this2.filterData);
 	          }
-	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100, false);
+	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100, keywords ? keywords : null, false);
 	        } else {
 	          window.__LoaderDialog.hide();
 	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -50214,10 +53432,10 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "304", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "598", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
-	    _this2.handleSearchClick = function (searchText) {
+	    _this2.handleSearchClick = function (searchText, keywords) {
 	      JBridge.hideKeyboard();
 	      _this2.filterData = "";
 	      console.log("handlesearchClick: ", _this2.searchType.toUpperCase());
@@ -50225,9 +53443,10 @@
 	
 	      if (JBridge.isNetworkAvailable()) {
 	        window.__LoaderDialog.show();
-	        _this2.getSearchList(searchText[0]);
+	        _this2.getSearchList(searchText ? searchText[0] : null, "false", keywords);
 	      } else {
 	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	        window.__LoaderDialog.hide();
 	      }
 	    };
 	
@@ -50246,22 +53465,20 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "338", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "633", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
 	      JBridge.hideKeyboard();
 	      JBridge.explicitSearch(_this2.searchType.toUpperCase(), "FILTER");
-	      var filteredData = { filterDetails: _this2.filterData,
+	      var filteredData = {
+	        filterDetails: _this2.filterData,
 	        filterType: _this2.searchType,
-	        filterFor: _this2.searchTextValue };
+	        filterFor: _this2.searchTextValue
+	      };
 	      var whatToSend = { filterDetails: JSON.stringify(filteredData) };
 	      var event = { tag: "OPEN_FilterActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
-	    };
-	
-	    _this2.onItemClick = function (params) {
-	      console.log("parmas are", params);
 	    };
 	
 	    _this2.getToolbar = function () {
@@ -50274,7 +53491,7 @@
 	          background: window.__Colors.PRIMARY_BLACK_22,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 357
+	            lineNumber: 650
 	          }
 	        },
 	        dom(
@@ -50287,7 +53504,7 @@
 	            background: window.__Colors.WHITE,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 363
+	              lineNumber: 656
 	            }
 	          },
 	          _this2.getBack(),
@@ -50312,6 +53529,9 @@
 	    _this2.filter = [];
 	    _this2.filterData = _this2.tempData.filterDetails;
 	    _this2.searchText = _this2.tempData.filterDetails.query;
+	    // this.searchType = this.tempData.filterType;
+	    _this2.keywords = _this2.tempData.keywords;
+	    // this.temp = state.data;
 	    _this2.searchType = _this2.tempData.searchType;
 	
 	    _this = _this2;
@@ -50331,7 +53551,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 383
+	            lineNumber: 676
 	          }
 	        },
 	        dom(
@@ -50342,7 +53562,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 389
+	              lineNumber: 682
 	            }
 	          },
 	          this.getToolbar(),
@@ -50353,7 +53573,7 @@
 	            id: this.idSet.searchListContainer,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 397
+	              lineNumber: 690
 	            }
 	          })
 	        )
@@ -50368,7 +53588,7 @@
 	module.exports = Connector(SearchActivity);
 
 /***/ }),
-/* 491 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50567,7 +53787,7 @@
 	module.exports = FilterDialog;
 
 /***/ }),
-/* 492 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50593,8 +53813,8 @@
 	var ScrollView = __webpack_require__(358);
 	var View = __webpack_require__(331);
 	var SimpleToolbar = __webpack_require__(382);
-	var FilterCard = __webpack_require__(493);
-	var FilterPopup = __webpack_require__(494);
+	var FilterCard = __webpack_require__(500);
+	var FilterPopup = __webpack_require__(501);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -50866,7 +54086,7 @@
 	module.exports = Connector(FilterActivity);
 
 /***/ }),
-/* 493 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51001,7 +54221,7 @@
 	module.exports = FilterCard;
 
 /***/ }),
-/* 494 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51364,7 +54584,7 @@
 	module.exports = FilterPopup;
 
 /***/ }),
-/* 495 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51390,9 +54610,9 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var Spinner = __webpack_require__(394);
-	var MultiSelectSpinner = __webpack_require__(496);
+	var MultiSelectSpinner = __webpack_require__(419);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
@@ -52639,263 +55859,7 @@
 	module.exports = Connector(AdditionalInformationActivity);
 
 /***/ }),
-/* 496 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var dom = __webpack_require__(324);
-	var Connector = __webpack_require__(330);
-	var View = __webpack_require__(331);
-	var LinearLayout = __webpack_require__(333);
-	var HorizontalScrollView = __webpack_require__(357);
-	var Spinner = __webpack_require__(394);
-	var TextView = __webpack_require__(342);
-	var ImageView = __webpack_require__(350);
-	
-	var MultiSelectSpinner = function (_View) {
-	  _inherits(MultiSelectSpinner, _View);
-	
-	  function MultiSelectSpinner(props, children) {
-	    _classCallCheck(this, MultiSelectSpinner);
-	
-	    var _this = _possibleConstructorReturn(this, (MultiSelectSpinner.__proto__ || Object.getPrototypeOf(MultiSelectSpinner)).call(this, props, children));
-	
-	    _this.handleItemClick = function () {
-	      if (parseInt(arguments.length <= 2 ? undefined : arguments[2]) > 0) {
-	        var selectedValue = _this.data[parseInt(arguments.length <= 2 ? undefined : arguments[2])];
-	        _this.data.splice(_this.data.indexOf(selectedValue), 1);
-	        _this.selectedData.push(selectedValue);
-	
-	        _this.replaceChild(_this.idSet.spinnerContainer, _this.getUi().render(), 0);
-	        _this.onItemChange(_this.selectedData);
-	      }
-	    };
-	
-	    _this.handleRemoveClick = function (item) {
-	      _this.selectedData.splice(_this.selectedData.indexOf(item), 1);
-	      _this.data.push(item);
-	
-	      _this.replaceChild(_this.idSet.spinnerContainer, _this.getUi().render(), 0);
-	      _this.onItemChange(_this.selectedData);
-	    };
-	
-	    _this.getExtraLayout = function () {
-	      if (_this.props.addLayout != undefined && _this.props.addLayout != "") {
-	        return _this.props.addLayout;
-	      }
-	      return dom(LinearLayout, {
-	        __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 151
-	        }
-	      });
-	    };
-	
-	    _this.setIds(["spinnerContainer", "spinner", "horizontalScrollContainer", "selectedValueContainer"]);
-	
-	    _this.hint = props.hint;
-	    _this.data = props.data;
-	    _this.selectedData = props.selectedData ? props.selectedData : new Array();
-	    _this.addLayout = props.addLayout;
-	
-	    if (_this.selectedData.length > 0) {
-	      _this.selectedData.map(function (value) {
-	        _this.data.splice(_this.data.indexOf(value), 1);
-	      });
-	    }
-	
-	    _this.onItemChange = props.onItemChange;
-	    return _this;
-	  }
-	
-	  _createClass(MultiSelectSpinner, [{
-	    key: "getSelectedItemListView",
-	    value: function getSelectedItemListView() {
-	      var _this2 = this;
-	
-	      if (this.selectedData.length == 0) {
-	        return dom(LinearLayout, {
-	          width: "wrap_content",
-	          height: "wrap_content", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 60
-	          }
-	        });
-	      }
-	
-	      var itemListView = this.selectedData.map(function (item) {
-	        return dom(
-	          LinearLayout,
-	          {
-	            height: "wrap_content",
-	            width: "wrap_content",
-	            padding: "12,4,12,4",
-	            margin: "0,0,10,0",
-	            cornerRadius: "16,16,16,16",
-	            background: window.__Colors.DARK_GRAY_44,
-	            gravity: "center", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 68
-	            }
-	          },
-	          dom(TextView, {
-	            height: "wrap_content",
-	            width: "wrap_content",
-	            text: item,
-	            margin: "0,0,4,0",
-	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 77
-	            }
-	          }),
-	          dom(ImageView, {
-	            height: "15",
-	            width: "15",
-	            imageUrl: "ic_action_close",
-	            margin: "0,1,0,0",
-	            onClick: function onClick() {
-	              _this2.handleRemoveClick(item);
-	            },
-	            __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 84
-	            }
-	          })
-	        );
-	      });
-	
-	      return itemListView;
-	    }
-	  }, {
-	    key: "getSpinnerComponent",
-	    value: function getSpinnerComponent() {
-	      var spinnerItem = this.data.join(", ");
-	      return dom(
-	        LinearLayout,
-	        {
-	          width: "match_parent",
-	          height: "wrap_content",
-	          cornerRadius: "4",
-	          padding: "0,8,8,8",
-	          margin: "4,0,4,0",
-	          stroke: "2," + window.__Colors.PRIMARY_BLACK_66, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 103
-	          }
-	        },
-	        dom(Spinner, {
-	          id: this.idSet.spinner,
-	          width: "match_parent",
-	          height: "24",
-	          margin: "0,0,5,6",
-	          values: spinnerItem,
-	          onItemClick: this.handleItemClick,
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 111
-	          }
-	        })
-	      );
-	    }
-	  }, {
-	    key: "getSelectedView",
-	    value: function getSelectedView() {
-	      var itemList = this.getSelectedItemListView();
-	
-	      return dom(
-	        HorizontalScrollView,
-	        {
-	          id: this.idSet.horizontalScrollContainer,
-	          height: "wrap_content",
-	          width: "match_parent",
-	          margin: "4, 4, 4, 4", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 129
-	          }
-	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            id: this.idSet.selectedValueContainer,
-	            height: "match_parent",
-	            width: "match_parent",
-	            orientation: "horizontal", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 134
-	            }
-	          },
-	          itemList
-	        )
-	      );
-	    }
-	  }, {
-	    key: "getUi",
-	    value: function getUi() {
-	      return dom(
-	        LinearLayout,
-	        {
-	          width: "match_parent",
-	          height: "wrap_content",
-	          orientation: "horizontal", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 156
-	          }
-	        },
-	        dom(
-	          LinearLayout,
-	          {
-	            weight: "1",
-	            height: "wrap_content",
-	            orientation: "vertical", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 160
-	            }
-	          },
-	          this.getSpinnerComponent(),
-	          this.getSelectedView()
-	        ),
-	        this.getExtraLayout()
-	      );
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      this.layout = dom(
-	        LinearLayout,
-	        {
-	          id: this.idSet.spinnerContainer,
-	          width: "match_parent",
-	          height: "wrap_content",
-	          orientation: "vertical", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 174
-	          }
-	        },
-	        this.getUi()
-	      );
-	
-	      return this.layout.render();
-	    }
-	  }]);
-	
-	  return MultiSelectSpinner;
-	}(View);
-	
-	module.exports = MultiSelectSpinner;
-
-/***/ }),
-/* 497 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -52921,13 +55885,14 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var Spinner = __webpack_require__(394);
-	var MultiSelectSpinner = __webpack_require__(496);
+	var MultiSelectSpinner = __webpack_require__(419);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
 	var utils = __webpack_require__(397);
+	var MultiSelectSpinner = __webpack_require__(419);
 	
 	window.R = __webpack_require__(7);
 	var _this;
@@ -52940,30 +55905,6 @@
 	
 	    var _this2 = _possibleConstructorReturn(this, (GuestInformationActivity.__proto__ || Object.getPrototypeOf(GuestInformationActivity)).call(this, props, children, state));
 	
-	    _this2.initData = function () {
-	      _this2.profileData = JSON.parse(utils.decodeBase64(JBridge.getCurrentProfileData()));
-	      _this2.mediumListData = JSON.parse(utils.decodeBase64(JBridge.getMediums()));
-	      _this2.gradeListData = JSON.parse(utils.decodeBase64(JBridge.getGrades()));
-	      _this2.boardListData = JSON.parse(utils.decodeBase64(JBridge.getBoards()));
-	      _this2.subjectListData = JSON.parse(utils.decodeBase64(JBridge.getSubjects()));
-	
-	      _this2.mediumList = _this2.extractLabels(_this2.mediumListData);
-	      _this2.gradeList = _this2.extractLabels(_this2.gradeListData);
-	      _this2.boardList = _this2.extractLabels(_this2.boardListData);
-	      _this2.subjectList = _this2.extractLabels(_this2.subjectListData);
-	      _this2.profileData.grade = _this2.profileData.grade == -1 ? "" : _this2.gradeList[_this2.profileData.grade];
-	    };
-	
-	    _this2.extractLabels = function (list) {
-	      var labels = [];
-	      list.map(function (item, i) {
-	        labels[i] = item.label;
-	      });
-	      return labels;
-	    };
-	
-	    _this2.onPop = function () {};
-	
 	    _this2.getBody = function () {
 	      return dom(
 	        LinearLayout,
@@ -52973,7 +55914,7 @@
 	          orientation: "vertical",
 	          padding: "0,0,0,70", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 90
+	            lineNumber: 85
 	          }
 	        },
 	        dom(
@@ -52983,7 +55924,7 @@
 	            height: "match_parent",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 95
+	              lineNumber: 90
 	            }
 	          },
 	          dom(
@@ -52994,17 +55935,72 @@
 	              padding: "11,15,15,15",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 99
+	                lineNumber: 94
 	              }
 	            },
 	            _this2.getEditTextView(_this2.idSet.nameText, window.__S.FULL_NAME, _this2.profileData.handle, _this2.handleOnChange),
-	            _this2.getSingleSelectSpinner(_this2.idSet.mediumOfInstructionSpinner, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange),
-	            _this2.getSingleSelectSpinner(_this2.idSet.gradeSpinner, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange),
-	            _this2.getSingleSelectSpinner(_this2.idSet.boardSpinner, window.__S.BOARD, _this2.boardList, _this2.handleBoardChange),
-	            _this2.getSingleSelectSpinner(_this2.idSet.subjectSpinner, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange)
+	            _this2.getMultiSelectSpinner(_this2.idSet.boardSpinner, window.__S.BOARD, _this2.boardList, _this2.handleBoardChange, _this2.profileData.board),
+	            dom(
+	              LinearLayout,
+	              {
+	                width: "match_parent",
+	                height: "match_parent",
+	                id: _this2.idSet.gradeLayout, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 101
+	                }
+	              },
+	              _this2.getMultiSelectSpinner(_this2.idSet.gradeSpinner, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, _this2.profileData.grade)
+	            ),
+	            dom(
+	              LinearLayout,
+	              {
+	                width: "match_parent",
+	                height: "match_parent",
+	                id: _this2.idSet.subjectLayout, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 107
+	                }
+	              },
+	              _this2.getMultiSelectSpinner(_this2.idSet.subjectSpinner, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, _this2.profileData.subject)
+	            ),
+	            dom(
+	              LinearLayout,
+	              {
+	                width: "match_parent",
+	                height: "match_parent",
+	                id: _this2.idSet.mediumLayout, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 113
+	                }
+	              },
+	              _this2.getMultiSelectSpinner(_this2.idSet.mediumOfInstructionSpinner, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, _this2.profileData.medium)
+	            )
 	          )
 	        )
 	      );
+	    };
+	
+	    _this2.getSelectedItems = function (params, index) {
+	      params = params.toString().split(",");
+	      var selectedItems = [];
+	      for (var i = 0; i < params.length; i++) {
+	        for (var j = 0; j < _this2.allQs[index].values.length; j++) {
+	          if (params[i] == _this2.allQs[index].values[j].name) {
+	            selectedItems.push(_this2.allQs[index].values[j]);
+	            break;
+	          }
+	        }
+	      }
+	      return selectedItems;
+	    };
+	
+	    _this2.populateMultiSpinner = function (index) {
+	      if (index > 2) _this2.replaceChild(_this2.idSet.gradeLayout, _this2.getMultiSelectSpinner(_this2.idSet.gradeSpinner, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, null).render(), 0);
+	
+	      if (index > 1) _this2.replaceChild(_this2.idSet.subjectLayout, _this2.getMultiSelectSpinner(_this2.idSet.subjectSpinner, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, null).render(), 0);
+	
+	      if (index > 0) _this2.replaceChild(_this2.idSet.mediumLayout, _this2.getMultiSelectSpinner(_this2.idSet.mediumOfInstructionSpinner, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, null).render(), 0);
 	    };
 	
 	    _this2.handleOnChange = function () {
@@ -53016,23 +56012,48 @@
 	        params[_key] = arguments[_key];
 	      }
 	
-	      _this2.profileData.medium = _this2.mediumList[params[2]];
+	      _this2.allQs[3].selected = _this2.getSelectedItems(params, 3);
+	      var data = _this2.allQs[3];
+	      window.__questionStore.setAnswer(3, data);
+	      _this2.allQs = window.__questionStore.getAllQs();
+	      //this.gradeList = this.allQs[1].values.map(item => item.name);
 	    };
 	
-	    _this2.handleGradeChange = function () {
+	    _this2.handleBoardChange = function () {
 	      for (var _len2 = arguments.length, params = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
 	        params[_key2] = arguments[_key2];
 	      }
 	
-	      _this2.profileData.grade = _this2.gradeList[params[2]];
+	      //this.profileData.board = this.boardList[params[2]];
+	      _this2.allQs[0].selected = _this2.getSelectedItems(params, 0);
+	      var data = _this2.allQs[0];
+	      window.__questionStore.setAnswer(0, data);
+	      window.__questionStore.addNextQ();
+	      _this2.allQs = window.__questionStore.getAllQs();
+	
+	      _this2.gradeList = _this2.allQs.length > 1 ? _this2.allQs[1].values.map(function (item) {
+	        return item.name;
+	      }) : [];
+	      _this2.gradeList.unshift(window.__S.SELECT);
+	      _this2.populateMultiSpinner(3);
 	    };
 	
-	    _this2.handleBoardChange = function () {
+	    _this2.handleGradeChange = function () {
 	      for (var _len3 = arguments.length, params = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
 	        params[_key3] = arguments[_key3];
 	      }
 	
-	      _this2.profileData.board = _this2.boardList[params[2]];
+	      _this2.allQs[1].selected = _this2.getSelectedItems(params, 1);
+	      var data = _this2.allQs[1];
+	      window.__questionStore.setAnswer(1, data);
+	      window.__questionStore.addNextQ();
+	      _this2.allQs = window.__questionStore.getAllQs();
+	
+	      _this2.subjectList = _this2.allQs.length > 2 ? _this2.allQs[2].values.map(function (item) {
+	        return item.name;
+	      }) : [];
+	      _this2.subjectList.unshift(window.__S.SELECT);
+	      _this2.populateMultiSpinner(2);
 	    };
 	
 	    _this2.handleSubjectChange = function () {
@@ -53040,7 +56061,17 @@
 	        params[_key4] = arguments[_key4];
 	      }
 	
-	      _this2.profileData.subjects = _this2.subjectList[params[2]];
+	      _this2.allQs[2].selected = _this2.getSelectedItems(params, 2);
+	      var data = _this2.allQs[2];
+	      window.__questionStore.setAnswer(2, data);
+	      window.__questionStore.addNextQ();
+	      _this2.allQs = window.__questionStore.getAllQs();
+	
+	      _this2.mediumList = _this2.allQs.length > 3 ? _this2.allQs[3].values.map(function (item) {
+	        return item.name;
+	      }) : [];
+	      _this2.mediumList.unshift(window.__S.SELECT);
+	      _this2.populateMultiSpinner(1);
 	    };
 	
 	    _this2.getEditTextView = function (id, label, text, onChange) {
@@ -53050,7 +56081,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 136
+	            lineNumber: 207
 	          }
 	        },
 	        dom(TextInputView, {
@@ -53066,7 +56097,7 @@
 	          editTextStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
 	          inputType: "text", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 139
+	            lineNumber: 210
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -53075,59 +56106,61 @@
 	          alignParentRight: "true,-1",
 	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 151
+	            lineNumber: 222
 	          }
 	        })
 	      );
 	    };
 	
-	    _this2.getSingleSelectSpinner = function (id, label, values, spinnerHandler) {
+	    _this2.getMultiSelectSpinner = function (id, label, values, spinnerHandler, selectedData) {
+	      var width = _this2.screenWidth - 32;
 	      return dom(
 	        LinearLayout,
 	        {
-	          width: "match_parent",
+	          width: width.toString(),
 	          height: "wrap_content",
 	          orientation: "vertical",
 	          margin: "4,0,0,18", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 162
+	            lineNumber: 234
 	          }
 	        },
 	        _this2.getLabel(label),
 	        dom(
 	          LinearLayout,
 	          {
-	            width: "match_parent",
+	            width: width.toString(),
 	            height: "wrap_content",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 168
+	              lineNumber: 240
 	            }
 	          },
 	          dom(
 	            LinearLayout,
 	            {
 	              height: "match_parent",
+	              width: width.toString(),
 	              padding: "0,6,0,0",
 	              weight: "1", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 172
+	                lineNumber: 244
 	              }
 	            },
-	            dom(Spinner, {
-	              width: "match_parent",
+	            dom(MultiSelectSpinner, {
+	              width: width.toString(),
 	              height: "24",
 	              style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
 	              id: id,
-	              onItemClick: spinnerHandler,
-	              values: values.toString(), __source: {
+	              selectedData: selectedData,
+	              onItemChange: spinnerHandler,
+	              data: values, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 176
+	                lineNumber: 249
 	              }
 	            })
 	          )
-	        ),
-	        _this2.getLineSeperator()
+	        )
 	      );
 	    };
 	
@@ -53138,7 +56171,7 @@
 	        height: "1",
 	        background: window.__Colors.PRIMARY_BLACK, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 191
+	          lineNumber: 264
 	        }
 	      });
 	    };
@@ -53151,7 +56184,7 @@
 	          width: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 200
+	            lineNumber: 273
 	          }
 	        },
 	        dom(TextView, {
@@ -53160,7 +56193,7 @@
 	          style: window.__TextStyle.textStyle.HINT.SEMI,
 	          text: label.toUpperCase(label), __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 204
+	            lineNumber: 277
 	          }
 	        })
 	      );
@@ -53177,7 +56210,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 215
+	            lineNumber: 288
 	          }
 	        },
 	        dom(PageOption, {
@@ -53185,42 +56218,49 @@
 	          buttonItems: buttonList,
 	          hideDivider: false, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 221
+	            lineNumber: 294
 	          }
 	        })
 	      );
 	    };
 	
-	    _this2.extractValue = function (masterList, key) {
-	      console.log("masterList -> ", masterList);
-	
-	      var ret;
-	      masterList.map(function (item, i) {
-	        if (item.label == key) {
-	          console.log("item -> " + key, item);
-	          ret = item.value;
+	    _this2.handleSaveClick = function () {
+	      //console.log("values -> " + this.profileData.medium + " " + this.profileData.grade + " " + this.profileData.board + " " + this.profileData.subjects);
+	      //console.log("values -> " + selectedMedium + " " + selectedGrade + " " + selectedBoard + " " + selectedSyllabus);
+	      var profile = JSON.parse(utils.decodeBase64(JBridge.getCurrentProfileData()));
+	      profile.board = [];
+	      profile.grade = [];
+	      profile.subject = [];
+	      profile.medium = [];
+	      _this2.allQs = window.__questionStore.getAllQs();
+	      _this2.allQs.map(function (item) {
+	        var selected = [];
+	        item.selected.map(function (item) {
+	          selected.push(item.name);
+	        });
+	        console.log("current saved value -> ", item);
+	        switch (item.code) {
+	          case "board":
+	            profile.board = selected;
+	            break;
+	          case "gradeLevel":
+	            profile.grade = selected;
+	            break;
+	          case "subject":
+	            profile.subject = selected;
+	            break;
+	          case "medium":
+	            profile.medium = selected;
+	            break;
 	        }
 	      });
-	      console.log("final value -> ", ret);
-	      return ret;
-	    };
-	
-	    _this2.handleSaveClick = function () {
-	      console.log("values -> " + _this2.profileData.medium + " " + _this2.profileData.grade + " " + _this2.profileData.board + " " + _this2.profileData.subjects);
-	
-	      var selectedMedium = _this2.extractValue(_this2.mediumListData, _this2.profileData.medium);
-	      var selectedGrade = _this2.extractValue(_this2.gradeListData, _this2.profileData.grade);
-	      var selectedBoard = _this2.extractValue(_this2.boardListData, _this2.profileData.board);
-	      var selectedSyllabus = _this2.extractValue(_this2.subjectListData, _this2.profileData.subjects);
-	
-	      console.log("values -> " + selectedMedium + " " + selectedGrade + " " + selectedBoard + " " + selectedSyllabus);
-	
-	      JBridge.setInSharedPrefs(window.__S.SUBJECTS, selectedSyllabus);
-	      JBridge.updateProfile(_this2.profileData.handle, selectedMedium, selectedGrade, selectedBoard);
+	      JBridge.updateProfile(_this2.profileData.handle, profile.medium, profile.grade, profile.board, profile.subject);
+	      _this2.preAllQs = _this2.allQs;
 	      _this2.onBackPressed();
 	    };
 	
 	    _this2.onBackPressed = function () {
+	      window.__questionStore.resetArr(_this2.preAllQs);
 	      var whatToSend = [];
 	      var event = { tag: "BACK_GuestInformationActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -53231,25 +56271,14 @@
 	      return object;
 	    };
 	
-	    _this2.afterRender = function () {
-	      _this2.profileData = _this2.setDefault(_this2.profileData, "medium", _this2.mediumList);
-	      _this2.profileData = _this2.setDefault(_this2.profileData, "grade", _this2.gradeList);
-	      _this2.profileData = _this2.setDefault(_this2.profileData, "board", _this2.boardList);
-	      _this2.profileData.subjects = JBridge.getFromSharedPrefs(window.__S.SUBJECTS);
+	    _this2.afterRender = function () {};
 	
-	      if (_this2.profileData.subjects == "__failed" || _this2.profileData.subjects == "undefined") _this2.profileData.subjects = "";
-	
-	      JBridge.selectSpinnerItem(_this2.idSet.mediumOfInstructionSpinner, _this2.profileData.medium != "" ? _this2.mediumList.indexOf(_this2.profileData.medium) : 0);
-	      JBridge.selectSpinnerItem(_this2.idSet.gradeSpinner, _this2.profileData.grade != "" ? _this2.gradeList.indexOf(_this2.profileData.grade) : 0);
-	      JBridge.selectSpinnerItem(_this2.idSet.boardSpinner, _this2.profileData.board != "" ? _this2.boardList.indexOf(_this2.profileData.board) : 0);
-	      JBridge.selectSpinnerItem(_this2.idSet.subjectSpinner, _this2.profileData.subjects != "" ? _this2.subjectList.indexOf(_this2.profileData.subjects) : 0);
-	    };
-	
-	    _this2.setIds(["nameText", "state", "mediumOfInstruction", "grade", "syllabus", "parentId", "subjectSpinner", "mediumOfInstructionSpinner", "boardSpinner", "gradeSpinner", "languageLI", "saveButton"]);
+	    _this2.setIds(["nameText", "state", "mediumOfInstruction", "grade", "syllabus", "parentId", "subjectSpinner", "mediumOfInstructionSpinner", "boardSpinner", "gradeSpinner", "languageLI", "saveButton", "gradeLayout", "subjectLayout", "mediumLayout"]);
 	    _this2.state = state;
 	    _this2.shouldCacheScreen = false;
 	    console.log("state in GuestInformationActivity -> ", state);
-	
+	    _this2.allQs = window.__questionStore.getAllQs();
+	    _this2.preAllQs = _this2.allQs;
 	    window.__GuestInformationActivity = _this2;
 	    _this2.visible = true;
 	    _this2.saveBtnState = {
@@ -53259,15 +56288,35 @@
 	      onClick: _this2.handleSaveClick
 	    };
 	    _this = _this2;
-	
-	    _this2.profileData = JSON.parse(_this2.state.data.value0.profile);
+	    //this.profileData = JSON.parse(this.state.data.value0.profile);
 	    // window.__profileData = this.profileData;//testing
-	    _this2.handle = _this2.profileData.handle;
-	    _this2.mediumList = [];
-	    _this2.gradeList = [];
-	    _this2.boardList = [];
-	    _this2.subjectList = [];
-	    _this2.initData();
+	    //this.handle = this.profileData.handle;
+	    _this2.profileData = JSON.parse(utils.decodeBase64(JBridge.getCurrentProfileData()));
+	
+	    console.log("\n\nGuestProfileData", _this2.profileData);
+	
+	    if (_this2.profileData.grade.length == 1 && _this2.profileData.grade[0] == "") _this2.profileData.grade = null;
+	
+	    _this2.boardList = _this2.allQs[0].values.map(function (item) {
+	      return item.name;
+	    });
+	    _this2.gradeList = _this2.allQs.length > 1 ? _this2.allQs[1].values.map(function (item) {
+	      return item.name;
+	    }) : [];
+	    _this2.subjectList = _this2.allQs.length > 2 ? _this2.allQs[2].values.map(function (item) {
+	      return item.name;
+	    }) : [];
+	    _this2.mediumList = _this2.allQs.length > 3 ? _this2.allQs[3].values.map(function (item) {
+	      return item.name;
+	    }) : [];
+	
+	    _this2.boardList.unshift(window.__S.SELECT);
+	    _this2.gradeList.unshift(window.__S.SELECT);
+	    _this2.subjectList.unshift(window.__S.SELECT);
+	    _this2.mediumList.unshift(window.__S.SELECT);
+	
+	    _this2.screenWidth = JBridge.getScreenWidth();
+	
 	    return _this2;
 	  }
 	
@@ -53285,7 +56334,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 286
+	            lineNumber: 352
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -53294,7 +56343,7 @@
 	          invert: "true",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 294
+	            lineNumber: 360
 	          }
 	        }),
 	        dom(
@@ -53303,7 +56352,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 299
+	              lineNumber: 365
 	            }
 	          },
 	          this.getBody(),
@@ -53322,7 +56371,7 @@
 	module.exports = Connector(GuestInformationActivity);
 
 /***/ }),
-/* 498 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53346,11 +56395,11 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var Spinner = __webpack_require__(394);
 	var SimpleToolbar = __webpack_require__(382);
 	var RadioButton = __webpack_require__(401);
-	var SimplePopup = __webpack_require__(499);
+	var SimplePopup = __webpack_require__(505);
 	var PageOption = __webpack_require__(379);
 	
 	var _this;
@@ -53897,7 +56946,7 @@
 	module.exports = Connector(AddressActivity);
 
 /***/ }),
-/* 499 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54210,7 +57259,7 @@
 	module.exports = SimplePopup;
 
 /***/ }),
-/* 500 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54234,9 +57283,9 @@
 	var TextView = __webpack_require__(342);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var PageOption = __webpack_require__(379);
-	var SimplePopup = __webpack_require__(499);
+	var SimplePopup = __webpack_require__(505);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -54694,7 +57743,7 @@
 	module.exports = Connector(EducationActivity);
 
 /***/ }),
-/* 501 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54718,13 +57767,13 @@
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
-	var TextInputView = __webpack_require__(412);
+	var TextInputView = __webpack_require__(413);
 	var Spinner = __webpack_require__(394);
 	var RadioButton = __webpack_require__(401);
 	var callbackMapper = __webpack_require__(329);
 	var PageOption = __webpack_require__(379);
-	var MultiSelectSpinner = __webpack_require__(496);
-	var SimplePopup = __webpack_require__(499);
+	var MultiSelectSpinner = __webpack_require__(419);
+	var SimplePopup = __webpack_require__(505);
 	var SimpleToolbar = __webpack_require__(382);
 	
 	var _this;
@@ -55446,7 +58495,7 @@
 	module.exports = Connector(ExperienceActivity);
 
 /***/ }),
-/* 502 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55476,9 +58525,9 @@
 	var Space = __webpack_require__(366);
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
-	var FilterDialog = __webpack_require__(491);
+	var FilterDialog = __webpack_require__(498);
 	var Spinner = __webpack_require__(394);
-	var SearchResult = __webpack_require__(426);
+	var SearchResult = __webpack_require__(431);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -55924,7 +58973,7 @@
 	module.exports = Connector(CommProfSearchActivity);
 
 /***/ }),
-/* 503 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55947,12 +58996,12 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var SimpleToolbar = __webpack_require__(382);
-	var ProfileHeader = __webpack_require__(446);
-	var ProfileExperiences = __webpack_require__(449);
-	var ProfileSkillTags = __webpack_require__(451);
-	var ProfileCreations = __webpack_require__(453);
-	var ProfileAdditionalInfo = __webpack_require__(456);
-	var CropParagraph = __webpack_require__(450);
+	var ProfileHeader = __webpack_require__(451);
+	var ProfileExperiences = __webpack_require__(454);
+	var ProfileSkillTags = __webpack_require__(456);
+	var ProfileCreations = __webpack_require__(458);
+	var ProfileAdditionalInfo = __webpack_require__(461);
+	var CropParagraph = __webpack_require__(455);
 	var callbackMapper = __webpack_require__(329);
 	var utils = __webpack_require__(397);
 	var _this;
@@ -56269,7 +59318,7 @@
 	        _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
 	      }
 	    });
-	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", 10, false);else {
+	    if (JBridge.isNetworkAvailable()) JBridge.searchContent(callback, "userToken", _this3.profileData.id, "Combined", 10, null, false);else {
 	      _this3.getEmptyLayout();
 	    }
 	    window.__LoaderDialog.hide();
@@ -56420,7 +59469,7 @@
 	module.exports = Connector(ProfileActivity);
 
 /***/ }),
-/* 504 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -56443,7 +59492,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var ScrollView = __webpack_require__(358);
-	var Attachments = __webpack_require__(505);
+	var Attachments = __webpack_require__(511);
 	var SimpleToolbar = __webpack_require__(382);
 	var utils = __webpack_require__(397);
 	
@@ -56865,7 +59914,7 @@
 	module.exports = Connector(AnnouncementDetailActivity);
 
 /***/ }),
-/* 505 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57133,7 +60182,7 @@
 	module.exports = Attachments;
 
 /***/ }),
-/* 506 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57158,10 +60207,10 @@
 	var ScrollView = __webpack_require__(358);
 	var ProgressBar = __webpack_require__(359);
 	var SimpleToolbar = __webpack_require__(382);
-	var CourseCurriculum = __webpack_require__(464);
+	var CourseCurriculum = __webpack_require__(472);
 	var HorizontalProgressBar = __webpack_require__(403);
-	var FlagPopup = __webpack_require__(473);
-	var SharePopup = __webpack_require__(470);
+	var FlagPopup = __webpack_require__(480);
+	var SharePopup = __webpack_require__(420);
 	var ImageView = __webpack_require__(350);
 	var FeatureButton = __webpack_require__(377);
 	
@@ -57823,7 +60872,7 @@
 	module.exports = Connector(ContentPreviewScreen);
 
 /***/ }),
-/* 507 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57897,12 +60946,23 @@
 	      QRScanner.closeQRScanner();
 	      console.log("barcode data", atob(barcode));
 	      barcode = atob(barcode);
-	      if (!_this2.isValidBarcode(barcode)) {
+	      var keyword = _this2.getKeyword(barcode);
+	      console.log("keyword for qr search ", keyword);
+	      if (keyword) {
+	        JBridge.logQRScanSuccess(barcode, "SearchResult");
+	        var searchDetails = { filterDetails: { query: null }, searchType: "Combined", keywords: [keyword] };
+	        var whatToSend = { filterDetails: JSON.stringify(searchDetails) };
+	        var event = { tag: "OPEN_SearchActivity_QR", contents: whatToSend };
+	        window.__runDuiCallback(event);
+	        return;
+	      } else if (!_this2.isValidBarcode(barcode)) {
 	        JBridge.logQRScanSuccess(barcode, "Unknown");
 	        _this2.showErrorPopup("WRONGQR");
 	        return;
 	      }
+	
 	      var identifier = barcode.substr(barcode.lastIndexOf("/") + 1, barcode.length);
+	      identifier = identifier == "" ? "null" : identifier;
 	      var callback = callbackMapper.map(function (data) {
 	        console.log("getContentDetails ", data);
 	        if (data[0] == "__failed") {
@@ -57995,7 +61055,18 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, null, "176", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "187", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	    };
+	
+	    _this2.getKeyword = function (data) {
+	      for (var a = [], i = data.length; i--;) {
+	        if (data[i] == "/") a.push(i);
+	      }console.log("data", data);
+	      console.log("a ", a);
+	      if (data.substr(a[1] + 1, a[0] - a[1] - 1) == "dial") {
+	        return data.substr(a[0] + 1, data.length);
+	      }
+	      return null;
 	    };
 	
 	    _this2.isValidBarcode = function (data) {
@@ -58012,7 +61083,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, null, "193", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "214", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
 	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
 	    };
 	
@@ -58028,7 +61099,7 @@
 	            width: "match_parent",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 204
+	              lineNumber: 225
 	            }
 	          },
 	          dom(Button, {
@@ -58038,7 +61109,7 @@
 	            margin: "10,20,10,20",
 	            onClick: _this2.openSettings, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 207
+	              lineNumber: 228
 	            }
 	          })
 	        );
@@ -58063,7 +61134,7 @@
 	            height: "wrap_content",
 	            margin: "0, 16, 0, 0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 230
+	              lineNumber: 251
 	            }
 	          },
 	          dom(PageOption, {
@@ -58074,7 +61145,7 @@
 	            hideDivider: true,
 	            onButtonClick: _this2.handlePageOption, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 234
+	              lineNumber: 255
 	            }
 	          })
 	        );
@@ -58088,7 +61159,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 248
+	            lineNumber: 269
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -58098,7 +61169,7 @@
 	          background: "#000000",
 	          alpha: "0.5", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 251
+	            lineNumber: 272
 	          }
 	        }),
 	        dom(
@@ -58111,7 +61182,7 @@
 	            gravity: "center_horizontal",
 	            alignParentBottom: "true, -1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 257
+	              lineNumber: 278
 	            }
 	          },
 	          dom(ImageView, {
@@ -58121,7 +61192,7 @@
 	            gravity: "center_horizontal",
 	            imageUrl: "ic_warning_grey", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 264
+	              lineNumber: 285
 	            }
 	          }),
 	          dom(TextView, {
@@ -58133,7 +61204,7 @@
 	            id: _this2.idSet.permissionSettingsMsg,
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 270
+	              lineNumber: 291
 	            }
 	          }),
 	          dom(TextView, {
@@ -58144,7 +61215,7 @@
 	            gravity: "center_horizontal",
 	            style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 278
+	              lineNumber: 299
 	            }
 	          }),
 	          dom(LinearLayout, {
@@ -58152,7 +61223,7 @@
 	            orientation: "vertical",
 	            id: _this2.idSet.footer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 285
+	              lineNumber: 306
 	            }
 	          })
 	        )
@@ -58184,7 +61255,7 @@
 	          background: "#FFFFFF",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 297
+	            lineNumber: 318
 	          }
 	        },
 	        dom(
@@ -58193,7 +61264,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 304
+	              lineNumber: 325
 	            }
 	          },
 	          dom(
@@ -58204,7 +61275,7 @@
 	              orientation: "vertical",
 	              background: "#F5F5F7", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 307
+	                lineNumber: 328
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -58214,7 +61285,7 @@
 	              menuData: this.menuData,
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 312
+	                lineNumber: 333
 	              }
 	            }),
 	            dom(TextView, {
@@ -58225,7 +61296,7 @@
 	              text: window.__S.SCAN_QR_INSTRUCTION,
 	              textStyle: window.__TextStyle.textStyle.CARD.ACTION.BLUE, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 318
+	                lineNumber: 339
 	              }
 	            }),
 	            dom(ImageView, {
@@ -58236,7 +61307,7 @@
 	              adjustViewBounds: "true",
 	              imageUrl: "ic_scanqrdemo", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 325
+	                lineNumber: 346
 	              }
 	            }),
 	            dom(FrameLayout, {
@@ -58246,7 +61317,7 @@
 	              height: "match_parent",
 	              background: "#FFFFFF", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 332
+	                lineNumber: 353
 	              }
 	            })
 	          ),
@@ -58258,7 +61329,7 @@
 	              visibility: "gone",
 	              id: this.idSet.errorPopup, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 339
+	                lineNumber: 360
 	              }
 	            },
 	            this.getErrorPopup()
@@ -58275,7 +61346,7 @@
 	module.exports = Connector(QRActivity);
 
 /***/ }),
-/* 508 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58317,7 +61388,7 @@
 	};
 
 /***/ }),
-/* 509 */
+/* 515 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58347,33 +61418,33 @@
 	};
 
 /***/ }),
-/* 510 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Console = __webpack_require__(660);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var DOM_HTML_HTMLElement = __webpack_require__(662);
-	var Data_Foreign_Generic = __webpack_require__(687);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Fragments_CommunityFragment = __webpack_require__(708);
-	var Fragments_CourseFragment = __webpack_require__(729);
-	var Fragments_HomeFragment = __webpack_require__(730);
-	var Fragments_ProfileFragment = __webpack_require__(731);
-	var Fragments_ResourceFragment = __webpack_require__(732);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Console = __webpack_require__(666);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var DOM_HTML_HTMLElement = __webpack_require__(668);
+	var Data_Foreign_Generic = __webpack_require__(693);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Fragments_CommunityFragment = __webpack_require__(714);
+	var Fragments_CourseFragment = __webpack_require__(735);
+	var Fragments_HomeFragment = __webpack_require__(736);
+	var Fragments_ProfileFragment = __webpack_require__(737);
+	var Fragments_ResourceFragment = __webpack_require__(738);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var mainActivity = function mainActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -58401,17 +61472,6 @@
 	                            screen: "MainActivity"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
-	                        });
-	                    });
-	                };
-	                if (v instanceof Types_UITypes.API_Tenant) {
-	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getTenantDetail(v.value0.user_token)(v.value0.api_token)(v.value0.slug))(function (v1) {
-	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
-	                            response: v1,
-	                            responseFor: "API_Tenant",
-	                            screen: "MainActivity"
-	                        }))(function (v2) {
-	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
 	                        });
 	                    });
 	                };
@@ -58605,6 +61665,12 @@
 	        };
 	    };
 	};
+	var welcomeScreenActivity = Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.welcomeScreenActivity)(Types_UITypes.encodeWelcomeScreenActivityAction)(Types_UITypes.WelcomeScreenActivity.value))(function (v) {
+	    if (v instanceof Types_UITypes.OPEN_StateSelectActivity) {
+	        return stateSelectActivity;
+	    };
+	    return welcomeScreenActivity;
+	});
 	var userActivity = function userActivity(input) {
 	    return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.userActivity)(Types_UITypes.encodeUserActivityAction)(new Types_UITypes.UserActivity({
 	        whereFrom: input
@@ -58645,6 +61711,9 @@
 	        if (v instanceof Types_UITypes.OPEN_MainActivity) {
 	            return mainActivity("{}")("UserActivity")("{}");
 	        };
+	        if (v instanceof Types_UITypes.OPEN_RoleSelectionActivity) {
+	            return roleSelectionActivity(input);
+	        };
 	        if (v instanceof Types_UITypes.OPEN_Deeplink_ResourceDetail) {
 	            return resourceDetailActivity(v.value0.resource)("Deeplink")(v.value0.resource);
 	        };
@@ -58663,33 +61732,12 @@
 	        if (v instanceof Types_UITypes.OPEN_Notif_AnnouncementList) {
 	            return Fragments_HomeFragment.announcementViewAllActivity("{}")("Notif")("{}");
 	        };
+	        if (v instanceof Types_UITypes.BACK_UserActivity) {
+	            return languageSelectActivity;
+	        };
 	        return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("UserActivity");
 	    });
 	};
-	var contentPreviewActivity = function contentPreviewActivity(input) {
-	    return function (whereFrom) {
-	        return function (whatToSendBack) {
-	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.contentPreviewScreen)(Types_UITypes.encodeContentPreviewScreenAction)(new Types_UITypes.ContentPreviewScreen({
-	                details: input
-	            })))(function (v) {
-	                if (v instanceof Types_UITypes.BACK_ContentPreviewScreen) {
-	                    return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
-	                };
-	                if (v instanceof Types_UITypes.OPEN_UserActivityFromPreview) {
-	                    return userActivity("Deeplink");
-	                };
-	                return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("default");
-	            });
-	        };
-	    };
-	};
-	var onBoardingFLow = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(userActivity("SplashScreenActivity")));
-	var welcomeScreenActivity = Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.welcomeScreenActivity)(Types_UITypes.encodeWelcomeScreenActivityAction)(Types_UITypes.WelcomeScreenActivity.value))(function (v) {
-	    if (v instanceof Types_UITypes.OPEN_StateSelectActivity) {
-	        return stateSelectActivity;
-	    };
-	    return welcomeScreenActivity;
-	});
 	var stateSelectActivity = Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.stateSelectActivity)(Types_UITypes.encodeStateSelectActivityAction)(Types_UITypes.StateSelectActivity.value))(function (v) {
 	    if (v instanceof Types_UITypes.OPEN_UserActivityFromStateSelection) {
 	        return userActivity("StateSelectActivity");
@@ -58711,6 +61759,17 @@
 	    };
 	    return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("SplashScreenActivity");
 	});
+	var roleSelectionActivity = function roleSelectionActivity(whatToSendback) {
+	    return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.roleSelectionActivityAction)(Types_UITypes.encodeRoleSelectionActivityAction)(Types_UITypes.RoleSelectionActivity.value))(function (v) {
+	        if (v instanceof Types_UITypes.OPEN_MainActivity_RoleSelection) {
+	            return mainActivity("{}")("RoleSelectionActivity")("{}");
+	        };
+	        if (v instanceof Types_UITypes.BACK_RoleSelectionActivityAction) {
+	            return userActivity("RoleSelectionActivity");
+	        };
+	        return roleSelectionActivity(whatToSendback);
+	    });
+	};
 	var languageSelectActivity = Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.languageSelectActivity)(Types_UITypes.encodeLanguageSelectionActivityAction)(Types_UITypes.LanguageSelectActivity.value))(function (v) {
 	    if (v instanceof Types_UITypes.OPEN_UserActivity_1) {
 	        return userActivity("LanguageSelectActivity");
@@ -58720,6 +61779,24 @@
 	    };
 	    return languageSelectActivity;
 	});
+	var contentPreviewActivity = function contentPreviewActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.contentPreviewScreen)(Types_UITypes.encodeContentPreviewScreenAction)(new Types_UITypes.ContentPreviewScreen({
+	                details: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.BACK_ContentPreviewScreen) {
+	                    return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                };
+	                if (v instanceof Types_UITypes.OPEN_UserActivityFromPreview) {
+	                    return userActivity("Deeplink");
+	                };
+	                return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("default");
+	            });
+	        };
+	    };
+	};
+	var onBoardingFLow = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(userActivity("SplashScreenActivity")));
 	var main = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(splashScreenActivity));
 	var changeFlow = Data_Functor["void"](Control_Monad_Eff.functorEff)(Control_Monad_Aff.launchAff(mainActivity("{}")("LogInScreen")("Nothing")));
 	module.exports = {
@@ -58730,6 +61807,7 @@
 	    stateSelectActivity: stateSelectActivity,
 	    userActivity: userActivity,
 	    contentPreviewActivity: contentPreviewActivity,
+	    roleSelectionActivity: roleSelectionActivity,
 	    courseInfoActivity: courseInfoActivity,
 	    viewBatchActivity: viewBatchActivity,
 	    resourceDetailActivity: resourceDetailActivity,
@@ -58741,15 +61819,15 @@
 	};
 
 /***/ }),
-/* 511 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(519);
+	var Control_Apply = __webpack_require__(518);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Unit = __webpack_require__(525);
 	var Applicative = function Applicative(Apply0, pure) {
 	    this.Apply0 = Apply0;
 	    this.pure = pure;
@@ -58813,16 +61891,16 @@
 	};
 
 /***/ }),
-/* 512 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(513);
-	var Control_Category = __webpack_require__(514);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
+	var $foreign = __webpack_require__(519);
+	var Control_Category = __webpack_require__(520);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
 	var Apply = function Apply(Functor0, apply) {
 	    this.Functor0 = Functor0;
 	    this.apply = apply;
@@ -58918,7 +61996,7 @@
 	};
 
 /***/ }),
-/* 513 */
+/* 519 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -58940,13 +62018,13 @@
 	};
 
 /***/ }),
-/* 514 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(515);
+	var Control_Semigroupoid = __webpack_require__(521);
 	var Category = function Category(Semigroupoid0, id) {
 	    this.Semigroupoid0 = Semigroupoid0;
 	    this.id = id;
@@ -58966,7 +62044,7 @@
 	};
 
 /***/ }),
-/* 515 */
+/* 521 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -59000,13 +62078,13 @@
 	};
 
 /***/ }),
-/* 516 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
+	var Control_Category = __webpack_require__(520);
 	var on = function on(f) {
 	    return function (g) {
 	        return function (x) {
@@ -59047,16 +62125,16 @@
 	};
 
 /***/ }),
-/* 517 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(518);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(524);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Unit = __webpack_require__(525);
 	var Functor = function Functor(map) {
 	    this.map = map;
 	};
@@ -59109,7 +62187,7 @@
 	};
 
 /***/ }),
-/* 518 */
+/* 524 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59126,14 +62204,14 @@
 	};
 
 /***/ }),
-/* 519 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(520);
-	var Data_Show = __webpack_require__(521);
+	var $foreign = __webpack_require__(526);
+	var Data_Show = __webpack_require__(527);
 	var showUnit = new Data_Show.Show(function (v) {
 	    return "unit";
 	});
@@ -59143,7 +62221,7 @@
 	};
 
 /***/ }),
-/* 520 */
+/* 526 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59151,13 +62229,13 @@
 	exports.unit = {};
 
 /***/ }),
-/* 521 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(522);
+	var $foreign = __webpack_require__(528);
 	var Show = function Show(show) {
 	    this.show = show;
 	};
@@ -59192,7 +62270,7 @@
 	};
 
 /***/ }),
-/* 522 */
+/* 528 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59270,19 +62348,19 @@
 	};
 
 /***/ }),
-/* 523 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(524);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(530);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Unit = __webpack_require__(525);
 	var Bind = function Bind(Apply0, bind) {
 	    this.Apply0 = Apply0;
 	    this.bind = bind;
@@ -59367,7 +62445,7 @@
 	};
 
 /***/ }),
-/* 524 */
+/* 530 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -59383,47 +62461,47 @@
 	};
 
 /***/ }),
-/* 525 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(526);
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Aff_Internal = __webpack_require__(537);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Parallel = __webpack_require__(616);
-	var Control_Parallel_Class = __webpack_require__(617);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Time_Duration = __webpack_require__(637);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var $foreign = __webpack_require__(532);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Aff_Internal = __webpack_require__(543);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Parallel = __webpack_require__(622);
+	var Control_Parallel_Class = __webpack_require__(623);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Time_Duration = __webpack_require__(643);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var ParAff = function ParAff(x) {
 	    return x;
 	};
@@ -59762,7 +62840,7 @@
 	};
 
 /***/ }),
-/* 526 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/* globals setTimeout, clearTimeout, setImmediate, clearImmediate */
@@ -60098,10 +63176,10 @@
 	    }(a);
 	  };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(527).setImmediate, __webpack_require__(527).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(533).setImmediate, __webpack_require__(533).clearImmediate))
 
 /***/ }),
-/* 527 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -60154,7 +63232,7 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(528);
+	__webpack_require__(534);
 	// On some exotic environments, it's not clear which object `setimmeidate` was
 	// able to install onto.  Search each possibility in the same order as the
 	// `setimmediate` library.
@@ -60168,7 +63246,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 528 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -60358,10 +63436,10 @@
 	    attachTo.clearImmediate = clearImmediate;
 	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(529)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(535)))
 
 /***/ }),
-/* 529 */
+/* 535 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -60551,14 +63629,14 @@
 
 
 /***/ }),
-/* 530 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(517);
-	var Data_Semigroup = __webpack_require__(531);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Semigroup = __webpack_require__(537);
 	var Alt = function Alt(Functor0, alt) {
 	    this.Functor0 = Functor0;
 	    this.alt = alt;
@@ -60576,15 +63654,15 @@
 	};
 
 /***/ }),
-/* 531 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(532);
-	var Data_Unit = __webpack_require__(519);
-	var Data_Void = __webpack_require__(533);
+	var $foreign = __webpack_require__(538);
+	var Data_Unit = __webpack_require__(525);
+	var Data_Void = __webpack_require__(539);
 	var Semigroup = function Semigroup(append) {
 	    this.append = append;
 	};
@@ -60621,7 +63699,7 @@
 	};
 
 /***/ }),
-/* 532 */
+/* 538 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60641,13 +63719,13 @@
 	};
 
 /***/ }),
-/* 533 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Show = __webpack_require__(521);
+	var Data_Show = __webpack_require__(527);
 	var Void = function Void(x) {
 	    return x;
 	};
@@ -60672,17 +63750,17 @@
 	};
 
 /***/ }),
-/* 534 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Plus = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(517);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Plus = __webpack_require__(541);
+	var Data_Functor = __webpack_require__(523);
 	var Alternative = function Alternative(Applicative0, Plus1) {
 	    this.Applicative0 = Applicative0;
 	    this.Plus1 = Plus1;
@@ -60698,14 +63776,14 @@
 	};
 
 /***/ }),
-/* 535 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Data_Functor = __webpack_require__(517);
+	var Control_Alt = __webpack_require__(536);
+	var Data_Functor = __webpack_require__(523);
 	var Plus = function Plus(Alt0, empty) {
 	    this.Alt0 = Alt0;
 	    this.empty = empty;
@@ -60723,17 +63801,17 @@
 	};
 
 /***/ }),
-/* 536 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(519);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Unit = __webpack_require__(525);
 	var Monad = function Monad(Applicative0, Bind1) {
 	    this.Applicative0 = Applicative0;
 	    this.Bind1 = Bind1;
@@ -60797,17 +63875,17 @@
 	};
 
 /***/ }),
-/* 537 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(538);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_Maybe = __webpack_require__(582);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(544);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_Maybe = __webpack_require__(588);
+	var Prelude = __webpack_require__(560);
 	module.exports = {
 	    _makeVar: $foreign._makeVar,
 	    _takeVar: $foreign._takeVar,
@@ -60819,7 +63897,7 @@
 	};
 
 /***/ }),
-/* 538 */
+/* 544 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -60949,21 +64027,21 @@
 	};
 
 /***/ }),
-/* 539 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(540);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(546);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var $$try = function $$try(action) {
 	    return $foreign.catchException(function ($0) {
 	        return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)(Data_Either.Left.create($0));
@@ -60987,7 +64065,7 @@
 	};
 
 /***/ }),
-/* 540 */
+/* 546 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61039,19 +64117,19 @@
 	};
 
 /***/ }),
-/* 541 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(542);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(548);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Unit = __webpack_require__(525);
 	var monadEff = new Control_Monad.Monad(function () {
 	    return applicativeEff;
 	}, function () {
@@ -61081,7 +64159,7 @@
 	};
 
 /***/ }),
-/* 542 */
+/* 548 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61145,36 +64223,36 @@
 	};
 
 /***/ }),
-/* 543 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bifoldable = __webpack_require__(546);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Bitraversable = __webpack_require__(595);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bifoldable = __webpack_require__(552);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Bitraversable = __webpack_require__(601);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Left = function () {
 	    function Left(value0) {
 	        this.value0 = value0;
@@ -61585,16 +64663,16 @@
 	};
 
 /***/ }),
-/* 544 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(545);
-	var Control_Category = __webpack_require__(514);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Semigroup = __webpack_require__(531);
+	var $foreign = __webpack_require__(551);
+	var Control_Category = __webpack_require__(520);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Semigroup = __webpack_require__(537);
 	var Extend = function Extend(Functor0, extend) {
 	    this.Functor0 = Functor0;
 	    this.extend = extend;
@@ -61658,7 +64736,7 @@
 	};
 
 /***/ }),
-/* 545 */
+/* 551 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -61672,32 +64750,32 @@
 	};
 
 /***/ }),
-/* 546 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor_Clown = __webpack_require__(547);
-	var Data_Bifunctor_Flip = __webpack_require__(576);
-	var Data_Bifunctor_Joker = __webpack_require__(577);
-	var Data_Bifunctor_Product = __webpack_require__(578);
-	var Data_Bifunctor_Wrap = __webpack_require__(579);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Endo = __webpack_require__(593);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor_Clown = __webpack_require__(553);
+	var Data_Bifunctor_Flip = __webpack_require__(582);
+	var Data_Bifunctor_Joker = __webpack_require__(583);
+	var Data_Bifunctor_Product = __webpack_require__(584);
+	var Data_Bifunctor_Wrap = __webpack_require__(585);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Endo = __webpack_require__(599);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Bifoldable = function Bifoldable(bifoldMap, bifoldl, bifoldr) {
 	    this.bifoldMap = bifoldMap;
 	    this.bifoldl = bifoldl;
@@ -61996,24 +65074,24 @@
 	};
 
 /***/ }),
-/* 547 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Clown = function Clown(x) {
 	    return x;
 	};
@@ -62076,13 +65154,13 @@
 	};
 
 /***/ }),
-/* 548 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapply = __webpack_require__(549);
+	var Control_Biapply = __webpack_require__(555);
 	var Biapplicative = function Biapplicative(Biapply0, bipure) {
 	    this.Biapply0 = Biapply0;
 	    this.bipure = bipure;
@@ -62096,15 +65174,15 @@
 	};
 
 /***/ }),
-/* 549 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Function = __webpack_require__(516);
+	var Control_Category = __webpack_require__(520);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Function = __webpack_require__(522);
 	var Biapply = function Biapply(Bifunctor0, biapply) {
 	    this.Bifunctor0 = Bifunctor0;
 	    this.biapply = biapply;
@@ -62160,13 +65238,13 @@
 	};
 
 /***/ }),
-/* 550 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
+	var Control_Category = __webpack_require__(520);
 	var Bifunctor = function Bifunctor(bimap) {
 	    this.bimap = bimap;
 	};
@@ -62189,15 +65267,15 @@
 	};
 
 /***/ }),
-/* 551 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(552);
-	var Data_Unit = __webpack_require__(519);
-	var Data_Void = __webpack_require__(533);
+	var $foreign = __webpack_require__(558);
+	var Data_Unit = __webpack_require__(525);
+	var Data_Void = __webpack_require__(539);
 	var Eq = function Eq(eq) {
 	    this.eq = eq;
 	};
@@ -62266,7 +65344,7 @@
 	};
 
 /***/ }),
-/* 552 */
+/* 558 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62290,16 +65368,16 @@
 	};
 
 /***/ }),
-/* 553 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Prelude = __webpack_require__(554);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Prelude = __webpack_require__(560);
 	var Newtype = function Newtype(unwrap, wrap) {
 	    this.unwrap = unwrap;
 	    this.wrap = wrap;
@@ -62499,42 +65577,42 @@
 	};
 
 /***/ }),
-/* 554 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_DivisionRing = __webpack_require__(571);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Field = __webpack_require__(574);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_NaturalTransformation = __webpack_require__(575);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Data_Void = __webpack_require__(533);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_DivisionRing = __webpack_require__(577);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Field = __webpack_require__(580);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_NaturalTransformation = __webpack_require__(581);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Data_Void = __webpack_require__(539);
 	module.exports = {};
 
 /***/ }),
-/* 555 */
+/* 561 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -62546,14 +65624,14 @@
 	};
 
 /***/ }),
-/* 556 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Unit = __webpack_require__(519);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Unit = __webpack_require__(525);
 	var BooleanAlgebra = function BooleanAlgebra(HeytingAlgebra0) {
 	    this.HeytingAlgebra0 = HeytingAlgebra0;
 	};
@@ -62576,14 +65654,14 @@
 	};
 
 /***/ }),
-/* 557 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(558);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(564);
+	var Data_Unit = __webpack_require__(525);
 	var HeytingAlgebra = function HeytingAlgebra(conj, disj, ff, implies, not, tt) {
 	    this.conj = conj;
 	    this.disj = disj;
@@ -62673,7 +65751,7 @@
 	};
 
 /***/ }),
-/* 558 */
+/* 564 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62695,16 +65773,16 @@
 	};
 
 /***/ }),
-/* 559 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(560);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(566);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Unit = __webpack_require__(525);
 	var Bounded = function Bounded(Ord0, bottom, top) {
 	    this.Ord0 = Ord0;
 	    this.bottom = bottom;
@@ -62743,7 +65821,7 @@
 	};
 
 /***/ }),
-/* 560 */
+/* 566 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -62755,21 +65833,21 @@
 	exports.bottomChar = String.fromCharCode(0);
 
 /***/ }),
-/* 561 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(562);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Ord_Unsafe = __webpack_require__(563);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Unit = __webpack_require__(519);
-	var Data_Void = __webpack_require__(533);
+	var $foreign = __webpack_require__(568);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Ord_Unsafe = __webpack_require__(569);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Unit = __webpack_require__(525);
+	var Data_Void = __webpack_require__(539);
 	var Ord = function Ord(Eq0, compare) {
 	    this.Eq0 = Eq0;
 	    this.compare = compare;
@@ -63030,7 +66108,7 @@
 	};
 
 /***/ }),
-/* 562 */
+/* 568 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63062,21 +66140,21 @@
 	};
 
 /***/ }),
-/* 563 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(564);
-	var Data_Ordering = __webpack_require__(565);
+	var $foreign = __webpack_require__(570);
+	var Data_Ordering = __webpack_require__(571);
 	var unsafeCompare = $foreign.unsafeCompareImpl(Data_Ordering.LT.value)(Data_Ordering.EQ.value)(Data_Ordering.GT.value);
 	module.exports = {
 	    unsafeCompare: unsafeCompare
 	};
 
 /***/ }),
-/* 564 */
+/* 570 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63094,15 +66172,15 @@
 	};
 
 /***/ }),
-/* 565 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(551);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
 	var LT = function () {
 	    function LT() {};
 	    LT.value = new LT();
@@ -63181,15 +66259,15 @@
 	};
 
 /***/ }),
-/* 566 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(567);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(573);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Unit = __webpack_require__(525);
 	var Ring = function Ring(Semiring0, sub) {
 	    this.Semiring0 = Semiring0;
 	    this.sub = sub;
@@ -63237,7 +66315,7 @@
 	};
 
 /***/ }),
-/* 567 */
+/* 573 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63256,14 +66334,14 @@
 	};
 
 /***/ }),
-/* 568 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(569);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(575);
+	var Data_Unit = __webpack_require__(525);
 	var Semiring = function Semiring(add, mul, one, zero) {
 	    this.add = add;
 	    this.mul = mul;
@@ -63325,7 +66403,7 @@
 	};
 
 /***/ }),
-/* 569 */
+/* 575 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63357,15 +66435,15 @@
 	};
 
 /***/ }),
-/* 570 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Unit = __webpack_require__(519);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Unit = __webpack_require__(525);
 	var CommutativeRing = function CommutativeRing(Ring0) {
 	    this.Ring0 = Ring0;
 	};
@@ -63392,15 +66470,15 @@
 	};
 
 /***/ }),
-/* 571 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
 	var DivisionRing = function DivisionRing(Ring0, recip) {
 	    this.Ring0 = Ring0;
 	    this.recip = recip;
@@ -63436,19 +66514,19 @@
 	};
 
 /***/ }),
-/* 572 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(573);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_Eq = __webpack_require__(551);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
+	var $foreign = __webpack_require__(579);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_Eq = __webpack_require__(557);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
 	var EuclideanRing = function EuclideanRing(CommutativeRing0, degree, div, mod) {
 	    this.CommutativeRing0 = CommutativeRing0;
 	    this.degree = degree;
@@ -63530,7 +66608,7 @@
 	};
 
 /***/ }),
-/* 573 */
+/* 579 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -63559,17 +66637,17 @@
 	};
 
 /***/ }),
-/* 574 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_DivisionRing = __webpack_require__(571);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_DivisionRing = __webpack_require__(577);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
 	var Field = function Field(EuclideanRing0) {
 	    this.EuclideanRing0 = EuclideanRing0;
 	};
@@ -63582,7 +66660,7 @@
 	};
 
 /***/ }),
-/* 575 */
+/* 581 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -63591,22 +66669,22 @@
 	module.exports = {};
 
 /***/ }),
-/* 576 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Flip = function Flip(x) {
 	    return x;
 	};
@@ -63671,24 +66749,24 @@
 	};
 
 /***/ }),
-/* 577 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Joker = function Joker(x) {
 	    return x;
 	};
@@ -63753,22 +66831,22 @@
 	};
 
 /***/ }),
-/* 578 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Eq = __webpack_require__(551);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Eq = __webpack_require__(557);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Product = function () {
 	    function Product(value0, value1) {
 	        this.value0 = value0;
@@ -63859,22 +66937,22 @@
 	};
 
 /***/ }),
-/* 579 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Wrap = function Wrap(x) {
 	    return x;
 	};
@@ -63939,41 +67017,41 @@
 	};
 
 /***/ }),
-/* 580 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(581);
-	var Control_Alt = __webpack_require__(530);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Maybe_Last = __webpack_require__(587);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Monoid_Additive = __webpack_require__(588);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Endo = __webpack_require__(593);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(587);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Maybe_Last = __webpack_require__(593);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Monoid_Additive = __webpack_require__(594);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Endo = __webpack_require__(599);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Foldable = function Foldable(foldMap, foldl, foldr) {
 	    this.foldMap = foldMap;
 	    this.foldl = foldl;
@@ -64494,7 +67572,7 @@
 	};
 
 /***/ }),
-/* 581 */
+/* 587 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -64526,34 +67604,34 @@
 	};
 
 /***/ }),
-/* 582 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Nothing = function () {
 	    function Nothing() {};
 	    Nothing.value = new Nothing();
@@ -64804,21 +67882,21 @@
 	};
 
 /***/ }),
-/* 583 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Plus = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Unit = __webpack_require__(519);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Plus = __webpack_require__(541);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Unit = __webpack_require__(525);
 	var MonadZero = function MonadZero(Alternative1, Monad0) {
 	    this.Alternative1 = Alternative1;
 	    this.Monad0 = Monad0;
@@ -64846,13 +67924,13 @@
 	};
 
 /***/ }),
-/* 584 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Functor = __webpack_require__(517);
+	var Data_Functor = __webpack_require__(523);
 	var Invariant = function Invariant(imap) {
 	    this.imap = imap;
 	};
@@ -64877,21 +67955,21 @@
 	};
 
 /***/ }),
-/* 585 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Function = __webpack_require__(516);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Function = __webpack_require__(522);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Monoid = function Monoid(Semigroup0, mempty) {
 	    this.Semigroup0 = Semigroup0;
 	    this.mempty = mempty;
@@ -64964,28 +68042,28 @@
 	};
 
 /***/ }),
-/* 586 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var First = function First(x) {
 	    return x;
 	};
@@ -65047,28 +68125,28 @@
 	};
 
 /***/ }),
-/* 587 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Last = function Last(x) {
 	    return x;
 	};
@@ -65133,29 +68211,29 @@
 	};
 
 /***/ }),
-/* 588 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Additive = function Additive(x) {
 	    return x;
 	};
@@ -65252,14 +68330,14 @@
 	};
 
 /***/ }),
-/* 589 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Extend = __webpack_require__(544);
-	var Data_Functor = __webpack_require__(517);
+	var Control_Extend = __webpack_require__(550);
+	var Data_Functor = __webpack_require__(523);
 	var Comonad = function Comonad(Extend0, extract) {
 	    this.Extend0 = Extend0;
 	    this.extract = extract;
@@ -65273,30 +68351,30 @@
 	};
 
 /***/ }),
-/* 590 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Conj = function Conj(x) {
 	    return x;
 	};
@@ -65405,30 +68483,30 @@
 	};
 
 /***/ }),
-/* 591 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Disj = function Disj(x) {
 	    return x;
 	};
@@ -65537,28 +68615,28 @@
 	};
 
 /***/ }),
-/* 592 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Dual = function Dual(x) {
 	    return x;
 	};
@@ -65655,19 +68733,19 @@
 	};
 
 /***/ }),
-/* 593 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Prelude = __webpack_require__(554);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Prelude = __webpack_require__(560);
 	var Endo = function Endo(x) {
 	    return x;
 	};
@@ -65702,29 +68780,29 @@
 	};
 
 /***/ }),
-/* 594 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Multiplicative = function Multiplicative(x) {
 	    return x;
 	};
@@ -65821,25 +68899,25 @@
 	};
 
 /***/ }),
-/* 595 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Data_Bifoldable = __webpack_require__(546);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Bifunctor_Clown = __webpack_require__(547);
-	var Data_Bifunctor_Flip = __webpack_require__(576);
-	var Data_Bifunctor_Joker = __webpack_require__(577);
-	var Data_Bifunctor_Product = __webpack_require__(578);
-	var Data_Bifunctor_Wrap = __webpack_require__(579);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Data_Bifoldable = __webpack_require__(552);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Bifunctor_Clown = __webpack_require__(553);
+	var Data_Bifunctor_Flip = __webpack_require__(582);
+	var Data_Bifunctor_Joker = __webpack_require__(583);
+	var Data_Bifunctor_Product = __webpack_require__(584);
+	var Data_Bifunctor_Wrap = __webpack_require__(585);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Bitraversable = function Bitraversable(Bifoldable1, Bifunctor0, bisequence, bitraverse) {
 	    this.Bifoldable1 = Bifoldable1;
 	    this.Bifunctor0 = Bifunctor0;
@@ -66025,29 +69103,29 @@
 	};
 
 /***/ }),
-/* 596 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(597);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Maybe_Last = __webpack_require__(587);
-	var Data_Monoid_Additive = __webpack_require__(588);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Traversable_Accum = __webpack_require__(598);
-	var Data_Traversable_Accum_Internal = __webpack_require__(599);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(603);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Maybe_Last = __webpack_require__(593);
+	var Data_Monoid_Additive = __webpack_require__(594);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Traversable_Accum = __webpack_require__(604);
+	var Data_Traversable_Accum_Internal = __webpack_require__(605);
+	var Prelude = __webpack_require__(560);
 	var Traversable = function Traversable(Foldable1, Functor0, sequence, traverse) {
 	    this.Foldable1 = Foldable1;
 	    this.Functor0 = Functor0;
@@ -66307,7 +69385,7 @@
 	};
 
 /***/ }),
-/* 597 */
+/* 603 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66376,7 +69454,7 @@
 	}();
 
 /***/ }),
-/* 598 */
+/* 604 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -66385,17 +69463,17 @@
 	module.exports = {};
 
 /***/ }),
-/* 599 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Traversable_Accum = __webpack_require__(598);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Traversable_Accum = __webpack_require__(604);
+	var Prelude = __webpack_require__(560);
 	var StateR = function StateR(x) {
 	    return x;
 	};
@@ -66492,14 +69570,14 @@
 	};
 
 /***/ }),
-/* 600 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(601);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(607);
+	var Data_Unit = __webpack_require__(525);
 	var runFn1 = function runFn1(f) {
 	    return f;
 	};
@@ -66532,7 +69610,7 @@
 	};
 
 /***/ }),
-/* 601 */
+/* 607 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66757,15 +69835,15 @@
 	};
 
 /***/ }),
-/* 602 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Eff = __webpack_require__(541);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Eff = __webpack_require__(547);
 	var MonadEff = function MonadEff(Monad0, liftEff) {
 	    this.Monad0 = Monad0;
 	    this.liftEff = liftEff;
@@ -66783,21 +69861,21 @@
 	};
 
 /***/ }),
-/* 603 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var MonadThrow = function MonadThrow(Monad0, throwError) {
 	    this.Monad0 = Monad0;
 	    this.throwError = throwError;
@@ -66900,27 +69978,27 @@
 	};
 
 /***/ }),
-/* 604 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(605);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Either = __webpack_require__(543);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Identity = __webpack_require__(609);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Unit = __webpack_require__(519);
-	var Partial_Unsafe = __webpack_require__(611);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(611);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Either = __webpack_require__(549);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Identity = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Unit = __webpack_require__(525);
+	var Partial_Unsafe = __webpack_require__(617);
+	var Prelude = __webpack_require__(560);
 	var Loop = function () {
 	    function Loop(value0) {
 	        this.value0 = value0;
@@ -67154,15 +70232,15 @@
 	};
 
 /***/ }),
-/* 605 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(606);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Semigroupoid = __webpack_require__(515);
+	var $foreign = __webpack_require__(612);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Semigroupoid = __webpack_require__(521);
 	var unsafePerformEff = function unsafePerformEff($0) {
 	    return Control_Monad_Eff.runPure($foreign.unsafeCoerceEff($0));
 	};
@@ -67172,7 +70250,7 @@
 	};
 
 /***/ }),
-/* 606 */
+/* 612 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67182,14 +70260,14 @@
 	};
 
 /***/ }),
-/* 607 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(608);
-	var Control_Monad_Eff = __webpack_require__(541);
+	var $foreign = __webpack_require__(614);
+	var Control_Monad_Eff = __webpack_require__(547);
 	var pureST = function pureST(st) {
 	    return Control_Monad_Eff.runPure($foreign.runST(st));
 	};
@@ -67203,7 +70281,7 @@
 	};
 
 /***/ }),
-/* 608 */
+/* 614 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67241,39 +70319,39 @@
 	};
 
 /***/ }),
-/* 609 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Field = __webpack_require__(574);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Field = __webpack_require__(580);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Identity = function Identity(x) {
 	    return x;
 	};
@@ -67446,13 +70524,13 @@
 	};
 
 /***/ }),
-/* 610 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Unit = __webpack_require__(519);
+	var Data_Unit = __webpack_require__(525);
 	var Lazy = function Lazy(defer) {
 	    this.defer = defer;
 	};
@@ -67483,14 +70561,14 @@
 	};
 
 /***/ }),
-/* 611 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(612);
-	var Partial = __webpack_require__(613);
+	var $foreign = __webpack_require__(618);
+	var Partial = __webpack_require__(619);
 	var unsafePartialBecause = function unsafePartialBecause(v) {
 	    return function (x) {
 	        return $foreign.unsafePartial(function (dictPartial) {
@@ -67510,7 +70588,7 @@
 	};
 
 /***/ }),
-/* 612 */
+/* 618 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67522,13 +70600,13 @@
 	};
 
 /***/ }),
-/* 613 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(614);
+	var $foreign = __webpack_require__(620);
 	var crash = function crash(dictPartial) {
 	    return $foreign.crashWith(dictPartial)("Partial.crash: partial function");
 	};
@@ -67538,7 +70616,7 @@
 	};
 
 /***/ }),
-/* 614 */
+/* 620 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -67552,21 +70630,21 @@
 	};
 
 /***/ }),
-/* 615 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Data_Functor = __webpack_require__(517);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Data_Functor = __webpack_require__(523);
 	var MonadPlus = function MonadPlus(MonadZero0) {
 	    this.MonadZero0 = MonadZero0;
 	};
@@ -67579,20 +70657,20 @@
 	};
 
 /***/ }),
-/* 616 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Parallel_Class = __webpack_require__(617);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Parallel_Class = __webpack_require__(623);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var parTraverse_ = function parTraverse_(dictParallel) {
 	    return function (dictFoldable) {
 	        return function (f) {
@@ -67669,37 +70747,37 @@
 	};
 
 /***/ }),
-/* 617 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Cont_Trans = __webpack_require__(618);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Ref = __webpack_require__(626);
-	var Control_Monad_Eff_Unsafe = __webpack_require__(605);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Monad_Maybe_Trans = __webpack_require__(630);
-	var Control_Monad_Reader_Trans = __webpack_require__(631);
-	var Control_Monad_Writer_Trans = __webpack_require__(632);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Compose = __webpack_require__(633);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Cont_Trans = __webpack_require__(624);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Ref = __webpack_require__(632);
+	var Control_Monad_Eff_Unsafe = __webpack_require__(611);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Monad_Maybe_Trans = __webpack_require__(636);
+	var Control_Monad_Reader_Trans = __webpack_require__(637);
+	var Control_Monad_Writer_Trans = __webpack_require__(638);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Compose = __webpack_require__(639);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var ParCont = function ParCont(x) {
 	    return x;
 	};
@@ -67884,26 +70962,26 @@
 	};
 
 /***/ }),
-/* 618 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Prelude = __webpack_require__(560);
 	var ContT = function ContT(x) {
 	    return x;
 	};
@@ -68060,13 +71138,13 @@
 	};
 
 /***/ }),
-/* 619 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(554);
+	var Prelude = __webpack_require__(560);
 	var MonadCont = function MonadCont(Monad0, callCC) {
 	    this.Monad0 = Monad0;
 	    this.callCC = callCC;
@@ -68080,17 +71158,17 @@
 	};
 
 /***/ }),
-/* 620 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Functor = __webpack_require__(517);
-	var Prelude = __webpack_require__(554);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Functor = __webpack_require__(523);
+	var Prelude = __webpack_require__(560);
 	var MonadAsk = function MonadAsk(Monad0, ask) {
 	    this.Monad0 = Monad0;
 	    this.ask = ask;
@@ -68127,15 +71205,15 @@
 	};
 
 /***/ }),
-/* 621 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var MonadState = function MonadState(Monad0, state) {
 	    this.Monad0 = Monad0;
 	    this.state = state;
@@ -68179,49 +71257,49 @@
 	};
 
 /***/ }),
-/* 622 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Biapplicative = __webpack_require__(548);
-	var Control_Biapply = __webpack_require__(549);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifoldable = __webpack_require__(546);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Bitraversable = __webpack_require__(595);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_Distributive = __webpack_require__(623);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
-	var Type_Equality = __webpack_require__(624);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Biapplicative = __webpack_require__(554);
+	var Control_Biapply = __webpack_require__(555);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifoldable = __webpack_require__(552);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Bitraversable = __webpack_require__(601);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_Distributive = __webpack_require__(629);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
+	var Type_Equality = __webpack_require__(630);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -68605,19 +71683,19 @@
 	};
 
 /***/ }),
-/* 623 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Identity = __webpack_require__(609);
-	var Data_Newtype = __webpack_require__(553);
-	var Prelude = __webpack_require__(554);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Identity = __webpack_require__(615);
+	var Data_Newtype = __webpack_require__(559);
+	var Prelude = __webpack_require__(560);
 	var Distributive = function Distributive(Functor0, collect, distribute) {
 	    this.Functor0 = Functor0;
 	    this.collect = collect;
@@ -68696,7 +71774,7 @@
 	};
 
 /***/ }),
-/* 624 */
+/* 630 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -68725,13 +71803,13 @@
 	};
 
 /***/ }),
-/* 625 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Prelude = __webpack_require__(554);
+	var Prelude = __webpack_require__(560);
 	var MonadTrans = function MonadTrans(lift) {
 	    this.lift = lift;
 	};
@@ -68744,16 +71822,16 @@
 	};
 
 /***/ }),
-/* 626 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(627);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(633);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var modifyRef = function modifyRef(ref) {
 	    return function (f) {
 	        return $foreign["modifyRef'"](ref)(function (s) {
@@ -68773,7 +71851,7 @@
 	};
 
 /***/ }),
-/* 627 */
+/* 633 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68810,39 +71888,39 @@
 	};
 
 /***/ }),
-/* 628 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Tuple = __webpack_require__(622);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Tuple = __webpack_require__(628);
+	var Prelude = __webpack_require__(560);
 	var ExceptT = function ExceptT(x) {
 	    return x;
 	};
@@ -69131,17 +72209,17 @@
 	};
 
 /***/ }),
-/* 629 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Data_Function = __webpack_require__(516);
-	var Data_Tuple = __webpack_require__(622);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Data_Function = __webpack_require__(522);
+	var Data_Tuple = __webpack_require__(628);
+	var Prelude = __webpack_require__(560);
 	var MonadTell = function MonadTell(Monad0, tell) {
 	    this.Monad0 = Monad0;
 	    this.tell = tell;
@@ -69189,37 +72267,37 @@
 	};
 
 /***/ }),
-/* 630 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Tuple = __webpack_require__(622);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Tuple = __webpack_require__(628);
+	var Prelude = __webpack_require__(560);
 	var MaybeT = function MaybeT(x) {
 	    return x;
 	};
@@ -69464,37 +72542,37 @@
 	};
 
 /***/ }),
-/* 631 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Distributive = __webpack_require__(623);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Distributive = __webpack_require__(629);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Prelude = __webpack_require__(560);
 	var ReaderT = function ReaderT(x) {
 	    return x;
 	};
@@ -69754,38 +72832,38 @@
 	};
 
 /***/ }),
-/* 632 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var WriterT = function WriterT(x) {
 	    return x;
 	};
@@ -70062,30 +73140,30 @@
 	};
 
 /***/ }),
-/* 633 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_App = __webpack_require__(634);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_App = __webpack_require__(640);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Compose = function Compose(x) {
 	    return x;
 	};
@@ -70262,35 +73340,35 @@
 	};
 
 /***/ }),
-/* 634 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var App = function App(x) {
 	    return x;
 	};
@@ -70433,19 +73511,19 @@
 	};
 
 /***/ }),
-/* 635 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(636);
+	var $foreign = __webpack_require__(642);
 	module.exports = {
 	    unsafeCoerce: $foreign.unsafeCoerce
 	};
 
 /***/ }),
-/* 636 */
+/* 642 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -70457,27 +73535,27 @@
 	};
 
 /***/ }),
-/* 637 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Seconds = function Seconds(x) {
 	    return x;
 	};
@@ -70719,41 +73797,41 @@
 	};
 
 /***/ }),
-/* 638 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(639);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Array = __webpack_require__(640);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_String = __webpack_require__(655);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Data_Void = __webpack_require__(533);
-	var Prelude = __webpack_require__(554);
-	var Type_Proxy = __webpack_require__(659);
+	var $foreign = __webpack_require__(645);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Array = __webpack_require__(646);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_String = __webpack_require__(661);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Data_Void = __webpack_require__(539);
+	var Prelude = __webpack_require__(560);
+	var Type_Proxy = __webpack_require__(665);
 	var SProd = function () {
 	    function SProd(value0, value1) {
 	        this.value0 = value0;
@@ -71765,7 +74843,7 @@
 	};
 
 /***/ }),
-/* 639 */
+/* 645 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -71811,44 +74889,44 @@
 	};
 
 /***/ }),
-/* 640 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(641);
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Array_ST = __webpack_require__(642);
-	var Data_Array_ST_Iterator = __webpack_require__(644);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Partial_Unsafe = __webpack_require__(611);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(647);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Array_ST = __webpack_require__(648);
+	var Data_Array_ST_Iterator = __webpack_require__(650);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Partial_Unsafe = __webpack_require__(617);
+	var Prelude = __webpack_require__(560);
 	var zipWithA = function zipWithA(dictApplicative) {
 	    return function (f) {
 	        return function (xs) {
@@ -72367,7 +75445,7 @@
 	};
 
 /***/ }),
-/* 641 */
+/* 647 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72676,21 +75754,21 @@
 	};
 
 /***/ }),
-/* 642 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(643);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Maybe = __webpack_require__(582);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var $foreign = __webpack_require__(649);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Maybe = __webpack_require__(588);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var unsafeFreeze = function unsafeFreeze($7) {
 	    return Control_Applicative.pure(Control_Monad_Eff.applicativeEff)($7);
 	};
@@ -72744,7 +75822,7 @@
 	};
 
 /***/ }),
-/* 643 */
+/* 649 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72818,24 +75896,24 @@
 	};
 
 /***/ }),
-/* 644 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Array_ST = __webpack_require__(642);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Semiring = __webpack_require__(568);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Array_ST = __webpack_require__(648);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Semiring = __webpack_require__(574);
+	var Prelude = __webpack_require__(560);
 	var Iterator = function () {
 	    function Iterator(value0, value1) {
 	        this.value0 = value0;
@@ -72921,33 +75999,33 @@
 	};
 
 /***/ }),
-/* 645 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_FoldableWithIndex = __webpack_require__(646);
-	var Data_Functor = __webpack_require__(517);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_TraversableWithIndex = __webpack_require__(649);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_FoldableWithIndex = __webpack_require__(652);
+	var Data_Functor = __webpack_require__(523);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_TraversableWithIndex = __webpack_require__(655);
+	var Prelude = __webpack_require__(560);
 	var NonEmpty = function () {
 	    function NonEmpty(value0, value1) {
 	        this.value0 = value0;
@@ -73175,33 +76253,33 @@
 	};
 
 /***/ }),
-/* 646 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Maybe_Last = __webpack_require__(587);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Monoid_Additive = __webpack_require__(588);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Endo = __webpack_require__(593);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Maybe_Last = __webpack_require__(593);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Monoid_Additive = __webpack_require__(594);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Endo = __webpack_require__(599);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Tuple = function () {
 	    function Tuple(value0, value1) {
 	        this.value0 = value0;
@@ -73512,25 +76590,25 @@
 	};
 
 /***/ }),
-/* 647 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(648);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Maybe_Last = __webpack_require__(587);
-	var Data_Monoid_Additive = __webpack_require__(588);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(654);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Maybe_Last = __webpack_require__(593);
+	var Data_Monoid_Additive = __webpack_require__(594);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var FunctorWithIndex = function FunctorWithIndex(Functor0, mapWithIndex) {
 	    this.Functor0 = Functor0;
 	    this.mapWithIndex = mapWithIndex;
@@ -73596,7 +76674,7 @@
 	};
 
 /***/ }),
-/* 648 */
+/* 654 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73613,29 +76691,29 @@
 	};
 
 /***/ }),
-/* 649 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_FoldableWithIndex = __webpack_require__(646);
-	var Data_Function = __webpack_require__(516);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Maybe_First = __webpack_require__(586);
-	var Data_Maybe_Last = __webpack_require__(587);
-	var Data_Monoid_Additive = __webpack_require__(588);
-	var Data_Monoid_Conj = __webpack_require__(590);
-	var Data_Monoid_Disj = __webpack_require__(591);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Traversable_Accum = __webpack_require__(598);
-	var Data_Traversable_Accum_Internal = __webpack_require__(599);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_FoldableWithIndex = __webpack_require__(652);
+	var Data_Function = __webpack_require__(522);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Maybe_First = __webpack_require__(592);
+	var Data_Maybe_Last = __webpack_require__(593);
+	var Data_Monoid_Additive = __webpack_require__(594);
+	var Data_Monoid_Conj = __webpack_require__(596);
+	var Data_Monoid_Disj = __webpack_require__(597);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Traversable_Accum = __webpack_require__(604);
+	var Data_Traversable_Accum_Internal = __webpack_require__(605);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var TraversableWithIndex = function TraversableWithIndex(FoldableWithIndex1, FunctorWithIndex0, Traversable2, traverseWithIndex) {
 	    this.FoldableWithIndex1 = FoldableWithIndex1;
 	    this.FunctorWithIndex0 = FunctorWithIndex0;
@@ -73845,24 +76923,24 @@
 	};
 
 /***/ }),
-/* 650 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(651);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Partial_Unsafe = __webpack_require__(611);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(657);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Partial_Unsafe = __webpack_require__(617);
+	var Prelude = __webpack_require__(560);
 	var Unfoldable = function Unfoldable(unfoldr) {
 	    this.unfoldr = unfoldr;
 	};
@@ -73932,7 +77010,7 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 657 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73961,49 +77039,49 @@
 	};
 
 /***/ }),
-/* 652 */
+/* 658 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Monad = __webpack_require__(536);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_FoldableWithIndex = __webpack_require__(646);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semigroup_Foldable = __webpack_require__(653);
-	var Data_Semigroup_Traversable = __webpack_require__(654);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_TraversableWithIndex = __webpack_require__(649);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Monad = __webpack_require__(542);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_FoldableWithIndex = __webpack_require__(652);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semigroup_Foldable = __webpack_require__(659);
+	var Data_Semigroup_Traversable = __webpack_require__(660);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_TraversableWithIndex = __webpack_require__(655);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Prelude = __webpack_require__(560);
 	var Nil = function () {
 	    function Nil() {};
 	    Nil.value = new Nil();
@@ -74547,23 +77625,23 @@
 	};
 
 /***/ }),
-/* 653 */
+/* 659 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid_Dual = __webpack_require__(592);
-	var Data_Monoid_Multiplicative = __webpack_require__(594);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid_Dual = __webpack_require__(598);
+	var Data_Monoid_Multiplicative = __webpack_require__(600);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Act = function Act(x) {
 	    return x;
 	};
@@ -74661,17 +77739,17 @@
 	};
 
 /***/ }),
-/* 654 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Semigroup_Foldable = __webpack_require__(653);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Category = __webpack_require__(520);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Semigroup_Foldable = __webpack_require__(659);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Traversable1 = function Traversable1(Foldable10, _Traversable, sequence1, traverse1) {
 	    this.Foldable10 = Foldable10;
 	    this.Traversable1 = _Traversable;
@@ -74707,26 +77785,26 @@
 	};
 
 /***/ }),
-/* 655 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(656);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_String_Unsafe = __webpack_require__(657);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(662);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_String_Unsafe = __webpack_require__(663);
+	var Prelude = __webpack_require__(560);
 	var Replacement = function Replacement(x) {
 	    return x;
 	};
@@ -74867,7 +77945,7 @@
 	};
 
 /***/ }),
-/* 656 */
+/* 662 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75051,13 +78129,13 @@
 	};
 
 /***/ }),
-/* 657 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(658);
+	var $foreign = __webpack_require__(664);
 	module.exports = {
 	    "char": $foreign["char"],
 	    charAt: $foreign.charAt,
@@ -75065,7 +78143,7 @@
 	};
 
 /***/ }),
-/* 658 */
+/* 664 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75090,29 +78168,29 @@
 	};
 
 /***/ }),
-/* 659 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad = __webpack_require__(536);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad = __webpack_require__(542);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Proxy3 = function () {
 	    function Proxy3() {};
 	    Proxy3.value = new Proxy3();
@@ -75391,16 +78469,16 @@
 	};
 
 /***/ }),
-/* 660 */
+/* 666 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(661);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
+	var $foreign = __webpack_require__(667);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
 	var warnShow = function warnShow(dictShow) {
 	    return function (a) {
 	        return $foreign.warn(Data_Show.show(dictShow)(a));
@@ -75433,7 +78511,7 @@
 	};
 
 /***/ }),
-/* 661 */
+/* 667 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75467,22 +78545,22 @@
 	};
 
 /***/ }),
-/* 662 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(663);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var DOM = __webpack_require__(664);
-	var DOM_HTML_Types = __webpack_require__(665);
-	var DOM_Node_Types = __webpack_require__(682);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Nullable = __webpack_require__(685);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(669);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var DOM = __webpack_require__(670);
+	var DOM_HTML_Types = __webpack_require__(671);
+	var DOM_Node_Types = __webpack_require__(688);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Nullable = __webpack_require__(691);
+	var Prelude = __webpack_require__(560);
 	var offsetParent = function offsetParent($0) {
 	    return Data_Functor.map(Control_Monad_Eff.functorEff)(Data_Nullable.toMaybe)($foreign._offsetParent($0));
 	};
@@ -75519,7 +78597,7 @@
 	};
 
 /***/ }),
-/* 663 */
+/* 669 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75756,35 +78834,35 @@
 	};
 
 /***/ }),
-/* 664 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Eff = __webpack_require__(541);
+	var Control_Monad_Eff = __webpack_require__(547);
 	module.exports = {};
 
 /***/ }),
-/* 665 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(666);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var DOM_Event_Types = __webpack_require__(667);
-	var DOM_Node_Types = __webpack_require__(682);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var $foreign = __webpack_require__(672);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var DOM_Event_Types = __webpack_require__(673);
+	var DOM_Node_Types = __webpack_require__(688);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var windowToEventTarget = Unsafe_Coerce.unsafeCoerce;
 	var readHTMLVideoElement = Data_Foreign.unsafeReadTagged("HTMLVideoElement");
 	var readHTMLUListElement = Data_Foreign.unsafeReadTagged("HTMLUListElement");
@@ -76067,7 +79145,7 @@
 	};
 
 /***/ }),
-/* 666 */
+/* 672 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76086,26 +79164,26 @@
 	};
 
 /***/ }),
-/* 667 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(668);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var $foreign = __webpack_require__(674);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var EventType = function EventType(x) {
 	    return x;
 	};
@@ -76176,7 +79254,7 @@
 	};
 
 /***/ }),
-/* 668 */
+/* 674 */
 /***/ (function(module, exports) {
 
 	/* global EventTarget */
@@ -76191,33 +79269,33 @@
 	};
 
 /***/ }),
-/* 669 */
+/* 675 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(670);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Identity = __webpack_require__(609);
-	var Data_Int = __webpack_require__(672);
-	var Data_List_NonEmpty = __webpack_require__(680);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_String = __webpack_require__(655);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(676);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Identity = __webpack_require__(615);
+	var Data_Int = __webpack_require__(678);
+	var Data_List_NonEmpty = __webpack_require__(686);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_String = __webpack_require__(661);
+	var Prelude = __webpack_require__(560);
 	var ForeignError = function () {
 	    function ForeignError(value0) {
 	        this.value0 = value0;
@@ -76493,7 +79571,7 @@
 	};
 
 /***/ }),
-/* 670 */
+/* 676 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76529,19 +79607,19 @@
 	};
 
 /***/ }),
-/* 671 */
+/* 677 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Identity = __webpack_require__(609);
-	var Data_Newtype = __webpack_require__(553);
-	var Prelude = __webpack_require__(554);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Identity = __webpack_require__(615);
+	var Data_Newtype = __webpack_require__(559);
+	var Prelude = __webpack_require__(560);
 	var withExcept = Control_Monad_Except_Trans.withExceptT(Data_Identity.functorIdentity);
 	var runExcept = function runExcept($0) {
 	    return Data_Newtype.unwrap(Data_Identity.newtypeIdentity)(Control_Monad_Except_Trans.runExceptT($0));
@@ -76558,33 +79636,33 @@
 	};
 
 /***/ }),
-/* 672 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(673);
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_DivisionRing = __webpack_require__(571);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Field = __webpack_require__(574);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Int_Bits = __webpack_require__(674);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Global = __webpack_require__(676);
-	var $$Math = __webpack_require__(678);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(679);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_DivisionRing = __webpack_require__(577);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Field = __webpack_require__(580);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Int_Bits = __webpack_require__(680);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Global = __webpack_require__(682);
+	var $$Math = __webpack_require__(684);
+	var Prelude = __webpack_require__(560);
 	var Radix = function Radix(x) {
 	    return x;
 	};
@@ -76778,7 +79856,7 @@
 	};
 
 /***/ }),
-/* 673 */
+/* 679 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76838,13 +79916,13 @@
 	};
 
 /***/ }),
-/* 674 */
+/* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(675);
+	var $foreign = __webpack_require__(681);
 	module.exports = {
 	    and: $foreign.and,
 	    or: $foreign.or,
@@ -76856,7 +79934,7 @@
 	};
 
 /***/ }),
-/* 675 */
+/* 681 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -76911,13 +79989,13 @@
 	};
 
 /***/ }),
-/* 676 */
+/* 682 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(677);
+	var $foreign = __webpack_require__(683);
 	module.exports = {
 	    nan: $foreign.nan,
 	    "isNaN": $foreign["isNaN"],
@@ -76932,7 +80010,7 @@
 	};
 
 /***/ }),
-/* 677 */
+/* 683 */
 /***/ (function(module, exports) {
 
 	/* globals exports */
@@ -76962,13 +80040,13 @@
 	exports.encodeURIComponent = encodeURIComponent;
 
 /***/ }),
-/* 678 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(679);
+	var $foreign = __webpack_require__(685);
 	module.exports = {
 	    abs: $foreign.abs,
 	    acos: $foreign.acos,
@@ -77001,7 +80079,7 @@
 	};
 
 /***/ }),
-/* 679 */
+/* 685 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -77087,35 +80165,35 @@
 	exports.sqrt2 = Math.SQRT2;
 
 /***/ }),
-/* 680 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_List = __webpack_require__(681);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semigroup_Foldable = __webpack_require__(653);
-	var Data_Semigroup_Traversable = __webpack_require__(654);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Partial_Unsafe = __webpack_require__(611);
-	var Prelude = __webpack_require__(554);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_List = __webpack_require__(687);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semigroup_Foldable = __webpack_require__(659);
+	var Data_Semigroup_Traversable = __webpack_require__(660);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Partial_Unsafe = __webpack_require__(617);
+	var Prelude = __webpack_require__(560);
 	var zipWith = function zipWith(f) {
 	    return function (v) {
 	        return function (v1) {
@@ -77503,44 +80581,44 @@
 	};
 
 /***/ }),
-/* 681 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Pattern = function Pattern(x) {
 	    return x;
 	};
@@ -78610,20 +81688,20 @@
 	};
 
 /***/ }),
-/* 682 */
+/* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var DOM_Event_Types = __webpack_require__(667);
-	var DOM_Util_FFI = __webpack_require__(683);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var DOM_Event_Types = __webpack_require__(673);
+	var DOM_Util_FFI = __webpack_require__(689);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var ElementId = function ElementId(x) {
 	    return x;
 	};
@@ -78678,22 +81756,22 @@
 	};
 
 /***/ }),
-/* 683 */
+/* 689 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(684);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(690);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Prelude = __webpack_require__(560);
 	var unsafeReadProtoTagged = function unsafeReadProtoTagged(name) {
 	    return $foreign._unsafeReadProtoTagged(name)(function ($0) {
 	        return Control_Monad_Except_Trans.except(Data_Identity.applicativeIdentity)(Data_Either.Left.create(Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.TypeMismatch.create(name)($0))));
@@ -78706,7 +81784,7 @@
 	};
 
 /***/ }),
-/* 684 */
+/* 690 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -78733,21 +81811,21 @@
 	};
 
 /***/ }),
-/* 685 */
+/* 691 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(686);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(692);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var toNullable = Data_Maybe.maybe($foreign["null"])($foreign.notNull);
 	var toMaybe = function toMaybe(n) {
 	    return $foreign.nullable(n, Data_Maybe.Nothing.value, Data_Maybe.Just.create);
@@ -78784,7 +81862,7 @@
 	};
 
 /***/ }),
-/* 686 */
+/* 692 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -78800,26 +81878,26 @@
 	};
 
 /***/ }),
-/* 687 */
+/* 693 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Foreign_Generic_Types = __webpack_require__(697);
-	var Data_Foreign_JSON = __webpack_require__(702);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Identity = __webpack_require__(609);
-	var Global_Unsafe = __webpack_require__(706);
-	var Prelude = __webpack_require__(554);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Foreign_Generic_Types = __webpack_require__(703);
+	var Data_Foreign_JSON = __webpack_require__(708);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Identity = __webpack_require__(615);
+	var Global_Unsafe = __webpack_require__(712);
+	var Prelude = __webpack_require__(560);
 	var genericEncode = function genericEncode(dictGeneric) {
 	    return function (dictGenericEncode) {
 	        return function (opts) {
@@ -78882,31 +81960,31 @@
 	};
 
 /***/ }),
-/* 688 */
+/* 694 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Array = __webpack_require__(640);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Internal = __webpack_require__(689);
-	var Data_Foreign_NullOrUndefined = __webpack_require__(694);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_StrMap = __webpack_require__(690);
-	var Data_Traversable = __webpack_require__(596);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Array = __webpack_require__(646);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Internal = __webpack_require__(695);
+	var Data_Foreign_NullOrUndefined = __webpack_require__(700);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_StrMap = __webpack_require__(696);
+	var Data_Traversable = __webpack_require__(602);
+	var Prelude = __webpack_require__(560);
 	var Decode = function Decode(decode) {
 	    this.decode = decode;
 	};
@@ -78997,21 +82075,21 @@
 	};
 
 /***/ }),
-/* 689 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Data_Boolean = __webpack_require__(555);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Function = __webpack_require__(516);
-	var Data_Identity = __webpack_require__(609);
-	var Data_StrMap = __webpack_require__(690);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Data_Boolean = __webpack_require__(561);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Function = __webpack_require__(522);
+	var Data_Identity = __webpack_require__(615);
+	var Data_StrMap = __webpack_require__(696);
+	var Prelude = __webpack_require__(560);
 	var isStrMap = function isStrMap(v) {
 	    return Data_Foreign.tagOf(v) === "Object";
 	};
@@ -79030,40 +82108,40 @@
 	};
 
 /***/ }),
-/* 690 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(691);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Array = __webpack_require__(640);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_FoldableWithIndex = __webpack_require__(646);
-	var Data_Function = __webpack_require__(516);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_Functor = __webpack_require__(517);
-	var Data_FunctorWithIndex = __webpack_require__(647);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_StrMap_ST = __webpack_require__(692);
-	var Data_Traversable = __webpack_require__(596);
-	var Data_TraversableWithIndex = __webpack_require__(649);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(697);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Array = __webpack_require__(646);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_FoldableWithIndex = __webpack_require__(652);
+	var Data_Function = __webpack_require__(522);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_Functor = __webpack_require__(523);
+	var Data_FunctorWithIndex = __webpack_require__(653);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_StrMap_ST = __webpack_require__(698);
+	var Data_Traversable = __webpack_require__(602);
+	var Data_TraversableWithIndex = __webpack_require__(655);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Prelude = __webpack_require__(560);
 	var values = $foreign.toArrayWithKey(function (v) {
 	    return function (v1) {
 	        return v1;
@@ -79419,7 +82497,7 @@
 	};
 
 /***/ }),
-/* 691 */
+/* 697 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -79550,16 +82628,16 @@
 	});
 
 /***/ }),
-/* 692 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(693);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_ST = __webpack_require__(607);
-	var Data_Maybe = __webpack_require__(582);
+	var $foreign = __webpack_require__(699);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_ST = __webpack_require__(613);
+	var Data_Maybe = __webpack_require__(588);
 	var peek = $foreign.peekImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 	module.exports = {
 	    peek: peek,
@@ -79569,7 +82647,7 @@
 	};
 
 /***/ }),
-/* 693 */
+/* 699 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -79611,27 +82689,27 @@
 	};
 
 /***/ }),
-/* 694 */
+/* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(695);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Functor = __webpack_require__(517);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Identity = __webpack_require__(609);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(701);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Functor = __webpack_require__(523);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Identity = __webpack_require__(615);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var NullOrUndefined = function NullOrUndefined(x) {
 	    return x;
 	};
@@ -79684,7 +82762,7 @@
 	};
 
 /***/ }),
-/* 695 */
+/* 701 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -79692,43 +82770,43 @@
 	exports['undefined'] = undefined;
 
 /***/ }),
-/* 696 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic_Types = __webpack_require__(697);
-	var Data_Foreign_Index = __webpack_require__(698);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List = __webpack_require__(681);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_StrMap = __webpack_require__(690);
-	var Data_Symbol = __webpack_require__(701);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Prelude = __webpack_require__(554);
-	var Type_Proxy = __webpack_require__(659);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic_Types = __webpack_require__(703);
+	var Data_Foreign_Index = __webpack_require__(704);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List = __webpack_require__(687);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_StrMap = __webpack_require__(696);
+	var Data_Symbol = __webpack_require__(707);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Prelude = __webpack_require__(560);
+	var Type_Proxy = __webpack_require__(665);
 	var GenericDecode = function GenericDecode(decodeOpts) {
 	    this.decodeOpts = decodeOpts;
 	};
@@ -80088,7 +83166,7 @@
 	};
 
 /***/ }),
-/* 697 */
+/* 703 */
 /***/ (function(module, exports) {
 
 	// Generated by purs version 0.11.7
@@ -80108,24 +83186,24 @@
 	};
 
 /***/ }),
-/* 698 */
+/* 704 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(699);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Function = __webpack_require__(516);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_NonEmpty = __webpack_require__(680);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(705);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Function = __webpack_require__(522);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_NonEmpty = __webpack_require__(686);
+	var Prelude = __webpack_require__(560);
 	var Index = function Index(errorAt, hasOwnProperty, hasProperty, index) {
 	    this.errorAt = errorAt;
 	    this.hasOwnProperty = hasOwnProperty;
@@ -80214,7 +83292,7 @@
 	};
 
 /***/ }),
-/* 699 */
+/* 705 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -80232,13 +83310,13 @@
 	};
 
 /***/ }),
-/* 700 */
+/* 706 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Maybe = __webpack_require__(582);
+	var Data_Maybe = __webpack_require__(588);
 	var Inl = function () {
 	    function Inl(value0) {
 	        this.value0 = value0;
@@ -80329,15 +83407,15 @@
 	};
 
 /***/ }),
-/* 701 */
+/* 707 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Semigroup = __webpack_require__(531);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var Data_Semigroup = __webpack_require__(537);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var SProxy = function () {
 	    function SProxy() {};
 	    SProxy.value = new SProxy();
@@ -80376,27 +83454,27 @@
 	};
 
 /***/ }),
-/* 702 */
+/* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(703);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Eff_Uncurried = __webpack_require__(704);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Bifunctor = __webpack_require__(550);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List_Types = __webpack_require__(652);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(709);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Eff_Uncurried = __webpack_require__(710);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Bifunctor = __webpack_require__(556);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List_Types = __webpack_require__(658);
+	var Prelude = __webpack_require__(560);
 	var parseJSON = function parseJSON($0) {
 	    return Control_Monad_Except_Trans.ExceptT(Data_Identity.Identity(Data_Bifunctor.lmap(Data_Either.bifunctorEither)(function ($1) {
 	        return Control_Applicative.pure(Data_List_Types.applicativeNonEmptyList)(Data_Foreign.JSONError.create(Control_Monad_Eff_Exception.message($1)));
@@ -80411,7 +83489,7 @@
 	};
 
 /***/ }),
-/* 703 */
+/* 709 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -80421,14 +83499,14 @@
 	};
 
 /***/ }),
-/* 704 */
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(705);
-	var Control_Monad_Eff = __webpack_require__(541);
+	var $foreign = __webpack_require__(711);
+	var Control_Monad_Eff = __webpack_require__(547);
 	module.exports = {
 	    mkEffFn1: $foreign.mkEffFn1,
 	    mkEffFn2: $foreign.mkEffFn2,
@@ -80453,7 +83531,7 @@
 	};
 
 /***/ }),
-/* 705 */
+/* 711 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -80689,13 +83767,13 @@
 	};
 
 /***/ }),
-/* 706 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(707);
+	var $foreign = __webpack_require__(713);
 	module.exports = {
 	    unsafeStringify: $foreign.unsafeStringify,
 	    unsafeToFixed: $foreign.unsafeToFixed,
@@ -80704,7 +83782,7 @@
 	};
 
 /***/ }),
-/* 707 */
+/* 713 */
 /***/ (function(module, exports) {
 
 	/* globals exports, JSON */
@@ -80735,20 +83813,20 @@
 	};
 
 /***/ }),
-/* 708 */
+/* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Data_Function = __webpack_require__(516);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Data_Function = __webpack_require__(522);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var communityViewAllActivity = function communityViewAllActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -80803,26 +83881,26 @@
 	};
 
 /***/ }),
-/* 709 */
+/* 715 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Api = __webpack_require__(710);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic = __webpack_require__(687);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Function = __webpack_require__(516);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Symbol = __webpack_require__(701);
-	var Prelude = __webpack_require__(554);
-	var Type_Proxy = __webpack_require__(659);
+	var Api = __webpack_require__(716);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic = __webpack_require__(693);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Function = __webpack_require__(522);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Symbol = __webpack_require__(707);
+	var Prelude = __webpack_require__(560);
+	var Type_Proxy = __webpack_require__(665);
 	var RequestOtpResp = function () {
 	    function RequestOtpResp(value0) {
 	        this.value0 = value0;
@@ -80999,34 +84077,34 @@
 	};
 
 /***/ }),
-/* 710 */
+/* 716 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic = __webpack_require__(687);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Function = __webpack_require__(516);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Symbol = __webpack_require__(701);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic = __webpack_require__(693);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Function = __webpack_require__(522);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Symbol = __webpack_require__(707);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var GET = function () {
 	    function GET() {};
 	    GET.value = new GET();
@@ -81371,27 +84449,27 @@
 	};
 
 /***/ }),
-/* 711 */
+/* 717 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Console = __webpack_require__(660);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Data_Argonaut_Core = __webpack_require__(712);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Symbol = __webpack_require__(701);
-	var Prelude = __webpack_require__(554);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Console = __webpack_require__(666);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Data_Argonaut_Core = __webpack_require__(718);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Symbol = __webpack_require__(707);
+	var Prelude = __webpack_require__(560);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var DummyWelcomeScreenAction = function () {
 	    function DummyWelcomeScreenAction() {};
 	    DummyWelcomeScreenAction.value = new DummyWelcomeScreenAction();
@@ -81466,6 +84544,11 @@
 	    function OPEN_MainActivity() {};
 	    OPEN_MainActivity.value = new OPEN_MainActivity();
 	    return OPEN_MainActivity;
+	}();
+	var OPEN_RoleSelectionActivity = function () {
+	    function OPEN_RoleSelectionActivity() {};
+	    OPEN_RoleSelectionActivity.value = new OPEN_RoleSelectionActivity();
+	    return OPEN_RoleSelectionActivity;
 	}();
 	var OPEN_Deeplink_ResourceDetail = function () {
 	    function OPEN_Deeplink_ResourceDetail(value0) {
@@ -81553,6 +84636,11 @@
 	    };
 	    return API_GetProfileData;
 	}();
+	var BACK_UserActivity = function () {
+	    function BACK_UserActivity() {};
+	    BACK_UserActivity.value = new BACK_UserActivity();
+	    return BACK_UserActivity;
+	}();
 	var UserActivity = function () {
 	    function UserActivity(value0) {
 	        this.value0 = value0;
@@ -81619,6 +84707,11 @@
 	        return new OPEN_AboutUsActivity(value0);
 	    };
 	    return OPEN_AboutUsActivity;
+	}();
+	var OPEN_DataSyncScreenActivity = function () {
+	    function OPEN_DataSyncScreenActivity() {};
+	    OPEN_DataSyncScreenActivity.value = new OPEN_DataSyncScreenActivity();
+	    return OPEN_DataSyncScreenActivity;
 	}();
 	var SettingsScreenActivity = function () {
 	    function SettingsScreenActivity(value0) {
@@ -81692,6 +84785,26 @@
 	        return new SearchActivity(value0);
 	    };
 	    return SearchActivity;
+	}();
+	var OPEN_MainActivity_RoleSelection = function () {
+	    function OPEN_MainActivity_RoleSelection() {};
+	    OPEN_MainActivity_RoleSelection.value = new OPEN_MainActivity_RoleSelection();
+	    return OPEN_MainActivity_RoleSelection;
+	}();
+	var DummyRoleSelectionActivityAction = function () {
+	    function DummyRoleSelectionActivityAction() {};
+	    DummyRoleSelectionActivityAction.value = new DummyRoleSelectionActivityAction();
+	    return DummyRoleSelectionActivityAction;
+	}();
+	var BACK_RoleSelectionActivityAction = function () {
+	    function BACK_RoleSelectionActivityAction() {};
+	    BACK_RoleSelectionActivityAction.value = new BACK_RoleSelectionActivityAction();
+	    return BACK_RoleSelectionActivityAction;
+	}();
+	var RoleSelectionActivity = function () {
+	    function RoleSelectionActivity() {};
+	    RoleSelectionActivity.value = new RoleSelectionActivity();
+	    return RoleSelectionActivity;
 	}();
 	var DummyResourceViewAllAction = function () {
 	    function DummyResourceViewAllAction() {};
@@ -82357,6 +85470,16 @@
 	    };
 	    return EducationActivity;
 	}();
+	var BACK_DataSyncScreenActivity = function () {
+	    function BACK_DataSyncScreenActivity() {};
+	    BACK_DataSyncScreenActivity.value = new BACK_DataSyncScreenActivity();
+	    return BACK_DataSyncScreenActivity;
+	}();
+	var DataSyncScreenActivity = function () {
+	    function DataSyncScreenActivity() {};
+	    DataSyncScreenActivity.value = new DataSyncScreenActivity();
+	    return DataSyncScreenActivity;
+	}();
 	var DummyCourseViewAllActivityAction = function () {
 	    function DummyCourseViewAllActivityAction() {};
 	    DummyCourseViewAllActivityAction.value = new DummyCourseViewAllActivityAction();
@@ -82804,7 +85927,7 @@
 	    if (x instanceof API_EnrolledCoursesList) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 187, column 8 - line 187, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 202, column 8 - line 202, column 86: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_CourseInfoActivity.value;
@@ -82831,7 +85954,7 @@
 	            user_token: x.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 187, column 8 - line 187, column 86: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 202, column 8 - line 202, column 86: " + [x.constructor.name]);
 	});
 	var genericWelcomeScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyWelcomeScreenAction) {
@@ -82840,7 +85963,7 @@
 	    if (x instanceof OPEN_StateSelectActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 66, column 8 - line 66, column 93: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 79, column 8 - line 79, column 93: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyWelcomeScreenAction.value;
@@ -82848,7 +85971,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_StateSelectActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 66, column 8 - line 66, column 93: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 79, column 8 - line 79, column 93: " + [x.constructor.name]);
 	});
 	var genericViewBatchActivity = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyViewBatchActivity) {
@@ -82869,7 +85992,7 @@
 	    if (x instanceof API_Get_Batch_list) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 387, column 8 - line 387, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 402, column 8 - line 402, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyViewBatchActivity.value;
@@ -82902,100 +86025,112 @@
 	            user_token: x.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 387, column 8 - line 387, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 402, column 8 - line 402, column 79: " + [x.constructor.name]);
 	});
 	var genericUserActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_MainActivity) {
 	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
 	    };
+	    if (x instanceof OPEN_RoleSelectionActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value));
+	    };
 	    if (x instanceof OPEN_Deeplink_ResourceDetail) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.resource));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.resource)));
 	    };
 	    if (x instanceof OPEN_Deeplink_CourseEnrolled) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.course)));
-	    };
-	    if (x instanceof OPEN_DeepLink_CourseInfo) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.course))));
 	    };
+	    if (x instanceof OPEN_DeepLink_CourseInfo) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.course)))));
+	    };
 	    if (x instanceof OPEN_DeepLink_ContentPreview) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.details)))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.details))))));
 	    };
 	    if (x instanceof OPEN_Notif_AnnouncementDetail) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.announcementData)))))));
 	    };
 	    if (x instanceof OPEN_Notif_AnnouncementList) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value)))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value))))))));
 	    };
 	    if (x instanceof API_LogIn) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.userName, x.value0.userPass)))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.userName, x.value0.userPass))))))))));
 	    };
 	    if (x instanceof API_SignUp) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.request))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.request)))))))))));
 	    };
 	    if (x instanceof API_EnrolledCourses) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))))))));
 	    };
 	    if (x instanceof API_GetProfileData) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token)))))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 75: " + [x.constructor.name]);
+	    if (x instanceof BACK_UserActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value))))))))))));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 114, column 8 - line 114, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_MainActivity.value;
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_Deeplink_ResourceDetail({
-	            resource: x.value0.value0
-	        });
+	        return OPEN_RoleSelectionActivity.value;
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_Deeplink_CourseEnrolled({
-	            course: x.value0.value0.value0
+	        return new OPEN_Deeplink_ResourceDetail({
+	            resource: x.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_DeepLink_CourseInfo({
+	        return new OPEN_Deeplink_CourseEnrolled({
 	            course: x.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_DeepLink_ContentPreview({
-	            details: x.value0.value0.value0.value0.value0
+	        return new OPEN_DeepLink_CourseInfo({
+	            course: x.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new OPEN_Notif_AnnouncementDetail({
-	            announcementData: x.value0.value0.value0.value0.value0.value0
+	        return new OPEN_DeepLink_ContentPreview({
+	            details: x.value0.value0.value0.value0.value0.value0
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return OPEN_Notif_AnnouncementList.value;
-	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_LogIn({
-	            userName: x.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            userPass: x.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        return new OPEN_Notif_AnnouncementDetail({
+	            announcementData: x.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return OPEN_Notif_AnnouncementList.value;
+	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
-	        return new API_SignUp({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        return new API_LogIn({
+	            userName: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            userPass: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
+	        return new API_SignUp({
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            request: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	        });
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new API_EnrolledCourses({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new API_GetProfileData({
-	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
-	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
+	            api_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0,
+	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 99, column 8 - line 99, column 75: " + [x.constructor.name]);
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return BACK_UserActivity.value;
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 114, column 8 - line 114, column 75: " + [x.constructor.name]);
 	});
 	var genericStateSelectActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyStateSelectAction) {
@@ -83007,7 +86142,7 @@
 	    if (x instanceof OPEN_UserActivityFromStateSelection) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 78, column 8 - line 78, column 89: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 91, column 8 - line 91, column 89: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyStateSelectAction.value;
@@ -83018,7 +86153,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_UserActivityFromStateSelection.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 78, column 8 - line 78, column 89: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 91, column 8 - line 91, column 89: " + [x.constructor.name]);
 	});
 	var genericSplashScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyUserActivityAction) {
@@ -83045,9 +86180,12 @@
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile));
 	    };
 	    if (x instanceof OPEN_AboutUsActivity) {
-	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.profile));
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0.profile)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 424, column 8 - line 424, column 95: " + [x.constructor.name]);
+	    if (x instanceof OPEN_DataSyncScreenActivity) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value)));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 439, column 8 - line 439, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_SettingsScreenActivity.value;
@@ -83057,12 +86195,15 @@
 	            profile: x.value0.value0
 	        });
 	    };
-	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl) {
 	        return new OPEN_AboutUsActivity({
-	            profile: x.value0.value0
+	            profile: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 424, column 8 - line 424, column 95: " + [x.constructor.name]);
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr) {
+	        return OPEN_DataSyncScreenActivity.value;
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 439, column 8 - line 439, column 95: " + [x.constructor.name]);
 	});
 	var genericSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummySearchActivity) {
@@ -83086,7 +86227,7 @@
 	    if (x instanceof OPEN_ResourceFragment_SEARCH) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 323, column 8 - line 323, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummySearchActivity.value;
@@ -83119,7 +86260,30 @@
 	            course: x.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 323, column 8 - line 323, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 338, column 8 - line 338, column 79: " + [x.constructor.name]);
+	});
+	var genericRoleSelectionActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    if (x instanceof OPEN_MainActivity_RoleSelection) {
+	        return new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value);
+	    };
+	    if (x instanceof DummyRoleSelectionActivityAction) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(Data_Generic_Rep.NoArguments.value));
+	    };
+	    if (x instanceof BACK_RoleSelectionActivityAction) {
+	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 67, column 8 - line 67, column 93: " + [x.constructor.name]);
+	}, function (x) {
+	    if (x instanceof Data_Generic_Rep.Inl) {
+	        return OPEN_MainActivity_RoleSelection.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
+	        return DummyRoleSelectionActivityAction.value;
+	    };
+	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
+	        return BACK_RoleSelectionActivityAction.value;
+	    };
+	    throw new Error("Failed pattern match at Types.UITypes line 67, column 8 - line 67, column 93: " + [x.constructor.name]);
 	});
 	var genericResourceViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceViewAllAction) {
@@ -83137,7 +86301,7 @@
 	    if (x instanceof OPEN_ResourceViewAllDetail) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 272, column 8 - line 272, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 97: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceViewAllAction.value;
@@ -83160,7 +86324,7 @@
 	            resourceDetails: x.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 272, column 8 - line 272, column 97: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 287, column 8 - line 287, column 97: " + [x.constructor.name]);
 	});
 	var genericResourceDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyResourceDetailActivityAction) {
@@ -83172,7 +86336,7 @@
 	    if (x instanceof API_FlagContent) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.identifier, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 173, column 8 - line 173, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 188, column 8 - line 188, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyResourceDetailActivityAction.value;
@@ -83188,7 +86352,7 @@
 	            user_token: x.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 173, column 8 - line 173, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 188, column 8 - line 188, column 95: " + [x.constructor.name]);
 	});
 	var genericQRActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyQRActivity) {
@@ -83209,7 +86373,7 @@
 	    if (x instanceof OPEN_SearchActivity_QR) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterDetails)))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 527, column 8 - line 527, column 71: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 552, column 8 - line 552, column 71: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyQRActivity.value;
@@ -83237,7 +86401,7 @@
 	            filterDetails: x.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 527, column 8 - line 527, column 71: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 552, column 8 - line 552, column 71: " + [x.constructor.name]);
 	});
 	var genericProfileActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyProfileActivity) {
@@ -83264,7 +86428,7 @@
 	    if (x instanceof OPEN_ResourceDetailActivity_Prof) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.resourceDetails)))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 358, column 8 - line 358, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 373, column 8 - line 373, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyProfileActivity.value;
@@ -83306,7 +86470,7 @@
 	            resourceDetails: x.value0.value0.value0.value0.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 358, column 8 - line 358, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 373, column 8 - line 373, column 81: " + [x.constructor.name]);
 	});
 	var genericNotificationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyNotificationActivityAction) {
@@ -83315,7 +86479,7 @@
 	    if (x instanceof BACK_NotificationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 256, column 8 - line 256, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyNotificationActivityAction.value;
@@ -83323,7 +86487,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_NotificationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 256, column 8 - line 256, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 271, column 8 - line 271, column 91: " + [x.constructor.name]);
 	});
 	var genericModuleDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyModuleDetailActivityAction) {
@@ -83332,7 +86496,7 @@
 	    if (x instanceof BACK_ModuleDetailActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 218, column 8 - line 218, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 233, column 8 - line 233, column 91: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyModuleDetailActivityAction.value;
@@ -83340,7 +86504,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ModuleDetailActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 218, column 8 - line 218, column 91: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 233, column 8 - line 233, column 91: " + [x.constructor.name]);
 	});
 	var genericMainActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof OPEN_HomeFragment) {
@@ -83451,7 +86615,7 @@
 	    if (x instanceof API_Tenant) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.slug, x.value0.user_token)))))))))))))))))))))))))))))))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 160, column 8 - line 160, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 175, column 8 - line 175, column 75: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return OPEN_HomeFragment.value;
@@ -83633,7 +86797,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 160, column 8 - line 160, column 75: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 175, column 8 - line 175, column 75: " + [x.constructor.name]);
 	});
 	var genericLanguageSelectionActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof LanguageSelectActivityAction) {
@@ -83707,7 +86871,7 @@
 	    if (x instanceof OPEN_SearchActivity_FILTER) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.filterData));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 371, column 8 - line 371, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 386, column 8 - line 386, column 79: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyFilterActivity.value;
@@ -83720,7 +86884,7 @@
 	            filterData: x.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 371, column 8 - line 371, column 79: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 386, column 8 - line 386, column 79: " + [x.constructor.name]);
 	});
 	var genericExperienceActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyExperienceActivity) {
@@ -83729,7 +86893,7 @@
 	    if (x instanceof BACK_ExperienceActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 509, column 8 - line 509, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 534, column 8 - line 534, column 87: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyExperienceActivity.value;
@@ -83737,7 +86901,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_ExperienceActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 509, column 8 - line 509, column 87: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 534, column 8 - line 534, column 87: " + [x.constructor.name]);
 	});
 	var genericEducationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyEducationActivity) {
@@ -83746,7 +86910,7 @@
 	    if (x instanceof BACK_EducationActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 496, column 8 - line 496, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 521, column 8 - line 521, column 85: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyEducationActivity.value;
@@ -83754,7 +86918,12 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_EducationActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 496, column 8 - line 496, column 85: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 521, column 8 - line 521, column 85: " + [x.constructor.name]);
+	});
+	var genericDataSyncScreenActivityAction = new Data_Generic_Rep.Generic(function (x) {
+	    return Data_Generic_Rep.NoArguments.value;
+	}, function (x) {
+	    return BACK_DataSyncScreenActivity.value;
 	});
 	var genericCourseViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseViewAllActivityAction) {
@@ -83769,7 +86938,7 @@
 	    if (x instanceof OPEN_CourseInfoFlowFromCourseViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.course)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 305, column 8 - line 305, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 320, column 8 - line 320, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseViewAllActivityAction.value;
@@ -83787,7 +86956,7 @@
 	            course: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 305, column 8 - line 305, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 320, column 8 - line 320, column 92: " + [x.constructor.name]);
 	});
 	var genericCourseEnrolledActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCourseEnrolledActivityAction) {
@@ -83814,7 +86983,7 @@
 	    if (x instanceof API_Reload_Course) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, x.value0.user_token))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 205, column 8 - line 205, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 220, column 8 - line 220, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCourseEnrolledActivityAction.value;
@@ -83862,7 +87031,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value0.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 205, column 8 - line 205, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 220, column 8 - line 220, column 95: " + [x.constructor.name]);
 	});
 	var genericCommunityViewAllAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommunityViewAllAction) {
@@ -83871,7 +87040,7 @@
 	    if (x instanceof BACK_CommunityViewAllActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 231, column 8 - line 231, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 246, column 8 - line 246, column 83: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommunityViewAllAction.value;
@@ -83879,7 +87048,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityViewAllActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 231, column 8 - line 231, column 83: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 246, column 8 - line 246, column 83: " + [x.constructor.name]);
 	});
 	var genericCommunityInfoActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyInfoAction) {
@@ -83891,7 +87060,7 @@
 	    if (x instanceof BACK_CommunityInfoActivity) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 243, column 8 - line 243, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 258, column 8 - line 258, column 92: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyInfoAction.value;
@@ -83902,7 +87071,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
 	        return BACK_CommunityInfoActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 243, column 8 - line 243, column 92: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 258, column 8 - line 258, column 92: " + [x.constructor.name]);
 	});
 	var genericCommProfSearchActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyCommProfSearchActivity) {
@@ -83926,7 +87095,7 @@
 	    if (x instanceof API_CreatedBy_Search) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.filters, new Data_Generic_Rep.Product(x.value0.sendBack, x.value0.user_token)))))))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 340, column 8 - line 340, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 355, column 8 - line 355, column 95: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyCommProfSearchActivity.value;
@@ -83965,7 +87134,7 @@
 	            user_token: x.value0.value0.value0.value0.value0.value0.value1.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 340, column 8 - line 340, column 95: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 355, column 8 - line 355, column 95: " + [x.constructor.name]);
 	});
 	var genericAnnouncementViewAllActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementViewAllActivity) {
@@ -83980,7 +87149,7 @@
 	    if (x instanceof OPEN_AnnouncementDetailActivityFromViewAll) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0.announcementData)));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 289, column 8 - line 289, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 304, column 8 - line 304, column 105: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementViewAllActivity.value;
@@ -84000,7 +87169,7 @@
 	            announcementData: x.value0.value0.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 289, column 8 - line 289, column 105: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 304, column 8 - line 304, column 105: " + [x.constructor.name]);
 	});
 	var genericAnnouncementDetailActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAnnouncementDetailActivityAction) {
@@ -84012,7 +87181,7 @@
 	    if (x instanceof API_ReadAnnouncement) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.requestBody, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 472, column 8 - line 472, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 497, column 8 - line 497, column 103: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAnnouncementDetailActivityAction.value;
@@ -84027,7 +87196,7 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 472, column 8 - line 472, column 103: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 497, column 8 - line 497, column 103: " + [x.constructor.name]);
 	});
 	var genericAddressActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAddressActivity) {
@@ -84036,7 +87205,7 @@
 	    if (x instanceof BACK_AddressActivity) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 483, column 8 - line 483, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 508, column 8 - line 508, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAddressActivity.value;
@@ -84044,7 +87213,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return BACK_AddressActivity.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 483, column 8 - line 483, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 508, column 8 - line 508, column 81: " + [x.constructor.name]);
 	});
 	var genericAdditionalInformationActivityAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof DummyAdditionalInformationActivity) {
@@ -84056,7 +87225,7 @@
 	    if (x instanceof API_ProfileVisibility) {
 	        return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0.api_token, new Data_Generic_Rep.Product(x.value0.request, x.value0.user_token))));
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 401, column 8 - line 401, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 416, column 8 - line 416, column 109: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return DummyAdditionalInformationActivity.value;
@@ -84071,7 +87240,7 @@
 	            user_token: x.value0.value0.value1.value1
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 401, column 8 - line 401, column 109: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 416, column 8 - line 416, column 109: " + [x.constructor.name]);
 	});
 	var genericAboutUsScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    return Data_Generic_Rep.NoArguments.value;
@@ -84085,7 +87254,7 @@
 	    if (x instanceof OPEN_AboutUsScreen) {
 	        return new Data_Generic_Rep.Inr(x.value0.sectionData);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 446, column 8 - line 446, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 461, column 8 - line 461, column 81: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_AboutUsActivity.value;
@@ -84095,7 +87264,7 @@
 	            sectionData: x.value0
 	        });
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 446, column 8 - line 446, column 81: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 461, column 8 - line 461, column 81: " + [x.constructor.name]);
 	});
 	var generiContentPreviewScreenAction = new Data_Generic_Rep.Generic(function (x) {
 	    if (x instanceof BACK_ContentPreviewScreen) {
@@ -84104,7 +87273,7 @@
 	    if (x instanceof OPEN_UserActivityFromPreview) {
 	        return new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value);
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 112, column 8 - line 112, column 90: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 127, column 8 - line 127, column 90: " + [x.constructor.name]);
 	}, function (x) {
 	    if (x instanceof Data_Generic_Rep.Inl) {
 	        return BACK_ContentPreviewScreen.value;
@@ -84112,7 +87281,7 @@
 	    if (x instanceof Data_Generic_Rep.Inr) {
 	        return OPEN_UserActivityFromPreview.value;
 	    };
-	    throw new Error("Failed pattern match at Types.UITypes line 112, column 8 - line 112, column 90: " + [x.constructor.name]);
+	    throw new Error("Failed pattern match at Types.UITypes line 127, column 8 - line 127, column 90: " + [x.constructor.name]);
 	});
 	var encodeWelcomeScreenActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericWelcomeScreenActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyWelcomeScreenAction";
@@ -84153,6 +87322,8 @@
 	var encodeUserActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericUserActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_MainActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_RoleSelectionActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_Deeplink_ResourceDetail";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "resource";
@@ -84192,13 +87363,15 @@
 	    return "api_token";
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringEncode)))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringEncode)))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "API_GetProfileData";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsProduct(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "api_token";
 	}))(Data_Foreign_Class.stringEncode))(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringEncode))))))))))))))));
+	}))(Data_Foreign_Class.stringEncode)))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_UserActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)))))))))))))));
 	var encodeStateSelectActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericStateSelectActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyStateSelectAction";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -84217,11 +87390,13 @@
 	    return "OPEN_LanguageSelectActivitySt";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
-	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_AboutUsActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
-	}))(Data_Foreign_Class.stringEncode)))))));
+	}))(Data_Foreign_Class.stringEncode))))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_DataSyncScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))))));
 	var encodeSearchActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericSearchActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummySearchActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -84247,6 +87422,13 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsRec(Data_Foreign_Generic_Class.genericEncodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "course";
 	}))(Data_Foreign_Class.stringEncode)))))))))));
+	var encodeRoleSelectionActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericRoleSelectionActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_MainActivity_RoleSelection";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "DummyRoleSelectionActivityAction";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_RoleSelectionActivityAction";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)))));
 	var encodeResourceViewAllActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericResourceViewAllActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyResourceViewAllAction";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -84551,6 +87733,9 @@
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "BACK_EducationActivity";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))));
+	var encodeDataSyncScreenActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericDataSyncScreenActivityAction)(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_DataSyncScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments)));
 	var encodeCourseViewAllActivityAction = new Data_Foreign_Class.Encode(UI.defaultEncode(genericCourseViewAllActivityAction)(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyCourseViewAllActivityAction";
 	}))(Data_Foreign_Generic_Class.genericEncodeArgsNoArguments))(Data_Foreign_Generic_Class.genericEncodeSum(Data_Foreign_Generic_Class.genericEncodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -84805,6 +87990,8 @@
 	var decodeUserActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericUserActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_MainActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_RoleSelectionActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_Deeplink_ResourceDetail";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "resource";
@@ -84844,13 +88031,15 @@
 	    return "api_token";
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringDecode))))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringDecode))))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "API_GetProfileData";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsProduct(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "api_token";
 	}))(Data_Foreign_Class.stringDecode))(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "user_token";
-	}))(Data_Foreign_Class.stringDecode))))(Data_Foreign_Generic_Class.genericCountArgsRec)))))))))))));
+	}))(Data_Foreign_Class.stringDecode))))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_UserActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)))))))))))))));
 	var userActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [OPEN_MainActivity.value, new API_LogIn({
@@ -84899,11 +88088,13 @@
 	    return "OPEN_LanguageSelectActivitySt";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
-	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "OPEN_AboutUsActivity";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "profile";
-	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec)))));
+	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_DataSyncScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))))));
 	var settingsScreenActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [BACK_SettingsScreenActivity.value];
@@ -84945,6 +88136,22 @@
 	}, function (dictEncode) {
 	    return function (x) {
 	        return Utils.genericUI(dictEncode)(decodeSearchActivityAction)(x)(UI.generateMockEvents(searchActivity)(dictEncode)(x));
+	    };
+	});
+	var decodeRoleSelectionActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericRoleSelectionActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "OPEN_MainActivity_RoleSelection";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "DummyRoleSelectionActivityAction";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_RoleSelectionActivityAction";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)))));
+	var roleSelectionActivityAction = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [DummyRoleSelectionActivityAction.value, BACK_RoleSelectionActivityAction.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeRoleSelectionActivityAction)(x)(UI.generateMockEvents(roleSelectionActivityAction)(dictEncode)(x));
 	    };
 	});
 	var decodeResourceViewAllActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericResourceViewAllActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -85377,6 +88584,9 @@
 	        return Utils.genericUI(dictEncode)(decodeEducationActivityAction)(x)(UI.generateMockEvents(educationActivity)(dictEncode)(x));
 	    };
 	});
+	var decodeDataSyncScreenActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericDataSyncScreenActivityAction)(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
+	    return "BACK_DataSyncScreenActivity";
+	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments)));
 	var decodeCourseViewAllActivityAction = new Data_Foreign_Class.Decode(UI.defaultDecode(genericCourseViewAllActivityAction)(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
 	    return "DummyCourseViewAllActivityAction";
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsNoArguments)(Data_Foreign_Generic_Class.genericCountArgsNoArguments))(Data_Foreign_Generic_Class.genericDecodeSum(Data_Foreign_Generic_Class.genericDecodeConstructor(new Data_Symbol.IsSymbol(function () {
@@ -85574,6 +88784,15 @@
 	}))(Data_Foreign_Generic_Class.genericDecodeArgsRec(Data_Foreign_Generic_Class.genericDecodeFieldsField(new Data_Symbol.IsSymbol(function () {
 	    return "sectionData";
 	}))(Data_Foreign_Class.stringDecode)))(Data_Foreign_Generic_Class.genericCountArgsRec))));
+	var dataSyncScreenActivity = new UI.UIScreen(function (dictEncode) {
+	    return function (v) {
+	        return [BACK_DataSyncScreenActivity.value];
+	    };
+	}, function (dictEncode) {
+	    return function (x) {
+	        return Utils.genericUI(dictEncode)(decodeDataSyncScreenActivityAction)(x)(UI.generateMockEvents(dataSyncScreenActivity)(dictEncode)(x));
+	    };
+	});
 	var courseViewAllActivity = new UI.UIScreen(function (dictEncode) {
 	    return function (v) {
 	        return [DummyCourseViewAllActivityAction.value, BACK_CourseViewAllActivity.value];
@@ -85706,6 +88925,10 @@
 	    LanguageSelectActivityAction: LanguageSelectActivityAction,
 	    OPEN_UserActivity_1: OPEN_UserActivity_1,
 	    BACK_LanguageSelectActivity: BACK_LanguageSelectActivity,
+	    RoleSelectionActivity: RoleSelectionActivity,
+	    OPEN_MainActivity_RoleSelection: OPEN_MainActivity_RoleSelection,
+	    DummyRoleSelectionActivityAction: DummyRoleSelectionActivityAction,
+	    BACK_RoleSelectionActivityAction: BACK_RoleSelectionActivityAction,
 	    WelcomeScreenActivity: WelcomeScreenActivity,
 	    DummyWelcomeScreenAction: DummyWelcomeScreenAction,
 	    OPEN_StateSelectActivity: OPEN_StateSelectActivity,
@@ -85715,6 +88938,7 @@
 	    OPEN_UserActivityFromStateSelection: OPEN_UserActivityFromStateSelection,
 	    UserActivity: UserActivity,
 	    OPEN_MainActivity: OPEN_MainActivity,
+	    OPEN_RoleSelectionActivity: OPEN_RoleSelectionActivity,
 	    OPEN_Deeplink_ResourceDetail: OPEN_Deeplink_ResourceDetail,
 	    OPEN_Deeplink_CourseEnrolled: OPEN_Deeplink_CourseEnrolled,
 	    OPEN_DeepLink_CourseInfo: OPEN_DeepLink_CourseInfo,
@@ -85725,6 +88949,7 @@
 	    API_SignUp: API_SignUp,
 	    API_EnrolledCourses: API_EnrolledCourses,
 	    API_GetProfileData: API_GetProfileData,
+	    BACK_UserActivity: BACK_UserActivity,
 	    ContentPreviewScreen: ContentPreviewScreen,
 	    BACK_ContentPreviewScreen: BACK_ContentPreviewScreen,
 	    OPEN_UserActivityFromPreview: OPEN_UserActivityFromPreview,
@@ -85859,6 +89084,7 @@
 	    BACK_SettingsScreenActivity: BACK_SettingsScreenActivity,
 	    OPEN_LanguageSelectActivitySt: OPEN_LanguageSelectActivitySt,
 	    OPEN_AboutUsActivity: OPEN_AboutUsActivity,
+	    OPEN_DataSyncScreenActivity: OPEN_DataSyncScreenActivity,
 	    LanguageSelectActivitySt: LanguageSelectActivitySt,
 	    BACK_LanguageSelectActivitySt: BACK_LanguageSelectActivitySt,
 	    AboutUsActivity: AboutUsActivity,
@@ -85866,6 +89092,8 @@
 	    OPEN_AboutUsScreen: OPEN_AboutUsScreen,
 	    AboutUsScreen: AboutUsScreen,
 	    BACK_AboutUsScreen: BACK_AboutUsScreen,
+	    DataSyncScreenActivity: DataSyncScreenActivity,
+	    BACK_DataSyncScreenActivity: BACK_DataSyncScreenActivity,
 	    AnnouncementDetailActivity: AnnouncementDetailActivity,
 	    DummyAnnouncementDetailActivityAction: DummyAnnouncementDetailActivityAction,
 	    BACK_AnnouncementDetailActivity: BACK_AnnouncementDetailActivity,
@@ -85898,6 +89126,10 @@
 	    genericLanguageSelectionActivityAction: genericLanguageSelectionActivityAction,
 	    decodeLanguageSelectionActivityAction: decodeLanguageSelectionActivityAction,
 	    encodeLanguageSelectionActivityAction: encodeLanguageSelectionActivityAction,
+	    roleSelectionActivityAction: roleSelectionActivityAction,
+	    genericRoleSelectionActivityAction: genericRoleSelectionActivityAction,
+	    decodeRoleSelectionActivityAction: decodeRoleSelectionActivityAction,
+	    encodeRoleSelectionActivityAction: encodeRoleSelectionActivityAction,
 	    welcomeScreenActivity: welcomeScreenActivity,
 	    genericWelcomeScreenActivityAction: genericWelcomeScreenActivityAction,
 	    decodeWelcomeScreenActivityAction: decodeWelcomeScreenActivityAction,
@@ -86002,6 +89234,10 @@
 	    genericAboutUsScreenAction: genericAboutUsScreenAction,
 	    decodeAboutUsScreenAction: decodeAboutUsScreenAction,
 	    encodeAboutUsScreenAction: encodeAboutUsScreenAction,
+	    dataSyncScreenActivity: dataSyncScreenActivity,
+	    genericDataSyncScreenActivityAction: genericDataSyncScreenActivityAction,
+	    decodeDataSyncScreenActivityAction: decodeDataSyncScreenActivityAction,
+	    encodeDataSyncScreenActivityAction: encodeDataSyncScreenActivityAction,
 	    announcementDetailActivity: announcementDetailActivity,
 	    genericAnnouncementDetailActivityAction: genericAnnouncementDetailActivityAction,
 	    decodeAnnouncementDetailActivityAction: decodeAnnouncementDetailActivityAction,
@@ -86025,24 +89261,24 @@
 	};
 
 /***/ }),
-/* 712 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(713);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Function = __webpack_require__(516);
-	var Data_Function_Uncurried = __webpack_require__(600);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Show = __webpack_require__(521);
-	var Data_StrMap = __webpack_require__(690);
-	var Data_Tuple = __webpack_require__(622);
-	var Prelude = __webpack_require__(554);
-	var Unsafe_Coerce = __webpack_require__(635);
+	var $foreign = __webpack_require__(719);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Function = __webpack_require__(522);
+	var Data_Function_Uncurried = __webpack_require__(606);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Show = __webpack_require__(527);
+	var Data_StrMap = __webpack_require__(696);
+	var Data_Tuple = __webpack_require__(628);
+	var Prelude = __webpack_require__(560);
+	var Unsafe_Coerce = __webpack_require__(641);
 	var verbJsonType = function verbJsonType(def) {
 	    return function (f) {
 	        return function (fold) {
@@ -86210,7 +89446,7 @@
 	};
 
 /***/ }),
-/* 713 */
+/* 719 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -86288,28 +89524,28 @@
 	};
 
 /***/ }),
-/* 714 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Data_Either = __webpack_require__(543);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic = __webpack_require__(687);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Function = __webpack_require__(516);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Data_Either = __webpack_require__(549);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic = __webpack_require__(693);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Function = __webpack_require__(522);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var UIScreen = function UIScreen(generateMockEvents, ui) {
 	    this.generateMockEvents = generateMockEvents;
 	    this.ui = ui;
@@ -86374,57 +89610,57 @@
 	};
 
 /***/ }),
-/* 715 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(716);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Aff_Class = __webpack_require__(717);
-	var Control_Monad_Aff_Console = __webpack_require__(723);
-	var Control_Monad_Eff = __webpack_require__(541);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Exception = __webpack_require__(539);
-	var Control_Monad_Except = __webpack_require__(671);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Data_Argonaut_Core = __webpack_require__(712);
-	var Data_Array = __webpack_require__(640);
-	var Data_Bifoldable = __webpack_require__(546);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Foreign = __webpack_require__(669);
-	var Data_Foreign_Class = __webpack_require__(688);
-	var Data_Foreign_Generic = __webpack_require__(687);
-	var Data_Foreign_Generic_Class = __webpack_require__(696);
-	var Data_Foreign_Generic_Types = __webpack_require__(697);
-	var Data_Foreign_Index = __webpack_require__(698);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Generic_Rep_Show = __webpack_require__(724);
-	var Data_HTTP_Method = __webpack_require__(725);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Identity = __webpack_require__(609);
-	var Data_List = __webpack_require__(681);
-	var Data_List_NonEmpty = __webpack_require__(680);
-	var Data_List_Types = __webpack_require__(652);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_NonEmpty = __webpack_require__(645);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_StrMap = __webpack_require__(690);
-	var Data_String = __webpack_require__(655);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Network_HTTP_RequestHeader = __webpack_require__(726);
-	var Network_HTTP_StatusCode = __webpack_require__(728);
-	var Partial_Unsafe = __webpack_require__(611);
-	var Prelude = __webpack_require__(554);
-	var UI = __webpack_require__(714);
+	var $foreign = __webpack_require__(722);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Aff_Class = __webpack_require__(723);
+	var Control_Monad_Aff_Console = __webpack_require__(729);
+	var Control_Monad_Eff = __webpack_require__(547);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Exception = __webpack_require__(545);
+	var Control_Monad_Except = __webpack_require__(677);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Data_Argonaut_Core = __webpack_require__(718);
+	var Data_Array = __webpack_require__(646);
+	var Data_Bifoldable = __webpack_require__(552);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Foreign = __webpack_require__(675);
+	var Data_Foreign_Class = __webpack_require__(694);
+	var Data_Foreign_Generic = __webpack_require__(693);
+	var Data_Foreign_Generic_Class = __webpack_require__(702);
+	var Data_Foreign_Generic_Types = __webpack_require__(703);
+	var Data_Foreign_Index = __webpack_require__(704);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Generic_Rep_Show = __webpack_require__(730);
+	var Data_HTTP_Method = __webpack_require__(731);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Identity = __webpack_require__(615);
+	var Data_List = __webpack_require__(687);
+	var Data_List_NonEmpty = __webpack_require__(686);
+	var Data_List_Types = __webpack_require__(658);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_NonEmpty = __webpack_require__(651);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_StrMap = __webpack_require__(696);
+	var Data_String = __webpack_require__(661);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Network_HTTP_RequestHeader = __webpack_require__(732);
+	var Network_HTTP_StatusCode = __webpack_require__(734);
+	var Partial_Unsafe = __webpack_require__(617);
+	var Prelude = __webpack_require__(560);
+	var UI = __webpack_require__(720);
 	var updateState = function updateState(changes) {
 	    return function (state) {
 	        return Control_Monad_Aff.makeAff(function (error) {
@@ -86777,7 +90013,7 @@
 	};
 
 /***/ }),
-/* 716 */
+/* 722 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -87142,27 +90378,27 @@
 	};
 
 /***/ }),
-/* 717 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Cont_Trans = __webpack_require__(618);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Control_Monad_List_Trans = __webpack_require__(718);
-	var Control_Monad_Maybe_Trans = __webpack_require__(630);
-	var Control_Monad_RWS_Trans = __webpack_require__(721);
-	var Control_Monad_Reader_Trans = __webpack_require__(631);
-	var Control_Monad_State_Trans = __webpack_require__(722);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Trans = __webpack_require__(632);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Monoid = __webpack_require__(585);
-	var Prelude = __webpack_require__(554);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Cont_Trans = __webpack_require__(624);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Control_Monad_List_Trans = __webpack_require__(724);
+	var Control_Monad_Maybe_Trans = __webpack_require__(636);
+	var Control_Monad_RWS_Trans = __webpack_require__(727);
+	var Control_Monad_Reader_Trans = __webpack_require__(637);
+	var Control_Monad_State_Trans = __webpack_require__(728);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Trans = __webpack_require__(638);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Monoid = __webpack_require__(591);
+	var Prelude = __webpack_require__(560);
 	var MonadAff = function MonadAff(MonadEff0, liftAff) {
 	    this.MonadEff0 = MonadEff0;
 	    this.liftAff = liftAff;
@@ -87248,38 +90484,38 @@
 	};
 
 /***/ }),
-/* 718 */
+/* 724 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Category = __webpack_require__(514);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Lazy = __webpack_require__(719);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unfoldable = __webpack_require__(650);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Category = __webpack_require__(520);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Lazy = __webpack_require__(725);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unfoldable = __webpack_require__(656);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var Yield = function () {
 	    function Yield(value0, value1) {
 	        this.value0 = value0;
@@ -87919,39 +91155,39 @@
 	};
 
 /***/ }),
-/* 719 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var $foreign = __webpack_require__(720);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Comonad = __webpack_require__(589);
-	var Control_Extend = __webpack_require__(544);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_BooleanAlgebra = __webpack_require__(556);
-	var Data_Bounded = __webpack_require__(559);
-	var Data_CommutativeRing = __webpack_require__(570);
-	var Data_Eq = __webpack_require__(551);
-	var Data_EuclideanRing = __webpack_require__(572);
-	var Data_Field = __webpack_require__(574);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Functor_Invariant = __webpack_require__(584);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ring = __webpack_require__(566);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Semiring = __webpack_require__(568);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var $foreign = __webpack_require__(726);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Comonad = __webpack_require__(595);
+	var Control_Extend = __webpack_require__(550);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_BooleanAlgebra = __webpack_require__(562);
+	var Data_Bounded = __webpack_require__(565);
+	var Data_CommutativeRing = __webpack_require__(576);
+	var Data_Eq = __webpack_require__(557);
+	var Data_EuclideanRing = __webpack_require__(578);
+	var Data_Field = __webpack_require__(580);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Functor_Invariant = __webpack_require__(590);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ring = __webpack_require__(572);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Semiring = __webpack_require__(574);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var showLazy = function showLazy(dictShow) {
 	    return new Data_Show.Show(function (x) {
 	        return "(defer \\_ -> " + (Data_Show.show(dictShow)($foreign.force(x)) + ")");
@@ -88166,7 +91402,7 @@
 	};
 
 /***/ }),
-/* 720 */
+/* 726 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -88199,36 +91435,36 @@
 	};
 
 /***/ }),
-/* 721 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var RWSResult = function () {
 	    function RWSResult(value0, value1, value2) {
 	        this.value0 = value0;
@@ -88595,37 +91831,37 @@
 	};
 
 /***/ }),
-/* 722 */
+/* 728 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Alt = __webpack_require__(530);
-	var Control_Alternative = __webpack_require__(534);
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Apply = __webpack_require__(512);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Lazy = __webpack_require__(610);
-	var Control_Monad = __webpack_require__(536);
-	var Control_Monad_Cont_Class = __webpack_require__(619);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Error_Class = __webpack_require__(603);
-	var Control_Monad_Reader_Class = __webpack_require__(620);
-	var Control_Monad_Rec_Class = __webpack_require__(604);
-	var Control_Monad_State_Class = __webpack_require__(621);
-	var Control_Monad_Trans_Class = __webpack_require__(625);
-	var Control_Monad_Writer_Class = __webpack_require__(629);
-	var Control_MonadPlus = __webpack_require__(615);
-	var Control_MonadZero = __webpack_require__(583);
-	var Control_Plus = __webpack_require__(535);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Data_Function = __webpack_require__(516);
-	var Data_Functor = __webpack_require__(517);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Tuple = __webpack_require__(622);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Alt = __webpack_require__(536);
+	var Control_Alternative = __webpack_require__(540);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Apply = __webpack_require__(518);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Lazy = __webpack_require__(616);
+	var Control_Monad = __webpack_require__(542);
+	var Control_Monad_Cont_Class = __webpack_require__(625);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Error_Class = __webpack_require__(609);
+	var Control_Monad_Reader_Class = __webpack_require__(626);
+	var Control_Monad_Rec_Class = __webpack_require__(610);
+	var Control_Monad_State_Class = __webpack_require__(627);
+	var Control_Monad_Trans_Class = __webpack_require__(631);
+	var Control_Monad_Writer_Class = __webpack_require__(635);
+	var Control_MonadPlus = __webpack_require__(621);
+	var Control_MonadZero = __webpack_require__(589);
+	var Control_Plus = __webpack_require__(541);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Data_Function = __webpack_require__(522);
+	var Data_Functor = __webpack_require__(523);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Tuple = __webpack_require__(628);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var StateT = function StateT(x) {
 	    return x;
 	};
@@ -88916,17 +92152,17 @@
 	};
 
 /***/ }),
-/* 723 */
+/* 729 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Control_Monad_Eff_Console = __webpack_require__(660);
-	var Control_Semigroupoid = __webpack_require__(515);
-	var Prelude = __webpack_require__(554);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Control_Monad_Eff_Console = __webpack_require__(666);
+	var Control_Semigroupoid = __webpack_require__(521);
+	var Prelude = __webpack_require__(560);
 	var warnShow = function warnShow(dictShow) {
 	    return function ($4) {
 	        return Control_Monad_Eff_Class.liftEff(Control_Monad_Aff.monadEffAff)(Control_Monad_Eff_Console.warnShow(dictShow)($4));
@@ -88971,19 +92207,19 @@
 	};
 
 /***/ }),
-/* 724 */
+/* 730 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Foldable = __webpack_require__(580);
-	var Data_Generic_Rep = __webpack_require__(700);
-	var Data_Monoid = __webpack_require__(585);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Symbol = __webpack_require__(701);
-	var Prelude = __webpack_require__(554);
+	var Data_Foldable = __webpack_require__(586);
+	var Data_Generic_Rep = __webpack_require__(706);
+	var Data_Monoid = __webpack_require__(591);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Symbol = __webpack_require__(707);
+	var Prelude = __webpack_require__(560);
 	var GenericShow = function GenericShow(genericShow$prime) {
 	    this["genericShow'"] = genericShow$prime;
 	};
@@ -89095,24 +92331,24 @@
 	};
 
 /***/ }),
-/* 725 */
+/* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Data_Either = __webpack_require__(543);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Ordering = __webpack_require__(565);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_String = __webpack_require__(655);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Apply = __webpack_require__(518);
+	var Data_Either = __webpack_require__(549);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Ordering = __webpack_require__(571);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_String = __webpack_require__(661);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var OPTIONS = function () {
 	    function OPTIONS() {};
 	    OPTIONS.value = new OPTIONS();
@@ -89712,19 +92948,19 @@
 	};
 
 /***/ }),
-/* 726 */
+/* 732 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Data_Eq = __webpack_require__(551);
-	var Data_HeytingAlgebra = __webpack_require__(557);
-	var Data_MediaType = __webpack_require__(727);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Prelude = __webpack_require__(554);
+	var Data_Eq = __webpack_require__(557);
+	var Data_HeytingAlgebra = __webpack_require__(563);
+	var Data_MediaType = __webpack_require__(733);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Prelude = __webpack_require__(560);
 	var Accept = function () {
 	    function Accept(value0) {
 	        this.value0 = value0;
@@ -89816,22 +93052,22 @@
 	};
 
 /***/ }),
-/* 727 */
+/* 733 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Newtype = __webpack_require__(553);
-	var Data_Ord = __webpack_require__(561);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Apply = __webpack_require__(518);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Newtype = __webpack_require__(559);
+	var Data_Ord = __webpack_require__(567);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var MediaType = function MediaType(x) {
 	    return x;
 	};
@@ -89880,20 +93116,20 @@
 	};
 
 /***/ }),
-/* 728 */
+/* 734 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Apply = __webpack_require__(512);
-	var Data_Eq = __webpack_require__(551);
-	var Data_Generic = __webpack_require__(638);
-	var Data_Maybe = __webpack_require__(582);
-	var Data_Semigroup = __webpack_require__(531);
-	var Data_Show = __webpack_require__(521);
-	var Data_Unit = __webpack_require__(519);
-	var Prelude = __webpack_require__(554);
+	var Control_Apply = __webpack_require__(518);
+	var Data_Eq = __webpack_require__(557);
+	var Data_Generic = __webpack_require__(644);
+	var Data_Maybe = __webpack_require__(588);
+	var Data_Semigroup = __webpack_require__(537);
+	var Data_Show = __webpack_require__(527);
+	var Data_Unit = __webpack_require__(525);
+	var Prelude = __webpack_require__(560);
 	var StatusCode = function StatusCode(x) {
 	    return x;
 	};
@@ -89930,22 +93166,22 @@
 	};
 
 /***/ }),
-/* 729 */
+/* 735 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Except_Trans = __webpack_require__(628);
-	var Data_Function = __webpack_require__(516);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Except_Trans = __webpack_require__(634);
+	var Data_Function = __webpack_require__(522);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -90049,6 +93285,48 @@
 	                return searchCourseActivity(input)(whereFrom)(whatToSendBack);
 	            });
 	        };
+	    };
+	};
+	var resourceDetailActivity = function resourceDetailActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.resourceDetailActivity)(Types_UITypes.encodeResourceDetailActivityAction)(new Types_UITypes.ResourceDetailActivity({
+	                resourceDetails: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.BACK_ResourceDetailActivity) {
+	                    if (whereFrom === "CourseSearchActivity") {
+	                        return searchCourseActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "CourseFragment") {
+	                        return courseFragment(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return courseFragment(whatToSendBack)("Terminate")(input);
+	                };
+	                return resourceDetailActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var qrActivity = function qrActivity(whereFrom) {
+	    return function (whatToSendBack) {
+	        return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.qrActivity)(Types_UITypes.encodeQRActivityAction)(Types_UITypes.QRActivity.value))(function (v) {
+	            if (v instanceof Types_UITypes.OPEN_CourseEnrolledActivity_QR) {
+	                return enrolledCourseActivity(v.value0.course)("CourseFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_ResourceDetailActivity_QR) {
+	                return resourceDetailActivity(v.value0.resourceDetails)("CourseFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_CourseInfoActivity_QR) {
+	                return courseInfoActivity(v.value0.course)("CourseFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_SearchActivity_QR) {
+	                return searchCourseActivity(v.value0.filterDetails)("CourseFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.BACK_QRActivity) {
+	                return courseFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	            };
+	            return courseFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	        });
 	    };
 	};
 	var enrolledCourseActivity = function enrolledCourseActivity(input) {
@@ -90200,6 +93478,9 @@
 	                if (v instanceof Types_UITypes.OPEN_CourseViewAllActivity) {
 	                    return courseViewAllActivity(v.value0.courseListDetails)("CourseFragment")(input);
 	                };
+	                if (v instanceof Types_UITypes.OPEN_QRActivity) {
+	                    return qrActivity("CourseFragment")(input);
+	                };
 	                if (v instanceof Types_UITypes.API_CourseFragment) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getCoursesPageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
@@ -90267,25 +93548,27 @@
 	    enrolledCourseActivity: enrolledCourseActivity,
 	    subModuleDetailActivity: subModuleDetailActivity,
 	    searchCourseActivity: searchCourseActivity,
-	    courseFilterActivity: courseFilterActivity
+	    courseFilterActivity: courseFilterActivity,
+	    qrActivity: qrActivity,
+	    resourceDetailActivity: resourceDetailActivity
 	};
 
 /***/ }),
-/* 730 */
+/* 736 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Data_Function = __webpack_require__(516);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Data_Function = __webpack_require__(522);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -90397,6 +93680,9 @@
 	            if (v instanceof Types_UITypes.OPEN_CourseInfoActivity_QR) {
 	                return courseInfoActivity(v.value0.course)("HomeFragment")(whatToSendBack);
 	            };
+	            if (v instanceof Types_UITypes.OPEN_SearchActivity_QR) {
+	                return homeSearchActivity(v.value0.filterDetails)("HomeFragment")(whatToSendBack);
+	            };
 	            if (v instanceof Types_UITypes.BACK_QRActivity) {
 	                return homeFragment(whatToSendBack)("Terminate")(whatToSendBack);
 	            };
@@ -90484,6 +93770,17 @@
 	                            response: v1,
 	                            responseFor: "API_UserEnrolledCourse",
 	                            screen: "HomeFragment"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.API_Tenant) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getTenantDetail(v.value0.user_token)(v.value0.api_token)(v.value0.slug))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_Tenant",
+	                            screen: "MainActivity"
 	                        }))(function (v2) {
 	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
 	                        });
@@ -90788,21 +94085,21 @@
 	};
 
 /***/ }),
-/* 731 */
+/* 737 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Data_Function = __webpack_require__(516);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Data_Function = __webpack_require__(522);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
 	var viewBatchActivity = function viewBatchActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -90896,6 +94193,9 @@
 	                };
 	                if (v instanceof Types_UITypes.OPEN_AboutUsActivity) {
 	                    return aboutUsActivity(v.value0.profile)("SettingsScreenActivity")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_DataSyncScreenActivity) {
+	                    return dataSyncScreenActivity(input)("SettingsScreenActivity")(whatToSendBack);
 	                };
 	                return settingsScreenActivity(input)(whereFrom)(whatToSendBack);
 	            });
@@ -91243,6 +94543,18 @@
 	        };
 	    };
 	};
+	var dataSyncScreenActivity = function dataSyncScreenActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.dataSyncScreenActivity)(Types_UITypes.encodeDataSyncScreenActivityAction)(Types_UITypes.DataSyncScreenActivity.value))(function (v) {
+	                if (whereFrom === "SettingsScreenActivity") {
+	                    return settingsScreenActivity(input)("Terminate")(whatToSendBack);
+	                };
+	                return settingsScreenActivity(input)("Terminate")(whatToSendBack);
+	            });
+	        };
+	    };
+	};
 	var courseInfoActivity = function courseInfoActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -91370,6 +94682,7 @@
 	    languageSelectActivitySt: languageSelectActivitySt,
 	    aboutUsActivity: aboutUsActivity,
 	    aboutUsScreen: aboutUsScreen,
+	    dataSyncScreenActivity: dataSyncScreenActivity,
 	    addressActivity: addressActivity,
 	    educationActivity: educationActivity,
 	    experienceActivity: experienceActivity,
@@ -91381,23 +94694,79 @@
 	};
 
 /***/ }),
-/* 732 */
+/* 738 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by purs version 0.11.7
 	"use strict";
 	
-	var Control_Applicative = __webpack_require__(511);
-	var Control_Bind = __webpack_require__(523);
-	var Control_Monad_Aff = __webpack_require__(525);
-	var Control_Monad_Aff_Console = __webpack_require__(723);
-	var Control_Monad_Eff_Class = __webpack_require__(602);
-	var Data_Function = __webpack_require__(516);
-	var Prelude = __webpack_require__(554);
-	var Types_APITypes = __webpack_require__(709);
-	var Types_UITypes = __webpack_require__(711);
-	var UI = __webpack_require__(714);
-	var Utils = __webpack_require__(715);
+	var Control_Applicative = __webpack_require__(517);
+	var Control_Bind = __webpack_require__(529);
+	var Control_Monad_Aff = __webpack_require__(531);
+	var Control_Monad_Aff_Console = __webpack_require__(729);
+	var Control_Monad_Eff_Class = __webpack_require__(608);
+	var Data_Function = __webpack_require__(522);
+	var Prelude = __webpack_require__(560);
+	var Types_APITypes = __webpack_require__(715);
+	var Types_UITypes = __webpack_require__(717);
+	var UI = __webpack_require__(720);
+	var Utils = __webpack_require__(721);
+	var viewBatchActivity = function viewBatchActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.viewBatchActivity)(Types_UITypes.encodeViewBatchActivityAction)(new Types_UITypes.ViewBatchActivity({
+	                extras: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.OPEN_EnrolledActivity_BATCH) {
+	                    return enrolledCourseActivity(v.value0.course)("ResourceFragment")(input);
+	                };
+	                if (v instanceof Types_UITypes.API_Get_Batch_list) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getBatchList(v.value0.user_token)(v.value0.api_token)(v.value0.request))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_Get_Batch_list",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.API_BatchCreator) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserDetail(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_BatchCreator",
+	                            screen: "ViewBatchActivity"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiCalled");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.API_EnrollInBatch) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.enrollInBatch(v.value0.reqParams)(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_EnrollInBatch",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.BACK_ViewBatchActivity) {
+	                    if (whereFrom === "CourseInfoActivity") {
+	                        return courseInfoActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "CourseViewAllActivity") {
+	                        return courseViewAllActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return resourceFragment(whatToSendBack)("Terminate")(input);
+	                };
+	                return viewBatchActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
 	var subModuleResourceDetailActivity = function subModuleResourceDetailActivity(mName) {
 	    return function (input) {
 	        return function (whereFrom) {
@@ -91416,6 +94785,29 @@
 	                        return courseDetailActivity(whatToSendBack)("Terminate")(input);
 	                    };
 	                    return subModuleResourceDetailActivity(mName)(input)(whereFrom)(whatToSendBack);
+	                });
+	            };
+	        };
+	    };
+	};
+	var subModuleDetailActivity = function subModuleDetailActivity(mName) {
+	    return function (input) {
+	        return function (whereFrom) {
+	            return function (whatToSendBack) {
+	                return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.moduleDetailActivity)(Types_UITypes.encodeModuleDetailActivityAction)(new Types_UITypes.ModuleDetailActivity({
+	                    moduleName: mName,
+	                    moduleDetails: input
+	                })))(function (v) {
+	                    if (v instanceof Types_UITypes.BACK_ModuleDetailActivity) {
+	                        if (whereFrom === "Terminate") {
+	                            return enrolledCourseActivity(whatToSendBack)("Terminate")(input);
+	                        };
+	                        if (whereFrom === "EnrolledCourseActivity") {
+	                            return enrolledCourseActivity(whatToSendBack)("Terminate")(input);
+	                        };
+	                        return enrolledCourseActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return subModuleDetailActivity(mName)(input)(whereFrom)(whatToSendBack);
 	                });
 	            };
 	        };
@@ -91489,6 +94881,9 @@
 	                if (v instanceof Types_UITypes.OPEN_CourseInfoActivity) {
 	                    return courseDetailActivity(v.value0.course)("ResourceFragmnet")(input);
 	                };
+	                if (v instanceof Types_UITypes.OPEN_QRActivity) {
+	                    return qrActivity("ResourceFragmnet")(input);
+	                };
 	                if (v instanceof Types_UITypes.API_ResourceFragment) {
 	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getResourcePageApi(v.value0.user_token)(v.value0.api_token))(function (v1) {
 	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
@@ -91551,6 +94946,28 @@
 	        };
 	    };
 	};
+	var qrActivity = function qrActivity(whereFrom) {
+	    return function (whatToSendBack) {
+	        return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.qrActivity)(Types_UITypes.encodeQRActivityAction)(Types_UITypes.QRActivity.value))(function (v) {
+	            if (v instanceof Types_UITypes.OPEN_CourseEnrolledActivity_QR) {
+	                return enrolledCourseActivity(v.value0.course)("ResourceFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_ResourceDetailActivity_QR) {
+	                return resourceDetailActivity(v.value0.resourceDetails)("ResourceFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_CourseInfoActivity_QR) {
+	                return courseInfoActivity(v.value0.course)("ResourceFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.OPEN_SearchActivity_QR) {
+	                return resourceSearchActivity(v.value0.filterDetails)("ResourceFragment")(whatToSendBack);
+	            };
+	            if (v instanceof Types_UITypes.BACK_QRActivity) {
+	                return resourceFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	            };
+	            return resourceFragment(whatToSendBack)("Terminate")(whatToSendBack);
+	        });
+	    };
+	};
 	var filterActivity = function filterActivity(input) {
 	    return function (whereFrom) {
 	        return function (whatToSendBack) {
@@ -91567,6 +94984,125 @@
 	                    return resourceSearchActivity(whatToSendBack)("FilterActivity")(input);
 	                };
 	                return filterActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var enrolledCourseActivity = function enrolledCourseActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.courseEnrolledActivity)(Types_UITypes.encodeCourseEnrolledActivityAction)(new Types_UITypes.CourseEnrolledActivity({
+	                courseDetails: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.API_FlagCourse) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.flagContent(v.value0.user_token)(v.value0.api_token)(v.value0.requestBody)(v.value0.identifier))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_FlagCourse",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.API_Get_Batch_Creator_name) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserDetail(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_Get_Batch_Creator_name",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.API_Get_Batch_Details) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getBatchDetails(v.value0.user_token)(v.value0.api_token)(v.value0.batch_id))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_Get_Batch_Details",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("handled");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.OPEN_ModuleDetailsActivity) {
+	                    return subModuleDetailActivity(v.value0.moduleName)(v.value0.moduleDetails)("EnrolledCourseActivity")(input);
+	                };
+	                if (v instanceof Types_UITypes.BACK_CourseEnrolledActivity) {
+	                    if (whereFrom === "ResourceSearchActivity") {
+	                        return resourceSearchActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "CourseViewAllActivity") {
+	                        return courseViewAllActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return resourceFragment(whatToSendBack)("Terminate")(input);
+	                };
+	                return enrolledCourseActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var courseViewAllActivity = function courseViewAllActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.courseViewAllActivity)(Types_UITypes.encodeCourseViewAllActivityAction)(new Types_UITypes.CourseViewAllActivity({
+	                courseViewAllDetails: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.OPEN_EnrolledCourseFlowFromCourseViewAll) {
+	                    return enrolledCourseActivity(v.value0.course)("CourseViewAllActivity")(input);
+	                };
+	                if (v instanceof Types_UITypes.BACK_CourseViewAllActivity) {
+	                    if (whereFrom === "ResourceFragment") {
+	                        return resourceFragment(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "SearchActivity") {
+	                        return resourceSearchActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return resourceFragment(whatToSendBack)("Terminate")(input);
+	                };
+	                return courseViewAllActivity(input)(whereFrom)(whatToSendBack);
+	            });
+	        };
+	    };
+	};
+	var courseInfoActivity = function courseInfoActivity(input) {
+	    return function (whereFrom) {
+	        return function (whatToSendBack) {
+	            return Control_Bind.bind(Control_Monad_Aff.bindAff)(UI.ui(Types_UITypes.courseInfoScreen)(Types_UITypes.encodeCourseInfoActivityAction)(new Types_UITypes.CourseInfoActivity({
+	                courseDetails: input
+	            })))(function (v) {
+	                if (v instanceof Types_UITypes.OPEN_EnrolledActivity) {
+	                    return enrolledCourseActivity(v.value0.course)("ResourceFragment")(input);
+	                };
+	                if (v instanceof Types_UITypes.OPEN_ViewBatchActivity) {
+	                    return viewBatchActivity(v.value0.course)("CourseInfoActivity")(input);
+	                };
+	                if (v instanceof Types_UITypes.API_EnrolledCoursesList) {
+	                    return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.getUserEnrolledCourses(v.value0.user_token)(v.value0.api_token))(function (v1) {
+	                        return Control_Bind.bind(Control_Monad_Aff.bindAff)(Utils.sendUpdatedState({
+	                            response: v1,
+	                            responseFor: "API_EnrolledCoursesList",
+	                            screen: "asas"
+	                        }))(function (v2) {
+	                            return Control_Applicative.pure(Control_Monad_Aff.applicativeAff)("apiDefault");
+	                        });
+	                    });
+	                };
+	                if (v instanceof Types_UITypes.BACK_CourseInfoActivity) {
+	                    if (whereFrom === "ResourceFragment") {
+	                        return resourceFragment(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "CourseViewAllActivity") {
+	                        return courseViewAllActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    if (whereFrom === "SearchActivity") {
+	                        return resourceSearchActivity(whatToSendBack)("Terminate")(input);
+	                    };
+	                    return resourceFragment(whatToSendBack)("Terminate")(input);
+	                };
+	                return courseInfoActivity(input)(whereFrom)(whatToSendBack);
 	            });
 	        };
 	    };
@@ -91634,7 +95170,13 @@
 	    resourceDetailActivity: resourceDetailActivity,
 	    courseDetailActivity: courseDetailActivity,
 	    subModuleResourceDetailActivity: subModuleResourceDetailActivity,
-	    resourceViewAllActivity: resourceViewAllActivity
+	    resourceViewAllActivity: resourceViewAllActivity,
+	    qrActivity: qrActivity,
+	    enrolledCourseActivity: enrolledCourseActivity,
+	    courseInfoActivity: courseInfoActivity,
+	    subModuleDetailActivity: subModuleDetailActivity,
+	    courseViewAllActivity: courseViewAllActivity,
+	    viewBatchActivity: viewBatchActivity
 	};
 
 /***/ })
