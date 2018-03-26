@@ -63,9 +63,17 @@ public class PlayerConfig implements IPlayerConfig {
                 List<Map> pluginsList = new ArrayList<>();
                 pluginsList.add(plugins);
 
+
+                HashMap<String, Object> splashMap = new HashMap<>();
+                splashMap.put("text","");
+                splashMap.put("icon","");
+                splashMap.put("bgImage","");
+                splashMap.put("webLink","");
+
                 HashMap<String, Object> config = new HashMap<>();
                 config.put("showEndPage", false);
                 config.put("plugins", pluginsList);
+                config.put("splash", splashMap);
                 intent.putExtra("config", config);
 
             } else {
