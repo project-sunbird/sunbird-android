@@ -31,8 +31,7 @@ licenses:
 - android-sdk-license-.+
 - google-gdk-license-.+
 before_install:
-- openssl aes-256-cbc -K $encrypted_27453a86621b_key -iv $encrypted_27453a86621b_iv
-  -in secrets.tar.enc -out secrets.tar -d
+- openssl aes-256-cbc -K $encrypted_dd527d6e5672_key -iv $encrypted_dd527d6e5672_iv -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - mv google-services.json app
 - chmod +x gradlew
