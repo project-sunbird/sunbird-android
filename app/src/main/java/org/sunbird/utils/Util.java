@@ -1,6 +1,9 @@
 package org.sunbird.utils;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -242,6 +245,13 @@ public class Util {
         byte[] dataText = Base64.decode(data, Base64.DEFAULT);
         String text = new String(dataText, "UTF-8");
         return text;
+    }
+
+    public static boolean isNetworkAvailable(Context activity) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

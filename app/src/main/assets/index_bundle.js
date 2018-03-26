@@ -293,6 +293,7 @@
 	    JBridge.setInSharedPrefs("intentLinkPath", "__failed");
 	    JBridge.setInSharedPrefs("logged_in", "__failed");
 	    JBridge.setInSharedPrefs("role", "__failed");
+	    JBridge.setInSharedPrefs("answeredQs", "__failed");
 	    JBridge.setInSharedPrefs("user_id", "__failed");
 	    JBridge.setInSharedPrefs("user_name", "__failed");
 	    JBridge.setInSharedPrefs("user_token", "__failed");
@@ -21941,6 +21942,7 @@
 				//JBridge.setProfile(window.__userToken, true, setProfileCb);
 			}
 		} else if (window.__loggedInState == "YES") {
+			JBridge.setInSharedPrefs("answeredQs", "__failed");
 			JBridge.setInSharedPrefs("logged_in", "YES");
 			JBridge.setProfile(window.__userToken, false, setProfileCb);
 		}
@@ -22359,7 +22361,7 @@
 	            _this2.rating = _this2.totalRatedStars();
 	            _this2.commentHint = _this2.rating == 0 ? window.__S.FEEDBACK_HINT : window.__S.FEEDBACK_HINT_1;
 	            var successCb = callbackMapper.map(function () {
-	                window.__Snackbar.show("Thank you for rating.");
+	                window.__Snackbar.show(window.__S.THANK_FOR_RATING);
 	            });
 	            JBridge.sendFeedback(successCb, _this2.contentId, _this2.comment, _this2.rating, _this2.pageId, _this2.contentVersion);
 	            _this2.hide();
@@ -23927,7 +23929,7 @@
 			ABOUT_MODULE: "About Module",
 			CHOOSE_FROM_FOLLOWING: "Select from following",
 			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social media links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Invalid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to %s."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that %s has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _defineProperty(_en_US, "OFF", "Off"), _defineProperty(_en_US, "OVER_WIFI", "Over Wifi"), _defineProperty(_en_US, "ALWAYS_ON", "Always on"), _defineProperty(_en_US, "SYNCING_NOW", "Syncing Now"), _defineProperty(_en_US, "SHARE_TELEMETRY", "Share Telemetry"), _defineProperty(_en_US, "SYNC_NOW", "Sync Now"), _defineProperty(_en_US, "AUTOMATIC_SYNC", "Automatic Data Sync"), _defineProperty(_en_US, "DATA_SYNC", "Data Sync"), _defineProperty(_en_US, "DATA_SYNC_SUB", "Backup your data, Transfer Telemetry"), _defineProperty(_en_US, "DEVICE_TAGS", "Device Tags"), _defineProperty(_en_US, "DEVICE_TAGS_SUB", "Add/Remove Device Tags"), _defineProperty(_en_US, "LAST_SYNC", "Last synced on "), _defineProperty(_en_US, "DOWNLOAD_ALL_wSIZE", "Download all %s?"), _defineProperty(_en_US, "ENJOYED_THIS_CONTENT", "Enjoyed this content?"), _defineProperty(_en_US, "HELP_US_BY_RATING", "Help us by rating this content"), _defineProperty(_en_US, "FEEDBACK_HINT", "Feedback (optional)"), _defineProperty(_en_US, "FEEDBACK_HINT_1", "Add a comment here"), _defineProperty(_en_US, "ABOUT", "About"), _defineProperty(_en_US, "SUBJECT", "SUBJECT"), _defineProperty(_en_US, "BOARD", "BOARD"), _defineProperty(_en_US, "MEDIUM_2", "MEDIUM"), _defineProperty(_en_US, "VIEW_CREDITS_INFO", "View Credits and Licensing Info"), _defineProperty(_en_US, "HIDE_CREDITS_INFO", "Hide Credits and Licensing Info"), _defineProperty(_en_US, "TRY_BEFORE_RATING", "Please try the content before rating it."), _defineProperty(_en_US, "SEND_EMAIL", "Send Email"), _defineProperty(_en_US, "BY", "By"), _en_US),
+		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social media links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Invalid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to %s."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that %s has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _defineProperty(_en_US, "OFF", "Off"), _defineProperty(_en_US, "OVER_WIFI", "Over Wifi"), _defineProperty(_en_US, "ALWAYS_ON", "Always on"), _defineProperty(_en_US, "SYNCING_NOW", "Syncing Now"), _defineProperty(_en_US, "SHARE_TELEMETRY", "Share Telemetry"), _defineProperty(_en_US, "SYNC_NOW", "Sync Now"), _defineProperty(_en_US, "AUTOMATIC_SYNC", "Automatic Data Sync"), _defineProperty(_en_US, "DATA_SYNC", "Data Sync"), _defineProperty(_en_US, "DATA_SYNC_SUB", "Backup your data, Transfer Telemetry"), _defineProperty(_en_US, "DEVICE_TAGS", "Device Tags"), _defineProperty(_en_US, "DEVICE_TAGS_SUB", "Add/Remove Device Tags"), _defineProperty(_en_US, "LAST_SYNC", "Last synced on "), _defineProperty(_en_US, "DOWNLOAD_ALL_wSIZE", "Download all %s?"), _defineProperty(_en_US, "ENJOYED_THIS_CONTENT", "Enjoyed this content?"), _defineProperty(_en_US, "HELP_US_BY_RATING", "Help us by rating this content"), _defineProperty(_en_US, "FEEDBACK_HINT", "Feedback (optional)"), _defineProperty(_en_US, "FEEDBACK_HINT_1", "Add a comment here"), _defineProperty(_en_US, "ABOUT", "About"), _defineProperty(_en_US, "SUBJECT", "SUBJECT"), _defineProperty(_en_US, "BOARD", "BOARD"), _defineProperty(_en_US, "MEDIUM_2", "MEDIUM"), _defineProperty(_en_US, "VIEW_CREDITS_INFO", "View Credits and Licensing Info"), _defineProperty(_en_US, "HIDE_CREDITS_INFO", "Hide Credits and Licensing Info"), _defineProperty(_en_US, "TRY_BEFORE_RATING", "Please try the content before rating it."), _defineProperty(_en_US, "SEND_EMAIL", "Send Email"), _defineProperty(_en_US, "BY", "By"), _defineProperty(_en_US, "PROFILE_UPDATE_SUCCESS", "Profile is updated successfully."), _defineProperty(_en_US, "PROFILE_UPDATE_FAILED", "Updating profile failed, try again later"), _defineProperty(_en_US, "BATCH_DETAILS", "Batch Details"), _defineProperty(_en_US, "THANK_FOR_RATING", "Thank you for rating"), _en_US),
 		"hi_IN": (_hi_IN = {
 			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
 			APPLY_FILTER: "फिल्टर लागू करें",
@@ -25016,7 +25018,9 @@
 	            };
 	        };
 	
-	        _this.afterRender = function () {};
+	        _this.afterRender = function () {
+	            JBridge.animateImageView(_this.idSet.whiteArrow + "");
+	        };
 	
 	        _this.changeLang = function () {
 	            _this.langArr.map(function (item) {
@@ -25056,7 +25060,7 @@
 	                    background: "#FFF8F8F8",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 76
+	                        lineNumber: 79
 	                    }
 	                },
 	                _this.getLanguageLabels()
@@ -25088,7 +25092,7 @@
 	                        return _this.changeSelectedLang(langCode);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 103
+	                        lineNumber: 106
 	                    }
 	                },
 	                dom(
@@ -25101,7 +25105,7 @@
 	                        margin: "2,0,0,0",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 110
+	                            lineNumber: 113
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25110,13 +25114,13 @@
 	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 117
+	                            lineNumber: 120
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 122
+	                            lineNumber: 125
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -25125,7 +25129,7 @@
 	                        imageUrl: "ic_blue_tick",
 	                        visibility: isSelected ? "visible" : "gone", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 124
+	                            lineNumber: 127
 	                        }
 	                    })
 	                ),
@@ -25139,7 +25143,7 @@
 	                    alpha: "0.3",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 130
+	                        lineNumber: 133
 	                    }
 	                })
 	            );
@@ -25158,7 +25162,7 @@
 	                    margin: "0,0,0,0",
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 145
+	                        lineNumber: 148
 	                    }
 	                },
 	                dom(
@@ -25169,7 +25173,7 @@
 	                        gravity: "center_vertical",
 	                        onClick: _this.changeLang, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 154
+	                            lineNumber: 157
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25180,7 +25184,7 @@
 	                        color: "#FFFFFFFF",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 159
+	                            lineNumber: 162
 	                        }
 	                    }),
 	                    dom(
@@ -25191,16 +25195,17 @@
 	                            padding: "0,0,16,0",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 166
+	                                lineNumber: 169
 	                            }
 	                        },
 	                        dom(ImageView, {
+	                            id: _this.idSet.whiteArrow,
 	                            height: "20",
 	                            width: "20",
 	                            imageUrl: "ic_white_arrow",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 171
+	                                lineNumber: 174
 	                            }
 	                        })
 	                    )
@@ -25225,7 +25230,7 @@
 	        console.log("Default language -> ", JBridge.getLocalLang());
 	        _this.devicelang = JBridge.getLocalLang();
 	        _this.defaultlang = window.__CurrentLanguage;
-	        _this.setIds(["langContainer"]);
+	        _this.setIds(["langContainer", "whiteArrow"]);
 	        _this.backPressCount = 0;
 	        _this.shouldCacheScreen = false;
 	        _this.langArr = [];
@@ -25246,7 +25251,7 @@
 	                    root: true,
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 197
+	                        lineNumber: 201
 	                    }
 	                },
 	                dom(
@@ -25260,7 +25265,7 @@
 	                        background: "#FFFFFFFF",
 	                        cornerRadius: "0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 204
+	                            lineNumber: 208
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25272,7 +25277,7 @@
 	                        color: "#FF333333",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 212
+	                            lineNumber: 216
 	                        }
 	                    }),
 	                    dom(
@@ -25287,7 +25292,7 @@
 	                            id: this.idSet.langContainer,
 	                            cornerRadius: "0", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 220
+	                                lineNumber: 224
 	                            }
 	                        },
 	                        this.getLanguageLabels()
@@ -25295,7 +25300,7 @@
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 233
+	                            lineNumber: 237
 	                        }
 	                    }),
 	                    this.getContinueBtn()
@@ -25375,7 +25380,7 @@
 	                    orientation: "vertical",
 	                    gravity: "center", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 54
+	                        lineNumber: 55
 	                    }
 	                },
 	                _this.getCards()
@@ -25399,7 +25404,7 @@
 	                    clickable: "true",
 	                    visibility: "gone", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 67
+	                        lineNumber: 68
 	                    }
 	                },
 	                dom(
@@ -25410,7 +25415,7 @@
 	                        gravity: "center_vertical",
 	                        onClick: _this.handleRoleSelect, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 79
+	                            lineNumber: 80
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25421,7 +25426,7 @@
 	                        color: "#FFFFFFFF",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 84
+	                            lineNumber: 85
 	                        }
 	                    }),
 	                    dom(
@@ -25432,16 +25437,17 @@
 	                            padding: "0,0,16,0",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 91
+	                                lineNumber: 92
 	                            }
 	                        },
 	                        dom(ImageView, {
+	                            id: _this.idSet.whiteArrow,
 	                            height: "20",
 	                            width: "20",
 	                            imageUrl: "ic_white_arrow",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 96
+	                                lineNumber: 97
 	                            }
 	                        })
 	                    )
@@ -25466,7 +25472,7 @@
 	                        cornerRadius: "5",
 	                        stroke: item.selected ? "4," + window.__Colors.PRIMARY_ACCENT : null, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 112
+	                            lineNumber: 114
 	                        }
 	                    },
 	                    dom(
@@ -25478,7 +25484,7 @@
 	                                _this.handleCardClick(i);
 	                            }, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 123
+	                                lineNumber: 125
 	                            }
 	                        },
 	                        dom(ImageView, {
@@ -25488,7 +25494,7 @@
 	                            layout_gravity: "center",
 	                            circularImageUrl: "0," + "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 128
+	                                lineNumber: 130
 	                            }
 	                        }),
 	                        dom(
@@ -25500,7 +25506,7 @@
 	                                height: "wrap_content",
 	                                orientation: "vertical", __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 135
+	                                    lineNumber: 137
 	                                }
 	                            },
 	                            dom(TextView, {
@@ -25509,7 +25515,7 @@
 	                                margin: "0,0,0,16",
 	                                text: item.role, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 142
+	                                    lineNumber: 144
 	                                }
 	                            }),
 	                            dom(TextView, {
@@ -25517,7 +25523,7 @@
 	                                height: "wrap_content",
 	                                text: item.desc, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 148
+	                                    lineNumber: 150
 	                                }
 	                            })
 	                        )
@@ -25529,7 +25535,7 @@
 	                    id: _this.idSet.continueBtn,
 	                    visibility: "visible"
 	                });
-	                Android.runInUI(cmd, 0, "162", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
+	                Android.runInUI(cmd, 0, "164", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
 	            }
 	            return layout;
 	        };
@@ -25543,6 +25549,7 @@
 	            if (JBridge.getFromSharedPrefs("role") != "__failed") {
 	                _this.setAsGuestUser();
 	            }
+	            JBridge.animateImageView(_this.idSet.whiteArrow + "");
 	        };
 	
 	        _this.setAsGuestUser = function () {
@@ -25553,7 +25560,7 @@
 	            window.__runDuiCallback(event);
 	        };
 	
-	        _this.setIds(["cardsContainer", "continueBtn"]);
+	        _this.setIds(["cardsContainer", "continueBtn", "whiteArrow"]);
 	        _this.options = [{
 	            role: "Teacher",
 	            selected: false,
@@ -25580,7 +25587,7 @@
 	                    background: window.__Colors.WHITE,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 188
+	                        lineNumber: 192
 	                    }
 	                },
 	                dom(
@@ -25591,7 +25598,7 @@
 	                        orientation: "vertical",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 196
+	                            lineNumber: 200
 	                        }
 	                    },
 	                    dom(SimpleToolbar, {
@@ -25600,7 +25607,7 @@
 	                        height: "wrap_content",
 	                        onBackPress: this.onBackPressed, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 202
+	                            lineNumber: 206
 	                        }
 	                    }),
 	                    dom(TextView, {
@@ -25611,7 +25618,7 @@
 	                        fontStyle: Font.fontStyle.SEMIBOLD,
 	                        margin: "0,16,0,16", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 207
+	                            lineNumber: 211
 	                        }
 	                    }),
 	                    dom(
@@ -25623,7 +25630,7 @@
 	                            orientation: "vertical",
 	                            gravity: "center", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 214
+	                                lineNumber: 218
 	                            }
 	                        },
 	                        this.getCards()
@@ -27008,17 +27015,6 @@
 	                            fileName: _jsxFileName,
 	                            lineNumber: 215
 	                        }
-	                    }),
-	                    _this2.getBody2(window.__S.PRIVACY_POLICY, function () {
-	                        return _this2.nextScreen("PRIVACY_POLICY");
-	                    }),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody2(window.__S.TERMS_OF_SERVICE, function () {
-	                        return _this2.nextScreen("TERMS_OF_SERVICE");
-	                    }),
-	                    _this2.getLineSeperator(),
-	                    _this2.getBody2(window.__S.ABOUT_APPLICATION, function () {
-	                        return _this2.nextScreen("ABOUT");
 	                    })
 	                ),
 	                _this2.getSharePopup()
@@ -31852,6 +31848,7 @@
 	
 	var dom = __webpack_require__(324);
 	var Connector = __webpack_require__(330);
+	var RelativeLayout = __webpack_require__(340);
 	var LinearLayout = __webpack_require__(333);
 	var View = __webpack_require__(331);
 	var TextView = __webpack_require__(342);
@@ -31879,7 +31876,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 30
+	          lineNumber: 31
 	        }
 	      });
 	    };
@@ -31888,10 +31885,16 @@
 	      _this.props.data.map(function (item, index) {
 	        var halfWidth = Math.floor((_this.screenWidth - 100) / 2);
 	        var appIcon = "ic_launcher";
+	        var stroke = false;
 	        if (_this.type == "Profile") {
 	          appIcon = item.data && item.data.avatar ? item.data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
 	        } else {
 	          appIcon = item.hasOwnProperty("appIcon") ? item.appIcon : "ic_launcher";
+	          stroke = true;
+	        }
+	        var avgRating = "";
+	        if (item.me_averageRating && parseFloat(item.me_averageRating) > 0.0) {
+	          avgRating = item.me_averageRating;
 	        }
 	        var resultLayout = dom(
 	          LinearLayout,
@@ -31904,7 +31907,7 @@
 	              _this.props.onClick(item, index);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 46
+	              lineNumber: 53
 	            }
 	          },
 	          dom(
@@ -31913,20 +31916,40 @@
 	              width: "match_parent",
 	              height: "wrap_content", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 53
+	                lineNumber: 60
 	              }
 	            },
-	            dom(ImageView, {
-	              width: "37",
-	              height: "37",
-	              margin: item.subject || item.gradeLevel ? "10,22,0,22" : "10,12,0,12",
-	              scaleType: "fixXY",
-	              gravity: "center",
-	              circularImageUrl: "0," + appIcon, __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 57
-	              }
-	            }),
+	            dom(
+	              RelativeLayout,
+	              {
+	                width: "wrap_content",
+	                height: "wrap_content",
+	                margin: item.subject || item.gradeLevel ? "10,22,0,22" : "10,12,0,12",
+	                gravity: "center", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 64
+	                }
+	              },
+	              dom(LinearLayout, {
+	                width: "37",
+	                height: "37",
+	                visibility: stroke ? "visible" : "gone",
+	                stroke: "2," + window.__Colors.WHITE_F2,
+	                cornerRadius: "50", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 70
+	                }
+	              }),
+	              dom(ImageView, {
+	                width: "37",
+	                height: "37",
+	                scaleType: "fixXY",
+	                circularImageUrl: "0," + appIcon, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 76
+	                }
+	              })
+	            ),
 	            dom(
 	              LinearLayout,
 	              {
@@ -31934,7 +31957,7 @@
 	                height: "wrap_content",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 65
+	                  lineNumber: 83
 	                }
 	              },
 	              dom(
@@ -31943,7 +31966,7 @@
 	                  height: "wrap_content",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 70
+	                    lineNumber: 88
 	                  }
 	                },
 	                dom(TextView, {
@@ -31955,7 +31978,7 @@
 	                  weight: "0",
 	                  style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 74
+	                    lineNumber: 92
 	                  }
 	                }),
 	                dom(ImageView, {
@@ -31966,7 +31989,7 @@
 	                  margin: "4,10,0,0",
 	                  imageUrl: "ic_check_circle", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 83
+	                    lineNumber: 101
 	                  }
 	                })
 	              ),
@@ -31975,7 +31998,7 @@
 	                {
 	                  orientation: "horizontal", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 91
+	                    lineNumber: 109
 	                  }
 	                },
 	                dom(TextView, {
@@ -31986,7 +32009,7 @@
 	                  text: item.contentType,
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 93
+	                    lineNumber: 111
 	                  }
 	                }),
 	                dom(ImageView, {
@@ -31996,7 +32019,7 @@
 	                  margin: "4,7,0,0",
 	                  imageUrl: "ic_dot_lightgrey", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 101
+	                    lineNumber: 119
 	                  }
 	                }),
 	                dom(ImageView, {
@@ -32004,10 +32027,10 @@
 	                  height: "12",
 	                  gravity: "left",
 	                  margin: "4,6,0,0",
-	                  visibility: item.me_averageRating ? "visible" : "gone",
+	                  visibility: avgRating != "" ? "visible" : "gone",
 	                  imageUrl: "ic_grey_star", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 108
+	                    lineNumber: 126
 	                  }
 	                }),
 	                dom(TextView, {
@@ -32015,11 +32038,11 @@
 	                  padding: "4,4,0,0",
 	                  gravity: "left",
 	                  width: "wrap_content",
-	                  visibility: item.me_averageRating ? "visible" : "gone",
-	                  text: item.me_averageRating ? parseInt(item.me_averageRating).toString() : "",
+	                  visibility: avgRating != "" ? "visible" : "gone",
+	                  text: avgRating,
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 116
+	                    lineNumber: 134
 	                  }
 	                }),
 	                dom(ImageView, {
@@ -32027,10 +32050,10 @@
 	                  height: "10",
 	                  gravity: "left",
 	                  margin: "4,7,0,0",
-	                  visibility: item.me_averageRating ? "visible" : "gone",
+	                  visibility: avgRating != "" ? "visible" : "gone",
 	                  imageUrl: "ic_dot_lightgrey", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 126
+	                    lineNumber: 144
 	                  }
 	                }),
 	                dom(TextView, {
@@ -32042,7 +32065,7 @@
 	                  text: item.hasOwnProperty("size") ? utils.formatBytes(item.size) : " ",
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 134
+	                    lineNumber: 152
 	                  }
 	                })
 	              ),
@@ -32052,7 +32075,7 @@
 	                  orientation: "horizontal",
 	                  padding: "10,0,0,0", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 144
+	                    lineNumber: 162
 	                  }
 	                },
 	                dom(TextView, {
@@ -32068,7 +32091,7 @@
 	                  text: item.gradeLevel ? item.gradeLevel.toString().replace(/,/g, ", ") : "",
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 148
+	                    lineNumber: 166
 	                  }
 	                }),
 	                dom(ImageView, {
@@ -32079,7 +32102,7 @@
 	                  margin: "4,7,0,0",
 	                  imageUrl: "ic_dot_lightgrey", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 162
+	                    lineNumber: 180
 	                  }
 	                }),
 	                dom(TextView, {
@@ -32093,7 +32116,7 @@
 	                  text: item.subject ? item.subject.toString() : "",
 	                  style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 170
+	                    lineNumber: 188
 	                  }
 	                })
 	              ),
@@ -32109,7 +32132,7 @@
 	                  padding: "5,1,5,1",
 	                  margin: "10,5,0,10", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 186
+	                    lineNumber: 204
 	                  }
 	                },
 	                dom(TextView, {
@@ -32119,7 +32142,7 @@
 	                  text: _this.type == "Profile" ? item.data.status == 1 ? "Active" : "Inactive" : "",
 	                  style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 196
+	                    lineNumber: 214
 	                  }
 	                })
 	              )
@@ -32154,7 +32177,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 224
+	            lineNumber: 242
 	          }
 	        },
 	        this.getData()
@@ -42291,6 +42314,7 @@
 	        _this2.setIds(["card"]);
 	        _this2.height = _this2.props.height ? _this2.props.height : "106";
 	        _this2.width = _this2.props.width ? _this2.props.width : "200";
+	        _this2.imageHeight = Math.floor(_this2.height * 0.5);
 	        _this2.cardData = _this2.props.data;
 	        _this2.id = _this2.idSet.card; //important feild
 	        return _this2;
@@ -42312,7 +42336,7 @@
 	                    gravity: "center",
 	                    padding: "24,0,24,0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 34
+	                        lineNumber: 35
 	                    }
 	                },
 	                dom(
@@ -42323,7 +42347,7 @@
 	                        gravity: "center_horizontal",
 	                        orientation: "vertical", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 43
+	                            lineNumber: 44
 	                        }
 	                    },
 	                    dom(
@@ -42334,7 +42358,7 @@
 	                            weight: "1",
 	                            gravity: "center", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 49
+	                                lineNumber: 50
 	                            }
 	                        },
 	                        dom(TextView, {
@@ -42344,7 +42368,7 @@
 	                            fontStyle: Font.fontStyle.SEMIBOLD,
 	                            text: this.cardData.heading, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 54
+	                                lineNumber: 55
 	                            }
 	                        })
 	                    ),
@@ -42356,16 +42380,17 @@
 	                            padding: "0,8,0,8",
 	                            gravity: "center", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 62
+	                                lineNumber: 63
 	                            }
 	                        },
 	                        dom(ImageView, {
-	                            width: "match_parent",
-	                            height: "match_parent",
+	                            width: "wrap_content",
+	                            height: this.imageHeight + "",
+	                            scaleType: "fixXY",
 	                            margin: "0,0,0,0",
 	                            imageUrl: this.cardData.illustration, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 67
+	                                lineNumber: 68
 	                            }
 	                        })
 	                    ),
@@ -42377,7 +42402,7 @@
 	                            weight: "1",
 	                            gravity: "center", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 74
+	                                lineNumber: 76
 	                            }
 	                        },
 	                        dom(TextView, {
@@ -42389,7 +42414,7 @@
 	                            fontStyle: Font.fontStyle.REGULAR,
 	                            text: this.cardData.desc, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 79
+	                                lineNumber: 81
 	                            }
 	                        })
 	                    )
@@ -42439,7 +42464,7 @@
 	                width: _this3.cardWidth + "",
 	                data: item, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 129
+	                    lineNumber: 131
 	                }
 	            });
 	        });
@@ -42458,7 +42483,7 @@
 	                cardWidth: this.cardWidth,
 	                totalCards: this.cardsArr.length, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 144
+	                    lineNumber: 146
 	                }
 	            });
 	            return this.Carousel.render();
@@ -42500,6 +42525,7 @@
 	var ImageView = __webpack_require__(350);
 	var ProgressBar = __webpack_require__(359);
 	var utils = __webpack_require__(397);
+	var RatingBar = __webpack_require__(372);
 	
 	var objectAssign = __webpack_require__(317);
 	
@@ -42525,7 +42551,7 @@
 	
 	    _initialiseProps.call(_this2);
 	
-	    _this2.setIds(["parentContainer", "pageOption", "descriptionContainer", "downloadProgressText", "totalContainer", "sharePopupContainer", "enrollButtonId", "readMore", "creditsSection", "creditsText", "viewCreditsButton", "upDownBlueArrow"]);
+	    _this2.setIds(["ratingContainer", "ratingBar", "parentContainer", "pageOption", "descriptionContainer", "downloadProgressText", "totalContainer", "sharePopupContainer", "enrollButtonId", "readMore", "creditsSection", "creditsText", "viewCreditsButton", "upDownBlueArrow"]);
 	    _this2.state = state;
 	    _this2.screenName = "CourseInfoActivity";
 	
@@ -42545,7 +42571,6 @@
 	
 	    _this2.details = JSON.parse(state.data.value0.courseDetails);
 	    console.log("data in CIA", _this2.details);
-	
 	    _this2.localContent = null;
 	    _this2.data = {
 	      courseName: _this2.details ? _this2.details.name : "",
@@ -42566,7 +42591,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 695
+	            lineNumber: 726
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -42576,7 +42601,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 701
+	            lineNumber: 732
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -42584,7 +42609,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 709
+	            lineNumber: 740
 	          }
 	        })
 	      );
@@ -42617,7 +42642,7 @@
 	        id: _this3.idSet.downloadProgressText,
 	        text: window.__S.FETCHING_CONTENTS.format(downloadedPercent)
 	      });
-	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "99", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    } else if (cb == "onContentImportResponse" && data.status == "IMPORT_COMPLETED") {
 	      if (data.status == "NOT_FOUND") {
 	        window.__ContentLoaderDialog.hide();
@@ -42661,6 +42686,13 @@
 	        return;
 	      }
 	      _this.localContent = JSON.parse(utils.decodeBase64(data[0]));
+	
+	      if (_this.localContent.hasOwnProperty("contentData") && _this.localContent.contentData.hasOwnProperty("me_averageRating")) {
+	        _this.updateRatings(_this.localContent.contentData.me_averageRating);
+	      } else {
+	        _this.updateRatings(0);
+	      }
+	
 	      if (_this.localContent.isAvailableLocally == true) {
 	        JBridge.logCourseDetailScreenEvent(_this.details.identifier, _this.details.pkgVersion, true);
 	        _this.renderChildren(identifier);
@@ -42678,7 +42710,7 @@
 	      _this.contentDetails(JSON.parse(utils.decodeBase64(data[0])));
 	      _this.creditsDetail(JSON.parse(utils.decodeBase64(data[0])));
 	    });
-	    JBridge.getContentDetails(identifier, callback, false);
+	    JBridge.getContentDetails(identifier, callback, true);
 	  };
 	
 	  this.onStop = function () {
@@ -42715,7 +42747,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 194
+	          lineNumber: 204
 	        }
 	      });
 	    } else {
@@ -42728,7 +42760,7 @@
 	        shouldGoForward: "gone",
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 202
+	          lineNumber: 212
 	        }
 	      });
 	      var isVisible = "gone";
@@ -42736,7 +42768,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: isVisible
-	      }), 0, "213", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "223", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	
 	    var layout = dom(
@@ -42746,7 +42778,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 220
+	          lineNumber: 230
 	        }
 	      },
 	      child
@@ -42756,7 +42788,7 @@
 	
 	  this.onPop = function () {
 	
-	    Android.runInUI(_this3.animateView(), null, "235", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "245", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	  };
 	
 	  this.afterRender = function () {
@@ -42780,7 +42812,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: "gone"
-	      }), 0, "259", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "269", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
@@ -42848,7 +42880,7 @@
 	          type: "COURSES",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 336
+	            lineNumber: 346
 	          }
 	        });
 	
@@ -42872,6 +42904,30 @@
 	    var event = { "tag": "OPEN_ViewBatchActivity", contents: whatToSend };
 	    window.__runDuiCallback(event);
 	    return;
+	  };
+	
+	  this.updateRatings = function (rating) {
+	    var r = rating ? rating : 0;
+	    var layout = dom(
+	      LinearLayout,
+	      {
+	        width: "wrap_content",
+	        height: "wrap_content", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 382
+	        }
+	      },
+	      dom(RatingBar, {
+	        id: _this3.idSet.ratingBar,
+	        width: "wrap_content",
+	        height: "wrap_content", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 385
+	        }
+	      })
+	    );
+	    _this.replaceChild(_this.idSet.ratingContainer, layout.render(), 0);
+	    JBridge.setRating(_this3.idSet.ratingBar, r);
 	  };
 	
 	  this.onBackPressed = function () {
@@ -42906,7 +42962,7 @@
 	        style: window.__TextStyle.textStyle.HINT.REGULAR,
 	        text: (i == 0 ? "" : " | ") + item.count + " " + item.type, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 399
+	          lineNumber: 425
 	        }
 	      });
 	    });
@@ -42917,7 +42973,7 @@
 	        width: "match_parent",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 405
+	          lineNumber: 431
 	        }
 	      },
 	      dom(
@@ -42927,7 +42983,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 408
+	            lineNumber: 434
 	          }
 	        },
 	        items
@@ -42949,16 +43005,16 @@
 	      contentText += "<br>" + data.contentData.description + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.gradeLevel) {
-	      contentText += "GRADE:<br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.GRADE + "</b><br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.subject) {
-	      contentText += "SUBJECT:<br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.SUBJECT + "</b><br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.board) {
-	      contentText += "BOARD:<br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.BOARD + "</b><br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.language) {
-	      contentText += "MEDIUM:<br>" + data.contentData.language.toString().replace(/,/g, ", ");
+	      contentText += "<b>" + window.__S.MEDIUM_2 + "</b><br>" + data.contentData.language.toString().replace(/,/g, ", ");
 	    }
 	
 	    var layout = dom(
@@ -42969,7 +43025,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 445
+	          lineNumber: 471
 	        }
 	      },
 	      dom(
@@ -42980,7 +43036,7 @@
 	          orientation: "vertical",
 	          background: window.__Colors.WHITE_F2, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 450
+	            lineNumber: 476
 	          }
 	        },
 	        dom(TextView, {
@@ -42988,7 +43044,7 @@
 	          margin: "16,12,0,12",
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 455
+	            lineNumber: 481
 	          }
 	        })
 	      ),
@@ -42999,7 +43055,7 @@
 	        contentDescription: data.contentData.description ? data.contentData.description : " ",
 	        contentText: contentText, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 460
+	          lineNumber: 486
 	        }
 	      })
 	    );
@@ -43022,7 +43078,7 @@
 	          orientation: "vertical",
 	          visibility: "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 479
+	            lineNumber: 505
 	          }
 	        },
 	        dom(
@@ -43034,7 +43090,7 @@
 	            margin: "0,8,0,0",
 	            background: window.__Colors.WHITE_F2, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 484
+	              lineNumber: 510
 	            }
 	          },
 	          dom(TextView, {
@@ -43044,7 +43100,7 @@
 	            margin: "16,0,0,0",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 490
+	              lineNumber: 516
 	            }
 	          }),
 	          dom(
@@ -43052,7 +43108,7 @@
 	            {
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 496
+	                lineNumber: 522
 	              }
 	            },
 	            dom(TextView, {
@@ -43062,7 +43118,7 @@
 	              color: "#FF0079FF",
 	              onClick: _this3.viewCreditsButtonClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 498
+	                lineNumber: 524
 	              }
 	            }),
 	            dom(ImageView, {
@@ -43073,7 +43129,7 @@
 	              margin: "8,14,0,8",
 	              imageUrl: "ic_action_down_blue", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 504
+	                lineNumber: 530
 	              }
 	            })
 	          )
@@ -43100,7 +43156,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "535", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "561", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -43117,7 +43173,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "552", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "578", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -43137,7 +43193,7 @@
 	        background: window.__Colors.WHITE,
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 565
+	          lineNumber: 591
 	        }
 	      },
 	      dom(SimpleToolbar, {
@@ -43149,7 +43205,7 @@
 	        showMenu: "true",
 	        onBackPress: _this3.onBackPressed, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 572
+	          lineNumber: 598
 	        }
 	      }),
 	      dom(
@@ -43160,7 +43216,7 @@
 	          width: "match_parent",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 581
+	            lineNumber: 607
 	          }
 	        },
 	        dom(
@@ -43171,7 +43227,7 @@
 	            width: "match_parent",
 	            fillViewPort: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 586
+	              lineNumber: 612
 	            }
 	          },
 	          dom(
@@ -43181,7 +43237,7 @@
 	              width: "match_parent",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 591
+	                lineNumber: 617
 	              }
 	            },
 	            dom(
@@ -43192,7 +43248,7 @@
 	                padding: "16,24,16,16",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 595
+	                  lineNumber: 621
 	                }
 	              },
 	              dom(TextView, {
@@ -43202,7 +43258,7 @@
 	                text: utils.firstLeterCapital(_this3.data.courseName),
 	                style: window.__TextStyle.textStyle.HEADING.DARK, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 601
+	                  lineNumber: 627
 	                }
 	              }),
 	              dom(
@@ -43210,7 +43266,7 @@
 	                {
 	                  orientation: "horizontal", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 607
+	                    lineNumber: 633
 	                  }
 	                },
 	                dom(TextView, {
@@ -43221,7 +43277,7 @@
 	                  text: window.__S.BY,
 	                  style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 609
+	                    lineNumber: 635
 	                  }
 	                }),
 	                dom(TextView, {
@@ -43231,15 +43287,24 @@
 	                  visibility: _this3.data.owner ? "visible" : "gone",
 	                  text: _this3.data.owner, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 617
+	                    lineNumber: 643
 	                  }
 	                })
-	              )
+	              ),
+	              dom(LinearLayout, {
+	                width: "wrap_content",
+	                height: "wrap_content",
+	                layoutTransition: "true",
+	                id: _this3.idSet.ratingContainer, __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 650
+	                }
+	              })
 	            ),
 	            dom(LinearLayout, {
 	              id: _this3.idSet.readMore, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 626
+	                lineNumber: 657
 	              }
 	            }),
 	            dom(
@@ -43250,7 +43315,7 @@
 	                orientation: "vertical",
 	                background: window.__Colors.WHITE_F2, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 628
+	                  lineNumber: 659
 	                }
 	              },
 	              dom(TextView, {
@@ -43258,7 +43323,7 @@
 	                text: window.__S.STRUCTURE,
 	                style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 633
+	                  lineNumber: 664
 	                }
 	              })
 	            ),
@@ -43270,7 +43335,7 @@
 	                padding: "16,24,16,16",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 639
+	                  lineNumber: 670
 	                }
 	              },
 	              _this3.getCurriculumnBrief(),
@@ -43284,7 +43349,7 @@
 	                  root: "true",
 	                  orientation: "vertical", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 648
+	                    lineNumber: 679
 	                  }
 	                },
 	                dom(ProgressBar, {
@@ -43292,7 +43357,7 @@
 	                  width: "30",
 	                  margin: "20,20,20,20", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 656
+	                    lineNumber: 687
 	                  }
 	                }),
 	                dom(TextView, {
@@ -43302,7 +43367,7 @@
 	                  gravity: "center",
 	                  width: "match_parent", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 660
+	                    lineNumber: 691
 	                  }
 	                })
 	              )
@@ -43312,7 +43377,7 @@
 	              height: "match_parent",
 	              id: _this3.idSet.creditsSection, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 670
+	                lineNumber: 701
 	              }
 	            })
 	          )
@@ -43325,14 +43390,14 @@
 	            visibility: "gone",
 	            id: _this3.idSet.enrollButtonId, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 677
+	              lineNumber: 708
 	            }
 	          },
 	          dom(PageOption, {
 	            width: "match_parent",
 	            buttonItems: buttonList, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 682
+	              lineNumber: 713
 	            }
 	          })
 	        )
@@ -44947,7 +45012,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 931
+	            lineNumber: 939
 	          }
 	        },
 	        dom(
@@ -44959,7 +45024,7 @@
 	            background: window.__Colors.WHITE,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 937
+	              lineNumber: 945
 	            }
 	          },
 	          dom(
@@ -44970,7 +45035,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 943
+	                lineNumber: 951
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -44984,7 +45049,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 949
+	                lineNumber: 957
 	              }
 	            })
 	          ),
@@ -44994,7 +45059,7 @@
 	              width: "match_parent",
 	              id: this.idSet.horizontalProgressBarContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 961
+	                lineNumber: 969
 	              }
 	            },
 	            dom(HorizontalProgressBar, {
@@ -45003,7 +45068,7 @@
 	              totalProgress: this.data.totalProgress,
 	              visibility: this.showProgress, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 965
+	                lineNumber: 973
 	              }
 	            })
 	          ),
@@ -45013,7 +45078,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 972
+	                lineNumber: 980
 	              }
 	            },
 	            dom(
@@ -45023,7 +45088,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 976
+	                  lineNumber: 984
 	                }
 	              },
 	              dom(
@@ -45034,7 +45099,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 981
+	                    lineNumber: 989
 	                  }
 	                },
 	                dom(
@@ -45045,7 +45110,7 @@
 	                    root: "true",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 987
+	                      lineNumber: 995
 	                    }
 	                  },
 	                  dom(
@@ -45057,7 +45122,7 @@
 	                      layoutTransition: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 993
+	                        lineNumber: 1001
 	                      }
 	                    },
 	                    dom(
@@ -45066,7 +45131,7 @@
 	                        width: "match_parent",
 	                        id: this.idSet.headerContainer, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 999
+	                          lineNumber: 1007
 	                        }
 	                      },
 	                      this.getHeader()
@@ -45077,14 +45142,14 @@
 	                      layoutTransition: "true",
 	                      id: this.idSet.ratingContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1005
+	                        lineNumber: 1013
 	                      }
 	                    })
 	                  ),
 	                  dom(LinearLayout, {
 	                    id: this.idSet.readMore, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1012
+	                      lineNumber: 1020
 	                    }
 	                  }),
 	                  dom(
@@ -45095,7 +45160,7 @@
 	                      orientation: "vertical",
 	                      background: window.__Colors.WHITE_F2, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1015
+	                        lineNumber: 1023
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -45105,7 +45170,7 @@
 	                      style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                      text: window.__S.STRUCTURE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1020
+	                        lineNumber: 1028
 	                      }
 	                    })
 	                  ),
@@ -45117,7 +45182,7 @@
 	                      padding: "16,24,16,16",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1027
+	                        lineNumber: 1035
 	                      }
 	                    },
 	                    dom(
@@ -45130,7 +45195,7 @@
 	                        root: "true",
 	                        orientation: "vertical", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1034
+	                          lineNumber: 1042
 	                        }
 	                      },
 	                      dom(TextView, {
@@ -45140,7 +45205,7 @@
 	                        gravity: "center",
 	                        text: window.__S.LOADING_CONTENT, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1042
+	                          lineNumber: 1050
 	                        }
 	                      }),
 	                      dom(ProgressBar, {
@@ -45149,7 +45214,7 @@
 	                        width: "20",
 	                        height: "20", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1049
+	                          lineNumber: 1057
 	                        }
 	                      })
 	                    )
@@ -45159,7 +45224,7 @@
 	                    height: "match_parent",
 	                    id: this.idSet.creditsSection, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1056
+	                      lineNumber: 1064
 	                    }
 	                  })
 	                )
@@ -45170,7 +45235,7 @@
 	                margin: "0,0,0,16",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1063
+	                  lineNumber: 1071
 	                }
 	              }),
 	              dom(
@@ -45180,7 +45245,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.startOrResumeBtnContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1069
+	                    lineNumber: 1077
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -45195,7 +45260,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1074
+	                    lineNumber: 1082
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -45210,7 +45275,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1086
+	                    lineNumber: 1094
 	                  }
 	                })
 	              ),
@@ -45218,7 +45283,7 @@
 	                width: "match_parent",
 	                id: _this.idSet.downloadAllProgressButton, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1099
+	                  lineNumber: 1107
 	                }
 	              })
 	            ),
@@ -45233,7 +45298,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1104
+	                  lineNumber: 1112
 	                }
 	              },
 	              dom(TextView, {
@@ -45243,7 +45308,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1113
+	                  lineNumber: 1121
 	                }
 	              })
 	            )
@@ -45252,7 +45317,7 @@
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1123
+	            lineNumber: 1131
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -45260,7 +45325,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1126
+	            lineNumber: 1134
 	          }
 	        })
 	      );
@@ -45393,7 +45458,7 @@
 	          window.__Snackbar.show(window.__S.ERROR_NO_INTERNET_MESSAGE);
 	        }
 	        _this.logTelelmetry(identifier, null, false);
-	        this.onBackPressed();
+	        _this.onBackPressed();
 	        return;
 	      }
 	      data = JSON.parse(utils.jsonifyData(utils.decodeBase64(data[0])));
@@ -45568,17 +45633,20 @@
 	
 	  this.getHeader = function () {
 	    var isTextbook = _this3.apiDetails.contentType == "textbook";
+	    var batchCreatedBy = "";
+	    if (_this3.apiDetails && _this3.apiDetails.owner) batchCreatedBy = _this3.apiDetails.owner;else if (_this3.data && _this3.data.owner) batchCreatedBy = _this3.apiDetails.owner;else if (_this3.apiDetails && _this3.apiDetails.contentData && _this3.apiDetails.contentData.owner) batchCreatedBy = _this3.apiDetails.contentData.owner;
+	
 	    return dom(CourseProgress, {
 	      height: "wrap_content",
 	      width: "wrap_content",
 	      content: _this3.data,
 	      textbook: isTextbook,
 	      title: _this3.data.courseName || _this3.apiDetails.name || _this3.apiDetails.contentData.name,
-	      batchCreatedBy: _this3.apiDetails.owner || "",
+	      batchCreatedBy: batchCreatedBy,
 	      onResumeClick: _this3.handleCourseResume,
 	      visibility: _this3.showProgress, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 466
+	        lineNumber: 474
 	      }
 	    });
 	  };
@@ -45595,7 +45663,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 483
+	          lineNumber: 491
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -45603,7 +45671,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "494", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "502", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -45615,7 +45683,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 497
+	          lineNumber: 505
 	        }
 	      });
 	    }
@@ -45637,7 +45705,7 @@
 	    if (window.__RatingsPopup.getVisibility()) {
 	      window.__RatingsPopup.hide();
 	    } else {
-	      JBridge.endEventLog(_this3.courseDetails.contentType, _this3.courseDetails.identifier, _this3.courseDetails.contentData.pkgVersion);
+	      JBridge.endEventLog(_this3.courseDetails.contentType, _this3.courseDetails.identifier, _this3.courseDetails.contentData && _this3.courseDetails.contentData.pkgVersion ? _this3.courseDetails.contentData.pkgVersion : null);
 	      var event = { tag: 'BACK_CourseEnrolledActivity', contents: [] };
 	      window.__runDuiCallback(event);
 	    }
@@ -45667,7 +45735,7 @@
 	        id: _this3.idSet.resumeCourseBtn,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "557", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "565", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	      var cmd = _this3.set({
@@ -45679,7 +45747,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "570", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "578", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -45752,7 +45820,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 642
+	            lineNumber: 650
 	          }
 	        });
 	
@@ -45828,7 +45896,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 722
+	        lineNumber: 730
 	      }
 	    });
 	
@@ -45841,7 +45909,7 @@
 	      height: "2",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 736
+	        lineNumber: 744
 	      }
 	    });
 	  };
@@ -45873,7 +45941,7 @@
 	          }
 	        }, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 758
+	          lineNumber: 766
 	        }
 	      },
 	      dom(RatingBar, {
@@ -45881,7 +45949,7 @@
 	        width: "wrap_content",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 762
+	          lineNumber: 770
 	        }
 	      })
 	    );
@@ -45900,7 +45968,7 @@
 	      hideDivider: "gone",
 	      handleButtonClick: _this3.showDownloadAllPopUp, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 778
+	        lineNumber: 786
 	      }
 	    });
 	    return dom(
@@ -45910,7 +45978,7 @@
 	        height: "wrap_content",
 	        margin: "16,0,16,16", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 785
+	          lineNumber: 793
 	        }
 	      },
 	      _this3.__DownloadAllProgressButton
@@ -45925,19 +45993,19 @@
 	      contentText += "<br>" + data.contentData.description + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.gradeLevel) {
-	      contentText += "GRADE:<br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.GRADE + "</b><br>" + data.contentData.gradeLevel.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.subject) {
-	      contentText += "SUBJECT:<br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.SUBJECT + "</b><br>" + data.contentData.subject.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.board) {
-	      contentText += "BOARD:<br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
+	      contentText += "<b>" + window.__S.BOARD + "</b><br>" + data.contentData.board.toString().replace(/,/g, ", ") + "<br><br>";
 	    }
 	    if (data.contentData && data.contentData.language) {
-	      contentText += "MEDIUM:<br>" + data.contentData.language.toString().replace(/,/g, ", ");
+	      contentText += "<b>" + window.__S.MEDIUM_2 + "</b><br>" + data.contentData.language.toString().replace(/,/g, ", ");
 	    }
 	    if (_this3.batchName != "" && _this3.batchDescription != "" && _this3.batchCreatedBy != "") {
-	      contentText += "<br><br><b>Batch Details</b><br>" + _this3.batchName + "<br>" + _this3.batchDescription + "<br>" + window.__S.CREATED_BY_SMALL + " " + _this3.batchCreatedBy;
+	      contentText += "<br><br><b>" + window.__S.BATCH_DETAILS + "</b><br>" + _this3.batchName + "<br>" + _this3.batchDescription + "<br>" + window.__S.CREATED_BY_SMALL + " " + _this3.batchCreatedBy;
 	    }
 	    var layout = dom(
 	      LinearLayout,
@@ -45946,7 +46014,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 817
+	          lineNumber: 825
 	        }
 	      },
 	      dom(
@@ -45956,7 +46024,7 @@
 	          height: "wrap_content",
 	          background: window.__Colors.WHITE_F2, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 821
+	            lineNumber: 829
 	          }
 	        },
 	        dom(TextView, {
@@ -45965,7 +46033,7 @@
 	          margin: "16,12,0,12",
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 825
+	            lineNumber: 833
 	          }
 	        })
 	      ),
@@ -45976,7 +46044,7 @@
 	        contentDescription: data.contentData.description ? data.contentData.description : " ",
 	        contentText: contentText, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 831
+	          lineNumber: 839
 	        }
 	      })
 	    );
@@ -45999,7 +46067,7 @@
 	          orientation: "vertical",
 	          visibility: "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 850
+	            lineNumber: 858
 	          }
 	        },
 	        dom(
@@ -46011,7 +46079,7 @@
 	            margin: "0,8,0,0",
 	            background: window.__Colors.WHITE_F2, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 855
+	              lineNumber: 863
 	            }
 	          },
 	          dom(TextView, {
@@ -46021,7 +46089,7 @@
 	            margin: "16,0,0,0",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 861
+	              lineNumber: 869
 	            }
 	          }),
 	          dom(
@@ -46029,7 +46097,7 @@
 	            {
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 867
+	                lineNumber: 875
 	              }
 	            },
 	            dom(TextView, {
@@ -46039,7 +46107,7 @@
 	              color: "#FF0079FF",
 	              onClick: _this3.viewCreditsButtonClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 869
+	                lineNumber: 877
 	              }
 	            }),
 	            dom(ImageView, {
@@ -46050,7 +46118,7 @@
 	              margin: "8,14,0,8",
 	              imageUrl: "ic_action_down_blue", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 875
+	                lineNumber: 883
 	              }
 	            })
 	          )
@@ -46077,7 +46145,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "906", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "914", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -46094,7 +46162,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "923", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "931", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -47451,7 +47519,7 @@
 	                if (window.__currContentAllowRating) {
 	                    window.__RatingsPopup.show();
 	                } else {
-	                    window.__Snackbar.show(window.__s.TRY_BEFORE_RATING);
+	                    window.__Snackbar.show(window.__S.TRY_BEFORE_RATING);
 	                }
 	            } else {
 	                window.__Snackbar.show("Sign in to use this feature.");
@@ -50808,7 +50876,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 646
+	            lineNumber: 653
 	          }
 	        },
 	        dom(
@@ -50819,7 +50887,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 651
+	              lineNumber: 658
 	            }
 	          },
 	          dom(
@@ -50830,7 +50898,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 656
+	                lineNumber: 663
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -50842,7 +50910,7 @@
 	              overFlowCallback: this.overFlowCallback,
 	              showMenu: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 661
+	                lineNumber: 668
 	              }
 	            })
 	          ),
@@ -50853,7 +50921,7 @@
 	              width: "match_parent",
 	              fillViewport: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 670
+	                lineNumber: 677
 	              }
 	            },
 	            dom(
@@ -50864,7 +50932,7 @@
 	                padding: "0,0,0,0",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 674
+	                  lineNumber: 681
 	                }
 	              },
 	              this.getHeader(),
@@ -50878,14 +50946,14 @@
 	            id: this.idSet.progressButtonContainer,
 	            root: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 685
+	              lineNumber: 692
 	            }
 	          })
 	        ),
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 691
+	            lineNumber: 698
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -50893,7 +50961,7 @@
 	          height: "match_parent",
 	          id: this.idSet.sharePopupContainer, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 693
+	            lineNumber: 700
 	          }
 	        })
 	      );
@@ -51193,7 +51261,7 @@
 	        },
 	        dom(TextView, {
 	          text: description,
-	          margin: "16,8,16,0", __source: {
+	          margin: "16,16,16,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 294
 	          }
@@ -51218,7 +51286,7 @@
 	        dom(TextView, {
 	          text: window.__S.GRADE,
 	          typeface: "bold",
-	          margin: "16,8,16,0", __source: {
+	          margin: "16,16,16,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 308
 	          }
@@ -51248,7 +51316,7 @@
 	        dom(TextView, {
 	          text: window.__S.SUBJECT,
 	          typeface: "bold",
-	          margin: "16,8,16,0", __source: {
+	          margin: "16,16,16,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 324
 	          }
@@ -51278,7 +51346,7 @@
 	        dom(TextView, {
 	          text: window.__S.BOARD,
 	          typeface: "bold",
-	          margin: "16,8,16,0", __source: {
+	          margin: "16,16,16,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 340
 	          }
@@ -51308,7 +51376,7 @@
 	        dom(TextView, {
 	          text: window.__S.MEDIUM_2,
 	          typeface: "bold",
-	          margin: "16,8,16,0", __source: {
+	          margin: "16,16,16,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 356
 	          }
@@ -51347,7 +51415,7 @@
 	            width: screenWidth.toString(),
 	            height: "match_parent",
 	            orientation: "vertical",
-	            margin: "0,8,0,0",
+	            margin: "0,16,0,0",
 	            background: window.__Colors.WHITE_F2,
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
@@ -51445,7 +51513,7 @@
 	      if (window.__currResourceAllowRating) {
 	        window.__RatingsPopup.show();
 	      } else {
-	        window.__Snackbar.show(window.__s.TRY_BEFORE_RATING);
+	        window.__Snackbar.show(window.__S.TRY_BEFORE_RATING);
 	      }
 	    } else {
 	      window.__Snackbar.show("Sign in to use this feature.");
@@ -51453,6 +51521,8 @@
 	  };
 	
 	  this.getHeader = function () {
+	    var owner = "";
+	    if (_this3.details && _this3.details.content && _this3.details.content.owner) owner = _this3.details.content.owner;else if (_this3.details && _this3.details.content && _this3.details.content.contentData && _this3.details.content.contentData.owner) owner = _this3.details.content.contentData.owner;
 	    return dom(
 	      LinearLayout,
 	      {
@@ -51461,7 +51531,7 @@
 	        margin: "16,16,16,0",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 468
+	          lineNumber: 473
 	        }
 	      },
 	      dom(TextView, {
@@ -51471,7 +51541,7 @@
 	        style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	        text: _this3.details.title, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 474
+	          lineNumber: 479
 	        }
 	      }),
 	      dom(
@@ -51481,24 +51551,26 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 480
+	            lineNumber: 485
 	          }
 	        },
 	        dom(TextView, {
 	          width: "wrap_content",
 	          height: "wrap_content",
+	          visibility: owner != "" ? "visible" : "gone",
 	          text: window.__S.BY,
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 484
+	            lineNumber: 489
 	          }
 	        }),
 	        dom(TextView, {
 	          width: "wrap_content",
 	          height: "wrap_content",
-	          text: " " + _this3.details.content.owner, __source: {
+	          visibility: owner != "" ? "visible" : "gone",
+	          text: " " + owner, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 489
+	            lineNumber: 495
 	          }
 	        })
 	      ),
@@ -51509,7 +51581,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 494
+	            lineNumber: 501
 	          }
 	        },
 	        dom(TextView, {
@@ -51518,13 +51590,13 @@
 	          text: _this3.details.headFooterTitle,
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 498
+	            lineNumber: 505
 	          }
 	        }),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 503
+	            lineNumber: 510
 	          }
 	        }),
 	        dom(TextView, {
@@ -51534,7 +51606,7 @@
 	          text: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? parseInt(_this3.details.content.me_totalDownloads) : "0",
 	          style: window.__TextStyle.textStyle.HINT.DULL, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 505
+	            lineNumber: 512
 	          }
 	        })
 	      ),
@@ -51545,7 +51617,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 512
+	            lineNumber: 519
 	          }
 	        },
 	        dom(
@@ -51555,7 +51627,7 @@
 	            height: "wrap_content",
 	            onClick: _this3.handleRatingsBarClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 516
+	              lineNumber: 523
 	            }
 	          },
 	          dom(RatingBar, {
@@ -51563,14 +51635,14 @@
 	            width: "wrap_content",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 520
+	              lineNumber: 527
 	            }
 	          })
 	        ),
 	        dom(LinearLayout, {
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 525
+	            lineNumber: 532
 	          }
 	        }),
 	        dom(TextView, {
@@ -51580,7 +51652,7 @@
 	          visibility: _this3.details.hasOwnProperty("content") && _this3.details.content.hasOwnProperty("me_totalDownloads") ? "visible" : "gone",
 	          style: window.__TextStyle.textStyle.HINT.REGULAR, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 527
+	            lineNumber: 534
 	          }
 	        })
 	      )
@@ -51662,7 +51734,7 @@
 	      overFlowCallback: _this3.overFlowCallback,
 	      showMenu: "true", __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 606
+	        lineNumber: 613
 	      }
 	    });
 	
@@ -53000,7 +53072,7 @@
 	            width: "37",
 	            height: "37",
 	            margin: "0,0,8,0",
-	            circularImageUrl: "0," + "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc", __source: {
+	            circularImageUrl: "0," + "ic_launcher", __source: {
 	              fileName: _jsxFileName,
 	              lineNumber: 265
 	            }
@@ -53216,7 +53288,15 @@
 	            }
 	          })
 	        ),
-	        contentsLayout
+	        contentsLayout,
+	        dom(LinearLayout, {
+	          height: "5",
+	          width: "match_parent",
+	          background: "#f2f2f2", __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 413
+	          }
+	        })
 	      );
 	    };
 	
@@ -53236,18 +53316,10 @@
 	          background: "#ffffff",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 424
+	            lineNumber: 428
 	          }
 	        },
 	        groups,
-	        dom(LinearLayout, {
-	          height: "5",
-	          width: "match_parent",
-	          background: "#f2f2f2", __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 431
-	          }
-	        }),
 	        dom(
 	          LinearLayout,
 	          {
@@ -53347,6 +53419,8 @@
 	        window.__LoaderDialog.hide();
 	      } else {
 	        var callback = callbackMapper.map(function (data) {
+	          console.log("searchContent data -> ", data);
+	
 	          console.log("callback data", JSON.parse(utils.decodeBase64(data[2])));
 	          if (data[0] == "error") {
 	            console.log("Error at callback", data[1]);
@@ -53399,17 +53473,23 @@
 	        // } else {
 	        //   status = "true";
 	        // }
-	
+	        var filterParams = null;
+	        if (_this2.filterData != "") {
+	          filterParams = JSON.stringify(_this2.filterData);
+	        }
 	        if (JBridge.isNetworkAvailable()) {
 	          console.log(_this2.filterData, " filterData ");
-	          var filterParams = null;
-	          if (_this2.filterData != "") {
-	            filterParams = JSON.stringify(_this2.filterData);
-	          }
 	          JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100, keywords ? keywords : null, false);
 	        } else {
-	          window.__LoaderDialog.hide();
-	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	          console.log("keywords -> ", keywords);
+	
+	          if (keywords) {
+	            console.log("search cont -> ", keywords);
+	            JBridge.searchContent(callback, filterParams, searchText, _this2.searchType, 100, keywords ? keywords : null, false);
+	          } else {
+	            window.__LoaderDialog.hide();
+	            window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	          }
 	        }
 	
 	        _this2.showFilter();
@@ -53432,7 +53512,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "598", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "606", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleSearchClick = function (searchText, keywords) {
@@ -53445,8 +53525,13 @@
 	        window.__LoaderDialog.show();
 	        _this2.getSearchList(searchText ? searchText[0] : null, "false", keywords);
 	      } else {
-	        window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
-	        window.__LoaderDialog.hide();
+	        console.log("keywords -> ", keywords);
+	        if (keywords) {
+	          _this2.getSearchList(searchText ? searchText[0] : null, "false", keywords);
+	        } else {
+	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
+	          window.__LoaderDialog.hide();
+	        }
 	      }
 	    };
 	
@@ -53465,7 +53550,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "633", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "646", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
@@ -53491,7 +53576,7 @@
 	          background: window.__Colors.PRIMARY_BLACK_22,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 650
+	            lineNumber: 663
 	          }
 	        },
 	        dom(
@@ -53504,7 +53589,7 @@
 	            background: window.__Colors.WHITE,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 656
+	              lineNumber: 669
 	            }
 	          },
 	          _this2.getBack(),
@@ -53551,7 +53636,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 676
+	            lineNumber: 689
 	          }
 	        },
 	        dom(
@@ -53562,7 +53647,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 682
+	              lineNumber: 695
 	            }
 	          },
 	          this.getToolbar(),
@@ -53573,7 +53658,7 @@
 	            id: this.idSet.searchListContainer,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 690
+	              lineNumber: 703
 	            }
 	          })
 	        )
@@ -55686,6 +55771,7 @@
 	    _this3.responseCame = true;
 	    console.log(data);
 	    if (data.result.response == "SUCCESS") {
+	      window.__Snackbar.show(window.__S.PROFILE_UPDATE_SUCCESS);
 	      if (!_this3.checkPrivacySameData()) {
 	        console.log("making privacy call");
 	        _this3.privacyStatusApiCall();
@@ -55695,7 +55781,7 @@
 	        // this.onBackPressed();
 	      }
 	    } else {
-	      window.__Snackbar.show(data.params.errmsg);
+	      window.__Snackbar.show(data.params.errmsg ? data.params.errmsg : window.__S.PROFILE_UPDATE_FAILED);
 	    }
 	  };
 	

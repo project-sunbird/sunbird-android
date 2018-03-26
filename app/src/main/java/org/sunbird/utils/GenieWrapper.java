@@ -345,6 +345,10 @@ public class GenieWrapper extends Activity {
             if(keywords != null) {
                 builder.dialCodes(keywords);
                 builder.collectionFilters();
+
+                if (!Util.isNetworkAvailable(activity)) {
+                    builder.offlineSearch();
+                }
             }
 
             boolean isProfileContent = false;
