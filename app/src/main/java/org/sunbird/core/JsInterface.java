@@ -772,8 +772,8 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void getLastTelemetrySyncTime(){
-        genieWrapper.getLastSyncTime();
+    public long getLastTelemetrySyncTime(){
+       return genieWrapper.getLastSyncTime();
     }
 
     @JavascriptInterface

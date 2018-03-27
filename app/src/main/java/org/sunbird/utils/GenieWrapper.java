@@ -700,54 +700,24 @@ public class GenieWrapper extends Activity {
             public void onSuccess(GenieResponse<SyncStat> genieResponse) {
                 SyncStat syncStat = genieResponse.getResult();
                 long d = syncStat.getSyncTime();
-                PreferenceManager.getDefaultSharedPreferences(activity)
-                        .edit()
-                        .putString("sync_time",String.valueOf(d))
-                        .apply();
-
-                PreferenceManager.getDefaultSharedPreferences(activity)
-                        .edit()
-                        .putString("sync_time_error","Success")
-                        .apply();
-
                 TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryPageId.SETTINGS_DATASYNC, TelemetryAction.MANUALSYNC_SUCCESS, ContextEnvironment.HOME));
                 Log.d("TelemetrySyncTime",String.valueOf(syncStat.getSyncTime()));
-                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "done");
+                String javascript = String.format("window.callJSCallback('%s','%s', '%s');", callback, "SUCCESS", String.valueOf(d));
                 dynamicUI.addJsToWebView(javascript);
             }
 
             @Override
             public void onError(GenieResponse<SyncStat> genieResponse) {
-                genieResponse.getError();
-                PreferenceManager.getDefaultSharedPreferences(activity)
-                        .edit()
-                        .putString("sync_time_error",genieResponse.getError())
-                        .apply();
-                Log.d("TelemetrySyncTime",genieResponse.getError());
-                String javascript = String.format("window.callJSCallback('%s','%s');", callback, "done");
+                String errorMsg = genieResponse.getError();
+                Log.d("TelemetrySyncTime",errorMsg);
+                String javascript = String.format("window.callJSCallback('%s','%s', '%s');", callback, "FAILURE", errorMsg);
                 dynamicUI.addJsToWebView(javascript);
             }
         });
     }
 
-    public void getLastSyncTime () {
-        mGenieAsyncService.getTelemetryService().getTelemetryStat(new IResponseHandler<TelemetryStat>() {
-
-            @Override
-            public void onSuccess(GenieResponse<TelemetryStat> genieResponse) {
-                genieResponse.getResult().getLastSyncTime();
-                PreferenceManager.getDefaultSharedPreferences(activity)
-                        .edit()
-                        .putString("sync_time",String.valueOf(genieResponse.getResult().getLastSyncTime()))
-                        .apply();
-
-            }
-
-            @Override
-            public void onError(GenieResponse<TelemetryStat> genieResponse) {
-
-            }
-        });
+    public long getLastSyncTime () {
+        return mGenieService.getTelemetryService().getTelemetryStat().getResult().getLastSyncTime();
     }
 
     public void importEcarFile(String ecarFilePath, final String[] callbacks) {
