@@ -53421,13 +53421,13 @@
 	        var callback = callbackMapper.map(function (data) {
 	          console.log("searchContent data -> ", data);
 	
-	          console.log("callback data", JSON.parse(utils.decodeBase64(data[2])));
 	          if (data[0] == "error") {
 	            console.log("Error at callback", data[1]);
 	            window.__Snackbar.show("" + data[1]);
 	            _this.renderNoResult();
 	            window.__LoaderDialog.hide();
 	          } else if (JSON.parse(utils.decodeBase64(data[2]))) {
+	            console.log("callback data", JSON.parse(utils.decodeBase64(data[2])));
 	            console.log("inside collectiondata");
 	            var collection = JSON.parse(utils.decodeBase64(data[2]));
 	            _this.filterData = data[1];
