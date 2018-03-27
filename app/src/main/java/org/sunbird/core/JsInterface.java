@@ -910,31 +910,31 @@ public class JsInterface {
         String pageId = "";
         String action = "";
         switch (type) {
-            case "Settings":
+            case "SETTINGS":
                 pageId = TelemetryPageId.PROFILE;
                 action = TelemetryAction.SETTINGS_CLICKED;
                 break;
-            case "Data Sync":
+            case "SETTINGS_DATASYNC":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.DATA_SYNC_CLICKED;
                 break;
-            case "Language Settings":
+            case "SETTINGS_LANGUAGE":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.LANGUAGE_CLICKED;
                 break;
-            case "Support":
+            case "SETTINGS_SUPPORT":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.SUPPORT_CLICKED;
                 break;
-            case "Share":
+            case "SETTINGS_SHARE":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.SHARE_APP_CLICKED;
                 break;
-            case "Device Tags":
+            case "SETTINGS_DEVICE_TAGS":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.DEVICE_TAGS_CLICKED;
                 break;
-            case "About the app":
+            case "ABOUT_APP":
                 pageId = TelemetryPageId.SETTINGS;
                 action = TelemetryAction.ABOUT_APP_CLICKED;
                 break;
