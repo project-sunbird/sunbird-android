@@ -700,10 +700,9 @@ public class GenieWrapper extends Activity {
             public void onSuccess(GenieResponse<SyncStat> genieResponse) {
                 SyncStat syncStat = genieResponse.getResult();
                 long d = syncStat.getSyncTime();
-                String d2 = new Date(d).toString();
                 PreferenceManager.getDefaultSharedPreferences(activity)
                         .edit()
-                        .putString("sync_time",d2)
+                        .putString("sync_time",String.valueOf(d))
                         .apply();
 
                 PreferenceManager.getDefaultSharedPreferences(activity)
