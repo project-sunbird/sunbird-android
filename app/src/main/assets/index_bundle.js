@@ -18343,11 +18343,11 @@
 	        var formatted = [];
 	        for(var i= 0;i<unformatted.length;i++){
 	            if(unformatted[i] == unformatted[i].toUpperCase()){
-	              formatted.push(" "+unformatted[i]);  
+	              formatted.push(" "+unformatted[i]);
 	            }else{
-	              formatted.push(unformatted[i]);    
+	              formatted.push(unformatted[i]);
 	            }
-	            
+	    
 	          }
 	          return formatted.join("");
 	          }*/
@@ -19112,21 +19112,43 @@
 	"use strict";
 	
 	exports.filterParamsCourse = [{
-	          name: "language",
-	          displayName: "Language",
-	          values: ["English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Sanskrit", "Maithili", "Munda", "Santali", "Juang", "Ho", "Other"]
+	  name: "board",
+	  displayName: "Board",
+	  values: ["MSCERT"]
 	
 	}, {
-	          name: "subject",
-	          displayName: "Subject",
-	          values: ["Maths", "English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Other"]
+	  name: "subject",
+	  displayName: "Subject",
+	  values: ["Mathematics", "Environmental Studies", "Geography", "History and Civics", "Civics and Administration", "Science and Technology"]
 	
 	}, {
-	          name: "medium",
-	          displayName: "Medium",
-	          values: ["English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Other"]
+	  name: "medium",
+	  displayName: "Medium",
+	  values: ["English"]
 	
 	}];
+	
+	// values : [ "English",
+	//           "Hindi",
+	//           "Assamese",
+	//           "Bengali",
+	//           "Gujarati",
+	//           "Kannada",
+	//           "Malayalam",
+	//           "Marathi",
+	//           "Nepali",
+	//           "Odia",
+	//           "Punjabi",
+	//           "Tamil",
+	//           "Telugu",
+	//           "Urdu",
+	//           "Sanskrit",
+	//           "Maithili",
+	//           "Munda",
+	//           "Santali",
+	//           "Juang",
+	//           "Ho",
+	//           "Other" ]
 
 /***/ }),
 /* 387 */
@@ -19135,49 +19157,77 @@
 	"use strict";
 	
 	exports.filterParamsResource = [{
-	  name: "language",
-	  displayName: "Language",
-	  values: ["English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Sanskrit", "Maithili", "Munda", "Santali", "Juang", "Ho", "Other"]
+	  name: "board",
+	  displayName: "Board",
+	  values: ["MSCERT"]
 	
 	}, {
 	  name: "grade",
 	  displayName: "Grade",
-	  values: ["Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12", "Other"]
-	}, {
-	  name: "Concepts",
-	  displayName: "Domain",
-	  values: ["numeracy", "literacy", "science"]
-	
-	}, {
-	  name: "contentType",
-	  displayName: "Content Type",
-	  values: ["Story", "Worksheet", "Collection", "LessonPlan", "TextBook"]
-	
+	  values: ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9"]
 	}, {
 	  name: "subject",
 	  displayName: "Subject",
-	  values: ["Maths", "English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Other"]
+	  values: ["Mathematics", "Environmental Studies", "Geography", "History and Civics", "Civics and Administration", "Science and Technology"]
 	
-	}, {
-	  name: "ageGroup",
-	  displayName: "Age Group",
-	  values: ["<5", "5-6", "6-7", "7-8", "8-10", ">10", "Other"]
 	}, {
 	  name: "medium",
 	  displayName: "Medium",
-	  values: ["English", "Hindi", "Assamese", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Other"]
+	  values: ["English", "Worksheet", "Collection", "LessonPlan", "TextBook"]
 	
 	}, {
-	  name: "ownership",
-	  displayName: "Ownership",
-	  values: ["current user", "all"]
-	
-	}, {
-	  name: "status",
-	  displayName: "Status",
-	  values: ["Live"]
+	  name: "contentType",
+	  displayName: "Content Types",
+	  values: ["Book", "Collection", "Lesson Plan", "Story", "Worksheet", "Game"]
 	
 	}];
+	
+	// {
+	//   name : "ageGroup",
+	//   displayName : "Age Group",
+	//   values : [ "<5",
+	//               "5-6",
+	//               "6-7",
+	//               "7-8",
+	//               "8-10",
+	//               ">10",
+	//               "Other"
+	//
+	//             ]
+	// },
+	// {
+	//   name : "medium",
+	//   displayName : "Medium",
+	//   values : [ "English",
+	//             "Hindi",
+	//             "Assamese",
+	//             "Bengali",
+	//             "Gujarati",
+	//             "Kannada",
+	//             "Malayalam",
+	//             "Marathi",
+	//             "Nepali",
+	//             "Odia",
+	//             "Punjabi",
+	//             "Tamil",
+	//             "Telugu",
+	//             "Urdu",
+	//             "Other"  ]
+	//
+	// },
+	// {
+	//   name : "ownership",
+	//   displayName : "Ownership",
+	//   values : [ "current user",
+	//             "all" ]
+	//
+	// },
+	// {
+	//   name : "status",
+	//   displayName : "Status",
+	//   values : [ "Live" ]
+	//
+	// }
 
 /***/ }),
 /* 388 */
@@ -23755,1045 +23805,1646 @@
 
 	"use strict";
 	
-	var _en_US, _hi_IN, _ta_IN, _te_IN, _mr_IN, _mr_IN2, _stringsRes;
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
 	var objectAssign = __webpack_require__(317);
-	var stringsRes = (_stringsRes = {
-		"en_US": (_en_US = {
-			ALREADY_HAVE_ACC: "Existing user? Sign in",
-			APPLY_FILTER: "APPLY FILTER",
-			AS_FILE: "As File",
-			AS_LINK: "As Link",
-			BACK_TO_EXIT: "Tap back again to exit app",
-			CANCEL_DOWNLOAD: "CANCEL DOWNLOAD",
-			COMING_SOON: "Coming soon..",
-			COMMUNITIES: "Community",
-			CONFIRM: "Confirm",
-			COURSE: "COURSE",
-			COURSE_ENROLLED: "Course enrolled",
-			COURSE_PROGRESS_COMPLETED: "Completed: %s %",
-			CONTENT_FLAGGED_MSG: "Content flagged successfully",
-			CONTENT_FLAG_FAIL: "Content flagging failed",
-			COURSES_BNAV: "COURSES",
-			COURSES_IN_PROGRESS: "Courses In Progress",
-			COURSES_IN_PROGRESS_2: "CoursesInProgress",
-			COURSES_LW: "Courses",
-			CREATED_BY: "CREATED BY",
-			DELETE: "Delete",
-			DESCRIPTION: "Description",
-			DOWNLOAD: "Download",
-			DOWNLOADS: "downloads",
-			EDIT: "Edit",
-			EMAIL_ID: "Email ID",
-			EMPTY_SEARCH_RESULTS: "No Search Results Found",
-			ENROLL_COURSE: "ENROLL IN COURSE",
-			ERROR_CONTENT_NOT_AVAILABLE: "Content unavailable",
-			ERROR_CONTENT_NOT_FOUND: "Contents not added yet",
-			ERROR_DURATION_NOT_AVAILABLE: "Duration unavailable",
-			ERROR_EMAIL_FORMAT: "Incorrect email format",
-			ERROR_EMPTY_EMAIL: "Enter email ID",
-			ERROR_EMPTY_FIRSTNAME: "Enter first name",
-			ERROR_EMPTY_LANGUAGE: "Select atleast one language",
-			ERROR_EMPTY_MOBILE: "Enter mobile number",
-			ERROR_EMPTY_PASSWORD: "Enter password",
-			ERROR_EMPTY_USERNAME: "Enter user name",
-			ERROR_FETCHING_DATA: "Unable to fetch data ",
-			ERROR_NO_COURSES_ENROLLED: "Not enrolled in course",
-			ERROR_NO_INTERNET_MESSAGE: "No internet access",
-			ERROR_NO_OFFLINE_RESOURCE: "No resources stored ",
-			ERROR_SERVER_CONNECTION: "Unable to connect to server",
-			ERROR_SERVER_MESSAGE: "Error :",
-			ERROR_SHORT_MOBILE: "Mobile number should be 10 digits",
-			ERROR_SHORT_PASSWORD: "Password should be minimum 8 characters",
-			FETCHING_CONTENTS: "Fetching content: %s%",
-			FILE_SIZE: "Size [%s]",
-			FILTER: "Filter",
-			FILTER_BY: "FILTER BY",
-			FIRST_NAME: "NAME",
-			FIRST_NAME_HINT: "Enter name",
-			GROUPS: "Groups",
-			GROUPS_BNAV: "GROUPS",
-			HINT_EMAIL_ID: "sample@test.com",
-			HINT_LANGUAGE: "Select preferred language",
-			HINT_MOBILE_NUMBER: "Enter mobile number",
-			HINT_PASSWORD: "Password should be minimum 8 characters",
-			HINT_USER_NAME: "Enter user name",
-			HOME_BNAV: "HOME",
-			JOIN: "JOIN",
-			LATEST_COURSES: "Latest Courses",
-			LOADING_CONTENT: "Loading content",
-			LOGGED_OUT: "Logged out",
-			MOBILE_NUMBER: "MOBILE NUMBER",
-			MODULE_SIZE: "Module size: %s",
-			MODULE_SIZE_UNAVAILABLE: "Module size unavailable",
-			NEW: "New",
-			NO_ACC_YET: "New user? Sign up now",
-			NO_INTERNET: "No internet access",
-			NO_PREVIEW: "Preview unavailable",
-			NO_RATING: "Not rated",
-			NUMBER_OF_VOTES: "Number of votes",
-			OPEN: "OPEN",
-			PASSWORD: "PASSWORD",
-			PHONE: "Phone",
-			PLAY: "PLAY",
-			POPULAR_COURSES: "Popular Courses",
-			PREVIEWS: "PREVIEWS",
-			PROFILE_BNAV: "PROFILE",
-			PROFILE_DETAILS_TITLE: "Profile Details",
-			PROFILE_LW: "Profile",
-			PUBLISHED_DATE: "Published date",
-			QUIZ: "QUIZ",
-			LIBRARY_BNAV: "LIBRARY",
-			LIBRARY_LW: "Library",
-			RESUME: "RESUME",
-			RETRY_ACTION: "Try again",
-			SAVED_ON: "Saved on",
-			SAVED_RESOURCES: "Saved Resources",
-			SAVED_RESOURCES_2: "SavedResources",
-			SEARCH_HINT: "Search",
-			SELECT: "SELECT",
-			SELECT_A_REASON: "SELECT A REASON",
-			SERVER_CONNECTION_ERROR: "Unable to connect to server",
-			SHARE_THIS: "Share",
-			SIGN_IN: "SIGN IN",
-			SIGN_UP: "SIGN UP",
-			SORT_BY: "SORT BY",
-			STRUCTURE: "Structure",
-			TO_DO: "To Do",
-			USER_NAME: "USER NAME",
-			VIEW_ALL: "View all",
-			VIEW_ALL_COMMUNITIES: "View all joined communities ",
-			VIEW_MORE: "VIEW MORE",
-			WAIT_REQUEST: "Please wait...",
-			WELCOME_BACK: "WELCOME BACK %s",
-			WELCOME_M1: "Welcome to %s",
-			WELCOME_M2: "Structured education for the educators",
-			WELCOME_ON_BOARD: "Welcome to %s, %s ",
-			WHAT_WENT_WRONG: "What went wrong?",
-			YOUR_PROGRESS: "%s% Complete",
-			FLAG: "Report",
-			ERROR_EMPTY_RESULT: "Search results unavailable",
-			ERROR_FLAG_CONTENT_MIN_REASON: "Select atleast one reason to flag the content",
-			ERROR_INVALID_EMAIL: "Invalid email ID",
-			MSG_RESOURCE_DELETED: "Content deleted from device",
-			LOGOUT: "Sign out",
-			CREATOR_NAME_NOT_AVAILABLE: "Creator's name unavailable",
-			ENROLL: "ENROLL",
-			VIEW_ONGOING_BATCHES: "View ongoing batches",
-			VIEW_UPCOMING_BATCHES: "View upcoming batches",
-			USER_NAME_PROFILE: "User Name",
-			BATCHES_FOR_THIS_COURSE: "BATCHES FOR THIS COURSE",
-			ERROR_EMPTY_FIELDS: "Enter details",
-			INVALID_CONTENT: "Content is invalid",
-			TIME_OUT: "Server timed out. Try again later",
-			OPTIONAL: "Optional",
-			PERCENTAGE: "Percentage",
-			SUBJECTS: "Subjects",
-			FROM: "From",
-			TO: "To",
-			SELECT_DATE: "Select date",
-			SAVE: "Save",
-			GRADE: "Grade",
-			INSTITUTION_NAME: "Institution Name",
-			BOARD_UNIVERSITY: "Board/University",
-			APPLY: "APPLY",
-			MY_COMMUNITIES: "My Communities",
-			AVAILABLE_FILTERS: "Available filters",
-			DISMISS: "CANCEL",
-			NO_FILTERS_SELECTED: "No filter selected",
-			ACCOMPLISHMENTS: "Accomplishments",
-			ADD: "Add",
-			PERSONAL_DETAILS: "Personal Details",
-			AFFILIATIONS: "Affiliations",
-			SHOW_LESS: "Show Less",
-			SHOW_MORE: "Show More",
-			CREATOR_OF: "Created by",
-			USERNAME: "User name: %s",
-			YOUR_PROFILE_IS: "Your profile is %s% complete",
-			FOLLOW: "Follow",
-			PEOPLE_YOU_FOLLOW: "People you follow",
-			GROUPS_YOU_FOLLOW: "Groups you follow",
-			PEOPLE_WHO_FOLLOW_YOU: "People who follow you",
-			SKILL_TAGS: "Skill Tags",
-			ENDORSE: "Endorse",
-			MODULE_NAME: "Module Name",
-			NIL: "Nil",
-			PINNED_BY_ADMIN: "Pinned by admin",
-			READ_MORE: "Read More",
-			THIS_IS_A_RESTRICTED_COMMUNITY: "This is a restricted community",
-			DOWNLOAD_CONFIRMATION_TEXT: "Do you want to download?",
-			YES: "Yes",
-			NO: "No",
-			ABOUT_MODULE: "About Module",
-			CHOOSE_FROM_FOLLOWING: "Select from following",
-			LANGUAGES: "LANGUAGES"
-		}, _defineProperty(_en_US, "COMING_SOON", "Details coming soon"), _defineProperty(_en_US, "LANGUAGE", "LANGUAGE"), _defineProperty(_en_US, "RECOMMENDED", "Recommended"), _defineProperty(_en_US, "STAR_RATINGS", "Rating"), _defineProperty(_en_US, "TITLE_EDUCATION", "Education"), _defineProperty(_en_US, "TITLE_EXPERIENCE", "Experience"), _defineProperty(_en_US, "TITLE_ADDRESS", "Address"), _defineProperty(_en_US, "LAST_NAME", "Last Name"), _defineProperty(_en_US, "LAST_NAME_HINT", "Enter your last name"), _defineProperty(_en_US, "NAME", "NAME"), _defineProperty(_en_US, "NAME_HINT", "Enter name"), _defineProperty(_en_US, "GENDER", "Gender"), _defineProperty(_en_US, "DATE_OF_BIRTH", "Birth date"), _defineProperty(_en_US, "CURRENT_LOCATION", "Current Location"), _defineProperty(_en_US, "HINT_CURRENT_LOCATION", "Enter your location"), _defineProperty(_en_US, "MODULES", "Modules"), _defineProperty(_en_US, "BTN_CLICK_TO_OPEN_CONTENT", "Tap to view content"), _defineProperty(_en_US, "START_COURSE", "START"), _defineProperty(_en_US, "ERROR_INVALID_AADHAAR", "Check Aadhaar number format"), _defineProperty(_en_US, "ERROR_BATCH_NOT_STARTED", "Batch not started"), _defineProperty(_en_US, "MSG_NO_NEW_NOTIFICATION", "No new notification"), _defineProperty(_en_US, "MSG_NO_DETAILS_TO_SHOW", "Details unavailable"), _defineProperty(_en_US, "MSG_IMPORTED_SUCCESSFULLY", "Content imported successfully"), _defineProperty(_en_US, "ERROR_CANT_OPEN_EMPTY_CONTENT", "Cannot open blank file"), _defineProperty(_en_US, "ERROR_NO_BATCHES_FOUND", "There are no batches for this course"), _defineProperty(_en_US, "ANSWER", "Answer"), _defineProperty(_en_US, "BTN_SUBMIT", "SUBMIT"), _defineProperty(_en_US, "TOPIC_YOU_MIGHT_LIKE", "Explore topics of interest"), _defineProperty(_en_US, "OPEN_SETTINGS", "OPEN SETTINGS"), _defineProperty(_en_US, "LABEL_ADD_A_SKILL", "Add a skill"), _defineProperty(_en_US, "TYPE_TO_ADD_A_SKILL", "Add your skills"), _defineProperty(_en_US, "ERROR_ALREADY_ADDED", "Skill is available in your skill list"), _defineProperty(_en_US, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "Enter mandatory details"), _defineProperty(_en_US, "WARNING_PLEASE_MAKE_SOME_CHANGES", "Make changes"), _defineProperty(_en_US, "WARNING_INVALID_YEAR_OF_PASSING", "Invalid pass year. Enter four (yyyy) digits for year of passing"), _defineProperty(_en_US, "WARNING_INVALID_PERCENTAGE", "Invalid percentage. Enter digits between 0 - 100 "), _defineProperty(_en_US, "WARNING_INVALID_GRADE", "Invalid grade. Enter one letter between A - F"), _defineProperty(_en_US, "DEGREE", "Degree"), _defineProperty(_en_US, "INSTITUTION_NAME", "Institution name"), _defineProperty(_en_US, "IS_THIS_YOUR_CURRENT_JOB", "Is this your current job?"), _defineProperty(_en_US, "ERROR_MULTIPLE_CURRENT_JOB", "Your 'current job' cannot have multiple entries"), _defineProperty(_en_US, "OPTION_INAPPROPRIATE_CONTENT", "Inappropriate content"), _defineProperty(_en_US, "OPTION_COPYRIGHT_VIOLATION", "Copyright violation"), _defineProperty(_en_US, "OPTION_PRIVACY_VIOLATION", "Data privacy violation"), _defineProperty(_en_US, "OPTION_OTHER", "Other"), _defineProperty(_en_US, "MODULE_NAME", "Module name"), _defineProperty(_en_US, "HOBBIES", "Hobbies"), _defineProperty(_en_US, "EDIT_PROFILE", "Edit profile"), _defineProperty(_en_US, "ACTIVE", "Active"), _defineProperty(_en_US, "STORAGE", "Storage"), _defineProperty(_en_US, "PERMISSION_DENIED", "Permission denied"), _defineProperty(_en_US, "YEAR_OF_PASSING", "Pass year"), _defineProperty(_en_US, "SELECT_ADDRESS_TYPE", "Select Address Type"), _defineProperty(_en_US, "CANCEL", "CANCEL"), _defineProperty(_en_US, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "Error! No resume content available"), _defineProperty(_en_US, "SELECT_LANGUAGE", "Select Language"), _defineProperty(_en_US, "READ_LESS", "Read Less"), _defineProperty(_en_US, "CONFIRM_DEL", "Confirm Delete?"), _defineProperty(_en_US, "ADDRESS_LINE1", "Address Line 1"), _defineProperty(_en_US, "ADDRESS_LINE2", "Address Line 2"), _defineProperty(_en_US, "CITY", "City"), _defineProperty(_en_US, "STATE", "State"), _defineProperty(_en_US, "COUNTRY", "Country"), _defineProperty(_en_US, "PINCODE", "Pincode"), _defineProperty(_en_US, "PERMANENT", "Permanent Address"), _defineProperty(_en_US, "CURRENT", "Current Address"), _defineProperty(_en_US, "JOB_NAME", "Job Name"), _defineProperty(_en_US, "ORGANIZATION", "Organization"), _defineProperty(_en_US, "POSITION", "Position"), _defineProperty(_en_US, "CHOOSE_FROM_FOLLOWING", "Choose from following"), _defineProperty(_en_US, "PERMISSION_SETTING_MSG", "To provide permissions, click on 'Open Settings' "), _defineProperty(_en_US, "DOWNLOADING", "DOWNLOADING %s %"), _defineProperty(_en_US, "CREATED_BY_SMALL", "Created by"), _defineProperty(_en_US, "ERROR_OFFLINE_MODE", "No internet, Offline mode"), _defineProperty(_en_US, "ADDITIONAL_INFORMATION", "Additional Information"), _defineProperty(_en_US, "FACEBOOK", "Facebook"), _defineProperty(_en_US, "TWITTER", "Twitter"), _defineProperty(_en_US, "LINKEDIN", "LinkedIn"), _defineProperty(_en_US, "SOCIAL", "Social"), _defineProperty(_en_US, "STRENGTHEN_YOUR_PROFILE", "Strengthen your profile"), _defineProperty(_en_US, "UPDATE", "Update"), _defineProperty(_en_US, "CHANGE_LANGUAGE", "Change language"), _defineProperty(_en_US, "MEDIUM", "Medium of instruction"), _defineProperty(_en_US, "LAST_LOGIN_TIME", "Last login time: %s"), _defineProperty(_en_US, "ANNOUNCEMENT", "Announcement"), _defineProperty(_en_US, "ERROR_NO_ATTACHMENTS", "No attachment"), _defineProperty(_en_US, "ATTACHMENTS", "Attachments"), _defineProperty(_en_US, "WEBLINKS", "Social media links"), _defineProperty(_en_US, "SENT_ON", "Sent on"), _defineProperty(_en_US, "NO_ANNOUNCEMENTS", "You have no new announcements"), _defineProperty(_en_US, "UNKNOWN_QR", "No content found associated with that QR code"), _defineProperty(_en_US, "TRY_AGAIN", "TRY AGAIN"), _defineProperty(_en_US, "CAMERA_PERMISSION_SETTINGS", "To give permission, open settings, select the %s app and click on the camera to allow."), _defineProperty(_en_US, "CAMERA_PERMISSION_DENIED", "Camera Permission denied"), _defineProperty(_en_US, "SELECT_STATE_TO_GET_STARTED", "Select state to get started"), _defineProperty(_en_US, "MSG_ALREADY_IMPORTED", "Already Imported"), _defineProperty(_en_US, "SCAN_QR_CODE", "Scan QR Code"), _defineProperty(_en_US, "SCAN_QR_INSTRUCTION", "Scan the QR code with your phone camera  "), _defineProperty(_en_US, "PRIVATE", "Private"), _defineProperty(_en_US, "PUBLIC", "Public"), _defineProperty(_en_US, "ERROR_UPLOADING_IMG", "Error while uploading image"), _defineProperty(_en_US, "CHANGE", "Change"), _defineProperty(_en_US, "REMOVE", "Remove"), _defineProperty(_en_US, "SKILLS_ADDED_SUCCESSFULLY", "Skills added successfully"), _defineProperty(_en_US, "SKILL_ENDORSED", "Skill endorsed"), _defineProperty(_en_US, "SKILL_NOT_ADDED", "Unsucessful, could not add skill"), _defineProperty(_en_US, "SKILL_COULD_NOT_BE_ENDORSED", "Skill endorsment unsucessfull"), _defineProperty(_en_US, "SKILL_ALREADY_ENDORSED", "Skill already endorsed"), _defineProperty(_en_US, "ERROR_GETTING_SKILLS", "Error getting skills"), _defineProperty(_en_US, "ERROR_COLLECTION_IS_EMPTY", "Collection is empty"), _defineProperty(_en_US, "SKILL_ALREADY_ADDED", "Skill already added"), _defineProperty(_en_US, "BLOG", "Blog"), _defineProperty(_en_US, "VIEW", "View"), _defineProperty(_en_US, "DOWNLOADING_ATTACHMENT", "Downloading Attachment"), _defineProperty(_en_US, "ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT", "Failed to download attachment"), _defineProperty(_en_US, "ATTACHMENT_DOWNLOADED", "Attachment downloaded"), _defineProperty(_en_US, "DOWNLOAD_CANCELED", "Download canceled"), _defineProperty(_en_US, "INVALID_PINCODE", "Invalid pincode"), _defineProperty(_en_US, "AVATAR", "Avatar"), _defineProperty(_en_US, "ALL_ANNOUNCEMENTS", "All Announcements"), _defineProperty(_en_US, "NO_CHANGE", "No changes have been made"), _defineProperty(_en_US, "CHOOSE_LANGUAGE", "Choose Your Preferred Language"), _defineProperty(_en_US, "DETECTED", "Detected"), _defineProperty(_en_US, "CONTINUE", "Continue"), _defineProperty(_en_US, "BROWSE_AS_GUEST", "Browse as guest"), _defineProperty(_en_US, "OVERLAY_LABEL_HOME", "Your Personalized Home Tab"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_HOME", "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place."), _defineProperty(_en_US, "OVERLAY_LABEL_TAKE_COURSE", "Sign In To Take This Course"), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_TAKE_COURSE", "Courses are for registered users. Sign In to get access to this course."), _defineProperty(_en_US, "OVERLAY_LABEL_COMMON", "Get Unlimited Access to %s."), _defineProperty(_en_US, "OVERLAY_INFO_TEXT_COMMON", "Sign In to unlock all the benefits that %s has to offer."), _defineProperty(_en_US, "OVERLAY_SIGN_IN", "SIGN IN"), _defineProperty(_en_US, "FULL_NAME", "NAME"), _defineProperty(_en_US, "STATE", "STATE"), _defineProperty(_en_US, "MEDIUM_OF_INSTRUCTION", "MEDIUM OF INSTRUCTION"), _defineProperty(_en_US, "MEDIUM_GUEST", "Medium"), _defineProperty(_en_US, "GRADE", "GRADE"), _defineProperty(_en_US, "BOARD", "Board"), _defineProperty(_en_US, "DOWNLOADING_1", "Downloading %s"), _defineProperty(_en_US, "DOWNLOAD_ALL", "Download all contents?"), _defineProperty(_en_US, "DOWNLOAD_COMPLETED", "Download completed"), _defineProperty(_en_US, "SETTINGS", "Settings"), _defineProperty(_en_US, "LANGUAGE_SETTINGS", "Language Settings"), _defineProperty(_en_US, "CURRENT_LANGUAGE", "Current Language : "), _defineProperty(_en_US, "SUPPORT", "Support"), _defineProperty(_en_US, "SUPPORT_MESSAGE", "Facing A problem? Send us a message"), _defineProperty(_en_US, "SHARE_APP", "Share the %s app"), _defineProperty(_en_US, "ABOUT_APP", "About the app"), _defineProperty(_en_US, "DEVICE_ID", "Device ID"), _defineProperty(_en_US, "APP_VERSION", "App Version"), _defineProperty(_en_US, "CHECK_FOR_UPDATES", "Check for Updates"), _defineProperty(_en_US, "PRIVACY_POLICY", "Privacy Policy"), _defineProperty(_en_US, "TERMS_OF_SERVICE", "Terms of Service"), _defineProperty(_en_US, "ABOUT_APPLICATION", "About the Application"), _defineProperty(_en_US, "ABOUT_US", "About us"), _defineProperty(_en_US, "ABOUT_US_DATA", "This is the about us data."), _defineProperty(_en_US, "OFF", "Off"), _defineProperty(_en_US, "OVER_WIFI", "Over Wifi"), _defineProperty(_en_US, "ALWAYS_ON", "Always on"), _defineProperty(_en_US, "SYNCING_NOW", "Syncing Now"), _defineProperty(_en_US, "SHARE_TELEMETRY", "Share Telemetry"), _defineProperty(_en_US, "SYNC_NOW", "Sync Now"), _defineProperty(_en_US, "AUTOMATIC_SYNC", "Automatic Data Sync"), _defineProperty(_en_US, "DATA_SYNC", "Data Sync"), _defineProperty(_en_US, "DATA_SYNC_SUB", "Backup your data, Transfer Telemetry"), _defineProperty(_en_US, "DEVICE_TAGS", "Device Tags"), _defineProperty(_en_US, "DEVICE_TAGS_SUB", "Add/Remove Device Tags"), _defineProperty(_en_US, "LAST_SYNC", "Last synced on "), _defineProperty(_en_US, "DOWNLOAD_ALL_wSIZE", "Download all %s?"), _defineProperty(_en_US, "ENJOYED_THIS_CONTENT", "Enjoyed this content?"), _defineProperty(_en_US, "HELP_US_BY_RATING", "Help us by rating this content"), _defineProperty(_en_US, "FEEDBACK_HINT", "Feedback (optional)"), _defineProperty(_en_US, "FEEDBACK_HINT_1", "Add a comment here"), _defineProperty(_en_US, "ABOUT", "About"), _defineProperty(_en_US, "SUBJECT", "SUBJECT"), _defineProperty(_en_US, "BOARD", "BOARD"), _defineProperty(_en_US, "MEDIUM_2", "MEDIUM"), _defineProperty(_en_US, "VIEW_CREDITS_INFO", "View Credits and Licensing Info"), _defineProperty(_en_US, "HIDE_CREDITS_INFO", "Hide Credits and Licensing Info"), _defineProperty(_en_US, "TRY_BEFORE_RATING", "Please try the content before rating it."), _defineProperty(_en_US, "SEND_EMAIL", "Send Email"), _defineProperty(_en_US, "BY", "By"), _defineProperty(_en_US, "PROFILE_UPDATE_SUCCESS", "Profile is updated successfully."), _defineProperty(_en_US, "PROFILE_UPDATE_FAILED", "Updating profile failed, try again later"), _defineProperty(_en_US, "BATCH_DETAILS", "Batch Details"), _defineProperty(_en_US, "THANK_FOR_RATING", "Thank you for rating"), _en_US),
-		"hi_IN": (_hi_IN = {
-			ALREADY_HAVE_ACC: "मौजूदा उपयोगकर्ता, साइन इन करें",
-			APPLY_FILTER: "फिल्टर लागू करें",
-			AS_FILE: "फ़ाइल के रूप में साझा करें",
-			AS_LINK: "लिंक के रूप में साझा करें",
-			BACK_TO_EXIT: "ऐप से बाहर निकलने के लिए फिर से स्पर्श करें",
-			CANCEL_DOWNLOAD: "डाउनलोड रद्द करें",
-			COMING_SOON: "जल्द आ रहा है...",
-			COMMUNITIES: "समुदायों",
-			CONFIRM: "पुष्टि करें",
-			COURSE: "कोर्स ",
-			COURSE_ENROLLED: "कोर्स नामांकित",
-			COURSE_PROGRESS_COMPLETED: "पूर्ण: %s %",
-			CONTENT_FLAGGED_MSG: "पाठ्यक्रम सफलतापूर्वक फ़्लैग किया गया",
-			CONTENT_FLAG_FAIL: "पाठ्यक्रम फ़्लैगिंग विफल रहा",
-			COURSES_BNAV: "कोर्स ",
-			COURSES_IN_PROGRESS: " कोर्स प्रगति पर है",
-			COURSES_LW: "कोर्स ",
-			CREATED_BY: "के द्वारा बनाई गई",
-			DELETE: "रद्द",
-			DESCRIPTION: "विवरण",
-			DOWNLOAD: "डाउनलोड ",
-			DOWNLOADS: "डाउनलोड ",
-			EDIT: "संपादित करें",
-			EMAIL_ID: "ईमेल आईडी",
-			EMPTY_SEARCH_RESULTS: "कोई खोज परिणाम नहीं मिला",
-			ENROLL_COURSE: " कोर्स में नामांकित कराएं",
-			ERROR_CONTENT_NOT_AVAILABLE: "पाठ्यक्रम अनुपलब्ध",
-			ERROR_CONTENT_NOT_FOUND: "पाठ्यक्रम अभी तक उपलब्ध नहीं है",
-			ERROR_DURATION_NOT_AVAILABLE: "अवधि अनुपलब्ध",
-			ERROR_EMAIL_FORMAT: "गलत ईमेल प्रारूप",
-			ERROR_EMPTY_EMAIL: "ईमेल आईडी दर्ज करें",
-			ERROR_EMPTY_FIRSTNAME: "प्रथम नाम दर्ज करें",
-			ERROR_EMPTY_LANGUAGE: "कम से कम एक भाषा चुनें",
-			ERROR_EMPTY_MOBILE: "मोबाइल नंबर दर्ज करें",
-			ERROR_EMPTY_PASSWORD: "पास वर्ड दर्ज करें",
-			ERROR_EMPTY_USERNAME: "उपयोगकर्ता नाम दर्ज करें",
-			ERROR_FETCHING_DATA: "डेटा लाने में त्रुटि",
-			ERROR_NO_COURSES_ENROLLED: "कोर्स में दाखिला नहीं हुआ",
-			ERROR_NO_INTERNET_MESSAGE: "इंटरनेट की सुविधा नहीं है",
-			ERROR_NO_OFFLINE_RESOURCE: "कोई संसाधन संग्रहीत नहीं",
-			ERROR_SERVER_CONNECTION: "सर्वर से संपर्क करने में असमर्थ",
-			ERROR_SERVER_MESSAGE: " त्रुटि:",
-			ERROR_SHORT_MOBILE: "मोबाइल नंबर 10 अंक होना चाहिए",
-			ERROR_SHORT_PASSWORD: "पासवर्ड 8 वर्णों से कम नहीं हो सकता",
-			FETCHING_CONTENTS: "पाठ्यक्रम प्राप्ति:%s%",
-			FILE_SIZE: "आकार [%s]",
-			FILTER: "फिल्टर",
-			FILTER_BY: "के द्वारा फिल्टर",
-			FIRST_NAME: "नाम",
-			FIRST_NAME_HINT: "अपना नाम दर्ज करें",
-			GROUPS: "समूहों",
-			GROUPS_BNAV: "समूहों",
-			HINT_EMAIL_ID: "sample@test.com नमूने का परीक्षण",
-			HINT_LANGUAGE: "पसंदीदा भाषा चुनें",
-			HINT_MOBILE_NUMBER: "मोबाइल नंबर दर्ज करें",
-			HINT_PASSWORD: "पासवर्ड 8 वर्णों से कम नहीं हो सकता",
-			HINT_USER_NAME: "उपयोगकर्ता नाम दर्ज करें",
-			HOME_BNAV: "होम",
-			JOIN: "शामिल",
-			LATEST_COURSES: "नवीनतम पाठ्यक्रम",
-			LOADING_CONTENT: "पाठ्यक्रम लोड करें",
-			LOGGED_OUT: "लॉग आउट",
-			MOBILE_NUMBER: "मोबाइल नंबर",
-			MODULE_SIZE: "मॉड्यूल आकार: %s",
-			MODULE_SIZE_UNAVAILABLE: "मॉड्यूल का आकार अनुपलब्ध है",
-			NEW: "नया",
-			NO_ACC_YET: "नया उपयोगकर्ता? अब साइन-अप करें",
-			NO_INTERNET: "इंटरनेट कनेक्शन अनुपलब्ध है",
-			NO_PREVIEW: "कोई प्रीव्यू उपलब्ध नहीं  है",
-			NO_RATING: "कोई रेटिंग उपलब्ध नहीं है",
-			NUMBER_OF_VOTES: "वोटों की संख्या",
-			OPEN: "खुला",
-			PASSWORD: "पासवर्ड",
-			PHONE: "फ़ोन",
-			PLAY: "प्ले",
-			POPULAR_COURSES: "लोकप्रिय कोर्स",
-			PREVIEWS: "प्रीव्यू",
-			PROFILE_BNAV: "प्रोफ़ाइल",
-			PROFILE_DETAILS_TITLE: "प्रोफ़ाइल विवरण",
-			PROFILE_LW: "प्रोफ़ाइल",
-			PUBLISHED_DATE: "प्रकाशन की तारीख",
-			QUIZ: "प्रश्नोत्तरी",
-			LIBRARY_BNAV: "पुस्तकालय संग्रह",
-			LIBRARY_LW: "पुस्तकालय संग्रह",
-			RESUME: "पुनः आरंभ करें",
-			RETRY_ACTION: "पुनः प्रयास करें",
-			SAVED_ON: "सेव्ड",
-			SAVED_RESOURCES: "सहेजे गए संसाधन",
-			SEARCH_HINT: "खोज",
-			SELECT: "चयनित",
-			SELECT_A_REASON: "कोई कारण चुनें",
-			SERVER_CONNECTION_ERROR: "सर्वर से संपर्क करने में असमर्थ",
-			SHARE_THIS: "शेयर",
-			SIGN_IN: "साइन इन करें",
-			SIGN_UP: "साइन अप करें",
-			SORT_BY: "आधार पर छाँटे",
-			STRUCTURE: "संरचना",
-			TO_DO: " टू डू ",
-			USER_NAME: "उपयोगकर्ता नाम",
-			VIEW_ALL: "सभी देखें",
-			VIEW_ALL_COMMUNITIES: "सभी शामिल हुए समुदायों को देखें",
-			VIEW_MORE: "अधिक",
-			WAIT_REQUEST: "कृपया प्रतीक्षा करें...",
-			WELCOME_BACK: "फिर से स्वागत %s",
-			WELCOME_M1: "आपका स्वागत है %s",
-			WELCOME_M2: "शिक्षकों के लिए ढांचे की संरचना",
-			WELCOME_ON_BOARD: "आपका स्वागत है %s, %s",
-			WHAT_WENT_WRONG: "क्या गलत हुआ?",
-			YOUR_PROGRESS: "आपकी प्रगति : %s%",
-			FLAG: "रिपोर्ट",
-			ERROR_EMPTY_RESULT: "खोज परिणाम अनुपलब्ध",
-			ERROR_FLAG_CONTENT_MIN_REASON: " पाठ्यक्रम फ्लैग करने के लिए कम से कम एक कारण चुनें",
-			ERROR_INVALID_EMAIL: "अमान्य ईमेल आईडी",
-			MSG_RESOURCE_DELETED: "डिवाइस से पाठ्यक्रम हटाई गई",
-			LOGOUT: "साइन आउट",
-			CREATOR_NAME_NOT_AVAILABLE: "निर्माता का नाम अनुपलब्ध है",
-			ENROLL: "नामांकन",
-			VIEW_ONGOING_BATCHES: "चल रहे बैचों को देखें",
-			VIEW_UPCOMING_BATCHES: "आगामी बैचों देखें",
-			USER_NAME_PROFILE: "उपयोगकर्ता नाम",
-			BATCHES_FOR_THIS_COURSE: "इस पाठ्यक्रम के लिए बैच ",
-			ERROR_EMPTY_FIELDS: "विवरण दर्ज करें",
-			INVALID_CONTENT: "पाठ्यक्रम अमान्य है",
-			TIME_OUT: "सर्वर का समय समाप्त हुआ बाद में पुन: प्रयास करें",
-			OPTIONAL: "ऐच्छिक",
-			PERCENTAGE: "प्रतिशत",
-			SUBJECTS: "विषयों",
-			FROM: "से",
-			TO: "सेवा मेरे",
-			SELECT_DATE: "तारीख़ चुनें",
-			SAVE: "सेव्ड",
-			GRADE: "ग्रेड",
-			INSTITUTION_NAME: "संस्था का नाम",
-			BOARD_UNIVERSITY: "बोर्ड / विश्वविद्यालय",
-			APPLY: "लागू करें",
-			MY_COMMUNITIES: "मेरे समुदाय",
-			AVAILABLE_FILTERS: "उपलब्ध फिल्टर",
-			DISMISS: "रद्द",
-			NO_FILTERS_SELECTED: "कोई फ़िल्टर चयनित नहीं है",
-			ACCOMPLISHMENTS: "उपलब्धियों",
-			ADD: "जोड़",
-			PERSONAL_DETAILS: "व्यक्तिगत विवरण",
-			AFFILIATIONS: "संधि",
-			SHOW_LESS: "कम दिखाएं",
-			SHOW_MORE: "और दिखाएं",
-			CREATOR_OF: "के द्वारा बनाई गई",
-			USERNAME: "उपयोगकर्ता नाम: %s",
-			YOUR_PROFILE_IS: "आपकी प्रोफ़ाइल %s% पूर्ण है",
-			FOLLOW: "अनुसरण",
-			PEOPLE_YOU_FOLLOW: "लॉग जिनका आप अनुसरण करते हो",
-			GROUPS_YOU_FOLLOW: "जिन समूहों का आप अनुसरण करते हैं",
-			PEOPLE_WHO_FOLLOW_YOU: "जो लोग आपका अनुसरण करते हैं",
-			SKILL_TAGS: "कौशल टैग",
-			ENDORSE: "संलग्न",
-			MODULE_NAME: "मोड्यूल का नाम",
-			NIL: "शून्य",
-			PINNED_BY_ADMIN: "व्यवस्थापक द्वारा पिन किया गया",
-			READ_MORE: "आगे पढ़े",
-			THIS_IS_A_RESTRICTED_COMMUNITY: "यह एक सीमित समुदाय है",
-			DOWNLOAD_CONFIRMATION_TEXT: "क्या आप डाउनलोड करना चाहते हैं?",
-			YES: "हाँ",
-			NO: "नहीं",
-			ABOUT_MODULE: "मॉड्यूल के बारे में",
-			CHOOSE_FROM_FOLLOWING: "निम्नलिखित से चुनें",
-			LANGUAGES: "भाषा"
-		}, _defineProperty(_hi_IN, "COMING_SOON", "विवरण जल्द ही आ रहे हैं"), _defineProperty(_hi_IN, "LANGUAGE", "भाषा"), _defineProperty(_hi_IN, "RECOMMENDED", "सिफारिश"), _defineProperty(_hi_IN, "STAR_RATINGS", "रेटिंग"), _defineProperty(_hi_IN, "TITLE_EDUCATION", "शिक्षा"), _defineProperty(_hi_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_hi_IN, "TITLE_ADDRESS", "पता"), _defineProperty(_hi_IN, "LAST_NAME", "कुलनाम "), _defineProperty(_hi_IN, "LAST_NAME_HINT", "अपना कुलनाम दर्ज करें"), _defineProperty(_hi_IN, "NAME", "नाम"), _defineProperty(_hi_IN, "NAME_HINT", "अपना नाम दर्ज करें"), _defineProperty(_hi_IN, "GENDER", "लिंग"), _defineProperty(_hi_IN, "DATE_OF_BIRTH", "जन्म की तारीख"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान स्थान"), _defineProperty(_hi_IN, "HINT_CURRENT_LOCATION", "अपना स्थान दर्ज करें"), _defineProperty(_hi_IN, "MODULES", "मॉड्यूल"), _defineProperty(_hi_IN, "BTN_CLICK_TO_OPEN_CONTENT", "पाठ्यक्रम देखने के लिए ऐप स्पर्श करें"), _defineProperty(_hi_IN, "START_COURSE", "प्रारंभ"), _defineProperty(_hi_IN, "ERROR_INVALID_AADHAAR", "आधार संख्या प्रारूप की जांच करें"), _defineProperty(_hi_IN, "ERROR_BATCH_NOT_STARTED", "बैच शुरू नहीं हुआ"), _defineProperty(_hi_IN, "MSG_NO_NEW_NOTIFICATION", "कोई नई सूचना नहीं"), _defineProperty(_hi_IN, "MSG_NO_DETAILS_TO_SHOW", "विवरण अनुपलब्ध"), _defineProperty(_hi_IN, "MSG_IMPORTED_SUCCESSFULLY", "पाठ्यक्रम सफलतापूर्वक आयातित"), _defineProperty(_hi_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "खाली फाइल नहीं खोल सकते "), _defineProperty(_hi_IN, "ERROR_NO_BATCHES_FOUND", "इस पाठ्यक्रम के लिए कोई बैच नहीं है"), _defineProperty(_hi_IN, "ANSWER", "उत्तर "), _defineProperty(_hi_IN, "BTN_SUBMIT", "सबमिट करें"), _defineProperty(_hi_IN, "TOPIC_YOU_MIGHT_LIKE", "विषय चुनें जो आपकी रुचि है"), _defineProperty(_hi_IN, "OPEN_SETTINGS", "सेटिंग्स खोलें"), _defineProperty(_hi_IN, "LABEL_ADD_A_SKILL", "अपने कौशल बताये"), _defineProperty(_hi_IN, "TYPE_TO_ADD_A_SKILL", "अपने कौशल को बताने के लिए टाइप करें"), _defineProperty(_hi_IN, "ERROR_ALREADY_ADDED", "यह कौशल पहले से ही जोड़ा गया है। अब नए कौशल जोड़ें"), _defineProperty(_hi_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "सभी अनिवार्य विवरण दर्ज करें"), _defineProperty(_hi_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "परिवर्तन करें"), _defineProperty(_hi_IN, "WARNING_INVALID_YEAR_OF_PASSING", "अवैध पासिंग वर्ष | उत्तीर्ण वर्ष के लिए चार (yyyy) अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_PERCENTAGE", "अमान्य प्रतिशत | 0-100 के बीच अंक दर्ज करें"), _defineProperty(_hi_IN, "WARNING_INVALID_GRADE", "अमान्य ग्रेड| ग्रेड के लिए किसी भी एक वर्णमाला (ए-एफ) का चयन करें"), _defineProperty(_hi_IN, "DEGREE", "पद"), _defineProperty(_hi_IN, "INSTITUTION_NAME", "संस्था का नाम"), _defineProperty(_hi_IN, "IS_THIS_YOUR_CURRENT_JOB", "यह आपकी वर्तमान नौकरी है"), _defineProperty(_hi_IN, "ERROR_MULTIPLE_CURRENT_JOB", "आपकी 'वर्तमान नौकरी' में एकाधिक प्रविष्टियां नहीं हो सकतीं"), _defineProperty(_hi_IN, "OPTION_INAPPROPRIATE_CONTENT", "अनुचित पाठ्यक्रम"), _defineProperty(_hi_IN, "OPTION_COPYRIGHT_VIOLATION", "कॉपीराइट उल्लंघन"), _defineProperty(_hi_IN, "OPTION_PRIVACY_VIOLATION", "गोपनीयता उल्लंघन"), _defineProperty(_hi_IN, "OPTION_OTHER", "अन्य"), _defineProperty(_hi_IN, "MODULE_NAME", "मोड्यूल का नाम"), _defineProperty(_hi_IN, "CURRENT_LOCATION", "वर्तमान  स्थान "), _defineProperty(_hi_IN, "HOBBIES", "शौक"), _defineProperty(_hi_IN, "EDIT_PROFILE", "प्रोफाइल एडिट करें"), _defineProperty(_hi_IN, "ACTIVE", "सक्रिय"), _defineProperty(_hi_IN, "STORAGE", "स्टोरेज "), _defineProperty(_hi_IN, "PERMISSION_DENIED", "अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_hi_IN, "SELECT_ADDRESS_TYPE", "पता प्रकार का चयन करें "), _defineProperty(_hi_IN, "CANCEL", "रद्द "), _defineProperty(_hi_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटि! कोई शुरू पाठ्यक्रम उपलब्ध नहीं"), _defineProperty(_hi_IN, "SELECT_LANGUAGE", "भाषा चुनिए"), _defineProperty(_hi_IN, "READ_LESS", "कम पढ़ें"), _defineProperty(_hi_IN, "CONFIRM_DEL", "हटाने की पुष्टि करें?"), _defineProperty(_hi_IN, "ADDRESS_LINE1", "पता पंक्ति 1"), _defineProperty(_hi_IN, "ADDRESS_LINE2", "पता पंक्ति 2"), _defineProperty(_hi_IN, "CITY", "शहर"), _defineProperty(_hi_IN, "STATE", "राज्य"), _defineProperty(_hi_IN, "COUNTRY", "देश"), _defineProperty(_hi_IN, "PINCODE", "पिन कोड"), _defineProperty(_hi_IN, "PERMANENT", "स्थायी पता "), _defineProperty(_hi_IN, "CURRENT", "अस्थायी पता "), _defineProperty(_hi_IN, "JOB_NAME", "व्यवसाय"), _defineProperty(_hi_IN, "ORGANIZATION", "संगठन"), _defineProperty(_hi_IN, "POSITION", "पद"), _defineProperty(_hi_IN, "CHOOSE_FROM_FOLLOWING", "निम्नलिखित से चुनें"), _defineProperty(_hi_IN, "PERMISSION_SETTING_MSG", "उपयुक्त अनुमति के लिए ओपन सेटिंग्स स्पर्श करें"), _defineProperty(_hi_IN, "DOWNLOADING", "डौन्लोडिंग %s %"), _defineProperty(_hi_IN, "CREATED_BY_SMALL", "के द्वारा बनाई गई"), _defineProperty(_hi_IN, "ERROR_OFFLINE_MODE", "कोई इंटरनेट नहीं, ऑफ़लाइन मोड "), _defineProperty(_hi_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त जानकारी"), _defineProperty(_hi_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_hi_IN, "TWITTER", "ट्विटर"), _defineProperty(_hi_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_hi_IN, "SOCIAL", "सोशल"), _defineProperty(_hi_IN, "STRENGTHEN_YOUR_PROFILE", "अपने प्रोफाइल को मजबूत करें"), _defineProperty(_hi_IN, "UPDATE", "नवीनीकरण"), _defineProperty(_hi_IN, "CHANGE_LANGUAGE", "भाषा बदलो"), _defineProperty(_hi_IN, "MEDIUM", "निर्देश का माध्यम"), _defineProperty(_hi_IN, "LAST_LOGIN_TIME", "अंतिम लॉगिन समय: %s"), _defineProperty(_hi_IN, "ANNOUNCEMENT", "घोषणा"), _defineProperty(_hi_IN, "ERROR_NO_ATTACHMENTS", "कुछ भी संलग्न नहीं"), _defineProperty(_hi_IN, "ATTACHMENTS", "संलग्न"), _defineProperty(_hi_IN, "WEBLINKS", "वेब लिंक"), _defineProperty(_hi_IN, "SENT_ON", "पर भेजा गया"), _defineProperty(_hi_IN, "NO_ANNOUNCEMENTS", "कोई नई घोषणा नहीं "), _defineProperty(_hi_IN, "UNKNOWN_QR", "कोई पाठ्यक्रम QR कोड से संबद्ध नहीं मिली"), _defineProperty(_hi_IN, "TRY_AGAIN", "पुनः प्रयास करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_SETTINGS", "अनुमति देने के लिए, सेटिंग खोलें,%s ऐप का चयन करें और अनुमति देने के लिए कैमरे पर क्लिक करें"), _defineProperty(_hi_IN, "CAMERA_PERMISSION_DENIED", "कैमरा अनुमति अस्वीकृत"), _defineProperty(_hi_IN, "SELECT_STATE_TO_GET_STARTED", "प्रारंभ करने के लिए राज्य चुनें"), _defineProperty(_hi_IN, "MSG_ALREADY_IMPORTED", "पहले से आयातित"), _defineProperty(_hi_IN, "SCAN_QR_CODE", "QR कोड स्कैन करें"), _defineProperty(_hi_IN, "SCAN_QR_INSTRUCTION", "अपने फोन कैमरे के QR कोड स्कैन करें"), _defineProperty(_hi_IN, "PRIVATE", "निजी"), _defineProperty(_hi_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_hi_IN, "ERROR_UPLOADING_IMG", "चित्र अपलोड करते समय त्रुटि हुई"), _defineProperty(_hi_IN, "CHANGE", "परिवर्तन"), _defineProperty(_hi_IN, "REMOVE", "हटा दें"), _defineProperty(_hi_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल सफलतापूर्वक जोड़े"), _defineProperty(_hi_IN, "SKILL_ENDORSED", "कौशल का समर्थन किया"), _defineProperty(_hi_IN, "SKILL_NOT_ADDED", "अप्रशिक्षित, कौशल जोड़ नहीं सके"), _defineProperty(_hi_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल समर्थन असफल"), _defineProperty(_hi_IN, "SKILL_ALREADY_ENDORSED", "कौशल पहले से ही अनुमोदित है"), _defineProperty(_hi_IN, "ERROR_GETTING_SKILLS", "कौशल प्राप्त करने में त्रुटि"), _defineProperty(_hi_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह खाली है"), _defineProperty(_hi_IN, "SKILL_ALREADY_ADDED", "कौशल पहले से ही जोड़ा है"), _defineProperty(_hi_IN, "BLOG", "ब्लॉग"), _hi_IN),
-		"ta_IN": (_ta_IN = {
-			ALREADY_HAVE_ACC: "முன்னரே அக்கௌன்ட் இருக்கிறதா? சைன் இன் செய்யுங்கள்.",
-			APPLY_FILTER: "பில்ட்டர் செய்க",
-			AS_FILE: "கோப்பு வடிவத்தில் ",
-			AS_LINK: "லின்க் வடிவத்தில்",
-			BACK_TO_EXIT: "குறுஞ்செயிலி விட்டு வெளியேற பேக் பட்டனை மற்றொன்று முறை அழுத்தவும்.",
-			CANCEL_DOWNLOAD: "டவுன்லோடை ரத்துசெய்",
-			COMING_SOON: "விரைவில் வரும்.........",
-			COMMUNITIES: "சமூகங்கள்",
-			CONFIRM: "உறுதிசெய்யுங்கள்",
-			COURSE: "கோர்ஸ்",
-			COURSE_ENROLLED: "கோர்ஸ் பதிவு செய்யப்பட்டது",
-			COURSE_PROGRESS_COMPLETED: "%s % முடிந்தது",
-			CONTENT_FLAGGED_MSG: "வெற்றிகரமாகப் பாடம் பிளாக் செய்யப்பட்டது",
-			CONTENT_FLAG_FAIL: "பாடத்தை பிளாக் செய்வது தோல்வியடைந்தது",
-			COURSES_BNAV: "கோர்ஸ்கள்",
-			COURSES_IN_PROGRESS: "கோர்ஸ்கள் மேம்படுகிறது",
-			COURSES_LW: "கோர்ஸ்கள்",
-			CREATED_BY: "உருவாக்கியவர்",
-			DELETE: "அகற்று",
-			DESCRIPTION: "விவரங்கள்",
-			DOWNLOAD: "டவுன்லோட்",
-			DOWNLOADS: "டவுன்லோடுகள்",
-			EDIT: "திருத்து",
-			EMAIL_ID: "மின்னஞ்சல் ஐடி",
-			EMPTY_SEARCH_RESULTS: "உங்கள் தேடலுக்குறிய முடிவுகள் இல்லை",
-			ENROLL_COURSE: "இந்த கோர்ஸை பதிவு செய்யுங்கள்",
-			ERROR_CONTENT_NOT_AVAILABLE: "பாடம் கிடைக்கவில்லை",
-			ERROR_CONTENT_NOT_FOUND: "பாடங்கள் இன்னும் சேர்க்கவில்லை",
-			ERROR_DURATION_NOT_AVAILABLE: "கால நேரம் கிடைக்கவில்லை",
-			ERROR_EMAIL_FORMAT: "தவறான மின்னஞ்சல் வடிவம் ",
-			ERROR_EMPTY_EMAIL: "தங்கள் மின்னஞ்சல் ஐடி யை பதியுங்கள்",
-			ERROR_EMPTY_FIRSTNAME: "தங்கள் பெயரை பதியுங்கள்",
-			ERROR_EMPTY_LANGUAGE: "குறைந்தது ஒரு மொழியாவது தேர்வுசெயுங்கள்",
-			ERROR_EMPTY_MOBILE: "தங்கள் கைபேசி எண்ணை பதியுங்கள்",
-			ERROR_EMPTY_PASSWORD: "தங்கள் கடவுச்சொல்லை பதியுங்கள்",
-			ERROR_EMPTY_USERNAME: "பயனர் பெயரை பதியுங்கள்",
-			ERROR_FETCHING_DATA: "டேட்டா பெறுவதில் பிழை ஏற்பட்டுள்ளது",
-			ERROR_NO_COURSES_ENROLLED: "எந்த கோர்ஸும் இன்னும் பதிவு செய்யப்படவில்லை",
-			ERROR_NO_INTERNET_MESSAGE: "தங்கள் கைப்பேசி இணையத்திடம் இணைக்கப்படவில்லை.",
-			ERROR_NO_OFFLINE_RESOURCE: "இன்னும்  ஆஃப்லைன் ரிசோர்ஸ எதுவும் இல்லை",
-			ERROR_SERVER_CONNECTION: "சேவையகத்துடன் தொடர்புகொள்ள முடியவில்லை",
-			ERROR_SERVER_MESSAGE: "பிழை:",
-			ERROR_SHORT_MOBILE: "தொலைப்பேசி எண் வடிவத்தைப் பரிசோதிக்கவும்",
-			ERROR_SHORT_PASSWORD: "கடவுச்சொல்லை எட்டு எழுத்துக்களுக்குக் குறைவாக இருக்கமுடியாது",
-			FETCHING_CONTENTS: "பாடங்கள் பெறுகிறது: %s%",
-			FILE_SIZE: "அளவு [%s]",
-			FILTER: "பில்டர்",
-			FILTER_BY: "இதன் அடிப்படையில் பில்டர் செய்க",
-			FIRST_NAME: "பெயர்",
-			FIRST_NAME_HINT: "தங்கள் பெயரை பதிவுசெய்யுங்கள்",
-			GROUPS: "குழுக்கள்",
-			GROUPS_BNAV: "குழுக்கள்",
-			HINT_EMAIL_ID: "sample@test.com",
-			HINT_LANGUAGE: "தங்களுக்கு அனுகூலமான மொழியைத் தேர்வு செய்துகொள்ளுங்கள்",
-			HINT_MOBILE_NUMBER: "தங்கள் தொலைப்பேசி எண்ணைப் பதிவு செயுங்கள்",
-			HINT_PASSWORD: "கடவுச்சொல் குறைந்தது எட்டு எழுத்துக்கல் இருக்கவேண்டும்.",
-			HINT_USER_NAME: "பயனர் பெயரை பதியுங்கள்",
-			HOME_BNAV: "ஹோம்",
-			JOIN: "சேறுங்கள்",
-			LATEST_COURSES: "புதிய கோர்ஸ்கள்",
-			LOADING_CONTENT: "பாடம் லோடாகிறது",
-			LOGGED_OUT: "வெளியேற்றப்பட்டீர்கள்",
-			MOBILE_NUMBER: "தொலைப்பேசி எண்",
-			MODULE_SIZE: "மாடியுள் அளவு: %s",
-			MODULE_SIZE_UNAVAILABLE: "மாடியுள் அளவு கிடைக்கவில்லை",
-			NEW: "புதியது",
-			NO_ACC_YET: "புது பயனரா? இப்போது பதிவு செய்க",
-			NO_INTERNET: "இணையம் இல்லை",
-			NO_PREVIEW: "முன்னோட்ட தற்சமயம் காணமுடியாது",
-			NO_RATING: "மதிப்பிடாதவை",
-			NUMBER_OF_VOTES: "மொத்த வாக்குகள்",
-			OPEN: "திறன்டிடுங்கள்",
-			PASSWORD: "கடவுச்சொல்லை",
-			PHONE: "தொலைப்பேசி",
-			PLAY: "பிளே",
-			POPULAR_COURSES: "பிரபலமான கோர்ஸ்கள்",
-			PREVIEWS: "முன்னோட்டங்கள்",
-			PROFILE_BNAV: "ப்ரொபைல்",
-			PROFILE_DETAILS_TITLE: "ப்ரொபைல் விவரங்கள்",
-			PROFILE_LW: "ப்ரொபைல்",
-			PUBLISHED_DATE: "வெளியிடப்பட்ட தேதி",
-			QUIZ: "வினாடி வினா",
-			RESUME: "விட்ட இடத்தில் இருந்து தொடருக",
-			RETRY_ACTION: "மீண்டும் முயற்ச்சிக்கவும்",
-			SAVED_ON: "சேமித்தவை",
-			SAVED_RESOURCES: "சேமித்த ரிசோர்ஸ்கள்",
-			SEARCH_HINT: "தேடு",
-			SELECT: "தேர்வு செய்யுங்கள்",
-			SELECT_A_REASON: "காரணத்தை தேர்வு செய்யுங்கள்",
-			SERVER_CONNECTION_ERROR: "சேவையகத்துடன் தொடர்புகொள்ள முடியவில்லை",
-			SHARE_THIS: "பகிருங்கள்",
-			SIGN_IN: "சைன் இன்",
-			SIGN_UP: "சைன் அப்",
-			SORT_BY: "மூலம் வரிசைப்படுட்டுங்கள்",
-			STRUCTURE: "அமைப்பு",
-			TO_DO: "செய்ய வேண்டியவை",
-			USER_NAME: "பயனர் பெயர்",
-			VIEW_ALL: "அனைத்தையும் காட்டு",
-			VIEW_ALL_COMMUNITIES: "தாங்கள் அங்கமாக இருக்கும் அனைத்து சமூகங்களையும் காட்டு",
-			VIEW_MORE: "மேலும் காட்டு",
-			WAIT_REQUEST: "தயவுசெய்து காத்திருக்கவும்",
-			WELCOME_BACK: "மீண்டும் வருக %s",
-			WELCOME_M1: "என்.டி.பிக்கு வரவேற்கிறோம் %s",
-			WELCOME_M2: "கல்வியாளர்களுக்கான கட்டமைக்கப்பட்ட கல்வி",
-			WELCOME_ON_BOARD: "என்.டி.பிக்கு வரவேற்கிறோம் %s, %s",
-			WHAT_WENT_WRONG: "என்ன தவறு நடந்தது?",
-			YOUR_PROGRESS: "தங்கள் முன்னேற்றம்: %s%",
-			FLAG: "குறி",
-			ERROR_EMPTY_RESULT: "எந்த முடிவுகளும் தற்போது இல்லை",
-			ERROR_FLAG_CONTENT_MIN_REASON: "தயவுசெய்து பாடத்தை குறித்ததுக்காக குறைந்தது ஒரு காரணத்தை தேர்வு செய்யுங்கள்",
-			ERROR_INVALID_EMAIL: "தவறான மின்னஞ்சல் ஐடி",
-			MSG_RESOURCE_DELETED: "தங்கள் சாதனத்தில் இருந்து   பாடம் அழிக்க பட்டது",
-			LOGOUT: "லாக் அவுட்",
-			CREATOR_NAME_NOT_AVAILABLE: "உருவாக்கியவர் பெயர் கிடைக்கவில்லை",
-			ENROLL: "பதிவு செய்யுங்கள்",
-			VIEW_ONGOING_BATCHES: "நடப்பு பெச்சஸ்கலை பாருங்கள்",
-			VIEW_UPCOMING_BATCHES: "வரப்போகும் பெச்சஸ்கலை பாருங்கள்",
-			USER_NAME_PROFILE: "பயனர் பெயர்",
-			BATCHES_FOR_THIS_COURSE: "இந்த கோர்ஸுக்காண பெச்சஸ்",
-			ERROR_EMPTY_FIELDS: "விவரங்களை பதிவுசெய்யுங்கள்",
-			INVALID_CONTENT: "தவறான பாடம்",
-			TIME_OUT: "சேவையக நேரம் முடிந்தது, பிறகு மீண்டும் முயற்சிக்கவும்",
-			OPTIONAL: "கட்டாயம் அற்றவை",
-			PERCENTAGE: "சதவீதம்",
-			SUBJECTS: "பாடங்கள்",
-			FROM: "இருந்து",
-			TO: "அங்கே",
-			SELECT_DATE: "தேதி தேர்வுசெய்யுங்கள்",
-			SAVE: "செவ் செய்யுங்கள்",
-			GRADE: "வகுப்பு",
-			INSTITUTION_NAME: "இயக்க பெயர்",
-			BOARD_UNIVERSITY: "வாரியம் / பல்கலைக்கழகம்",
-			APPLY: "பில்ட்டர் செய்யுங்கள்",
-			MY_COMMUNITIES: "என் சமுதாயங்கள்",
-			AVAILABLE_FILTERS: "பில்ட்டர்கள்",
-			DISMISS: "ரத்து செய்யுங்கள்",
-			NO_FILTERS_SELECTED: "எந்த பில்டரும் ஆய்வு செய்யவில்லை",
-			ACCOMPLISHMENTS: "சாதனைகள்/சிறப்புத் தகுதிகள்",
-			ADD: "சேறு",
-			PERSONAL_DETAILS: "சொந்த விவரங்கள்",
-			AFFILIATIONS: "தொடர்புகள்",
-			SHOW_LESS: "குறைபாக காட்டவும்",
-			SHOW_MORE: "இன்னும் நிறைய காட்டவும்",
-			CREATOR_OF: "உருவாக்கியவர்",
-			USERNAME: "பயனர் பெயர்: %s",
-			YOUR_PROFILE_IS: "தங்கள் ப்ரொபைல் %s% முடிந்தது",
-			FOLLOW: "பின்பற்று",
-			PEOPLE_YOU_FOLLOW: "நீங்கள் பின்பற்றும் நபர்கள்",
-			GROUPS_YOU_FOLLOW: "நீங்கள் பின்பற்றும் குழுக்கள்",
-			PEOPLE_WHO_FOLLOW_YOU: "உங்களை பின்பற்றும் நபர்கள்",
-			SKILL_TAGS: "திறன் குறிச்சொற்கள்",
-			ENDORSE: "ஆதரியுங்கள்",
-			MODULE_NAME: "மாடியுளின் பெயர்",
-			NIL: "எதுவும் இல்லை",
-			PINNED_BY_ADMIN: "நிர்வாகிப்பவரால் பின் செய்யப்பட்டுள்ளது",
-			READ_MORE: "அதிகம் படிக்க",
-			THIS_IS_A_RESTRICTED_COMMUNITY: "இது ஒரு வரையறைப்படுத்திய சமுகம்",
-			DOWNLOAD_CONFIRMATION_TEXT: "தங்கள் இதை டவுன்லோட் செய்ய விரும்புகிறீர்களா?",
-			YES: "ஆம்",
-			NO: "இல்லை",
-			ABOUT_MODULE: "இந்த மாடியுளை பற்றி அறிய",
-			CHOOSE_FROM_FOLLOWING: "தொடர்ந்து தேர்ந்தெடுக்கவும்",
-			LANGUAGES: "மொழிகளை",
-			TITLE_EDUCATION: "கல்வி",
-			TITLE_EXPERIENCE: "அனுபவங்கள்",
-			TITLE_ADDRESS: "விலாசம்",
-			NAME: "பெயர்",
-			NAME_HINT: "தங்கள் பெயரை எழுதவும்",
-			GENDER: "பால்",
-			DATE_OF_BIRTH: "பிறந்தத் தேதி",
-			CURRENT_LOCATION: "தற்போதைய இடம்",
-			HINT_CURRENT_LOCATION: "தங்கள் இடத்தை இங்குச் சேர்க்கவும்",
-			MODULES: "மாடியுளுஸ்",
-			BTN_CLICK_TO_OPEN_CONTENT: "பாடத்தைத் திறக்க இங்குத் தொடுக",
-			START_COURSE: "ஆரம்பி",
-			ERROR_INVALID_AADHAAR: "தங்கள் ஆதார் எண்ணைச் சரிபார்க்கவும்",
-			ERROR_BATCH_NOT_STARTED: "பெச் இன்னும் ஆரம்பிக்கவில்லை",
-			MSG_NO_NEW_NOTIFICATION: "புதிய அறிவிப்பு எதுவும் இல்லை",
-			MSG_NO_DETAILS_TO_SHOW: "தங்களுக்குக் காட்ட எந்த விவரமும் இல்லை",
-			MSG_IMPORTED_SUCCESSFULLY: "வெற்றிகரமாகப் பாடம் இம்ப்போர்ட் செய்யப்பட்டது",
-			ERROR_CANT_OPEN_EMPTY_CONTENT: "காலியானப் பாடத்தைத் திறக்க முடியாது",
-			ERROR_NO_BATCHES_FOUND: "பெசஸ் எதுவும் இல்லை",
-			ANSWER: "பதில்",
-			BTN_SUBMIT: "சமர்ப்பி",
-			TOPIC_YOU_MIGHT_LIKE: "தங்களுக்குப் பிடித்தமான தலைப்புகளை முழுதும்தேடு",
-			OPEN_SETTINGS: "செட்டிங்க்ஸ்சை திறக்க",
-			LABEL_ADD_A_SKILL: "தங்கள் திறமைகளை சேருங்கள்",
-			TYPE_TO_ADD_A_SKILL: "தங்கள் திறமைகளை சேர்க்க இங்கு அச்சடிக்கவும்",
-			ERROR_ALREADY_ADDED: "முன்னரே சேர்க்கப்பட்டுள்ளது",
-			WARNING_PLEASE_ADD_MANDATORY_DETAILS: "தயவுசெய்து கட்டாயமான தகவல்களைச் சேர்க்கவும்",
-			WARNING_PLEASE_MAKE_SOME_CHANGES: "தயவுசெய்து இதைத் திருத்தவும்",
-			WARNING_INVALID_YEAR_OF_PASSING: "செல்லாத தேர்ச்சியடைந்த வருடம்",
-			WARNING_INVALID_PERCENTAGE: "செல்லாத சதவீதம்",
-			WARNING_INVALID_GRADE: "செல்லாத வகுப்பு",
-			DEGREE: "பட்டம்"
-		}, _defineProperty(_ta_IN, "INSTITUTION_NAME", "நிறுவனப் பெயர்"), _defineProperty(_ta_IN, "IS_THIS_YOUR_CURRENT_JOB", "இது தங்கள் நடப்பு வேலையா?"), _defineProperty(_ta_IN, "ERROR_MULTIPLE_CURRENT_JOB", "தங்கள் 'நடப்பு வேலை' ஒன்றுக்கு மேற்பட்டதாக இருக்க முடியாது"), _defineProperty(_ta_IN, "OPTION_INAPPROPRIATE_CONTENT", "தகுதியற்றப் பாடம்"), _defineProperty(_ta_IN, "OPTION_COPYRIGHT_VIOLATION", "பதிப்புரிமை மீறல்"), _defineProperty(_ta_IN, "OPTION_PRIVACY_VIOLATION", "தனியுரிமை மீறல்"), _defineProperty(_ta_IN, "OPTION_OTHER", "மற்றவை"), _defineProperty(_ta_IN, "MODULE_NAME", "மாடியுள் பெயர்"), _defineProperty(_ta_IN, "CURRENT_LOCATION", "நடப்பு இடம்"), _defineProperty(_ta_IN, "HOBBIES", "தற்போதைய இடம்"), _defineProperty(_ta_IN, "EDIT_PROFILE", "ப்ரொபைலை திருத்தவும்"), _defineProperty(_ta_IN, "ACTIVE", "செயல்நிலை"), _defineProperty(_ta_IN, "STORAGE", "தேக்கம்"), _defineProperty(_ta_IN, "PERMISSION_DENIED", "அனுமதி மறுக்கப்பட்டது"), _defineProperty(_ta_IN, "YEAR_OF_PASSING", "தேர்ச்சியடைந்த வருடம்"), _defineProperty(_ta_IN, "SELECT_ADDRESS_TYPE", "விலாசம் வகையைத் தேர்வுசெய்க"), _defineProperty(_ta_IN, "CANCEL", "ரத்து"), _defineProperty(_ta_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "பிழை அறிக்கை! மீண்டும்த் தொடர எந்தப் பாடமும் கிடைக்கவில்லை."), _defineProperty(_ta_IN, "SELECT_LANGUAGE", "மொழியைத் தேர்ந்தெடுக்கவும"), _defineProperty(_ta_IN, "READ_LESS", "குறைவாகப் படிக்க"), _defineProperty(_ta_IN, "CONFIRM_DEL", "உறுதியாக நீக்கு?"), _defineProperty(_ta_IN, "ADDRESS_LINE1", "முகவரி வரி 1"), _defineProperty(_ta_IN, "ADDRESS_LINE2", "முகவரி வரி 2"), _defineProperty(_ta_IN, "CITY", "நகரம்"), _defineProperty(_ta_IN, "STATE", "மாநிலம்"), _defineProperty(_ta_IN, "COUNTRY", "நாடு"), _defineProperty(_ta_IN, "PINCODE", "அஞ்சல் குறியீடு"), _defineProperty(_ta_IN, "PERMANENT", "நிரந்தர"), _defineProperty(_ta_IN, "CURRENT", "தற்போதைய"), _defineProperty(_ta_IN, "JOB_NAME", "வேலைப் பெயர்"), _defineProperty(_ta_IN, "ORGANIZATION", "அமைப்பு"), _defineProperty(_ta_IN, "POSITION", "பொறுப்புப் பெயர்"), _defineProperty(_ta_IN, "CHOOSE_FROM_FOLLOWING", "கீழ்கண்டவற்றிலிருந்து தேர்வு செய்யவும்"), _defineProperty(_ta_IN, "PERMISSION_SETTING_MSG", "அனுமதி  அளிக்க, 'ஓப்பன் செட்டிங்க்ஸ்'சை அழுத்தவும்."), _defineProperty(_ta_IN, "DOWNLOADING", "பதிவிறக்கம் ஆகிக்கொண்டிருக்கிறது %s %"), _defineProperty(_ta_IN, "CREATED_BY_SMALL", "இவரால் உருவாக்கப்பட்டது "), _defineProperty(_ta_IN, "ERROR_OFFLINE_MODE", "இணையம் இல்லை, ஆஃப்லைன் பயன்முறை"), _defineProperty(_ta_IN, "ADDITIONAL_INFORMATION", "கூடுதல் தகவல்"), _defineProperty(_ta_IN, "FACEBOOK", "முகநூல்"), _defineProperty(_ta_IN, "TWITTER", "ட்விட்டர்"), _defineProperty(_ta_IN, "LINKEDIN", "லிங்க்ட்இன்"), _defineProperty(_ta_IN, "SOCIAL", "சமூகம்"), _defineProperty(_ta_IN, "STRENGTHEN_YOUR_PROFILE", "தங்கள் ப்ரொபைல்யை பலப்படுத்தவும்"), _defineProperty(_ta_IN, "UPDATE", "இற்றைப்படுத்து"), _defineProperty(_ta_IN, "CHANGE_LANGUAGE", "மொழியை மாற்ற"), _defineProperty(_ta_IN, "MEDIUM", "பயிற்றுமொழி"), _defineProperty(_ta_IN, "LAST_LOGIN_TIME", "கடைசியாக புகுபதிவுசெய்த நேரம்: %s"), _defineProperty(_ta_IN, "ANNOUNCEMENT", "அறிவிப்பு"), _defineProperty(_ta_IN, "ERROR_NO_ATTACHMENTS", "இணைப்பு எதுவும் இல்லை"), _defineProperty(_ta_IN, "ATTACHMENTS", "இணைப்புகள்"), _defineProperty(_ta_IN, "WEBLINKS", "இணையதள இணைப்புகள்"), _defineProperty(_ta_IN, "SENT_ON", "இதன்வழி அனுப்பப்பட்டது"), _defineProperty(_ta_IN, "NO_ANNOUNCEMENTS", "தங்களுக்கு எந்த புது அறிவிப்புகளும் தச்சமயம் இல்லை"), _defineProperty(_ta_IN, "UNKNOWN_QR", "அந்த க்யு ஆர் குறியீட்டுடன் இணைத்த எந்தப் பாடமும் இல்லை"), _defineProperty(_ta_IN, "TRY_AGAIN", "மறுமுறை முயற்சிக்கவும்"), _defineProperty(_ta_IN, "CAMERA_PERMISSION_SETTINGS", "அனுமதி அளிக்க, செட்டிங்க்ஸ்சை திறந்து, %s செயலியைத் தேர்வுசெய்து,  கேமராவை அழுத்தவும்."), _defineProperty(_ta_IN, "CAMERA_PERMISSION_DENIED", "கேமராவுக்கு அனுமதி மறுக்கப்பட்டது"), _defineProperty(_ta_IN, "SELECT_STATE_TO_GET_STARTED", "தொடங்குவதற்காக மாநிலத்தைத் தேர்வு செய்யவும்"), _defineProperty(_ta_IN, "MSG_ALREADY_IMPORTED", "முன்னரே இம்போர்ட் செய்யப்பட்டுள்ளது"), _ta_IN),
-		"te_IN": (_te_IN = {
-			ALREADY_HAVE_ACC: "అకౌంట్ ఉందా? లాగిన్ అవ్వండి",
-			APPLY_FILTER: "ఫిల్టర్ చెయ్యండి",
-			AS_FILE: "ఫైల్‌గా",
-			AS_LINK: "లింకుగా",
-			BACK_TO_EXIT: "ఆప్ బయటకు వెళ్ళడానికి మళ్ళీ నొక్కండి",
-			CANCEL_DOWNLOAD: "డౌన్‌లోడ్ వద్దు",
-			COMING_SOON: "త్వరలో...",
-			COMMUNITIES: "కమ్యూనిటీలు",
-			CONFIRM: "నిర్ధారించండి",
-			COURSE: "కోర్సు",
-			COURSE_ENROLLED: "కోర్సులో నమోదు అయ్యారు",
-			COURSE_PROGRESS_COMPLETED: "%s % పూర్తయింది",
-			CONTENT_FLAGGED_MSG: "కంటెంట్ ఫ్లాగ్ చెయ్యబడింది ",
-			CONTENT_FLAG_FAIL: "కంటెంట్ ఫ్లాగ్ చెయ్యడం అవ్వలేదు",
-			COURSES_BNAV: "కోర్సులు",
-			COURSES_IN_PROGRESS: "జరుగుతున్న కోర్సులు",
-			COURSES_LW: "కోర్సులు",
-			CREATED_BY: "తయారుచేసినది",
-			DELETE: "తొలగించు",
-			DESCRIPTION: "వివరణ",
-			DOWNLOAD: "డౌన్‌లోడ్",
-			DOWNLOADS: "డౌన్‌లోడ్ సంఖ్య",
-			EDIT: "మార్చు",
-			EMAIL_ID: "ఈమెయిల్ ఐడీ",
-			EMPTY_SEARCH_RESULTS: "వెతికినవి లేవు",
-			ENROLL_COURSE: "ఈ కోర్సులో నమోదు చెయ్యి",
-			ERROR_CONTENT_NOT_AVAILABLE: "కంటెంట్ అందుబాటులో లేదు",
-			ERROR_CONTENT_NOT_FOUND: "కంటెంట్ దొరక లేదు",
-			ERROR_DURATION_NOT_AVAILABLE: "వ్యవధి తెలియదు",
-			ERROR_EMAIL_FORMAT: "ఈమెయిల్ ఫార్మేట్ తప్పుగా ఉంది ",
-			ERROR_EMPTY_EMAIL: "ఈమెయిల్ ఇవ్వండి",
-			ERROR_EMPTY_FIRSTNAME: "పేరు ఇవ్వండి",
-			ERROR_EMPTY_LANGUAGE: "కనీసం ఒక భాషను ఎంచుకోండి",
-			ERROR_EMPTY_MOBILE: "మొబైల్ నెంబరు ఇవ్వండి",
-			ERROR_EMPTY_PASSWORD: "పాస్‌వర్డ్ ఇవ్వండి",
-			ERROR_EMPTY_USERNAME: "వాడకందారు పేరు ఇవ్వండి",
-			ERROR_FETCHING_DATA: "డాటా తెచ్చుకోడంలో ఏదో ఇబ్బంది వచ్చింది",
-			ERROR_NO_COURSES_ENROLLED: "ఏ కోర్సులోనూ నమోదు కాలేదు",
-			ERROR_NO_INTERNET_MESSAGE: "ఇంటర్నెట్టు లేదు",
-			ERROR_NO_OFFLINE_RESOURCE: "దిగుమతి అయిన రిసోర్సులు లేవు",
-			ERROR_SERVER_CONNECTION: "సర్వర్‌కి కనెక్షన్ లేదు",
-			ERROR_SHORT_MOBILE: "మొబైల్ నెంబర్ 10 అంకెల సంఖ్య అయ్యుండాలి",
-			ERROR_SHORT_PASSWORD: "పాస్‌వర్డ్ 8 అక్షరాల కన్నా తక్కువ ఉండలేదు",
-			FETCHING_CONTENTS: "కంటెంటు వస్తోంది: %s%",
-			FILE_SIZE: "కంటెంటు పరిమాణం [%s]",
-			FILTER: "వడపోత-ఫిల్టర్",
-			FILTER_BY: "వడపోత వివరాలు",
-			FIRST_NAME: "పేరు",
-			FIRST_NAME_HINT: "మీ పేరు ఇవ్వండి",
-			GROUPS: "గుంపులు",
-			GROUPS_BNAV: "గుంపులు",
-			HINT_EMAIL_ID: "sample@test.com",
-			HINT_LANGUAGE: "కావలసిన భాషని ఎన్నుకోండి",
-			HINT_MOBILE_NUMBER: "మొబైల్ నెంబరు ఇవ్వండి",
-			HINT_PASSWORD: "పాస్‌వర్డ్ కనీసం 8 అక్షరాల ఉండాలి",
-			HINT_USER_NAME: "వాడకందారు పేరు ఇవ్వండి ",
-			HOME_BNAV: "మొదటి పేజీ",
-			JOIN: "చేరండి",
-			LATEST_COURSES: "తాజా కోర్సులు",
-			LOADING_CONTENT: "కంటెంటు లోడ్ అవుతోంది",
-			LOGGED_OUT: "లాగౌట్ అయ్యారు",
-			MOBILE_NUMBER: "మొబైల్ నెంబరు",
-			MODULE_SIZE: "మాడ్యూల్ పరిమాణం: %s",
-			MODULE_SIZE_UNAVAILABLE: "మాడ్యూల్ పరిమాణం దొరకలేదు",
-			NEW: "కొత్తది",
-			NO_ACC_YET: "కొత్త వాడకందారా? లాగిన్ తయారు చేసుకోండి",
-			NO_INTERNET: "ఇంటర్నెట్ లేదు",
-			NO_PREVIEW: "ప్రివ్యూ లేదు",
-			NO_RATING: "రేటింగ్ లేదు",
-			NUMBER_OF_VOTES: "ఓట్ల సంఖ్య",
-			OPEN: "తెరవండి",
-			PASSWORD: "పాస్‌వర్డ్",
-			PHONE: "ఫోను",
-			PLAY: "ప్లే చెయ్యండి",
-			POPULAR_COURSES: "జనాదరణ పొందిన కోర్సులు",
-			PREVIEWS: "ప్రివ్యూలు",
-			PROFILE_BNAV: "ప్రొఫైలు",
-			PROFILE_DETAILS_TITLE: "ప్రొఫైల్ వివరాలు",
-			PROFILE_LW: "ప్రొఫైలు",
-			PUBLISHED_DATE: "ప్రచురించిన తేదీ",
-			QUIZ: "క్విజ్",
-			RESUME: "మళ్ళీ మొదలుపెట్టు",
-			RETRY_ACTION: "మరోసారి ప్రయత్నించండి",
-			SAVED_ON: "సేవ్ చేసిన తేదీ",
-			SAVED_RESOURCES: "సేవ్ అయిన రిసోర్సులు",
-			SEARCH_HINT: "వెతకండి",
-			SELECT: "ఎన్నుకోండి",
-			SELECT_A_REASON: "కారణం ఎన్నుకోండి",
-			SERVER_CONNECTION_ERROR: "సర్వర్‌కి కనెక్షన్ లేదు",
-			SHARE_THIS: "షేర్ చెయ్యండి",
-			SIGN_IN: "లాగిన్ అవ్వండి",
-			SIGN_UP: "లాగిన్ తయారుచేసుకోండి",
-			SORT_BY: "క్రమంలో పెట్టండి",
-			STRUCTURE: "నిర్మాణం",
-			TO_DO: "చెయ్య వలసినవి",
-			USER_NAME: "వాడకందారు పేరు",
-			VIEW_ALL: "పూర్తిగా చూడండి",
-			VIEW_ALL_COMMUNITIES: "మీరు నమోదైన కమ్యూనిటీలను చూడండి",
-			VIEW_MORE: "మరిన్ని చూడండి",
-			WAIT_REQUEST: "దయచేసి వేచి ఉండండి",
-			WELCOME_BACK: "%s - మీకు తిరిగి స్వాగతం %s",
-			WELCOME_M1: "ఎన్‌టిపికి స్వాగతం %s",
-			WELCOME_M2: "అధ్యాపకులకు నిర్మాణాత్మక అధ్యాపనం",
-			WELCOME_ON_BOARD: "ఎన్‌టిపికి స్వాగతం, %s, %s",
-			WHAT_WENT_WRONG: "ఏం పొరపాటు జరిగింది?",
-			YOUR_PROGRESS: "మీ ప్రగతి: %s%",
-			FLAG: "ఫ్లాగ్/రిపోర్టు చెయ్యండి",
-			ERROR_EMPTY_RESULT: "వెతుకులాటకు ఫలితాలు లేవు",
-			ERROR_FLAG_CONTENT_MIN_REASON: "కంటెంటు ఫ్లాగ్ చెయ్యడానికి కనీసం ఒక కారణాన్ని ఎన్నుకోండి.",
-			ERROR_INVALID_EMAIL: "ఇమెయిల్ ఐడి సరికాదు",
-			MSG_RESOURCE_DELETED: "కంటెంటు తొలగించబడింది",
-			LOGOUT: "లాగౌట్",
-			CREATOR_NAME_NOT_AVAILABLE: "తయారుచేసిన వారి పేరు లేదు",
-			ENROLL: "నమోదు కండి",
-			VIEW_ONGOING_BATCHES: "జరుగుతున్న బ్యాచులు చూడండి",
-			VIEW_UPCOMING_BATCHES: "రాబోతున్న బ్యాచులు చూడండి",
-			USER_NAME_PROFILE: "వాడకందారు పేరు",
-			BATCHES_FOR_THIS_COURSE: "ఈ కోర్సుకు సంబంధించిన బ్యాచులు",
-			ERROR_EMPTY_FIELDS: "వివరాలు ఇవ్వండి",
-			INVALID_CONTENT: "కంటెంటు సరిగా లేదు",
-			TIME_OUT: "సర్వర్ ఎక్కువ సమయం తీసుకుంటోంది. తరువాత మళ్ళీ ప్రయత్నించండి",
-			OPTIONAL: "ఐచ్ఛికము",
-			PERCENTAGE: "శాతం",
-			SUBJECTS: "పాఠ్యాంశాలు",
-			FROM: "మొదలు తేదీ",
-			TO: "చివరి తేదీ",
-			SELECT_DATE: "తేదీ ఇవ్వండి",
-			SAVE: "సేవ్ చెయ్యండి",
-			GRADE: "తరగతి",
-			INSTITUTION_NAME: "సంస్థ పేరు",
-			BOARD_UNIVERSITY: "బోర్డు/విశ్వవిద్యాలయం",
-			APPLY: "ఫిల్టర్ చెయ్యండి",
-			MY_COMMUNITIES: "నా కమ్యూనిటీలు",
-			AVAILABLE_FILTERS: "ఉన్న ఫిల్టర్లు",
-			DISMISS: "రద్దు చెయ్యండి",
-			NO_FILTERS_SELECTED: "ఫిల్టర్ ఎన్నుకోలేదు",
-			ACCOMPLISHMENTS: "సాధించిన ఫలితాలు",
-			ADD: "కలుపు",
-			PERSONAL_DETAILS: "వ్యక్తిగత వివరాలు",
-			AFFILIATIONS: "అనుబంధాలు",
-			SHOW_LESS: "తక్కువ చూపించు",
-			SHOW_MORE: "ఇంకా చూపించు",
-			CREATOR_OF: "తయారుచేసినది",
-			USERNAME: "వాడకందారు పేరు: %s",
-			YOUR_PROFILE_IS: "మీ ప్రొఫైలు %s%",
-			FOLLOW: "అనుసరించండి",
-			PEOPLE_YOU_FOLLOW: "మీరు అనుసరిస్తున్న వ్యక్తులు",
-			GROUPS_YOU_FOLLOW: "మీరు అనుసరిస్తున్నగుంపులు",
-			PEOPLE_WHO_FOLLOW_YOU: "మిమ్మల్ని అనుసరిస్తున్న వ్యక్తులు",
-			SKILL_TAGS: "నైపుణ్యపు గుర్తులు",
-			ENDORSE: "ఆమోదించండి",
-			MODULE_NAME: "మాడ్యూల్ పేరు",
-			NIL: "ఏమీ లేదు",
-			PINNED_BY_ADMIN: "నిర్వాహకుడు పిన్ చేసినది",
-			READ_MORE: "ఇంకా చదవండి...",
-			THIS_IS_A_RESTRICTED_COMMUNITY: "ఇది కొందరికే పరిమితమైన కమ్యూనిటీ",
-			DOWNLOAD_CONFIRMATION_TEXT: "డౌన్‌లోడ్ చెయ్యాలా?",
-			YES: "అవును",
-			NO: "కాదు",
-			ABOUT_MODULE: "ఈ మాడ్యూల్ గురించి",
-			CHOOSE_FROM_FOLLOWING: "ఈ కిందవాటినుండి ఎంచుకోండి",
-			LANGUAGES: "భాషలు"
-		}, _defineProperty(_te_IN, "COMING_SOON", "వివరాలు త్వరలో..."), _defineProperty(_te_IN, "LANGUAGE", "భాష"), _defineProperty(_te_IN, "RECOMMENDED", "సిఫార్సులు"), _defineProperty(_te_IN, "STAR_RATINGS", "రేటింగులు"), _defineProperty(_te_IN, "TITLE_EDUCATION", "చదువు"), _defineProperty(_te_IN, "TITLE_EXPERIENCE", "అనుభవం"), _defineProperty(_te_IN, "TITLE_ADDRESS", "చిరునామా"), _defineProperty(_te_IN, "LAST_NAME", "ఇంటిపేరు"), _defineProperty(_te_IN, "LAST_NAME_HINT", "మీ ఇంటిపేరు (లాస్ట్ నేమ్) ఇవ్వండి"), _defineProperty(_te_IN, "NAME", "పేరు"), _defineProperty(_te_IN, "NAME_HINT", "మీ పేరు ఇవ్వండి"), _defineProperty(_te_IN, "GENDER", "లింగం"), _defineProperty(_te_IN, "DATE_OF_BIRTH", "పుట్టిన తేదీ"), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HINT_CURRENT_LOCATION", "ఇప్పుడు మీరు నివసిస్తున్న చోటు చిరునామా ఇవ్వండి "), _defineProperty(_te_IN, "MODULES", "మాడ్యూలు "), _defineProperty(_te_IN, "BTN_CLICK_TO_OPEN_CONTENT", "కంటెంట్ చూడ్డానికి నొక్కండి"), _defineProperty(_te_IN, "START_COURSE", "మొదలుపెట్టండి"), _defineProperty(_te_IN, "ERROR_INVALID_AADHAAR", "ఆధార్ నెంబర్ ఫార్మేట్ సరిచూడండి"), _defineProperty(_te_IN, "ERROR_BATCH_NOT_STARTED", "బేచ్ మొదలు కాలేదు"), _defineProperty(_te_IN, "MSG_NO_NEW_NOTIFICATION", "కొత్త ప్రకటనలేం లేవు"), _defineProperty(_te_IN, "MSG_NO_DETAILS_TO_SHOW", "వివరాలు లేవు"), _defineProperty(_te_IN, "MSG_IMPORTED_SUCCESSFULLY", "కంటెంట్ సరిగా ఇంపోర్ట్ అయింది"), _defineProperty(_te_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "ఖాళీ ఫైల్ తెరవబడదు"), _defineProperty(_te_IN, "ERROR_NO_BATCHES_FOUND", "ఈ కోర్సుకు బేచ్‌లు లేవు"), _defineProperty(_te_IN, "ANSWER", "జవాబు"), _defineProperty(_te_IN, "BTN_SUBMIT", "సబ్మిట్ చెయ్యి"), _defineProperty(_te_IN, "TOPIC_YOU_MIGHT_LIKE", "మీకు నచ్చిన విషయాలను చూడండి"), _defineProperty(_te_IN, "OPEN_SETTINGS", "సెట్టింగ్స్ తెరువు"), _defineProperty(_te_IN, "LABEL_ADD_A_SKILL", "నైపుణ్యం జతచేయండి"), _defineProperty(_te_IN, "TYPE_TO_ADD_A_SKILL", "మీ నైపుణ్యాలు జతచేయండి"), _defineProperty(_te_IN, "ERROR_ALREADY_ADDED", "ఈ నైపుణ్యం ఇంతకు ముందే ఇచ్చారు"), _defineProperty(_te_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "తప్పనిసరి వివరాలు ఇవ్వండి"), _defineProperty(_te_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "మార్పులు చెయ్యండి"), _defineProperty(_te_IN, "WARNING_INVALID_YEAR_OF_PASSING", "ఉత్తీర్ణమైన సంవత్సరం తప్పిచ్చారు. నాలుగు (yyyy) అంకెలు ఉండాలి."), _defineProperty(_te_IN, "WARNING_INVALID_PERCENTAGE", "ఉత్తీర్ణతా శాతం తప్పిచ్చారు. 0 - 100 మధ్య సంఖ్యను ఇవ్వండి "), _defineProperty(_te_IN, "WARNING_INVALID_GRADE", "గ్రేడ్ తప్పిచ్చారు. A - F మధ్యనే ఉండాలి."), _defineProperty(_te_IN, "DEGREE", "డిగ్రీ"), _defineProperty(_te_IN, "INSTITUTION_NAME", "సంస్థ పేరు "), _defineProperty(_te_IN, "IS_THIS_YOUR_CURRENT_JOB", "ఇది మీ ప్రస్తుత ఉద్యోగమా?"), _defineProperty(_te_IN, "ERROR_MULTIPLE_CURRENT_JOB", "ప్రస్తుత ఉద్యోగాలు ఒకటికన్నా ఎక్కువ ఉండలేవు."), _defineProperty(_te_IN, "OPTION_INAPPROPRIATE_CONTENT", "కంటెంటు అనుచితమైనది"), _defineProperty(_te_IN, "OPTION_COPYRIGHT_VIOLATION", "కాపీరైట్ ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_PRIVACY_VIOLATION", "డేటా గోప్యత ఉల్లంఘన"), _defineProperty(_te_IN, "OPTION_OTHER", "వేరే"), _defineProperty(_te_IN, "MODULE_NAME", "మాడ్యూల్ పేరు "), _defineProperty(_te_IN, "CURRENT_LOCATION", "ప్రస్తుత చిరునామా "), _defineProperty(_te_IN, "HOBBIES", "అభిరుచులు"), _defineProperty(_te_IN, "EDIT_PROFILE", "ప్రొఫైల్ మార్చు"), _defineProperty(_te_IN, "ACTIVE", "ఏక్టివ్"), _defineProperty(_te_IN, "STORAGE", "స్టోరేజి"), _defineProperty(_te_IN, "PERMISSION_DENIED", "అనుమతి లేదు"), _defineProperty(_te_IN, "YEAR_OF_PASSING", "ఉత్తీర్ణులైన సంవత్సరం "), _defineProperty(_te_IN, "SELECT_ADDRESS_TYPE", "ఎలాంటి చిరునామా?"), _defineProperty(_te_IN, "CANCEL", "రద్దు"), _defineProperty(_te_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "తిరిగి మొదలుపెట్టడానికి కంటెంటు లేదు."), _defineProperty(_te_IN, "SELECT_LANGUAGE", "భాషను ఎంచుకోండి"), _defineProperty(_te_IN, "READ_LESS", "తక్కువ చూపించు "), _defineProperty(_te_IN, "CONFIRM_DEL", "తొలగించాలా?"), _defineProperty(_te_IN, "ADDRESS_LINE1", "చిరునామా లైన్ 1"), _defineProperty(_te_IN, "ADDRESS_LINE2", "చిరునామా లైన్ 2"), _defineProperty(_te_IN, "CITY", "నగరం"), _defineProperty(_te_IN, "STATE", "రాష్ట్రం"), _defineProperty(_te_IN, "COUNTRY", "దేశం"), _defineProperty(_te_IN, "PINCODE", "పిన్ కోడ్"), _defineProperty(_te_IN, "PERMANENT", "శాశ్వత చిరునామా"), _defineProperty(_te_IN, "CURRENT", "ప్రస్తుత చిరునామా"), _defineProperty(_te_IN, "JOB_NAME", "ఉద్యోగం"), _defineProperty(_te_IN, "ORGANIZATION", "సంస్థ"), _defineProperty(_te_IN, "POSITION", "స్థానం"), _defineProperty(_te_IN, "CHOOSE_FROM_FOLLOWING", "కిందవాటి నుండి ఎంచుకోండి"), _defineProperty(_te_IN, "PERMISSION_SETTING_MSG", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్ళండి"), _defineProperty(_te_IN, "DOWNLOADING", "దిగుమతి అవుతోంది %s %"), _defineProperty(_te_IN, "CREATED_BY_SMALL", "తయారుచేసినది"), _defineProperty(_te_IN, "ERROR_OFFLINE_MODE", "ఇంటర్నెట్టు లేదు. ఆఫ్లైన్ ఉన్నారు."), _defineProperty(_te_IN, "ADDITIONAL_INFORMATION", "అదనపు సమాచారం"), _defineProperty(_te_IN, "FACEBOOK", "ఫేస్ బుక్"), _defineProperty(_te_IN, "TWITTER", "ట్విట్టర్"), _defineProperty(_te_IN, "LINKEDIN", "లింక్డ్ ఇన్ "), _defineProperty(_te_IN, "SOCIAL", "సోషల్"), _defineProperty(_te_IN, "STRENGTHEN_YOUR_PROFILE", "మీ ప్రొఫైల్‌ను మెరుగు పరచండి"), _defineProperty(_te_IN, "UPDATE", "అప్‌డేట్"), _defineProperty(_te_IN, "CHANGE_LANGUAGE", "భాష మార్చు"), _defineProperty(_te_IN, "MEDIUM", "సూచనల మాధ్యమం"), _defineProperty(_te_IN, "LAST_LOGIN_TIME", "చివర లాగిన్ అయిన సమయం: %s"), _defineProperty(_te_IN, "ANNOUNCEMENT", "ప్రకటన"), _defineProperty(_te_IN, "ERROR_NO_ATTACHMENTS", "ఎటాచ్‌మెంట్ లేదు"), _defineProperty(_te_IN, "ATTACHMENTS", "ఎటాచ్‌మెంట్లు"), _defineProperty(_te_IN, "WEBLINKS", "వెబ్ లింకులు"), _defineProperty(_te_IN, "SENT_ON", "పంపిన తేదీ"), _defineProperty(_te_IN, "NO_ANNOUNCEMENTS", "కొత్త ప్రకటనలేవీ లేవు"), _defineProperty(_te_IN, "UNKNOWN_QR", "ఈ QR కోడ్‌కి సంబంధించి ఏ కంటెంట్ దొరకలేదు "), _defineProperty(_te_IN, "TRY_AGAIN", "మళ్ళీ ప్రయత్నించండి"), _defineProperty(_te_IN, "CAMERA_PERMISSION_SETTINGS", "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్లి % ఏప్ సెలెక్ట్ చేసుకొని కెమెరాకి అనుమతిపై క్లిక్ చెయ్యండి."), _defineProperty(_te_IN, "CAMERA_PERMISSION_DENIED", "కెమెరాకు అనుమతి లేదు"), _defineProperty(_te_IN, "SELECT_STATE_TO_GET_STARTED", "మొదలుపెట్టడానికి రాష్ట్రాన్ని ఎంచుకోండి"), _defineProperty(_te_IN, "MSG_ALREADY_IMPORTED", "ఇంతకుముందే ఇంపోర్ట్ అయ్యింది "), _defineProperty(_te_IN, "SCAN_QR_CODE", "కోడ్‌ను స్కాన్ చేయండి"), _defineProperty(_te_IN, "SCAN_QR_INSTRUCTION", "మీ పరికరాన్ని ఉపయోగించి దయచేసి QR కోడ్‌ను స్కాన్ చేయండి"), _te_IN),
-		"mr_IN": (_mr_IN = {
-			ALREADY_HAVE_ACC: "विद्यमान वापरकर्ता? साइन इन करा",
-			APPLY_FILTER: "फिल्टर लागू करा",
-			AS_FILE: "फाईल म्हणून",
-			AS_LINK: "लिंक  म्हणून",
-			BACK_TO_EXIT: "अॅपमधून बाहेर पडण्यासाठी पुन्हा टॅप करा",
-			CANCEL_DOWNLOAD: "डाऊनलोड रद्द करा",
-			COMING_SOON: "लवकरच येत आहे...",
-			COMMUNITIES: "समुदाय",
-			CONFIRM: "पुष्टी",
-			COURSE: "कोर्स",
-			COURSE_ENROLLED: "नोंदवलेले कोर्स",
-			COURSE_PROGRESS_COMPLETED: "पूर्ण: %s %",
-			CONTENT_FLAGGED_MSG: "साहित्य यशस्वीरित्या फ्लॅग केले. ",
-			CONTENT_FLAG_FAIL: "साहित्य फ्लॅगकरता आले नाही.",
-			COURSES_BNAV: "कोर्सेस ",
-			COURSES_IN_PROGRESS: "कोर्स सुरु आहे ",
-			COURSES_LW: "कोर्सेस",
-			CREATED_BY: "निर्माता ",
-			DELETE: "हटवा",
-			DESCRIPTION: "अधिक माहिती ",
-			DOWNLOAD: "डाउनलोड करा",
-			DOWNLOADS: "डाउनलोड",
-			EDIT: "संपादित करा",
-			EMAIL_ID: "ई - मेल आयडी",
-			EMPTY_SEARCH_RESULTS: "ह्याच्याशी संबंधित माहिती मिळाली नाही",
-			ENROLL_COURSE: "कोर्समध्ये प्रवेश करा",
-			ERROR_CONTENT_NOT_AVAILABLE: "साहित्य उपलब्ध नाही",
-			ERROR_CONTENT_NOT_FOUND: "साहित्य अद्याप उपलब्ध नाही",
-			ERROR_DURATION_NOT_AVAILABLE: "कालावधी उपलब्ध नाही",
-			ERROR_EMAIL_FORMAT: "अयोग्य ईमेल फॉरमॅट",
-			ERROR_EMPTY_EMAIL: "ईमेल आयडी लिहा",
-			ERROR_EMPTY_FIRSTNAME: "प्रथम नाव लिहा",
-			ERROR_EMPTY_LANGUAGE: "किमान एक भाषा निवडा",
-			ERROR_EMPTY_MOBILE: "मोबाइल नंबर लिहा",
-			ERROR_EMPTY_PASSWORD: "पासवर्ड टाका",
-			ERROR_EMPTY_USERNAME: "वापरकर्त्याचे नाव लिहा",
-			ERROR_FETCHING_DATA: "डेटा आणता आला नाही",
-			ERROR_NO_COURSES_ENROLLED: "या कोर्ससाठी आपण नावनोंदणी केलेली नाही ",
-			ERROR_NO_INTERNET_MESSAGE: "इंटरनेट उपलब्ध नाही",
-			ERROR_NO_OFFLINE_RESOURCE: "संसाधने संग्रहित नाहीत",
-			ERROR_SERVER_CONNECTION: "सर्व्हरशी जोडता आले नाही ",
-			ERROR_SERVER_MESSAGE: "त्रुटी:",
-			ERROR_SHORT_MOBILE: "मोबाइल नंबर 10 अंकी असावा",
-			ERROR_SHORT_PASSWORD: "पासवर्ड किमान 8 अक्षरांचा असावा",
-			FETCHING_CONTENTS: "साहित्य प्राप्त करीत आहे:%s%",
-			FILE_SIZE: "आकार [%s]",
-			FILTER: "फिल्टर",
-			FILTER_BY: "द्वारे फिल्टर",
-			FIRST_NAME: "नाव",
-			FIRST_NAME_HINT: "नाव लिहा",
-			GROUPS: "गट",
-			GROUPS_BNAV: "गट",
-			HINT_EMAIL_ID: "sample@test.com (नमुना)",
-			HINT_LANGUAGE: "पसंतीची भाषा निवडा",
-			HINT_MOBILE_NUMBER: "मोबाइल नंबर लिहा",
-			HINT_PASSWORD: "पासवर्ड किमान 8 अक्षरांचा असावा",
-			HINT_USER_NAME: "वापरकर्त्याचे नाव लिहा",
-			HOME_BNAV: "होम",
-			JOIN: "सामील व्हा",
-			LATEST_COURSES: "नवीन कोर्स",
-			LOADING_CONTENT: "साहित्य लोड होत आहे",
-			LOGGED_OUT: "लॉग आउट यशस्वी",
-			MOBILE_NUMBER: "मोबाइल नंबर",
-			MODULE_SIZE: "घटक आकार: %s",
-			MODULE_SIZE_UNAVAILABLE: "घटक आकार उपलब्ध नाही",
-			NEW: "नवीन",
-			NO_ACC_YET: "नवीन वापरकर्ता आहात? आत्ताच नोंदणी करा",
-			NO_INTERNET: "इंटरनेट उपलब्ध नाही",
-			NO_PREVIEW: "प्रिव्ह्यू उपलब्ध नाही",
-			NO_RATING: "प्रिव्ह्यू उपलब्ध नाही",
-			NUMBER_OF_VOTES: "मतांची संख्या",
-			OPEN: "उघडा",
-			PASSWORD: "संकेतशब्द",
-			PHONE: "फोन",
-			PLAY: "प्ले ",
-			POPULAR_COURSES: "लोकप्रिय कोर्स",
-			PREVIEWS: "प्रिव्ह्यू ",
-			PROFILE_BNAV: "प्रोफाइल",
-			PROFILE_DETAILS_TITLE: "प्रोफाईल तपशील",
-			PROFILE_LW: "प्रोफाइल",
-			PUBLISHED_DATE: "प्रकाशनाची तारीख",
-			QUIZ: "प्रश्नोत्तरी ",
-			RESUME: "पुनः सुरु करा",
-			RETRY_ACTION: "पुन्हा प्रयत्न करा",
-			SAVED_ON: "वर जतन केले",
-			SAVED_RESOURCES: "जतन केलेली संसाधने",
-			SEARCH_HINT: "शोधा",
-			SELECT: "निवडा",
-			SELECT_A_REASON: "कारण निवडा",
-			SERVER_CONNECTION_ERROR: "सर्व्हरशी कनेक्ट करता आले नाही ",
-			SHARE_THIS: "शेअर करा",
-			SIGN_IN: "साइन इन करा",
-			SIGN_UP: "साइन अप करा",
-			SORT_BY: "द्वारे वर्गीकरण ",
-			STRUCTURE: "रचना",
-			TO_DO: "करावयाच्या गोष्टी ",
-			USER_NAME: "वापरकर्त्याचे नाव",
-			VIEW_ALL: "सर्व पहा",
-			VIEW_ALL_COMMUNITIES: "सर्व सामील झालेले समुदाय पहा",
-			VIEW_MORE: "अधिक पहा",
-			WAIT_REQUEST: "कृपया थांबा...",
-			WELCOME_BACK: "पुन्हा एकदा आपले स्वागत आहे %s",
-			WELCOME_M1: "NTP मध्ये आपले स्वागत आहे %s",
-			WELCOME_M2: "शिक्षकांसाठी संरचित शिक्षण",
-			WELCOME_ON_BOARD: "आपले स्वागत आहे %s, %s",
-			WHAT_WENT_WRONG: "काय चूक झाली?",
-			YOUR_PROGRESS: "तुमची प्रगती: %s%",
-			FLAG: "अहवाल",
-			ERROR_EMPTY_RESULT: "शोधत असलेली माहिती उपलब्ध नाही.",
-			ERROR_FLAG_CONTENT_MIN_REASON: "साहित्य चिन्हांकित करण्यासाठी किमान एक कारण निवडा",
-			ERROR_INVALID_EMAIL: "अवैध ईमेल आयडी",
-			MSG_RESOURCE_DELETED: "डिव्हाइसवरून साहित्य हटवले",
-			LOGOUT: "साइन आउट करा",
-			CREATOR_NAME_NOT_AVAILABLE: "निर्माताचे नाव उपलब्ध नाही.",
-			ENROLL: "नावनोंदणी करा",
-			VIEW_ONGOING_BATCHES: "सुरु असलेली बॅच पहा",
-			VIEW_UPCOMING_BATCHES: "आगामी बॅच पहा",
-			USER_NAME_PROFILE: "वापरकर्त्याचे नाव",
-			BATCHES_FOR_THIS_COURSE: "या कोर्स साठीच्या बॅचेस",
-			ERROR_EMPTY_FIELDS: "तपशील लिहा",
-			INVALID_CONTENT: "साहित्य अवैध आहे",
-			TIME_OUT: "सर्व्हर कालबाह्य झाले म्हणून पुन्हा प्रयत्न करा",
-			OPTIONAL: "पर्यायी",
-			PERCENTAGE: "टक्केवारी",
-			SUBJECTS: "विषय",
-			FROM: "पासून ",
-			TO: "पर्यंत",
-			SELECT_DATE: "तारीख निवडा",
-			SAVE: "जतन करा ",
-			GRADE: "इयत्ता",
-			INSTITUTION_NAME: "संस्थेचे नाव ",
-			BOARD_UNIVERSITY: "मंडळ / विद्यापीठ ",
-			APPLY: "अर्ज करा/लागू करा ",
-			MY_COMMUNITIES: "माझे समुदाय",
-			AVAILABLE_FILTERS: "उपलब्ध फिल्टर्स",
-			DISMISS: "रद्द करा",
-			NO_FILTERS_SELECTED: "कोणतेही फिल्टर निवडलेले नाहीत",
-			ACCOMPLISHMENTS: "गुणवत्ता / सर्टिफिकेट्स ",
-			ADD: "जोडा",
-			PERSONAL_DETAILS: "वैयक्तिक माहिती",
-			AFFILIATIONS: "संलग्नता",
-			SHOW_LESS: "कमी माहिती दर्शवा",
-			SHOW_MORE: "अधिक माहिती दर्शवा",
-			CREATOR_OF: "द्वारे निर्मित",
-			USERNAME: "वापरकर्त्याचे नाव: %s",
-			YOUR_PROFILE_IS: "आपले प्रोफाईल  %s% पूर्ण आहे.",
-			FOLLOW: "फॉलो करा",
-			PEOPLE_YOU_FOLLOW: "आपण फॉलो करीत असलेले लोक",
-			GROUPS_YOU_FOLLOW: "आपण फॉलो करीत असलेले गट",
-			PEOPLE_WHO_FOLLOW_YOU: "आपल्याला फॉलो करणारे लोक",
-			SKILL_TAGS: "कौशल्ये",
-			ENDORSE: "मान्यता ",
-			MODULE_NAME: "घटकाचे नाव ",
-			NIL: " -",
-			PINNED_BY_ADMIN: "व्यवस्थापकाद्वारे पिन केलेले ",
-			READ_MORE: "अधिक माहिती वाचा",
-			THIS_IS_A_RESTRICTED_COMMUNITY: "हा समुदाय प्रतिबंधित आहे",
-			DOWNLOAD_CONFIRMATION_TEXT: "आपण डाउनलोड करू इच्छिता का?",
-			YES: "होय",
-			NO: "नाही",
-			ABOUT_MODULE: "घटकाबद्दल अधिक माहिती ",
-			CHOOSE_FROM_FOLLOWING: "पुढीलपैकी निवडा",
-			LANGUAGES: "भाषा"
-		}, _defineProperty(_mr_IN, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN, "RECOMMENDED", "शिफारस केलेले"), _defineProperty(_mr_IN, "STAR_RATINGS", "रेटिंग"), _defineProperty(_mr_IN, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN, "NAME", "नाव"), _defineProperty(_mr_IN, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN, "GENDER", "लिंग"), _defineProperty(_mr_IN, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN, "MODULES", "घटक"), _defineProperty(_mr_IN, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN, "ANSWER", "उत्तर "), _defineProperty(_mr_IN, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN, "WARNING_PLEASE_MAKE_SOME_CHANGES", "बदल करा"), _defineProperty(_mr_IN, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष (yyyy) असे लिहा "), _defineProperty(_mr_IN, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN, "DEGREE", "पदवी"), _defineProperty(_mr_IN, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN, "HOBBIES", "छंद"), _defineProperty(_mr_IN, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN, "CANCEL", "रद्द "), _defineProperty(_mr_IN, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN, "CITY", "शहर"), _defineProperty(_mr_IN, "STATE", "राज्य"), _defineProperty(_mr_IN, "COUNTRY", "देश"), _defineProperty(_mr_IN, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN, "POSITION", "पद "), _defineProperty(_mr_IN, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN, "DOWNLOADING", "डाऊनलोड करीत आहे %s %"), _defineProperty(_mr_IN, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN, "SOCIAL", "सोशल "), _defineProperty(_mr_IN, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN, "CHANGE_LANGUAGE", "भाषा बदला"), _defineProperty(_mr_IN, "MEDIUM", "शिक्षण मध्यम"), _defineProperty(_mr_IN, "LAST_LOGIN_TIME", "शेवटी लॉगीन केलीली वेळ: %s"), _defineProperty(_mr_IN, "ANNOUNCEMENT", "सूचना"), _defineProperty(_mr_IN, "ERROR_NO_ATTACHMENTS", "अटैच्मन्ट नाही"), _defineProperty(_mr_IN, "ATTACHMENTS", "अटैच्मन्ट"), _defineProperty(_mr_IN, "WEBLINKS", "वेब्लिंक"), _defineProperty(_mr_IN, "SENT_ON", "पाठवलेली तारीख"), _defineProperty(_mr_IN, "NO_ANNOUNCEMENTS", "नवीन सूचना नाहीत"), _defineProperty(_mr_IN, "UNKNOWN_QR", "QR कोडशी जुळलेले विषय सापडले नाहीत"), _defineProperty(_mr_IN, "TRY_AGAIN", "पुनः प्रयत्न करा"), _defineProperty(_mr_IN, "CAMERA_PERMISSION_DENIED", "कॅमेराला परवानगी नाही"), _defineProperty(_mr_IN, "SELECT_STATE_TO_GET_STARTED", "सुरुवात करायला राज्याची निवडकरा"), _defineProperty(_mr_IN, "MSG_ALREADY_IMPORTED", "इम्पोर्ट केलेले आहे"), _defineProperty(_mr_IN, "SCAN_QR_CODE", "QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "SCAN_QR_INSTRUCTION", "तुमच्या फोनेच्या कॅमेराने QR कोड स्कॅन करा"), _defineProperty(_mr_IN, "PRIVATE", "खाजगी"), _defineProperty(_mr_IN, "PUBLIC", "सार्वजनिक"), _defineProperty(_mr_IN, "ERROR_UPLOADING_IMG", "प्रतिमा उपलोड करताना चूक झाली"), _defineProperty(_mr_IN, "CHANGE", "बदला"), _defineProperty(_mr_IN, "REMOVE", "काढून टाका"), _defineProperty(_mr_IN, "SKILLS_ADDED_SUCCESSFULLY", "कौशल्ये यशस्वीरीत्या जोडली गेलीत"), _defineProperty(_mr_IN, "SKILL_ENDORSED", "कौशल्ये समर्थित केली "), _defineProperty(_mr_IN, "SKILL_NOT_ADDED", "कौशल्ये जोडण्यात अयशस्वी"), _defineProperty(_mr_IN, "SKILL_COULD_NOT_BE_ENDORSED", "कौशल्ये समर्थित केली नाही"), _defineProperty(_mr_IN, "SKILL_ALREADY_ENDORSED", "कौशल्ये आधीच समर्थित केली आहेत"), _defineProperty(_mr_IN, "ERROR_GETTING_SKILLS", "कौशल्ये आणण्यात चूक "), _defineProperty(_mr_IN, "ERROR_COLLECTION_IS_EMPTY", "संग्रह रिकामा आहे"), _defineProperty(_mr_IN, "SKILL_ALREADY_ADDED", "कौशल्ये आधीच जोडलेली आहेत"), _defineProperty(_mr_IN, "BLOG", "ब्लोग"), _mr_IN),
+	var stringsRes = {
+		"en_US": {
+			"ABOUT": "About",
+			"ABOUT_APP": "About the app",
+			"ABOUT_APPLICATION": "About the Application",
+			"ABOUT_MODULE": "About Module",
+			"ABOUT_US": "About us",
+			"ABOUT_US_DATA": "This is the about us data.",
+			"ACCOMPLISHMENTS": "Accomplishments",
+			"ACTIVE": "Active",
+			"ADD": "Add",
+			"ADDITIONAL_INFORMATION": "Additional Information",
+			"ADDRESS_LINE1": "Address Line 1",
+			"ADDRESS_LINE2": "Address Line 2",
+			"AFFILIATIONS": "Affiliations",
+			"ALL_ANNOUNCEMENTS": "All Announcements",
+			"ALREADY_HAVE_ACC": "Existing user? Sign in",
+			"ALWAYS_ON": "Always on",
+			"ANNOUNCEMENT": "Announcement",
+			"ANSWER": "Answer",
+			"APPLY": "APPLY",
+			"APPLY_FILTER": "APPLY FILTER",
+			"APP_VERSION": "App Version",
+			"AS_FILE": "As File",
+			"AS_LINK": "As Link",
+			"ATTACHMENTS": "Attachments",
+			"ATTACHMENT_DOWNLOADED": "Attachment downloaded",
+			"AUTOMATIC_SYNC": "Automatic Data Sync",
+			"AVAILABLE_FILTERS": "Available filters",
+			"AVATAR": "Avatar",
+			"BACK_TO_EXIT": "Tap back again to exit app",
+			"BATCHES_FOR_THIS_COURSE": "BATCHES FOR THIS COURSE",
+			"BATCH_DETAILS": "Batch Details",
+			"BLOG": "Blog",
+			"BOARD": "BOARD",
+			"BOARD_UNIVERSITY": "Board/University",
+			"BROWSE_AS_GUEST": "Browse as guest",
+			"BTN_CLICK_TO_OPEN_CONTENT": "Tap to view content",
+			"BTN_SUBMIT": "SUBMIT",
+			"BY": "By",
+			"CAMERA_PERMISSION_DENIED": "Camera Permission denied",
+			"CAMERA_PERMISSION_SETTINGS": "To give permission, open settings, select the %s app and click on the camera to allow.",
+			"CANCEL": "CANCEL",
+			"CANCEL_DOWNLOAD": "CANCEL DOWNLOAD",
+			"CHANGE": "Change",
+			"CHANGE_LANGUAGE": "Change language",
+			"CHECK_FOR_UPDATES": "Check for Updates",
+			"CHOOSE_FROM_FOLLOWING": "Choose from following",
+			"CHOOSE_LANGUAGE": "Choose Your Preferred Language",
+			"CITY": "City",
+			"COMING_SOON": "Details coming soon",
+			"COMMUNITIES": "Community",
+			"CONFIRM": "Confirm",
+			"CONFIRM_DEL": "Confirm Delete?",
+			"CONTENT_FLAGGED_MSG": "Content flagged successfully",
+			"CONTENT_FLAG_FAIL": "Content flagging failed",
+			"CONTINUE": "Continue",
+			"COUNTRY": "Country",
+			"COURSE": "COURSE",
+			"COURSES_BNAV": "COURSES",
+			"COURSES_IN_PROGRESS": "Courses In Progress",
+			"COURSES_IN_PROGRESS_2": "CoursesInProgress",
+			"COURSES_LW": "Courses",
+			"COURSE_ENROLLED": "Course enrolled",
+			"COURSE_PROGRESS_COMPLETED": "Completed: %s %",
+			"CREATED_BY": "CREATED BY",
+			"CREATED_BY_SMALL": "Created by",
+			"CREATOR_NAME_NOT_AVAILABLE": "Creator's name unavailable",
+			"CREATOR_OF": "Created by",
+			"CURRENT": "Current Address",
+			"CURRENT_LANGUAGE": "Current Language : ",
+			"CURRENT_LOCATION": "Current Location",
+			"DATA_SYNC": "Data Sync",
+			"DATA_SYNC_SUB": "Backup your data, Transfer Telemetry",
+			"DATE_OF_BIRTH": "Birth date",
+			"DEGREE": "Degree",
+			"DELETE": "Delete",
+			"DESCRIPTION": "Description",
+			"DETECTED": "Detected",
+			"DEVICE_ID": "Device ID",
+			"DEVICE_TAGS": "Device Tags",
+			"DEVICE_TAGS_SUB": "Add/Remove Device Tags",
+			"DISMISS": "CANCEL",
+			"DOWNLOAD": "Download",
+			"DOWNLOADING": "DOWNLOADING %s %",
+			"DOWNLOADING_1": "Downloading %s",
+			"DOWNLOADING_ATTACHMENT": "Downloading Attachment",
+			"DOWNLOADS": "downloads",
+			"DOWNLOAD_ALL": "Download all contents? %s",
+			"DOWNLOAD_ALL_wSIZE": "Download all %s?",
+			"DOWNLOAD_CANCELED": "Download canceled",
+			"DOWNLOAD_COMPLETED": "Download completed",
+			"DOWNLOAD_CONFIRMATION_TEXT": "Do you want to download?",
+			"EDIT": "Edit",
+			"EDIT_PROFILE": "Edit profile",
+			"EMAIL_ID": "Email ID",
+			"EMPTY_SEARCH_RESULTS": "No Search Results Found",
+			"ENDORSE": "Endorse",
+			"ENJOYED_THIS_CONTENT": "Enjoyed this content?",
+			"ENROLL": "ENROLL",
+			"ENROLL_COURSE": "ENROLL IN COURSE",
+			"ERROR_ALREADY_ADDED": "Skill is available in your skill list",
+			"ERROR_BATCH_NOT_STARTED": "Batch not started",
+			"ERROR_CANT_OPEN_EMPTY_CONTENT": "Cannot open blank file",
+			"ERROR_COLLECTION_IS_EMPTY": "Collection is empty",
+			"ERROR_CONTENT_NOT_AVAILABLE": "Content unavailable",
+			"ERROR_CONTENT_NOT_FOUND": "Contents not added yet",
+			"ERROR_DURATION_NOT_AVAILABLE": "Duration unavailable",
+			"ERROR_EMAIL_FORMAT": "Incorrect email format",
+			"ERROR_EMPTY_EMAIL": "Enter email ID",
+			"ERROR_EMPTY_FIELDS": "Enter details",
+			"ERROR_EMPTY_FIRSTNAME": "Enter first name",
+			"ERROR_EMPTY_LANGUAGE": "Select atleast one language",
+			"ERROR_EMPTY_MOBILE": "Enter mobile number",
+			"ERROR_EMPTY_PASSWORD": "Enter password",
+			"ERROR_EMPTY_RESULT": "Search results unavailable",
+			"ERROR_EMPTY_USERNAME": "Enter user name",
+			"ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT": "Failed to download attachment",
+			"ERROR_FETCHING_DATA": "Unable to fetch data ",
+			"ERROR_FLAG_CONTENT_MIN_REASON": "Select atleast one reason to flag the content",
+			"ERROR_GETTING_SKILLS": "Error getting skills",
+			"ERROR_INVALID_AADHAAR": "Check Aadhaar number format",
+			"ERROR_INVALID_EMAIL": "Invalid email ID",
+			"ERROR_MULTIPLE_CURRENT_JOB": "Your 'current job' cannot have multiple entries",
+			"ERROR_NO_ATTACHMENTS": "No attachment",
+			"ERROR_NO_BATCHES_FOUND": "There are no batches for this course",
+			"ERROR_NO_COURSES_ENROLLED": "Not enrolled in course",
+			"ERROR_NO_INTERNET_MESSAGE": "No internet access",
+			"ERROR_NO_OFFLINE_RESOURCE": "No resources stored ",
+			"ERROR_NO_RESUME_CONTENT_AVAILABLE": "Error! No resume content available",
+			"ERROR_OFFLINE_MODE": "No internet, Offline mode",
+			"ERROR_SERVER_CONNECTION": "Unable to connect to server",
+			"ERROR_SERVER_MESSAGE": "Error :",
+			"ERROR_SHORT_MOBILE": "Mobile number should be 10 digits",
+			"ERROR_SHORT_PASSWORD": "Password should be minimum 8 characters",
+			"ERROR_UPLOADING_IMG": "Error while uploading image",
+			"FACEBOOK": "Facebook",
+			"FEEDBACK_HINT": "Feedback (optional)",
+			"FEEDBACK_HINT_1": "Add a comment here",
+			"FETCHING_CONTENTS": "Fetching content: %s%",
+			"FILE_SIZE": "Size [%s]",
+			"FILTER": "Filter",
+			"FILTER_BY": "FILTER BY",
+			"FIRST_NAME": "NAME",
+			"FIRST_NAME_HINT": "Enter name",
+			"FLAG": "Report",
+			"FOLLOW": "Follow",
+			"FROM": "From",
+			"FULL_NAME": "NAME",
+			"GENDER": "Gender",
+			"GRADE": "GRADE",
+			"GROUPS": "Groups",
+			"GROUPS_BNAV": "GROUPS",
+			"GROUPS_YOU_FOLLOW": "Groups you follow",
+			"HELP_US_BY_RATING": "Help us by rating this content",
+			"HIDE_CREDITS_INFO": "Hide Credits and Licensing Info",
+			"HINT_CURRENT_LOCATION": "Enter your location",
+			"HINT_EMAIL_ID": "sample@test.com",
+			"HINT_LANGUAGE": "Select preferred language",
+			"HINT_MOBILE_NUMBER": "Enter mobile number",
+			"HINT_PASSWORD": "Password should be minimum 8 characters",
+			"HINT_USER_NAME": "Enter user name",
+			"HOBBIES": "Hobbies",
+			"HOME_BNAV": "HOME",
+			"INSTITUTION_NAME": "Institution name",
+			"INVALID_CONTENT": "Content is invalid",
+			"INVALID_PINCODE": "Invalid pincode",
+			"IS_THIS_YOUR_CURRENT_JOB": "Is this your current job?",
+			"JOB_NAME": "Job Name",
+			"JOIN": "JOIN",
+			"LABEL_ADD_A_SKILL": "Add a skill",
+			"LANGUAGE": "LANGUAGE",
+			"LANGUAGES": "LANGUAGES",
+			"LANGUAGE_SETTINGS": "Language Settings",
+			"LAST_LOGIN_TIME": "Last login time: %s",
+			"LAST_NAME": "Last Name",
+			"LAST_NAME_HINT": "Enter your last name",
+			"LAST_SYNC": "Last synced on ",
+			"LATEST_COURSES": "Latest Courses",
+			"LIBRARY_BNAV": "LIBRARY",
+			"LIBRARY_LW": "Library",
+			"LINKEDIN": "LinkedIn",
+			"LOADING_CONTENT": "Loading content",
+			"LOGGED_OUT": "Logged out",
+			"LOGOUT": "Sign out",
+			"MEDIUM": "Medium of instruction",
+			"MEDIUM_2": "MEDIUM",
+			"MEDIUM_GUEST": "Medium",
+			"MEDIUM_OF_INSTRUCTION": "MEDIUM OF INSTRUCTION",
+			"MOBILE_NUMBER": "MOBILE NUMBER",
+			"MODULES": "Modules",
+			"MODULE_NAME": "Module name",
+			"MODULE_SIZE": "Module size: %s",
+			"MODULE_SIZE_UNAVAILABLE": "Module size unavailable",
+			"MSG_ALREADY_IMPORTED": "Already Imported",
+			"MSG_IMPORTED_SUCCESSFULLY": "Content imported successfully",
+			"MSG_NO_DETAILS_TO_SHOW": "Details unavailable",
+			"MSG_NO_NEW_NOTIFICATION": "No new notification",
+			"MSG_RESOURCE_DELETED": "Content deleted from device",
+			"MY_COMMUNITIES": "My Communities",
+			"NAME": "NAME",
+			"NAME_HINT": "Enter name",
+			"NEW": "New",
+			"NIL": "Nil",
+			"NO": "No",
+			"NO_ACC_YET": "New user? Sign up now",
+			"NO_ANNOUNCEMENTS": "You have no new announcements",
+			"NO_CHANGE": "No changes have been made",
+			"NO_FILTERS_SELECTED": "No filter selected",
+			"NO_INTERNET": "No internet access",
+			"NO_PREVIEW": "Preview unavailable",
+			"NO_RATING": "Not rated",
+			"NUMBER_OF_VOTES": "Number of votes",
+			"OFF": "Off",
+			"OPEN": "OPEN",
+			"OPEN_SETTINGS": "OPEN SETTINGS",
+			"OPTIONAL": "Optional",
+			"OPTION_COPYRIGHT_VIOLATION": "Copyright violation",
+			"OPTION_INAPPROPRIATE_CONTENT": "Inappropriate content",
+			"OPTION_OTHER": "Other",
+			"OPTION_PRIVACY_VIOLATION": "Data privacy violation",
+			"ORGANIZATION": "Organization",
+			"OVERLAY_INFO_TEXT_COMMON": "Sign In to unlock all the benefits that Sunbird has to offer.",
+			"OVERLAY_INFO_TEXT_HOME": "Find your tasks, popular and recommended courses and discussions that your peers are having all in one place.",
+			"OVERLAY_INFO_TEXT_TAKE_COURSE": "Courses are for registered users. Sign In to get access to this course.",
+			"OVERLAY_LABEL_COMMON": "Get Unlimited Access to Sunbird.",
+			"OVERLAY_LABEL_HOME": "Your Personalized Home Tab",
+			"OVERLAY_LABEL_TAKE_COURSE": "Sign In To Take This Course",
+			"OVERLAY_SIGN_IN": "SIGN IN",
+			"OVER_WIFI": "Over Wifi",
+			"PASSWORD": "PASSWORD",
+			"PEOPLE_WHO_FOLLOW_YOU": "People who follow you",
+			"PEOPLE_YOU_FOLLOW": "People you follow",
+			"PERCENTAGE": "Percentage",
+			"PERMANENT": "Permanent Address",
+			"PERMISSION_DENIED": "Permission denied",
+			"PERMISSION_SETTING_MSG": "To provide permissions, click on 'Open Settings' ",
+			"PERSONAL_DETAILS": "Personal Details",
+			"PHONE": "Phone",
+			"PINCODE": "Pincode",
+			"PINNED_BY_ADMIN": "Pinned by admin",
+			"PLAY": "PLAY",
+			"POPULAR_COURSES": "Popular Courses",
+			"POSITION": "Position",
+			"PREVIEWS": "PREVIEWS",
+			"PRIVACY_POLICY": "Privacy Policy",
+			"PRIVATE": "Private",
+			"PROFILE_BNAV": "PROFILE",
+			"PROFILE_DETAILS_TITLE": "Profile Details",
+			"PROFILE_LW": "Profile",
+			"PROFILE_UPDATE_FAILED": "Updating profile failed, try again later",
+			"PROFILE_UPDATE_SUCCESS": "Profile is updated successfully.",
+			"PUBLIC": "Public",
+			"PUBLISHED_DATE": "Published date",
+			"QUIZ": "QUIZ",
+			"READ_LESS": "Read Less",
+			"READ_MORE": "Read More",
+			"RECOMMENDED": "Recommended",
+			"REMOVE": "Remove",
+			"RESUME": "RESUME",
+			"RETRY_ACTION": "Try again",
+			"SAVE": "Save",
+			"SAVED_ON": "Saved on",
+			"SAVED_RESOURCES": "Saved Resources",
+			"SAVED_RESOURCES_2": "SavedResources",
+			"SCAN_QR_CODE": "Scan QR Code",
+			"SCAN_QR_INSTRUCTION": "Scan the QR code with your phone camera  ",
+			"SEARCH_HINT": "Search",
+			"SELECT": "SELECT",
+			"SELECT_ADDRESS_TYPE": "Select Address Type",
+			"SELECT_A_REASON": "SELECT A REASON",
+			"SELECT_DATE": "Select date",
+			"SELECT_LANGUAGE": "Select Language",
+			"SELECT_STATE_TO_GET_STARTED": "Select state to get started",
+			"SEND_EMAIL": "Send Email",
+			"SENT_ON": "Sent on",
+			"SERVER_CONNECTION_ERROR": "Unable to connect to server",
+			"SETTINGS": "Settings",
+			"SHARE_APP": "Share the %s app",
+			"SHARE_TELEMETRY": "Share Telemetry",
+			"SHARE_THIS": "Share",
+			"SHOW_LESS": "Show Less",
+			"SHOW_MORE": "Show More",
+			"SIGN_IN": "SIGN IN",
+			"SIGN_UP": "SIGN UP",
+			"SKILLS_ADDED_SUCCESSFULLY": "Skills added successfully",
+			"SKILL_ALREADY_ADDED": "Skill already added",
+			"SKILL_ALREADY_ENDORSED": "Skill already endorsed",
+			"SKILL_COULD_NOT_BE_ENDORSED": "Skill endorsment unsucessfull",
+			"SKILL_ENDORSED": "Skill endorsed",
+			"SKILL_NOT_ADDED": "Unsucessful, could not add skill",
+			"SKILL_TAGS": "Skill Tags",
+			"SOCIAL": "Social",
+			"SORT_BY": "SORT BY",
+			"START_COURSE": "START",
+			"STAR_RATINGS": "Rating",
+			"STATE": "STATE",
+			"STORAGE": "Storage",
+			"STRENGTHEN_YOUR_PROFILE": "Strengthen your profile",
+			"STRUCTURE": "Structure",
+			"SUBJECT": "SUBJECT",
+			"SUBJECTS": "Subjects",
+			"SUPPORT": "Support",
+			"SUPPORT_MESSAGE": "Facing A problem? Send us a message",
+			"SYNCING_NOW": "Syncing Now",
+			"SYNC_NOW": "Sync Now",
+			"TERMS_OF_SERVICE": "Terms of Service",
+			"THANK_FOR_RATING": "Thank you for rating",
+			"THIS_IS_A_RESTRICTED_COMMUNITY": "This is a restricted community",
+			"TIME_OUT": "Server timed out. Try again later",
+			"TITLE_ADDRESS": "Address",
+			"TITLE_EDUCATION": "Education",
+			"TITLE_EXPERIENCE": "Experience",
+			"TO": "To",
+			"TOPIC_YOU_MIGHT_LIKE": "Explore topics of interest",
+			"TO_DO": "To Do",
+			"TRY_AGAIN": "TRY AGAIN",
+			"TRY_BEFORE_RATING": "Please try the content before rating it.",
+			"TWITTER": "Twitter",
+			"TYPE_TO_ADD_A_SKILL": "Add your skills",
+			"UNKNOWN_QR": "No content found associated with that QR code",
+			"UPDATE": "Update",
+			"USERNAME": "User name: %s",
+			"USER_NAME": "USER NAME",
+			"USER_NAME_PROFILE": "User Name",
+			"VIEW": "View",
+			"VIEW_ALL": "View all",
+			"VIEW_ALL_COMMUNITIES": "View all joined communities ",
+			"VIEW_CREDITS_INFO": "View Credits and Licensing Info",
+			"VIEW_MORE": "VIEW MORE",
+			"VIEW_ONGOING_BATCHES": "View ongoing batches",
+			"VIEW_UPCOMING_BATCHES": "View upcoming batches",
+			"WAIT_REQUEST": "Please wait...",
+			"WARNING_INVALID_GRADE": "Invalid grade. Enter one letter between A - F",
+			"WARNING_INVALID_PERCENTAGE": "Invalid percentage. Enter digits between 0 - 100 ",
+			"WARNING_INVALID_YEAR_OF_PASSING": "Invalid pass year. Enter four (yyyy) digits for year of passing",
+			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "Enter mandatory details",
+			"WARNING_PLEASE_MAKE_SOME_CHANGES": "Make changes",
+			"WEBLINKS": "Social media links",
+			"WELCOME_BACK": "WELCOME BACK %s",
+			"WELCOME_M1": "Welcome to %s",
+			"WELCOME_M2": "Structured education for the educators",
+			"WELCOME_ON_BOARD": "Welcome to %s, %s ",
+			"WHAT_WENT_WRONG": "What went wrong?",
+			"YEAR_OF_PASSING": "Pass year",
+			"YES": "Yes",
+			"YOUR_PROFILE_IS": "Your profile is %s% complete",
+			"YOUR_PROGRESS": "Your Progress: %s%",
+			"GET_CONTENT_TITLE": "Get Content On-the-Go",
+			"GET_CONTENT_DESC": "Browse and consume content from our growing collection of free courses and resources.",
+			"SCAN_QR_TITLE": "Scan QR Codes for Quick Access",
+			"SCAN_QR_DESC": "Scan QR Codes using the Sunbird app to quickly get access to related content and resources.",
+			"CONNECT_WITH_PEERS_TITLE": "Connect with Peers and Experts",
+			"CONNECT_WITH_PEERS_DESC": "Join communities and speak to peers and experts. Learn and share your knowledge.",
+			"LICENSE": "LICENSE",
+			"CREDITS": "CREDITS",
+			"SIGNIN_TO_USE_FEATURE": "Sign in to use this feature.",
+			"TEACHER_ROLE": "Teacher",
+			"TEACHER_ROLE_DESC": "1. Browse through courses\n2. Find relevant resources\n3. Browse through groups",
+			"STUDENT_ROLE": "Student",
+			"STUDENT_ROLE_DESC": "1. Browse through resources",
+			"ROLE_SELECTOR_QUERY": "You are a",
+			"BOARD_QUESTION": "Which board does your school follow?",
+			"BOARD_OPTION_TEXT": "SELECT BOARD",
+			"GRADE_QUESTION": "Which class do you belong to?",
+			"GRADE_OPTION_TEXT": "SELECT CLASS",
+			"SUBJECT_QUESTION": "Which subjects are you looking for?",
+			"SUBJECT_OPTION_TEXT": "SELECT SUBJECT",
+			"MEDIUM_QUESTION": "What medium/language does your school teach in?",
+			"MEDIUM_OPTION_TEXT": "SELECT MEDIUM/LANG",
+			"ONBOARDING_CARDS_HEADING": "Help us get you content thats relevant to you."
+		},
+		"hi_IN": {
+			"ABOUT": "बारे में",
+			"ABOUT_APP": "ऐप के बारे में",
+			"ABOUT_APPLICATION": "इस एप्लिकेशन के बारे में",
+			"ABOUT_MODULE": "मॉड्यूल के बारे में",
+			"ABOUT_US": "हमारे बारे में",
+			"ACCOMPLISHMENTS": "उपलब्धियों",
+			"ACTIVE": "सक्रिय",
+			"ADD": "जोड़",
+			"ADDITIONAL_INFORMATION": "अतिरिक्त जानकारी",
+			"ADDRESS_LINE1": "पता पंक्ति 1",
+			"ADDRESS_LINE2": "पता पंक्ति 2",
+			"AFFILIATIONS": "संधि",
+			"ALL_ANNOUNCEMENTS": "घोषणाएं",
+			"ALREADY_HAVE_ACC": "मौजूदा उपयोगकर्ता, साइन इन करें",
+			"ALWAYS_ON": "हमेशा बने रहें",
+			"ANNOUNCEMENT": "घोषणा",
+			"ANSWER": "उत्तर ",
+			"APPLY": "लागू करें",
+			"APPLY_FILTER": "फिल्टर लागू करें",
+			"APP_VERSION": "ऐप् वर्शन ",
+			"AS_FILE": "फ़ाइल के रूप में साझा करें",
+			"AS_LINK": "लिंक के रूप में साझा करें",
+			"ATTACHMENTS": "संलग्न",
+			"ATTACHMENT_DOWNLOADED": "संलग्न संचिका डाउनलोड की गई",
+			"AUTOMATIC_SYNC": "स्वचालित डेटा सिंक",
+			"AVAILABLE_FILTERS": "उपलब्ध फिल्टर",
+			"AVATAR": "अवतार",
+			"BACK_TO_EXIT": "ऐप से बाहर निकलने के लिए फिर से स्पर्श करें",
+			"BATCHES_FOR_THIS_COURSE": "इस पाठ्यक्रम के लिए बैच ",
+			"BLOG": "ब्लॉग",
+			"BOARD": "बोर्ड",
+			"BOARD_UNIVERSITY": "बोर्ड / विश्वविद्यालय",
+			"BROWSE_AS_GUEST": "गेस्ट के रूप में ब्राउज़ करें",
+			"BTN_CLICK_TO_OPEN_CONTENT": "पाठ्यक्रम देखने के लिए ऐप स्पर्श करें",
+			"BTN_SUBMIT": "जमा करें",
+			"CAMERA_PERMISSION_DENIED": "कैमरा अनुमति अस्वीकृत",
+			"CAMERA_PERMISSION_SETTINGS": "अनुमति देने के लिए, सेटिंग खोलें,%s ऐप का चयन करें और अनुमति देने के लिए कैमरे पर क्लिक करें",
+			"CANCEL": "रद्द ",
+			"CANCEL_DOWNLOAD": "डाउनलोड रद्द करें",
+			"CHANGE": "परिवर्तन",
+			"CHANGE_LANGUAGE": "भाषा बदलें",
+			"CHECK_FOR_UPDATES": "अद्यतन के लिए जाँच",
+			"CHOOSE_FROM_FOLLOWING": "निम्नलिखित से चुनें",
+			"CHOOSE_LANGUAGE": "अपनी पसंद की भाषा चुनें",
+			"CITY": "शहर",
+			"COMING_SOON": "विवरण जल्द ही आ रहे हैं",
+			"COMMUNITIES": "समुदायों",
+			"CONFIRM": "पुष्टि करें",
+			"CONFIRM_DEL": "हटाने की पुष्टि करें?",
+			"CONTENT_FLAGGED_MSG": "पाठ्यक्रम सफलतापूर्वक फ़्लैग किया गया",
+			"CONTENT_FLAG_FAIL": "पाठ्यक्रम फ़्लैगिंग विफल रहा",
+			"CONTINUE": "जारी है",
+			"COUNTRY": "देश",
+			"COURSE": "कोर्स ",
+			"COURSES_BNAV": "कोर्स ",
+			"COURSES_IN_PROGRESS": " कोर्स प्रगति में है",
+			"COURSES_IN_PROGRESS_2": " कोर्स प्रगति में है",
+			"COURSES_LW": "कोर्स ",
+			"COURSE_ENROLLED": "कोर्स नामांकित",
+			"COURSE_PROGRESS_COMPLETED": "पूर्ण: %s %",
+			"CREATED_BY": "के द्वारा बनाई गई",
+			"CREATED_BY_SMALL": "के द्वारा बनाई गई",
+			"CREATOR_NAME_NOT_AVAILABLE": "निर्माता का नाम अनुपलब्ध है",
+			"CREATOR_OF": "के द्वारा बनाई गई",
+			"CURRENT": "अस्थायी पता ",
+			"CURRENT_LANGUAGE": "\nवर्तमान भाषा",
+			"CURRENT_LOCATION": "वर्तमान  स्थान ",
+			"DATA_SYNC": "डेटा सिंक",
+			"DATE_OF_BIRTH": "जन्म की तारीख",
+			"DEGREE": "पद",
+			"DELETE": "रद्द",
+			"DESCRIPTION": "विवरण",
+			"DETECTED": "पहचान",
+			"DEVICE_ID": "डिवाइस आईडी",
+			"DISMISS": "रद्द",
+			"DOWNLOAD": "डाउनलोड ",
+			"DOWNLOADING": "डौन्लोडिंग %s %",
+			"DOWNLOADING_1": "डाउनलोड %s",
+			"DOWNLOADING_ATTACHMENT": "अनुलग्नक डाउनलोड हो रहा है",
+			"DOWNLOADS": "डाउनलोड ",
+			"DOWNLOAD_ALL": "सभी पाठ्यक्रम डाउनलोड करें? %s",
+			"DOWNLOAD_ALL_wSIZE": "डाउनलोड करें",
+			"DOWNLOAD_CANCELED": "डाउनलोड रद्द",
+			"DOWNLOAD_COMPLETED": "डाउनलोड सम्पन्न",
+			"DOWNLOAD_CONFIRMATION_TEXT": "क्या आप डाउनलोड करना चाहते हैं?",
+			"EDIT": "संपादित करें",
+			"EDIT_PROFILE": "प्रोफाइल संपादित करें",
+			"EMAIL_ID": "ईमेल आईडी",
+			"EMPTY_SEARCH_RESULTS": "कोई खोज परिणाम नहीं मिला",
+			"ENDORSE": "संलग्न",
+			"ENJOYED_THIS_CONTENT": "इस पाठ्यक्रम का आनंद लिया",
+			"ENROLL": "नामांकन",
+			"ENROLL_COURSE": " कोर्स में नामांकित कराएं",
+			"ERROR_ALREADY_ADDED": "यह कौशल पहले से ही जोड़ा गया है। अब नए कौशल जोड़ें",
+			"ERROR_BATCH_NOT_STARTED": "बैच शुरू नहीं हुआ",
+			"ERROR_CANT_OPEN_EMPTY_CONTENT": "खाली फाइल नहीं खोल सकते ",
+			"ERROR_COLLECTION_IS_EMPTY": "संग्रह खाली है",
+			"ERROR_CONTENT_NOT_AVAILABLE": "पाठ्यक्रम अनुपलब्ध",
+			"ERROR_CONTENT_NOT_FOUND": "पाठ्यक्रम अभी तक उपलब्ध नहीं है",
+			"ERROR_DURATION_NOT_AVAILABLE": "अवधि अनुपलब्ध",
+			"ERROR_EMAIL_FORMAT": "गलत ईमेल प्रारूप",
+			"ERROR_EMPTY_EMAIL": "ईमेल आईडी दर्ज करें",
+			"ERROR_EMPTY_FIELDS": "विवरण दर्ज करें",
+			"ERROR_EMPTY_FIRSTNAME": "प्रथम नाम दर्ज करें",
+			"ERROR_EMPTY_LANGUAGE": "कम से कम एक भाषा चुनें",
+			"ERROR_EMPTY_MOBILE": "मोबाइल नंबर दर्ज करें",
+			"ERROR_EMPTY_PASSWORD": "पास वर्ड दर्ज करें",
+			"ERROR_EMPTY_RESULT": "खोज परिणाम अनुपलब्ध",
+			"ERROR_EMPTY_USERNAME": "उपयोगकर्ता नाम दर्ज करें",
+			"ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT": "अटैचमेंट डाउनलोड करने में विफल",
+			"ERROR_FETCHING_DATA": "डेटा लाने में त्रुटि",
+			"ERROR_FLAG_CONTENT_MIN_REASON": " पाठ्यक्रम फ्लैग करने के लिए कम से कम एक कारण चुनें",
+			"ERROR_GETTING_SKILLS": "कौशल प्राप्त करने में त्रुटि",
+			"ERROR_INVALID_AADHAAR": "आधार संख्या प्रारूप की जांच करें",
+			"ERROR_INVALID_EMAIL": "अमान्य ईमेल आईडी",
+			"ERROR_MULTIPLE_CURRENT_JOB": "आपकी 'वर्तमान नौकरी' में एकाधिक प्रविष्टियां नहीं हो सकतीं",
+			"ERROR_NO_ATTACHMENTS": "कुछ भी संलग्न नहीं",
+			"ERROR_NO_BATCHES_FOUND": "इस पाठ्यक्रम के लिए कोई बैच नहीं है",
+			"ERROR_NO_COURSES_ENROLLED": "कोर्स में दाखिला नहीं हुआ",
+			"ERROR_NO_INTERNET_MESSAGE": "इंटरनेट की सुविधा नहीं है",
+			"ERROR_NO_OFFLINE_RESOURCE": "कोई संसाधन संग्रहीत नहीं",
+			"ERROR_NO_RESUME_CONTENT_AVAILABLE": "त्रुटि! कोई शुरू पाठ्यक्रम उपलब्ध नहीं",
+			"ERROR_OFFLINE_MODE": "कोई इंटरनेट नहीं, ऑफ़लाइन मोड ",
+			"ERROR_SERVER_CONNECTION": "सर्वर से संपर्क करने में असमर्थ",
+			"ERROR_SERVER_MESSAGE": " त्रुटि:",
+			"ERROR_SHORT_MOBILE": "मोबाइल नंबर 10 अंक होना चाहिए",
+			"ERROR_SHORT_PASSWORD": "पासवर्ड 8 वर्णों से कम नहीं हो सकता",
+			"ERROR_UPLOADING_IMG": "चित्र अपलोड करते समय त्रुटि हुई",
+			"FACEBOOK": "फेसबुक",
+			"FEEDBACK_HINT": "प्रतिक्रिया (वैकल्पिक)",
+			"FEEDBACK_HINT_1": "टिप्पणी दे",
+			"FETCHING_CONTENTS": "पाठ्यक्रम प्राप्ति:%s%",
+			"FILE_SIZE": "आकार [%s]",
+			"FILTER": "फिल्टर",
+			"FILTER_BY": "के द्वारा फिल्टर",
+			"FIRST_NAME": "नाम",
+			"FIRST_NAME_HINT": "अपना नाम दर्ज करें",
+			"FLAG": "रिपोर्ट",
+			"FOLLOW": "अनुसरण",
+			"FROM": "से",
+			"FULL_NAME": "पूरा नाम",
+			"GENDER": "लिंग",
+			"GRADE": "ग्रेड",
+			"GROUPS": "समूहों",
+			"GROUPS_BNAV": "समूहों",
+			"GROUPS_YOU_FOLLOW": "जिन समूहों का आप अनुसरण करते हैं",
+			"HELP_US_BY_RATING": "हमें इस पाठ्यक्रम का मूल्यांकन करने में सहायता करें",
+			"HIDE_CREDITS_INFO": "क्रेडिट और लाइसेंसिंग जानकारी छिपाएं",
+			"HINT_CURRENT_LOCATION": "अपना स्थान दर्ज करें",
+			"HINT_EMAIL_ID": "sample@test.com नमूने का परीक्षण",
+			"HINT_LANGUAGE": "पसंदीदा भाषा चुनें",
+			"HINT_MOBILE_NUMBER": "मोबाइल नंबर दर्ज करें",
+			"HINT_PASSWORD": "पासवर्ड 8 वर्णों से कम नहीं हो सकता",
+			"HINT_USER_NAME": "उपयोगकर्ता नाम दर्ज करें",
+			"HOBBIES": "शौक",
+			"HOME_BNAV": "होम",
+			"INSTITUTION_NAME": "संस्था का नाम",
+			"INVALID_CONTENT": "पाठ्यक्रम अमान्य है",
+			"INVALID_PINCODE": "अवैध पिनकोड",
+			"IS_THIS_YOUR_CURRENT_JOB": "यह आपकी वर्तमान नौकरी है",
+			"JOB_NAME": "व्यवसाय",
+			"JOIN": "शामिल",
+			"LABEL_ADD_A_SKILL": "अपने कौशल बताये",
+			"LANGUAGE": "भाषा",
+			"LANGUAGES": "भाषा",
+			"LANGUAGE_SETTINGS": "भाषा सेटिंग",
+			"LAST_LOGIN_TIME": "अंतिम लॉगिन समय: %s",
+			"LAST_NAME": "कुलनाम ",
+			"LAST_NAME_HINT": "अपना कुलनाम दर्ज करें",
+			"LAST_SYNC": "आखिर में समन्वयित हुआ",
+			"LATEST_COURSES": "नवीनतम पाठ्यक्रम",
+			"LIBRARY_BNAV": "पुस्तकालय संग्रह",
+			"LIBRARY_LW": "पुस्तकालय संग्रह",
+			"LINKEDIN": "लिंक्डइन",
+			"LOADING_CONTENT": "पाठ्यक्रम लोड करें",
+			"LOGGED_OUT": "लॉग आउट",
+			"LOGOUT": "साइन आउट",
+			"MEDIUM": "निर्देश का माध्यम",
+			"MEDIUM_2": "माधयम",
+			"MEDIUM_GUEST": "गेस्ट की तरह",
+			"MEDIUM_OF_INSTRUCTION": "निर्देश का माध्यम",
+			"MOBILE_NUMBER": "मोबाइल नंबर",
+			"MODULES": "मॉड्यूल",
+			"MODULE_NAME": "मोड्यूल का नाम",
+			"MODULE_SIZE": "मॉड्यूल आकार: %s",
+			"MODULE_SIZE_UNAVAILABLE": "मॉड्यूल का आकार अनुपलब्ध है",
+			"MSG_ALREADY_IMPORTED": "पहले से आयातित",
+			"MSG_IMPORTED_SUCCESSFULLY": "पाठ्यक्रम सफलतापूर्वक आयातित",
+			"MSG_NO_DETAILS_TO_SHOW": "विवरण अनुपलब्ध",
+			"MSG_NO_NEW_NOTIFICATION": "कोई नई सूचना नहीं",
+			"MSG_RESOURCE_DELETED": "डिवाइस से पाठ्यक्रम हटाई गई",
+			"MY_COMMUNITIES": "मेरे समुदाय",
+			"NAME": "नाम",
+			"NAME_HINT": "अपना नाम दर्ज करें",
+			"NEW": "नया",
+			"NIL": "शून्य",
+			"NO": "नहीं",
+			"NO_ACC_YET": "नया उपयोगकर्ता? अब साइन-अप करें",
+			"NO_ANNOUNCEMENTS": "कोई नई घोषणा नहीं ",
+			"NO_CHANGE": "कोई बदलाव नहीं किया गया है",
+			"NO_FILTERS_SELECTED": "कोई फ़िल्टर चयनित नहीं है",
+			"NO_INTERNET": "इंटरनेट कनेक्शन अनुपलब्ध है",
+			"NO_PREVIEW": "कोई प्रीव्यू उपलब्ध नहीं  है",
+			"NO_RATING": "कोई रेटिंग उपलब्ध नहीं है",
+			"NUMBER_OF_VOTES": "वोटों की संख्या",
+			"OFF": "बंद",
+			"OPEN": "खुला",
+			"OPEN_SETTINGS": "सेटिंग्स खोलें",
+			"OPTIONAL": "ऐच्छिक",
+			"OPTION_COPYRIGHT_VIOLATION": "कॉपीराइट उल्लंघन",
+			"OPTION_INAPPROPRIATE_CONTENT": "अनुचित पाठ्यक्रम",
+			"OPTION_OTHER": "अन्य",
+			"OPTION_PRIVACY_VIOLATION": "गोपनीयता उल्लंघन",
+			"ORGANIZATION": "संगठन",
+			"OVERLAY_INFO_TEXT_COMMON": "सभी लाभों को अनलॉक करने के लिए सनबर्ड मे साइन इन करें",
+			"OVERLAY_INFO_TEXT_HOME": "\nअपने और अपने साथियों के  कार्य, लोकप्रिय और अनुशंसित कोर्स और उन चर्चाओं का पता लगाएं ",
+			"OVERLAY_INFO_TEXT_TAKE_COURSE": "कोर्स पंजीकृत उपयोगकर्ताओं के लिए हैं| इस कोर्स तक पहुँचने के लिए साइन इन करें",
+			"OVERLAY_LABEL_COMMON": "सनबर्ड तक असीमित पहुंच प्राप्त करें",
+			"OVERLAY_LABEL_HOME": "आपका निजीकृत होम टैब",
+			"OVERLAY_LABEL_TAKE_COURSE": "इस कोर्स को लेने के लिए साइन इन करें",
+			"OVERLAY_SIGN_IN": "साइन इन करें",
+			"OVER_WIFI": "वाईफ़ाई पर उपलब्ध",
+			"PASSWORD": "पासवर्ड",
+			"PEOPLE_WHO_FOLLOW_YOU": "जो लोग आपका अनुसरण करते हैं",
+			"PEOPLE_YOU_FOLLOW": "लॉग जिनका आप अनुसरण करते हो",
+			"PERCENTAGE": "प्रतिशत",
+			"PERMANENT": "स्थायी पता ",
+			"PERMISSION_DENIED": "अनुमति अस्वीकृत",
+			"PERMISSION_SETTING_MSG": "उपयुक्त अनुमति के लिए ओपन सेटिंग्स स्पर्श करें",
+			"PERSONAL_DETAILS": "व्यक्तिगत विवरण",
+			"PHONE": "फ़ोन",
+			"PINCODE": "पिन कोड",
+			"PINNED_BY_ADMIN": "व्यवस्थापक द्वारा पिन किया गया",
+			"PLAY": "प्ले",
+			"POPULAR_COURSES": "लोकप्रिय कोर्स",
+			"POSITION": "पद",
+			"PREVIEWS": "प्रीव्यू",
+			"PRIVACY_POLICY": "गोपनीयता नीति",
+			"PRIVATE": "निजी",
+			"PROFILE_BNAV": "प्रोफ़ाइल",
+			"PROFILE_DETAILS_TITLE": "प्रोफ़ाइल विवरण",
+			"PROFILE_LW": "प्रोफ़ाइल",
+			"PUBLIC": "सार्वजनिक",
+			"PUBLISHED_DATE": "प्रकाशन की तारीख",
+			"QUIZ": "प्रश्नोत्तरी",
+			"READ_LESS": "कम पढ़ें",
+			"READ_MORE": "आगे पढ़े",
+			"RECOMMENDED": "अनुशंसित",
+			"REMOVE": "हटा दें",
+			"RESUME": "पुनः आरंभ करें",
+			"RETRY_ACTION": "पुनः प्रयास करें",
+			"SAVE": "सहेजें",
+			"SAVED_ON": "सहेजा गया",
+			"SAVED_RESOURCES": "सहेजे गए संसाधन",
+			"SAVED_RESOURCES_2": "सहेजे गए पाठ्यक्रम",
+			"SCAN_QR_CODE": "QR कोड स्कैन करें",
+			"SCAN_QR_INSTRUCTION": "अपने फोन कैमरे के QR कोड स्कैन करें",
+			"SEARCH_HINT": "खोज",
+			"SELECT": "चयनित",
+			"SELECT_ADDRESS_TYPE": "पता प्रकार का चयन करें ",
+			"SELECT_A_REASON": "कोई कारण चुनें",
+			"SELECT_DATE": "तारीख़ चुनें",
+			"SELECT_LANGUAGE": "भाषा चुनिए",
+			"SELECT_STATE_TO_GET_STARTED": "प्रारंभ करने के लिए राज्य चुनें",
+			"SENT_ON": "पर भेजा गया",
+			"SERVER_CONNECTION_ERROR": "सर्वर से संपर्क करने में असमर्थ",
+			"SETTINGS": "सेटिंग्स",
+			"SHARE_APP": "%s ऐप साझा करें",
+			"SHARE_TELEMETRY": "टेलीमेट्री साझा करें",
+			"SHARE_THIS": "शेयर",
+			"SHOW_LESS": "कम दिखाएं",
+			"SHOW_MORE": "और दिखाएं",
+			"SIGN_IN": "साइन इन करें",
+			"SIGN_UP": "साइन अप करें",
+			"SKILLS_ADDED_SUCCESSFULLY": "कौशल सफलतापूर्वक जोड़े",
+			"SKILL_ALREADY_ADDED": "कौशल पहले से ही जोड़ा है",
+			"SKILL_ALREADY_ENDORSED": "कौशल पहले से ही अनुमोदित है",
+			"SKILL_COULD_NOT_BE_ENDORSED": "कौशल समर्थन असफल",
+			"SKILL_ENDORSED": "कौशल का समर्थन किया",
+			"SKILL_NOT_ADDED": "अप्रशिक्षित, कौशल जोड़ नहीं सके",
+			"SKILL_TAGS": "कौशल टैग",
+			"SOCIAL": "सोशल",
+			"SORT_BY": "आधार पर छाँटे",
+			"START_COURSE": "प्रारंभ",
+			"STAR_RATINGS": "रेटिंग",
+			"STATE": "राज्य",
+			"STORAGE": "स्टोरेज ",
+			"STRENGTHEN_YOUR_PROFILE": "अपने प्रोफाइल को मजबूत करें",
+			"STRUCTURE": "संरचना",
+			"SUBJECT": "विषय",
+			"SUBJECTS": "विषयों",
+			"SUPPORT": "\nसमर्थन",
+			"SUPPORT_MESSAGE": "अगर आपको कोई समस्या का सामना करना पड़ रहा है? हमें संदेश भेजें",
+			"SYNCING_NOW": "अब सिंक करें",
+			"SYNC_NOW": "अभी सिंक करें",
+			"TERMS_OF_SERVICE": "सेवा की शर्तें",
+			"THIS_IS_A_RESTRICTED_COMMUNITY": "यह एक सीमित समुदाय है",
+			"TIME_OUT": "सर्वर का समय समाप्त हुआ बाद में पुन: प्रयास करें",
+			"TITLE_ADDRESS": "पता",
+			"TITLE_EDUCATION": "शिक्षा",
+			"TITLE_EXPERIENCE": "अनुभव",
+			"TO": "सेवा मेरे",
+			"TOPIC_YOU_MIGHT_LIKE": "विषय चुनें जो आपकी रुचि है",
+			"TO_DO": " टू डू ",
+			"TRY_AGAIN": "पुनः प्रयास करें",
+			"TRY_BEFORE_RATING": "कृपया रेटिंग से पहले  पाठ्यक्रम को आज़माएं ",
+			"TWITTER": "ट्विटर",
+			"TYPE_TO_ADD_A_SKILL": "अपने कौशल को बताने के लिए टाइप करें",
+			"UNKNOWN_QR": "कोई पाठ्यक्रम QR कोड से संबद्ध नहीं मिली",
+			"UPDATE": "नवीनीकरण",
+			"USERNAME": "उपयोगकर्ता नाम: %s",
+			"USER_NAME": "उपयोगकर्ता नाम",
+			"USER_NAME_PROFILE": "उपयोगकर्ता नाम",
+			"VIEW": "देखें",
+			"VIEW_ALL": "सभी देखें",
+			"VIEW_ALL_COMMUNITIES": "सभी शामिल हुए समुदायों को देखें",
+			"VIEW_CREDITS_INFO": "क्रेडिट और लाइसेंसिंग जानकारी देखें",
+			"VIEW_MORE": "अधिक",
+			"VIEW_ONGOING_BATCHES": "चल रहे बैचों को देखें",
+			"VIEW_UPCOMING_BATCHES": "आगामी बैचों देखें",
+			"WAIT_REQUEST": "कृपया प्रतीक्षा करें...",
+			"WARNING_INVALID_GRADE": "अमान्य ग्रेड| ग्रेड के लिए किसी भी एक वर्णमाला (ए-एफ) का चयन करें",
+			"WARNING_INVALID_PERCENTAGE": "अमान्य प्रतिशत | 0-100 के बीच अंक दर्ज करें",
+			"WARNING_INVALID_YEAR_OF_PASSING": "अवैध पासिंग वर्ष | उत्तीर्ण वर्ष के लिए चार (yyyy) अंक दर्ज करें",
+			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "सभी अनिवार्य विवरण दर्ज करें",
+			"WARNING_PLEASE_MAKE_SOME_CHANGES": "परिवर्तन करें",
+			"WEBLINKS": "वेब लिंक",
+			"WELCOME_BACK": "फिर से स्वागत %s",
+			"WELCOME_M1": "आपका स्वागत है %s",
+			"WELCOME_M2": "शिक्षकों के लिए ढांचे की संरचना",
+			"WELCOME_ON_BOARD": "आपका स्वागत है %s, %s",
+			"WHAT_WENT_WRONG": "क्या गलत हुआ?",
+			"YEAR_OF_PASSING": "उत्तीर्ण वर्ष",
+			"YES": "हाँ",
+			"YOUR_PROFILE_IS": "आपकी प्रोफ़ाइल %s% पूर्ण है",
+			"YOUR_PROGRESS": "आपकी प्रगति : %s%"
+		},
+		"ta_IN": {
+			"ABOUT": "தகவல் அறிய",
+			"ABOUT_APP": "செயலியைப் பற்றி அறிய",
+			"ABOUT_APPLICATION": "செயலியைப் பற்றி அறிய",
+			"ABOUT_MODULE": "இந்த மாடியுளை பற்றி அறிய",
+			"ABOUT_US": "எங்களைப் பற்றி அறிய",
+			"ABOUT_US_DATA": "தரவுகள் பற்றி அறிய",
+			"ACCOMPLISHMENTS": "சாதனைகள்/சிறப்புத் தகுதிகள்",
+			"ACTIVE": "செயல்நிலை",
+			"ADD": "சேறு",
+			"ADDITIONAL_INFORMATION": "கூடுதல் தகவல்",
+			"ADDRESS_LINE1": "முகவரி வரி 1",
+			"ADDRESS_LINE2": "முகவரி வரி 2",
+			"AFFILIATIONS": "தொடர்புகள்",
+			"ALL_ANNOUNCEMENTS": "அறிவிப்புகள்",
+			"ALREADY_HAVE_ACC": "முன்னரே அக்கௌன்ட் இருக்கிறதா? சைன் இன் செய்யுங்கள்.",
+			"ANNOUNCEMENT": "அறிவிப்பு",
+			"ANSWER": "பதில்",
+			"APPLY": "பில்ட்டர் செய்யுங்கள்",
+			"APPLY_FILTER": "பில்ட்டர் செய்க",
+			"APP_VERSION": "செயலியின் பதிப்பு",
+			"AS_FILE": "கோப்பு வடிவத்தில் ",
+			"AS_LINK": "லின்க் வடிவத்தில்",
+			"ATTACHMENTS": "இணைப்புகள்",
+			"ATTACHMENT_DOWNLOADED": "இணைப்பு பதிவிறக்கப்பட்டது",
+			"AUTOMATIC_SYNC": "தானே சின்க் ஆகும்",
+			"AVAILABLE_FILTERS": "பில்ட்டர்கள்",
+			"AVATAR": "அவதார்",
+			"BACK_TO_EXIT": "குறுஞ்செயிலி விட்டு வெளியேற பேக் பட்டனை மற்றொன்று முறை அழுத்தவும்.",
+			"BATCHES_FOR_THIS_COURSE": "இந்த கோர்ஸுக்காண பெச்சஸ்",
+			"BLOG": "வலைப்பதிவு",
+			"BOARD_UNIVERSITY": "வாரியம் / பல்கலைக்கழகம்",
+			"BROWSE_AS_GUEST": "விருந்தினராக உலாவுக",
+			"BTN_CLICK_TO_OPEN_CONTENT": "பாடத்தைத் திறக்க இங்குத் தொடுக",
+			"BTN_SUBMIT": "சமர்ப்பி",
+			"CAMERA_PERMISSION_DENIED": "கேமராவுக்கு அனுமதி மறுக்கப்பட்டது",
+			"CAMERA_PERMISSION_SETTINGS": "அனுமதி அளிக்க, செட்டிங்க்ஸ்சை திறந்து, %s செயலியைத் தேர்வுசெய்து,  கேமராவை அழுத்தவும்.",
+			"CANCEL": "ரத்து",
+			"CANCEL_DOWNLOAD": "டவுன்லோடை ரத்துசெய்",
+			"CHANGE": "மாற்று",
+			"CHANGE_LANGUAGE": "மொழியை மாற்ற",
+			"CHECK_FOR_UPDATES": "புதியவைகளை தேடி அறிய",
+			"CHOOSE_FROM_FOLLOWING": "கீழ்கண்டவற்றிலிருந்து தேர்வு செய்யவும்",
+			"CHOOSE_LANGUAGE": "தங்களுக்கு வசதியான மொழியை தேர்ந்தேடுக்க",
+			"CITY": "நகரம்",
+			"COMING_SOON": "விரைவில் வரும்.........",
+			"COMMUNITIES": "சமூகங்கள்",
+			"CONFIRM": "உறுதிசெய்யுங்கள்",
+			"CONFIRM_DEL": "உறுதியாக நீக்கு?",
+			"CONTENT_FLAGGED_MSG": "வெற்றிகரமாகப் பாடம் பிளாக் செய்யப்பட்டது",
+			"CONTENT_FLAG_FAIL": "பாடத்தை பிளாக் செய்வது தோல்வியடைந்தது",
+			"CONTINUE": "தொடரு",
+			"COUNTRY": "நாடு",
+			"COURSE": "கோர்ஸ்",
+			"COURSES_BNAV": "கோர்ஸ்கள்",
+			"COURSES_IN_PROGRESS": "கோர்ஸ்கள் மேம்படுகிறது",
+			"COURSES_LW": "கோர்ஸ்கள்",
+			"COURSE_ENROLLED": "கோர்ஸ் பதிவு செய்யப்பட்டது",
+			"COURSE_PROGRESS_COMPLETED": "%s % முடிந்தது",
+			"CREATED_BY": "உருவாக்கியவர்",
+			"CREATED_BY_SMALL": "இவரால் உருவாக்கப்பட்டது ",
+			"CREATOR_NAME_NOT_AVAILABLE": "உருவாக்கியவர் பெயர் கிடைக்கவில்லை",
+			"CREATOR_OF": "உருவாக்கியவர்",
+			"CURRENT": "தற்போதைய",
+			"CURRENT_LANGUAGE": "நடப்பு மொழி",
+			"CURRENT_LOCATION": "நடப்பு இடம்",
+			"DATA_SYNC": "\tதரவுகள்_சின்க்",
+			"DATE_OF_BIRTH": "பிறந்தத் தேதி",
+			"DEGREE": "பட்டம்",
+			"DELETE": "அகற்று",
+			"DESCRIPTION": "விவரங்கள்",
+			"DETECTED": "கண்டறியப்பட்டது",
+			"DEVICE_ID": "கருவியின் ஐடி",
+			"DISMISS": "ரத்து செய்யுங்கள்",
+			"DOWNLOAD": "டவுன்லோட்",
+			"DOWNLOADING": "பதிவிறக்கம் ஆகிக்கொண்டிருக்கிறது %s %",
+			"DOWNLOADING_1": "பதிவிறக்கம் ஆகிக்கொண்டிருக்கிறது.",
+			"DOWNLOADING_ATTACHMENT": "இணைப்பு பதிவிறக்குகிறது",
+			"DOWNLOADS": "டவுன்லோடுகள்",
+			"DOWNLOAD_ALL": "அனைத்தையும் பதிவிறக்கு",
+			"DOWNLOAD_ALL_wSIZE": "அனைத்தையும் பதிவிறக்கு",
+			"DOWNLOAD_CANCELED": "பதிவிறக்கம் நிறுத்தப்பட்டது",
+			"DOWNLOAD_COMPLETED": "பதிவிறக்கம் முழுமை அடைந்தது.",
+			"DOWNLOAD_CONFIRMATION_TEXT": "தங்கள் இதை டவுன்லோட் செய்ய விரும்புகிறீர்களா?",
+			"EDIT": "திருத்து",
+			"EDIT_PROFILE": "ப்ரொபைலை திருத்தவும்",
+			"EMAIL_ID": "மின்னஞ்சல் ஐடி",
+			"EMPTY_SEARCH_RESULTS": "உங்கள் தேடலுக்குறிய முடிவுகள் இல்லை",
+			"ENDORSE": "ஆதரியுங்கள்",
+			"ENJOYED_THIS_CONTENT": "இந்த பாடத்தை படித்து மகிழ்தீர்களா?",
+			"ENROLL": "பதிவு செய்யுங்கள்",
+			"ENROLL_COURSE": "இந்த கோர்ஸை பதிவு செய்யுங்கள்",
+			"ERROR_ALREADY_ADDED": "முன்னரே சேர்க்கப்பட்டுள்ளது",
+			"ERROR_BATCH_NOT_STARTED": "பெச் இன்னும் ஆரம்பிக்கவில்லை",
+			"ERROR_CANT_OPEN_EMPTY_CONTENT": "காலியானப் பாடத்தைத் திறக்க முடியாது",
+			"ERROR_CONTENT_NOT_AVAILABLE": "பாடம் கிடைக்கவில்லை",
+			"ERROR_CONTENT_NOT_FOUND": "பாடங்கள் இன்னும் சேர்க்கவில்லை",
+			"ERROR_DURATION_NOT_AVAILABLE": "கால நேரம் கிடைக்கவில்லை",
+			"ERROR_EMAIL_FORMAT": "தவறான மின்னஞ்சல் வடிவம் ",
+			"ERROR_EMPTY_EMAIL": "தங்கள் மின்னஞ்சல் ஐடி யை பதியுங்கள்",
+			"ERROR_EMPTY_FIELDS": "விவரங்களை பதிவுசெய்யுங்கள்",
+			"ERROR_EMPTY_FIRSTNAME": "தங்கள் பெயரை பதியுங்கள்",
+			"ERROR_EMPTY_LANGUAGE": "குறைந்தது ஒரு மொழியாவது தேர்வுசெயுங்கள்",
+			"ERROR_EMPTY_MOBILE": "தங்கள் கைபேசி எண்ணை பதியுங்கள்",
+			"ERROR_EMPTY_PASSWORD": "தங்கள் கடவுச்சொல்லை பதியுங்கள்",
+			"ERROR_EMPTY_RESULT": "எந்த முடிவுகளும் தற்போது இல்லை",
+			"ERROR_EMPTY_USERNAME": "பயனர் பெயரை பதியுங்கள்",
+			"ERROR_FETCHING_DATA": "டேட்டா பெறுவதில் பிழை ஏற்பட்டுள்ளது",
+			"ERROR_FLAG_CONTENT_MIN_REASON": "தயவுசெய்து பாடத்தை குறித்ததுக்காக குறைந்தது ஒரு காரணத்தை தேர்வு செய்யுங்கள்",
+			"ERROR_INVALID_AADHAAR": "தங்கள் ஆதார் எண்ணைச் சரிபார்க்கவும்",
+			"ERROR_INVALID_EMAIL": "தவறான மின்னஞ்சல் ஐடி",
+			"ERROR_MULTIPLE_CURRENT_JOB": "தங்கள் 'நடப்பு வேலை' ஒன்றுக்கு மேற்பட்டதாக இருக்க முடியாது",
+			"ERROR_NO_ATTACHMENTS": "இணைப்பு எதுவும் இல்லை",
+			"ERROR_NO_BATCHES_FOUND": "பெசஸ் எதுவும் இல்லை",
+			"ERROR_NO_COURSES_ENROLLED": "எந்த கோர்ஸும் இன்னும் பதிவு செய்யப்படவில்லை",
+			"ERROR_NO_INTERNET_MESSAGE": "தங்கள் கைப்பேசி இணையத்திடம் இணைக்கப்படவில்லை.",
+			"ERROR_NO_OFFLINE_RESOURCE": "இன்னும்  ஆஃப்லைன் ரிசோர்ஸ எதுவும் இல்லை",
+			"ERROR_NO_RESUME_CONTENT_AVAILABLE": "பிழை அறிக்கை! மீண்டும்த் தொடர எந்தப் பாடமும் கிடைக்கவில்லை.",
+			"ERROR_OFFLINE_MODE": "இணையம் இல்லை, ஆஃப்லைன் பயன்முறை",
+			"ERROR_SERVER_CONNECTION": "சேவையகத்துடன் தொடர்புகொள்ள முடியவில்லை",
+			"ERROR_SERVER_MESSAGE": "பிழை:",
+			"ERROR_SHORT_MOBILE": "தொலைப்பேசி எண் வடிவத்தைப் பரிசோதிக்கவும்",
+			"ERROR_SHORT_PASSWORD": "கடவுச்சொல்லை எட்டு எழுத்துக்களுக்குக் குறைவாக இருக்கமுடியாது",
+			"ERROR_UPLOADING_IMG": "படத்தைப்  பதிவேற்றம்  செய்வதில் பிழை",
+			"FACEBOOK": "முகநூல்",
+			"FEEDBACK_HINT": "தங்கள் கருத்து",
+			"FEEDBACK_HINT_1": "தங்கள் கருத்துகளை இந்து பதிவுசெய்க",
+			"FETCHING_CONTENTS": "பாடங்கள் பெறுகிறது: %s%",
+			"FILE_SIZE": "அளவு [%s]",
+			"FILTER": "பில்டர்",
+			"FILTER_BY": "இதன் அடிப்படையில் பில்டர் செய்க",
+			"FIRST_NAME": "பெயர்",
+			"FIRST_NAME_HINT": "தங்கள் பெயரை பதிவுசெய்யுங்கள்",
+			"FLAG": "குறி",
+			"FOLLOW": "பின்பற்று",
+			"FROM": "இருந்து",
+			"FULL_NAME": "முழுப் பெயர்",
+			"GENDER": "பால்",
+			"GRADE": "வகுப்பு",
+			"GROUPS": "குழுக்கள்",
+			"GROUPS_BNAV": "குழுக்கள்",
+			"GROUPS_YOU_FOLLOW": "நீங்கள் பின்பற்றும் குழுக்கள்",
+			"HELP_US_BY_RATING": "இந்தப் பாடத்திற்கு உங்கள் மதிப்பைப் பதிவுசெய்க",
+			"HINT_CURRENT_LOCATION": "தங்கள் இடத்தை இங்குச் சேர்க்கவும்",
+			"HINT_EMAIL_ID": "sample@test.com",
+			"HINT_LANGUAGE": "தங்களுக்கு அனுகூலமான மொழியைத் தேர்வு செய்துகொள்ளுங்கள்",
+			"HINT_MOBILE_NUMBER": "தங்கள் தொலைப்பேசி எண்ணைப் பதிவு செயுங்கள்",
+			"HINT_PASSWORD": "கடவுச்சொல் குறைந்தது எட்டு எழுத்துக்கல் இருக்கவேண்டும்.",
+			"HINT_USER_NAME": "பயனர் பெயரை பதியுங்கள்",
+			"HOBBIES": "தற்போதைய இடம்",
+			"HOME_BNAV": "ஹோம்",
+			"INSTITUTION_NAME": "நிறுவனப் பெயர்",
+			"INVALID_CONTENT": "தவறான பாடம்",
+			"INVALID_PINCODE": "செல்லாத அஞ்சல் குறியீடு",
+			"IS_THIS_YOUR_CURRENT_JOB": "இது தங்கள் நடப்பு வேலையா?",
+			"JOB_NAME": "வேலைப் பெயர்",
+			"JOIN": "சேறுங்கள்",
+			"LABEL_ADD_A_SKILL": "தங்கள் திறமைகளை சேருங்கள்",
+			"LANGUAGE": "மொழி",
+			"LANGUAGES": "மொழிகளை",
+			"LANGUAGE_SETTINGS": "மொழி அமைப்புகள்",
+			"LAST_LOGIN_TIME": "கடைசியாக புகுபதிவுசெய்த நேரம்: %s",
+			"LAST_SYNC": "கடைசியாக சின்க் ஆனது",
+			"LATEST_COURSES": "புதிய கோர்ஸ்கள்",
+			"LINKEDIN": "லிங்க்ட்இன்",
+			"LOADING_CONTENT": "பாடம் லோடாகிறது",
+			"LOGGED_OUT": "வெளியேற்றப்பட்டீர்கள்",
+			"LOGOUT": "லாக் அவுட்",
+			"MEDIUM": "பயிற்றுமொழி",
+			"MOBILE_NUMBER": "தொலைப்பேசி எண்",
+			"MODULES": "மாடியுளுஸ்",
+			"MODULE_NAME": "மாடியுள் பெயர்",
+			"MODULE_SIZE": "மாடியுள் அளவு: %s",
+			"MODULE_SIZE_UNAVAILABLE": "மாடியுள் அளவு கிடைக்கவில்லை",
+			"MSG_ALREADY_IMPORTED": "முன்னரே இம்போர்ட் செய்யப்பட்டுள்ளது",
+			"MSG_IMPORTED_SUCCESSFULLY": "வெற்றிகரமாகப் பாடம் இம்ப்போர்ட் செய்யப்பட்டது",
+			"MSG_NO_DETAILS_TO_SHOW": "தங்களுக்குக் காட்ட எந்த விவரமும் இல்லை",
+			"MSG_NO_NEW_NOTIFICATION": "புதிய அறிவிப்பு எதுவும் இல்லை",
+			"MSG_RESOURCE_DELETED": "தங்கள் சாதனத்தில் இருந்து   பாடம் அழிக்க பட்டது",
+			"MY_COMMUNITIES": "என் சமுதாயங்கள்",
+			"NAME": "பெயர்",
+			"NAME_HINT": "தங்கள் பெயரை எழுதவும்",
+			"NEW": "புதியது",
+			"NIL": "எதுவும் இல்லை",
+			"NO": "இல்லை",
+			"NO_ACC_YET": "புது பயனரா? இப்போது பதிவு செய்க",
+			"NO_ANNOUNCEMENTS": "தங்களுக்கு எந்த புது அறிவிப்புகளும் தச்சமயம் இல்லை",
+			"NO_CHANGE": "மாற்றங்கள் ஏதும் செய்யப்படவில்லை",
+			"NO_FILTERS_SELECTED": "எந்த பில்டரும் ஆய்வு செய்யவில்லை",
+			"NO_INTERNET": "இணையம் இல்லை",
+			"NO_PREVIEW": "முன்னோட்ட தற்சமயம் காணமுடியாது",
+			"NO_RATING": "மதிப்பிடாதவை",
+			"NUMBER_OF_VOTES": "மொத்த வாக்குகள்",
+			"OPEN": "திறன்டிடுங்கள்",
+			"OPEN_SETTINGS": "செட்டிங்க்ஸ்சை திறக்க",
+			"OPTIONAL": "கட்டாயம் அற்றவை",
+			"OPTION_COPYRIGHT_VIOLATION": "பதிப்புரிமை மீறல்",
+			"OPTION_INAPPROPRIATE_CONTENT": "தகுதியற்றப் பாடம்",
+			"OPTION_OTHER": "மற்றவை",
+			"OPTION_PRIVACY_VIOLATION": "தனியுரிமை மீறல்",
+			"ORGANIZATION": "அமைப்பு",
+			"OVERLAY_INFO_TEXT_COMMON": "சன் பர்டின் அனைத்து சேவைகளையும் அனுபவிக்க உள்நுழைக",
+			"OVER_WIFI": "\nவைஃபை மீது",
+			"PASSWORD": "கடவுச்சொல்லை",
+			"PEOPLE_WHO_FOLLOW_YOU": "உங்களை பின்பற்றும் நபர்கள்",
+			"PEOPLE_YOU_FOLLOW": "நீங்கள் பின்பற்றும் நபர்கள்",
+			"PERCENTAGE": "சதவீதம்",
+			"PERMANENT": "நிரந்தர",
+			"PERMISSION_DENIED": "அனுமதி மறுக்கப்பட்டது",
+			"PERMISSION_SETTING_MSG": "அனுமதி  அளிக்க, 'ஓப்பன் செட்டிங்க்ஸ்'சை அழுத்தவும்.",
+			"PERSONAL_DETAILS": "சொந்த விவரங்கள்",
+			"PHONE": "தொலைப்பேசி",
+			"PINCODE": "அஞ்சல் குறியீடு",
+			"PINNED_BY_ADMIN": "நிர்வாகிப்பவரால் பின் செய்யப்பட்டுள்ளது",
+			"PLAY": "பிளே",
+			"POPULAR_COURSES": "பிரபலமான கோர்ஸ்கள்",
+			"POSITION": "பொறுப்புப் பெயர்",
+			"PREVIEWS": "முன்னோட்டங்கள்",
+			"PROFILE_BNAV": "ப்ரொபைல்",
+			"PROFILE_DETAILS_TITLE": "ப்ரொபைல் விவரங்கள்",
+			"PROFILE_LW": "ப்ரொபைல்",
+			"PUBLISHED_DATE": "வெளியிடப்பட்ட தேதி",
+			"QUIZ": "வினாடி வினா",
+			"READ_LESS": "குறைவாகப் படிக்க",
+			"READ_MORE": "அதிகம் படிக்க",
+			"RECOMMENDED": "பரிந்துரைக்கப்படுகிறது",
+			"REMOVE": "அகற்று",
+			"RESUME": "விட்ட இடத்தில் இருந்து தொடருக",
+			"RETRY_ACTION": "மீண்டும் முயற்ச்சிக்கவும்",
+			"SAVE": "செவ் செய்யுங்கள்",
+			"SAVED_ON": "சேமித்தவை",
+			"SAVED_RESOURCES": "சேமித்த ரிசோர்ஸ்கள்",
+			"SEARCH_HINT": "தேடு",
+			"SELECT": "தேர்வு செய்யுங்கள்",
+			"SELECT_ADDRESS_TYPE": "விலாசம் வகையைத் தேர்வுசெய்க",
+			"SELECT_A_REASON": "காரணத்தை தேர்வு செய்யுங்கள்",
+			"SELECT_DATE": "தேதி தேர்வுசெய்யுங்கள்",
+			"SELECT_LANGUAGE": "மொழியைத் தேர்ந்தெடுக்கவும",
+			"SELECT_STATE_TO_GET_STARTED": "தொடங்குவதற்காக மாநிலத்தைத் தேர்வு செய்யவும்",
+			"SENT_ON": "இதன்வழி அனுப்பப்பட்டது",
+			"SERVER_CONNECTION_ERROR": "சேவையகத்துடன் தொடர்புகொள்ள முடியவில்லை",
+			"SETTINGS": "அமைப்புகள்",
+			"SHARE_APP": "செயலியைப் பகிர",
+			"SHARE_TELEMETRY": "டெலிமெட்ரியைப் பகிர",
+			"SHARE_THIS": "பகிருங்கள்",
+			"SHOW_LESS": "குறைபாக காட்டவும்",
+			"SHOW_MORE": "இன்னும் நிறைய காட்டவும்",
+			"SIGN_IN": "சைன் இன்",
+			"SIGN_UP": "சைன் அப்",
+			"SKILL_TAGS": "திறன் குறிச்சொற்கள்",
+			"SOCIAL": "சமூகம்",
+			"SORT_BY": "மூலம் வரிசைப்படுட்டுங்கள்",
+			"START_COURSE": "ஆரம்பி",
+			"STAR_RATINGS": "நச்சத்திர நதிப்பேன்",
+			"STATE": "மாநிலம்",
+			"STORAGE": "தேக்கம்",
+			"STRENGTHEN_YOUR_PROFILE": "தங்கள் ப்ரொபைல்யை பலப்படுத்தவும்",
+			"STRUCTURE": "அமைப்பு",
+			"SUBJECT": "பாடம்",
+			"SUBJECTS": "பாடங்கள்",
+			"SUPPORT": "உதவி",
+			"SUPPORT_MESSAGE": "ஏதாவது சிக்கலை எதிர்கொள்கிறீர்களா? எங்களுக்கு செய்தி அனுப்பவும்",
+			"SYNCING_NOW": "சின்க் ஆகிக்கொண்டிருக்கிறது",
+			"SYNC_NOW": "இப்பொழுது சின்க் செய்ய",
+			"TERMS_OF_SERVICE": "சேவையின் விதிமுறைகள்",
+			"THIS_IS_A_RESTRICTED_COMMUNITY": "இது ஒரு வரையறைப்படுத்திய சமுகம்",
+			"TIME_OUT": "சேவையக நேரம் முடிந்தது, பிறகு மீண்டும் முயற்சிக்கவும்",
+			"TITLE_ADDRESS": "விலாசம்",
+			"TITLE_EDUCATION": "கல்வி",
+			"TITLE_EXPERIENCE": "அனுபவங்கள்",
+			"TO": "அங்கே",
+			"TOPIC_YOU_MIGHT_LIKE": "தங்களுக்குப் பிடித்தமான தலைப்புகளை முழுதும்தேடு",
+			"TO_DO": "செய்ய வேண்டியவை",
+			"TRY_AGAIN": "மறுமுறை முயற்சிக்கவும்",
+			"TRY_BEFORE_RATING": "மதிப்பீடு செய்வதற்கு முன் பாடத்தை ஒருமுறை முயற்சிக்கவும்.",
+			"TWITTER": "ட்விட்டர்",
+			"TYPE_TO_ADD_A_SKILL": "தங்கள் திறமைகளை சேர்க்க இங்கு அச்சடிக்கவும்",
+			"UNKNOWN_QR": "அந்த க்யு ஆர் குறியீட்டுடன் இணைத்த எந்தப் பாடமும் இல்லை",
+			"UPDATE": "இற்றைப்படுத்து",
+			"USERNAME": "பயனர் பெயர்: %s",
+			"USER_NAME": "பயனர் பெயர்",
+			"USER_NAME_PROFILE": "பயனர் பெயர்",
+			"VIEW": "பார்க்க",
+			"VIEW_ALL": "அனைத்தையும் காட்டு",
+			"VIEW_ALL_COMMUNITIES": "தாங்கள் அங்கமாக இருக்கும் அனைத்து சமூகங்களையும் காட்டு",
+			"VIEW_MORE": "மேலும் காட்டு",
+			"VIEW_ONGOING_BATCHES": "நடப்பு பெச்சஸ்கலை பாருங்கள்",
+			"VIEW_UPCOMING_BATCHES": "வரப்போகும் பெச்சஸ்கலை பாருங்கள்",
+			"WAIT_REQUEST": "தயவுசெய்து காத்திருக்கவும்",
+			"WARNING_INVALID_GRADE": "செல்லாத வகுப்பு",
+			"WARNING_INVALID_PERCENTAGE": "செல்லாத சதவீதம்",
+			"WARNING_INVALID_YEAR_OF_PASSING": "செல்லாத தேர்ச்சியடைந்த வருடம்",
+			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "தயவுசெய்து கட்டாயமான தகவல்களைச் சேர்க்கவும்",
+			"WARNING_PLEASE_MAKE_SOME_CHANGES": "தயவுசெய்து இதைத் திருத்தவும்",
+			"WEBLINKS": "இணையதள இணைப்புகள்",
+			"WELCOME_BACK": "மீண்டும் வருக %s",
+			"WELCOME_M1": "என்.டி.பிக்கு வரவேற்கிறோம் %s",
+			"WELCOME_M2": "கல்வியாளர்களுக்கான கட்டமைக்கப்பட்ட கல்வி",
+			"WELCOME_ON_BOARD": "என்.டி.பிக்கு வரவேற்கிறோம் %s, %s",
+			"WHAT_WENT_WRONG": "என்ன தவறு நடந்தது?",
+			"YEAR_OF_PASSING": "தேர்ச்சியடைந்த வருடம்",
+			"YES": "ஆம்",
+			"YOUR_PROFILE_IS": "தங்கள் ப்ரொபைல் %s% முடிந்தது",
+			"YOUR_PROGRESS": "தங்கள் முன்னேற்றம்: %s%"
+		},
+		"te_IN": {
+			"ABOUT": "గురించి",
+			"ABOUT_APP": "ఆప్ గురించి",
+			"ABOUT_APPLICATION": "అప్లికేషన్ గురించి",
+			"ABOUT_MODULE": "ఈ మాడ్యూల్ గురించి",
+			"ABOUT_US": "మా గురించి",
+			"ABOUT_US_DATA": "మా గురించిన అంశాలు",
+			"ACCOMPLISHMENTS": "సాధించిన ఫలితాలు",
+			"ACTIVE": "ఏక్టివ్",
+			"ADD": "కలుపు",
+			"ADDITIONAL_INFORMATION": "అదనపు సమాచారం",
+			"ADDRESS_LINE1": "చిరునామా లైన్ 1",
+			"ADDRESS_LINE2": "చిరునామా లైన్ 2",
+			"AFFILIATIONS": "అనుబంధాలు",
+			"ALL_ANNOUNCEMENTS": "అన్ని ప్రకటనలు",
+			"ALREADY_HAVE_ACC": "అకౌంట్ ఉందా? లాగిన్ అవ్వండి",
+			"ALWAYS_ON": "ఎల్లప్పుడూ ఆన్ లొ",
+			"ANNOUNCEMENT": "ప్రకటన",
+			"ANSWER": "జవాబు",
+			"APPLY": "ఫిల్టర్ చెయ్యండి",
+			"APPLY_FILTER": "ఫిల్టర్ చెయ్యండి",
+			"APP_VERSION": "ఆప్ వెర్షన్",
+			"AS_FILE": "ఫైల్‌గా",
+			"AS_LINK": "లింకుగా",
+			"ATTACHMENTS": "ఎటాచ్‌మెంట్లు",
+			"ATTACHMENT_DOWNLOADED": "అటాచ్మెంటు  డౌన్లోడ్ చేయబడింది",
+			"AUTOMATIC_SYNC": "ఆటోమేటిక్ గా డేటా సమకాలీకరణ",
+			"AVAILABLE_FILTERS": "ఉన్న ఫిల్టర్లు",
+			"AVATAR": "అవతారము",
+			"BACK_TO_EXIT": "ఆప్ బయటకు వెళ్ళడానికి మళ్ళీ నొక్కండి",
+			"BATCHES_FOR_THIS_COURSE": "ఈ కోర్సుకు సంబంధించిన బ్యాచులు",
+			"BLOG": "బ్లాగ్",
+			"BOARD": "బోర్డు",
+			"BOARD_UNIVERSITY": "బోర్డు/విశ్వవిద్యాలయం",
+			"BROWSE_AS_GUEST": "అతిథి వలె బ్రౌజ్ చేయండి",
+			"BTN_CLICK_TO_OPEN_CONTENT": "కంటెంట్ చూడ్డానికి నొక్కండి",
+			"BTN_SUBMIT": "సబ్మిట్ చెయ్యి",
+			"CAMERA_PERMISSION_DENIED": "కెమెరాకు అనుమతి లేదు",
+			"CAMERA_PERMISSION_SETTINGS": "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్లి % ఏప్ సెలెక్ట్ చేసుకొని కెమెరాకి అనుమతిపై క్లిక్ చెయ్యండి.",
+			"CANCEL": "రద్దు",
+			"CANCEL_DOWNLOAD": "డౌన్‌లోడ్ వద్దు",
+			"CHANGE": "మార్చు",
+			"CHANGE_LANGUAGE": "భాష మార్చు",
+			"CHECK_FOR_UPDATES": "అప్డేట్  గురించి తెలుసుకోండి",
+			"CHOOSE_FROM_FOLLOWING": "కిందవాటి నుండి ఎంచుకోండి",
+			"CHOOSE_LANGUAGE": "భాషను ఎంచుకోండి",
+			"CITY": "నగరం",
+			"COMING_SOON": "వివరాలు త్వరలో...",
+			"COMMUNITIES": "కమ్యూనిటీలు",
+			"CONFIRM": "నిర్ధారించండి",
+			"CONFIRM_DEL": "తొలగించాలా?",
+			"CONTENT_FLAGGED_MSG": "కంటెంట్ ఫ్లాగ్ చెయ్యబడింది ",
+			"CONTENT_FLAG_FAIL": "కంటెంట్ ఫ్లాగ్ చెయ్యడం అవ్వలేదు",
+			"CONTINUE": "కొనసాగించడానికి",
+			"COUNTRY": "దేశం",
+			"COURSE": "కోర్సు",
+			"COURSES_BNAV": "కోర్సులు",
+			"COURSES_IN_PROGRESS": "జరుగుతున్న కోర్సులు",
+			"COURSES_IN_PROGRESS_2": "పురోగతిలో ఉన్న కోర్సులు",
+			"COURSES_LW": "కోర్సులు",
+			"COURSE_ENROLLED": "కోర్సులో నమోదు అయ్యారు",
+			"COURSE_PROGRESS_COMPLETED": "%s % పూర్తయింది",
+			"CREATED_BY": "తయారుచేసినది",
+			"CREATED_BY_SMALL": "తయారుచేసినది",
+			"CREATOR_NAME_NOT_AVAILABLE": "తయారుచేసిన వారి పేరు లేదు",
+			"CREATOR_OF": "తయారుచేసినది",
+			"CURRENT": "ప్రస్తుత చిరునామా",
+			"CURRENT_LANGUAGE": "ప్రస్తుత భాష",
+			"CURRENT_LOCATION": "ప్రస్తుత చిరునామా ",
+			"DATE_OF_BIRTH": "పుట్టిన తేదీ",
+			"DEGREE": "డిగ్రీ",
+			"DELETE": "తొలగించు",
+			"DESCRIPTION": "వివరణ",
+			"DETECTED": "కనుగొనబడింది",
+			"DEVICE_ID": "పరికరం యొక్క ఐడి",
+			"DISMISS": "రద్దు చెయ్యండి",
+			"DOWNLOAD": "డౌన్‌లోడ్",
+			"DOWNLOADING": "దిగుమతి అవుతోంది %s %",
+			"DOWNLOADING_1": "డౌన్లోడ్ జరుగుతోంది",
+			"DOWNLOADING_ATTACHMENT": "అటాచ్మెంటు డౌన్లోడ్ జరుగుతోంది",
+			"DOWNLOADS": "డౌన్‌లోడ్ సంఖ్య",
+			"DOWNLOAD_ALL": "అన్నింటినీ డౌన్లోడ్ చెయ్యాలా?",
+			"DOWNLOAD_ALL_wSIZE": "అన్నింటినీ డౌన్లోడ్ చెయ్యాలా?",
+			"DOWNLOAD_CANCELED": "డౌన్లోడ్ రద్దు చేయబడింది",
+			"DOWNLOAD_COMPLETED": "డౌన్లోడ్ పూర్తయింది",
+			"DOWNLOAD_CONFIRMATION_TEXT": "డౌన్‌లోడ్ చెయ్యాలా?",
+			"EDIT": "మార్చు",
+			"EDIT_PROFILE": "ప్రొఫైల్ మార్చు",
+			"EMAIL_ID": "ఈమెయిల్ ఐడీ",
+			"EMPTY_SEARCH_RESULTS": "వెతికినవి లేవు",
+			"ENDORSE": "ఆమోదించండి",
+			"ENJOYED_THIS_CONTENT": "ఈ కంటెంట్ నచ్చిందా ?",
+			"ENROLL": "నమోదు కండి",
+			"ENROLL_COURSE": "ఈ కోర్సులో నమోదు చెయ్యి",
+			"ERROR_ALREADY_ADDED": "ఈ నైపుణ్యం ఇంతకు ముందే ఇచ్చారు",
+			"ERROR_BATCH_NOT_STARTED": "బేచ్ మొదలు కాలేదు",
+			"ERROR_CANT_OPEN_EMPTY_CONTENT": "ఖాళీ ఫైల్ తెరవబడదు",
+			"ERROR_CONTENT_NOT_AVAILABLE": "కంటెంట్ అందుబాటులో లేదు",
+			"ERROR_CONTENT_NOT_FOUND": "కంటెంట్ దొరక లేదు",
+			"ERROR_DURATION_NOT_AVAILABLE": "వ్యవధి తెలియదు",
+			"ERROR_EMAIL_FORMAT": "ఈమెయిల్ ఫార్మేట్ తప్పుగా ఉంది ",
+			"ERROR_EMPTY_EMAIL": "ఈమెయిల్ ఇవ్వండి",
+			"ERROR_EMPTY_FIELDS": "వివరాలు ఇవ్వండి",
+			"ERROR_EMPTY_FIRSTNAME": "పేరు ఇవ్వండి",
+			"ERROR_EMPTY_LANGUAGE": "కనీసం ఒక భాషను ఎంచుకోండి",
+			"ERROR_EMPTY_MOBILE": "మొబైల్ నెంబరు ఇవ్వండి",
+			"ERROR_EMPTY_PASSWORD": "పాస్‌వర్డ్ ఇవ్వండి",
+			"ERROR_EMPTY_RESULT": "వెతుకులాటకు ఫలితాలు లేవు",
+			"ERROR_EMPTY_USERNAME": "వాడకందారు పేరు ఇవ్వండి",
+			"ERROR_FETCHING_DATA": "డాటా తెచ్చుకోడంలో ఏదో ఇబ్బంది వచ్చింది",
+			"ERROR_FLAG_CONTENT_MIN_REASON": "కంటెంటు ఫ్లాగ్ చెయ్యడానికి కనీసం ఒక కారణాన్ని ఎన్నుకోండి.",
+			"ERROR_INVALID_AADHAAR": "ఆధార్ నెంబర్ ఫార్మేట్ సరిచూడండి",
+			"ERROR_INVALID_EMAIL": "ఇమెయిల్ ఐడి సరికాదు",
+			"ERROR_MULTIPLE_CURRENT_JOB": "ప్రస్తుత ఉద్యోగాలు ఒకటికన్నా ఎక్కువ ఉండలేవు.",
+			"ERROR_NO_ATTACHMENTS": "ఎటాచ్‌మెంట్ లేదు",
+			"ERROR_NO_BATCHES_FOUND": "ఈ కోర్సుకు బేచ్‌లు లేవు",
+			"ERROR_NO_COURSES_ENROLLED": "ఏ కోర్సులోనూ నమోదు కాలేదు",
+			"ERROR_NO_INTERNET_MESSAGE": "ఇంటర్నెట్టు లేదు",
+			"ERROR_NO_OFFLINE_RESOURCE": "దిగుమతి అయిన రిసోర్సులు లేవు",
+			"ERROR_NO_RESUME_CONTENT_AVAILABLE": "తిరిగి మొదలుపెట్టడానికి కంటెంటు లేదు.",
+			"ERROR_OFFLINE_MODE": "ఇంటర్నెట్టు లేదు. ఆఫ్లైన్ ఉన్నారు.",
+			"ERROR_SERVER_CONNECTION": "సర్వర్‌కి కనెక్షన్ లేదు",
+			"ERROR_SHORT_MOBILE": "మొబైల్ నెంబర్ 10 అంకెల సంఖ్య అయ్యుండాలి",
+			"ERROR_SHORT_PASSWORD": "పాస్‌వర్డ్ 8 అక్షరాల కన్నా తక్కువ ఉండలేదు",
+			"FACEBOOK": "ఫేస్ బుక్",
+			"FETCHING_CONTENTS": "కంటెంటు వస్తోంది: %s%",
+			"FILE_SIZE": "కంటెంటు పరిమాణం [%s]",
+			"FILTER": "వడపోత-ఫిల్టర్",
+			"FILTER_BY": "వడపోత వివరాలు",
+			"FIRST_NAME": "పేరు",
+			"FIRST_NAME_HINT": "మీ పేరు ఇవ్వండి",
+			"FLAG": "ఫ్లాగ్/రిపోర్టు చెయ్యండి",
+			"FOLLOW": "అనుసరించండి",
+			"FROM": "మొదలు తేదీ",
+			"GENDER": "లింగం",
+			"GRADE": "తరగతి",
+			"GROUPS": "గుంపులు",
+			"GROUPS_BNAV": "గుంపులు",
+			"GROUPS_YOU_FOLLOW": "మీరు అనుసరిస్తున్నగుంపులు",
+			"HINT_CURRENT_LOCATION": "ఇప్పుడు మీరు నివసిస్తున్న చోటు చిరునామా ఇవ్వండి ",
+			"HINT_EMAIL_ID": "sample@test.com",
+			"HINT_LANGUAGE": "కావలసిన భాషని ఎన్నుకోండి",
+			"HINT_MOBILE_NUMBER": "మొబైల్ నెంబరు ఇవ్వండి",
+			"HINT_PASSWORD": "పాస్‌వర్డ్ కనీసం 8 అక్షరాల ఉండాలి",
+			"HINT_USER_NAME": "వాడకందారు పేరు ఇవ్వండి ",
+			"HOBBIES": "అభిరుచులు",
+			"HOME_BNAV": "మొదటి పేజీ",
+			"INSTITUTION_NAME": "సంస్థ పేరు ",
+			"INVALID_CONTENT": "కంటెంటు సరిగా లేదు",
+			"IS_THIS_YOUR_CURRENT_JOB": "ఇది మీ ప్రస్తుత ఉద్యోగమా?",
+			"JOB_NAME": "ఉద్యోగం",
+			"JOIN": "చేరండి",
+			"LABEL_ADD_A_SKILL": "నైపుణ్యం జతచేయండి",
+			"LANGUAGE": "భాష",
+			"LANGUAGES": "భాషలు",
+			"LAST_LOGIN_TIME": "చివర లాగిన్ అయిన సమయం: %s",
+			"LAST_NAME": "ఇంటిపేరు",
+			"LAST_NAME_HINT": "మీ ఇంటిపేరు (లాస్ట్ నేమ్) ఇవ్వండి",
+			"LATEST_COURSES": "తాజా కోర్సులు",
+			"LINKEDIN": "లింక్డ్ ఇన్ ",
+			"LOADING_CONTENT": "కంటెంటు లోడ్ అవుతోంది",
+			"LOGGED_OUT": "లాగౌట్ అయ్యారు",
+			"LOGOUT": "లాగౌట్",
+			"MEDIUM": "సూచనల మాధ్యమం",
+			"MOBILE_NUMBER": "మొబైల్ నెంబరు",
+			"MODULES": "మాడ్యూలు ",
+			"MODULE_NAME": "మాడ్యూల్ పేరు ",
+			"MODULE_SIZE": "మాడ్యూల్ పరిమాణం: %s",
+			"MODULE_SIZE_UNAVAILABLE": "మాడ్యూల్ పరిమాణం దొరకలేదు",
+			"MSG_ALREADY_IMPORTED": "ఇంతకుముందే ఇంపోర్ట్ అయ్యింది ",
+			"MSG_IMPORTED_SUCCESSFULLY": "కంటెంట్ సరిగా ఇంపోర్ట్ అయింది",
+			"MSG_NO_DETAILS_TO_SHOW": "వివరాలు లేవు",
+			"MSG_NO_NEW_NOTIFICATION": "కొత్త ప్రకటనలేం లేవు",
+			"MSG_RESOURCE_DELETED": "కంటెంటు తొలగించబడింది",
+			"MY_COMMUNITIES": "నా కమ్యూనిటీలు",
+			"NAME": "పేరు",
+			"NAME_HINT": "మీ పేరు ఇవ్వండి",
+			"NEW": "కొత్తది",
+			"NIL": "ఏమీ లేదు",
+			"NO": "కాదు",
+			"NO_ACC_YET": "కొత్త వాడకందారా? లాగిన్ తయారు చేసుకోండి",
+			"NO_ANNOUNCEMENTS": "కొత్త ప్రకటనలేవీ లేవు",
+			"NO_FILTERS_SELECTED": "ఫిల్టర్ ఎన్నుకోలేదు",
+			"NO_INTERNET": "ఇంటర్నెట్ లేదు",
+			"NO_PREVIEW": "ప్రివ్యూ లేదు",
+			"NO_RATING": "రేటింగ్ లేదు",
+			"NUMBER_OF_VOTES": "ఓట్ల సంఖ్య",
+			"OPEN": "తెరవండి",
+			"OPEN_SETTINGS": "సెట్టింగ్స్ తెరువు",
+			"OPTIONAL": "ఐచ్ఛికము",
+			"OPTION_COPYRIGHT_VIOLATION": "కాపీరైట్ ఉల్లంఘన",
+			"OPTION_INAPPROPRIATE_CONTENT": "కంటెంటు అనుచితమైనది",
+			"OPTION_OTHER": "వేరే",
+			"OPTION_PRIVACY_VIOLATION": "డేటా గోప్యత ఉల్లంఘన",
+			"ORGANIZATION": "సంస్థ",
+			"PASSWORD": "పాస్‌వర్డ్",
+			"PEOPLE_WHO_FOLLOW_YOU": "మిమ్మల్ని అనుసరిస్తున్న వ్యక్తులు",
+			"PEOPLE_YOU_FOLLOW": "మీరు అనుసరిస్తున్న వ్యక్తులు",
+			"PERCENTAGE": "శాతం",
+			"PERMANENT": "శాశ్వత చిరునామా",
+			"PERMISSION_DENIED": "అనుమతి లేదు",
+			"PERMISSION_SETTING_MSG": "అనుమతులు ఇవ్వడానికి సెట్టింగులకి వెళ్ళండి",
+			"PERSONAL_DETAILS": "వ్యక్తిగత వివరాలు",
+			"PHONE": "ఫోను",
+			"PINCODE": "పిన్ కోడ్",
+			"PINNED_BY_ADMIN": "నిర్వాహకుడు పిన్ చేసినది",
+			"PLAY": "ప్లే చెయ్యండి",
+			"POPULAR_COURSES": "జనాదరణ పొందిన కోర్సులు",
+			"POSITION": "స్థానం",
+			"PREVIEWS": "ప్రివ్యూలు",
+			"PROFILE_BNAV": "ప్రొఫైలు",
+			"PROFILE_DETAILS_TITLE": "ప్రొఫైల్ వివరాలు",
+			"PROFILE_LW": "ప్రొఫైలు",
+			"PUBLISHED_DATE": "ప్రచురించిన తేదీ",
+			"QUIZ": "క్విజ్",
+			"READ_LESS": "తక్కువ చూపించు ",
+			"READ_MORE": "ఇంకా చదవండి...",
+			"RECOMMENDED": "సిఫార్సులు",
+			"RESUME": "మళ్ళీ మొదలుపెట్టు",
+			"RETRY_ACTION": "మరోసారి ప్రయత్నించండి",
+			"SAVE": "సేవ్ చెయ్యండి",
+			"SAVED_ON": "సేవ్ చేసిన తేదీ",
+			"SAVED_RESOURCES": "సేవ్ అయిన రిసోర్సులు",
+			"SCAN_QR_CODE": "కోడ్‌ను స్కాన్ చేయండి",
+			"SCAN_QR_INSTRUCTION": "మీ పరికరాన్ని ఉపయోగించి దయచేసి QR కోడ్‌ను స్కాన్ చేయండి",
+			"SEARCH_HINT": "వెతకండి",
+			"SELECT": "ఎన్నుకోండి",
+			"SELECT_ADDRESS_TYPE": "ఎలాంటి చిరునామా?",
+			"SELECT_A_REASON": "కారణం ఎన్నుకోండి",
+			"SELECT_DATE": "తేదీ ఇవ్వండి",
+			"SELECT_LANGUAGE": "భాషను ఎంచుకోండి",
+			"SELECT_STATE_TO_GET_STARTED": "మొదలుపెట్టడానికి రాష్ట్రాన్ని ఎంచుకోండి",
+			"SENT_ON": "పంపిన తేదీ",
+			"SERVER_CONNECTION_ERROR": "సర్వర్‌కి కనెక్షన్ లేదు",
+			"SHARE_THIS": "షేర్ చెయ్యండి",
+			"SHOW_LESS": "తక్కువ చూపించు",
+			"SHOW_MORE": "ఇంకా చూపించు",
+			"SIGN_IN": "లాగిన్ అవ్వండి",
+			"SIGN_UP": "లాగిన్ తయారుచేసుకోండి",
+			"SKILL_TAGS": "నైపుణ్యపు గుర్తులు",
+			"SOCIAL": "సోషల్",
+			"SORT_BY": "క్రమంలో పెట్టండి",
+			"START_COURSE": "మొదలుపెట్టండి",
+			"STAR_RATINGS": "రేటింగులు",
+			"STATE": "రాష్ట్రం",
+			"STORAGE": "స్టోరేజి",
+			"STRENGTHEN_YOUR_PROFILE": "మీ ప్రొఫైల్‌ను మెరుగు పరచండి",
+			"STRUCTURE": "నిర్మాణం",
+			"SUBJECTS": "పాఠ్యాంశాలు",
+			"THIS_IS_A_RESTRICTED_COMMUNITY": "ఇది కొందరికే పరిమితమైన కమ్యూనిటీ",
+			"TIME_OUT": "సర్వర్ ఎక్కువ సమయం తీసుకుంటోంది. తరువాత మళ్ళీ ప్రయత్నించండి",
+			"TITLE_ADDRESS": "చిరునామా",
+			"TITLE_EDUCATION": "చదువు",
+			"TITLE_EXPERIENCE": "అనుభవం",
+			"TO": "చివరి తేదీ",
+			"TOPIC_YOU_MIGHT_LIKE": "మీకు నచ్చిన విషయాలను చూడండి",
+			"TO_DO": "చెయ్య వలసినవి",
+			"TRY_AGAIN": "మళ్ళీ ప్రయత్నించండి",
+			"TWITTER": "ట్విట్టర్",
+			"TYPE_TO_ADD_A_SKILL": "మీ నైపుణ్యాలు జతచేయండి",
+			"UNKNOWN_QR": "ఈ QR కోడ్‌కి సంబంధించి ఏ కంటెంట్ దొరకలేదు ",
+			"UPDATE": "అప్‌డేట్",
+			"USERNAME": "వాడకందారు పేరు: %s",
+			"USER_NAME": "వాడకందారు పేరు",
+			"USER_NAME_PROFILE": "వాడకందారు పేరు",
+			"VIEW_ALL": "పూర్తిగా చూడండి",
+			"VIEW_ALL_COMMUNITIES": "మీరు నమోదైన కమ్యూనిటీలను చూడండి",
+			"VIEW_MORE": "మరిన్ని చూడండి",
+			"VIEW_ONGOING_BATCHES": "జరుగుతున్న బ్యాచులు చూడండి",
+			"VIEW_UPCOMING_BATCHES": "రాబోతున్న బ్యాచులు చూడండి",
+			"WAIT_REQUEST": "దయచేసి వేచి ఉండండి",
+			"WARNING_INVALID_GRADE": "గ్రేడ్ తప్పిచ్చారు. A - F మధ్యనే ఉండాలి.",
+			"WARNING_INVALID_PERCENTAGE": "ఉత్తీర్ణతా శాతం తప్పిచ్చారు. 0 - 100 మధ్య సంఖ్యను ఇవ్వండి ",
+			"WARNING_INVALID_YEAR_OF_PASSING": "ఉత్తీర్ణమైన సంవత్సరం తప్పిచ్చారు. నాలుగు (yyyy) అంకెలు ఉండాలి.",
+			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "తప్పనిసరి వివరాలు ఇవ్వండి",
+			"WARNING_PLEASE_MAKE_SOME_CHANGES": "మార్పులు చెయ్యండి",
+			"WEBLINKS": "వెబ్ లింకులు",
+			"WELCOME_BACK": "%s - మీకు తిరిగి స్వాగతం %s",
+			"WELCOME_M1": "ఎన్‌టిపికి స్వాగతం %s",
+			"WELCOME_M2": "అధ్యాపకులకు నిర్మాణాత్మక అధ్యాపనం",
+			"WELCOME_ON_BOARD": "ఎన్‌టిపికి స్వాగతం, %s, %s",
+			"WHAT_WENT_WRONG": "ఏం పొరపాటు జరిగింది?",
+			"YEAR_OF_PASSING": "ఉత్తీర్ణులైన సంవత్సరం ",
+			"YES": "అవును",
+			"YOUR_PROFILE_IS": "మీ ప్రొఫైలు %s%",
+			"YOUR_PROGRESS": "మీ ప్రగతి: %s%"
+		},
+		"mr_IN": {
+			"ABOUT_APP": "अॅप बद्दल",
+			"ABOUT_APPLICATION": "अॅप्लिकेशन बद्दल",
+			"ABOUT_MODULE": "घटकाबद्दल अधिक माहिती ",
+			"ABOUT_US": "आमच्या बद्दल",
+			"ABOUT_US_DATA": "हा आमच्या बद्दलचा डेटा आहे",
+			"ACCOMPLISHMENTS": "गुणवत्ता / सर्टिफिकेट्स ",
+			"ACTIVE": "सक्रिय",
+			"ADD": "जोडा",
+			"ADDITIONAL_INFORMATION": "अतिरिक्त माहिती",
+			"ADDRESS_LINE1": "पत्ता ओळ 1",
+			"ADDRESS_LINE2": "पत्ता ओळ 2",
+			"AFFILIATIONS": "संलग्नता",
+			"ALL_ANNOUNCEMENTS": "सर्व घोषणा",
+			"ALREADY_HAVE_ACC": "विद्यमान वापरकर्ता? साइन इन करा",
+			"ALWAYS_ON": "सदा चालू",
+			"ANNOUNCEMENT": "सूचना",
+			"ANSWER": "उत्तर ",
+			"APPLY": "अर्ज करा/लागू करा ",
+			"APPLY_FILTER": "फिल्टर लागू करा",
+			"APP_VERSION": "अॅपची आवृत्ति",
+			"AS_FILE": "फाईल म्हणून",
+			"AS_LINK": "लिंक  म्हणून",
+			"ATTACHMENTS": "अटैच्मन्ट",
+			"ATTACHMENT_DOWNLOADED": "अटाचमेंट डाऊनलोड झालं आहे",
+			"AUTOMATIC_SYNC": "अॉटोमाटिक सिंक",
+			"AVAILABLE_FILTERS": "उपलब्ध फिल्टर्स",
+			"AVATAR": "अवतार",
+			"BACK_TO_EXIT": "अॅपमधून बाहेर पडण्यासाठी पुन्हा टॅप करा",
+			"BATCHES_FOR_THIS_COURSE": "या कोर्स साठीच्या बॅचेस",
+			"BLOG": "ब्लोग",
+			"BOARD_UNIVERSITY": "मंडळ / विद्यापीठ ",
+			"BROWSE_AS_GUEST": "पाहुणा म्हणून ब्राउझ करा",
+			"BTN_CLICK_TO_OPEN_CONTENT": "साहित्य पाहण्यासाठी टॅप करा",
+			"BTN_SUBMIT": "सबमिट करा",
+			"CAMERA_PERMISSION_DENIED": "कॅमेराला परवानगी नाही",
+			"CAMERA_PERMISSION_SETTINGS": "पर्मिशन देण्यासाठी, सेटिंग्ज मध्ये जा, %s अॅप निवडून, कॅमेरा क्लिक करा",
+			"CANCEL": "रद्द ",
+			"CANCEL_DOWNLOAD": "डाऊनलोड रद्द करा",
+			"CHANGE": "बदला",
+			"CHANGE_LANGUAGE": "भाषा बदला",
+			"CHECK_FOR_UPDATES": "अपडेट तपासून पहा",
+			"CHOOSE_FROM_FOLLOWING": "खालीलमधून निवडा",
+			"CHOOSE_LANGUAGE": "तुमच्या आवडीची भाषा निवडा",
+			"CITY": "शहर",
+			"COMING_SOON": "तपशील लवकरच येत आहे",
+			"COMMUNITIES": "समुदाय",
+			"CONFIRM": "पुष्टी",
+			"CONFIRM_DEL": "आपण हटवू इच्छिता?",
+			"CONTENT_FLAGGED_MSG": "साहित्य यशस्वीरित्या फ्लॅग केले. ",
+			"CONTENT_FLAG_FAIL": "साहित्य फ्लॅगकरता आले नाही.",
+			"CONTINUE": "पुढे",
+			"COUNTRY": "देश",
+			"COURSE": "कोर्स",
+			"COURSES_BNAV": "कोर्सेस ",
+			"COURSES_IN_PROGRESS": "कोर्स सुरु आहे ",
+			"COURSES_IN_PROGRESS_2": "सध्याच्या कोर्सेसची प्रगती ",
+			"COURSES_LW": "कोर्सेस",
+			"COURSE_ENROLLED": "नोंदवलेले कोर्स",
+			"COURSE_PROGRESS_COMPLETED": "पूर्ण: %s %",
+			"CREATED_BY": "निर्माता ",
+			"CREATED_BY_SMALL": "च्या द्वारे निर्मित",
+			"CREATOR_NAME_NOT_AVAILABLE": "निर्माताचे नाव उपलब्ध नाही.",
+			"CREATOR_OF": "द्वारे निर्मित",
+			"CURRENT": "सध्या राहत असलेला पत्ता",
+			"CURRENT_LANGUAGE": "प्रचलित भाषा",
+			"CURRENT_LOCATION": "वर्तमान ठिकाण ",
+			"DATA_SYNC": "डेटा सिंक",
+			"DATE_OF_BIRTH": "जन्मदिनांक",
+			"DEGREE": "पदवी",
+			"DELETE": "हटवा",
+			"DESCRIPTION": "अधिक माहिती ",
+			"DETECTED": "आढळले",
+			"DEVICE_ID": "डिव्हाइस अायडी",
+			"DISMISS": "रद्द करा",
+			"DOWNLOAD": "डाउनलोड करा",
+			"DOWNLOADING": "डाऊनलोड करीत आहे %s %",
+			"DOWNLOADING_1": " डाउनलोड %s चालू",
+			"DOWNLOADING_ATTACHMENT": "अटाचमेंट डाउनलोड चालू",
+			"DOWNLOADS": "डाउनलोड",
+			"DOWNLOAD_ALL": "सर्व %s संकलन डाउनलोड करायचे का?",
+			"DOWNLOAD_ALL_wSIZE": "सर्व %s संकलन डाउनलोड करायचे का?",
+			"DOWNLOAD_CANCELED": " डाउनलोड रद्द",
+			"DOWNLOAD_COMPLETED": "डाउनलोड पूर्ण",
+			"DOWNLOAD_CONFIRMATION_TEXT": "आपण डाउनलोड करू इच्छिता का?",
+			"EDIT": "संपादित करा",
+			"EDIT_PROFILE": "प्रोफाईल संपादित करा",
+			"EMAIL_ID": "ई - मेल आयडी",
+			"EMPTY_SEARCH_RESULTS": "ह्याच्याशी संबंधित माहिती मिळाली नाही",
+			"ENDORSE": "मान्यता ",
+			"ENJOYED_THIS_CONTENT": "आवडलं का?",
+			"ENROLL": "नावनोंदणी करा",
+			"ENROLL_COURSE": "कोर्समध्ये प्रवेश करा",
+			"ERROR_ALREADY_ADDED": "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे",
+			"ERROR_BATCH_NOT_STARTED": "बॅच अद्याप सुरु नाही",
+			"ERROR_CANT_OPEN_EMPTY_CONTENT": "रिक्त फाइल उघडू शकत नाही",
+			"ERROR_COLLECTION_IS_EMPTY": "संग्रह रिकामा आहे",
+			"ERROR_CONTENT_NOT_AVAILABLE": "साहित्य उपलब्ध नाही",
+			"ERROR_CONTENT_NOT_FOUND": "साहित्य अद्याप उपलब्ध नाही",
+			"ERROR_DURATION_NOT_AVAILABLE": "कालावधी उपलब्ध नाही",
+			"ERROR_EMAIL_FORMAT": "अयोग्य ईमेल फॉरमॅट",
+			"ERROR_EMPTY_EMAIL": "ईमेल आयडी लिहा",
+			"ERROR_EMPTY_FIELDS": "तपशील लिहा",
+			"ERROR_EMPTY_FIRSTNAME": "प्रथम नाव लिहा",
+			"ERROR_EMPTY_LANGUAGE": "किमान एक भाषा निवडा",
+			"ERROR_EMPTY_MOBILE": "मोबाइल नंबर लिहा",
+			"ERROR_EMPTY_PASSWORD": "पासवर्ड टाका",
+			"ERROR_EMPTY_RESULT": "शोधत असलेली माहिती उपलब्ध नाही.",
+			"ERROR_EMPTY_USERNAME": "वापरकर्त्याचे नाव लिहा",
+			"ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT": "अटाचमेंट डाउनलोड होऊ शकले नाही",
+			"ERROR_FETCHING_DATA": "डेटा आणता आला नाही",
+			"ERROR_FLAG_CONTENT_MIN_REASON": "साहित्य चिन्हांकित करण्यासाठी किमान एक कारण निवडा",
+			"ERROR_GETTING_SKILLS": "कौशल्ये आणण्यात चूक ",
+			"ERROR_INVALID_AADHAAR": "आधार क्रमांक स्वरूप तपासा",
+			"ERROR_INVALID_EMAIL": "अवैध ईमेल आयडी",
+			"ERROR_MULTIPLE_CURRENT_JOB": "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत",
+			"ERROR_NO_ATTACHMENTS": "अटैच्मन्ट नाही",
+			"ERROR_NO_BATCHES_FOUND": "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही",
+			"ERROR_NO_COURSES_ENROLLED": "या कोर्ससाठी आपण नावनोंदणी केलेली नाही ",
+			"ERROR_NO_INTERNET_MESSAGE": "इंटरनेट उपलब्ध नाही",
+			"ERROR_NO_OFFLINE_RESOURCE": "संसाधने संग्रहित नाहीत",
+			"ERROR_NO_RESUME_CONTENT_AVAILABLE": "त्रुटी! कोणतेही साहित्य उपलब्ध नाही",
+			"ERROR_OFFLINE_MODE": "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड",
+			"ERROR_SERVER_CONNECTION": "सर्व्हरशी जोडता आले नाही ",
+			"ERROR_SERVER_MESSAGE": "त्रुटी:",
+			"ERROR_SHORT_MOBILE": "मोबाइल नंबर 10 अंकी असावा",
+			"ERROR_SHORT_PASSWORD": "पासवर्ड किमान 8 अक्षरांचा असावा",
+			"ERROR_UPLOADING_IMG": "प्रतिमा उपलोड करताना चूक झाली",
+			"FACEBOOK": "फेसबुक",
+			"FEEDBACK_HINT": "अभिप्राय (ऐच्छिक)",
+			"FEEDBACK_HINT_1": "येथे कॉम्मेंट द्या",
+			"FETCHING_CONTENTS": "साहित्य प्राप्त करीत आहे:%s%",
+			"FILE_SIZE": "आकार [%s]",
+			"FILTER": "फिल्टर",
+			"FILTER_BY": "द्वारे फिल्टर",
+			"FIRST_NAME": "नाव",
+			"FIRST_NAME_HINT": "नाव लिहा",
+			"FLAG": "अहवाल",
+			"FOLLOW": "फॉलो करा",
+			"FROM": "पासून ",
+			"FULL_NAME": "नाव",
+			"GENDER": "लिंग",
+			"GRADE": "इयत्ता",
+			"GROUPS": "गट",
+			"GROUPS_BNAV": "गट",
+			"GROUPS_YOU_FOLLOW": "आपण फॉलो करीत असलेले गट",
+			"HELP_US_BY_RATING": "हे रेट करा",
+			"HIDE_CREDITS_INFO": "श्रेय व लायसिन्सिंगची माहिती लपवा",
+			"HINT_CURRENT_LOCATION": "आपले ठिकाण लिहा ",
+			"HINT_EMAIL_ID": "sample@test.com (नमुना)",
+			"HINT_LANGUAGE": "पसंतीची भाषा निवडा",
+			"HINT_MOBILE_NUMBER": "मोबाइल नंबर लिहा",
+			"HINT_PASSWORD": "पासवर्ड किमान 8 अक्षरांचा असावा",
+			"HINT_USER_NAME": "वापरकर्त्याचे नाव लिहा",
+			"HOBBIES": "छंद",
+			"HOME_BNAV": "होम",
+			"INSTITUTION_NAME": "संस्थेचे नाव",
+			"INVALID_CONTENT": "साहित्य अवैध आहे",
+			"INVALID_PINCODE": "पिनकोड चुकीचा आहे\n",
+			"IS_THIS_YOUR_CURRENT_JOB": "ही आपली वर्तमान नोकरी आहे का?",
+			"JOB_NAME": "व्यवसाय ",
+			"JOIN": "सामील व्हा",
+			"LABEL_ADD_A_SKILL": "कौशल्य जोडा",
+			"LANGUAGE": "भाषा",
+			"LANGUAGES": "भाषा",
+			"LAST_LOGIN_TIME": "शेवटी लॉगीन केलीली वेळ: %s",
+			"LAST_NAME": "आडनाव",
+			"LAST_NAME_HINT": "आपले आडनाव लिहा ",
+			"LATEST_COURSES": "नवीन कोर्स",
+			"LIBRARY_BNAV": "संग्रह",
+			"LIBRARY_LW": "संग्रह",
+			"LINKEDIN": "लिंक्डइन",
+			"LOADING_CONTENT": "साहित्य लोड होत आहे",
+			"LOGGED_OUT": "लॉग आउट यशस्वी",
+			"LOGOUT": "साइन आउट करा",
+			"MEDIUM": "शिक्षण मध्यम",
+			"MEDIUM_2": "माध्यम",
+			"MEDIUM_GUEST": "माध्यम",
+			"MEDIUM_OF_INSTRUCTION": "शिक्षण माध्यम",
+			"MOBILE_NUMBER": "मोबाइल नंबर",
+			"MODULES": "घटक",
+			"MODULE_NAME": "घटकाचे नाव",
+			"MODULE_SIZE": "घटक आकार: %s",
+			"MODULE_SIZE_UNAVAILABLE": "घटक आकार उपलब्ध नाही",
+			"MSG_ALREADY_IMPORTED": "इम्पोर्ट केलेले आहे",
+			"MSG_IMPORTED_SUCCESSFULLY": "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे",
+			"MSG_NO_DETAILS_TO_SHOW": "तपशील उपलब्ध नाही",
+			"MSG_NO_NEW_NOTIFICATION": "कोणतीही नवीन सूचना नाही",
+			"MSG_RESOURCE_DELETED": "डिव्हाइसवरून साहित्य हटवले",
+			"MY_COMMUNITIES": "माझे समुदाय",
+			"NAME": "नाव",
+			"NAME_HINT": "नाव लिहा ",
+			"NEW": "नवीन",
+			"NIL": " -",
+			"NO": "नाही",
+			"NO_ACC_YET": "नवीन वापरकर्ता आहात? आत्ताच नोंदणी करा",
+			"NO_ANNOUNCEMENTS": "नवीन सूचना नाहीत",
+			"NO_CHANGE": "कोणताही बदल केलेला नाही",
+			"NO_FILTERS_SELECTED": "कोणतेही फिल्टर निवडलेले नाहीत",
+			"NO_INTERNET": "इंटरनेट उपलब्ध नाही",
+			"NO_PREVIEW": "प्रिव्ह्यू उपलब्ध नाही",
+			"NO_RATING": "प्रिव्ह्यू उपलब्ध नाही",
+			"NUMBER_OF_VOTES": "मतांची संख्या",
+			"OFF": "बंद",
+			"OPEN": "उघडा",
+			"OPEN_SETTINGS": "सेटिंग्ज उघडा",
+			"OPTIONAL": "पर्यायी",
+			"OPTION_COPYRIGHT_VIOLATION": "मालकी हक्कांचे उल्लंघन",
+			"OPTION_INAPPROPRIATE_CONTENT": "अयोग्य साहित्य",
+			"OPTION_OTHER": "इतर",
+			"OPTION_PRIVACY_VIOLATION": "डेटा गोपनीयतेचे उल्लंघन",
+			"ORGANIZATION": "संस्था ",
+			"OVERLAY_INFO_TEXT_COMMON": "सनबर्डचेे सारे गुण माहित करून घेण्यास साइन इन करा",
+			"OVERLAY_INFO_TEXT_HOME": "तुमची कार्य, कोर्सेस व चर्चा एकाच जागी पहा",
+			"OVERLAY_INFO_TEXT_TAKE_COURSE": "केवळ सभासद कोर्सेस घेऊ शकतात. हा कोर्स घेण्याकरता साईन ईन करा",
+			"OVERLAY_LABEL_COMMON": "सनबर्डला पूर्ण प्रवेश मिळवा",
+			"OVERLAY_LABEL_HOME": "वैयक्तिक होम टॅब",
+			"OVERLAY_LABEL_TAKE_COURSE": "हा कोर्स घेण्याकरता साईन ईन करा",
+			"OVERLAY_SIGN_IN": " साईन ईन ",
+			"PASSWORD": "संकेतशब्द",
+			"PEOPLE_WHO_FOLLOW_YOU": "आपल्याला फॉलो करणारे लोक",
+			"PEOPLE_YOU_FOLLOW": "आपण फॉलो करीत असलेले लोक",
+			"PERCENTAGE": "टक्केवारी",
+			"PERMANENT": "कायमचा पत्ता",
+			"PERMISSION_DENIED": "परवानगी नाकारली",
+			"PERMISSION_SETTING_MSG": "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा",
+			"PERSONAL_DETAILS": "वैयक्तिक माहिती",
+			"PHONE": "फोन",
+			"PINCODE": "पिन कोड",
+			"PINNED_BY_ADMIN": "व्यवस्थापकाद्वारे पिन केलेले ",
+			"PLAY": "प्ले ",
+			"POPULAR_COURSES": "लोकप्रिय कोर्स",
+			"POSITION": "पद ",
+			"PREVIEWS": "प्रिव्ह्यू ",
+			"PRIVACY_POLICY": "खाजगी माहिती",
+			"PRIVATE": "खाजगी",
+			"PROFILE_BNAV": "प्रोफाइल",
+			"PROFILE_DETAILS_TITLE": "प्रोफाईल तपशील",
+			"PROFILE_LW": "प्रोफाइल",
+			"PUBLIC": "सार्वजनिक",
+			"PUBLISHED_DATE": "प्रकाशनाची तारीख",
+			"QUIZ": "प्रश्नोत्तरी ",
+			"READ_LESS": "कमी वाचा",
+			"READ_MORE": "अधिक माहिती वाचा",
+			"RECOMMENDED": "शिफारस केलेले",
+			"REMOVE": "काढून टाका",
+			"RESUME": "पुनः सुरु करा",
+			"RETRY_ACTION": "पुन्हा प्रयत्न करा",
+			"SAVE": "जतन करा ",
+			"SAVED_ON": "वर जतन केले",
+			"SAVED_RESOURCES": "जतन केलेली संसाधने",
+			"SCAN_QR_CODE": "QR कोड स्कॅन करा",
+			"SCAN_QR_INSTRUCTION": "तुमच्या फोनेच्या कॅमेराने QR कोड स्कॅन करा",
+			"SEARCH_HINT": "शोधा",
+			"SELECT": "निवडा",
+			"SELECT_ADDRESS_TYPE": "पत्त्याचा प्रकार निवडा",
+			"SELECT_A_REASON": "कारण निवडा",
+			"SELECT_DATE": "तारीख निवडा",
+			"SELECT_LANGUAGE": "भाषा निवडा",
+			"SELECT_STATE_TO_GET_STARTED": "सुरुवात करायला राज्याची निवडकरा",
+			"SENT_ON": "पाठवलेली तारीख",
+			"SERVER_CONNECTION_ERROR": "सर्व्हरशी कनेक्ट करता आले नाही ",
+			"SETTINGS": "सेटिंग्स",
+			"SHARE_APP": "%s अॅप शेअर करा",
+			"SHARE_THIS": "शेअर करा",
+			"SHOW_LESS": "कमी माहिती दर्शवा",
+			"SHOW_MORE": "अधिक माहिती दर्शवा",
+			"SIGN_IN": "साइन इन करा",
+			"SIGN_UP": "साइन अप करा",
+			"SKILLS_ADDED_SUCCESSFULLY": "कौशल्ये यशस्वीरीत्या जोडली गेलीत",
+			"SKILL_ALREADY_ADDED": "कौशल्ये आधीच जोडलेली आहेत",
+			"SKILL_ALREADY_ENDORSED": "कौशल्ये आधीच समर्थित केली आहेत",
+			"SKILL_COULD_NOT_BE_ENDORSED": "कौशल्ये समर्थित केली नाही",
+			"SKILL_ENDORSED": "कौशल्ये समर्थित केली ",
+			"SKILL_NOT_ADDED": "कौशल्ये जोडण्यात अयशस्वी",
+			"SKILL_TAGS": "कौशल्ये",
+			"SOCIAL": "सोशल ",
+			"SORT_BY": "द्वारे वर्गीकरण ",
+			"START_COURSE": "प्रारंभ करा",
+			"STAR_RATINGS": "रेटिंग",
+			"STATE": "राज्य",
+			"STORAGE": "स्टोरेज ",
+			"STRENGTHEN_YOUR_PROFILE": "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा ",
+			"STRUCTURE": "रचना",
+			"SUBJECT": "विषय",
+			"SUBJECTS": "विषय",
+			"SUPPORT": "मदत",
+			"SUPPORT_MESSAGE": "अडचण? आम्हाला संदेश पाठवा",
+			"TERMS_OF_SERVICE": "सेवेच्या अटी",
+			"THIS_IS_A_RESTRICTED_COMMUNITY": "हा समुदाय प्रतिबंधित आहे",
+			"TIME_OUT": "सर्व्हर कालबाह्य झाले म्हणून पुन्हा प्रयत्न करा",
+			"TITLE_ADDRESS": "पत्ता",
+			"TITLE_EDUCATION": "शिक्षण",
+			"TITLE_EXPERIENCE": "अनुभव",
+			"TO": "पर्यंत",
+			"TOPIC_YOU_MIGHT_LIKE": "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा",
+			"TO_DO": "करावयाच्या गोष्टी ",
+			"TRY_AGAIN": "पुनः प्रयत्न करा",
+			"TRY_BEFORE_RATING": "पहा आणि रेट करा",
+			"TWITTER": "ट्विटर",
+			"TYPE_TO_ADD_A_SKILL": "आपले कौशल्य जोडा",
+			"UNKNOWN_QR": "QR कोडशी जुळलेले विषय सापडले नाहीत",
+			"UPDATE": "अपडेट करा",
+			"USERNAME": "वापरकर्त्याचे नाव: %s",
+			"USER_NAME": "वापरकर्त्याचे नाव",
+			"USER_NAME_PROFILE": "वापरकर्त्याचे नाव",
+			"VIEW": "पहा",
+			"VIEW_ALL": "सर्व पहा",
+			"VIEW_ALL_COMMUNITIES": "सर्व सामील झालेले समुदाय पहा",
+			"VIEW_MORE": "अधिक पहा",
+			"VIEW_ONGOING_BATCHES": "सुरु असलेली बॅच पहा",
+			"VIEW_UPCOMING_BATCHES": "आगामी बॅच पहा",
+			"WAIT_REQUEST": "कृपया थांबा...",
+			"WARNING_INVALID_GRADE": "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा",
+			"WARNING_INVALID_PERCENTAGE": "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा",
+			"WARNING_INVALID_YEAR_OF_PASSING": "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष (yyyy) असे लिहा ",
+			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "अनिवार्य माहिती लिहा ",
+			"WARNING_PLEASE_MAKE_SOME_CHANGES": "बदल करा",
+			"WEBLINKS": "वेब्लिंक",
+			"WELCOME_BACK": "पुन्हा एकदा आपले स्वागत आहे %s",
+			"WELCOME_M1": "NTP मध्ये आपले स्वागत आहे %s",
+			"WELCOME_M2": "शिक्षकांसाठी संरचित शिक्षण",
+			"WELCOME_ON_BOARD": "आपले स्वागत आहे %s, %s",
+			"WHAT_WENT_WRONG": "काय चूक झाली?",
+			"YEAR_OF_PASSING": "उत्तीर्ण वर्ष",
+			"YES": "होय",
+			"YOUR_PROFILE_IS": "आपले प्रोफाईल  %s% पूर्ण आहे.",
+			"YOUR_PROGRESS": "तुमची प्रगती: %s%"
+		},
 		"bn_IN": {},
 		"ml_IN": {},
 		"or_IN": {},
 		"gu_IN": {},
 		"kn_IN": {},
-		"as_IN": {}
-	}, _defineProperty(_stringsRes, "mr_IN", (_mr_IN2 = {
-		ALREADY_HAVE_ACC: "विद्यमान वापरकर्ता? साइन इन करा",
-		APPLY_FILTER: "फिल्टर लागू करा",
-		AS_FILE: "फाईल म्हणून",
-		AS_LINK: "लिंक  म्हणून",
-		BACK_TO_EXIT: "अॅपमधून बाहेर पडण्यासाठी पुन्हा टॅप करा",
-		CANCEL_DOWNLOAD: "डाऊनलोड रद्द करा",
-		COMING_SOON: "लवकरच येत आहे...",
-		COMMUNITIES: "समुदाय",
-		CONFIRM: "पुष्टी",
-		COURSE: "कोर्स",
-		COURSE_ENROLLED: "नोंदवलेले कोर्स",
-		COURSE_PROGRESS_COMPLETED: "पूर्ण: %s%",
-		CONTENT_FLAGGED_MSG: "साहित्य यशस्वीरित्या फ्लॅग केले. ",
-		CONTENT_FLAG_FAIL: "साहित्य फ्लॅगकरता आले नाही.",
-		COURSES_BNAV: "कोर्सेस ",
-		COURSES_IN_PROGRESS: "कोर्स सुरु आहे ",
-		COURSES_LW: "कोर्सेस",
-		CREATED_BY: "निर्माता ",
-		DELETE: "हटवा",
-		DESCRIPTION: "अधिक माहिती ",
-		DOWNLOAD: "डाउनलोड करा",
-		DOWNLOADS: "डाउनलोड",
-		EDIT: "संपादित करा",
-		EMAIL_ID: "ई - मेल आयडी",
-		EMPTY_SEARCH_RESULTS: "ह्याच्याशी संबंधित माहिती मिळाली नाही",
-		ENROLL_COURSE: "कोर्समध्ये प्रवेश करा",
-		ERROR_CONTENT_NOT_AVAILABLE: "साहित्य उपलब्ध नाही",
-		ERROR_CONTENT_NOT_FOUND: "साहित्य अद्याप उपलब्ध नाही",
-		ERROR_DURATION_NOT_AVAILABLE: "कालावधी उपलब्ध नाही",
-		ERROR_EMAIL_FORMAT: "अयोग्य ईमेल फॉरमॅट",
-		ERROR_EMPTY_EMAIL: "ईमेल आयडी लिहा",
-		ERROR_EMPTY_FIRSTNAME: "प्रथम नाव लिहा",
-		ERROR_EMPTY_LANGUAGE: "किमान एक भाषा निवडा",
-		ERROR_EMPTY_MOBILE: "मोबाइल नंबर लिहा",
-		ERROR_EMPTY_PASSWORD: "पासवर्ड टाका",
-		ERROR_EMPTY_USERNAME: "वापरकर्त्याचे नाव लिहा",
-		ERROR_FETCHING_DATA: "डेटा आणता आला नाही",
-		ERROR_NO_COURSES_ENROLLED: "या कोर्ससाठी आपण नावनोंदणी केलेली नाही ",
-		ERROR_NO_INTERNET_MESSAGE: "इंटरनेट उपलब्ध नाही",
-		ERROR_NO_OFFLINE_RESOURCE: "संसाधने संग्रहित नाहीत",
-		ERROR_SERVER_CONNECTION: "सर्व्हरशी जोडता आले नाही ",
-		ERROR_SERVER_MESSAGE: "त्रुटी ",
-		ERROR_SHORT_MOBILE: "मोबाइल नंबर 10 अंकी असावा",
-		ERROR_SHORT_PASSWORD: "पासवर्ड किमान 8 अक्षरांचा असावा",
-		FETCHING_CONTENTS: "साहित्य प्राप्त करीत आहे:%s%",
-		FILE_SIZE: "आकार [%s]",
-		FILTER: "फिल्टर",
-		FILTER_BY: "द्वारे फिल्टर",
-		FIRST_NAME: "नाव",
-		FIRST_NAME_HINT: "नाव लिहा",
-		GROUPS: "गट",
-		GROUPS_BNAV: "गट",
-		HINT_EMAIL_ID: "sample@test.com (नमुना)",
-		HINT_LANGUAGE: "पसंतीची भाषा निवडा",
-		HINT_MOBILE_NUMBER: "मोबाइल नंबर लिहा",
-		HINT_PASSWORD: "पासवर्ड किमान 8 अक्षरांचा असावा",
-		HINT_USER_NAME: "वापरकर्त्याचे नाव लिहा",
-		HOME_BNAV: "होम",
-		JOIN: "सामील व्हा",
-		LATEST_COURSES: "नवीन कोर्स",
-		LOADING_CONTENT: "साहित्य लोड होत आहे",
-		LOGGED_OUT: "लॉग आउट यशस्वी",
-		MOBILE_NUMBER: "मोबाइल नंबर",
-		MODULE_SIZE: "घटक आकार:%s",
-		MODULE_SIZE_UNAVAILABLE: "घटक आकार उपलब्ध नाही",
-		NEW: "नवीन",
-		NO_ACC_YET: "नवीन वापरकर्ता आहात? आत्ताच नोंदणी करा",
-		NO_INTERNET: "इंटरनेट उपलब्ध नाही",
-		NO_PREVIEW: "प्रिव्ह्यू उपलब्ध नाही",
-		NO_RATING: "प्रिव्ह्यू उपलब्ध नाही",
-		NUMBER_OF_VOTES: "मतांची संख्या",
-		OPEN: "उघडा",
-		PASSWORD: "संकेतशब्द",
-		PHONE: "फोन",
-		PLAY: "प्ले ",
-		POPULAR_COURSES: "लोकप्रिय कोर्स",
-		PREVIEWS: "प्रिव्ह्यू ",
-		PROFILE_BNAV: "प्रोफाइल",
-		PROFILE_DETAILS_TITLE: "प्रोफाईल तपशील",
-		PROFILE_LW: "प्रोफाइल",
-		PUBLISHED_DATE: "प्रकाशनाची तारीख",
-		QUIZ: "प्रश्नोत्तरी ",
-		RESUME: "पुनः सुरु करा",
-		RETRY_ACTION: "पुन्हा प्रयत्न करा",
-		SAVED_ON: "वर जतन केले",
-		SAVED_RESOURCES: "जतन केलेली संसाधने",
-		SEARCH_HINT: "शोधा",
-		SELECT: "निवडा",
-		SELECT_A_REASON: "कारण निवडा",
-		SERVER_CONNECTION_ERROR: "सर्व्हरशी कनेक्ट करता आले नाही ",
-		SHARE_THIS: "शेअर करा",
-		SIGN_IN: "साइन इन करा",
-		SIGN_UP: "साइन अप करा",
-		SORT_BY: "द्वारे वर्गीकरण ",
-		STRUCTURE: "रचना",
-		TO_DO: "करावयाच्या गोष्टी ",
-		USER_NAME: "वापरकर्त्याचे नाव",
-		VIEW_ALL: "सर्व पहा",
-		VIEW_ALL_COMMUNITIES: "सर्व सामील झालेले समुदाय पहा",
-		VIEW_MORE: "अधिक पहा",
-		WAIT_REQUEST: "कृपया थांबा...",
-		WELCOME_BACK: "पुन्हा एकदा आपले स्वागत आहे.",
-		WELCOME_M1: "NTP मध्ये आपले स्वागत आहे",
-		WELCOME_M2: "शिक्षकांसाठी संरचित शिक्षण",
-		WELCOME_ON_BOARD: "NTP मध्ये आपले स्वागत आहे",
-		WHAT_WENT_WRONG: "काय चूक झाली?",
-		YOUR_PROGRESS: "तुमची प्रगती: %s%",
-		FLAG: "अहवाल",
-		ERROR_EMPTY_RESULT: "शोधत असलेली माहिती उपलब्ध नाही.",
-		ERROR_FLAG_CONTENT_MIN_REASON: "साहित्य चिन्हांकित करण्यासाठी किमान एक कारण निवडा",
-		ERROR_INVALID_EMAIL: "अवैध ईमेल आयडी",
-		MSG_RESOURCE_DELETED: "डिव्हाइसवरून साहित्य हटवले",
-		LOGOUT: "साइन आउट करा",
-		CREATOR_NAME_NOT_AVAILABLE: "निर्माताचे नाव उपलब्ध नाही.",
-		ENROLL: "नावनोंदणी करा",
-		VIEW_ONGOING_BATCHES: "सुरु असलेली बॅच पहा",
-		VIEW_UPCOMING_BATCHES: "आगामी बॅच पहा",
-		USER_NAME_PROFILE: "वापरकर्त्याचे नाव",
-		BATCHES_FOR_THIS_COURSE: "या कोर्स साठीच्या बॅचेस",
-		ERROR_EMPTY_FIELDS: "तपशील लिहा",
-		INVALID_CONTENT: "साहित्य अवैध आहे",
-		TIME_OUT: "सर्व्हर कालबाह्य झाले म्हणून पुन्हा प्रयत्न करा",
-		OPTIONAL: "पर्यायी",
-		PERCENTAGE: "टक्केवारी",
-		SUBJECTS: "विषय",
-		FROM: "पासून ",
-		TO: "पर्यंत",
-		SELECT_DATE: "तारीख निवडा",
-		SAVE: "जतन करा ",
-		GRADE: "इयत्ता",
-		INSTITUTION_NAME: "संस्थेचे नाव ",
-		BOARD_UNIVERSITY: "मंडळ / विद्यापीठ ",
-		APPLY: "अर्ज करा/लागू करा ",
-		MY_COMMUNITIES: "माझे समुदाय",
-		AVAILABLE_FILTERS: "उपलब्ध फिल्टर्स",
-		DISMISS: "रद्द करा",
-		NO_FILTERS_SELECTED: "कोणतेही फिल्टर निवडलेले नाहीत",
-		ACCOMPLISHMENTS: "गुणवत्ता / सर्टिफिकेट्स ",
-		ADD: "जोडा",
-		PERSONAL_DETAILS: "वैयक्तिक माहिती",
-		AFFILIATIONS: "संलग्नता",
-		SHOW_LESS: "कमी माहिती दर्शवा",
-		SHOW_MORE: "अधिक माहिती दर्शवा",
-		CREATOR_OF: "द्वारे निर्मित",
-		USERNAME: "वापरकर्त्याचे नाव",
-		YOUR_PROFILE_IS: "आपले प्रोफाईल   % पूर्ण आहे.",
-		FOLLOW: "फॉलो करा",
-		PEOPLE_YOU_FOLLOW: "आपण फॉलो करीत असलेले लोक",
-		GROUPS_YOU_FOLLOW: "आपण फॉलो करीत असलेले गट",
-		PEOPLE_WHO_FOLLOW_YOU: "आपल्याला फॉलो करणारे लोक",
-		SKILL_TAGS: "कौशल्ये",
-		ENDORSE: "मान्यता ",
-		MODULE_NAME: "घटकाचे नाव ",
-		NIL: " -",
-		PINNED_BY_ADMIN: "व्यवस्थापकाद्वारे पिन केलेले ",
-		READ_MORE: "अधिक माहिती वाचा",
-		THIS_IS_A_RESTRICTED_COMMUNITY: "हा समुदाय प्रतिबंधित आहे",
-		DOWNLOAD_CONFIRMATION_TEXT: "आपण डाउनलोड करू इच्छिता का?",
-		YES: "होय",
-		NO: "नाही",
-		ABOUT_MODULE: "घटकाबद्दल अधिक माहिती ",
-		CHOOSE_FROM_FOLLOWING: "पुढीलपैकी निवडा",
-		LANGUAGES: "भाषा"
-	}, _defineProperty(_mr_IN2, "COMING_SOON", "तपशील लवकरच येत आहे"), _defineProperty(_mr_IN2, "LANGUAGE", "भाषा"), _defineProperty(_mr_IN2, "RECOMMENDED", "शिफारस केलेले"), _defineProperty(_mr_IN2, "STAR_RATINGS", "रेटिंग"), _defineProperty(_mr_IN2, "TITLE_EDUCATION", "शिक्षण"), _defineProperty(_mr_IN2, "TITLE_EXPERIENCE", "अनुभव"), _defineProperty(_mr_IN2, "TITLE_ADDRESS", "पत्ता"), _defineProperty(_mr_IN2, "LAST_NAME", "आडनाव"), _defineProperty(_mr_IN2, "LAST_NAME_HINT", "आपले आडनाव लिहा "), _defineProperty(_mr_IN2, "NAME", "नाव"), _defineProperty(_mr_IN2, "NAME_HINT", "नाव लिहा "), _defineProperty(_mr_IN2, "GENDER", "लिंग"), _defineProperty(_mr_IN2, "DATE_OF_BIRTH", "जन्मदिनांक"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HINT_CURRENT_LOCATION", "आपले ठिकाण लिहा "), _defineProperty(_mr_IN2, "MODULES", "घटक"), _defineProperty(_mr_IN2, "BTN_CLICK_TO_OPEN_CONTENT", "साहित्य पाहण्यासाठी टॅप करा"), _defineProperty(_mr_IN2, "START_COURSE", "प्रारंभ करा"), _defineProperty(_mr_IN2, "ERROR_INVALID_AADHAAR", "आधार क्रमांक स्वरूप तपासा"), _defineProperty(_mr_IN2, "ERROR_BATCH_NOT_STARTED", "बॅच अद्याप सुरु नाही"), _defineProperty(_mr_IN2, "MSG_NO_NEW_NOTIFICATION", "कोणतीही नवीन सूचना नाही"), _defineProperty(_mr_IN2, "MSG_NO_DETAILS_TO_SHOW", "तपशील उपलब्ध नाही"), _defineProperty(_mr_IN2, "MSG_IMPORTED_SUCCESSFULLY", "साहित्य यशस्वीपणे इम्पोर्ट करण्यात आले आहे"), _defineProperty(_mr_IN2, "ERROR_CANT_OPEN_EMPTY_CONTENT", "रिक्त फाइल उघडू शकत नाही"), _defineProperty(_mr_IN2, "ERROR_NO_BATCHES_FOUND", "या कोर्ससाठी कोणतीही बॅच जोडण्यात आलेली नाही"), _defineProperty(_mr_IN2, "ANSWER", "उत्तर "), _defineProperty(_mr_IN2, "BTN_SUBMIT", "सबमिट करा"), _defineProperty(_mr_IN2, "TOPIC_YOU_MIGHT_LIKE", "तुमच्या आवडीच्या विषयांची अधिक माहिती मिळवा"), _defineProperty(_mr_IN2, "OPEN_SETTINGS", "सेटिंग्ज उघडा"), _defineProperty(_mr_IN2, "LABEL_ADD_A_SKILL", "कौशल्य जोडा"), _defineProperty(_mr_IN2, "TYPE_TO_ADD_A_SKILL", "आपले कौशल्य जोडा"), _defineProperty(_mr_IN2, "ERROR_ALREADY_ADDED", "हे कौशल्य आपल्या कौशल्य यादीत उपलब्ध आहे"), _defineProperty(_mr_IN2, "WARNING_PLEASE_ADD_MANDATORY_DETAILS", "अनिवार्य माहिती लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_YEAR_OF_PASSING", "उत्तीर्ण वर्ष अवैध. उत्तीर्ण केलेले वर्ष yyyy असे लिहा "), _defineProperty(_mr_IN2, "WARNING_INVALID_PERCENTAGE", "अवैध टक्केवारी. 0 - 100 दरम्यानचे अंक लिहा"), _defineProperty(_mr_IN2, "WARNING_INVALID_GRADE", "अवैध श्रेणी. A - F दरम्यानचे एक अक्षर लिहा"), _defineProperty(_mr_IN2, "DEGREE", "पदवी"), _defineProperty(_mr_IN2, "INSTITUTION_NAME", "संस्थेचे नाव"), _defineProperty(_mr_IN2, "IS_THIS_YOUR_CURRENT_JOB", "ही आपली वर्तमान नोकरी आहे का?"), _defineProperty(_mr_IN2, "ERROR_MULTIPLE_CURRENT_JOB", "तुमच्या 'वर्तमान नोकरी' मध्ये एकापेक्षा जास्त नोंदी असू शकत नाहीत"), _defineProperty(_mr_IN2, "OPTION_INAPPROPRIATE_CONTENT", "अयोग्य साहित्य"), _defineProperty(_mr_IN2, "OPTION_COPYRIGHT_VIOLATION", "मालकी हक्कांचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_PRIVACY_VIOLATION", "डेटा गोपनीयतेचे उल्लंघन"), _defineProperty(_mr_IN2, "OPTION_OTHER", "इतर"), _defineProperty(_mr_IN2, "MODULE_NAME", "घटकाचे नाव"), _defineProperty(_mr_IN2, "CURRENT_LOCATION", "वर्तमान ठिकाण "), _defineProperty(_mr_IN2, "HOBBIES", "छंद"), _defineProperty(_mr_IN2, "EDIT_PROFILE", "प्रोफाईल संपादित करा"), _defineProperty(_mr_IN2, "ACTIVE", "सक्रिय"), _defineProperty(_mr_IN2, "STORAGE", "स्टोरेज "), _defineProperty(_mr_IN2, "PERMISSION_DENIED", "परवानगी नाकारली"), _defineProperty(_mr_IN2, "YEAR_OF_PASSING", "उत्तीर्ण वर्ष"), _defineProperty(_mr_IN2, "SELECT_ADDRESS_TYPE", "पत्त्याचा प्रकार निवडा"), _defineProperty(_mr_IN2, "CANCEL", "रद्द "), _defineProperty(_mr_IN2, "ERROR_NO_RESUME_CONTENT_AVAILABLE", "त्रुटी! कोणतेही साहित्य उपलब्ध नाही"), _defineProperty(_mr_IN2, "SELECT_LANGUAGE", "भाषा निवडा"), _defineProperty(_mr_IN2, "READ_LESS", "कमी वाचा"), _defineProperty(_mr_IN2, "CONFIRM_DEL", "आपण हटवू इच्छिता?"), _defineProperty(_mr_IN2, "ADDRESS_LINE1", "पत्ता ओळ 1"), _defineProperty(_mr_IN2, "ADDRESS_LINE2", "पत्ता ओळ 2"), _defineProperty(_mr_IN2, "CITY", "शहर"), _defineProperty(_mr_IN2, "STATE", "राज्य"), _defineProperty(_mr_IN2, "COUNTRY", "देश"), _defineProperty(_mr_IN2, "PINCODE", "पिन कोड"), _defineProperty(_mr_IN2, "PERMANENT", "कायमचा पत्ता"), _defineProperty(_mr_IN2, "CURRENT", "सध्या राहत असलेला पत्ता"), _defineProperty(_mr_IN2, "JOB_NAME", "व्यवसाय "), _defineProperty(_mr_IN2, "ORGANIZATION", "संस्था "), _defineProperty(_mr_IN2, "POSITION", "पद "), _defineProperty(_mr_IN2, "CHOOSE_FROM_FOLLOWING", "खालीलमधून निवडा"), _defineProperty(_mr_IN2, "PERMISSION_SETTING_MSG", "परवानग्या प्रदान करण्यासाठी, 'सेटिंग्ज उघडा' वर क्लिक करा"), _defineProperty(_mr_IN2, "DOWNLOADING", "डाऊनलोड करीत आहे "), _defineProperty(_mr_IN2, "CREATED_BY_SMALL", "च्या द्वारे निर्मित"), _defineProperty(_mr_IN2, "ERROR_OFFLINE_MODE", "इंटरनेट उपलब्ध नाही, ऑफलाइन मोड"), _defineProperty(_mr_IN2, "ADDITIONAL_INFORMATION", "अतिरिक्त माहिती"), _defineProperty(_mr_IN2, "FACEBOOK", "फेसबुक"), _defineProperty(_mr_IN2, "TWITTER", "ट्विटर"), _defineProperty(_mr_IN2, "LINKEDIN", "लिंक्डइन"), _defineProperty(_mr_IN2, "SOCIAL", "सोशल "), _defineProperty(_mr_IN2, "STRENGTHEN_YOUR_PROFILE", "आपल्या प्रोफाइलमध्ये अधिक माहिती भरा "), _defineProperty(_mr_IN2, "UPDATE", "अपडेट करा"), _defineProperty(_mr_IN2, "CHANGE_LANGUAGE", "भाषा बदला"), _mr_IN2)), _defineProperty(_stringsRes, "pa_IN", {}), _stringsRes);
+		"as_IN": {},
+		"pa_IN": {}
+	};
 	
 	var decideString = function decideString() {
 		var val = window.__CurrentLanguage;
@@ -25562,13 +26213,13 @@
 	
 	        _this.setIds(["cardsContainer", "continueBtn", "whiteArrow"]);
 	        _this.options = [{
-	            role: "Teacher",
+	            role: window.__S.TEACHER_ROLE,
 	            selected: false,
-	            desc: "1. Browse through courses\n2. Find relevant resources\n3. Browse through groups"
+	            desc: window.__S.TEACHER_ROLE_DESC
 	        }, {
-	            role: "Student",
+	            role: window.__S.STUDENT_ROLE,
 	            selected: false,
-	            desc: "1. Browse through resources"
+	            desc: window.__S.STUDENT_ROLE_DESC
 	        }];
 	        _this.shouldCacheScreen = false;
 	        return _this;
@@ -25613,7 +26264,7 @@
 	                    dom(TextView, {
 	                        width: "wrap_content",
 	                        height: "wrap_content",
-	                        text: "You are a",
+	                        text: window.__S.ROLE_SELECTOR_QUERY,
 	                        textSize: "16",
 	                        fontStyle: Font.fontStyle.SEMIBOLD,
 	                        margin: "0,16,0,16", __source: {
@@ -26091,7 +26742,7 @@
 	    };
 	
 	    _this2.datasync = function () {
-	      JBridge.logSettingsClickedEvent(window.__S.DATA_SYNC);
+	      JBridge.logSettingsClickedEvent("SETTINGS_DATASYNC");
 	      var whatToSend = [];
 	      var event = { tag: "OPEN_DataSyncScreenActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -26102,7 +26753,7 @@
 	    };
 	
 	    _this2.handleChangeLang = function () {
-	      JBridge.logSettingsClickedEvent(window.__S.LANGUAGE_SETTINGS);
+	      JBridge.logSettingsClickedEvent("SETTINGS_LANGUAGE");
 	      var whatToSend = { "profile": JSON.stringify("{}") };
 	      var event = { tag: "OPEN_LanguageSelectActivitySt", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -26110,14 +26761,14 @@
 	
 	    _this2.handleShareClick = function () {
 	      var cb = function cb(containerId) {
-	        JBridge.logSettingsClickedEvent("Share");
+	        JBridge.logSettingsClickedEvent("SETTINGS_SHARE");
 	        JBridge.shareApk(containerId);
 	      };
 	      _this2.SharePopup.show(window.__S.SHARE_APP.format(JBridge.getAppName()), cb);
 	    };
 	
 	    _this2.openAboutUsActivity = function () {
-	      JBridge.logSettingsClickedEvent(window.__S.ABOUT_APP);
+	      JBridge.logSettingsClickedEvent("ABOUT_APP");
 	      var whatToSend = { "profile": JSON.stringify("{}") };
 	      var event = { tag: "OPEN_AboutUsActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -26135,7 +26786,7 @@
 	
 	    _this2.handleSupportClick = function () {
 	      var cb = function cb(containerId) {
-	        JBridge.logSettingsClickedEvent(window.__S.SUPPORT);
+	        JBridge.logSettingsClickedEvent("SETTINGS_SUPPORT");
 	        JBridge.supportEmail(containerId);
 	      };
 	      _this2.SharePopup.show(window.__S.SEND_EMAIL, cb);
@@ -26322,7 +26973,7 @@
 	            }
 	          },
 	          dom(SimpleToolbar, {
-	            title: "Settings",
+	            title: window.__S.SETTINGS,
 	            afterRender: _this2.afterRender,
 	            width: "match_parent",
 	            onBackPress: _this2.onBackPressed, __source: {
@@ -27493,135 +28144,10 @@
 	
 			var _this2 = _possibleConstructorReturn(this, (DataSyncScreenActivity.__proto__ || Object.getPrototypeOf(DataSyncScreenActivity)).call(this, props, children, state));
 	
-			_this2.initializeData = function () {
+			_initialiseProps.call(_this2);
 	
-				if (_this2.optionType == "Off") {
-					_this2.index = 0;
-					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "1", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
-				} else if (_this2.optionType == "Over Wifi") {
-					_this2.index = 1;
-					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "1", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
-				} else if (_this2.optionType == "Always On") {
-					_this2.index = 2;
-					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "1", icon: "ic_action_radio" }];
-				} else {
-					_this2.index = -1;
-					_this2.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
-				}
-	
-				//this.index=-1;
-			};
-	
-			_this2.handleRadioButtonClick = function () {
-				if (window.__RadioButton != undefined && window.__RadioButton.currentIndex > -1) {
-					console.log("Radio Button click" + _this2.OPTION_TYPE[window.__RadioButton.currentIndex]);
-					//_this.optionType = this.OPTION_TYPE[window.__RadioButton.currentIndex];
-					_this2.optionType = _this2.OPTION_TYPE[window.__RadioButton.currentIndex];
-					// _this.checkDataChanged();
-					JBridge.setInSharedPrefs("data_sync", _this2.optionType);
-				}
-			};
-	
-			_this2.getBody = function () {};
-	
-			_this2.getLineSeperator = function () {
-				return dom(LinearLayout, {
-					width: "match_parent",
-					margin: "4,0,0,0",
-					height: "1",
-					background: window.__Colors.PRIMARY_BLACK, __source: {
-						fileName: _jsxFileName,
-						lineNumber: 124
-					}
-				});
-			};
-	
-			_this2.handleSaveClick = function () {};
-	
-			_this2.onBackPressed = function () {
-				var whatToSend = [];
-				var event = { tag: "BACK_DataSyncScreenActivity", contents: whatToSend };
-				window.__runDuiCallback(event);
-			};
-	
-			_this2.onSyncNowClick = function () {
-				window.__LoaderDialog.show();
-	
-				var callback = callbackMapper.map(function (data) {
-					var postSyncMessage = JBridge.getFromSharedPrefs("sync_time_error");
-	
-					if (postSyncMessage != "__failed") window.__Snackbar.show(window.__S.DATA_SYNC + ": " + postSyncMessage);
-	
-					_this.replaceChild(_this.idSet.lastSyncTextView, _this.getSyncNowTextView().render(), 0);
-					window.__LoaderDialog.hide();
-				}); //end of callback
-				JBridge.syncTelemetryNow(callback);
-			};
-	
-			_this2.getSyncNowTextView = function () {
-	
-				_this2.lastSync = window.__S.LAST_SYNC + JBridge.getFromSharedPrefs("sync_time");
-				return dom(
-					LinearLayout,
-					{
-						height: "match_parent",
-						width: "match_parent",
-						__source: {
-							fileName: _jsxFileName,
-							lineNumber: 163
-						}
-					},
-					dom(TextView, {
-						id: _this2.idSet.lastSyncTextView,
-						height: "17",
-						width: "208",
-						margin: "18,26,134,0",
-						text: _this2.lastSync,
-						textSize: "12",
-						color: "#FF969696",
-						gravity: "left", __source: {
-							fileName: _jsxFileName,
-							lineNumber: 167
-						}
-					})
-				);
-			};
-	
-			_this2.shareTelemetry = function () {
-				var shareCallback = callbackMapper.map(function (data) {
-					console.log(data);
-					if (data[0] != "failure") {
-						var input;
-						console.log("SHARE CALLBACK DATA", data[0]);
-	
-						input = [{
-							type: "file",
-							data: "file://" + data[0]
-						}];
-					} else {
-						window.__Snackbar.show("ERROR!");
-						return;
-					}
-					var sharePopUp = dom(SharePopup, {
-						data: input,
-						type: "TELEMETRY", __source: {
-							fileName: _jsxFileName,
-							lineNumber: 196
-						}
-					});
-					_this.replaceChild(_this.idSet.sharePopupContainer, sharePopUp.render(), 0);
-					window.__SharePopup.show();
-				});
-				JBridge.shareTelemetry(shareCallback);
-			};
-	
-			_this2.afterRender = function () {
-				JBridge.logSettingsScreenEvent("SETTINGS_DATASYNC");
-			};
-	
-			_this2.OPTION_TYPE = ["Off", "Over Wifi", "Always On"];
+			_this2.OPTION_TYPE = [window.__S.OFF, window.__S.OVER_WIFI, window.__S.ALWAYS_ON];
 			_this2.setIds(["parentId", "saveButton", "addressTypeRadio", "lastSyncTextView", "sharePopupContainer"]);
-			JBridge.getLastTelemetrySyncTime();
 	
 			_this2.state = state;
 			_this2.shouldCacheScreen = false;
@@ -27635,8 +28161,11 @@
 				isClickable: "true",
 				onClick: _this2.handleSaveClick
 			};
-			_this2.lastSync = JBridge.getFromSharedPrefs("sync_time");
-			_this2.lastSync = _this2.lastSync == "__failed" ? "" : window.__S.LAST_SYNC + _this2.lastSync;
+			_this2.lastSync = "";
+			var longTime = JBridge.getLastTelemetrySyncTime();
+			if (longTime != 0) _this2.lastSync = new Date(longTime).toLocaleString();
+	
+			_this2.lastSync = _this2.lastSync == "" ? "" : window.__S.LAST_SYNC + _this2.lastSync;
 			_this = _this2;
 	
 			_this2.optionTypeValue = [];
@@ -27658,7 +28187,7 @@
 						clickable: "true",
 						root: "true", __source: {
 							fileName: _jsxFileName,
-							lineNumber: 213
+							lineNumber: 219
 						}
 					},
 					dom(
@@ -27667,12 +28196,12 @@
 							height: "match_parent",
 							width: "match_parent",
 							orientation: "vertical",
-							padding: "0,11,0,0",
+							padding: "0,0,0,0",
 							background: "#FFFFFFFF",
 							cornerRadius: "0",
 							clickable: "true", __source: {
 								fileName: _jsxFileName,
-								lineNumber: 218
+								lineNumber: 224
 							}
 						},
 						dom(SimpleToolbar, {
@@ -27681,20 +28210,20 @@
 							width: "match_parent",
 							onBackPress: this.onBackPressed, __source: {
 								fileName: _jsxFileName,
-								lineNumber: 226
+								lineNumber: 232
 							}
 						}),
 						dom(TextView, {
-							height: "20",
-							width: "136",
-							margin: "16,29,208,0",
+							height: "wrap_content",
+							width: "wrap_content",
+							margin: "16,16,0,8",
 							text: window.__S.AUTOMATIC_SYNC,
 							textSize: "12",
 							color: "#FF969696",
 							lineHeight: "20px",
 							gravity: "left", __source: {
 								fileName: _jsxFileName,
-								lineNumber: 231
+								lineNumber: 237
 							}
 						}),
 						dom(
@@ -27704,7 +28233,7 @@
 								width: "wrap_content",
 								padding: "16,0,0,0", __source: {
 									fileName: _jsxFileName,
-									lineNumber: 240
+									lineNumber: 246
 								}
 							},
 							dom(RadioButton, {
@@ -27717,7 +28246,7 @@
 								defaultIndex: this.index,
 								onClick: this.handleRadioButtonClick, __source: {
 									fileName: _jsxFileName,
-									lineNumber: 244
+									lineNumber: 250
 								}
 							})
 						),
@@ -27730,58 +28259,60 @@
 								orientation: "vertical",
 								padding: "16,0,0,0", __source: {
 									fileName: _jsxFileName,
-									lineNumber: 254
+									lineNumber: 260
 								}
 							},
 							dom(TextView, {
-								height: "17",
-								width: "208",
-								margin: "18,26,134,0",
+								height: "wrap_content",
+								width: "wrap_content",
+								margin: "0,26,0,0",
 								text: this.lastSync,
 								textSize: "12",
 								color: "#FF969696",
 								gravity: "left", __source: {
 									fileName: _jsxFileName,
-									lineNumber: 260
+									lineNumber: 266
 								}
 							})
 						),
 						dom(
 							LinearLayout,
 							{
-								height: "38",
+								height: "wrap_content",
 								width: "match_parent",
 								orientation: "horizontal",
 								gravity: "center",
 								margin: "16,10,16,0", __source: {
 									fileName: _jsxFileName,
-									lineNumber: 269
+									lineNumber: 275
 								}
 							},
 							dom(
 								LinearLayout,
 								{
-									height: "38",
+									height: "wrap_content",
 									width: "match_parent",
 									orientation: "horizontal",
 									gravity: "center",
 									background: "#FF007AFF",
+									clickable: "true",
 									cornerRadius: "4",
 									__source: {
 										fileName: _jsxFileName,
-										lineNumber: 275
+										lineNumber: 281
 									}
 								},
 								dom(TextView, {
-									height: "19",
-									width: "68",
+									height: "match_parent",
+									width: "match_parent",
 									text: window.__S.SYNC_NOW,
 									textSize: "14",
-									onClick: this.onSyncNowClick,
+									padding: "0,10,0,10",
 									color: "#FFFFFFFF",
-									gravity: "left", __source: {
+									onClick: this.onSyncNowClick,
+									gravity: "center", __source: {
 										fileName: _jsxFileName,
-										lineNumber: 283
+										lineNumber: 290
 									}
 								})
 							)
@@ -27793,30 +28324,40 @@
 							margin: "16,16,16,0",
 							cornerRadius: "0", __source: {
 								fileName: _jsxFileName,
-								lineNumber: 293
+								lineNumber: 301
 							}
 						}),
-						dom(TextView, {
-							height: "17",
-							width: "108",
-							margin: "16,16,236,0",
-							onClick: this.shareTelemetry,
-							text: window.__S.SHARE_TELEMETRY,
-							textSize: "12",
-							color: "#FF0079FF",
-							gravity: "left", __source: {
-								fileName: _jsxFileName,
-								lineNumber: 299
-							}
-						}),
+						dom(
+							LinearLayout,
+							{
+								width: "wrap_content",
+								onClick: this.shareTelemetry,
+								height: "wrap_content", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 307
+								}
+							},
+							dom(TextView, {
+								height: "match_parent",
+								width: "match_parent",
+								margin: "16,16,16,16",
+								text: window.__S.SHARE_TELEMETRY,
+								textSize: "12",
+								color: "#FF0079FF",
+								gravity: "left", __source: {
+									fileName: _jsxFileName,
+									lineNumber: 311
+								}
+							})
+						),
 						dom(LinearLayout, {
 							height: "match_parent",
 							width: "match_parent",
 							background: "#FFF2F2F2",
-							margin: "0,16,0,0",
+							margin: "0,0,0,0",
 							cornerRadius: "0", __source: {
 								fileName: _jsxFileName,
-								lineNumber: 308
+								lineNumber: 320
 							}
 						})
 					),
@@ -27825,7 +28366,7 @@
 						height: "match_parent",
 						id: this.idSet.sharePopupContainer, __source: {
 							fileName: _jsxFileName,
-							lineNumber: 316
+							lineNumber: 328
 						}
 					})
 				);
@@ -27835,6 +28376,138 @@
 	
 		return DataSyncScreenActivity;
 	}(View);
+	
+	var _initialiseProps = function _initialiseProps() {
+		var _this3 = this;
+	
+		this.initializeData = function () {
+	
+			if (_this3.optionType == window.__S.OFF) {
+				_this3.index = 0;
+				_this3.optionTypeValue = [{ name: window.__S.OFF, select: "1", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+			} else if (_this3.optionType == window.__S.OVER_WIFI) {
+				_this3.index = 1;
+				_this3.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "1", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+			} else if (_this3.optionType == window.__S.ALWAYS_ON) {
+				_this3.index = 2;
+				_this3.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "1", icon: "ic_action_radio" }];
+			} else {
+				_this3.index = -1;
+				_this3.optionTypeValue = [{ name: window.__S.OFF, select: "0", icon: "ic_action_radio" }, { name: window.__S.OVER_WIFI, select: "0", icon: "ic_action_radio" }, { name: window.__S.ALWAYS_ON, select: "0", icon: "ic_action_radio" }];
+			}
+	
+			//this.index=-1;
+		};
+	
+		this.handleRadioButtonClick = function () {
+			if (window.__RadioButton != undefined && window.__RadioButton.currentIndex > -1) {
+				console.log("Radio Button click" + _this3.OPTION_TYPE[window.__RadioButton.currentIndex]);
+				//_this.optionType = this.OPTION_TYPE[window.__RadioButton.currentIndex];
+				_this3.optionType = _this3.OPTION_TYPE[window.__RadioButton.currentIndex];
+				// _this.checkDataChanged();
+				JBridge.setInSharedPrefs("data_sync", _this3.optionType);
+			}
+		};
+	
+		this.getBody = function () {};
+	
+		this.getLineSeperator = function () {
+			return dom(LinearLayout, {
+				width: "match_parent",
+				margin: "4,0,0,0",
+				height: "1",
+				background: window.__Colors.PRIMARY_BLACK, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 127
+				}
+			});
+		};
+	
+		this.handleSaveClick = function () {};
+	
+		this.onBackPressed = function () {
+			var whatToSend = [];
+			var event = { tag: "BACK_DataSyncScreenActivity", contents: whatToSend };
+			window.__runDuiCallback(event);
+		};
+	
+		this.onSyncNowClick = function () {
+			window.__LoaderDialog.show();
+	
+			var callback = callbackMapper.map(function (data) {
+				console.log("SYNC TELEMETRY data", data.toString());
+				if (data[0] == "SUCCESS") {
+					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + data[0]);
+					_this.replaceChild(_this.idSet.lastSyncTextView, _this.getSyncNowTextView(data[1]).render(), 0);
+				} else if (data[0] == "FAILURE") {
+					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + data[1]);
+				}
+	
+				window.__LoaderDialog.hide();
+			}); //end of callback
+			JBridge.syncTelemetryNow(callback);
+		};
+	
+		this.getSyncNowTextView = function (longTime) {
+			_this3.lastSync = window.__S.LAST_SYNC + new Date(parseFloat(longTime)).toLocaleString();
+			return dom(
+				LinearLayout,
+				{
+					height: "match_parent",
+					width: "match_parent",
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 169
+					}
+				},
+				dom(TextView, {
+					id: _this3.idSet.lastSyncTextView,
+					height: "wrap_content",
+					width: "wrap_content",
+					margin: "4,26,0,0",
+					text: _this3.lastSync,
+					textSize: "12",
+					color: "#FF969696",
+					gravity: "left", __source: {
+						fileName: _jsxFileName,
+						lineNumber: 173
+					}
+				})
+			);
+		};
+	
+		this.shareTelemetry = function () {
+			var shareCallback = callbackMapper.map(function (data) {
+				console.log(data);
+				if (data[0] != "failure") {
+					var input;
+					console.log("SHARE CALLBACK DATA", data[0]);
+	
+					input = [{
+						type: "file",
+						data: "file://" + data[0]
+					}];
+				} else {
+					window.__Snackbar.show("ERROR!");
+					return;
+				}
+				var sharePopUp = dom(SharePopup, {
+					data: input,
+					type: "TELEMETRY", __source: {
+						fileName: _jsxFileName,
+						lineNumber: 202
+					}
+				});
+				_this.replaceChild(_this.idSet.sharePopupContainer, sharePopUp.render(), 0);
+				window.__SharePopup.show();
+			});
+			JBridge.shareTelemetry(shareCallback);
+		};
+	
+		this.afterRender = function () {
+			JBridge.logSettingsScreenEvent("SETTINGS_DATASYNC");
+		};
+	};
 	
 	;
 	
@@ -27990,7 +28663,7 @@
 	          height: "wrap_content",
 	          cornerRadius: "4",
 	          padding: "0,8,8,8",
-	          margin: "4,0,4,0",
+	          margin: this.props.spinnerComponentMargin || "4,0,4,0",
 	          stroke: "2," + window.__Colors.PRIMARY_BLACK_66, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 103
@@ -31934,7 +32607,7 @@
 	                width: "37",
 	                height: "37",
 	                visibility: stroke ? "visible" : "gone",
-	                stroke: "2," + window.__Colors.WHITE_F2,
+	                stroke: "2," + window.__Colors.DARK_GRAY_44,
 	                cornerRadius: "50", __source: {
 	                  fileName: _jsxFileName,
 	                  lineNumber: 70
@@ -34070,7 +34743,7 @@
 	                cards: this.renderCards,
 	                totalCards: window.__questionStore.getTotalQs(),
 	                background: window.__Colors.WHITE_F2,
-	                header: "Help us get you content thats relevant to you.", __source: {
+	                header: window.__S.ONBOARDING_CARDS_HEADING, __source: {
 	                    fileName: _jsxFileName,
 	                    lineNumber: 158
 	                }
@@ -35279,6 +35952,7 @@
 	          {
 	            background: window.__Colors.WHITE_F2,
 	            clickable: "true",
+	            width: "match_parent",
 	            padding: "16,16,16,16", __source: {
 	              fileName: _jsxFileName,
 	              lineNumber: 383
@@ -35292,7 +35966,7 @@
 	            textSize: "16",
 	            gravity: "left", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 387
+	              lineNumber: 388
 	            }
 	          })
 	        );
@@ -35300,7 +35974,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 396
+	            lineNumber: 397
 	          }
 	        });
 	      }
@@ -35352,7 +36026,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 403
+	            lineNumber: 404
 	          }
 	        },
 	        this.getBody()
@@ -37125,7 +37799,7 @@
 	    };
 	
 	    _this2.openSettingsScreen = function () {
-	      JBridge.logSettingsClickedEvent("Settings");
+	      JBridge.logSettingsClickedEvent("SETTINGS");
 	      var whatToSend = { "profile": JSON.stringify("{}") };
 	      var event = { tag: "OPEN_SettingsScreenActivity", contents: whatToSend };
 	      window.__runDuiCallback(event);
@@ -41564,20 +42238,20 @@
 	
 	    this.questionMap = {
 	        "board": {
-	            question: "Which board does your school follow?",
-	            option: "SELECT BOARD"
+	            question: window.__S.BOARD_QUESTION,
+	            option: window.__S.BOARD_OPTION_TEXT
 	        },
 	        "gradeLevel": {
-	            question: "Which class do you belong to?",
-	            option: "SELECT CLASS"
+	            question: window.__S.GRADE_QUESTION,
+	            option: window.__S.GRADE_OPTION_TEXT
 	        },
 	        "subject": {
-	            question: "Which subjects are you looking for?",
-	            option: "SELECT SUBJECT"
+	            question: window.__S.SUBJECT_QUESTION,
+	            option: window.__S.SUBJECT_OPTION_TEXT
 	        },
 	        "medium": {
-	            question: "What medium/language does your school teach in?",
-	            option: "SELECT MEDIUM/LANG"
+	            question: window.__S.MEDIUM_QUESTION,
+	            option: window.__S.MEDIUM_OPTION_TEXT
 	        }
 	    };
 	};
@@ -42440,17 +43114,17 @@
 	        _this = _this3;
 	        _this3.setIds(["parentContainer", "scrollViewContainer", "footerContainer", "progressContainer"]);
 	        _this3.cardsArr = [{
-	            heading: "Get Content On-the-Go",
+	            heading: window.__S.GET_CONTENT_TITLE,
 	            illustration: "ic_content_otg",
-	            desc: "Browse and consume content from our growing collection of free courses and resources."
+	            desc: window.__S.GET_CONTENT_DESC
 	        }, {
-	            heading: "Scan QR Codes for Quick Access",
+	            heading: window.__S.SCAN_QR_TITLE,
 	            illustration: "ic_scan_qr",
-	            desc: "Scan QR Codes using the Sunbird app to quickly get access to related content and resources."
+	            desc: window.__S.SCAN_QR_DESC
 	        }, {
-	            heading: "Connect with Peers and Experts",
+	            heading: window.__S.CONNECT_WITH_PEERS_TITLE,
 	            illustration: "ic_connect_with_peers",
-	            desc: "Join communities and speak to peers and experts. Learn and share your knowledge."
+	            desc: window.__S.CONNECT_WITH_PEERS_DESC
 	        }];
 	        _this3.cardWidth = JBridge.getScreenWidth();
 	        _this3.cardHeight = JBridge.getScreenHeight() - 250;
@@ -43065,10 +43739,10 @@
 	  this.creditsDetail = function (data) {
 	    if (data.contentData.license || data.contentData.credits) {
 	      if (data.contentData.credits) {
-	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.CREDITS + "</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
 	      }
 	      if (data.contentData.license) {
-	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + data.contentData.license;
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.LICENSE + "</b><br>" + data.contentData.license;
 	      }
 	      var creditsLayout = dom(
 	        LinearLayout,
@@ -45489,7 +46163,7 @@
 	      } else {
 	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
 	        if (JBridge.isNetworkAvailable()) {
-	          JBridge.importCourse(identifier, "true", utils.getCallbacks(_this.getSpineStatus, "", _this.getSpineStatus));
+	          JBridge.importCourse(identifier, "false", utils.getCallbacks(_this.getSpineStatus, "", _this.getSpineStatus));
 	          _this.changeOverFlow();
 	        } else {
 	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
@@ -45937,7 +46611,7 @@
 	          if (window.__loggedInState != "GUEST") {
 	            window.__RatingsPopup.show();
 	          } else {
-	            window.__Snackbar.show("Sign in to use this feature.");
+	            window.__Snackbar.show(window.__S.SIGNIN_TO_USE_FEATURE);
 	          }
 	        }, __source: {
 	          fileName: _jsxFileName,
@@ -46054,10 +46728,10 @@
 	  this.creditsDetail = function (data) {
 	    if (data.contentData.license || data.contentData.credits) {
 	      if (data.contentData.credits) {
-	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.CREDITS + "</b><br>" + data.contentData.credits.toString().replace(/,/g, ", ");
 	      }
 	      if (data.contentData.license) {
-	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + data.contentData.license;
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.LICENSE + "</b><br>" + data.contentData.license;
 	      }
 	      var creditsLayout = dom(
 	        LinearLayout,
@@ -47522,7 +48196,7 @@
 	                    window.__Snackbar.show(window.__S.TRY_BEFORE_RATING);
 	                }
 	            } else {
-	                window.__Snackbar.show("Sign in to use this feature.");
+	                window.__Snackbar.show(window.__S.SIGNIN_TO_USE_FEATURE);
 	            }
 	        };
 	
@@ -51393,10 +52067,10 @@
 	    }
 	    if (_this3.contentData.contentData.license || _this3.contentData.contentData.credits) {
 	      if (_this3.contentData.contentData.credits) {
-	        _this3.creditsAndLicense += "<br><b>CREDITS</b><br>" + _this3.contentData.contentData.credits.toString().replace(/,/, ", ");
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.CREDITS + "</b><br>" + _this3.contentData.contentData.credits.toString().replace(/,/, ", ");
 	      }
 	      if (_this3.contentData.contentData.license) {
-	        _this3.creditsAndLicense += "<br><b>LICENSE</b><br>" + _this3.contentData.contentData.license;
+	        _this3.creditsAndLicense += "<br><b>" + window.__S.LICENSE + "</b><br>" + _this3.contentData.contentData.license;
 	      }
 	      var creditsLayout = dom(
 	        LinearLayout,
@@ -51516,7 +52190,7 @@
 	        window.__Snackbar.show(window.__S.TRY_BEFORE_RATING);
 	      }
 	    } else {
-	      window.__Snackbar.show("Sign in to use this feature.");
+	      window.__Snackbar.show(window.__S.SIGNIN_TO_USE_FEATURE);
 	    }
 	  };
 	
@@ -55998,7 +56672,7 @@
 	          height: "match_parent",
 	          width: "match_parent",
 	          orientation: "vertical",
-	          padding: "0,0,0,70", __source: {
+	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 85
 	          }
@@ -56018,7 +56692,7 @@
 	            {
 	              width: "match_parent",
 	              height: "match_parent",
-	              padding: "11,15,15,15",
+	              padding: "16,16,16,0",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
 	                lineNumber: 94
@@ -56026,42 +56700,9 @@
 	            },
 	            _this2.getEditTextView(_this2.idSet.nameText, window.__S.FULL_NAME, _this2.profileData.handle, _this2.handleOnChange),
 	            _this2.getMultiSelectSpinner(_this2.idSet.boardSpinner, window.__S.BOARD, _this2.boardList, _this2.handleBoardChange, _this2.profileData.board),
-	            dom(
-	              LinearLayout,
-	              {
-	                width: "match_parent",
-	                height: "match_parent",
-	                id: _this2.idSet.gradeLayout, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 101
-	                }
-	              },
-	              _this2.getMultiSelectSpinner(_this2.idSet.gradeSpinner, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, _this2.profileData.grade)
-	            ),
-	            dom(
-	              LinearLayout,
-	              {
-	                width: "match_parent",
-	                height: "match_parent",
-	                id: _this2.idSet.subjectLayout, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 107
-	                }
-	              },
-	              _this2.getMultiSelectSpinner(_this2.idSet.subjectSpinner, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, _this2.profileData.subject)
-	            ),
-	            dom(
-	              LinearLayout,
-	              {
-	                width: "match_parent",
-	                height: "match_parent",
-	                id: _this2.idSet.mediumLayout, __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 113
-	                }
-	              },
-	              _this2.getMultiSelectSpinner(_this2.idSet.mediumOfInstructionSpinner, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, _this2.profileData.medium)
-	            )
+	            _this2.getMultiSelectSpinner(_this2.idSet.gradeLayout, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, _this2.profileData.grade),
+	            _this2.getMultiSelectSpinner(_this2.idSet.subjectLayout, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, _this2.profileData.subject),
+	            _this2.getMultiSelectSpinner(_this2.idSet.mediumLayout, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, _this2.profileData.medium)
 	          )
 	        )
 	      );
@@ -56082,11 +56723,11 @@
 	    };
 	
 	    _this2.populateMultiSpinner = function (index) {
-	      if (index > 2) _this2.replaceChild(_this2.idSet.gradeLayout, _this2.getMultiSelectSpinner(_this2.idSet.gradeSpinner, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, null).render(), 0);
+	      if (index > 2) _this2.replaceChild(_this2.idSet.gradeLayout, _this2.getMultiSelectSpinner(_this2.idSet.gradeLayout, window.__S.GRADE, _this2.gradeList, _this2.handleGradeChange, null).render(), 0);
 	
-	      if (index > 1) _this2.replaceChild(_this2.idSet.subjectLayout, _this2.getMultiSelectSpinner(_this2.idSet.subjectSpinner, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, null).render(), 0);
+	      if (index > 1) _this2.replaceChild(_this2.idSet.subjectLayout, _this2.getMultiSelectSpinner(_this2.idSet.subjectLayout, window.__S.SUBJECTS, _this2.subjectList, _this2.handleSubjectChange, null).render(), 0);
 	
-	      if (index > 0) _this2.replaceChild(_this2.idSet.mediumLayout, _this2.getMultiSelectSpinner(_this2.idSet.mediumOfInstructionSpinner, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, null).render(), 0);
+	      if (index > 0) _this2.replaceChild(_this2.idSet.mediumLayout, _this2.getMultiSelectSpinner(_this2.idSet.mediumLayout, window.__S.MEDIUM_OF_INSTRUCTION, _this2.mediumList, _this2.handleMediumChange, null).render(), 0);
 	    };
 	
 	    _this2.handleOnChange = function () {
@@ -56121,6 +56762,8 @@
 	        return item.name;
 	      }) : [];
 	      _this2.gradeList.unshift(window.__S.SELECT);
+	      _this2.subjectList = [window.__S.SELECT];
+	      _this2.mediumList = [window.__S.SELECT];
 	      _this2.populateMultiSpinner(3);
 	    };
 	
@@ -56139,6 +56782,7 @@
 	        return item.name;
 	      }) : [];
 	      _this2.subjectList.unshift(window.__S.SELECT);
+	      _this2.mediumList = [window.__S.SELECT];
 	      _this2.populateMultiSpinner(2);
 	    };
 	
@@ -56167,7 +56811,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 207
+	            lineNumber: 195
 	          }
 	        },
 	        dom(TextInputView, {
@@ -56175,7 +56819,7 @@
 	          height: "wrap_content",
 	          width: "match_parent",
 	          labelText: label.toUpperCase(label),
-	          margin: "0,0,0,18",
+	          margin: "0,0,0,16",
 	          editTextPadding: "4,4,41,10",
 	          _onChange: onChange,
 	          text: text,
@@ -56183,7 +56827,7 @@
 	          editTextStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
 	          inputType: "text", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 198
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -56192,7 +56836,7 @@
 	          alignParentRight: "true,-1",
 	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 222
+	            lineNumber: 210
 	          }
 	        })
 	      );
@@ -56206,9 +56850,10 @@
 	          width: width.toString(),
 	          height: "wrap_content",
 	          orientation: "vertical",
-	          margin: "4,0,0,18", __source: {
+	          id: id,
+	          margin: "0,0,0,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 234
+	            lineNumber: 222
 	          }
 	        },
 	        _this2.getLabel(label),
@@ -56219,7 +56864,7 @@
 	            height: "wrap_content",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 240
+	              lineNumber: 229
 	            }
 	          },
 	          dom(
@@ -56227,39 +56872,27 @@
 	            {
 	              height: "match_parent",
 	              width: width.toString(),
-	              padding: "0,6,0,0",
+	              padding: "0,0,0,0",
 	              weight: "1", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 244
+	                lineNumber: 233
 	              }
 	            },
 	            dom(MultiSelectSpinner, {
 	              width: width.toString(),
-	              height: "24",
+	              height: "wrap_content",
 	              style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
-	              id: id,
 	              selectedData: selectedData,
 	              onItemChange: spinnerHandler,
-	              data: values, __source: {
+	              data: values,
+	              spinnerComponentMargin: "0,0,4,0", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 249
+	                lineNumber: 238
 	              }
 	            })
 	          )
 	        )
 	      );
-	    };
-	
-	    _this2.getLineSeperator = function () {
-	      return dom(LinearLayout, {
-	        width: "match_parent",
-	        margin: "4,0,0,0",
-	        height: "1",
-	        background: window.__Colors.PRIMARY_BLACK, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 264
-	        }
-	      });
 	    };
 	
 	    _this2.getLabel = function (label) {
@@ -56270,7 +56903,7 @@
 	          width: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 273
+	            lineNumber: 255
 	          }
 	        },
 	        dom(TextView, {
@@ -56279,7 +56912,7 @@
 	          style: window.__TextStyle.textStyle.HINT.SEMI,
 	          text: label.toUpperCase(label), __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 277
+	            lineNumber: 259
 	          }
 	        })
 	      );
@@ -56296,7 +56929,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 288
+	            lineNumber: 270
 	          }
 	        },
 	        dom(PageOption, {
@@ -56304,7 +56937,7 @@
 	          buttonItems: buttonList,
 	          hideDivider: false, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 294
+	            lineNumber: 276
 	          }
 	        })
 	      );
@@ -56420,7 +57053,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 352
+	            lineNumber: 334
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -56429,7 +57062,7 @@
 	          invert: "true",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 360
+	            lineNumber: 342
 	          }
 	        }),
 	        dom(
@@ -56438,7 +57071,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 365
+	              lineNumber: 347
 	            }
 	          },
 	          this.getBody(),

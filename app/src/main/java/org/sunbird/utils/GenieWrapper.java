@@ -43,7 +43,6 @@ import org.ekstep.genieservices.commons.bean.SunbirdContentSearchResult;
 import org.ekstep.genieservices.commons.bean.SyncStat;
 import org.ekstep.genieservices.commons.bean.TelemetryExportRequest;
 import org.ekstep.genieservices.commons.bean.TelemetryExportResponse;
-import org.ekstep.genieservices.commons.bean.TelemetryStat;
 import org.ekstep.genieservices.commons.bean.enums.ContentImportStatus;
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.bean.enums.MasterDataType;
@@ -78,7 +77,6 @@ import org.sunbird.ui.MainActivity;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -807,17 +805,17 @@ public class GenieWrapper extends Activity {
         //TODO Telemetry
 //        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteractWithCoRelation(InteractionType.TOUCH, TelemetryPageId.CONTENT_DETAIL, TelemetryAction.CONTENT_PLAY, content.getIdentifier(), null, Util.getCorrelationList()));
         String mimeType = content.getMimeType();
-        Map<String, String> rollUpMap;
-        try {
-            rollUpMap = jsonToMap(rollUpData);
-        } catch (JSONException e) {
-            rollUpMap = null;
-            Log.d("JSONException", "playContent: "+e);
-        }
+//        final Map<String, String> rollUpMap;
+//        try {
+//            rollUpMap = jsonToMap(rollUpData);
+//        } catch (JSONException e) {
+//            rollUpMap = null;
+//            Log.d("JSONException", "playContent: "+e);
+//        }
         if (mimeType.equals("video/x-youtube")) {
-            ContentPlayer.play(activity, content, rollUpMap);
+            ContentPlayer.play(activity, content, GsonUtil.fromJson(rollUpData, Map.class));
         } else if (content.isAvailableLocally()) {
-            ContentPlayer.play(activity, content, rollUpMap);
+            ContentPlayer.play(activity, content, GsonUtil.fromJson(rollUpData, Map.class));
         } else {
             Toast.makeText(activity, "Content Not Available", Toast.LENGTH_LONG).show();
         }

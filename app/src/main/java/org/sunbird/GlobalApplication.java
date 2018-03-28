@@ -61,6 +61,7 @@ public class GlobalApplication extends Application implements ForegroundService.
         registerActivityLifecycleCallbacks(ForegroundService.getInstance());
         ForegroundService.getInstance().registerListener(this);
         setupCrashlytics();
+//        Stetho.initializeWithDefaults(this);
     }
 
     private void initPreferenceWrapper() {
