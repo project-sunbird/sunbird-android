@@ -21498,7 +21498,7 @@
 	    };
 	
 	    _this2.show = function (image) {
-	      image = image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
+	      image = image || "ic_anonymous";
 	      var layout = dom(ImageView, {
 	        height: "match_parent",
 	        width: "match_parent",
@@ -23833,7 +23833,7 @@
 			"AS_LINK": "As Link",
 			"ATTACHMENTS": "Attachments",
 			"ATTACHMENT_DOWNLOADED": "Attachment downloaded",
-			"AUTOMATIC_SYNC": "Automatic Data Sync",
+			"AUTOMATIC_SYNC": "AUTOMATIC DATA SYNC",
 			"AVAILABLE_FILTERS": "Available filters",
 			"AVATAR": "Avatar",
 			"BACK_TO_EXIT": "Tap back again to exit app",
@@ -24085,7 +24085,7 @@
 			"SERVER_CONNECTION_ERROR": "Unable to connect to server",
 			"SETTINGS": "Settings",
 			"SHARE_APP": "Share the %s app",
-			"SHARE_TELEMETRY": "Share Telemetry",
+			"SHARE_TELEMETRY": "SHARE TELEMETRY",
 			"SHARE_THIS": "Share",
 			"SHOW_LESS": "Show Less",
 			"SHOW_MORE": "Show More",
@@ -25641,6 +25641,7 @@
 	var Connector = __webpack_require__(330);
 	var View = __webpack_require__(331);
 	var LinearLayout = __webpack_require__(333);
+	var ScrollView = __webpack_require__(358);
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var TextView = __webpack_require__(342);
@@ -25711,7 +25712,7 @@
 	                    background: "#FFF8F8F8",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 79
+	                        lineNumber: 80
 	                    }
 	                },
 	                _this.getLanguageLabels()
@@ -25743,7 +25744,7 @@
 	                        return _this.changeSelectedLang(langCode);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 106
+	                        lineNumber: 107
 	                    }
 	                },
 	                dom(
@@ -25756,7 +25757,7 @@
 	                        margin: "2,0,0,0",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 113
+	                            lineNumber: 114
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25765,13 +25766,13 @@
 	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 120
+	                            lineNumber: 121
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 125
+	                            lineNumber: 126
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -25780,7 +25781,7 @@
 	                        imageUrl: "ic_blue_tick",
 	                        visibility: isSelected ? "visible" : "gone", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 127
+	                            lineNumber: 128
 	                        }
 	                    })
 	                ),
@@ -25794,7 +25795,7 @@
 	                    alpha: "0.3",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 133
+	                        lineNumber: 134
 	                    }
 	                })
 	            );
@@ -25811,9 +25812,10 @@
 	                    background: "#FF0076FE",
 	                    cornerRadius: "4",
 	                    margin: "0,0,0,0",
-	                    clickable: "true", __source: {
+	                    clickable: "true",
+	                    alignParentBottom: "true,-1", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 148
+	                        lineNumber: 149
 	                    }
 	                },
 	                dom(
@@ -25824,7 +25826,7 @@
 	                        gravity: "center_vertical",
 	                        onClick: _this.changeLang, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 157
+	                            lineNumber: 159
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -25835,7 +25837,7 @@
 	                        color: "#FFFFFFFF",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 162
+	                            lineNumber: 164
 	                        }
 	                    }),
 	                    dom(
@@ -25846,7 +25848,7 @@
 	                            padding: "0,0,16,0",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 169
+	                                lineNumber: 171
 	                            }
 	                        },
 	                        dom(ImageView, {
@@ -25856,7 +25858,7 @@
 	                            imageUrl: "ic_white_arrow",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 174
+	                                lineNumber: 176
 	                            }
 	                        })
 	                    )
@@ -25902,7 +25904,7 @@
 	                    root: true,
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 201
+	                        lineNumber: 203
 	                    }
 	                },
 	                dom(
@@ -25916,44 +25918,62 @@
 	                        background: "#FFFFFFFF",
 	                        cornerRadius: "0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 208
+	                            lineNumber: 210
 	                        }
 	                    },
-	                    dom(TextView, {
-	                        height: "22",
-	                        width: "253",
-	                        margin: "34,0,33,0",
-	                        text: window.__S.CHOOSE_LANGUAGE,
-	                        textSize: "16",
-	                        color: "#FF333333",
-	                        gravity: "center", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 216
-	                        }
-	                    }),
 	                    dom(
-	                        LinearLayout,
+	                        ScrollView,
 	                        {
-	                            height: "wrap_content",
+	                            height: "0",
+	                            weight: "1",
 	                            width: "match_parent",
-	                            orientation: "vertical",
-	                            padding: "16,16,16,16",
-	                            margin: "0,18,0,0",
-	                            background: "#FFF8F8F8",
-	                            id: this.idSet.langContainer,
-	                            cornerRadius: "0", __source: {
+	                            margin: "0,0,0,0", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 224
+	                                lineNumber: 219
 	                            }
 	                        },
-	                        this.getLanguageLabels()
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                width: "match_parent",
+	                                height: "match_parent",
+	                                orientation: "vertical",
+	                                gravity: "center", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 225
+	                                }
+	                            },
+	                            dom(TextView, {
+	                                height: "22",
+	                                width: "253",
+	                                margin: "34,0,33,0",
+	                                text: window.__S.CHOOSE_LANGUAGE,
+	                                textSize: "16",
+	                                color: "#FF333333",
+	                                gravity: "center", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 231
+	                                }
+	                            }),
+	                            dom(
+	                                LinearLayout,
+	                                {
+	                                    height: "wrap_content",
+	                                    width: "match_parent",
+	                                    orientation: "vertical",
+	                                    padding: "16,16,16,16",
+	                                    margin: "0,18,0,0",
+	                                    background: "#FFF8F8F8",
+	                                    id: this.idSet.langContainer,
+	                                    cornerRadius: "0", __source: {
+	                                        fileName: _jsxFileName,
+	                                        lineNumber: 239
+	                                    }
+	                                },
+	                                this.getLanguageLabels()
+	                            )
+	                        )
 	                    ),
-	                    dom(LinearLayout, {
-	                        weight: "1", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 237
-	                        }
-	                    }),
 	                    this.getContinueBtn()
 	                )
 	            );
@@ -25989,6 +26009,7 @@
 	var LinearLayout = __webpack_require__(333);
 	var RelativeLayout = __webpack_require__(340);
 	var TextView = __webpack_require__(342);
+	var ScrollView = __webpack_require__(358);
 	var SimpleToolbar = __webpack_require__(382);
 	var callbackMapper = __webpack_require__(329);
 	var ImageView = __webpack_require__(350);
@@ -26031,7 +26052,7 @@
 	                    orientation: "vertical",
 	                    gravity: "center", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 55
+	                        lineNumber: 57
 	                    }
 	                },
 	                _this.getCards()
@@ -26051,11 +26072,11 @@
 	                    background: "#FF0076FE",
 	                    cornerRadius: "4",
 	                    alignParentBottom: "true,-1",
-	                    margin: "20,58,20,16",
+	                    margin: "20,16,20,16",
 	                    clickable: "true",
 	                    visibility: "gone", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 68
+	                        lineNumber: 70
 	                    }
 	                },
 	                dom(
@@ -26066,7 +26087,7 @@
 	                        gravity: "center_vertical",
 	                        onClick: _this.handleRoleSelect, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 80
+	                            lineNumber: 82
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -26077,7 +26098,7 @@
 	                        color: "#FFFFFFFF",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 85
+	                            lineNumber: 87
 	                        }
 	                    }),
 	                    dom(
@@ -26088,7 +26109,7 @@
 	                            padding: "0,0,16,0",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 92
+	                                lineNumber: 94
 	                            }
 	                        },
 	                        dom(ImageView, {
@@ -26098,7 +26119,7 @@
 	                            imageUrl: "ic_white_arrow",
 	                            gravity: "right", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 97
+	                                lineNumber: 99
 	                            }
 	                        })
 	                    )
@@ -26123,7 +26144,7 @@
 	                        cornerRadius: "5",
 	                        stroke: item.selected ? "4," + window.__Colors.PRIMARY_ACCENT : null, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 114
+	                            lineNumber: 116
 	                        }
 	                    },
 	                    dom(
@@ -26135,7 +26156,7 @@
 	                                _this.handleCardClick(i);
 	                            }, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 125
+	                                lineNumber: 127
 	                            }
 	                        },
 	                        dom(ImageView, {
@@ -26143,9 +26164,9 @@
 	                            width: "90",
 	                            margin: "8,8,8,8",
 	                            layout_gravity: "center",
-	                            circularImageUrl: "0," + "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc", __source: {
+	                            circularImageUrl: "0,ic_anonymous", __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 130
+	                                lineNumber: 132
 	                            }
 	                        }),
 	                        dom(
@@ -26157,7 +26178,7 @@
 	                                height: "wrap_content",
 	                                orientation: "vertical", __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 137
+	                                    lineNumber: 139
 	                                }
 	                            },
 	                            dom(TextView, {
@@ -26166,7 +26187,7 @@
 	                                margin: "0,0,0,16",
 	                                text: item.role, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 144
+	                                    lineNumber: 146
 	                                }
 	                            }),
 	                            dom(TextView, {
@@ -26174,7 +26195,7 @@
 	                                height: "wrap_content",
 	                                text: item.desc, __source: {
 	                                    fileName: _jsxFileName,
-	                                    lineNumber: 150
+	                                    lineNumber: 152
 	                                }
 	                            })
 	                        )
@@ -26186,7 +26207,11 @@
 	                    id: _this.idSet.continueBtn,
 	                    visibility: "visible"
 	                });
-	                Android.runInUI(cmd, 0, "164", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
+	                cmd += _this.set({
+	                    id: _this.idSet.scrollViewContainer,
+	                    margin: "0,0,0,80"
+	                });
+	                Android.runInUI(cmd, 0, "170", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
 	            }
 	            return layout;
 	        };
@@ -26211,7 +26236,7 @@
 	            window.__runDuiCallback(event);
 	        };
 	
-	        _this.setIds(["cardsContainer", "continueBtn", "whiteArrow"]);
+	        _this.setIds(["cardsContainer", "continueBtn", "whiteArrow", "scrollViewContainer"]);
 	        _this.options = [{
 	            role: window.__S.TEACHER_ROLE,
 	            selected: false,
@@ -26238,7 +26263,7 @@
 	                    background: window.__Colors.WHITE,
 	                    orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 192
+	                        lineNumber: 198
 	                    }
 	                },
 	                dom(
@@ -26249,7 +26274,7 @@
 	                        orientation: "vertical",
 	                        gravity: "center", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 200
+	                            lineNumber: 206
 	                        }
 	                    },
 	                    dom(SimpleToolbar, {
@@ -26258,33 +26283,57 @@
 	                        height: "wrap_content",
 	                        onBackPress: this.onBackPressed, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 206
-	                        }
-	                    }),
-	                    dom(TextView, {
-	                        width: "wrap_content",
-	                        height: "wrap_content",
-	                        text: window.__S.ROLE_SELECTOR_QUERY,
-	                        textSize: "16",
-	                        fontStyle: Font.fontStyle.SEMIBOLD,
-	                        margin: "0,16,0,16", __source: {
-	                            fileName: _jsxFileName,
-	                            lineNumber: 211
+	                            lineNumber: 212
 	                        }
 	                    }),
 	                    dom(
-	                        LinearLayout,
+	                        ScrollView,
 	                        {
-	                            id: this.idSet.cardsContainer,
+	                            height: "0",
+	                            weight: "1",
 	                            width: "match_parent",
-	                            height: "wrap_content",
-	                            orientation: "vertical",
-	                            gravity: "center", __source: {
+	                            id: this.idSet.scrollViewContainer, __source: {
 	                                fileName: _jsxFileName,
 	                                lineNumber: 218
 	                            }
 	                        },
-	                        this.getCards()
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                width: "match_parent",
+	                                height: "wrap_content",
+	                                orientation: "vertical",
+	                                gravity: "center", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 224
+	                                }
+	                            },
+	                            dom(TextView, {
+	                                width: "wrap_content",
+	                                height: "wrap_content",
+	                                text: window.__S.ROLE_SELECTOR_QUERY,
+	                                textSize: "16",
+	                                fontStyle: Font.fontStyle.SEMIBOLD,
+	                                margin: "0,16,0,16", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 230
+	                                }
+	                            }),
+	                            dom(
+	                                LinearLayout,
+	                                {
+	                                    id: this.idSet.cardsContainer,
+	                                    width: "match_parent",
+	                                    height: "wrap_content",
+	                                    orientation: "vertical",
+	                                    gravity: "center", __source: {
+	                                        fileName: _jsxFileName,
+	                                        lineNumber: 237
+	                                    }
+	                                },
+	                                this.getCards()
+	                            )
+	                        )
 	                    )
 	                ),
 	                this.getContinueBtn()
@@ -26719,6 +26768,7 @@
 	var CircularLoader = __webpack_require__(404);
 	var SimpleToolbar = __webpack_require__(382);
 	var ShareFilePopup = __webpack_require__(414);
+	var ScrollView = __webpack_require__(358);
 	var TextStyle = __webpack_require__(343);
 	
 	window.R = __webpack_require__(7);
@@ -26796,7 +26846,7 @@
 	      _this2.SharePopup = dom(ShareFilePopup, {
 	        __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 98
+	          lineNumber: 100
 	        }
 	      });
 	      return _this2.SharePopup;
@@ -26810,7 +26860,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 112
+	            lineNumber: 114
 	          }
 	        },
 	        dom(
@@ -26823,7 +26873,7 @@
 	            background: "#ffffff",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 116
+	              lineNumber: 118
 	            }
 	          },
 	          dom(
@@ -26834,7 +26884,7 @@
 	              padding: "16,16,16,16",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 123
+	                lineNumber: 125
 	              }
 	            },
 	            dom(TextView, {
@@ -26845,7 +26895,7 @@
 	              //style= {TextStyle.DARK}
 	              , text: mainstr, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 128
+	                lineNumber: 130
 	              }
 	            }),
 	            dom(TextView, {
@@ -26856,7 +26906,7 @@
 	              alpha: "0.3",
 	              text: substr, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 135
+	                lineNumber: 137
 	              }
 	            })
 	          ),
@@ -26864,7 +26914,7 @@
 	            height: "match_parent",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 143
+	              lineNumber: 145
 	            }
 	          }),
 	          dom(ImageView, {
@@ -26873,7 +26923,7 @@
 	            imageUrl: "ic_action_arrow_right",
 	            margin: "0,25,8,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 146
+	              lineNumber: 148
 	            }
 	          })
 	        )
@@ -26888,7 +26938,7 @@
 	          width: "match_parent",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 156
+	            lineNumber: 158
 	          }
 	        },
 	        dom(
@@ -26901,7 +26951,7 @@
 	            background: "#ffffff",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 160
+	              lineNumber: 162
 	            }
 	          },
 	          dom(
@@ -26912,7 +26962,7 @@
 	              padding: "16,16,16,16",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 167
+	                lineNumber: 169
 	              }
 	            },
 	            dom(TextView, {
@@ -26922,7 +26972,7 @@
 	              color: "#000000",
 	              text: mainStr, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 172
+	                lineNumber: 174
 	              }
 	            })
 	          ),
@@ -26930,7 +26980,7 @@
 	            height: "match_parent",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 179
+	              lineNumber: 181
 	            }
 	          }),
 	          dom(ImageView, {
@@ -26939,7 +26989,7 @@
 	            imageUrl: "ic_action_arrow_right",
 	            margin: "0,25,8,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 182
+	              lineNumber: 184
 	            }
 	          })
 	        )
@@ -26958,7 +27008,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 197
+	            lineNumber: 199
 	          }
 	        },
 	        dom(
@@ -26969,7 +27019,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 201
+	              lineNumber: 203
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -26978,39 +27028,62 @@
 	            width: "match_parent",
 	            onBackPress: _this2.onBackPressed, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 206
+	              lineNumber: 208
 	            }
 	          }),
-	          dom(LinearLayout, {
-	            width: "match_parent",
-	            height: "4", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 211
-	            }
-	          }),
-	          _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
-	          _this2.getLineSeperator(),
-	          _this2.getBody(window.__S.DATA_SYNC, window.__S.DATA_SYNC_SUB, _this2.datasync),
-	          _this2.getLineSeperator(),
-	          dom(LinearLayout, {
-	            width: "match_parent",
-	            height: "4", __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 219
-	            }
-	          }),
-	          _this2.getBody(window.__S.SUPPORT, window.__S.SUPPORT_MESSAGE, _this2.handleSupportClick),
-	          _this2.getLineSeperator(),
-	          _this2.getBody2(window.__S.SHARE_APP.format(JBridge.getAppName()), _this2.handleShareClick),
-	          _this2.getLineSeperator(),
-	          _this2.getBody2(window.__S.ABOUT_APP, _this2.openAboutUsActivity)
+	          dom(
+	            ScrollView,
+	            {
+	              height: "0",
+	              weight: "1",
+	              id: _this2.idSet.scrollViewContainerCourse,
+	              width: "match_parent", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 213
+	              }
+	            },
+	            dom(
+	              LinearLayout,
+	              {
+	                height: "match_parent",
+	                width: "match_parent",
+	                orientation: "vertical", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 218
+	                }
+	              },
+	              dom(LinearLayout, {
+	                width: "match_parent",
+	                height: "4", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 222
+	                }
+	              }),
+	              _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
+	              _this2.getLineSeperator(),
+	              _this2.getBody(window.__S.DATA_SYNC, window.__S.DATA_SYNC_SUB, _this2.datasync),
+	              _this2.getLineSeperator(),
+	              dom(LinearLayout, {
+	                width: "match_parent",
+	                height: "4", __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 230
+	                }
+	              }),
+	              _this2.getBody(window.__S.SUPPORT, window.__S.SUPPORT_MESSAGE, _this2.handleSupportClick),
+	              _this2.getLineSeperator(),
+	              _this2.getBody2(window.__S.SHARE_APP.format(JBridge.getAppName()), _this2.handleShareClick),
+	              _this2.getLineSeperator(),
+	              _this2.getBody2(window.__S.ABOUT_APP, _this2.openAboutUsActivity)
+	            )
+	          )
 	        ),
 	        _this2.getSharePopUP()
 	      );
 	      return _this2.layout.render();
 	    };
 	
-	    _this2.setIds(["linkShareIntents", "popUpContainer", "parentId"]);
+	    _this2.setIds(["linkShareIntents", "popUpContainer", "parentId", "scrollViewContainerCourse"]);
 	    _this2.shouldCacheScreen = false;
 	    window.__SettingsScreenActivity = _this2;
 	    //this.defaultlang = this.getCurrentLanguage();
@@ -27029,7 +27102,7 @@
 	        padding: "0,1,0,0",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 104
+	          lineNumber: 106
 	        }
 	      });
 	    }
@@ -27854,6 +27927,7 @@
 	var ImageView = __webpack_require__(350);
 	var TextView = __webpack_require__(342);
 	var SimpleToolbar = __webpack_require__(382);
+	var ScrollView = __webpack_require__(358);
 	var utils = __webpack_require__(397);
 	window.R = __webpack_require__(7);
 	
@@ -27930,7 +28004,7 @@
 	                    background: "#FFF8F8F8",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 87
+	                        lineNumber: 89
 	                    }
 	                },
 	                _this.getLanguageLabels()
@@ -27962,7 +28036,7 @@
 	                        return _this.changeSelectedLang(langCode);
 	                    }, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 114
+	                        lineNumber: 116
 	                    }
 	                },
 	                dom(
@@ -27975,7 +28049,7 @@
 	                        margin: "2,0,0,0",
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 121
+	                            lineNumber: 123
 	                        }
 	                    },
 	                    dom(TextView, {
@@ -27984,13 +28058,13 @@
 	                        text: language + (_this.devicelang == langCode ? " (" + window.__S.DETECTED + ")" : ""),
 	                        gravity: "left", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 128
+	                            lineNumber: 130
 	                        }
 	                    }),
 	                    dom(LinearLayout, {
 	                        weight: "1", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 133
+	                            lineNumber: 135
 	                        }
 	                    }),
 	                    dom(ImageView, {
@@ -27999,7 +28073,7 @@
 	                        imageUrl: "ic_blue_tick",
 	                        visibility: isSelected ? "visible" : "gone", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 135
+	                            lineNumber: 137
 	                        }
 	                    })
 	                ),
@@ -28013,7 +28087,7 @@
 	                    alpha: "0.3",
 	                    cornerRadius: "0", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 141
+	                        lineNumber: 143
 	                    }
 	                })
 	            );
@@ -28023,7 +28097,7 @@
 	        console.log("Default language -> ", JBridge.getLocalLang());
 	        _this.devicelang = JBridge.getLocalLang();
 	        _this.defaultlang = window.__CurrentLanguage;
-	        _this.setIds(["langContainer"]);
+	        _this.setIds(["langContainer", "scrollViewContainerCourse"]);
 	        _this.langArr = [];
 	        _this.initLangArr();
 	        _this.shouldCacheScreen = false;
@@ -28043,7 +28117,7 @@
 	                    root: true,
 	                    clickable: "true", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 156
+	                        lineNumber: 158
 	                    }
 	                },
 	                dom(
@@ -28055,7 +28129,7 @@
 	                        background: "#FFF8F8F8",
 	                        cornerRadius: "0", __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 162
+	                            lineNumber: 164
 	                        }
 	                    },
 	                    dom(SimpleToolbar, {
@@ -28064,25 +28138,37 @@
 	                        width: "match_parent",
 	                        onBackPress: this.onBackPressed, __source: {
 	                            fileName: _jsxFileName,
-	                            lineNumber: 168
+	                            lineNumber: 170
 	                        }
 	                    }),
 	                    dom(
-	                        LinearLayout,
+	                        ScrollView,
 	                        {
-	                            height: "wrap_content",
+	                            height: "0",
 	                            width: "match_parent",
-	                            orientation: "vertical",
-	                            padding: "16,0,16,16",
-	                            margin: "0,0,0,0",
-	                            background: "#FFFFFFFF",
-	                            id: this.idSet.langContainer,
-	                            cornerRadius: "0", __source: {
+	                            weight: "1",
+	                            id: this.idSet.scrollViewContainerCourse, __source: {
 	                                fileName: _jsxFileName,
-	                                lineNumber: 173
+	                                lineNumber: 175
 	                            }
 	                        },
-	                        this.getLanguageLabels()
+	                        dom(
+	                            LinearLayout,
+	                            {
+	                                height: "wrap_content",
+	                                width: "match_parent",
+	                                orientation: "vertical",
+	                                padding: "16,0,16,16",
+	                                margin: "0,0,0,0",
+	                                background: "#FFFFFFFF",
+	                                id: this.idSet.langContainer,
+	                                cornerRadius: "0", __source: {
+	                                    fileName: _jsxFileName,
+	                                    lineNumber: 180
+	                                }
+	                            },
+	                            this.getLanguageLabels()
+	                        )
 	                    )
 	                )
 	            );
@@ -30136,7 +30222,7 @@
 	        JBridge.logQRIconClicked();
 	        var whatToSend = [];
 	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
-	        JBridge.logVisitEvent(window.__S.HOME_BNAV);
+	        JBridge.logVisitEvent("HOME");
 	        window.__runDuiCallback(event);
 	      }
 	    };
@@ -30233,7 +30319,7 @@
 	        default:
 	          _this.profileUpdateCardVisibility = "gone";
 	      }
-	      _this.avatarImageUrl = data.avatar ? data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
+	      _this.avatarImageUrl = data.avatar ? data.avatar : "ic_anonymous";
 	      return dom(
 	        LinearLayout,
 	        {
@@ -32560,7 +32646,7 @@
 	        var appIcon = "ic_launcher";
 	        var stroke = false;
 	        if (_this.type == "Profile") {
-	          appIcon = item.data && item.data.avatar ? item.data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
+	          appIcon = item.data && item.data.avatar ? item.data.avatar : "ic_anonymous";
 	        } else {
 	          appIcon = item.hasOwnProperty("appIcon") ? item.appIcon : "ic_launcher";
 	          stroke = true;
@@ -34486,7 +34572,7 @@
 	      } else if (url == "ic_scanqr") {
 	        var whatToSend = [];
 	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
-	        JBridge.logVisitEvent(window.__S.COURSES_BNAV);
+	        JBridge.logVisitEvent("COURSES");
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_filter" || url == "ic_action_filter_applied") {
 	        JBridge.explicitSearch("COURSE", "FILTER");
@@ -35057,7 +35143,7 @@
 	
 	        _this2.screenWidth = JBridge.getScreenWidth();
 	        _this2.cardWidth = _this2.props.cardWidth ? _this2.props.cardWidth : _this2.screenWidth < 300 ? _this2.screenWidth - 32 : 300;
-	        _this2.cardPadding = _this2.props.cardPadding ? _this2.props.cardPadding : Math.floor((_this2.screenWidth - _this2.cardWidth) / 2);
+	        _this2.cardPadding = _this2.props.cardPadding ? _this2.props.cardPadding : Math.floor((_this2.screenWidth - _this2.cardWidth) / 2) + "";
 	        _this2.cards = _this2.props.cards ? _this2.props.cards : [dom(LinearLayout, {
 	            __source: {
 	                fileName: _jsxFileName,
@@ -35740,14 +35826,14 @@
 	        layout = dom(QuestionsComponent, {
 	          visibility: "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 224
+	            lineNumber: 211
 	          }
 	        });
 	      } else {
 	        layout = dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 229
+	            lineNumber: 216
 	          }
 	        });
 	      }
@@ -35763,7 +35849,7 @@
 	          id: _this2.idSet.parentContainer,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 237
+	            lineNumber: 224
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -35774,7 +35860,7 @@
 	          menuData: _this2.menuData,
 	          onMenuItemClick: _this2.handleMenuClick, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 243
+	            lineNumber: 230
 	          }
 	        }),
 	        dom(
@@ -35785,7 +35871,7 @@
 	            weight: "1",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 251
+	              lineNumber: 238
 	            }
 	          },
 	          dom(
@@ -35796,7 +35882,7 @@
 	              background: window.__Colors.WHITE,
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 257
+	                lineNumber: 244
 	              }
 	            },
 	            dom(LinearLayout, {
@@ -35804,7 +35890,7 @@
 	              width: "match_parent",
 	              id: _this2.idSet.questionsComponentContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 263
+	                lineNumber: 250
 	              }
 	            }),
 	            dom(LinearLayout, {
@@ -35814,7 +35900,7 @@
 	              orientation: "vertical",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 268
+	                lineNumber: 255
 	              }
 	            }),
 	            dom(
@@ -35823,16 +35909,15 @@
 	                id: _this2.idSet.resourceContentContainer,
 	                width: "match_parent",
 	                orientation: "vertical",
-	                weight: "1",
-	                layoutTransition: "true", __source: {
+	                weight: "1", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 275
+	                  lineNumber: 262
 	                }
 	              },
 	              dom(CircularLoader, {
 	                margin: "0,16,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 282
+	                  lineNumber: 268
 	                }
 	              })
 	            ),
@@ -35849,7 +35934,7 @@
 	      } else if (url == "ic_scanqr") {
 	        var whatToSend = [];
 	        var event = { tag: "OPEN_QRActivity", contents: whatToSend };
-	        JBridge.logVisitEvent(window.__S.LIBRARY_BNAV);
+	        JBridge.logVisitEvent("LIBRARY");
 	        window.__runDuiCallback(event);
 	      } else if (url == "ic_action_search") {
 	        var searchDetails = { filterDetails: "", searchType: "Library" };
@@ -35889,7 +35974,7 @@
 	        _this2.replaceChild(_this2.idSet.resourceContentContainer, dom(NoInternetCard, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 337
+	            lineNumber: 323
 	          }
 	        }).render(), 0);
 	      } else {
@@ -35917,7 +36002,7 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 357
+	              lineNumber: 343
 	            }
 	          },
 	          dom(OfflineResourceContainer, {
@@ -35926,13 +36011,13 @@
 	            title: window.__S.SAVED_RESOURCES,
 	            onViewAllClick: _this.handleResourceViewAllClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 362
+	              lineNumber: 348
 	            }
 	          }),
 	          dom(LineSpacer, {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 368
+	              lineNumber: 354
 	            }
 	          })
 	        );
@@ -35955,7 +36040,7 @@
 	            width: "match_parent",
 	            padding: "16,16,16,16", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 383
+	              lineNumber: 369
 	            }
 	          },
 	          dom(HomeQuestionCardStyle, {
@@ -35966,7 +36051,7 @@
 	            textSize: "16",
 	            gravity: "left", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 388
+	              lineNumber: 374
 	            }
 	          })
 	        );
@@ -35974,7 +36059,7 @@
 	        return dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 397
+	            lineNumber: 383
 	          }
 	        });
 	      }
@@ -36001,19 +36086,6 @@
 	    return _this2;
 	  }
 	
-	  // getQuestionsComponent = () => {
-	  //   if (window.__questionStore && !window.__questionStore.isAllQsAnsweredAtInit() && window.__loggedInState == "GUEST") {
-	  //     return (
-	  //       <QuestionsComponent
-	  //         visibility = "visible" />
-	  //     );
-	  //   } else {
-	  //     return (
-	  //       <LinearLayout />
-	  //     );
-	  //   }
-	  // }
-	
 	  _createClass(ResourceComponent, [{
 	    key: "render",
 	    value: function render() {
@@ -36026,7 +36098,7 @@
 	          afterRender: this.afterRender,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 404
+	            lineNumber: 390
 	          }
 	        },
 	        this.getBody()
@@ -38491,7 +38563,7 @@
 	    console.log("this.props.data", _this2.props.data);
 	    _this2.isEditable = _this2.props.editable;
 	    _this2.userName = _this2.props.data.userName ? _this2.props.data.userName : "";
-	    _this2.imageUrl = _this2.props.data.avatar ? _this2.props.data.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc";
+	    _this2.imageUrl = _this2.props.data.avatar ? _this2.props.data.avatar : "ic_anonymous";
 	    _this2.firstName = _this2.props.data.firstName ? _this2.props.data.firstName : _this2.userName;
 	    _this2.lastName = _this2.props.data.lastName ? _this2.props.data.lastName : "";
 	    _this2.address = _this2.props.data.address && _this2.props.data.address.length > 0 ? _this2.props.data.address : "";
@@ -40782,7 +40854,7 @@
 	          }
 	        },
 	        dom(ImageView, {
-	          imageFromUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc",
+	          imageUrl: "ic_anonymous",
 	          height: "10",
 	          width: "10", __source: {
 	            fileName: _jsxFileName,
@@ -41627,13 +41699,13 @@
 	    _this2.isEditable = _this2.props.editable;
 	    _this2.data = [{
 	      "name": "VYASA",
-	      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc"
+	      "imageUrl": "ic_anonymous"
 	    }, {
 	      "name": "IITE",
-	      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc"
+	      "imageUrl": "ic_anonymous"
 	    }, {
 	      "name": "NCTE",
-	      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1X3cm5xzR4D1W9oPb2QWioKlrfLVd0DvXFUNqSjZfg-M0bpc"
+	      "imageUrl": "ic_anonymous"
 	    }, {
 	      "name": "Teach for India",
 	      "imageUrl": "ic_launcher"
@@ -42176,8 +42248,11 @@
 	    };
 	
 	    this.isAllQsAnsweredAtInit = function () {
-	        //updated only when initialized
-	        return _this.answeredAll;
+	        var numberSelected = 0;
+	        _this.questions.map(function (item) {
+	            if (item.selected.length != 0) numberSelected++;
+	        });
+	        return _this.totalCards == numberSelected;
 	    };
 	
 	    this.getEleAtIndex = function (arr, index) {
@@ -42230,11 +42305,6 @@
 	        this.questions = JSON.parse(answeredQs);
 	        this.currIndex = this.questions.length - 1;
 	    }
-	    var numberSelected = 0;
-	    this.questions.map(function (item) {
-	        if (item.selected.length != 0) numberSelected++;
-	    });
-	    this.answeredAll = this.totalCards == numberSelected;
 	
 	    this.questionMap = {
 	        "board": {
@@ -43008,7 +43078,7 @@
 	                    background: "#FFFFFF",
 	                    margin: "0,0,0,0",
 	                    gravity: "center",
-	                    padding: "24,0,24,0", __source: {
+	                    padding: "8,0,8,0", __source: {
 	                        fileName: _jsxFileName,
 	                        lineNumber: 35
 	                    }
@@ -43073,7 +43143,7 @@
 	                        {
 	                            width: "match_parent",
 	                            height: "0",
-	                            weight: "1",
+	                            weight: "2",
 	                            gravity: "center", __source: {
 	                                fileName: _jsxFileName,
 	                                lineNumber: 76
@@ -43083,7 +43153,7 @@
 	                            gravity: "center",
 	                            width: "wrap_content",
 	                            margin: "0,8,0,0",
-	                            padding: "24,0,24,0",
+	                            padding: "0,0,0,0",
 	                            textSize: "14",
 	                            fontStyle: Font.fontStyle.REGULAR,
 	                            text: this.cardData.desc, __source: {
@@ -43128,9 +43198,6 @@
 	        }];
 	        _this3.cardWidth = JBridge.getScreenWidth();
 	        _this3.cardHeight = JBridge.getScreenHeight() - 250;
-	        _this3.cardPadding = Math.floor((_this3.screenWidth - _this3.cardWidth) / 2);
-	
-	        console.log("cardPadding -> ", _this3.cardPadding);
 	
 	        _this3.renderCards = _this3.cardsArr.map(function (item, i) {
 	            return dom(Card, {
@@ -43138,7 +43205,7 @@
 	                width: _this3.cardWidth + "",
 	                data: item, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 131
+	                    lineNumber: 128
 	                }
 	            });
 	        });
@@ -43157,7 +43224,7 @@
 	                cardWidth: this.cardWidth,
 	                totalCards: this.cardsArr.length, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 146
+	                    lineNumber: 143
 	                }
 	            });
 	            return this.Carousel.render();
