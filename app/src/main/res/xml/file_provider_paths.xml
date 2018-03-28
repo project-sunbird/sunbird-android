@@ -2,5 +2,6 @@
 <paths>
     <external-path name="my_ecars" path="Ecars/tmp/" />
     <external-path name="my_images" path="announcements/" />
+    <external-path name="supportFile" path=".Sunbird/" />
     <external-cache-path name="my_apks" path="." />
 </paths>
