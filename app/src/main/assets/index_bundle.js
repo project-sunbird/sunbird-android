@@ -67,7 +67,7 @@
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var purescriptMain = _index.main;
 	var purescriptChangeFlow = _index.changeFlow;
@@ -12959,13 +12959,13 @@
 	
 	var LoaderDialog = __webpack_require__(348);
 	var PageFilterPopup = __webpack_require__(376);
-	var CustomPopUp = __webpack_require__(389);
-	var PreviewImagePopup = __webpack_require__(390);
-	var ContentLoaderDialog = __webpack_require__(391);
-	var PermissionDeniedDialog = __webpack_require__(392);
-	var LanguagePopup = __webpack_require__(393);
-	var ForceUpgradePopup = __webpack_require__(395);
-	var ProfileImagePopUp = __webpack_require__(396);
+	var CustomPopUp = __webpack_require__(390);
+	var PreviewImagePopup = __webpack_require__(391);
+	var ContentLoaderDialog = __webpack_require__(392);
+	var PermissionDeniedDialog = __webpack_require__(393);
+	var LanguagePopup = __webpack_require__(394);
+	var ForceUpgradePopup = __webpack_require__(396);
+	var ProfileImagePopUp = __webpack_require__(397);
 	var DownloadAllPopUp = __webpack_require__(398);
 	var RatingsPopup = __webpack_require__(399);
 	var GenericSelectorPopup = __webpack_require__(400);
@@ -17119,6 +17119,7 @@
 	var FilterParamsCourse = __webpack_require__(386);
 	var FilterParamsResource = __webpack_require__(387);
 	var utils = __webpack_require__(388);
+	var utilsFunc = __webpack_require__(389);
 	
 	var IconStyle = Styles.Params.IconStyle;
 	
@@ -17129,6 +17130,35 @@
 	    _classCallCheck(this, PageFilterPopup);
 	
 	    var _this = _possibleConstructorReturn(this, (PageFilterPopup.__proto__ || Object.getPrototypeOf(PageFilterPopup)).call(this, props, children));
+	
+	    _this.modifyResourceFilterParams = function () {
+	      //Replace grade from framework if available
+	      var index = utilsFunc.findObjOnProp(_this.filterListResource, "name", "grade");
+	      if (index != -1) {
+	        var frameworkGrade = window.__questionStore.getGradesFromFramework();
+	        if (frameworkGrade.length != 0) {
+	          _this.filterListResource[index] = {
+	            displayName: "Grade",
+	            name: "grade",
+	            values: frameworkGrade
+	          };
+	        }
+	      }
+	
+	      //Replace subject from framework if available
+	      index = utilsFunc.findObjOnProp(_this.filterListResource, "name", "subject");
+	      if (index != -1) {
+	        var frameworkSub = window.__questionStore.getSubjectsFromFramework();
+	        if (frameworkSub.length != 0) {
+	          _this.filterListResource[index] = {
+	            displayName: "Subject",
+	            name: "subject",
+	            values: frameworkSub
+	          };
+	        }
+	      }
+	      console.log("FilterParams in PFP -> ", _this.filterListResource);
+	    };
 	
 	    _this.show = function () {
 	      _this.visible = true;
@@ -17155,7 +17185,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "80", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterPopupjs");
+	      Android.runInUI(cmd, 0, "113", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterPopupjs");
 	    };
 	
 	    _this.setValues = function (item, values) {
@@ -17193,7 +17223,7 @@
 	          onUpdate: _this.setValues,
 	          forPage: true, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 110
+	            lineNumber: 143
 	          }
 	        });
 	      });
@@ -17205,7 +17235,7 @@
 	          width: "match_parent",
 	          fillViewPort: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 122
+	            lineNumber: 155
 	          }
 	        },
 	        dom(
@@ -17216,7 +17246,7 @@
 	            orientation: "vertical",
 	            padding: "0,10,0,60", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 127
+	              lineNumber: 160
 	            }
 	          },
 	          listItem
@@ -17232,7 +17262,7 @@
 	          height: "wrap_content",
 	          margin: "16,0,16,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 141
+	            lineNumber: 174
 	          }
 	        },
 	        dom(TextView, {
@@ -17241,7 +17271,7 @@
 	          text: window.__S.AVAILABLE_FILTERS,
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 146
+	            lineNumber: 179
 	          }
 	        })
 	      );
@@ -17256,7 +17286,7 @@
 	          width: "match_parent",
 	          alignParentBottom: "true, -1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 157
+	            lineNumber: 190
 	          }
 	        },
 	        dom(PageOption, {
@@ -17265,7 +17295,7 @@
 	          hideDivider: false,
 	          onButtonClick: _this.handlePageOption, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 162
+	            lineNumber: 195
 	          }
 	        })
 	      );
@@ -17284,7 +17314,7 @@
 	          padding: "0,18,0,6",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 172
+	            lineNumber: 205
 	          }
 	        },
 	        _this.getHeader(),
@@ -17298,6 +17328,7 @@
 	        _this.isForResouce = false;
 	      } else {
 	        _this.isForResouce = true;
+	        _this.modifyResourceFilterParams();
 	      }
 	
 	      _this.filter = {};
@@ -17353,7 +17384,10 @@
 	
 	    window.__PageFilterPopup = _this;
 	    _this.filterListCourse = FilterParamsCourse.filterParamsCourse;
+	
+	    //Resourse filters
 	    _this.filterListResource = FilterParamsResource.filterParamsResource;
+	
 	    _this.isForResouce = false;
 	    _this.cancelBtnState = {
 	      text: window.__S.CANCEL,
@@ -17385,7 +17419,7 @@
 	          root: "true",
 	          background: window.__Colors.PRIMARY_BLACK_44, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 252
+	            lineNumber: 286
 	          }
 	        },
 	        dom(
@@ -17396,7 +17430,7 @@
 	            background: window.__Colors.PRIMARY_BLACK_44,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 260
+	              lineNumber: 294
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -17404,7 +17438,7 @@
 	            onClick: this.handleDismissClick,
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 266
+	              lineNumber: 300
 	            }
 	          }),
 	          dom(LinearLayout, {
@@ -17414,14 +17448,14 @@
 	            root: "true",
 	            id: this.idSet.contentContainer, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 271
+	              lineNumber: 305
 	            }
 	          })
 	        ),
 	        dom(PageFilterChooser, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 279
+	            lineNumber: 313
 	          }
 	        })
 	      );
@@ -19164,11 +19198,11 @@
 	}, {
 	  name: "grade",
 	  displayName: "Grade",
-	  values: ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9"]
+	  values: ["Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12", "Other"]
 	}, {
 	  name: "subject",
 	  displayName: "Subject",
-	  values: ["Mathematics", "Environmental Studies", "Geography", "History and Civics", "Civics and Administration", "Science and Technology"]
+	  values: ["Mathematics", "English", "Tamil", "Telugu", "Geography", "Urdu", "Kannada", "Assamese", "Physics", "Chemistry", "Hindi", "Marathi", "Environmental Studies", "Political Science", "Bengali", "History", "Gujarati", "Biology", "Oriya", "Punjabi", "Nepali", "Malayalam"]
 	
 	}, {
 	  name: "medium",
@@ -19596,6 +19630,309 @@
 
 /***/ }),
 /* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var callbackMapper = __webpack_require__(329);
+	
+	exports.formatBytes = function (bytes) {
+		if (bytes < 1024) return (bytes / 1).toFixed(0) + " Bytes";else if (bytes < 1048576) return (bytes / 1024).toFixed(0) + " KB";else if (bytes < 1073741824) return (bytes / 1048576).toFixed(0) + " MB";else return (bytes / 1073741824).toFixed(3) + " GB";
+	};
+	
+	exports.firstLeterCapital = function (data) {
+		return data.charAt(0).toUpperCase() + data.substring(1, data.length);
+	};
+	
+	exports.prettifyDate = function (data) {
+	
+		var date = new Date(data);
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	
+		return months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
+	};
+	
+	exports.jsonifyData = function (data) {
+		data = data.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\t/g, ' ').replace(/\n/g, ' ').replace(/\\f/g, "\\f");
+		data = data.replace(/[\u0000-\u0019]+/g, "");
+	
+		return data;
+	};
+	exports.formatDate = function (d) {
+		var temp = d.toString();
+		var month = d.getMonth();
+		if (month < 10) {
+			month = "0" + d.getMonth();
+		}
+		var day = d.getDate();
+		if (day < 10) {
+			day = "0" + d.getDate();
+		}
+		var res = d.getFullYear() + "-" + month + "-" + day + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds() + "+" + temp.substring(29, 33);
+		console.log("formateDate output -> ", res);
+		return res;
+	};
+	
+	exports.decodeBase64 = function (data) {
+		if (data.length != 0) return decodeURIComponent(escape(atob(data)));else {
+			return "{}";
+		}
+	};
+	
+	exports.encodeBase64 = function (data) {
+		return btoa(unescape(encodeURIComponent(data)));
+	};
+	
+	exports.setPermissions = function (permission) {
+	
+		var callback = callbackMapper.map(function (data) {
+	
+			if (data == permission) {
+				if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
+					JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
+				}
+			}
+			if (data == "DeniedPermanently") {
+				window.__PermissionDeniedDialog.show("ic_flag_warning", "Storage permission is required for this functionality");
+			}
+		});
+	
+		JBridge.setPermissions(callback, permission);
+	};
+	
+	exports.clearDeeplinkPreferences = function () {
+		JBridge.setInSharedPrefs("intentLinkPath", "__failed");
+		JBridge.setInSharedPrefs("intentFilePath", "__failed");
+	};
+	
+	exports.checkEnrolledCourse = function (identifier) {
+		var enrolled = false;
+		if (window.__enrolledCourses && window.__enrolledCourses != "") {
+			window.__enrolledCourses.map(function (item) {
+				if (item.courseId == identifier) {
+					enrolled = true;
+				}
+			});
+		}
+		return enrolled;
+	};
+	
+	exports.getEnrolledCourse = function (identifier) {
+	
+		var enrolled = null;
+		window.__enrolledCourses.map(function (item) {
+			if (item.courseId == identifier) {
+				enrolled = item;
+			}
+		});
+	
+		return enrolled;
+	};
+	
+	exports.cropText = function (text, limit) {
+		if (!limit || limit == undefined) limit = 50;
+		if (text && text != undefined && text.length > limit) text = text.substring(0, limit) + "...";
+		return text;
+	};
+	
+	exports.addSwipeFunction = function (id) {
+		console.log("addSwipeFunction");
+		var callbackRefresh = callbackMapper.map(function (params) {
+			window.__BNavFlowRestart();
+		});
+		JBridge.addSwipeRefreshScrollView(id, callbackRefresh);
+	};
+	
+	exports.processResponse = function (state) {
+		console.log("processing response, state:", state);
+		var response = {};
+		response.responseFor = state.responseFor;
+		if (state.response.status instanceof Object) {
+			response.status = state.response.status[0];
+			response.data = state.response.status[1];
+			response.code = state.response.status[2];
+			response.url = state.response.status[3];
+		} else if (state.response.hasOwnProperty("status")) {
+			response.status = state.response.status;
+			response.data = "";
+			response.code = state.response.statusCode;
+			response.url = "";
+		}
+		var decoded = exports.decodeBase64(response.data);
+		try {
+			response.data = JSON.parse(decoded);
+		} catch (e) {
+			console.log("processing response, error parsing:", e);
+			response.data = decoded;
+			response.err = "Parsing error";
+		}
+		if (response.code == "401" && window.__loggedInState != "GUEST") {
+			console.log("401 response data ", response.data);
+			if (response.data.hasOwnProperty("message")) {
+				//api token expired
+				window.__apiTokenExpireCount++;
+				if (window.__apiTokenExpireCount < 2) {
+					var callback = callbackMapper.map(function (token) {
+						window.__apiToken = token;
+						JBridge.setInSharedPrefs("api_token", token);
+						window.__apiTokenExpireCount--;
+						var whatToSend = { "user_token": window.__userToken, "api_token": window.__apiToken };
+						var event = { "tag": state.responseFor, contents: whatToSend };
+						window.__runDuiCallback(event);
+					});
+					JBridge.getApiToken(callback);
+				} else {
+					//force the user to upgrade app
+					window.__ForceUpgradePopup.show();
+				}
+				return;
+			} else {
+				//refresh user access token
+				console.log("refresh user_access_token");
+				var callback = callbackMapper.map(function (params) {
+					console.log("refreshed user_access_token, data: ", params);
+					console.log(arguments);
+					var status = arguments[0];
+					var response = JSON.parse(exports.decodeBase64(arguments[1]));
+					var statusCode = arguments[2];
+					// console.log("statusCode: " + statusCode + "-- response: " + response);
+					if (status == "failure") {
+						window.__Logout();
+					} else {
+						console.log("response ", response);
+						window.__refreshToken = response.refresh_token;
+						window.__user_accessToken = response.access_token;
+						JBridge.setInSharedPrefs("user_access_token", response.access_token);
+						JBridge.setInSharedPrefs("refresh_token", response.refresh_token);
+						var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
+						var event = { "tag": state.responseFor, contents: whatToSend };
+						window.__runDuiCallback(event);
+					}
+				});
+				JBridge.refreshAccessToken(callback);
+				return;
+			}
+		} else if (response.code == 501 || response.status === "failure" || response.status == "f" || response.code == 504 || response.status == "failed") {
+			if (response.data.params && response.data.err) response.err = response.data.err;else response.err = "Unkown error";
+			console.log("Error : ", response.err);
+		} else if (response.code != 200 && response.code != 201) {
+			response.status = "failure";
+			response.err = "Unkown error";
+		}
+		console.log("processing response, response:", response);
+	
+		return response;
+	};
+	
+	exports.getCallbacks = function (downloadProgressCb, contentImportProgressCb, contentImportResponseCb) {
+		var cb1 = callbackMapper.map(function (data) {
+			console.log("downloadProgressCb -> ", data);
+			downloadProgressCb(data);
+		});
+		/* downloadProgressCb data format:
+	 [
+	 	"onDownloadProgress",
+	 	"do_212371599518752768174",
+	 	"{\"downloadId\":7010,\"downloadProgress\":-1,\"identifier\":\"do_212371599518752768174\",\"status\":1}"
+	 ]
+	 */
+	
+		var cb2 = callbackMapper.map(function (data) {
+			console.log("contentImportProgressCb -> ", data);
+			contentImportProgressCb(data);
+		});
+		/* contentImportProgressCb data format:
+	 [
+	 	"onContentImportProgress",
+	 	"do_212371599518752768174",
+	 	"{\"currentCount\":0,\"totalCount\":5}"
+	 ]
+	 */
+	
+		var cb3 = callbackMapper.map(function (data) {
+			console.log("contentImportResponseCb -> ", data);
+			contentImportResponseCb(data);
+		});
+		return [cb1, cb2, cb3];
+		/* contentImportResponseCb data format:
+	 [
+	 	"onContentImportResponse",
+	 	"do_212371599518752768174",
+	 	"{\"identifier\":\"do_212371599518752768174\",\"status\":\"DOWNLOAD_COMPLETED\"}"
+	 ]
+	 */
+	};
+	
+	exports.getFuncMapped = function (func) {
+		return callbackMapper.map(function (data) {
+			func(data);
+		});
+	};
+	
+	exports.setLoginPreferences = function () {
+		window.__userToken = JBridge.getFromSharedPrefs("user_token");
+		window.__refreshToken = JBridge.getFromSharedPrefs("refresh_token");
+		window.__user_accessToken = JBridge.getFromSharedPrefs("user_access_token");
+		var setProfileCb = callbackMapper.map(function (data) {
+			console.log("setProfile -> ", data);
+		});
+		if (window.__loggedInState == "GUEST") {
+			JBridge.setInSharedPrefs("logged_in", "GUEST");
+			if (window.__userToken == "__failed") {
+				var cb = callbackMapper.map(function (data) {
+					console.log("setProfile -> ", data);
+	
+					var guestData = JSON.parse(exports.decodeBase64(JBridge.getCurrentProfileData()));
+					window.__userToken = guestData.uid;
+					JBridge.setInSharedPrefs("user_token", guestData.uid);
+				});
+				JBridge.setProfile("", true, cb);
+			} else {
+				//JBridge.setProfile(window.__userToken, true, setProfileCb);
+			}
+		} else if (window.__loggedInState == "YES") {
+			JBridge.setInSharedPrefs("answeredQs", "__failed");
+			JBridge.setInSharedPrefs("logged_in", "YES");
+			JBridge.setProfile(window.__userToken, false, setProfileCb);
+		}
+	};
+	
+	exports.formatJSON = function (json) {
+		var s = json;
+		s = s.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
+		s = s.replace(/[\u0000-\u0019]+/g, "");
+		return s;
+	};
+	
+	exports.eqObjProp = function (obj1, obj2, prop) {
+		if (obj1[prop] === obj2[prop]) return true;else return false;
+	};
+	
+	exports.findObjOnProp = function (objArr, prop, val) {
+		var index = -1;
+		objArr.map(function (item, i) {
+			if (item[prop] == val && index == -1) index = i;
+		});
+		return index;
+	};
+	
+	exports.setPermissions = function () {
+		var callback = callbackMapper.map(function (data) {
+	
+			if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
+				JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
+			}
+			if (data == "DeniedPermanently") {
+				console.log("DENIED DeniedPermanently");
+				JBridge.hideKeyboard();
+				window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.STORAGE);
+			}
+		});
+		JBridge.setPermissions(callback, "android.permission.WRITE_EXTERNAL_STORAGE");
+	};
+
+/***/ }),
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20184,7 +20521,7 @@
 	module.exports = CustomPopUp;
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20320,7 +20657,7 @@
 	module.exports = PreviewImagePopup;
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20555,7 +20892,7 @@
 	module.exports = ContentLoaderDialog;
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20831,7 +21168,7 @@
 	module.exports = PermissionDeniedDialog;
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20861,7 +21198,7 @@
 	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
 	var callbackMapper = __webpack_require__(329);
 	var Styles = __webpack_require__(347);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
 	
@@ -21182,7 +21519,7 @@
 	module.exports = LanguagePopup;
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21236,7 +21573,7 @@
 	module.exports = Spinner;
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21377,7 +21714,7 @@
 	module.exports = ForceUpgradePopup;
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21406,7 +21743,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	
 	var ProfileImagePopUp = function (_View) {
@@ -21728,330 +22065,6 @@
 	}(View);
 	
 	module.exports = ProfileImagePopUp;
-
-/***/ }),
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var callbackMapper = __webpack_require__(329);
-	
-	exports.formatBytes = function (bytes) {
-		if (bytes < 1024) return (bytes / 1).toFixed(0) + " Bytes";else if (bytes < 1048576) return (bytes / 1024).toFixed(0) + " KB";else if (bytes < 1073741824) return (bytes / 1048576).toFixed(0) + " MB";else return (bytes / 1073741824).toFixed(3) + " GB";
-	};
-	
-	exports.firstLeterCapital = function (data) {
-		return data.charAt(0).toUpperCase() + data.substring(1, data.length);
-	};
-	
-	exports.prettifyDate = function (data) {
-	
-		var date = new Date(data);
-		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	
-		return months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
-	};
-	
-	exports.jsonifyData = function (data) {
-		data = data.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\t/g, ' ').replace(/\n/g, ' ').replace(/\\f/g, "\\f");
-		data = data.replace(/[\u0000-\u0019]+/g, "");
-	
-		return data;
-	};
-	exports.formatDate = function (d) {
-		var temp = d.toString();
-		var month = d.getMonth();
-		if (month < 10) {
-			month = "0" + d.getMonth();
-		}
-		var day = d.getDate();
-		if (day < 10) {
-			day = "0" + d.getDate();
-		}
-		var res = d.getFullYear() + "-" + month + "-" + day + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds() + "+" + temp.substring(29, 33);
-		console.log("formateDate output -> ", res);
-		return res;
-	};
-	
-	exports.decodeBase64 = function (data) {
-		if (data.length != 0) return decodeURIComponent(escape(atob(data)));else {
-			return "{}";
-		}
-	};
-	
-	exports.encodeBase64 = function (data) {
-		return btoa(unescape(encodeURIComponent(data)));
-	};
-	
-	exports.setPermissions = function (permission) {
-	
-		var callback = callbackMapper.map(function (data) {
-	
-			if (data == permission) {
-				if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
-					JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
-				}
-			}
-			if (data == "DeniedPermanently") {
-				window.__PermissionDeniedDialog.show("ic_flag_warning", "Storage permission is required for this functionality");
-			}
-		});
-	
-		JBridge.setPermissions(callback, permission);
-	};
-	
-	exports.clearDeeplinkPreferences = function () {
-		JBridge.setInSharedPrefs("intentLinkPath", "__failed");
-		JBridge.setInSharedPrefs("intentFilePath", "__failed");
-	};
-	
-	exports.checkEnrolledCourse = function (identifier) {
-		var enrolled = false;
-		if (window.__enrolledCourses && window.__enrolledCourses != "") {
-			window.__enrolledCourses.map(function (item) {
-				if (item.courseId == identifier) {
-					enrolled = true;
-				}
-			});
-		}
-		return enrolled;
-	};
-	
-	exports.getEnrolledCourse = function (identifier) {
-	
-		var enrolled = null;
-		window.__enrolledCourses.map(function (item) {
-			if (item.courseId == identifier) {
-				enrolled = item;
-			}
-		});
-	
-		return enrolled;
-	};
-	
-	exports.cropText = function (text, limit) {
-		if (!limit || limit == undefined) limit = 50;
-		if (text && text != undefined && text.length > limit) text = text.substring(0, limit) + "...";
-		return text;
-	};
-	
-	exports.addSwipeFunction = function (id) {
-		console.log("addSwipeFunction");
-		var callbackRefresh = callbackMapper.map(function (params) {
-			window.__BNavFlowRestart();
-		});
-		JBridge.addSwipeRefreshScrollView(id, callbackRefresh);
-	};
-	
-	exports.processResponse = function (state) {
-		console.log("processing response, state:", state);
-		var response = {};
-		response.responseFor = state.responseFor;
-		if (state.response.status instanceof Object) {
-			response.status = state.response.status[0];
-			response.data = state.response.status[1];
-			response.code = state.response.status[2];
-			response.url = state.response.status[3];
-		} else if (state.response.hasOwnProperty("status")) {
-			response.status = state.response.status;
-			response.data = "";
-			response.code = state.response.statusCode;
-			response.url = "";
-		}
-		var decoded = exports.decodeBase64(response.data);
-		try {
-			response.data = JSON.parse(decoded);
-		} catch (e) {
-			console.log("processing response, error parsing:", e);
-			response.data = decoded;
-			response.err = "Parsing error";
-		}
-		if (response.code == "401" && window.__loggedInState != "GUEST") {
-			console.log("401 response data ", response.data);
-			if (response.data.hasOwnProperty("message")) {
-				//api token expired
-				window.__apiTokenExpireCount++;
-				if (window.__apiTokenExpireCount < 2) {
-					var callback = callbackMapper.map(function (token) {
-						window.__apiToken = token;
-						JBridge.setInSharedPrefs("api_token", token);
-						window.__apiTokenExpireCount--;
-						var whatToSend = { "user_token": window.__userToken, "api_token": window.__apiToken };
-						var event = { "tag": state.responseFor, contents: whatToSend };
-						window.__runDuiCallback(event);
-					});
-					JBridge.getApiToken(callback);
-				} else {
-					//force the user to upgrade app
-					window.__ForceUpgradePopup.show();
-				}
-				return;
-			} else {
-				//refresh user access token
-				console.log("refresh user_access_token");
-				var callback = callbackMapper.map(function (params) {
-					console.log("refreshed user_access_token, data: ", params);
-					console.log(arguments);
-					var status = arguments[0];
-					var response = JSON.parse(exports.decodeBase64(arguments[1]));
-					var statusCode = arguments[2];
-					// console.log("statusCode: " + statusCode + "-- response: " + response);
-					if (status == "failure") {
-						window.__Logout();
-					} else {
-						console.log("response ", response);
-						window.__refreshToken = response.refresh_token;
-						window.__user_accessToken = response.access_token;
-						JBridge.setInSharedPrefs("user_access_token", response.access_token);
-						JBridge.setInSharedPrefs("refresh_token", response.refresh_token);
-						var whatToSend = { "user_token": window.__user_accessToken, "api_token": window.__apiToken };
-						var event = { "tag": state.responseFor, contents: whatToSend };
-						window.__runDuiCallback(event);
-					}
-				});
-				JBridge.refreshAccessToken(callback);
-				return;
-			}
-		} else if (response.code == 501 || response.status === "failure" || response.status == "f" || response.code == 504 || response.status == "failed") {
-			if (response.data.params && response.data.err) response.err = response.data.err;else response.err = "Unkown error";
-			console.log("Error : ", response.err);
-		} else if (response.code != 200 && response.code != 201) {
-			response.status = "failure";
-			response.err = "Unkown error";
-		}
-		console.log("processing response, response:", response);
-	
-		return response;
-	};
-	
-	exports.getCallbacks = function (downloadProgressCb, contentImportProgressCb, contentImportResponseCb) {
-		var cb1 = callbackMapper.map(function (data) {
-			console.log("downloadProgressCb -> ", data);
-			downloadProgressCb(data);
-		});
-		/* downloadProgressCb data format:
-	 [
-	 	"onDownloadProgress",
-	 	"do_212371599518752768174",
-	 	"{\"downloadId\":7010,\"downloadProgress\":-1,\"identifier\":\"do_212371599518752768174\",\"status\":1}"
-	 ]
-	 */
-	
-		var cb2 = callbackMapper.map(function (data) {
-			console.log("contentImportProgressCb -> ", data);
-			contentImportProgressCb(data);
-		});
-		/* contentImportProgressCb data format:
-	 [
-	 	"onContentImportProgress",
-	 	"do_212371599518752768174",
-	 	"{\"currentCount\":0,\"totalCount\":5}"
-	 ]
-	 */
-	
-		var cb3 = callbackMapper.map(function (data) {
-			console.log("contentImportResponseCb -> ", data);
-			contentImportResponseCb(data);
-		});
-		return [cb1, cb2, cb3];
-		/* contentImportResponseCb data format:
-	 [
-	 	"onContentImportResponse",
-	 	"do_212371599518752768174",
-	 	"{\"identifier\":\"do_212371599518752768174\",\"status\":\"DOWNLOAD_COMPLETED\"}"
-	 ]
-	 */
-	};
-	
-	exports.getFuncMapped = function (func) {
-		return callbackMapper.map(function (data) {
-			func(data);
-		});
-	};
-	
-	exports.setLoginPreferences = function () {
-		window.__userToken = JBridge.getFromSharedPrefs("user_token");
-		window.__refreshToken = JBridge.getFromSharedPrefs("refresh_token");
-		window.__user_accessToken = JBridge.getFromSharedPrefs("user_access_token");
-		var setProfileCb = callbackMapper.map(function (data) {
-			console.log("setProfile -> ", data);
-		});
-		if (window.__loggedInState == "GUEST") {
-			JBridge.setInSharedPrefs("logged_in", "GUEST");
-			if (window.__userToken == "__failed") {
-				var cb = callbackMapper.map(function (data) {
-					console.log("setProfile -> ", data);
-	
-					var guestData = JSON.parse(exports.decodeBase64(JBridge.getCurrentProfileData()));
-					window.__userToken = guestData.uid;
-					JBridge.setInSharedPrefs("user_token", guestData.uid);
-				});
-				JBridge.setProfile("", true, cb);
-			} else {
-				//JBridge.setProfile(window.__userToken, true, setProfileCb);
-			}
-		} else if (window.__loggedInState == "YES") {
-			JBridge.setInSharedPrefs("answeredQs", "__failed");
-			JBridge.setInSharedPrefs("logged_in", "YES");
-			JBridge.setProfile(window.__userToken, false, setProfileCb);
-		}
-	};
-	
-	exports.formatJSON = function (json) {
-		var s = json;
-		s = s.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
-		s = s.replace(/[\u0000-\u0019]+/g, "");
-		return s;
-	};
-	
-	exports.eqObjProp = function (obj1, obj2, prop) {
-		if (obj1[prop] === obj2[prop]) return true;else return false;
-	};
-	
-	exports.findObjOnProp = function (objArr, prop, val) {
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-	
-		try {
-			for (var _iterator = objArr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var obj = _step.value;
-	
-				if (obj[prop] == val) return obj;
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator.return) {
-					_iterator.return();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
-		}
-	
-		return null;
-	};
-	
-	exports.setPermissions = function () {
-		var callback = callbackMapper.map(function (data) {
-	
-			if (data == "android.permission.WRITE_EXTERNAL_STORAGE") {
-				JBridge.setKey("isPermissionSetWriteExternalStorage", "true");
-			}
-			if (data == "DeniedPermanently") {
-				console.log("DENIED DeniedPermanently");
-				JBridge.hideKeyboard();
-				window.__PermissionDeniedDialog.show("ic_warning_grey", window.__S.STORAGE);
-			}
-		});
-		JBridge.setPermissions(callback, "android.permission.WRITE_EXTERNAL_STORAGE");
-	};
 
 /***/ }),
 /* 398 */
@@ -22745,7 +22758,7 @@
 	var ImageView = __webpack_require__(350);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	var FeatureButton = __webpack_require__(377);
 	var CardComponent = __webpack_require__(402);
@@ -23363,7 +23376,7 @@
 	var TextView = __webpack_require__(342);
 	var RatingBar = __webpack_require__(372);;
 	var Button = __webpack_require__(380);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var HorizontalProgressBar = __webpack_require__(403);
 	
 	var _this;
@@ -25484,7 +25497,7 @@
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
 	var ImageView = __webpack_require__(350);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	window.R = __webpack_require__(7);
 	
 	var SplashScreenActivity = function (_View) {
@@ -25645,7 +25658,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var ImageView = __webpack_require__(350);
 	var TextView = __webpack_require__(342);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	window.R = __webpack_require__(7);
 	
 	var LanguageSelectActivity = function (_View) {
@@ -26013,7 +26026,7 @@
 	var SimpleToolbar = __webpack_require__(382);
 	var callbackMapper = __webpack_require__(329);
 	var ImageView = __webpack_require__(350);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	window.R = __webpack_require__(7);
 	var Font = __webpack_require__(345);
 	
@@ -27928,7 +27941,7 @@
 	var TextView = __webpack_require__(342);
 	var SimpleToolbar = __webpack_require__(382);
 	var ScrollView = __webpack_require__(358);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	window.R = __webpack_require__(7);
 	
 	var LanguageSelectActivitySt = function (_View) {
@@ -28210,12 +28223,12 @@
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
 	var TextInputView = __webpack_require__(413);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var MultiSelectSpinner = __webpack_require__(419);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var RadioButton = __webpack_require__(401);
 	var SharePopup = __webpack_require__(420);
 	
@@ -28620,7 +28633,7 @@
 	var View = __webpack_require__(331);
 	var LinearLayout = __webpack_require__(333);
 	var HorizontalScrollView = __webpack_require__(357);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	
@@ -28885,7 +28898,7 @@
 	var Space = __webpack_require__(366);
 	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
@@ -29235,7 +29248,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var debounce = __webpack_require__(410);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var Str = __webpack_require__(405);
 	var questionsF = __webpack_require__(466);
 	
@@ -29289,7 +29302,6 @@
 	    // window.handleChangeLang = this.handleChangeLang; //added for testing
 	
 	    var cb = callbackMapper.map(function (data) {
-	      console.log("framework -> ", data[0]);
 	      if (data[0] != "__failed") {
 	        var framework = JSON.parse(data[0]);
 	        console.log("framework -> ", framework);
@@ -29300,7 +29312,7 @@
 	        }
 	      }
 	    });
-	    JBridge.getFrameworkDetails(cb);
+	    var _ = window.__questionStore ? "" : JBridge.getFrameworkDetails(cb);
 	    return _this2;
 	  }
 	
@@ -29317,7 +29329,7 @@
 	          background: window.__Colors.WHITE,
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 528
+	            lineNumber: 527
 	          }
 	        },
 	        dom(LinearLayout, {
@@ -29328,14 +29340,14 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 535
+	            lineNumber: 534
 	          }
 	        }),
 	        dom(
 	          LinearLayout,
 	          { width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 542
+	              lineNumber: 541
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -29346,7 +29358,7 @@
 	            height: "56",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 543
+	              lineNumber: 542
 	            }
 	          })
 	        )
@@ -29365,7 +29377,7 @@
 	  this.onPop = function () {
 	    console.log("onPop called in MainActivity");
 	
-	    Android.runInUI(_this3.animateView(), null, "90", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "89", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -29572,7 +29584,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 296
+	            lineNumber: 295
 	          }
 	        });
 	
@@ -29586,7 +29598,7 @@
 	          response: data,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 313
+	            lineNumber: 312
 	          }
 	        });
 	
@@ -29600,7 +29612,7 @@
 	          width: "match_parent",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 325
+	            lineNumber: 324
 	          }
 	        });
 	
@@ -29628,7 +29640,7 @@
 	          editable: "true",
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 350
+	            lineNumber: 349
 	          }
 	        });
 	        break;
@@ -29638,7 +29650,7 @@
 	          LinearLayout,
 	          { height: "match_parent", root: "true", width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 362
+	              lineNumber: 361
 	            }
 	          },
 	          dom(TextView, {
@@ -29650,7 +29662,7 @@
 	            gravity: "center",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 363
+	              lineNumber: 362
 	            }
 	          })
 	        );
@@ -29663,7 +29675,7 @@
 	      contentLayout: _this3.contentLayout,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 376
+	        lineNumber: 375
 	      }
 	    });
 	
@@ -29711,7 +29723,7 @@
 	        orientation: "vertical",
 	        height: "56", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 421
+	          lineNumber: 420
 	        }
 	      },
 	      dom(ViewWidget, {
@@ -29720,7 +29732,7 @@
 	        width: "match_parent",
 	        background: window.__Colors.DARK_GRAY, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 427
+	          lineNumber: 426
 	        }
 	      }),
 	      _this3.getBottomNavBar()
@@ -29795,7 +29807,7 @@
 	      _onClick: _this3.handleBottomNavBarAction,
 	      __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 505
+	        lineNumber: 504
 	      }
 	    });
 	
@@ -30114,7 +30126,7 @@
 	var View = __webpack_require__(331);
 	var CourseInProgressContainer = __webpack_require__(425);
 	var HorizontalProgressBar = __webpack_require__(403);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var Button = __webpack_require__(380);
 	var HomeQuestionCardStyle = __webpack_require__(426);
 	var AnnouncementCard = __webpack_require__(427);
@@ -30939,7 +30951,7 @@
 	var TextView = __webpack_require__(342);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	var CardComponent = __webpack_require__(402);
 	var CircularLoader = __webpack_require__(404);
@@ -31430,7 +31442,7 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var EditText = __webpack_require__(363);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var AnnouncementCard = function (_View) {
 	  _inherits(AnnouncementCard, _View);
@@ -32616,7 +32628,7 @@
 	var Space = __webpack_require__(366);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var ListView = __webpack_require__(371);
 	var debounce = __webpack_require__(410);
 	
@@ -34150,7 +34162,7 @@
 	var LineSpacer = __webpack_require__(424);
 	var NoInternetCard = __webpack_require__(441);
 	var CircularLoader = __webpack_require__(404);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var SearchToolbar = __webpack_require__(429);
 	var SimpleToolbar = __webpack_require__(382);
@@ -34652,7 +34664,7 @@
 	var TextView = __webpack_require__(342);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	var CardComponent = __webpack_require__(402);
 	var CarouselCards = __webpack_require__(440);
@@ -34996,7 +35008,7 @@
 	var TextView = __webpack_require__(342);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	var CardComponent = __webpack_require__(402);
 	var CircularLoader = __webpack_require__(404);
@@ -35368,7 +35380,7 @@
 	var _this;
 	var callbackMapper = __webpack_require__(329);
 	var CardComponent = __webpack_require__(402);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var CourseContainer = function (_View) {
 	  _inherits(CourseContainer, _View);
@@ -35633,7 +35645,7 @@
 	var HomeRecommendedContainer = __webpack_require__(432);
 	var ResourceContainer = __webpack_require__(444);
 	var OfflineResourceContainer = __webpack_require__(445);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -36143,7 +36155,7 @@
 	var _this;
 	var callbackMapper = __webpack_require__(329);
 	var CardComponent = __webpack_require__(402);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var ResourceContainer = function (_View) {
 	  _inherits(ResourceContainer, _View);
@@ -36371,7 +36383,7 @@
 	var _this;
 	var callbackMapper = __webpack_require__(329);
 	var CardComponent = __webpack_require__(402);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var OfflineResourceContainer = function (_View) {
 	  _inherits(OfflineResourceContainer, _View);
@@ -37762,7 +37774,7 @@
 	var HomeQuestionCardStyle = __webpack_require__(426);
 	var CropParagraph = __webpack_require__(455);
 	var CircularLoader = __webpack_require__(404);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var Str = __webpack_require__(405);
 	
 	var _this;
@@ -39677,7 +39689,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var RelativeLayout = __webpack_require__(340);
 	
 	var _this;
@@ -40213,7 +40225,7 @@
 	var RatingBar = __webpack_require__(372);;
 	var HorizontalScrollView = __webpack_require__(357);
 	var CardComponent = __webpack_require__(402);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -41129,7 +41141,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -41787,7 +41799,7 @@
 	var ViewWidget = __webpack_require__(349);
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -42176,11 +42188,13 @@
 
 /***/ }),
 /* 466 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var utils = __webpack_require__(389);
 	
 	var QuestionsFramework = function QuestionsFramework(framework) {
 	    var _this = this;
@@ -42292,6 +42306,34 @@
 	        _this.questions[index] = data;
 	        _this.questions = _this.questions.slice(0, index + 1);
 	        JBridge.setInSharedPrefs("answeredQs", JSON.stringify(_this.questions));
+	    };
+	
+	    this.getGradesFromFramework = function () {
+	        var gradesArr = [];
+	        try {
+	            var index = utils.findObjOnProp(_this.categories, "code", "gradeLevel");
+	            var gradesObj = index == -1 ? {} : _this.categories[index];
+	            gradesObj.terms.map(function (item) {
+	                gradesArr.push(item.name);
+	            });
+	        } catch (err) {
+	            console.log("Error getGradesFromFramework -> ", err);
+	        }
+	        return gradesArr;
+	    };
+	
+	    this.getSubjectsFromFramework = function () {
+	        var subjectArr = [];
+	        try {
+	            var index = utils.findObjOnProp(_this.categories, "code", "subject");
+	            var subjectObj = index == -1 ? {} : _this.categories[index];
+	            subjectObj.terms.map(function (item) {
+	                subjectArr.push(item.name);
+	            });
+	        } catch (err) {
+	            console.log("Error getSubjectsFromFramework -> ", err);
+	        }
+	        return subjectArr;
 	    };
 	
 	    this.frameworkJSON = framework;
@@ -42449,7 +42491,7 @@
 	var ProgressBar = __webpack_require__(359);
 	var callbackMapper = __webpack_require__(329);
 	var SimpleToolbar = __webpack_require__(382);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -43040,7 +43082,7 @@
 	var TextView = __webpack_require__(342);
 	var ViewWidget = __webpack_require__(349);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	var CardComponent = __webpack_require__(402);
 	var CarouselCards = __webpack_require__(440);
@@ -43265,7 +43307,7 @@
 	var HorizontalScrollView = __webpack_require__(357);
 	var ImageView = __webpack_require__(350);
 	var ProgressBar = __webpack_require__(359);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var RatingBar = __webpack_require__(372);
 	
 	var objectAssign = __webpack_require__(317);
@@ -44889,7 +44931,7 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	var ViewWidget = __webpack_require__(349);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var ChapterOverView = function (_View) {
 	  _inherits(ChapterOverView, _View);
@@ -44987,7 +45029,7 @@
 	var TextView = __webpack_require__(342);
 	var ImageView = __webpack_require__(350);
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var CourseProgress = function (_View) {
 	  _inherits(CourseProgress, _View);
@@ -45161,7 +45203,7 @@
 	var RelativeLayout = __webpack_require__(340);
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var Button = __webpack_require__(380);
 	
@@ -45611,7 +45653,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ScrollView = __webpack_require__(358);
 	var ProgressBar = __webpack_require__(359);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var FeatureButton = __webpack_require__(377);
 	var DownloadAllProgressButton = __webpack_require__(479);
 	var RatingBar = __webpack_require__(372);
@@ -45627,7 +45669,7 @@
 	var FlagPopup = __webpack_require__(480);
 	var SharePopup = __webpack_require__(420);
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	
 	var CourseEnrolledActivity = function (_View) {
@@ -47205,7 +47247,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var ImageView = __webpack_require__(350);
 	var Button = __webpack_require__(380);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -47508,7 +47550,7 @@
 	var ViewWidget = __webpack_require__(351).androidViews.ViewWidget;
 	var FeatureButton = __webpack_require__(377);
 	var RadioListItem = __webpack_require__(384);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var TextInputView = __webpack_require__(413);
 	var Styles = __webpack_require__(347);
 	
@@ -47934,7 +47976,7 @@
 	var CropParagraph = __webpack_require__(455);
 	var ProgressButton = __webpack_require__(477);
 	var CourseCurriculum = __webpack_require__(472);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -48628,7 +48670,7 @@
 	var HomeQuestionCardStyle = __webpack_require__(426);
 	
 	//Utils
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	/*******************************
 	*    ScreenCode is defined here
 	*******************************/
@@ -49238,7 +49280,7 @@
 	var StarComponent = __webpack_require__(434);
 	var _this;
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var BatchCard = function (_View) {
 	  _inherits(BatchCard, _View);
@@ -51563,7 +51605,7 @@
 	var FlagPopup = __webpack_require__(480);
 	var SimpleToolbar = __webpack_require__(382);
 	var ProgressButton = __webpack_require__(477);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var RatingsPopup = __webpack_require__(399);
 	
 	window.R = __webpack_require__(7);
@@ -52536,7 +52578,7 @@
 	var ListView = __webpack_require__(371);
 	var SimpleToolbar = __webpack_require__(382);
 	var LargeCardComponent = __webpack_require__(494);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -53079,7 +53121,7 @@
 	var SimpleToolbar = __webpack_require__(382);
 	var LargeCardComponent = __webpack_require__(494);
 	var ListView = __webpack_require__(371);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -53357,7 +53399,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var AnnouncementCard = __webpack_require__(427);
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	
 	var AnnouncementViewAllActivity = function (_View) {
@@ -53568,12 +53610,12 @@
 	window.R = __webpack_require__(7);
 	var SimpleToolbar = __webpack_require__(382);
 	var FilterDialog = __webpack_require__(498);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var SearchResult = __webpack_require__(431);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var SearchActivity = function (_View) {
 	  _inherits(SearchActivity, _View);
@@ -53937,7 +53979,7 @@
 	      console.log("creating grp for -> ", collection);
 	
 	      collection.childNodes.map(function (item) {
-	        var content = utils.findObjOnProp(contents, "identifier", item);
+	        var content = contents[utils.findObjOnProp(contents, "identifier", item)];
 	        if (content) {
 	          contentsList.push(content);
 	        }
@@ -54441,7 +54483,7 @@
 	var ScrollView = __webpack_require__(351).androidViews.ScrollView;
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	
 	var FilterDialog = function (_View) {
 	  _inherits(FilterDialog, _View);
@@ -55437,12 +55479,12 @@
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
 	var TextInputView = __webpack_require__(413);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var MultiSelectSpinner = __webpack_require__(419);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var IconStyle = Styles.Params.IconStyle;
 	
@@ -55464,7 +55506,13 @@
 	    _this2.currentData = {};
 	    _this2.screenName = "AdditionalInformationActivity";
 	
-	    _this2.subjectDictionary = ["Select", "Assamese", "Bengali", "English", "Gujarati", "Hindi", "Kannada", "Malayalam", "Marathi", "Maths", "Nepali", "Oriya", "Punjabi", "Tamil", "Telugu", "Urdu"];
+	    var frameworkSub = window.__questionStore.getSubjectsFromFramework();
+	    if (window.__questionStore && frameworkSub.length != 0) {
+	      _this2.subjectDictionary = ["Select"];
+	      _this2.subjectDictionary = _this2.subjectDictionary.concat(frameworkSub);
+	    } else {
+	      _this2.subjectDictionary = ["Select", "Mathematics", "English", "Tamil", "Telugu", "Geography", "Urdu", "Kannada", "Assamese", "Physics", "Chemistry", "Hindi", "Marathi", "Environmental Studies", "Political Science", "Bengali", "History", "Gujarati", "Biology", "Oriya", "Punjabi", "Nepali", "Malayalam"];
+	    }
 	    _this2.currentData.selectedSubjects = [];
 	    _this2.currentData.email = "";
 	    _this2.currentData.mobile = "";
@@ -55500,7 +55548,14 @@
 	    _this2.currentData.lockStatus = Object.assign({}, _this2.prevData.lockStatus);
 	    _this2.GenderArray = ["Select", "Male", "Female", "Transgender"];
 	    _this2.LanguageArray = ["Select", "Assamese", "Bengali", "English", "Gujarati", "Hindi", "Kannada", "Marathi", "Punjabi", "Tamil", "Telugu"];
-	    _this2.GradeArray = ["Select", "Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7"];
+	
+	    var frameworkGrade = window.__questionStore.getGradesFromFramework();
+	    if (window.__questionStore && frameworkGrade.length != 0) {
+	      _this2.GradeArray = ["Select"];
+	      _this2.GradeArray = _this2.GradeArray.concat(frameworkGrade);
+	    } else {
+	      _this2.GradeArray = ["Select", "Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12", "Other"];
+	    }
 	
 	    _this2.data = JSON.parse(_this2.state.data.value0.profile);
 	    console.log("Info State  ----->", _this2.state);
@@ -55583,7 +55638,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 594
+	            lineNumber: 608
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -55592,7 +55647,7 @@
 	          invert: "true",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 600
+	            lineNumber: 614
 	          }
 	        }),
 	        dom(
@@ -55601,7 +55656,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 605
+	              lineNumber: 619
 	            }
 	          },
 	          this.getBody(),
@@ -55636,7 +55691,7 @@
 	        id: _this3.idSet.gradeSpinnerContainer,
 	        margin: "0,0,0,17", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 198
+	          lineNumber: 212
 	        }
 	      },
 	      dom(TextView, {
@@ -55647,7 +55702,7 @@
 	        text: window.__S.GRADE,
 	        padding: "4,0,0,0", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 204
+	          lineNumber: 218
 	        }
 	      }),
 	      dom(MultiSelectSpinner, {
@@ -55658,7 +55713,7 @@
 	        selectedData: items,
 	        onItemChange: _this3.onMultiSelectGradeItemChange, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 211
+	          lineNumber: 225
 	        }
 	      })
 	    );
@@ -55678,7 +55733,7 @@
 	        id: _this3.idSet.subjectSpinnerContainer,
 	        margin: "0,0,0,17", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 228
+	          lineNumber: 242
 	        }
 	      },
 	      dom(TextView, {
@@ -55689,7 +55744,7 @@
 	        text: window.__S.SUBJECTS,
 	        padding: "4,0,0,0", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 234
+	          lineNumber: 248
 	        }
 	      }),
 	      dom(MultiSelectSpinner, {
@@ -55700,7 +55755,7 @@
 	        selectedData: items,
 	        onItemChange: _this3.onMultiSelectSubjectItemChange, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 241
+	          lineNumber: 255
 	        }
 	      })
 	    );
@@ -55719,7 +55774,7 @@
 	      height: "1",
 	      background: window.__Colors.PRIMARY_BLACK, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 259
+	        lineNumber: 273
 	      }
 	    });
 	  };
@@ -55735,7 +55790,7 @@
 	        orientation: "vertical",
 	        background: "#ffffff", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 269
+	          lineNumber: 283
 	        }
 	      },
 	      dom(PageOption, {
@@ -55743,7 +55798,7 @@
 	        buttonItems: buttonList,
 	        hideDivider: false, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 275
+	          lineNumber: 289
 	        }
 	      })
 	    );
@@ -55758,7 +55813,7 @@
 	        orientation: "vertical",
 	        margin: "4,0,0,18", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 285
+	          lineNumber: 299
 	        }
 	      },
 	      _this3.getLabel(label, optional),
@@ -55770,7 +55825,7 @@
 	          orientation: "horizontal",
 	          id: id, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 291
+	            lineNumber: 305
 	          }
 	        },
 	        dom(
@@ -55780,7 +55835,7 @@
 	            padding: "0,6,0,0",
 	            weight: "1", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 296
+	              lineNumber: 310
 	            }
 	          },
 	          callSpinner()
@@ -55806,7 +55861,7 @@
 	        alignParentRight: "true,-1",
 	        gravity: "right", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 309
+	          lineNumber: 323
 	        }
 	      },
 	      dom(ImageView, {
@@ -55814,7 +55869,7 @@
 	        width: "16",
 	        imageUrl: _this3.currentData.lockStatus[lockName] == "private" ? "ic_action_lock" : "ic_action_unlock", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 318
+	          lineNumber: 332
 	        }
 	      })
 	    );
@@ -55828,7 +55883,7 @@
 	        height: "match_parent",
 	        width: "match_parent", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 328
+	          lineNumber: 342
 	        }
 	      },
 	      dom(TextInputView, {
@@ -55846,7 +55901,7 @@
 	        editTextStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
 	        inputType: inputType ? inputType : "text", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 331
+	          lineNumber: 345
 	        }
 	      }),
 	      dom(
@@ -55857,7 +55912,7 @@
 	          alignParentRight: "true,-1",
 	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 345
+	            lineNumber: 359
 	          }
 	        },
 	        _this3.getLockIcon(lockIconId, lockIconVisibility, lockName, label, padding)
@@ -55881,7 +55936,7 @@
 	          return _this3.privacyChange(id, lockName, label);
 	        }, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 361
+	          lineNumber: 375
 	        }
 	      },
 	      dom(ImageView, {
@@ -55889,7 +55944,7 @@
 	        width: "16",
 	        imageUrl: _this3.currentData.lockStatus[lockName] == "private" ? "ic_action_lock" : "ic_action_unlock", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 366
+	          lineNumber: 380
 	        }
 	      })
 	    );
@@ -55908,7 +55963,7 @@
 	      style: window.__TextStyle.textStyle.HINT.SEMI,
 	      text: label.toUpperCase(label), __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 384
+	        lineNumber: 398
 	      }
 	    });
 	
@@ -55919,7 +55974,7 @@
 	        width: "wrap_content",
 	        orientation: "horizontal", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 391
+	          lineNumber: 405
 	        }
 	      },
 	      dom(TextView, {
@@ -55928,7 +55983,7 @@
 	        style: window.__TextStyle.textStyle.HINT.SEMI,
 	        text: label.toUpperCase(label), __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 395
+	          lineNumber: 409
 	        }
 	      }),
 	      dom(TextView, {
@@ -55937,7 +55992,7 @@
 	        text: " *",
 	        color: "#FF0000", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 400
+	          lineNumber: 414
 	        }
 	      })
 	    );
@@ -55952,7 +56007,7 @@
 	        orientation: "vertical",
 	        padding: "0,0,0,70", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 410
+	          lineNumber: 424
 	        }
 	      },
 	      dom(
@@ -55962,7 +56017,7 @@
 	          height: "match_parent",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 415
+	            lineNumber: 429
 	          }
 	        },
 	        dom(
@@ -55973,7 +56028,7 @@
 	            padding: "11,15,15,15",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 419
+	              lineNumber: 433
 	            }
 	          },
 	          _this3.getEditTextView(_this3.idSet.nameText, window.__S.FIRST_NAME, _this3.currentData.firstName, window.__S.FIRST_NAME_HINT, false, _this3.setName, undefined, false, _this3.idSet.nameLI, "firstName", "8,8,8,8"),
@@ -55986,7 +56041,7 @@
 	              width: "match_parent",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 428
+	                lineNumber: 442
 	              }
 	            },
 	            dom(
@@ -55997,7 +56052,7 @@
 	                padding: "4,0,0,0",
 	                orientation: "horizontal", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 433
+	                  lineNumber: 447
 	                }
 	              },
 	              dom(
@@ -56007,7 +56062,7 @@
 	                  height: "wrap_content",
 	                  orientation: "vertical", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 438
+	                    lineNumber: 452
 	                  }
 	                },
 	                dom(TextView, {
@@ -56017,7 +56072,7 @@
 	                  style: window.__TextStyle.textStyle.HINT.SEMI,
 	                  text: window.__S.EMAIL_ID, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 442
+	                    lineNumber: 456
 	                  }
 	                }),
 	                dom(TextView, {
@@ -56028,7 +56083,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.BODY.DARK.FADED,
 	                  text: _this3.data.email, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 448
+	                    lineNumber: 462
 	                  }
 	                })
 	              ),
@@ -56039,7 +56094,7 @@
 	                  height: "wrap_content",
 	                  padding: "0,0,0,0", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 456
+	                    lineNumber: 470
 	                  }
 	                },
 	                _this3.getLockIcon(_this3.idSet.emailLI, true, "email", window.__S.EMAIL_ID, "8,16,8,0")
@@ -56050,7 +56105,7 @@
 	              width: "match_parent",
 	              height: "18", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 464
+	                lineNumber: 478
 	              }
 	            }),
 	            _this3.getEditTextView(_this3.idSet.phoneText, window.__S.PHONE, _this3.currentData.mobile, window.__S.HINT_MOBILE_NUMBER, false, _this3.setPhone, "numeric", true, _this3.idSet.phoneLI, "phone", "8,16,8,0"),
@@ -56064,7 +56119,7 @@
 	                id: _this3.idSet.subjectSpinnerContainer,
 	                margin: "4,0,0,17", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 470
+	                  lineNumber: 484
 	                }
 	              },
 	              dom(TextView, {
@@ -56075,7 +56130,7 @@
 	                text: window.__S.SUBJECTS,
 	                padding: "4,0,4,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 476
+	                  lineNumber: 490
 	                }
 	              }),
 	              dom(MultiSelectSpinner, {
@@ -56086,7 +56141,7 @@
 	                selectedData: _this3.currentData.selectedSubjects,
 	                onItemChange: _this3.onMultiSelectSubjectItemChange, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 483
+	                  lineNumber: 497
 	                }
 	              })
 	            ),
@@ -56099,7 +56154,7 @@
 	                orientation: "vertical",
 	                margin: "4,0,0,20", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 493
+	                  lineNumber: 507
 	                }
 	              },
 	              dom(TextView, {
@@ -56109,7 +56164,7 @@
 	                style: window.__TextStyle.textStyle.HINT.SEMI,
 	                text: window.__S.DATE_OF_BIRTH, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 498
+	                  lineNumber: 512
 	                }
 	              }),
 	              dom(
@@ -56119,7 +56174,7 @@
 	                  height: "wrap_content",
 	                  padding: "0,6,0,0", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 504
+	                    lineNumber: 518
 	                  }
 	                },
 	                dom(ImageView, {
@@ -56130,7 +56185,7 @@
 	                  imageUrl: "ic_action_calendar_grey",
 	                  onClick: _this3.showCalendar, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 508
+	                    lineNumber: 522
 	                  }
 	                }),
 	                dom(TextView, {
@@ -56142,13 +56197,13 @@
 	                  text: _this3.prevData.dob,
 	                  onClick: _this3.showCalendar, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 515
+	                    lineNumber: 529
 	                  }
 	                }),
 	                dom(LinearLayout, {
 	                  weight: "1", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 523
+	                    lineNumber: 537
 	                  }
 	                }),
 	                _this3.getLockIcon(_this3.idSet.dobLI, true, "dob", window.__S.DATE_OF_BIRTH, "8,4,8,12")
@@ -56164,7 +56219,7 @@
 	                id: _this3.idSet.gradeSpinnerContainer,
 	                margin: "4,0,0,17", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 529
+	                  lineNumber: 543
 	                }
 	              },
 	              dom(TextView, {
@@ -56175,7 +56230,7 @@
 	                text: window.__S.GRADE,
 	                padding: "4,0,0,0", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 535
+	                  lineNumber: 549
 	                }
 	              }),
 	              dom(MultiSelectSpinner, {
@@ -56186,7 +56241,7 @@
 	                selectedData: _this3.currentData.grade,
 	                onItemChange: _this3.onMultiSelectGradeItemChange, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 542
+	                  lineNumber: 556
 	                }
 	              })
 	            ),
@@ -56199,7 +56254,7 @@
 	                margin: "4,0,0,6",
 	                orientation: "horizontal", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 552
+	                  lineNumber: 566
 	                }
 	              },
 	              dom(TextView, {
@@ -56210,7 +56265,7 @@
 	                textAllCaps: "true",
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 557
+	                  lineNumber: 571
 	                }
 	              }),
 	              dom(LinearLayout, {
@@ -56218,7 +56273,7 @@
 	                weight: "1",
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 564
+	                  lineNumber: 578
 	                }
 	              }),
 	              _this3.getLockIcon(_this3.idSet.webLinksLI, true, "webPages", window.__S.WEBLINKS, "8,0,8,16")
@@ -56254,7 +56309,7 @@
 	      onItemClick: _this3.handleLanguageSpinnerItemClick,
 	      values: _this3.LanguageArray.toString(), __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 617
+	        lineNumber: 631
 	      }
 	    });
 	  };
@@ -56284,7 +56339,7 @@
 	      id: _this3.idSet.genderSpinner,
 	      values: _this3.GenderArray.toString(), __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 640
+	        lineNumber: 654
 	      }
 	    });
 	  };
@@ -56319,7 +56374,7 @@
 	        text: data[0],
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	      });
-	      Android.runInUI(cmd, 0, "678", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "692", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
 	      _this.updateSaveButtonStatus(_this.checkCompleteStatus());
 	    });
 	
@@ -56623,7 +56678,7 @@
 	        alpha: alphaVal
 	      });
 	
-	      Android.runInUI(cmd, 0, "1046", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "1060", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
 	    }
 	  };
 	
@@ -56713,12 +56768,12 @@
 	var ScrollView = __webpack_require__(358);
 	var callbackMapper = __webpack_require__(329);
 	var TextInputView = __webpack_require__(413);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var MultiSelectSpinner = __webpack_require__(419);
 	var Styles = __webpack_require__(347);
 	var PageOption = __webpack_require__(379);
 	var SimpleToolbar = __webpack_require__(382);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var MultiSelectSpinner = __webpack_require__(419);
 	
 	window.R = __webpack_require__(7);
@@ -56749,7 +56804,8 @@
 	          {
 	            width: "match_parent",
 	            height: "match_parent",
-	            weight: "1", __source: {
+	            weight: "1",
+	            margin: "0,0,0,85", __source: {
 	              fileName: _jsxFileName,
 	              lineNumber: 90
 	            }
@@ -56762,7 +56818,7 @@
 	              padding: "16,16,16,0",
 	              orientation: "vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 94
+	                lineNumber: 95
 	              }
 	            },
 	            _this2.getEditTextView(_this2.idSet.nameText, window.__S.FULL_NAME, _this2.profileData.handle, _this2.handleOnChange),
@@ -56878,7 +56934,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 195
+	            lineNumber: 196
 	          }
 	        },
 	        dom(TextInputView, {
@@ -56894,7 +56950,7 @@
 	          editTextStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK,
 	          inputType: "text", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 198
+	            lineNumber: 199
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -56903,7 +56959,7 @@
 	          alignParentRight: "true,-1",
 	          padding: "0,0,0,0", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 210
+	            lineNumber: 211
 	          }
 	        })
 	      );
@@ -56920,7 +56976,7 @@
 	          id: id,
 	          margin: "0,0,0,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 222
+	            lineNumber: 223
 	          }
 	        },
 	        _this2.getLabel(label),
@@ -56931,7 +56987,7 @@
 	            height: "wrap_content",
 	            orientation: "horizontal", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 229
+	              lineNumber: 230
 	            }
 	          },
 	          dom(
@@ -56942,7 +56998,7 @@
 	              padding: "0,0,0,0",
 	              weight: "1", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 233
+	                lineNumber: 234
 	              }
 	            },
 	            dom(MultiSelectSpinner, {
@@ -56954,7 +57010,7 @@
 	              data: values,
 	              spinnerComponentMargin: "0,0,4,0", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 238
+	                lineNumber: 239
 	              }
 	            })
 	          )
@@ -56970,7 +57026,7 @@
 	          width: "wrap_content",
 	          orientation: "horizontal", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 255
+	            lineNumber: 256
 	          }
 	        },
 	        dom(TextView, {
@@ -56979,7 +57035,7 @@
 	          style: window.__TextStyle.textStyle.HINT.SEMI,
 	          text: label.toUpperCase(label), __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 259
+	            lineNumber: 260
 	          }
 	        })
 	      );
@@ -56996,7 +57052,7 @@
 	          orientation: "vertical",
 	          background: "#ffffff", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 270
+	            lineNumber: 271
 	          }
 	        },
 	        dom(PageOption, {
@@ -57004,7 +57060,7 @@
 	          buttonItems: buttonList,
 	          hideDivider: false, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 276
+	            lineNumber: 277
 	          }
 	        })
 	      );
@@ -57120,7 +57176,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 334
+	            lineNumber: 335
 	          }
 	        },
 	        dom(SimpleToolbar, {
@@ -57129,7 +57185,7 @@
 	          invert: "true",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 342
+	            lineNumber: 343
 	          }
 	        }),
 	        dom(
@@ -57138,7 +57194,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 347
+	              lineNumber: 348
 	            }
 	          },
 	          this.getBody(),
@@ -57182,7 +57238,7 @@
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
 	var TextInputView = __webpack_require__(413);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var SimpleToolbar = __webpack_require__(382);
 	var RadioButton = __webpack_require__(401);
 	var SimplePopup = __webpack_require__(505);
@@ -58554,7 +58610,7 @@
 	var ScrollView = __webpack_require__(358);
 	var EditText = __webpack_require__(363);
 	var TextInputView = __webpack_require__(413);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var RadioButton = __webpack_require__(401);
 	var callbackMapper = __webpack_require__(329);
 	var PageOption = __webpack_require__(379);
@@ -59312,12 +59368,12 @@
 	var objectAssign = __webpack_require__(317);
 	window.R = __webpack_require__(7);
 	var FilterDialog = __webpack_require__(498);
-	var Spinner = __webpack_require__(394);
+	var Spinner = __webpack_require__(395);
 	var SearchResult = __webpack_require__(431);
 	var Styles = __webpack_require__(347);
 	var IconStyle = Styles.Params.IconStyle;
 	var _this;
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var CommProfSearchActivity = function (_View) {
 	  _inherits(CommProfSearchActivity, _View);
@@ -59789,7 +59845,7 @@
 	var ProfileAdditionalInfo = __webpack_require__(461);
 	var CropParagraph = __webpack_require__(455);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	
 	var ProfileActivity = function (_View) {
@@ -60280,7 +60336,7 @@
 	var ScrollView = __webpack_require__(358);
 	var Attachments = __webpack_require__(511);
 	var SimpleToolbar = __webpack_require__(382);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var _this;
 	
@@ -60724,7 +60780,7 @@
 	var HorizontalProgressBar = __webpack_require__(403);
 	var TextView = __webpack_require__(342);
 	var callbackMapper = __webpack_require__(329);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	
 	var Attachments = function (_View) {
 	  _inherits(Attachments, _View);
@@ -61000,7 +61056,7 @@
 	var ImageView = __webpack_require__(350);
 	var FeatureButton = __webpack_require__(377);
 	
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var _this;
 	
 	var ContentPreviewScreen = function (_View) {
@@ -61681,7 +61737,7 @@
 	var callbackMapper = __webpack_require__(329);
 	var objectAssign = __webpack_require__(317);
 	var View = __webpack_require__(331);
-	var utils = __webpack_require__(397);
+	var utils = __webpack_require__(389);
 	var TextView = __webpack_require__(342);
 	var PageOption = __webpack_require__(379);
 	var Button = __webpack_require__(380);
