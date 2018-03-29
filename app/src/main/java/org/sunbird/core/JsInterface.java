@@ -1652,17 +1652,11 @@ public class JsInterface {
         });
     }
 
-    private String decodeBase64(String data) throws UnsupportedEncodingException {
-        byte[] dataText = Base64.decode(data, Base64.DEFAULT);
-        String text = new String(dataText, "UTF-8");
-        return text;
-    }
-
     @JavascriptInterface
     public void callAPI(final String method, final String url, String dat, String header, final String callback) throws UnsupportedEncodingException {
 
-        final String data = this.decodeBase64(dat);
-        final String headers = this.decodeBase64(header);
+        final String data = Util.decodeBase64(dat);
+        final String headers = Util.decodeBase64(header);
 //        Log.e("callAPI", url + " " +  data + " " + headers + " " + callback);
         AsyncTask asyncTask = new AsyncTask() {
             @Override
