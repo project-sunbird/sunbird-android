@@ -2454,7 +2454,11 @@ public class JsInterface {
                     if (links.length() > 0) {
                         textToSend += "\nLinks: ";
                         for (int i = 0; i < links.length(); i++) {
-                            textToSend += "" + links.getString(i) + ",";
+                            if(i == (links.length()-1))
+                                textToSend += "" + links.getString(i);
+                            else
+                                textToSend += "" + links.getString(i) + ", ";
+
                         }
                     }
 
