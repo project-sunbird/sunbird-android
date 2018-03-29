@@ -1532,7 +1532,7 @@ public class JsInterface {
                                 if (isAppInstalled) {
                                     shareIntent.setPackage((String) imageV.getTag());
                                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                                    activity.getBaseContext().startActivity(shareIntent);
+                                    activity.startActivity(shareIntent);
 
                                 } else {
                                     Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
@@ -1774,12 +1774,6 @@ public class JsInterface {
         });
         return path[0];
     }
-
-//    @JavascriptInterface
-//    public void loadImageForQr() {
-//        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        this.activity.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-//    }
 
     @JavascriptInterface
     public String getFromSharedPrefs(String key) {
@@ -2622,7 +2616,7 @@ public class JsInterface {
 
                     if (isAppInstalled) {
                         sendIntent.setPackage(data[0]);
-                        activity.getBaseContext().startActivity(sendIntent);
+                        activity.startActivity(sendIntent);
                     } else {
                         Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
                         try {
@@ -2666,7 +2660,7 @@ public class JsInterface {
 
                     if (isAppInstalled) {
                         sendIntent.setComponent(new ComponentName(data[0], data[1]));
-                        activity.getBaseContext().startActivity(sendIntent);
+                        activity.startActivity(sendIntent);
                     } else {
                         Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();
                         try {
@@ -2740,7 +2734,7 @@ public class JsInterface {
                         if (isAppInstalled) {
                             intent.setPackage(data[0]);
                             intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                            activity.getBaseContext().startActivity(intent);
+                            activity.startActivity(intent);
 
                         } else {
                             Toast.makeText(activity.getBaseContext(), "App not installed", Toast.LENGTH_SHORT).show();

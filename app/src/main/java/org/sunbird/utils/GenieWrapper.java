@@ -357,6 +357,7 @@ public class GenieWrapper extends Activity {
                     isProfileContent = true;
                     builder.contentTypes(contentTypes).limit(count);
                     builder.createdBy(new String[]{query});
+                    builder.facets(new String[]{"language", "grade", "domain", "contentType", "subject", "medium"});
                     filters = builder.build();
                 } else {        // Filter applied
                     fp = filterParams.replaceAll("\"\\{", "{").replaceAll("\\}\"", "}").replaceAll("\\\\\"", "\"");
