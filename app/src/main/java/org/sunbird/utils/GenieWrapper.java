@@ -564,6 +564,8 @@ public class GenieWrapper extends Activity {
                 List<ContentImportResponse> contentImportResponseList = genieResponse.getResult();
                 if (contentImportResponseList.get(0).getStatus() == ContentImportStatus.NOT_FOUND){
                     EventBus.getDefault().unregister(cbHandler);
+                    String javascript = String.format("window.callJSCallback('%s', '%s', '%s', '%s');", callbacks[0], "onContentImportResponse", course_id, GsonUtil.toJson(contentImportResponseList.get(0)));
+                    dynamicUI.addJsToWebView(javascript);
                 }
             }
 
