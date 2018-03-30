@@ -55582,7 +55582,7 @@
 	    };
 	    _this2.currentData.lockStatus = Object.assign({}, _this2.prevData.lockStatus);
 	    _this2.GenderArray = ["Select", "Male", "Female", "Transgender"];
-	    _this2.LanguageArray = ["Select", "Assamese", "Bengali", "English", "Gujarati", "Hindi", "Kannada", "Marathi", "Punjabi", "Tamil", "Telugu"];
+	    _this2.LanguageArray = ["Select", "Assamese", "Bengali", "English", "Gujarati", "Hindi", "Kannada", "Marathi", "Punjabi", "Tamil", "Telugu", "Urdu"];
 	
 	    var frameworkGrade = window.__questionStore.getGradesFromFramework();
 	    if (window.__questionStore && frameworkGrade.length != 0) {
