@@ -23906,7 +23906,7 @@
 			"CREATOR_NAME_NOT_AVAILABLE": "Creator's name unavailable",
 			"CREATOR_OF": "Created by",
 			"CURRENT": "Current Address",
-			"CURRENT_LANGUAGE": "Current Language : ",
+			"CURRENT_LANGUAGE": "Current Language :",
 			"CURRENT_LOCATION": "Current Location",
 			"DATA_SYNC": "Data Sync",
 			"DATA_SYNC_SUB": "Backup your data, Transfer Telemetry",
@@ -24208,7 +24208,8 @@
 			"MEDIUM_OPTION_TEXT": "SELECT MEDIUM/LANG",
 			"ONBOARDING_CARDS_HEADING": "Help us get you content thats relevant to you.",
 			"PRIVACY_HIDE_TEXT": "Hiding %s from all",
-			"PRIVACY_SHOW_TEXT": "Showing %s from all"
+			"PRIVACY_SHOW_TEXT": "Showing %s from all",
+			"NO_APP_FOR_INTENT": "No app available to open the file"
 		},
 		"hi_IN": {
 			"ABOUT": "बारे में",
@@ -27091,7 +27092,7 @@
 	                  lineNumber: 222
 	                }
 	              }),
-	              _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + _this2.defaultlang(), _this2.handleChangeLang),
+	              _this2.getBody(window.__S.LANGUAGE_SETTINGS, window.__S.CURRENT_LANGUAGE + " " + _this2.defaultlang(), _this2.handleChangeLang),
 	              _this2.getLineSeperator(),
 	              _this2.getBody(window.__S.DATA_SYNC, window.__S.DATA_SYNC_SUB, _this2.datasync),
 	              _this2.getLineSeperator(),
@@ -37893,16 +37894,17 @@
 	          window.__BNavFlowRestart();
 	          return;
 	        case "API_GetSkillsList":
+	          window.__getSkillsList = true;
 	          window.__PopulateSkillsList = [];
 	          if (isErr) {} else {
 	            try {
 	              console.log("skills ", responseData.result.skills);
 	              window.__PopulateSkillsList = responseData.result.skills;
+	              window.__CustomPopUp.show();
 	            } catch (e) {
 	              console.log("Exception : ", e);
 	            }
 	          }
-	          window.__CustomPopUp.show();
 	          return;
 	        case "API_SetProfileVisibility":
 	          if (isErr) {
@@ -37966,7 +37968,7 @@
 	            editable: _this.editable,
 	            onCardClick: _this.handleCreatedCardClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 229
+	              lineNumber: 230
 	            }
 	          });
 	          _this.replaceChild(_this.idSet.createdByHolder, layout.render(), 0);
@@ -38002,7 +38004,7 @@
 	            margin: "0,0,0,0",
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 263
+	              lineNumber: 264
 	            }
 	          },
 	          _this2.getLineSeperator(),
@@ -38016,7 +38018,7 @@
 	            handleLock: _this2.handleLockClick,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 271
+	              lineNumber: 272
 	            }
 	          })
 	        );
@@ -38026,7 +38028,7 @@
 	          height: "wrap_content",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 285
+	            lineNumber: 286
 	          }
 	        });
 	      }
@@ -38103,8 +38105,9 @@
 	        "api_token": window.__apiToken
 	      };
 	      var event = { "tag": "API_GetSkillsList", contents: whatToSend };
+	      window.__getSkillsList = false;
 	      setTimeout(function () {
-	        if (window.__CustomPopUp.customPopUpVisibility == "visible") return;
+	        if (window.__getSkillsList) return;
 	        window.__CustomPopUp.show();
 	        window.__LoaderDialog.hide();
 	      }, window.__API_TIMEOUT);
@@ -38154,7 +38157,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 415
+	            lineNumber: 417
 	          }
 	        },
 	        dom(
@@ -38166,7 +38169,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 420
+	              lineNumber: 422
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -38174,13 +38177,13 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 426
+	              lineNumber: 428
 	            }
 	          }),
 	          dom(GuestAdditionalInfo, {
 	            profileData: _this2.profileData, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 430
+	              lineNumber: 432
 	            }
 	          }),
 	          _this2.getSignInOverlay()
@@ -38200,7 +38203,7 @@
 	          id: _this2.idSet.scrollViewContainer,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 442
+	            lineNumber: 444
 	          }
 	        },
 	        dom(
@@ -38212,7 +38215,7 @@
 	            orientation: "vertical",
 	            layoutTransition: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 447
+	              lineNumber: 449
 	            }
 	          },
 	          dom(ProfileHeader, {
@@ -38220,14 +38223,14 @@
 	            data: _this2.details,
 	            textStyle: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 453
+	              lineNumber: 455
 	            }
 	          }),
 	          dom(ProfileProgress, {
 	            editable: _this2.isEditable,
 	            data: _this2.details, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 457
+	              lineNumber: 459
 	            }
 	          }),
 	          _this2.getDescription(),
@@ -38239,7 +38242,7 @@
 	            privacyStatus: _this2.checkPrivacy("education"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 463
+	              lineNumber: 465
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -38250,7 +38253,7 @@
 	            privacyStatus: _this2.checkPrivacy("jobProfile"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 471
+	              lineNumber: 473
 	            }
 	          }),
 	          dom(ProfileExperiences, {
@@ -38261,7 +38264,7 @@
 	            privacyStatus: _this2.checkPrivacy("address"),
 	            handleLock: _this2.handleLockClick, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 480
+	              lineNumber: 482
 	            }
 	          }),
 	          dom(
@@ -38271,7 +38274,7 @@
 	              width: "wrap_content",
 	              id: _this2.idSet.skillTagComponent, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 487
+	                lineNumber: 489
 	              }
 	            },
 	            dom(ProfileSkillTags, {
@@ -38282,7 +38285,7 @@
 	              privacyStatus: _this2.checkPrivacy("skills"),
 	              handleLock: _this2.handleLockClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 491
+	                lineNumber: 493
 	              }
 	            })
 	          ),
@@ -38292,7 +38295,7 @@
 	              width: "match_parent",
 	              id: _this2.idSet.createdByHolder, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 500
+	                lineNumber: 502
 	              }
 	            },
 	            dom(ProfileCreations, {
@@ -38300,7 +38303,7 @@
 	              editable: _this.editable,
 	              onCardClick: _this.handleCreatedCardClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 504
+	                lineNumber: 506
 	              }
 	            })
 	          ),
@@ -38308,7 +38311,7 @@
 	            data: _this2.details,
 	            editable: _this2.isEditable, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 511
+	              lineNumber: 513
 	            }
 	          })
 	        )
@@ -38328,7 +38331,7 @@
 	          clickable: "true",
 	          padding: "16,16,16,16", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 523
+	            lineNumber: 525
 	          }
 	        },
 	        dom(HomeQuestionCardStyle, {
@@ -38338,7 +38341,7 @@
 	          textSize: "16",
 	          gravity: "left", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 530
+	            lineNumber: 532
 	          }
 	        })
 	      );
@@ -38389,7 +38392,7 @@
 	        margin: "0,16,0,16",
 	        background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 175
+	          lineNumber: 176
 	        }
 	      });
 	    }
@@ -38406,7 +38409,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 546
+	            lineNumber: 548
 	          }
 	        },
 	        dom(
@@ -38418,7 +38421,7 @@
 	            afterRender: this.afterRender,
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 549
+	              lineNumber: 551
 	            }
 	          },
 	          dom(SimpleToolbar, {
@@ -38431,7 +38434,7 @@
 	            showMenu: "true",
 	            hideBack: "true", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 556
+	              lineNumber: 558
 	            }
 	          }),
 	          dom(
@@ -38443,13 +38446,13 @@
 	              orientation: "horizontal",
 	              layoutTransition: "true", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 566
+	                lineNumber: 568
 	              }
 	            },
 	            dom(CircularLoader, {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 572
+	                lineNumber: 574
 	              }
 	            })
 	          )
@@ -60911,6 +60914,8 @@
 	            visibility: "gone"
 	          });
 	          Android.runInUI(cmd, 0, "64", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	        } else if (data[0] == "no_app") {
+	          JBridge.showToast(window.__S.NO_APP_FOR_INTENT, "short");
 	        }
 	      });
 	      JBridge.downloadAndOpen(url, path, callback, _this2.props.index);
@@ -60922,7 +60927,7 @@
 	        var progressBar = dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 73
+	            lineNumber: 75
 	          }
 	        });
 	        _this.replaceChild(_this.idSet.attachmentCard, progressBar.render(), 0);
@@ -60934,7 +60939,7 @@
 	          id: _this.idSet.cancelButton,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	        Android.runInUI(cmd, 0, "85", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
 	        JBridge.showToast(window.__S.DOWNLOAD_CANCELED, "short");
 	      });
 	      JBridge.cancelDownload(_this2.props.index, callback1);
@@ -60960,7 +60965,7 @@
 	          height: "wrap_content",
 	          width: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 100
+	            lineNumber: 102
 	          }
 	        });
 	      } else {
@@ -60975,7 +60980,7 @@
 	            stroke: "2," + window.__Colors.PRIMARY_BLACK_44,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 107
+	              lineNumber: 109
 	            }
 	          },
 	          dom(LinearLayout, {
@@ -60984,7 +60989,7 @@
 	            root: "true",
 	            id: this.idSet.attachmentCard, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 115
+	              lineNumber: 117
 	            }
 	          }),
 	          dom(
@@ -60996,7 +61001,7 @@
 	              orientation: "horizontal",
 	              gravity: "center_vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 120
+	                lineNumber: 122
 	              }
 	            },
 	            dom(LinearLayout, {
@@ -61006,7 +61011,7 @@
 	              cornerRadius: "4,4,4,4",
 	              background: window.__Colors.PRIMARY_BLACK_44, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 126
+	                lineNumber: 128
 	              }
 	            }),
 	            dom(
@@ -61017,7 +61022,7 @@
 	                orientation: "vertical",
 	                gravity: "center_vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 132
+	                  lineNumber: 134
 	                }
 	              },
 	              dom(TextView, {
@@ -61027,7 +61032,7 @@
 	                text: utils.cropText(item.name, 10),
 	                style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 137
+	                  lineNumber: 139
 	                }
 	              }),
 	              dom(TextView, {
@@ -61036,7 +61041,7 @@
 	                text: item.size,
 	                style: window.__TextStyle.textStyle.CARD.BODY.FADED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 143
+	                  lineNumber: 145
 	                }
 	              })
 	            ),
@@ -61044,7 +61049,7 @@
 	              height: "0",
 	              weight: "1", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 149
+	                lineNumber: 151
 	              }
 	            }),
 	            dom(
@@ -61057,7 +61062,7 @@
 	                padding: "16,0,16,0",
 	                gravity: "center_vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 152
+	                  lineNumber: 154
 	                }
 	              },
 	              dom(TextView, {
@@ -61068,7 +61073,7 @@
 	                style: window.__TextStyle.textStyle.CARD.ACTION.DARK,
 	                text: window.__S.VIEW, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 159
+	                  lineNumber: 161
 	                }
 	              }),
 	              dom(TextView, {
@@ -61080,7 +61085,7 @@
 	                style: window.__TextStyle.textStyle.CARD.ACTION.DARK,
 	                text: window.__S.DISMISS, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 166
+	                  lineNumber: 168
 	                }
 	              })
 	            )
