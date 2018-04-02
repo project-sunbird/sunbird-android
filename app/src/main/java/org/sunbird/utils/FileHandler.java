@@ -1,15 +1,23 @@
 package org.sunbird.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
+import android.widget.Toast;
 
 import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.sunbird.BuildConfig;
 import org.sunbird.GlobalApplication;
 
 import java.io.BufferedReader;
@@ -336,76 +344,11 @@ public class FileHandler {
         return bufferSize;
     }
 
-//    public static boolean isSecondaryStorageAvailable() {
-//        boolean isSecondaryStorage = false;
-//        String secondaryStorage = MountPointUtils.getExternalSecondaryStorage();
-//        if (!StringUtil.isNullOrEmpty(secondaryStorage)) {
-//            File path = new File(secondaryStorage);
-//            if (path != null && path.exists()) {
-//                isSecondaryStorage = true;
-//            }
-//        }
-//        return isSecondaryStorage;
-//    }
-//
-//    public static String getSecondaryStorageFilePath() {
-//        boolean isSecondaryStorage = false;
-//        String secondaryStorage = MountPointUtils.getExternalSecondaryStorage();
-//        if (!StringUtil.isNullOrEmpty(secondaryStorage)) {
-//            File path = new File(secondaryStorage);
-//            if (path != null && path.exists()) {
-//                return secondaryStorage;
-//            }
-//        }
-//        if (!isSecondaryStorage) {
-//            return getSystemRootFilePath();
-//        }
-//        return null;
-//    }
-
     private static String getSystemRootFilePath() {
         File rootFile = Environment.getRootDirectory();
         File parentFile = rootFile.getParentFile();
         return parentFile.getAbsolutePath();
     }
-
-//    public static long getAvailableExternalMemorySize() {
-//        if (isSecondaryStorageAvailable()) {
-//            StatFs stat = new StatFs(getSecondaryStorageFilePath());
-//            long blockSize;
-//            long availableBlocks;
-//            if (Build.VERSION.SDK_INT >= 18) {
-//                blockSize = stat.getBlockSizeLong();
-//                availableBlocks = stat.getAvailableBlocksLong();
-//            } else {
-//                blockSize = (long) stat.getBlockSize();
-//                availableBlocks = (long) stat.getAvailableBlocks();
-//            }
-//
-//            return availableBlocks * blockSize;
-//        } else {
-//            return 0L;
-//        }
-//    }
-//
-//    public static long getTotalExternalMemorySize() {
-//        if (isSecondaryStorageAvailable()) {
-//            StatFs stat = new StatFs(getSecondaryStorageFilePath());
-//            long blockSize;
-//            long totalBlocks;
-//            if (Build.VERSION.SDK_INT >= 18) {
-//                blockSize = stat.getBlockSizeLong();
-//                totalBlocks = stat.getBlockCountLong();
-//            } else {
-//                blockSize = (long) stat.getBlockSize();
-//                totalBlocks = (long) stat.getBlockCount();
-//            }
-//
-//            return totalBlocks * blockSize;
-//        } else {
-//            return 0L;
-//        }
-//    }
 
     public static long folderSize(File directory) {
         long length = 0;
@@ -421,39 +364,25 @@ public class FileHandler {
         return length;
     }
 
-//    public static String getExternalSdcardPath(Context context) {
-//        String sdCardPath = MountPointUtils.getExternalSecondaryStorage();
-//        File[] dirs = ContextCompat.getExternalFilesDirs(context, null);
-//
-//        if (StringUtil.isNullOrEmpty(sdCardPath)) {
-//            Util.showCustomToast(R.string.msg_no_sdcard_found);
-//        } else {
-//            for (File d : dirs) {
-//                String path = d.getPath();
-//                if (path.contains(sdCardPath))
-//                    return path;
-//            }
-//        }
-//        return null;
-//    }
+    public static String getMimeType(String path, Context context)	{
+        String extention = path.substring(path.lastIndexOf(".") );
+        String mimeTypeMap = MimeTypeMap.getFileExtensionFromUrl(extention.toLowerCase());
+        String mimeType = MimeTypeMap.getSingleton() .getMimeTypeFromExtension(mimeTypeMap);
+        if (mimeType == null) mimeType = "*/*";
+        return mimeType;
+    }
 
-//    public static boolean isSelectedStorageAvailable(Context context) {
-//        String filepath = FileHandler.getDefaultStoragePath(context);
-//        if (!StringUtil.isNullOrEmpty(filepath)) {
-//            File file = new File(filepath);
-//            return file.exists();
-//        }
-//        return false;
-//    }
-//
-//    public static String getDefaultStoragePath(Context context) {
-//        String filepath;
-//        boolean isExternalDefaultStorage = PreferenceUtil.getPreferenceWrapper().getBoolean(PreferenceKey.KEY_SET_EXTERNAL_STORAGE_DEFAULT, false);
-//        if (isExternalDefaultStorage) {
-//            filepath = getExternalSdcardPath(context);
-//        } else {
-//            filepath = FileHandler.getExternalFilesDir(context).toString();
-//        }
-//        return filepath;
-//    }
+    public static void openFileIntent(File file, Activity activity) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Log.d(TAG, "downloadAndOpen: " + getMimeType(file.getPath(), activity.getApplicationContext()));
+        intent.setDataAndType(FileProvider.getUriForFile(activity.getApplicationContext(), BuildConfig.APPLICATION_ID + ".fileprovider", file), getMimeType(file.getPath(), activity.getApplicationContext()));
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        PackageManager pm = activity.getPackageManager();
+        List<ResolveInfo> activities = pm.queryIntentActivities(intent, 0);
+        if (activities.size() > 0) {
+            activity.startActivity(intent);
+        } else {
+            Toast.makeText(activity, "No apps to open this file", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -206,10 +206,7 @@ public class JsInterface {
             String javascript = String.format("window.callJSCallback('%s','%s');", downloadCallback, "finished");
             dynamicUI.addJsToWebView(javascript);
             Log.e("download!", "onFileDownloaded: finished");
-            Intent intent = new Intent(Intent.ACTION_VIEW,
-                    FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", new File(currentPath)));
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            activity.startActivity(intent);
+            FileHandler.openFileIntent(new File(currentPath), activity);
         }
 
         @Override
@@ -2416,10 +2413,7 @@ public class JsInterface {
         Log.e("download!", "in jsfunction: " + url);
         File file = new File(path);
         if (file.exists()) {
-            Intent intent = new Intent(Intent.ACTION_VIEW,
-                    FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            activity.startActivity(intent);
+            FileHandler.openFileIntent(file, activity);
         } else {
             mDownloadFileAsyncArray[index] = new DownloadFileAsync();
             mDownloadFileAsyncArray[index].execute(url, path);
