@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-import android.widget.Toast;
 
 import org.ekstep.genieservices.commons.utils.StringUtil;
 import org.sunbird.BuildConfig;
@@ -372,17 +371,18 @@ public class FileHandler {
         return mimeType;
     }
 
-    public static void openFileIntent(File file, Activity activity) {
+    public static boolean openFileIntent(File file, Activity activity) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        Log.d(TAG, "downloadAndOpen: " + getMimeType(file.getPath(), activity.getApplicationContext()));
+        Log.d(TAG, "openFileIntent: " + getMimeType(file.getPath(), activity.getApplicationContext()));
         intent.setDataAndType(FileProvider.getUriForFile(activity.getApplicationContext(), BuildConfig.APPLICATION_ID + ".fileprovider", file), getMimeType(file.getPath(), activity.getApplicationContext()));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         PackageManager pm = activity.getPackageManager();
         List<ResolveInfo> activities = pm.queryIntentActivities(intent, 0);
         if (activities.size() > 0) {
             activity.startActivity(intent);
+            return true;
         } else {
-            Toast.makeText(activity, "No apps to open this file", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 }
