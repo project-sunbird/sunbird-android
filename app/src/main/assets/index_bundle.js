@@ -47382,7 +47382,7 @@
 	        });
 	        if (_this2.enqueuedForDownload.length == 0) {
 	          _this2.btnState = _this2.BTN_STATES.IDLE;
-	          window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_FOUND);
+	          window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
 	          _this2.isDownloaded = false;
 	          _this2.setCancelButtonVisibility("gone");
 	          _this.replaceChild(_this.idSet.downloadBarContainer, _this.getButtons(0, _this2.props.buttonText).render(), 0);
