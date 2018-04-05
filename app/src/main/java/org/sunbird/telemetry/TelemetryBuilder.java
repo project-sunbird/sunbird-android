@@ -158,6 +158,7 @@ public class TelemetryBuilder {
                 .pageId(pageId)
                 .type(type)
                 .uri(uri)
+                .subType(TelemetryAction.SECTION_VIEWED)
                 .environment(env);
 
         if(sectionMap != null) {

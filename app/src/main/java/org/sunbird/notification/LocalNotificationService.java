@@ -56,7 +56,9 @@ public class LocalNotificationService extends IntentService {
 //                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildGEInteract(InteractionType.OTHER, TelemetryPageId.LOCAL_NOTIFICATION, TelemetryAction.NOTIFICATION_DISPLAYED, String.valueOf(genieNotification.getMsgid()), eksMap));
 //                    LocalBroadcastManager.getInstance(this).sendBroadcast(Util.getRefreshNotificationsIntent());
                 } else {
-                    TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_DISPLAYED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, eksMap));
+                    Log.d(TelemetryAction.NOTIFICATION_DISPLAYED, "onHandleIntent: "+TelemetryPageId.SERVER_NOTIFICATION);
+                    //No longer sending the telemetry
+                    //TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_DISPLAYED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, eksMap));
                 }
 
                 NotificationManagerUtil notificationManagerUtil = new NotificationManagerUtil(LocalNotificationService.this);

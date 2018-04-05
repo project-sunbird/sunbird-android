@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.DateUtil;
@@ -62,7 +63,10 @@ public class NotificationManagerUtil {
         //Generate GE_INTERACT event for Server notification received.
         Map<String, Object> valuesMap = new HashMap<>();
         valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_RECEIVED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, valuesMap));
+
+        //No longer sending the telemetry
+        //TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_RECEIVED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, valuesMap));
+        Log.d(TelemetryAction.NOTIFICATION_RECEIVED, "handleNotification: "+TelemetryPageId.SERVER_NOTIFICATION);
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();
