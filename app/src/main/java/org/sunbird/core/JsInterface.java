@@ -114,7 +114,6 @@ import org.sunbird.telemetry.enums.CorrelationContext;
 import org.sunbird.telemetry.enums.ImpressionType;
 import org.sunbird.telemetry.enums.Mode;
 import org.sunbird.telemetry.enums.ObjectType;
-import org.sunbird.telemetry.enums.Workflow;
 import org.sunbird.ui.HorizontalScroller;
 import org.sunbird.ui.ListViewAdapter;
 import org.sunbird.ui.MainActivity;
@@ -820,7 +819,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logCourseDetailScreenEvent(String identifier, String pkgVersion, String onDevice) {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.DETAIL, null, TelemetryPageId.COURSE_HOME, ContextEnvironment.HOME, identifier, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.DETAIL, null, TelemetryPageId.COURSE_DETAIL, ContextEnvironment.HOME, identifier, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
         Map<String, Object> params = new HashMap<>();
         params.put(TelemetryConstant.PRESENT_ON_DEVICE, onDevice);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(TelemetryPageId.CONTENT_DETAIL, ImpressionType.DETAIL, TelemetryPageId.CONTENT_DETAIL, ContextEnvironment.HOME, params));
@@ -1134,7 +1133,7 @@ public class JsInterface {
         Map<String, Object> vals = new HashMap<>();
         vals.put(TelemetryConstant.CONTENT_TYPE, contentType);
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_SUCCESS, TelemetryPageId.COURSE_HOME, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, sharePkgVersion, Util.getCorrelationList()));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_SUCCESS, TelemetryPageId.COURSE_DETAIL, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, sharePkgVersion, Util.getCorrelationList()));
         } else if (type.equals("LIBRARY")) {
             TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_LIBRARY_SUCCESS, TelemetryPageId.CONTENT_DETAIL, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, sharePkgVersion, Util.getCorrelationList()));
         }
@@ -1146,7 +1145,7 @@ public class JsInterface {
         Map<String, Object> vals = new HashMap<>();
         vals.put(TelemetryConstant.CONTENT_TYPE, contentType);
         if (type.equals("COURSES")) {
-            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_INITIATED, TelemetryPageId.COURSE_HOME, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
+            TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_COURSE_INITIATED, TelemetryPageId.COURSE_DETAIL, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
         } else if (type.equals("LIBRARY")) {
             TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.SHARE_LIBRARY_INITIATED, TelemetryPageId.CONTENT_DETAIL, ContextEnvironment.HOME, vals, identifier, ObjectType.CONTENT, pkgVersion, Util.getCorrelationList()));
         }
@@ -1170,7 +1169,7 @@ public class JsInterface {
         eksMap.put(TelemetryConstant.CONTENT_TYPE, contentType);
         String pageId = "";
         if (type.equals("COURSES")) {
-            pageId = TelemetryPageId.COURSE_HOME;
+            pageId = TelemetryPageId.COURSE_DETAIL;
         } else if (type.equals("LIBRARY")) {
             pageId = TelemetryPageId.CONTENT_DETAIL;
         }
@@ -1260,43 +1259,21 @@ public class JsInterface {
 
     @JavascriptInterface
     public void startEventLog(String type, String objId, String pkgVersion) {
-        //TODO add lessonPlan
-//        String eType = Workflow.CONTENT;
-//        switch (type.toLowerCase()) {
-//            case "course":
-//                eType = Workflow.COURSE;
-//                break;
-//            case "textbook":
-//                eType = Workflow.TEXTBOOK;
-//                break;
-//            case "content":
-//                eType = Workflow.CONTENT;
-//                break;
-//            case "collection":
-//                eType = Workflow.COLLECTION;
-//                break;
-//        }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(context, type.toLowerCase(), Mode.PLAY, null, ContextEnvironment.HOME, objId, ObjectType.CONTENT, pkgVersion));
+        String pageId;
+        switch (type.toLowerCase()) {
+            case "course":
+                pageId = TelemetryPageId.COURSE_DETAIL;
+                break;
+            default:
+                pageId = TelemetryPageId.COLLECTION_DETAIL;
+                break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(context, type.toLowerCase(), Mode.PLAY, pageId, ContextEnvironment.HOME, objId, type.toLowerCase(), pkgVersion));
     }
 
     @JavascriptInterface
     public void endEventLog(String type, String objId, String pkgVersion) {
-        String eType = Workflow.CONTENT;
-        switch (type.toLowerCase()) {
-            case "course":
-                eType = Workflow.COURSE;
-                break;
-            case "textbook":
-                eType = Workflow.TEXTBOOK;
-                break;
-            case "content":
-                eType = Workflow.CONTENT;
-                break;
-            case "collection":
-                eType = Workflow.COLLECTION;
-                break;
-        }
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(0, eType, Mode.PLAY, null, ContextEnvironment.HOME, objId, ObjectType.CONTENT, pkgVersion));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(0, type.toLowerCase(), Mode.PLAY, null, ContextEnvironment.HOME, objId, type.toLowerCase(), pkgVersion));
     }
 
     @JavascriptInterface

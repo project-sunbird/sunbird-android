@@ -19,7 +19,8 @@ public interface TelemetryPageId {
     String PROFILE = "profile";
     String COURSE_PAGE_FILTER = "course-page-filter";
     String LIBRARY_PAGE_FILTER = "library-page-filter";
-    String COURSE_HOME = "course-home";
+    String COURSE_DETAIL = "course-detail";
+    String COLLECTION_DETAIL = "collection-detail";
     String CONTENT_DETAIL = "content-detail";
     String FLAG_CONTENT = "flag-content";
     String SHARE_CONTENT = "share-content";
