@@ -10,21 +10,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
-import org.ekstep.genieservices.commons.bean.enums.InteractionType;
 import org.ekstep.genieservices.commons.utils.DateUtil;
 import org.ekstep.genieservices.commons.utils.GsonUtil;
 import org.sunbird.GlobalApplication;
 import org.sunbird.R;
 import org.sunbird.models.Notification;
 import org.sunbird.notification.enums.NotificationActionId;
-import org.sunbird.telemetry.TelemetryAction;
-import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
-import org.sunbird.telemetry.TelemetryHandler;
-import org.sunbird.telemetry.TelemetryPageId;
-import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.utils.AlarmManagerUtil;
 import org.sunbird.utils.Constants;
@@ -66,7 +59,7 @@ public class NotificationManagerUtil {
 
         //No longer sending the telemetry
         //TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_RECEIVED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, valuesMap));
-        Log.d(TelemetryAction.NOTIFICATION_RECEIVED, "handleNotification: "+TelemetryPageId.SERVER_NOTIFICATION);
+//        Log.d(TelemetryAction.NOTIFICATION_RECEIVED, "handleNotification: "+TelemetryPageId.SERVER_NOTIFICATION);
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();

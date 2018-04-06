@@ -38,4 +38,6 @@ public interface TelemetryPageId {
 
     String ANNOUNCEMENT_LIST = "announcement-list";
     String ANNOUNCEMENT_DETAIL = "announcement-detail";
+    String USER_TYPE_SELECTION = "user-type-selection";
+    String ONBOARD = "onboard";
 }

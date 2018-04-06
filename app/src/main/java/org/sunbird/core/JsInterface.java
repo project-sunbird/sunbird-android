@@ -95,6 +95,7 @@ import org.ekstep.genieservices.commons.bean.enums.JWTokenType;
 import org.ekstep.genieservices.commons.utils.Base64Util;
 import org.ekstep.genieservices.commons.utils.CryptoUtil;
 import org.ekstep.genieservices.commons.utils.StringUtil;
+import org.ekstep.genieservices.content.ContentConstants;
 import org.ekstep.genieservices.utils.DeviceSpec;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -1034,10 +1035,15 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void logQRIconClicked() {
-        Log.e(TAG, "logQRIconClicked: ");
-        String stageId = TelemetryPageId.HOME;
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.QRCodeScanClicked, stageId, ContextEnvironment.HOME));
+    public void logQRIconClicked(String page) {
+        String pageId = TelemetryPageId.HOME;
+        if (page.toLowerCase().equals("courses")) {
+            pageId = TelemetryPageId.COURSES;
+        } else if (page.toLowerCase().equals("library")){
+            pageId = TelemetryPageId.LIBRARY;
+        }
+        qrStartEventLog(pageId);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.QRCodeScanClicked, pageId, ContextEnvironment.HOME));
     }
 
     @JavascriptInterface
@@ -1258,22 +1264,35 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void startEventLog(String type, String objId, String pkgVersion) {
-        String pageId;
-        switch (type.toLowerCase()) {
-            case "course":
-                pageId = TelemetryPageId.COURSE_DETAIL;
-                break;
-            default:
-                pageId = TelemetryPageId.COLLECTION_DETAIL;
-                break;
+    public void startEventLog(String type, String mimeType, String objId, String pkgVersion) {
+        String pageId = TelemetryPageId.CONTENT_DETAIL;
+        if(ContentConstants.MimeType.COLLECTION.equals(mimeType)) {
+            switch (type.toLowerCase()) {
+                case "course":
+                    pageId = TelemetryPageId.COURSE_DETAIL;
+                    break;
+
+                default:
+                    pageId = TelemetryPageId.COLLECTION_DETAIL;
+                    break;
+            }
         }
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(context, type.toLowerCase(), Mode.PLAY, pageId, ContextEnvironment.HOME, objId, type.toLowerCase(), pkgVersion));
     }
 
     @JavascriptInterface
+    public void qrStartEventLog(String pageId) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildStartEvent(context, "qr", null, pageId, ContextEnvironment.HOME, null, null, null));
+    }
+
+    @JavascriptInterface
     public void endEventLog(String type, String objId, String pkgVersion) {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(0, type.toLowerCase(), Mode.PLAY, null, ContextEnvironment.HOME, objId, type.toLowerCase(), pkgVersion));
+    }
+
+    @JavascriptInterface
+    public void qrEndEventLog(String scannedData) {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildEndEvent(0, "qr", null, null, ContextEnvironment.HOME, scannedData, "qr", null));
     }
 
     @JavascriptInterface
@@ -3273,10 +3292,38 @@ public class JsInterface {
         animate.setDuration(1000);
         animate.setRepeatCount(Animation.INFINITE);
         animate.setFillAfter(true);
-
-            view.startAnimation(animate);
-
-
+        view.startAnimation(animate);
     }
 
+    @JavascriptInterface
+    public void logUserTypeSelection(String userType) {
+        Map<String, Object> vals = new HashMap<>();
+        vals.put(TelemetryConstant.USER_TYPE, "teacher");
+        switch (userType.toLowerCase()) {
+            case "teacher":
+                vals.put(TelemetryConstant.USER_TYPE, "teacher");
+                break;
+            case "student":
+                vals.put(TelemetryConstant.USER_TYPE, "student");
+                break;
+        }
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH, TelemetryAction.CONTINUE_CLICKED, TelemetryPageId.USER_TYPE_SELECTION, ContextEnvironment.HOME, vals));
+    }
+
+    @JavascriptInterface
+    public void logUserTypeScreenEvent() {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.USER_TYPE_SELECTION, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logRatingsPopupScreenEvent(String page) {
+        String pageId = TelemetryPageId.CONTENT_DETAIL;
+        if (page == TelemetryPageId.COURSE_DETAIL) pageId = TelemetryPageId.COURSE_DETAIL;
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, TelemetryAction.RATING_POPUP, pageId, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logLanguageScreenEvent() {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.ONBOARD, ContextEnvironment.HOME));
+    }
 }

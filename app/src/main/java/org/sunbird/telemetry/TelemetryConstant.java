@@ -34,4 +34,5 @@ public interface TelemetryConstant {
 
     String PREVIOUS_LANGUAGE = "PreviousLanguage";
     String CURRENT_LANGUAGE = "CurrentLanguage";
+    String USER_TYPE = "UserType";
 }
