@@ -47,6 +47,9 @@ public interface TelemetryAction {
     String SIGNIN_OVERLAY_CLICKED = "signin-overlay-clicked";
 
     String ANNOUNCEMENT_CLICKED = "announcement-clicked";
+    String NOTIFICATION = "notification";
+    String RATING_SUBMITTED = "rating-submitted";
+    String RATING_CLICKED = "rating-clicked";
     String CONTINUE_CLICKED = "continue-clicked";
     String RATING_POPUP = "rating-popup";
 }

@@ -17,7 +17,12 @@ import org.sunbird.GlobalApplication;
 import org.sunbird.R;
 import org.sunbird.models.Notification;
 import org.sunbird.notification.enums.NotificationActionId;
+import org.sunbird.telemetry.TelemetryAction;
+import org.sunbird.telemetry.TelemetryBuilder;
 import org.sunbird.telemetry.TelemetryConstant;
+import org.sunbird.telemetry.TelemetryHandler;
+import org.sunbird.telemetry.TelemetryPageId;
+import org.sunbird.telemetry.enums.ContextEnvironment;
 import org.sunbird.ui.MainActivity;
 import org.sunbird.utils.AlarmManagerUtil;
 import org.sunbird.utils.Constants;
@@ -57,9 +62,7 @@ public class NotificationManagerUtil {
         Map<String, Object> valuesMap = new HashMap<>();
         valuesMap.put(TelemetryConstant.NOTIFICATION_DATA, GsonUtil.getGson().toJson(notification));
 
-        //No longer sending the telemetry
-        //TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.OTHER, TelemetryAction.NOTIFICATION_RECEIVED, TelemetryPageId.SERVER_NOTIFICATION, ContextEnvironment.HOME, valuesMap));
-//        Log.d(TelemetryAction.NOTIFICATION_RECEIVED, "handleNotification: "+TelemetryPageId.SERVER_NOTIFICATION);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildLogEvent(TelemetryPageId.SERVER_NOTIFICATION, TelemetryAction.NOTIFICATION,TelemetryPageId.RECEIVED, ContextEnvironment.HOME,valuesMap));
         // Server notification
         long triggerAtMillis = DateUtil.parse(notification.getTime(), DateUtil.DATETIME_FORMAT).getMillis();
         long currentTime = DateUtil.getEpochTime();

@@ -40,4 +40,7 @@ public interface TelemetryPageId {
     String ANNOUNCEMENT_DETAIL = "announcement-detail";
     String USER_TYPE_SELECTION = "user-type-selection";
     String ONBOARD = "onboard";
+    String RECEIVED = "received";
+    String DISPLAYED = "displayed";
+    String CONTENT_RATING = "content-rating";
 }

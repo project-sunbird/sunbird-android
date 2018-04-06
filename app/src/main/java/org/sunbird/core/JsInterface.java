@@ -2906,8 +2906,18 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void sendFeedback(String cb, String contentId, String comment, float rating, String pageId, String contentVersion) {
+    public void sendFeedback(String cb, String contentId, String comment, float rating, String pageId, String contentVersion, String contentType) {
+        HashMap<String,Object> ratingMap = new HashMap<>();
+        ratingMap.put("Ratings",String.valueOf(rating));
+        ratingMap.put("Comment",comment);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH,TelemetryAction.RATING_SUBMITTED,TelemetryPageId.CONTENT_RATING,ContextEnvironment.HOME,ratingMap,contentId,contentType,contentVersion));
         genieWrapper.sendFeedback(cb, contentId, comment, rating, pageId, contentVersion);
+    }
+
+    @JavascriptInterface
+    public void ratingBarClickEvent(String contentId, String pageId, String contentVersion, String contentType){
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH,TelemetryAction.RATING_CLICKED,TelemetryPageId.CONTENT_RATING,ContextEnvironment.HOME,contentId,contentType,contentVersion));
+
     }
 
     @JavascriptInterface
@@ -3248,8 +3258,8 @@ public class JsInterface {
                 pageId = TelemetryPageId.PROFILE;
                 break;
         }
-
-        TelemetryBuilder.buildSectionVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, sectionMap);
+        if(!sectionMap.isEmpty())
+             TelemetryHandler.saveTelemetry(TelemetryBuilder.buildSectionVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, sectionMap));
         sectionMap.clear();
     }
 
@@ -3275,7 +3285,7 @@ public class JsInterface {
                 break;
         }
 
-        TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, contentMap);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, ContextEnvironment.HOME, contentMap));
         contentMap.clear();
     }
 
@@ -3325,5 +3335,13 @@ public class JsInterface {
     @JavascriptInterface
     public void logLanguageScreenEvent() {
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW, null, TelemetryPageId.ONBOARD, ContextEnvironment.HOME));
+    }
+
+    @JavascriptInterface
+    public void logLanguageChangeEvent(String pageid, String prev, String curr, String env) {
+        HashMap<String,Object> langMap = new HashMap<>();
+        langMap.put("PreviousLanguage",prev);
+        langMap.put("CurrentLanguage",curr);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH,TelemetryAction.LANGUAGE_SETTINGS_SUCCESS,pageid, env,langMap));
     }
 }
