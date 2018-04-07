@@ -3258,7 +3258,7 @@ public class JsInterface {
                 break;
         }
 
-        TelemetryBuilder.buildSectionVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, getContextEnviroment(), sectionMap);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildSectionVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, getContextEnviroment(), sectionMap));
         sectionMap.clear();
     }
 
@@ -3284,7 +3284,7 @@ public class JsInterface {
                 break;
         }
 
-        TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, getContextEnviroment(), contentMap);
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildContentVisitImpressionEvent(ImpressionType.VIEW,pageId,pageId, getContextEnviroment(), contentMap));
         contentMap.clear();
     }
 
@@ -3368,5 +3368,11 @@ public class JsInterface {
         langMap.put("PreviousLanguage",prev);
         langMap.put("CurrentLanguage",curr);
         TelemetryHandler.saveTelemetry(TelemetryBuilder.buildInteractEvent(InteractionType.TOUCH,TelemetryAction.LANGUAGE_SETTINGS_SUCCESS,pageid, env,langMap));
+    }
+
+    @JavascriptInterface
+    public void logFeatureCardEvent() {
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW,TelemetryAction.FEATURE_CARD,TelemetryPageId.ONBOARD, ContextEnvironment.HOME));
+
     }
 }

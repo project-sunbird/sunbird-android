@@ -52,4 +52,5 @@ public interface TelemetryAction {
     String RATING_CLICKED = "rating-clicked";
     String CONTINUE_CLICKED = "continue-clicked";
     String RATING_POPUP = "rating-popup";
+    String FEATURE_CARD = "feature-card";
 }
