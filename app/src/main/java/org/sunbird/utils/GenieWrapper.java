@@ -299,37 +299,39 @@ public class GenieWrapper extends Activity {
     public void searchContent(final String callback, final String filterParams, final String query, final String type, final int count, final String[] keywords, boolean viewMoreClicked) {
         try {
             SunbirdContentSearchCriteria.SearchBuilder builder = new SunbirdContentSearchCriteria.SearchBuilder();
-            String[] contentTypes;
+            String[] contentTypes = null;
 
-            switch (type) {
-                case "Course":
-                    contentTypes = new String[1];
-                    contentTypes[0] = ContentType.COURSE;
-                    break;
+            if (keywords == null) {
+                switch (type) {
+                    case "Course":
+                        contentTypes = new String[1];
+                        contentTypes[0] = ContentType.COURSE;
+                        break;
 
-                case "Library":
-                    contentTypes = new String[7];
-                    contentTypes[0] = ContentType.STORY;
-                    contentTypes[1] = ContentType.GAME;
-                    contentTypes[2] = ContentType.TEXTBOOK;
-                    contentTypes[3] = ContentType.COLLECTION;
-                    contentTypes[4] = ContentType.WORKSHEET;
-                    contentTypes[5] = ContentType.RESOURCE;
-                    contentTypes[6] = ContentType.LESSONPLAN;
-                    break;
+                    case "Library":
+                        contentTypes = new String[7];
+                        contentTypes[0] = ContentType.STORY;
+                        contentTypes[1] = ContentType.GAME;
+                        contentTypes[2] = ContentType.TEXTBOOK;
+                        contentTypes[3] = ContentType.COLLECTION;
+                        contentTypes[4] = ContentType.WORKSHEET;
+                        contentTypes[5] = ContentType.RESOURCE;
+                        contentTypes[6] = ContentType.LESSONPLAN;
+                        break;
 
-                case "Combined":
-                default:
-                    contentTypes = new String[8];
-                    contentTypes[0] = ContentType.STORY;
-                    contentTypes[1] = ContentType.GAME;
-                    contentTypes[2] = ContentType.TEXTBOOK;
-                    contentTypes[3] = ContentType.COLLECTION;
-                    contentTypes[4] = ContentType.WORKSHEET;
-                    contentTypes[5] = ContentType.COURSE;
-                    contentTypes[6] = ContentType.RESOURCE;
-                    contentTypes[7] = ContentType.LESSONPLAN;
-                    break;
+                    case "Combined":
+                    default:
+                        contentTypes = new String[8];
+                        contentTypes[0] = ContentType.STORY;
+                        contentTypes[1] = ContentType.GAME;
+                        contentTypes[2] = ContentType.TEXTBOOK;
+                        contentTypes[3] = ContentType.COLLECTION;
+                        contentTypes[4] = ContentType.WORKSHEET;
+                        contentTypes[5] = ContentType.COURSE;
+                        contentTypes[6] = ContentType.RESOURCE;
+                        contentTypes[7] = ContentType.LESSONPLAN;
+                        break;
+                }
             }
 
             if (BuildConfig.FILTER_CONTENT_BY_CHANNEL_ID) {
