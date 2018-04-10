@@ -23913,6 +23913,7 @@
 			"CURRENT_LOCATION": "Current Location",
 			"DATA_SYNC": "Data Sync",
 			"DATA_SYNC_SUB": "Backup your data, Transfer Telemetry",
+			"DATA_SYNC_FAILURE": "FAILED. Please try again later.",
 			"DATE_OF_BIRTH": "Birth date",
 			"DEGREE": "Degree",
 			"DELETE": "Delete",
@@ -24177,7 +24178,8 @@
 			"WARNING_INVALID_YEAR_OF_PASSING": "Invalid pass year. Enter four (yyyy) digits for year of passing",
 			"WARNING_PLEASE_ADD_MANDATORY_DETAILS": "Enter mandatory details",
 			"WARNING_PLEASE_MAKE_SOME_CHANGES": "Make changes",
-			"WEBLINKS": "Social media links",
+			"WEBLINKS": "Weblinks",
+			"SOCIAL_MEDIA_LINKS": "Social media links",
 			"WELCOME_BACK": "WELCOME BACK %s",
 			"WELCOME_M1": "Welcome to %s",
 			"WELCOME_M2": "Structured education for the educators",
@@ -24212,7 +24214,8 @@
 			"ONBOARDING_CARDS_HEADING": "Help us get you content thats relevant to you.",
 			"PRIVACY_HIDE_TEXT": "Hiding %s from all",
 			"PRIVACY_SHOW_TEXT": "Showing %s from all",
-			"NO_APP_FOR_INTENT": "No app available to open the file"
+			"NO_APP_FOR_INTENT": "No app available to open the file",
+			"SUCCESS": "SUCCESS"
 		},
 		"hi_IN": {
 			"ABOUT": "बारे में",
@@ -28567,10 +28570,10 @@
 			var callback = callbackMapper.map(function (data) {
 				console.log("SYNC TELEMETRY data", data.toString());
 				if (data[0] == "SUCCESS") {
-					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + data[0]);
+					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + window.__S.SUCCESS);
 					_this.replaceChild(_this.idSet.lastSyncTextView, _this.getSyncNowTextView(data[1]).render(), 0);
 				} else if (data[0] == "FAILURE") {
-					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + data[1]);
+					window.__Snackbar.show(window.__S.DATA_SYNC + " : " + window.__S.DATA_SYNC_FAILURE);
 				}
 	
 				window.__LoaderDialog.hide();
@@ -54904,7 +54907,7 @@
 	      var data = {
 	        filterDetails: _this2.data,
 	        filterFor: _this2.searchedFor,
-	        searcheType: _this2.searchedType
+	        searchType: _this2.searchedType
 	      };
 	      console.log("data in filter to search", data);
 	      var whatToSend = {
@@ -56364,7 +56367,7 @@
 	                height: "wrap_content",
 	                width: "wrap_content",
 	                style: window.__TextStyle.textStyle.HINT.SEMI,
-	                text: window.__S.WEBLINKS,
+	                text: window.__S.SOCIAL_MEDIA_LINKS,
 	                textAllCaps: "true",
 	                __source: {
 	                  fileName: _jsxFileName,
@@ -56379,7 +56382,7 @@
 	                  lineNumber: 578
 	                }
 	              }),
-	              _this3.getLockIcon(_this3.idSet.webLinksLI, true, "webPages", window.__S.WEBLINKS, "8,0,8,16")
+	              _this3.getLockIcon(_this3.idSet.webLinksLI, true, "webPages", window.__S.SOCIAL_MEDIA_LINKS, "8,0,8,16")
 	            ),
 	            _this3.getEditTextView(_this3.idSet.fbText, window.__S.FACEBOOK, _this3.currentData.fb, "", true, _this3.setFb, undefined, false, _this3.idSet.fbLI, "8,8,8,8"),
 	            _this3.getEditTextView(_this3.idSet.twitterText, window.__S.TWITTER, _this3.currentData.twitter, "", true, _this3.setTwitter, undefined, false, _this3.idSet.twitterLI, "8,8,8,8"),
