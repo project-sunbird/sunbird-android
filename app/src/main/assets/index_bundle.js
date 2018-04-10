@@ -748,7 +748,7 @@
 			}
 	
 			if (ui.runInUI) {
-				Android.runInUI(ui.runInUI, null, "15", "Usersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
+				Android.runInUI(ui.runInUI, null, "15", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcuihandlersandroidjs");
 			}
 			if (ui.addViewToParent) {
 				Android.addViewToParent(ui.addViewToParent.parentId, JSON.stringify(ui.addViewToParent.jsx), ui.addViewToParent.index, null);
@@ -12742,8 +12742,7 @@
 	  string: true,
 	  boolean: true,
 	  number: true,
-	  undefined: true,
-	  symbol: true
+	  undefined: true
 	};
 	
 	function immu(data) {
@@ -12932,7 +12931,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/RootScreen.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/RootScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -13139,7 +13138,7 @@
 	    value: function setStatusBarColor(color) {
 	      var _color = "set_color=android.graphics.Color->parseColor:s_" + color + ";";
 	
-	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "100", "UsersnikithshettysunbirdgithubsunbirdduiviewsRootScreenjs");
+	      Android.runInUI("set_win=ctx->getWindow;get_win->addFlags:i_-2147483648;" + _color + "get_win->setStatusBarColor:get_color", null, "100", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsRootScreenjs");
 	    }
 	  }, {
 	    key: "render",
@@ -14599,7 +14598,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (AndroidBaseView.__proto__ || Object.getPrototypeOf(AndroidBaseView)).call(this, props, children));
 	
 	    window.__SETFN = function (config) {
-	      Android.runInUI(this.set(config), null, '10', 'UsersnikithshettysunbirdgithubsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
+	      Android.runInUI(this.set(config), null, '10', 'UsersnikhilroyDocumentsProjectssunbirdsunbirdduinodemodulesjuspaymystiquebackendsrcbaseviewsAndroidBaseViewjs');
 	    }.bind(_this2);
 	    return _this2;
 	  }
@@ -14769,7 +14768,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/LinearLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14925,7 +14924,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RelativeLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -14984,7 +14983,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SnackBar.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/SnackBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15021,14 +15020,14 @@
 	          a_translationY: "0",
 	          a_duration: "360"
 	        });
-	        Android.runInUI(cmd, null, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "44", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.totalTime);
 	
 	      setTimeout(function () {
 	        _this.hide();
-	      }, _this.totalTime + _this.showTime - _this.fadeTime - _this.delayTime); //Time @ which fade out animation should start
+	      }, _this.totalTime + _this.showTime - _this.fadeTime - _this.delayTime //Time @ which fade out animation should start
 	
-	      _this.totalTime += _this.showTime + _this.delayTime; //Time required to display one Snackbar and delayTime added to totalTime
+	      );_this.totalTime += _this.showTime + _this.delayTime; //Time required to display one Snackbar and delayTime added to totalTime
 	    };
 	
 	    _this.hide = function () {
@@ -15037,14 +15036,14 @@
 	        a_translationY: "360",
 	        a_duration: "360"
 	      });
-	      Android.runInUI(cmd, null, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, null, "61", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      cmd = _this.set({
 	        id: _this.idSet.container,
 	        visibility: "gone"
 	      });
 	
 	      setTimeout(function () {
-	        Android.runInUI(cmd, null, "67", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	        Android.runInUI(cmd, null, "67", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	      }, _this.fadeTime);
 	
 	      _this.totalTime -= _this.showTime; //After rendering one Snackbar, its time is removed from totalTime
@@ -15076,7 +15075,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "98", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdSnackBarjs");
+	      Android.runInUI(cmd, 0, "98", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdSnackBarjs");
 	    };
 	
 	    _this.displayName = "CustomSnackBar";
@@ -15159,7 +15158,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TextView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15761,7 +15760,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/LoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15804,7 +15803,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "41", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
+	      Android.runInUI(cmd, 0, "41", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreLoaderDialogjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -15880,7 +15879,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewWidget.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -15939,7 +15938,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ImageView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16123,7 +16122,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/HorizontalScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16182,7 +16181,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ScrollView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16241,7 +16240,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ProgressBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16293,7 +16292,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/FrameLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16352,7 +16351,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CheckBox.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16404,7 +16403,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Button.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16456,7 +16455,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/EditText.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16512,7 +16511,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/TabLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16571,7 +16570,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ViewPager.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16630,7 +16629,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Space.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16688,7 +16687,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/Switch.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16740,7 +16739,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CollapsingToolbarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16799,7 +16798,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/AppBarLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16858,7 +16857,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/CoordinatorLayout.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16917,7 +16916,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/ListView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -16970,7 +16969,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RatingBar.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17022,7 +17021,7 @@
 
 	'use strict';
 	
-	var _jsxFileName = '/Users/nikith.shetty/sunbird-github/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
+	var _jsxFileName = '/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/node_modules/@juspay/mystique-backend/src/android_views/RecyclerView.js';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17090,7 +17089,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterPopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/PageFilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17185,7 +17184,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "113", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterPopupjs");
+	      Android.runInUI(cmd, 0, "113", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdPageFilterPopupjs");
 	    };
 	
 	    _this.setValues = function (item, values) {
@@ -17474,7 +17473,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeatureButton.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FeatureButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17504,7 +17503,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.buttonText,
 	        text: text
-	      }), null, "19", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFeatureButtonjs");
+	      }), null, "19", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFeatureButtonjs");
 	    };
 	
 	    _this.buttonFunction = function () {
@@ -17585,7 +17584,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PageFilterChooser.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/PageFilterChooser.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -17640,7 +17639,7 @@
 	        id: _this.idSet.parentContainer,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "53", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPageFilterChooserjs");
+	      Android.runInUI(cmd, 0, "53", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdPageFilterChooserjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -17950,7 +17949,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PageOption.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/PageOption.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18106,7 +18105,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Button.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/Button.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18272,7 +18271,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterItem.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FilterItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18337,7 +18336,7 @@
 	          text: newList.length > 0 ? newList.length + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "75", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "75", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFilterItemjs");
 	      } else {
 	        console.log("seected Length", _this2.getSelectedCount(newList));
 	        window.__FilterPopup.hide();
@@ -18349,7 +18348,7 @@
 	          text: _this2.getSelectedCount(_this2.filterList) != 0 ? _this2.getSelectedCount(_this2.filterList) + " added" : ""
 	        });
 	
-	        Android.runInUI(cmd, null, "88", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterItemjs");
+	        Android.runInUI(cmd, null, "88", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFilterItemjs");
 	      }
 	    };
 	
@@ -18466,7 +18465,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/SimpleToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18695,7 +18694,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChooseItem.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ChooseItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -18961,7 +18960,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RadioListItem.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/RadioListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -19008,7 +19007,7 @@
 	      }
 	      _this2.props.onItemClick(_this2.props.title, _this2.isSelected);
 	
-	      Android.runInUI(cmd, 0, "45", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRadioListItemjs");
+	      Android.runInUI(cmd, 0, "45", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdRadioListItemjs");
 	    };
 	
 	    _this2.setIds(['image']);
@@ -19317,9 +19316,10 @@
 	            window.__duiShowScreen(callback, { screen: screenName, data: state });
 	            console.log("ReNDERING new SCREEN ", screenName);
 	          } else {
-	            console.log("not ReNDERING SAME SCREEN ");
+	            console.log("not ReNDERING SAME SCREEN "
 	            //add check for handleStateChnage property
 	            //currentScreen.handleStateChange(state);
+	            );
 	          }
 	        };
 	        var noAction = false;
@@ -19954,7 +19954,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CustomPopUp.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CustomPopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20002,7 +20002,7 @@
 	        id: _this.idSet.addSkillEditText,
 	        text: ""
 	      });
-	      Android.runInUI(cmd, 0, "63", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "63", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	      window.__LoaderDialog.hide();
 	    };
 	
@@ -20032,7 +20032,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "93", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "93", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.setVisibility = function (data) {
@@ -20041,7 +20041,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "102", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCustomPopUpjs");
+	      Android.runInUI(cmd, 0, "102", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCustomPopUpjs");
 	    };
 	
 	    _this.getOptions = function () {
@@ -20543,7 +20543,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/PreviewImagePopup.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -20591,7 +20591,7 @@
 	                visibility: data
 	            });
 	
-	            Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdPreviewImagePopupjs");
+	            Android.runInUI(cmd, 0, "48", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdPreviewImagePopupjs");
 	        };
 	
 	        _this.getImage = function (imageUrl) {
@@ -20679,7 +20679,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/ContentLoaderDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20712,7 +20712,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
 	        visibility: "visible"
-	      }), null, "31", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	      }), null, "31", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.updateProgressBar(0);
 	      _this.isVisible = true;
 	    };
@@ -20721,7 +20721,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.parentContainer,
 	        visibility: "gone"
-	      }), null, "43", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	      }), null, "43", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	      _this.isVisible = false;
 	      if (_this.handleClickCallback) _this.handleClickCallback = null;
 	    };
@@ -20742,7 +20742,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "visible"
-	          }), 0, "69", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "69", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      } else {
 	        if (_this.isButtonVisible) {
@@ -20750,7 +20750,7 @@
 	          Android.runInUI(_this.set({
 	            id: _this.idSet.btnContainer,
 	            visibility: "gone"
-	          }), 0, "77", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
+	          }), 0, "77", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreContentLoaderDialogjs");
 	        }
 	      }
 	    };
@@ -20914,7 +20914,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/PermissionDeniedDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -20973,7 +20973,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "83", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      Android.runInUI(cmd, 0, "83", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -21122,17 +21122,17 @@
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionIconHolder,
 	        imageUrl: icon
-	      }), 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "44", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionTextHolder,
 	        text: data + " " + window.__S.PERMISSION_DENIED
-	      }), 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "49", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	
 	      Android.runInUI(this.set({
 	        id: this.idSet.permissionSettingsMsg,
 	        text: window.__S.PERMISSION_SETTING_MSG
-	      }), 0, "54", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
+	      }), 0, "54", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcorePermissionDeniedDialogjs");
 	    }
 	  }, {
 	    key: "render",
@@ -21190,7 +21190,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/LanguagePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21247,7 +21247,7 @@
 	        id: _this2.parentId,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "58", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
+	      Android.runInUI(cmd, 0, "58", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreLanguagePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -21541,7 +21541,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/Spinner.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/Spinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21595,7 +21595,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ForceUpgradePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21631,14 +21631,14 @@
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "visible"
-	      }), null, "27", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "27", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.hide = function () {
 	      Android.runInUI(_this2.set({
 	        id: _this2.idSet.parentContainer,
 	        visibility: "gone"
-	      }), null, "34", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdForceUpgradePopupjs");
+	      }), null, "34", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdForceUpgradePopupjs");
 	    };
 	
 	    _this2.onUpgrade = function () {
@@ -21736,7 +21736,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileImagePopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -21881,7 +21881,7 @@
 	        id: _this2.idSet.popUpParent,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "141", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileImagePopUpjs");
+	      Android.runInUI(cmd, 0, "141", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdProfileImagePopUpjs");
 	    };
 	
 	    _this2.loadImage = function () {
@@ -22089,7 +22089,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadAllPopUp.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/DownloadAllPopUp.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22139,7 +22139,7 @@
 	        id: _this2.idSet.downloadAllParentId,
 	        visibility: data
 	      });
-	      Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllPopUpjs");
+	      Android.runInUI(cmd, 0, "47", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdDownloadAllPopUpjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -22366,7 +22366,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RatingsPopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/RatingsPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22432,7 +22432,7 @@
 	                id: id || _this2.parentId,
 	                visibility: data
 	            });
-	            Android.runInUI(cmd, 0, "74", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdRatingsPopupjs");
+	            Android.runInUI(cmd, 0, "74", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdRatingsPopupjs");
 	        };
 	
 	        _this2.handleDismissClick = function () {
@@ -22754,7 +22754,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/GenericSelectorPopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/GenericSelectorPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22812,7 +22812,7 @@
 	                id: _this2.idSet.parentContainer,
 	                visibility: data
 	            });
-	            Android.runInUI(cmd, 0, "55", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdGenericSelectorPopupjs");
+	            Android.runInUI(cmd, 0, "55", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdGenericSelectorPopupjs");
 	        };
 	
 	        _this2.handleDismissClick = function () {
@@ -23128,7 +23128,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/RadioButton.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/RadioButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23300,7 +23300,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "154", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreRadioButtonjs");
+	      Android.runInUI(cmd, 0, "154", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreRadioButtonjs");
 	
 	      _this.onClickCallback();
 	    };
@@ -23377,7 +23377,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CardComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/CardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23617,7 +23617,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/HorizontalProgressBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23749,7 +23749,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/CircularLoader.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/CircularLoader.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25506,7 +25506,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SplashScreenActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/SplashScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25555,7 +25555,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "50", "UsersnikithshettysunbirdgithubsunbirdduiviewsSplashScreenActivityjs");
+	      Android.runInUI(_this.animateView(), null, "50", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSplashScreenActivityjs");
 	    };
 	
 	    _this.getApiUrl = function () {
@@ -25667,7 +25667,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/LanguageSelectActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/LanguageSelectActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26035,7 +26035,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/RoleSelectionActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/RoleSelectionActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26254,7 +26254,7 @@
 	                    id: _this.idSet.scrollViewContainer,
 	                    margin: "0,0,0,80"
 	                });
-	                Android.runInUI(cmd, 0, "173", "UsersnikithshettysunbirdgithubsunbirdduiviewsRoleSelectionActivityjs");
+	                Android.runInUI(cmd, 0, "173", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsRoleSelectionActivityjs");
 	            }
 	            return layout;
 	        };
@@ -26400,7 +26400,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/WelcomeScreenActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/WelcomeScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26597,16 +26597,6 @@
 	      timeout = null;
 	    }
 	  };
-	  
-	  debounced.flush = function() {
-	    if (timeout) {
-	      result = func.apply(context, args);
-	      context = args = null;
-	      
-	      clearTimeout(timeout);
-	      timeout = null;
-	    }
-	  };
 	
 	  return debounced;
 	};
@@ -26618,7 +26608,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/StateSelectActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/StateSelectActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -26791,7 +26781,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SettingsScreenActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/SettingsScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27166,7 +27156,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/TextInputView.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/TextInputView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27292,7 +27282,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ShareFilePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ShareFilePopup.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -27349,7 +27339,7 @@
 	                id: _this.idSet.headerText,
 	                text: headerText
 	            });
-	            Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdShareFilePopupjs");
+	            Android.runInUI(cmd, 0, "49", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdShareFilePopupjs");
 	        };
 	
 	        _this.render = function () {
@@ -27483,7 +27473,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AboutUsActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AboutUsActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -27832,7 +27822,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AboutUsScreen.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AboutUsScreen.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -27956,7 +27946,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/LanguageSelectActivitySt.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/LanguageSelectActivitySt.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28235,7 +28225,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/DataSyncScreenActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/DataSyncScreenActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28652,7 +28642,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/MultiSelectSpinner.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28909,7 +28899,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SharePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/SharePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28978,7 +28968,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "73", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSharePopupjs");
+	      Android.runInUI(cmd, 0, "73", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreSharePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -29254,7 +29244,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/MainActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/MainActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29412,7 +29402,7 @@
 	  this.onPop = function () {
 	    console.log("onPop called in MainActivity");
 	
-	    Android.runInUI(_this3.animateView(), null, "89", "UsersnikithshettysunbirdgithubsunbirdduiviewsMainActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "89", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsMainActivityjs");
 	
 	    if (window.__pressedLoggedOut) {
 	      _this3.currentPageIndex = 0;
@@ -29892,7 +29882,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/BottomNavBar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30065,7 +30055,7 @@
 	          cmd += _this3.cardList.children[i].unselect();
 	        }
 	      }
-	      Android.runInUI(cmd, 0, "161", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
+	      Android.runInUI(cmd, 0, "161", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreBottomNavBarjs");
 	
 	      _this3.props._onClick(index);
 	    };
@@ -30161,7 +30151,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/HomeFragment.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/Fragments/HomeFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -30963,7 +30953,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LineSpacer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/LineSpacer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31015,7 +31005,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseInProgressContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31106,7 +31096,7 @@
 	          visibility: isDataEmpty ? "gone" : "visible"
 	        });
 	
-	        Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
+	        Android.runInUI(cmd, 0, "96", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCourseInProgressContainerjs");
 	
 	        layout = dom(
 	          LinearLayout,
@@ -31347,7 +31337,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeQuestionCardStyle.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/HomeQuestionCardStyle.js";
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -31390,7 +31380,7 @@
 					id: _this2.idSet.parentId,
 					visibility: data
 				});
-				Android.runInUI(cmd, 0, "44", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdHomeQuestionCardStylejs");
+				Android.runInUI(cmd, 0, "44", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdHomeQuestionCardStylejs");
 			};
 	
 			_this2.onPop = function () {};
@@ -31504,7 +31494,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnnouncementCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/AnnouncementCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -31935,7 +31925,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/SearchToolbar.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -32014,7 +32004,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "96", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleCloseClick = function () {
@@ -32061,7 +32051,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "144", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "144", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    };
 	
 	    _this2.handleItemClick = function (itemNo, logoNo) {
@@ -32269,7 +32259,7 @@
 	        text: "",
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "161", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
+	      Android.runInUI(cmd, 0, "161", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreSearchToolbarjs");
 	    }
 	  }, {
 	    key: "getSearchList",
@@ -32444,7 +32434,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ClassListItem.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ClassListItem.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -32687,7 +32677,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/SearchResult.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/SearchResult.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33002,9 +32992,9 @@
 	          )
 	        );
 	        _this.jsonArray.push({ view: _this.getView(resultLayout.render()), value: "", viewType: 0 });
-	      });
+	      }
 	      //console.log(this.jsonArray);
-	      JBridge.listViewAdapter(_this.idSet.listContainer, JSON.stringify(_this.jsonArray), 1000, null, "", "", 1);
+	      );JBridge.listViewAdapter(_this.idSet.listContainer, JSON.stringify(_this.jsonArray), 1000, null, "", "", 1);
 	    };
 	
 	    console.log(_this.props.data);
@@ -33048,7 +33038,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/HomeRecommendedContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33259,7 +33249,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33473,7 +33463,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/StarComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/StarComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33563,7 +33553,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadedCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/DownloadedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33765,7 +33755,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/HomeTodoContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -33964,7 +33954,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgressCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseProgressCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34216,7 +34206,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CourseFragment.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/Fragments/CourseFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -34724,7 +34714,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/QuestionsComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/QuestionsComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35069,7 +35059,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CarouselCards.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CarouselCards.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35344,7 +35334,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/NoInternetCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/NoInternetCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35436,7 +35426,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -35691,7 +35681,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ResourceFragment.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/Fragments/ResourceFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36211,7 +36201,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ResourceContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36439,7 +36429,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/OfflineResourceContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36478,7 +36468,7 @@
 	        id: _this2.idSet.viewAllContainer,
 	        visibility: _this2.offlineCount == 0 ? "gone" : "visible"
 	      });
-	      Android.runInUI(cmd, 0, "37", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
+	      Android.runInUI(cmd, 0, "37", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdOfflineResourceContainerjs");
 	      JBridge.setMapId(_this2.idSet.parentId + "", window.__S.SAVED_RESOURCES, window.__S.SAVED_RESOURCES_2, "0");
 	    };
 	
@@ -36699,7 +36689,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/CommunityFragment.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/Fragments/CommunityFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36823,7 +36813,7 @@
 	        id: _this.idSet.viewallContainer,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "111", "UsersnikithshettysunbirdgithubsunbirdduiviewsFragmentsCommunityFragmentjs");
+	      Android.runInUI(cmd, 0, "111", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsFragmentsCommunityFragmentjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {};
@@ -36973,7 +36963,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/MyCommunities.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/MyCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37273,7 +37263,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PopularCommunities.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/PopularCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37544,7 +37534,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/RecommendedCommunities.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -37816,7 +37806,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/Fragments/ProfileFragment.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/Fragments/ProfileFragment.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38507,7 +38497,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileHeader.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileHeader.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38757,7 +38747,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ComingSoonComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38835,7 +38825,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/PersonalDetails.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/PersonalDetails.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -38996,7 +38986,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileExperiences.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileExperiences.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39529,7 +39519,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CropParagraph.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CropParagraph.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -39567,7 +39557,7 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.props.contentText
 	        });
-	        Android.runInUI(cmd, 0, "43", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "43", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
 	      } else {
 	        var cmd = _this.set({
 	          id: _this.idSet.showMoreButton,
@@ -39577,16 +39567,16 @@
 	          id: _this.idSet.paraContainerCroped,
 	          text: _this.str
 	        });
-	        Android.runInUI(cmd, 0, "53", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropParagraphjs");
+	        Android.runInUI(cmd, 0, "53", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCropParagraphjs");
 	      }
 	      _this.max = !_this.max;
 	    };
 	
 	    _this.setIds(["paraContainerCroped", "showMoreButton"]);
 	    _this.str = _this.props.contentText != undefined ? _this.props.contentText : "";
-	    console.log(_this.props);
+	    console.log(_this.props
 	    // console.log("inside CropParagraph, content : " + this.str);
-	    _this.len = 50;
+	    );_this.len = 50;
 	
 	    if (_this.str.length > _this.len) _this.str = _this.str.substring(0, _this.len) + "...";
 	
@@ -39756,7 +39746,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileSkillTags.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40099,7 +40089,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileAccomplishments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40288,7 +40278,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileCreations.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileCreations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40533,7 +40523,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileBadges.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileBadges.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -40635,7 +40625,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, 0, "104", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdProfileBadgesjs");
+	      Android.runInUI(cmd, 0, "104", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdProfileBadgesjs");
 	    };
 	
 	    _this.getViewAll = function () {
@@ -40774,7 +40764,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileProgress.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41208,7 +41198,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileAdditionalInfo.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41664,7 +41654,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ProfileAffiliations.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -41866,7 +41856,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/GuestAdditionalInfo.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/GuestAdditionalInfo.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42117,7 +42107,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ContentLoadingComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42171,7 +42161,7 @@
 	      Android.runInUI(_this.set({
 	        id: _this.idSet.loaderComponent,
 	        visibility: "gone"
-	      }), 0, "40", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdContentLoadingComponentjs");
+	      }), 0, "40", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdContentLoadingComponentjs");
 	    };
 	
 	    _this.startRendering = function () {
@@ -42567,7 +42557,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/UserActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/UserActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -42786,7 +42776,7 @@
 	      text: progress
 	    });
 	
-	    Android.runInUI(cmd, 0, "106", "UsersnikithshettysunbirdgithubsunbirdduiviewsUserActivityjs");
+	    Android.runInUI(cmd, 0, "106", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsUserActivityjs");
 	  };
 	
 	  this.handleDeepLinkAction = function (identifier) {
@@ -43166,7 +43156,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeatureCards.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FeatureCards.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43388,7 +43378,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseInfoActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CourseInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -43529,8 +43519,8 @@
 	        id: _this3.idSet.downloadProgressText,
 	        text: window.__S.FETCHING_CONTENTS.format(downloadedPercent)
 	      });
-	      Android.runInUI(cmd, 0, "99", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
-	    } else if (cb == "onContentImportResponse" && data.status == "IMPORT_COMPLETED") {
+	      Android.runInUI(cmd, 0, "99", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
+	    } else if (cb == "onContentImportResponse") {
 	      if (data.status == "NOT_FOUND") {
 	        window.__ContentLoaderDialog.hide();
 	        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
@@ -43655,7 +43645,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: isVisible
-	      }), 0, "223", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "223", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	
 	    var layout = dom(
@@ -43675,7 +43665,7 @@
 	
 	  this.onPop = function () {
 	
-	    Android.runInUI(_this3.animateView(), null, "245", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "245", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
 	  };
 	
 	  this.afterRender = function () {
@@ -43699,7 +43689,7 @@
 	      Android.runInUI(_this3.set({
 	        id: _this3.idSet.enrollButtonId,
 	        visibility: "gone"
-	      }), 0, "269", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      }), 0, "269", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	  };
 	
@@ -43939,7 +43929,7 @@
 	        height: "match_parent",
 	        width: "match_parent",
 	        margin: "16,0,16,16",
-	        contentDescription: data.contentData.description ? data.contentData.description : " ",
+	        contentDescription: data.contentData && data.contentData.description ? data.contentData.description : " ",
 	        contentText: contentText, __source: {
 	          fileName: _jsxFileName,
 	          lineNumber: 486
@@ -44043,7 +44033,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "561", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "561", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -44060,7 +44050,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "578", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseInfoActivityjs");
+	      Android.runInUI(cmd, 0, "578", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseInfoActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -44301,7 +44291,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CropContentDetails.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CropContentDetails.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44349,7 +44339,7 @@
 	          margin: "8,20,0,0"
 	
 	        });
-	        Android.runInUI(cmd, 0, "47", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropContentDetailsjs");
+	        Android.runInUI(cmd, 0, "47", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCropContentDetailsjs");
 	      } else {
 	        var cmd = _this.set({
 	          id: _this.idSet.showMoreButton,
@@ -44367,7 +44357,7 @@
 	          imageUrl: "ic_action_down_blue",
 	          margin: "8,12,0,0"
 	        });
-	        Android.runInUI(cmd, 0, "65", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdCropContentDetailsjs");
+	        Android.runInUI(cmd, 0, "65", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdCropContentDetailsjs");
 	      }
 	      _this.max = !_this.max;
 	    };
@@ -44458,7 +44448,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseCurriculum.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseCurriculum.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44620,7 +44610,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterList.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ChapterList.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44854,7 +44844,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/AnswerView.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/AnswerView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -44899,7 +44889,7 @@
 	        });
 	        content = _this.getSelectedImage();
 	      }
-	      Android.runInUI(cmd, 0, "48", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAnswerViewjs");
+	      Android.runInUI(cmd, 0, "48", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdAnswerViewjs");
 	
 	      _this.replaceChild(_this.idSet.selectorContainer, content.render(), 0);
 	    };
@@ -45018,7 +45008,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/ChapterOverView.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/ChapterOverView.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45113,7 +45103,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CourseProgress.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CourseProgress.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45291,7 +45281,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/ProgressButton.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/ProgressButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45336,7 +45326,7 @@
 	        id: _this2.idSet.cancelDownloadHolder,
 	        visibility: value
 	      });
-	      Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "49", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.handleCancelDownload = function () {
@@ -45414,7 +45404,7 @@
 	        visibility: value
 	
 	      });
-	      Android.runInUI(cmd, 0, "129", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreProgressButtonjs");
+	      Android.runInUI(cmd, 0, "129", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreProgressButtonjs");
 	    };
 	
 	    _this2.setButtonFor = function (identifier) {
@@ -45738,7 +45728,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseEnrolledActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CourseEnrolledActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45898,7 +45888,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 939
+	            lineNumber: 946
 	          }
 	        },
 	        dom(
@@ -45910,7 +45900,7 @@
 	            background: window.__Colors.WHITE,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 945
+	              lineNumber: 952
 	            }
 	          },
 	          dom(
@@ -45921,7 +45911,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 951
+	                lineNumber: 958
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -45935,7 +45925,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 957
+	                lineNumber: 964
 	              }
 	            })
 	          ),
@@ -45945,7 +45935,7 @@
 	              width: "match_parent",
 	              id: this.idSet.horizontalProgressBarContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 969
+	                lineNumber: 976
 	              }
 	            },
 	            dom(HorizontalProgressBar, {
@@ -45954,7 +45944,7 @@
 	              totalProgress: this.data.totalProgress,
 	              visibility: this.showProgress, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 973
+	                lineNumber: 980
 	              }
 	            })
 	          ),
@@ -45964,7 +45954,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 980
+	                lineNumber: 987
 	              }
 	            },
 	            dom(
@@ -45974,7 +45964,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 984
+	                  lineNumber: 991
 	                }
 	              },
 	              dom(
@@ -45985,7 +45975,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 989
+	                    lineNumber: 996
 	                  }
 	                },
 	                dom(
@@ -45996,7 +45986,7 @@
 	                    root: "true",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 995
+	                      lineNumber: 1002
 	                    }
 	                  },
 	                  dom(
@@ -46008,7 +45998,7 @@
 	                      layoutTransition: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1001
+	                        lineNumber: 1008
 	                      }
 	                    },
 	                    dom(
@@ -46017,7 +46007,7 @@
 	                        width: "match_parent",
 	                        id: this.idSet.headerContainer, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1007
+	                          lineNumber: 1014
 	                        }
 	                      },
 	                      this.getHeader()
@@ -46028,14 +46018,14 @@
 	                      layoutTransition: "true",
 	                      id: this.idSet.ratingContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1013
+	                        lineNumber: 1020
 	                      }
 	                    })
 	                  ),
 	                  dom(LinearLayout, {
 	                    id: this.idSet.readMore, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1020
+	                      lineNumber: 1027
 	                    }
 	                  }),
 	                  dom(
@@ -46046,7 +46036,7 @@
 	                      orientation: "vertical",
 	                      background: window.__Colors.WHITE_F2, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1023
+	                        lineNumber: 1030
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -46056,7 +46046,7 @@
 	                      style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                      text: window.__S.STRUCTURE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1028
+	                        lineNumber: 1035
 	                      }
 	                    })
 	                  ),
@@ -46068,7 +46058,7 @@
 	                      padding: "16,24,16,16",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1035
+	                        lineNumber: 1042
 	                      }
 	                    },
 	                    dom(
@@ -46081,7 +46071,7 @@
 	                        root: "true",
 	                        orientation: "vertical", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1042
+	                          lineNumber: 1049
 	                        }
 	                      },
 	                      dom(TextView, {
@@ -46091,7 +46081,7 @@
 	                        gravity: "center",
 	                        text: window.__S.LOADING_CONTENT, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1050
+	                          lineNumber: 1057
 	                        }
 	                      }),
 	                      dom(ProgressBar, {
@@ -46100,7 +46090,7 @@
 	                        width: "20",
 	                        height: "20", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1057
+	                          lineNumber: 1064
 	                        }
 	                      })
 	                    )
@@ -46110,7 +46100,7 @@
 	                    height: "match_parent",
 	                    id: this.idSet.creditsSection, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1064
+	                      lineNumber: 1071
 	                    }
 	                  })
 	                )
@@ -46121,7 +46111,7 @@
 	                margin: "0,0,0,16",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1071
+	                  lineNumber: 1078
 	                }
 	              }),
 	              dom(
@@ -46131,7 +46121,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.startOrResumeBtnContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1077
+	                    lineNumber: 1084
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -46146,7 +46136,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1082
+	                    lineNumber: 1089
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -46161,7 +46151,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1094
+	                    lineNumber: 1101
 	                  }
 	                })
 	              ),
@@ -46169,7 +46159,7 @@
 	                width: "match_parent",
 	                id: _this.idSet.downloadAllProgressButton, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1107
+	                  lineNumber: 1114
 	                }
 	              })
 	            ),
@@ -46184,7 +46174,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1112
+	                  lineNumber: 1119
 	                }
 	              },
 	              dom(TextView, {
@@ -46194,7 +46184,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1121
+	                  lineNumber: 1128
 	                }
 	              })
 	            )
@@ -46203,7 +46193,7 @@
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1131
+	            lineNumber: 1138
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -46211,7 +46201,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1134
+	            lineNumber: 1141
 	          }
 	        })
 	      );
@@ -46226,7 +46216,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function () {
-	    Android.runInUI(_this3.animateView(), null, "123", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	    Android.runInUI(_this3.animateView(), null, "123", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	  };
 	
 	  this.onStop = function () {
@@ -46290,11 +46280,18 @@
 	        window.__ContentLoaderDialog.setClickCallback(_this3.handleContentLoaderCancelClick);
 	        window.__ContentLoaderDialog.updateProgressBar(downloadedPercent);
 	      }
-	    } else if (cb == "onContentImportResponse" && data.status == "IMPORT_COMPLETED") {
-	      window.__ContentLoaderDialog.updateProgressBar(100);
-	      window.__ContentLoaderDialog.hide();
-	      _this3.renderChildren(_this3.baseIdentifier);
-	      _this3.gotSpine = true;
+	    } else if (cb == "onContentImportResponse") {
+	      if (data.status == "NOT_FOUND") {
+	        window.__ContentLoaderDialog.hide();
+	        window.__Snackbar.show(window.__S.ERROR_CONTENT_NOT_AVAILABLE);
+	        _this3.onBackPressed();
+	        return;
+	      } else if (data.status == "IMPORT_COMPLETED") {
+	        window.__ContentLoaderDialog.updateProgressBar(100);
+	        window.__ContentLoaderDialog.hide();
+	        _this3.renderChildren(_this3.baseIdentifier);
+	        _this3.gotSpine = true;
+	      }
 	    }
 	  };
 	
@@ -46435,7 +46432,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "376", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "383", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -46503,7 +46500,7 @@
 	          totalProgress: _this3.data.totalProgress,
 	          visibility: _this3.showProgress, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 444
+	            lineNumber: 451
 	          }
 	        });
 	        _this3.replaceChild(_this3.idSet.horizontalProgressBarContainer, layout.render(), 0);
@@ -46529,7 +46526,7 @@
 	      onResumeClick: _this3.handleCourseResume,
 	      visibility: _this3.showProgress, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 470
+	        lineNumber: 477
 	      }
 	    });
 	  };
@@ -46546,7 +46543,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 487
+	          lineNumber: 494
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -46554,7 +46551,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "498", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "505", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -46566,7 +46563,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 501
+	          lineNumber: 508
 	        }
 	      });
 	    }
@@ -46618,7 +46615,7 @@
 	        id: _this3.idSet.resumeCourseBtn,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "561", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "568", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	      var cmd = _this3.set({
@@ -46630,7 +46627,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "574", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "581", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -46703,7 +46700,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 646
+	            lineNumber: 653
 	          }
 	        });
 	
@@ -46779,7 +46776,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 726
+	        lineNumber: 733
 	      }
 	    });
 	
@@ -46792,7 +46789,7 @@
 	      height: "2",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 740
+	        lineNumber: 747
 	      }
 	    });
 	  };
@@ -46824,7 +46821,7 @@
 	          }
 	        }, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 762
+	          lineNumber: 769
 	        }
 	      },
 	      dom(RatingBar, {
@@ -46832,7 +46829,7 @@
 	        width: "wrap_content",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 766
+	          lineNumber: 773
 	        }
 	      })
 	    );
@@ -46855,7 +46852,7 @@
 	      hideDivider: "gone",
 	      handleButtonClick: _this3.showDownloadAllPopUp, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 786
+	        lineNumber: 793
 	      }
 	    });
 	    return dom(
@@ -46865,7 +46862,7 @@
 	        height: "wrap_content",
 	        margin: "16,0,16,16", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 793
+	          lineNumber: 800
 	        }
 	      },
 	      _this3.__DownloadAllProgressButton
@@ -46901,7 +46898,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 825
+	          lineNumber: 832
 	        }
 	      },
 	      dom(
@@ -46911,7 +46908,7 @@
 	          height: "wrap_content",
 	          background: window.__Colors.WHITE_F2, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 829
+	            lineNumber: 836
 	          }
 	        },
 	        dom(TextView, {
@@ -46920,7 +46917,7 @@
 	          margin: "16,12,0,12",
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 833
+	            lineNumber: 840
 	          }
 	        })
 	      ),
@@ -46928,10 +46925,10 @@
 	        height: "wrap_content",
 	        width: "match_parent",
 	        margin: "16,0,16,16",
-	        contentDescription: data.contentData.description ? data.contentData.description : " ",
+	        contentDescription: data.contentData && data.contentData.description ? data.contentData.description : " ",
 	        contentText: contentText, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 839
+	          lineNumber: 846
 	        }
 	      })
 	    );
@@ -46954,7 +46951,7 @@
 	          orientation: "vertical",
 	          visibility: "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 858
+	            lineNumber: 865
 	          }
 	        },
 	        dom(
@@ -46966,7 +46963,7 @@
 	            margin: "0,8,0,0",
 	            background: window.__Colors.WHITE_F2, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 863
+	              lineNumber: 870
 	            }
 	          },
 	          dom(TextView, {
@@ -46976,7 +46973,7 @@
 	            margin: "16,0,0,0",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 869
+	              lineNumber: 876
 	            }
 	          }),
 	          dom(
@@ -46984,7 +46981,7 @@
 	            {
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 875
+	                lineNumber: 882
 	              }
 	            },
 	            dom(TextView, {
@@ -46994,7 +46991,7 @@
 	              color: "#FF0079FF",
 	              onClick: _this3.viewCreditsButtonClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 877
+	                lineNumber: 884
 	              }
 	            }),
 	            dom(ImageView, {
@@ -47005,7 +47002,7 @@
 	              margin: "8,14,0,8",
 	              imageUrl: "ic_action_down_blue", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 883
+	                lineNumber: 890
 	              }
 	            })
 	          )
@@ -47032,7 +47029,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "914", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "921", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -47049,7 +47046,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "931", "UsersnikithshettysunbirdgithubsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "938", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -47333,7 +47330,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/DownloadAllProgressButton.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/DownloadAllProgressButton.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -47455,7 +47452,7 @@
 	            id: _this2.id,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "135", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
+	          Android.runInUI(cmd, 0, "135", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdDownloadAllProgressButtonjs");
 	        }
 	      }
 	    };
@@ -47629,7 +47626,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FlagPopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FlagPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -47684,7 +47681,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "59", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "59", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.showBodyWithOptions = function () {
@@ -47693,7 +47690,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "69", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "69", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.hideBodyWithOptions = function () {
@@ -47702,7 +47699,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "78", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFlagPopupjs");
+	      Android.runInUI(cmd, 0, "78", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFlagPopupjs");
 	    };
 	
 	    _this.onConfirm = function () {
@@ -48056,7 +48053,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ModuleDetailActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ModuleDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48132,7 +48129,7 @@
 	
 	        _this2.onPop = function () {
 	            window.__getDownloadStatus = _this2.getSpineStatus;
-	            Android.runInUI(_this2.animateView(), null, "120", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	            Android.runInUI(_this2.animateView(), null, "120", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsModuleDetailActivityjs");
 	        };
 	
 	        _this2.getSpineStatus = function (pValue) {
@@ -48156,7 +48153,7 @@
 	                    id: _this2.idSet.downloadProgressText,
 	                    text: "Fetching Contents: " + downloadedPercent + "%"
 	                });
-	                Android.runInUI(cmd, 0, "148", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "148", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsModuleDetailActivityjs");
 	            }
 	        };
 	
@@ -48356,7 +48353,7 @@
 	                    id: _this2.idSet.descriptionContainer,
 	                    visibility: "gone"
 	                });
-	                Android.runInUI(cmd, 0, "349", "UsersnikithshettysunbirdgithubsunbirdduiviewsModuleDetailActivityjs");
+	                Android.runInUI(cmd, 0, "349", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsModuleDetailActivityjs");
 	                window.__ProgressButton.setButtonFor(module.identifier);
 	                window.__ProgressButton.setVisibility("visible");
 	            }
@@ -48743,7 +48740,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ViewBatchActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ViewBatchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -48804,7 +48801,7 @@
 	    _this2.showChooser = false;
 	
 	    setTimeout(function () {
-	      Android.runInUI(_this.animateView(), null, "49", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "49", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsViewBatchActivityjs");
 	    });
 	
 	    _this2.handleTypeChange = debounce(_this2.handleTypeChange, 100);
@@ -48892,7 +48889,7 @@
 	  var _this3 = this;
 	
 	  this.onPop = function (type) {
-	    Android.runInUI(_this.animateView(), null, "61", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "61", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.onBackPressed = function () {
@@ -48906,7 +48903,7 @@
 	    Android.runInUI(_this3.set({
 	      id: _this3.idSet.chooserPopup,
 	      visibility: _this3.showChooser ? "visible" : "gone"
-	    }), 0, "75", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    }), 0, "75", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsViewBatchActivityjs");
 	  };
 	
 	  this.handleTypeChange = function (type) {
@@ -48924,7 +48921,7 @@
 	      visibility: type === window.__S.VIEW_ONGOING_BATCHES ? "visible" : "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "98", "UsersnikithshettysunbirdgithubsunbirdduiviewsViewBatchActivityjs");
+	    Android.runInUI(cmd, 0, "98", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsViewBatchActivityjs");
 	
 	    if (type === window.__S.VIEW_ONGOING_BATCHES) {
 	      _this3.replaceChild(_this.idSet.batchListContainer, _this.getBatchesList(_this3.ongoingList, "1").render(), 0);
@@ -49359,7 +49356,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/BatchCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/BatchCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49562,7 +49559,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityInfoActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CommunityInfoActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -49603,7 +49600,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "57", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(_this.animateView(), null, "57", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -49824,7 +49821,7 @@
 	        });
 	      }
 	
-	      Android.runInUI(cmd, null, "227", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityInfoActivityjs");
+	      Android.runInUI(cmd, null, "227", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommunityInfoActivityjs");
 	    };
 	
 	    _this.handleMenuClick = function (url) {
@@ -49958,7 +49955,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDescription.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CommunityDescription.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50171,7 +50168,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityDefault.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CommunityDefault.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50429,7 +50426,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FeedComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FeedComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -50555,7 +50552,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FeedCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/FeedCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51006,7 +51003,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "227", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "227", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerClose",
@@ -51021,7 +51018,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "241", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreFeedCardjs");
+	      Android.runInUI(cmd, 0, "241", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreFeedCardjs");
 	    }
 	  }, {
 	    key: "handleAnswerSubmit",
@@ -51064,7 +51061,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/CommunityEventsContainer.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51169,7 +51166,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommunityViewAllActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CommunityViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51347,7 +51344,7 @@
 	    };
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "152", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommunityViewAllActivityjs");
+	      Android.runInUI(_this.animateView(), null, "152", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommunityViewAllActivityjs");
 	    };
 	
 	    _this.setIds(['filterCount']);
@@ -51429,7 +51426,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/NotificationActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/NotificationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -51464,7 +51461,7 @@
 	    var _this = _possibleConstructorReturn(this, (NotificationActivity.__proto__ || Object.getPrototypeOf(NotificationActivity)).call(this, props, children, state));
 	
 	    _this.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "59", "UsersnikithshettysunbirdgithubsunbirdduiviewsNotificationActivityjs");
+	      Android.runInUI(_this.animateView(), null, "59", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsNotificationActivityjs");
 	    };
 	
 	    _this.afterRender = function () {};
@@ -51684,7 +51681,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceDetailActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ResourceDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -52373,7 +52370,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "432", "UsersnikithshettysunbirdgithubsunbirdduiviewsResourceDetailActivityjs");
+	      Android.runInUI(cmd, 0, "432", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsResourceDetailActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -52390,7 +52387,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "449", "UsersnikithshettysunbirdgithubsunbirdduiviewsResourceDetailActivityjs");
+	      Android.runInUI(cmd, 0, "449", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsResourceDetailActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -52664,7 +52661,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ResourceViewAllActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ResourceViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -52916,7 +52913,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/LargeCardComponent.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -53208,7 +53205,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CourseViewAllActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CourseViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -53482,7 +53479,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementViewAllActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AnnouncementViewAllActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -53688,7 +53685,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/SearchActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/SearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -53760,7 +53757,7 @@
 	          visibility: "visible",
 	          imageUrl: _this2.filterIcon
 	        });
-	        Android.runInUI(cmd, 0, "91", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	        Android.runInUI(cmd, 0, "91", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	        // this.getSearchList(this.searchText);
 	
 	        // var searchData
@@ -53787,7 +53784,7 @@
 	          id: _this2.idSet.searchHolder,
 	          text: _this2.searchText
 	        });
-	        Android.runInUI(cmd, 0, "118", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	        Android.runInUI(cmd, 0, "118", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	
 	        _this2.handleSearchClick(_this2.searchText);
 	      } else if (_this2.keywords) {
@@ -53851,7 +53848,7 @@
 	    };
 	
 	    _this2.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "188", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "188", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.getBack = function () {
@@ -54230,7 +54227,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "452", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "452", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -54401,7 +54398,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "608", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "608", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleSearchClick = function (searchText, keywords) {
@@ -54439,7 +54436,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "648", "UsersnikithshettysunbirdgithubsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "648", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
@@ -54567,7 +54564,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/FilterDialog.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/FilterDialog.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -54766,7 +54763,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/FilterActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/FilterActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -55065,7 +55062,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterCard.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FilterCard.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -55200,7 +55197,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/FilterPopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/FilterPopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -55251,7 +55248,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "51", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdFilterPopupjs");
+	      Android.runInUI(cmd, 0, "51", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdFilterPopupjs");
 	    };
 	
 	    _this.getFeatureButton = function () {
@@ -55563,7 +55560,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AdditionalInformationActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AdditionalInformationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -56480,7 +56477,7 @@
 	        text: data[0],
 	        style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	      });
-	      Android.runInUI(cmd, 0, "692", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "692", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsAdditionalInformationActivityjs");
 	      _this.updateSaveButtonStatus(_this.checkCompleteStatus());
 	    });
 	
@@ -56784,7 +56781,7 @@
 	        alpha: alphaVal
 	      });
 	
-	      Android.runInUI(cmd, 0, "1060", "UsersnikithshettysunbirdgithubsunbirdduiviewsAdditionalInformationActivityjs");
+	      Android.runInUI(cmd, 0, "1060", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsAdditionalInformationActivityjs");
 	    }
 	  };
 	
@@ -56852,7 +56849,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/GuestInformationActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/GuestInformationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -57324,7 +57321,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AddressActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AddressActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -57474,7 +57471,7 @@
 	          clickable: "false",
 	          alpha: "0.5" });
 	      }
-	      Android.runInUI(cmd, 0, "197", "UsersnikithshettysunbirdgithubsunbirdduiviewsAddressActivityjs");
+	      Android.runInUI(cmd, 0, "197", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsAddressActivityjs");
 	    };
 	
 	    _this2.getButtons = function () {
@@ -57899,7 +57896,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/core/SimplePopup.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/core/SimplePopup.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -57955,7 +57952,7 @@
 	        visibility: data
 	      });
 	
-	      Android.runInUI(cmd, 0, "61", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdcoreSimplePopupjs");
+	      Android.runInUI(cmd, 0, "61", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdcoreSimplePopupjs");
 	    };
 	
 	    _this2.getLineSeperator = function () {
@@ -58212,7 +58209,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/EducationActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/EducationActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -58339,7 +58336,7 @@
 	        clickable: isClickable
 	      });
 	
-	      Android.runInUI(cmd, 0, "178", "UsersnikithshettysunbirdgithubsunbirdduiviewsEducationActivityjs");
+	      Android.runInUI(cmd, 0, "178", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsEducationActivityjs");
 	    };
 	
 	    _this2.checkPassingYear = function (data) {
@@ -58696,7 +58693,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ExperienceActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ExperienceActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -58826,7 +58823,7 @@
 	          text: data[0],
 	          style: window.__TextStyle.textStyle.CARD.BODY.DARK.REGULAR_BLACK
 	        });
-	        Android.runInUI(cmd, 0, "169", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "169", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsExperienceActivityjs");
 	        _this.changeSaveButtonState(_this.checkCompleteStatus());
 	      });
 	
@@ -58852,7 +58849,7 @@
 	            id: _this2.idSet.closingDateText,
 	            text: "Select Date"
 	          });
-	          Android.runInUI(cmd, 0, "198", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	          Android.runInUI(cmd, 0, "198", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsExperienceActivityjs");
 	          _this2.endDate = null;
 	          _this2.isCurrentJob = true;
 	          _this2.changeSaveButtonState(_this2.checkCompleteStatus());
@@ -58866,7 +58863,7 @@
 	          id: _this2.idSet.closingDateLayout,
 	          visibility: "visible"
 	        });
-	        Android.runInUI(cmd, 0, "216", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	        Android.runInUI(cmd, 0, "216", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsExperienceActivityjs");
 	        _this2.isCurrentJob = false;
 	        _this2.changeSaveButtonState(_this2.checkCompleteStatus());
 	      }
@@ -58993,7 +58990,7 @@
 	        clickable: clickable,
 	        alpha: alpha
 	      });
-	      Android.runInUI(cmd, 0, "357", "UsersnikithshettysunbirdgithubsunbirdduiviewsExperienceActivityjs");
+	      Android.runInUI(cmd, 0, "357", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsExperienceActivityjs");
 	      _this2.canSave = data;
 	    };
 	
@@ -59450,7 +59447,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/CommProfSearchActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/CommProfSearchActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -59647,7 +59644,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, 0, "96", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	      Android.runInUI(cmd, 0, "96", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	
 	      var searchData;
 	      if (_typeof(_this3.filterData) == 'object') {
@@ -59673,7 +59670,7 @@
 	
 	  this.onPop = function () {
 	    console.log("Inside onPop - CommProfSearchActivity");
-	    Android.runInUI(_this.animateView(), null, "124", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(_this.animateView(), null, "124", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getBack = function () {
@@ -59791,7 +59788,7 @@
 	      id: _this.idSet.filterHolder,
 	      visibility: "gone"
 	    });
-	    Android.runInUI(cmd, 0, "219", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "219", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	
 	    var layout = dom(
 	      LinearLayout,
@@ -59861,7 +59858,7 @@
 	      visibility: "visible"
 	    });
 	
-	    Android.runInUI(cmd, 0, "278", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "278", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.getSearchList = function (searchText, flag) {
@@ -59913,7 +59910,7 @@
 	      visibility: "gone"
 	    });
 	
-	    Android.runInUI(cmd, 0, "333", "UsersnikithshettysunbirdgithubsunbirdduiviewsCommProfSearchActivityjs");
+	    Android.runInUI(cmd, 0, "333", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCommProfSearchActivityjs");
 	  };
 	
 	  this.handleFilterClick = function () {
@@ -59936,7 +59933,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ProfileActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ProfileActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -60432,7 +60429,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/AnnouncementDetailActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/AnnouncementDetailActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -60877,7 +60874,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/components/Sunbird/Attachments.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/components/Sunbird/Attachments.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -60933,7 +60930,7 @@
 	            id: _this.idSet.viewButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "49", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "49", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        } else if (data[0] == "failure") {
 	          JBridge.showToast(window.__S.ERROR_FAILED_TO_DOWNLOAD_ATTACHMENT, "short");
 	        } else if (data[0] == "finished") {
@@ -60953,7 +60950,7 @@
 	            id: _this.idSet.cancelButton,
 	            visibility: "gone"
 	          });
-	          Android.runInUI(cmd, 0, "64", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	          Android.runInUI(cmd, 0, "64", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        } else if (data[0] == "no_app") {
 	          JBridge.showToast(window.__S.NO_APP_FOR_INTENT, "short");
 	        }
@@ -60979,7 +60976,7 @@
 	          id: _this.idSet.cancelButton,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "85", "UsersnikithshettysunbirdgithubsunbirdduicomponentsSunbirdAttachmentsjs");
+	        Android.runInUI(cmd, 0, "85", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduicomponentsSunbirdAttachmentsjs");
 	        JBridge.showToast(window.__S.DOWNLOAD_CANCELED, "short");
 	      });
 	      JBridge.cancelDownload(_this2.props.index, callback1);
@@ -61147,7 +61144,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/ContentPreviewScreen.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/ContentPreviewScreen.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -61187,7 +61184,7 @@
 	
 	    _this2.onPop = function () {
 	      window.__getDownloadStatus = _this2.getSpineStatus;
-	      Android.runInUI(_this2.animateView(), null, "70", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
+	      Android.runInUI(_this2.animateView(), null, "70", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsContentPreviewScreenjs");
 	    };
 	
 	    _this2.onStop = function () {
@@ -61277,7 +61274,7 @@
 	          id: _this2.idSet.descriptionContainer,
 	          visibility: "gone"
 	        });
-	        Android.runInUI(cmd, 0, "168", "UsersnikithshettysunbirdgithubsunbirdduiviewsContentPreviewScreenjs");
+	        Android.runInUI(cmd, 0, "168", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsContentPreviewScreenjs");
 	        layout = dom(LinearLayout, {
 	          __source: {
 	            fileName: _jsxFileName,
@@ -61837,7 +61834,7 @@
 
 	"use strict";
 	
-	var _jsxFileName = "/Users/nikith.shetty/sunbird-github/sunbird-dui/views/QRActivity.js";
+	var _jsxFileName = "/Users/nikhil.roy/Documents/Projects/sunbird/sunbird-dui/views/QRActivity.js";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -62016,7 +62013,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "visible"
 	      });
-	      Android.runInUI(cmd, null, "188", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "188", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsQRActivityjs");
 	    };
 	
 	    _this2.getKeyword = function (data) {
@@ -62044,7 +62041,7 @@
 	        id: _this2.idSet.errorPopup,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, null, "215", "UsersnikithshettysunbirdgithubsunbirdduiviewsQRActivityjs");
+	      Android.runInUI(cmd, null, "215", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsQRActivityjs");
 	      QRScanner.openQRScanner(_this2.idSet.frameLayout);
 	    };
 	
@@ -64143,7 +64140,7 @@
 /* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
+	var apply = Function.prototype.apply;
 	
 	// DOM APIs, for completeness
 	
@@ -64194,17 +64191,9 @@
 	
 	// setimmediate attaches itself to the global object
 	__webpack_require__(534);
-	// On some exotic environments, it's not clear which object `setimmeidate` was
-	// able to install onto.  Search each possibility in the same order as the
-	// `setimmediate` library.
-	exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
-	                       (typeof global !== "undefined" && global.setImmediate) ||
-	                       (this && this.setImmediate);
-	exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
-	                         (typeof global !== "undefined" && global.clearImmediate) ||
-	                         (this && this.clearImmediate);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+	exports.setImmediate = setImmediate;
+	exports.clearImmediate = clearImmediate;
+
 
 /***/ }),
 /* 534 */
@@ -68021,6 +68010,36 @@
 	var foldr = function foldr(dict) {
 	    return dict.foldr;
 	};
+	var indexr = function indexr(dictFoldable) {
+	    return function (idx) {
+	        var go = function go(a) {
+	            return function (cursor) {
+	                if (cursor.elem instanceof Data_Maybe.Just) {
+	                    return cursor;
+	                };
+	                var $106 = cursor.pos === idx;
+	                if ($106) {
+	                    return {
+	                        elem: new Data_Maybe.Just(a),
+	                        pos: cursor.pos
+	                    };
+	                };
+	                return {
+	                    pos: cursor.pos + 1 | 0,
+	                    elem: cursor.elem
+	                };
+	            };
+	        };
+	        return function ($193) {
+	            return function (v) {
+	                return v.elem;
+	            }(foldr(dictFoldable)(go)({
+	                elem: Data_Maybe.Nothing.value,
+	                pos: 0
+	            })($193));
+	        };
+	    };
+	};
 	var $$null = function $$null(dictFoldable) {
 	    return foldr(dictFoldable)(function (v) {
 	        return function (v1) {
@@ -68036,8 +68055,8 @@
 	var oneOfMap = function oneOfMap(dictFoldable) {
 	    return function (dictPlus) {
 	        return function (f) {
-	            return foldr(dictFoldable)(function ($183) {
-	                return Control_Alt.alt(dictPlus.Alt0())(f($183));
+	            return foldr(dictFoldable)(function ($194) {
+	                return Control_Alt.alt(dictPlus.Alt0())(f($194));
 	            })(Control_Plus.empty(dictPlus));
 	        };
 	    };
@@ -68045,8 +68064,8 @@
 	var traverse_ = function traverse_(dictApplicative) {
 	    return function (dictFoldable) {
 	        return function (f) {
-	            return foldr(dictFoldable)(function ($184) {
-	                return Control_Apply.applySecond(dictApplicative.Apply0())(f($184));
+	            return foldr(dictFoldable)(function ($195) {
+	                return Control_Apply.applySecond(dictApplicative.Apply0())(f($195));
 	            })(Control_Applicative.pure(dictApplicative)(Data_Unit.unit));
 	        };
 	    };
@@ -68063,6 +68082,36 @@
 	};
 	var foldl = function foldl(dict) {
 	    return dict.foldl;
+	};
+	var indexl = function indexl(dictFoldable) {
+	    return function (idx) {
+	        var go = function go(cursor) {
+	            return function (a) {
+	                if (cursor.elem instanceof Data_Maybe.Just) {
+	                    return cursor;
+	                };
+	                var $109 = cursor.pos === idx;
+	                if ($109) {
+	                    return {
+	                        elem: new Data_Maybe.Just(a),
+	                        pos: cursor.pos
+	                    };
+	                };
+	                return {
+	                    pos: cursor.pos + 1 | 0,
+	                    elem: cursor.elem
+	                };
+	            };
+	        };
+	        return function ($196) {
+	            return function (v) {
+	                return v.elem;
+	            }(foldl(dictFoldable)(go)({
+	                elem: Data_Maybe.Nothing.value,
+	                pos: 0
+	            })($196));
+	        };
+	    };
 	};
 	var intercalate = function intercalate(dictFoldable) {
 	    return function (dictMonoid) {
@@ -68108,14 +68157,14 @@
 	                };
 	                if (v instanceof Data_Maybe.Just) {
 	                    return new Data_Maybe.Just(function () {
-	                        var $106 = Data_Eq.eq(Data_Ordering.eqOrdering)(cmp(v.value0)(v1))(Data_Ordering.GT.value);
-	                        if ($106) {
+	                        var $116 = Data_Eq.eq(Data_Ordering.eqOrdering)(cmp(v.value0)(v1))(Data_Ordering.GT.value);
+	                        if ($116) {
 	                            return v.value0;
 	                        };
 	                        return v1;
 	                    }());
 	                };
-	                throw new Error("Failed pattern match at Data.Foldable line 352, column 3 - line 352, column 27: " + [v.constructor.name, v1.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Foldable line 378, column 3 - line 378, column 27: " + [v.constructor.name, v1.constructor.name]);
 	            };
 	        };
 	        return foldl(dictFoldable)(max$prime)(Data_Maybe.Nothing.value);
@@ -68135,14 +68184,14 @@
 	                };
 	                if (v instanceof Data_Maybe.Just) {
 	                    return new Data_Maybe.Just(function () {
-	                        var $110 = Data_Eq.eq(Data_Ordering.eqOrdering)(cmp(v.value0)(v1))(Data_Ordering.LT.value);
-	                        if ($110) {
+	                        var $120 = Data_Eq.eq(Data_Ordering.eqOrdering)(cmp(v.value0)(v1))(Data_Ordering.LT.value);
+	                        if ($120) {
 	                            return v.value0;
 	                        };
 	                        return v1;
 	                    }());
 	                };
-	                throw new Error("Failed pattern match at Data.Foldable line 365, column 3 - line 365, column 27: " + [v.constructor.name, v1.constructor.name]);
+	                throw new Error("Failed pattern match at Data.Foldable line 391, column 3 - line 391, column 27: " + [v.constructor.name, v1.constructor.name]);
 	            };
 	        };
 	        return foldl(dictFoldable)(min$prime)(Data_Maybe.Nothing.value);
@@ -68191,7 +68240,7 @@
 	            if (v instanceof Data_Maybe.Just) {
 	                return f(v.value0);
 	            };
-	            throw new Error("Failed pattern match at Data.Foldable line 129, column 1 - line 129, column 41: " + [f.constructor.name, v.constructor.name]);
+	            throw new Error("Failed pattern match at Data.Foldable line 131, column 1 - line 131, column 41: " + [f.constructor.name, v.constructor.name]);
 	        };
 	    };
 	}, function (v) {
@@ -68203,7 +68252,7 @@
 	            if (v1 instanceof Data_Maybe.Just) {
 	                return v(z)(v1.value0);
 	            };
-	            throw new Error("Failed pattern match at Data.Foldable line 129, column 1 - line 129, column 41: " + [v.constructor.name, z.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.Foldable line 131, column 1 - line 131, column 41: " + [v.constructor.name, z.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	}, function (v) {
@@ -68215,7 +68264,7 @@
 	            if (v1 instanceof Data_Maybe.Just) {
 	                return v(v1.value0)(z);
 	            };
-	            throw new Error("Failed pattern match at Data.Foldable line 129, column 1 - line 129, column 41: " + [v.constructor.name, z.constructor.name, v1.constructor.name]);
+	            throw new Error("Failed pattern match at Data.Foldable line 131, column 1 - line 131, column 41: " + [v.constructor.name, z.constructor.name, v1.constructor.name]);
 	        };
 	    };
 	});
@@ -68365,8 +68414,8 @@
 	    return function (c) {
 	        return function (u) {
 	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMap(dictFoldable)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function ($185) {
-	                    return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c)($185)));
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(Data_Newtype.unwrap(Data_Monoid_Dual.newtypeDual)(foldMap(dictFoldable)(Data_Monoid_Dual.monoidDual(Data_Monoid_Endo.monoidEndo))(function ($197) {
+	                    return Data_Monoid_Dual.Dual(Data_Monoid_Endo.Endo(Data_Function.flip(c)($197)));
 	                })(xs)))(u);
 	            };
 	        };
@@ -68376,8 +68425,8 @@
 	    return function (c) {
 	        return function (u) {
 	            return function (xs) {
-	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMap(dictFoldable)(Data_Monoid_Endo.monoidEndo)(function ($186) {
-	                    return Data_Monoid_Endo.Endo(c($186));
+	                return Data_Newtype.unwrap(Data_Monoid_Endo.newtypeEndo)(foldMap(dictFoldable)(Data_Monoid_Endo.monoidEndo)(function ($198) {
+	                    return Data_Monoid_Endo.Endo(c($198));
 	                })(xs))(u);
 	            };
 	        };
@@ -68457,16 +68506,16 @@
 	};
 	var elem = function elem(dictFoldable) {
 	    return function (dictEq) {
-	        return function ($187) {
-	            return any(dictFoldable)(Data_HeytingAlgebra.heytingAlgebraBoolean)(Data_Eq.eq(dictEq)($187));
+	        return function ($199) {
+	            return any(dictFoldable)(Data_HeytingAlgebra.heytingAlgebraBoolean)(Data_Eq.eq(dictEq)($199));
 	        };
 	    };
 	};
 	var notElem = function notElem(dictFoldable) {
 	    return function (dictEq) {
 	        return function (x) {
-	            return function ($188) {
-	                return !elem(dictFoldable)(dictEq)(x)($188);
+	            return function ($200) {
+	                return !elem(dictFoldable)(dictEq)(x)($200);
 	            };
 	        };
 	    };
@@ -68513,6 +68562,8 @@
 	    product: product,
 	    elem: elem,
 	    notElem: notElem,
+	    indexl: indexl,
+	    indexr: indexr,
 	    find: find,
 	    findMap: findMap,
 	    maximum: maximum,
@@ -91027,9 +91078,10 @@
 	            window.__duiShowScreen(callback, { screen: screenName, data: state });
 	            console.log("ReNDERING new SCREEN ", screenName);
 	          } else {
-	            console.log("not ReNDERING SAME SCREEN ");
+	            console.log("not ReNDERING SAME SCREEN "
 	            //add check for handleStateChnage property
 	            //currentScreen.handleStateChange(state);
+	            );
 	          }
 	        };
 	        var noAction = false;
