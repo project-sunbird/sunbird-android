@@ -21665,7 +21665,8 @@
 	          afterRender: this.afterRender,
 	          root: "true",
 	          background: window.__Colors.PRIMARY_BLACK_44,
-	          orientation: "vertical", __source: {
+	          orientation: "vertical",
+	          clickable: "true", __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 47
 	          }
@@ -21675,7 +21676,7 @@
 	          width: "match_parent",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 57
+	            lineNumber: 58
 	          }
 	        }),
 	        dom(
@@ -21688,26 +21689,26 @@
 	            gravity: "center",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 62
+	              lineNumber: 63
 	            }
 	          },
 	          dom(TextView, {
 	            height: "wrap_content",
 	            width: "wrap_content",
 	            margin: "0,0,0,16",
-	            text: "Upgrade the app", __source: {
+	            text: window.__S.UPGRADE_APP, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 70
+	              lineNumber: 71
 	            }
 	          }),
 	          dom(Button, {
 	            height: "wrap_content",
 	            width: "wrap_content",
-	            text: "Upgrade",
+	            text: window.__S.UPGRADE,
 	            margin: "16, 0, 16, 0",
 	            onClick: this.onUpgrade, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 76
+	              lineNumber: 77
 	            }
 	          })
 	        ),
@@ -21716,7 +21717,7 @@
 	          width: "match_parent",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 84
+	            lineNumber: 85
 	          }
 	        })
 	      );
@@ -24215,7 +24216,9 @@
 			"PRIVACY_HIDE_TEXT": "Hiding %s from all",
 			"PRIVACY_SHOW_TEXT": "Showing %s from all",
 			"NO_APP_FOR_INTENT": "No app available to open the file",
-			"SUCCESS": "SUCCESS"
+			"SUCCESS": "SUCCESS",
+			"UPGRADE_APP": "Upgrade the app",
+			"UPGRADE": "Upgrade"
 		},
 		"hi_IN": {
 			"ABOUT": "बारे में",
@@ -45213,7 +45216,7 @@
 	            dom(ImageView, {
 	              width: "16",
 	              height: "16",
-	              visibility: this.props.textbook ? "visible" : "gone",
+	              visibility: "gone",
 	              gravity: "left",
 	              margin: "8,6,0,4",
 	              imageUrl: "ic_check_circle", __source: {
@@ -45888,7 +45891,7 @@
 	          clickable: "true",
 	          root: "true", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 946
+	            lineNumber: 963
 	          }
 	        },
 	        dom(
@@ -45900,7 +45903,7 @@
 	            background: window.__Colors.WHITE,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 952
+	              lineNumber: 969
 	            }
 	          },
 	          dom(
@@ -45911,7 +45914,7 @@
 	              height: "wrap_content",
 	              id: this.idSet.simpleToolBarOverFlow, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 958
+	                lineNumber: 975
 	              }
 	            },
 	            dom(SimpleToolbar, {
@@ -45925,7 +45928,7 @@
 	              showMenu: "true",
 	              onBackPress: this.onBackPressed, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 964
+	                lineNumber: 981
 	              }
 	            })
 	          ),
@@ -45935,7 +45938,7 @@
 	              width: "match_parent",
 	              id: this.idSet.horizontalProgressBarContainer, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 976
+	                lineNumber: 993
 	              }
 	            },
 	            dom(HorizontalProgressBar, {
@@ -45944,7 +45947,7 @@
 	              totalProgress: this.data.totalProgress,
 	              visibility: this.showProgress, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 980
+	                lineNumber: 997
 	              }
 	            })
 	          ),
@@ -45954,7 +45957,7 @@
 	              height: "match_parent",
 	              width: "match_parent", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 987
+	                lineNumber: 1004
 	              }
 	            },
 	            dom(
@@ -45964,7 +45967,7 @@
 	                width: "match_parent",
 	                orientation: "vertical", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 991
+	                  lineNumber: 1008
 	                }
 	              },
 	              dom(
@@ -45975,7 +45978,7 @@
 	                  width: "match_parent",
 	                  fillViewPort: "true", __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 996
+	                    lineNumber: 1013
 	                  }
 	                },
 	                dom(
@@ -45986,7 +45989,7 @@
 	                    root: "true",
 	                    orientation: "vertical", __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1002
+	                      lineNumber: 1019
 	                    }
 	                  },
 	                  dom(
@@ -45998,7 +46001,7 @@
 	                      layoutTransition: "true",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1008
+	                        lineNumber: 1025
 	                      }
 	                    },
 	                    dom(
@@ -46007,7 +46010,7 @@
 	                        width: "match_parent",
 	                        id: this.idSet.headerContainer, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1014
+	                          lineNumber: 1031
 	                        }
 	                      },
 	                      this.getHeader()
@@ -46018,14 +46021,14 @@
 	                      layoutTransition: "true",
 	                      id: this.idSet.ratingContainer, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1020
+	                        lineNumber: 1037
 	                      }
 	                    })
 	                  ),
 	                  dom(LinearLayout, {
 	                    id: this.idSet.readMore, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1027
+	                      lineNumber: 1044
 	                    }
 	                  }),
 	                  dom(
@@ -46036,7 +46039,7 @@
 	                      orientation: "vertical",
 	                      background: window.__Colors.WHITE_F2, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1030
+	                        lineNumber: 1047
 	                      }
 	                    },
 	                    dom(TextView, {
@@ -46046,7 +46049,7 @@
 	                      style: window.__TextStyle.textStyle.CARD.TITLE.DARK,
 	                      text: window.__S.STRUCTURE, __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1035
+	                        lineNumber: 1052
 	                      }
 	                    })
 	                  ),
@@ -46058,7 +46061,7 @@
 	                      padding: "16,24,16,16",
 	                      orientation: "vertical", __source: {
 	                        fileName: _jsxFileName,
-	                        lineNumber: 1042
+	                        lineNumber: 1059
 	                      }
 	                    },
 	                    dom(
@@ -46071,7 +46074,7 @@
 	                        root: "true",
 	                        orientation: "vertical", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1049
+	                          lineNumber: 1066
 	                        }
 	                      },
 	                      dom(TextView, {
@@ -46081,7 +46084,7 @@
 	                        gravity: "center",
 	                        text: window.__S.LOADING_CONTENT, __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1057
+	                          lineNumber: 1074
 	                        }
 	                      }),
 	                      dom(ProgressBar, {
@@ -46090,7 +46093,7 @@
 	                        width: "20",
 	                        height: "20", __source: {
 	                          fileName: _jsxFileName,
-	                          lineNumber: 1064
+	                          lineNumber: 1081
 	                        }
 	                      })
 	                    )
@@ -46100,7 +46103,7 @@
 	                    height: "match_parent",
 	                    id: this.idSet.creditsSection, __source: {
 	                      fileName: _jsxFileName,
-	                      lineNumber: 1071
+	                      lineNumber: 1088
 	                    }
 	                  })
 	                )
@@ -46111,7 +46114,7 @@
 	                margin: "0,0,0,16",
 	                background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1078
+	                  lineNumber: 1095
 	                }
 	              }),
 	              dom(
@@ -46121,7 +46124,7 @@
 	                  width: "match_parent",
 	                  id: this.idSet.startOrResumeBtnContainer, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1084
+	                    lineNumber: 1101
 	                  }
 	                },
 	                dom(FeatureButton, {
@@ -46136,7 +46139,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1089
+	                    lineNumber: 1106
 	                  }
 	                }),
 	                dom(FeatureButton, {
@@ -46151,7 +46154,7 @@
 	                  style: window.__TextStyle.textStyle.CARD.ACTION.LIGHT,
 	                  buttonClick: this.handleResumeClick, __source: {
 	                    fileName: _jsxFileName,
-	                    lineNumber: 1101
+	                    lineNumber: 1118
 	                  }
 	                })
 	              ),
@@ -46159,7 +46162,7 @@
 	                width: "match_parent",
 	                id: _this.idSet.downloadAllProgressButton, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1114
+	                  lineNumber: 1131
 	                }
 	              })
 	            ),
@@ -46174,7 +46177,7 @@
 	                background: window.__Colors.WHITE_90,
 	                gravity: "center", __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1119
+	                  lineNumber: 1136
 	                }
 	              },
 	              dom(TextView, {
@@ -46184,7 +46187,7 @@
 	                style: window.__TextStyle.textStyle.NOTHING,
 	                text: window.__S.ERROR_BATCH_NOT_STARTED, __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 1128
+	                  lineNumber: 1145
 	                }
 	              })
 	            )
@@ -46193,7 +46196,7 @@
 	        dom(FlagPopup, {
 	          onConfirm: this.flagContent, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1138
+	            lineNumber: 1155
 	          }
 	        }),
 	        dom(LinearLayout, {
@@ -46201,7 +46204,7 @@
 	          height: "match_parent",
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 1141
+	            lineNumber: 1158
 	          }
 	        })
 	      );
@@ -46261,6 +46264,9 @@
 	    var cb = res[0];
 	    var id = res[1];
 	    var data = JSON.parse(res[2]);
+	
+	    // if(!this.apiDetails.parentContent)  download size getting changed
+	
 	    if (id != _this3.baseIdentifier || _this3.gotSpine || _this3.cancelled) return;
 	
 	    if (cb == "onDownloadProgress") {
@@ -46365,22 +46371,35 @@
 	      _this.contentDetails();
 	
 	      _this.creditsDetail(data);
-	
+	      console.log("\nlocally available", data.isAvailableLocally);
 	      if (data.isAvailableLocally == true) {
 	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
 	        _this.renderChildren(identifier);
 	      } else {
+	
 	        _this.logTelelmetry(identifier, data.contentData.pkgVersion, data.isAvailableLocally);
+	
 	        if (JBridge.isNetworkAvailable()) {
-	          JBridge.importCourse(identifier, "false", utils.getCallbacks(_this.getSpineStatus, "", _this.getSpineStatus));
-	          _this.changeOverFlow();
+	          if (_this.apiDetails && _this.apiDetails.parentContent) {
+	            JBridge.importCourse(_this.apiDetails.parentContent.identifier, "false", utils.getCallbacks(_this.getSpineStatus, "", _this.getSpineStatus));
+	            JBridge.getContentDetails(_this.apiDetails.parentContent.identifier, callback, true);
+	            _this.changeOverFlow();
+	          } else {
+	            JBridge.importCourse(identifier, "false", utils.getCallbacks(_this.getSpineStatus, "", _this.getSpineStatus));
+	            _this.changeOverFlow();
+	          }
 	        } else {
 	          window.__Snackbar.show(window.__S.ERROR_OFFLINE_MODE);
 	          _this.onBackPressed();
 	        }
 	      }
 	    });
-	    JBridge.getContentDetails(identifier, callback, true);
+	
+	    if (_this3.apiDetails && _this3.apiDetails.parentContent) {
+	      JBridge.getContentDetails(_this3.apiDetails.parentContent.identifier, callback, true);
+	    } else {
+	      JBridge.getContentDetails(identifier, callback, true);
+	    }
 	  };
 	
 	  this.logTelelmetry = function (id, pkgVersion, isAvailableLocally) {
@@ -46432,7 +46451,7 @@
 	          Android.runInUI(_this3.set({
 	            id: _this3.idSet.courseNotStartedOverLay,
 	            visibility: "visible"
-	          }), 0, "383", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	          }), 0, "400", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	        }
 	        var description = "";
 	        description += utils.prettifyDate(batch.startDate);
@@ -46500,7 +46519,7 @@
 	          totalProgress: _this3.data.totalProgress,
 	          visibility: _this3.showProgress, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 451
+	            lineNumber: 468
 	          }
 	        });
 	        _this3.replaceChild(_this3.idSet.horizontalProgressBarContainer, layout.render(), 0);
@@ -46526,7 +46545,7 @@
 	      onResumeClick: _this3.handleCourseResume,
 	      visibility: _this3.showProgress, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 477
+	        lineNumber: 494
 	      }
 	    });
 	  };
@@ -46543,7 +46562,7 @@
 	        root: "true",
 	        text: window.__S.ERROR_CONTENT_NOT_FOUND, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 494
+	          lineNumber: 511
 	        }
 	      });
 	      var cmd = _this3.set({
@@ -46551,7 +46570,7 @@
 	        visibility: "gone"
 	
 	      });
-	      Android.runInUI(cmd, 0, "505", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "522", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      layout = dom(CourseCurriculum, {
 	        height: "match_parent",
@@ -46563,7 +46582,7 @@
 	        onClick: _this3.handleModuleClick,
 	        content: _this3.courseContent.children, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 508
+	          lineNumber: 525
 	        }
 	      });
 	    }
@@ -46615,7 +46634,7 @@
 	        id: _this3.idSet.resumeCourseBtn,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "568", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "585", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    if (_this3.enrolledCourses && _this3.enrolledCourses.hasOwnProperty("lastReadContentId") && _this3.enrolledCourses.lastReadContentId != null) {
 	      var cmd = _this3.set({
@@ -46627,7 +46646,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "581", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "598", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	
 	    _this3.checkContentLocalStatus(_this3.baseIdentifier);
@@ -46700,7 +46719,7 @@
 	          type: type,
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 653
+	            lineNumber: 670
 	          }
 	        });
 	
@@ -46776,7 +46795,7 @@
 	      showMenu: "true",
 	      onBackPress: _this3.onBackPressed, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 733
+	        lineNumber: 750
 	      }
 	    });
 	
@@ -46789,7 +46808,7 @@
 	      height: "2",
 	      background: window.__Colors.PRIMARY_BLACK_22, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 747
+	        lineNumber: 764
 	      }
 	    });
 	  };
@@ -46821,7 +46840,7 @@
 	          }
 	        }, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 769
+	          lineNumber: 786
 	        }
 	      },
 	      dom(RatingBar, {
@@ -46829,7 +46848,7 @@
 	        width: "wrap_content",
 	        height: "wrap_content", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 773
+	          lineNumber: 790
 	        }
 	      })
 	    );
@@ -46852,7 +46871,7 @@
 	      hideDivider: "gone",
 	      handleButtonClick: _this3.showDownloadAllPopUp, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 793
+	        lineNumber: 810
 	      }
 	    });
 	    return dom(
@@ -46862,7 +46881,7 @@
 	        height: "wrap_content",
 	        margin: "16,0,16,16", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 800
+	          lineNumber: 817
 	        }
 	      },
 	      _this3.__DownloadAllProgressButton
@@ -46898,7 +46917,7 @@
 	        height: "wrap_content",
 	        orientation: "vertical", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 832
+	          lineNumber: 849
 	        }
 	      },
 	      dom(
@@ -46908,7 +46927,7 @@
 	          height: "wrap_content",
 	          background: window.__Colors.WHITE_F2, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 836
+	            lineNumber: 853
 	          }
 	        },
 	        dom(TextView, {
@@ -46917,7 +46936,7 @@
 	          margin: "16,12,0,12",
 	          style: window.__TextStyle.textStyle.CARD.TITLE.DARK, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 840
+	            lineNumber: 857
 	          }
 	        })
 	      ),
@@ -46928,7 +46947,7 @@
 	        contentDescription: data.contentData && data.contentData.description ? data.contentData.description : " ",
 	        contentText: contentText, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 846
+	          lineNumber: 863
 	        }
 	      })
 	    );
@@ -46951,7 +46970,7 @@
 	          orientation: "vertical",
 	          visibility: "visible", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 865
+	            lineNumber: 882
 	          }
 	        },
 	        dom(
@@ -46963,7 +46982,7 @@
 	            margin: "0,8,0,0",
 	            background: window.__Colors.WHITE_F2, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 870
+	              lineNumber: 887
 	            }
 	          },
 	          dom(TextView, {
@@ -46973,7 +46992,7 @@
 	            margin: "16,0,0,0",
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 876
+	              lineNumber: 893
 	            }
 	          }),
 	          dom(
@@ -46981,7 +47000,7 @@
 	            {
 	              orientation: "horizontal", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 882
+	                lineNumber: 899
 	              }
 	            },
 	            dom(TextView, {
@@ -46991,7 +47010,7 @@
 	              color: "#FF0079FF",
 	              onClick: _this3.viewCreditsButtonClick, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 884
+	                lineNumber: 901
 	              }
 	            }),
 	            dom(ImageView, {
@@ -47002,7 +47021,7 @@
 	              margin: "8,14,0,8",
 	              imageUrl: "ic_action_down_blue", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 890
+	                lineNumber: 907
 	              }
 	            })
 	          )
@@ -47029,7 +47048,7 @@
 	        imageUrl: "ic_action_down_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "921", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "938", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    } else {
 	      var cmd = _this3.set({
 	        id: _this3.idSet.creditsText,
@@ -47046,7 +47065,7 @@
 	        imageUrl: "ic_action_up_blue"
 	      });
 	
-	      Android.runInUI(cmd, 0, "938", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
+	      Android.runInUI(cmd, 0, "955", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsCourseEnrolledActivityjs");
 	    }
 	    _this3.showCredits = !_this3.showCredits;
 	  };
@@ -53757,7 +53776,7 @@
 	          visibility: "visible",
 	          imageUrl: _this2.filterIcon
 	        });
-	        Android.runInUI(cmd, 0, "91", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	        Android.runInUI(cmd, 0, "93", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	        // this.getSearchList(this.searchText);
 	
 	        // var searchData
@@ -53784,7 +53803,7 @@
 	          id: _this2.idSet.searchHolder,
 	          text: _this2.searchText
 	        });
-	        Android.runInUI(cmd, 0, "118", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	        Android.runInUI(cmd, 0, "120", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	
 	        _this2.handleSearchClick(_this2.searchText);
 	      } else if (_this2.keywords) {
@@ -53801,9 +53820,12 @@
 	      }
 	    };
 	
-	    _this2.handleItemClick = function (item, index, searchText) {
+	    _this2.handleItemClick = function (item, index, searchText, parentContent) {
 	      console.log("itemClicked ", item);
-	
+	      if (parentContent) {
+	        console.log("itemClicked parentContent", parentContent);
+	        item.parentContent = parentContent;
+	      }
 	      var itemDetails = JSON.stringify(item);
 	      if (_this2.searchType.toLowerCase() == "combined") JBridge.logContentClickEvent("HOME", index + 1, searchText, item.identifier, item.pkgVersion);else if (_this2.searchType.toLowerCase() == "course") JBridge.logContentClickEvent("COURSES", index + 1, searchText, item.identifier, item.pkgVersion);else if (_this2.searchType.toLowerCase() == "resource") JBridge.logContentClickEvent("LIBRARY", index + 1, searchText, item.identifier, item.pkgVersion);
 	
@@ -53848,7 +53870,7 @@
 	    };
 	
 	    _this2.onPop = function () {
-	      Android.runInUI(_this.animateView(), null, "188", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(_this.animateView(), null, "193", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.getBack = function () {
@@ -53858,7 +53880,7 @@
 	        onClick: _this2.onBackPressed,
 	        imageUrl: "ic_action_arrow_left", __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 196
+	          lineNumber: 201
 	        }
 	      });
 	    };
@@ -53873,7 +53895,7 @@
 	          gravity: "center_vertical",
 	          weight: "1", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 204
+	            lineNumber: 209
 	          }
 	        },
 	        dom(EditText, {
@@ -53888,7 +53910,7 @@
 	          id: _this2.idSet.searchHolder,
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 211
+	            lineNumber: 216
 	          }
 	        })
 	      );
@@ -53901,7 +53923,7 @@
 	          width: "wrap_content",
 	          height: "wrap_content", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 229
+	            lineNumber: 234
 	          }
 	        },
 	        dom(ImageView, {
@@ -53910,7 +53932,7 @@
 	          style: IconStyle,
 	          imageUrl: "ic_action_close", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 233
+	            lineNumber: 238
 	          }
 	        }),
 	        dom(ImageView, {
@@ -53920,14 +53942,15 @@
 	          visibility: "gone",
 	          imageUrl: _this2.filterIcon, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 239
+	            lineNumber: 244
 	          }
 	        })
 	      );
 	      return layout;
 	    };
 	
-	    _this2.getContents = function (content, index, searchText) {
+	    _this2.getContents = function (content, index, searchText, collection) {
+	
 	      return dom(
 	        LinearLayout,
 	        {
@@ -53936,10 +53959,10 @@
 	          padding: "16,16,16,16",
 	          margin: "0,0,0,0",
 	          onClick: function onClick() {
-	            _this2.handleItemClick(content, index, searchText);
+	            _this2.handleItemClick(content, index, searchText, collection);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 253
+	            lineNumber: 259
 	          }
 	        },
 	        dom(
@@ -53949,7 +53972,7 @@
 	            height: "wrap_content",
 	            gravity: "center", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 260
+	              lineNumber: 266
 	            }
 	          },
 	          dom(ImageView, {
@@ -53958,7 +53981,7 @@
 	            margin: "0,0,8,0",
 	            circularImageUrl: "0," + "ic_launcher", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 265
+	              lineNumber: 271
 	            }
 	          })
 	        ),
@@ -53970,7 +53993,7 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 272
+	              lineNumber: 278
 	            }
 	          },
 	          dom(TextView, {
@@ -53979,7 +54002,7 @@
 	            text: content.name,
 	            style: window.__TextStyle.textStyle.CARD.HEADING, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 278
+	              lineNumber: 284
 	            }
 	          }),
 	          dom(
@@ -53989,7 +54012,7 @@
 	              height: "wrap_content",
 	              gravity: "center_vertical", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 284
+	                lineNumber: 290
 	              }
 	            },
 	            dom(TextView, {
@@ -53998,7 +54021,7 @@
 	              text: content.contentType,
 	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 289
+	                lineNumber: 295
 	              }
 	            }),
 	            dom(ImageView, {
@@ -54007,7 +54030,7 @@
 	              margin: "4,0,4,0",
 	              imageUrl: "ic_dot_lightgrey", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 295
+	                lineNumber: 301
 	              }
 	            }),
 	            dom(TextView, {
@@ -54016,7 +54039,7 @@
 	              text: content.hasOwnProperty("size") ? utils.formatBytes(content.size) : " ",
 	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 301
+	                lineNumber: 307
 	              }
 	            })
 	          ),
@@ -54026,7 +54049,7 @@
 	              orientation: "horizontal",
 	              padding: "10,0,0,0", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 308
+	                lineNumber: 314
 	              }
 	            },
 	            dom(TextView, {
@@ -54042,7 +54065,7 @@
 	              text: content.gradeLevel ? content.gradeLevel.toString().replace(/,/g, ", ") : "",
 	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 312
+	                lineNumber: 318
 	              }
 	            }),
 	            dom(ImageView, {
@@ -54053,7 +54076,7 @@
 	              margin: "4,7,0,0",
 	              imageUrl: "ic_dot_lightgrey", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 326
+	                lineNumber: 332
 	              }
 	            }),
 	            dom(TextView, {
@@ -54067,7 +54090,7 @@
 	              text: content.subject ? content.subject.toString() : "",
 	              style: window.__TextStyle.textStyle.HINT.SEMI, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 334
+	                lineNumber: 340
 	              }
 	            })
 	          )
@@ -54080,6 +54103,7 @@
 	      console.log("creating grp for -> ", collection);
 	
 	      collection.childNodes.map(function (item) {
+	        _this2.contentStack.push(item);
 	        var content = contents[utils.findObjOnProp(contents, "identifier", item)];
 	        if (content) {
 	          contentsList.push(content);
@@ -54094,17 +54118,17 @@
 	            height: "wrap_content",
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 363
+	              lineNumber: 370
 	            }
 	          },
-	          _this2.getContents(item, i, searchText),
+	          _this2.getContents(item, i, searchText, collection),
 	          dom(LinearLayout, {
 	            width: "match_parent",
 	            height: "5",
 	            margin: "16,0,16,0",
 	            visibility: dividerVisibility, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 368
+	              lineNumber: 375
 	            }
 	          })
 	        );
@@ -54116,7 +54140,7 @@
 	          height: "wrap_content",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 377
+	            lineNumber: 384
 	          }
 	        },
 	        dom(
@@ -54129,7 +54153,7 @@
 	              _this2.handleItemClick(collection, index, searchText);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 382
+	              lineNumber: 389
 	            }
 	          },
 	          dom(
@@ -54139,7 +54163,7 @@
 	              height: "wrap_content",
 	              margin: "16,16,16,0", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 388
+	                lineNumber: 395
 	              }
 	            },
 	            dom(TextView, {
@@ -54148,7 +54172,7 @@
 	              textSize: "14",
 	              text: "From ", __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 393
+	                lineNumber: 400
 	              }
 	            }),
 	            dom(TextView, {
@@ -54157,7 +54181,7 @@
 	              style: window.__TextStyle.textStyle.CARD.HEADING,
 	              text: collection.name, __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 399
+	                lineNumber: 406
 	              }
 	            })
 	          ),
@@ -54168,7 +54192,7 @@
 	            style: window.__TextStyle.textStyle.TABBAR.SELECTED,
 	            margin: "16,0,16,0", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 405
+	              lineNumber: 412
 	            }
 	          })
 	        ),
@@ -54178,7 +54202,7 @@
 	          width: "match_parent",
 	          background: "#f2f2f2", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 413
+	            lineNumber: 420
 	          }
 	        })
 	      );
@@ -54188,9 +54212,21 @@
 	      var groups = collection.map(function (item, i) {
 	        return _this2.getGroup(item, contents, i, searchText);
 	      });
+	
 	      var contentsLayout = contents.map(function (item, i) {
+	        for (var i = 0; i < _this2.contentStack.length; i++) {
+	          if (_this2.contentStack[i] == item.identifier) {
+	            return dom(LinearLayout, {
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 436
+	              }
+	            });
+	          }
+	        }
 	        return _this2.getContents(item, i, searchText);
 	      });
+	
 	      var layout = dom(
 	        LinearLayout,
 	        {
@@ -54200,7 +54236,7 @@
 	          background: "#ffffff",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 428
+	            lineNumber: 442
 	          }
 	        },
 	        groups,
@@ -54210,7 +54246,7 @@
 	            width: "match_parent",
 	            height: "wrap_content", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 435
+	              lineNumber: 449
 	            }
 	          },
 	          contentsLayout
@@ -54227,7 +54263,7 @@
 	        id: _this.idSet.filterHolder,
 	        visibility: "gone"
 	      });
-	      Android.runInUI(cmd, 0, "452", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "466", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	
 	      var layout = dom(
 	        LinearLayout,
@@ -54239,7 +54275,7 @@
 	          gravity: "center_horizontal",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 454
+	            lineNumber: 468
 	          }
 	        },
 	        dom(TextView, {
@@ -54251,7 +54287,7 @@
 	          style: window.__TextStyle.textStyle.TOOLBAR.HEADING,
 	          text: window.__S.EMPTY_SEARCH_RESULTS, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 462
+	            lineNumber: 476
 	          }
 	        })
 	      );
@@ -54272,7 +54308,7 @@
 	          background: "#ffffff",
 	          orientation: "vertical", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 481
+	            lineNumber: 495
 	          }
 	        },
 	        dom(SearchResult, {
@@ -54283,7 +54319,7 @@
 	            _this2.handleItemClick(item, index, searchText);
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 487
+	            lineNumber: 501
 	          }
 	        })
 	      );
@@ -54398,7 +54434,7 @@
 	        visibility: "visible"
 	      });
 	
-	      Android.runInUI(cmd, 0, "608", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "622", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleSearchClick = function (searchText, keywords) {
@@ -54436,7 +54472,7 @@
 	        visibility: "gone"
 	      });
 	
-	      Android.runInUI(cmd, 0, "648", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
+	      Android.runInUI(cmd, 0, "662", "UsersnikhilroyDocumentsProjectssunbirdsunbirdduiviewsSearchActivityjs");
 	    };
 	
 	    _this2.handleFilterClick = function () {
@@ -54462,7 +54498,7 @@
 	          background: window.__Colors.PRIMARY_BLACK_22,
 	          width: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 665
+	            lineNumber: 679
 	          }
 	        },
 	        dom(
@@ -54475,7 +54511,7 @@
 	            background: window.__Colors.WHITE,
 	            width: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 671
+	              lineNumber: 685
 	            }
 	          },
 	          _this2.getBack(),
@@ -54505,6 +54541,9 @@
 	    // this.temp = state.data;
 	    _this2.searchType = _this2.tempData.searchType;
 	
+	    _this2.contentStack = []; //to hide the contents whick are already present in the collections.
+	
+	
 	    _this = _this2;
 	
 	    return _this2;
@@ -54522,7 +54561,7 @@
 	          width: "match_parent",
 	          height: "match_parent", __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 691
+	            lineNumber: 705
 	          }
 	        },
 	        dom(
@@ -54533,7 +54572,7 @@
 	            width: "match_parent",
 	            height: "match_parent", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 697
+	              lineNumber: 711
 	            }
 	          },
 	          this.getToolbar(),
@@ -54544,7 +54583,7 @@
 	            id: this.idSet.searchListContainer,
 	            orientation: "vertical", __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 705
+	              lineNumber: 719
 	            }
 	          })
 	        )

@@ -3372,7 +3372,7 @@ public class JsInterface {
 
     @JavascriptInterface
     public void logFeatureCardEvent() {
-        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW,TelemetryAction.FEATURE_CARD,TelemetryPageId.ONBOARD, ContextEnvironment.HOME));
+        TelemetryHandler.saveTelemetry(TelemetryBuilder.buildImpressionEvent(ImpressionType.VIEW,null,TelemetryPageId.ONBOARDING, ContextEnvironment.HOME));
 
     }
 }

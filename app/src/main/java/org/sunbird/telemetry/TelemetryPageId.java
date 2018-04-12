@@ -43,4 +43,5 @@ public interface TelemetryPageId {
     String RECEIVED = "received";
     String DISPLAYED = "displayed";
     String CONTENT_RATING = "content-rating";
+    String ONBOARDING = "onboarding";
 }
