@@ -2377,11 +2377,11 @@ public class JsInterface {
         }
     }
 
-    @JavascriptInterface
-    public void loadImageForProfileAvatar() {
-        Intent intent = ImagePicker.getPickImageIntent(activity);
-        activity.startActivityForResult(intent, MainActivity.IMAGE_CHOOSER_ID);
-    }
+//    @JavascriptInterface
+//    public void loadImageForProfileAvatar() {
+//        Intent intent = ImagePicker.getPickImageIntent(activity);
+//        activity.startActivityForResult(intent, MainActivity.IMAGE_CHOOSER_ID);
+//    }
 
     @JavascriptInterface
     public void registerFCM(String[] topics) {
