@@ -3111,24 +3111,30 @@ public class JsInterface {
     }
 
     @JavascriptInterface
-    public void scrollTo (String scrollViewId, String scrollX) {
-        int id = parseInt(scrollViewId);
-        final int x = parseInt(scrollX);
-        final DisplayMetrics metrics = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        final HorizontalScrollView scrollView = (HorizontalScrollView) activity.findViewById(id);
-        if (scrollView != null) {
-            scrollView.post(new Runnable() {
-                @Override
-                public void run() {
-                    scrollView.smoothScrollBy(10, 0);
+    public void scrollTo (final String scrollViewId, final String scrollX) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int id = parseInt(scrollViewId);
+                final int x = parseInt(scrollX);
+                final DisplayMetrics metrics = new DisplayMetrics();
+                activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                final HorizontalScrollView scrollView = (HorizontalScrollView) activity.findViewById(id);
+                if (scrollView != null) {
+                    scrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollView.smoothScrollBy(10, 0);
 //                    scrollView.smoothScrollTo((int) (x * metrics.density),0);
-                    ObjectAnimator animator = ObjectAnimator.ofInt(scrollView, "scrollX", (int) (x * metrics.density));
-                    animator.setDuration(100);
-                    animator.start();
+                            ObjectAnimator animator = ObjectAnimator.ofInt(scrollView, "scrollX", (int) (x * metrics.density));
+                            animator.setDuration(100);
+                            animator.start();
+                        }
+                    });
                 }
-            });
-        }
+            }
+        });
+
     }
 
     private int[] cardIds;
