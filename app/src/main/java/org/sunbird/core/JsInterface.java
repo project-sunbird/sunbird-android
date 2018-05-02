@@ -3055,16 +3055,16 @@ public class JsInterface {
                     String previousOpenCount = partsOfLastLine[2];
                     int count = Integer.parseInt(previousOpenCount);
                     count++;
-                    String updateEntry = versionName + SEPERATOR + partsOfLastLine[1] + SEPERATOR + count;
+                    String updateEntry = versionName + SEPERATOR + partsOfLastLine[1] + SEPERATOR + count + SEPERATOR + getDeviceId();
                     FileHandler.saveToFile(filePath, updateEntry);
                 } else {
                     //make a new entry to the file
-                    String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+                    String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1" + SEPERATOR + getDeviceId();
                     FileHandler.saveToFile(filePath, newEntry);
                 }
             } else {
                 //make a new entry to the file
-                String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+                String newEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1" + SEPERATOR + getDeviceId();
                 FileHandler.saveToFile(filePath, newEntry);
             }
         }
@@ -3072,7 +3072,7 @@ public class JsInterface {
 
     private void makeFirstEntryInTheFile(String versionName, String filePath) throws IOException {
         FileHandler.createFileInTheDirectory(filePath);
-        String firstEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1";
+        String firstEntry = versionName + SEPERATOR + System.currentTimeMillis() + SEPERATOR + "1" + SEPERATOR + getDeviceId();
         FileHandler.saveToFile(filePath, firstEntry);
     }
 
